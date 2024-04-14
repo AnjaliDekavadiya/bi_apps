@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+    Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+-->
+<odoo>
+    <data>
+        <template id="website_rental_management_assets" name="Assets" inherit_id="portal.frontend_layout">
+            <xpath expr="//head/link[last()]" position="after">
+                <t t-set="rental_config" t-value="request.env.ref('tk_website_rental_management.property_theme_config_rec')" />
+                <script type="text/javascript" t-attf-src="https://maps.googleapis.com/maps/api/js?key=#{rental_config.google_map_api}&amp;libraries=places" />
+            </xpath>
+            <xpath expr="//head/script[last()]" position="after">
+                <t t-set="rental_config" t-value="request.env.ref('tk_website_rental_management.property_theme_config_rec')" />
+                <t t-set="rtl_lang" t-value="list(filter(lambda lg : lg[0] == lang, languages))[0]"/>
+                <link type="text/css" rel="stylesheet" href="/tk_website_rental_management/static/src/css/rtl-style.css" t-if="rental_config.is_rtl and rtl_lang[1] == 'ar'" />
+            </xpath>
+        </template>
+    </data>
+</odoo>

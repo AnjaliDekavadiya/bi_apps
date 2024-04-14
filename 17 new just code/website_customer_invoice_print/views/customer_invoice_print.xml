@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_customer_invoice_print_ci" name="Print Customer Invoice" inherit_id="website_sale.confirmation">
+        <xpath expr="//table[hasclass('table')]" position="before">
+            <a t-if="order.invoice_ids" role="button" class="btn btn-primary d-none d-md-inline-block" href="/ci_invoice/print" target="_blank" aria-label="Print" title="Print"><i class="fa fa-print"></i> Print Invoice</a>
+        </xpath>
+    </template>
+</odoo>

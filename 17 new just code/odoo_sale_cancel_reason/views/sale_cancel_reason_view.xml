@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="so_cancel_reason_custom_form_view" model="ir.ui.view">
+            <field name="name">so.cancel.reason.custom.form.view</field>
+            <field name="model">so.cancel.reason.custom</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                         </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="so_cancel_reason_custom_tree_view" model="ir.ui.view">
+            <field name="name">so.cancel.reason.custom.view.tree</field>
+            <field name="model">so.cancel.reason.custom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record model="ir.actions.act_window" id="action_so_cancel_reason_custom">
+            <field name="name">Cancel Reasons</field>
+            <field name="res_model">so.cancel.reason.custom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem id="menu_so_cancel_reason" name="Cancel Reasons" 
+                  action="action_so_cancel_reason_custom" parent="sale.menu_sale_config"/>
+        
+    </data>
+</odoo>

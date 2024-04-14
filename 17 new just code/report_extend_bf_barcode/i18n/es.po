@@ -1,0 +1,39 @@
+#. module: report_extend_bf_barcode
+#: model:ir.model.fields,field_description:report_extend_bf_barcode.field_bf_barcode__report_template_id
+msgid "Report template"
+msgstr "Plantilla"
+
+#. module: report_extend_bf_barcode
+#: model:ir.model.fields,field_description:report_extend_bf_barcode.field_bf_barcode__group_resource_ref
+msgid "Group record reference"
+msgstr "Agrupar x ref. de registro"
+
+#. module: report_extend_bf_barcode
+#: model:ir.model.fields,field_description:report_extend_bf_barcode.field_bf_barcode_line__model
+msgid "Document Model Name"
+msgstr "Modelo"
+
+#. module: report_extend_bf_barcode
+#: model:ir.model.fields,field_description:report_extend_bf_barcode.field_bf_barcode_line__res_id
+msgid "Record ID"
+msgstr "ID Registro"
+
+#. module: report_extend_bf_barcode
+#: model:ir.model.fields,field_description:report_extend_bf_barcode.field_bf_barcode_line__resource_ref
+msgid "Record reference"
+msgstr "Ref. de registro"
+
+#. module: report_extend_bf_barcode
+#: model:ir.model.fields,field_description:report_extend_bf_barcode.field_bf_barcode_line__qty
+msgid "Qty"
+msgstr "Cantidad"
+
+#. module: report_extend_bf_barcode
+#: model_terms:ir.ui.view,arch_db:report_extend_bf_barcode.bf_barcode_view_form
+msgid "Print label"
+msgstr "Imprimir"
+
+#. module: report_extend_bf_barcode
+#: model_terms:ir.ui.view,arch_db:report_extend_bf_barcode.bf_barcode_view_form
+msgid "Cancel"
+msgstr "Cancelar"

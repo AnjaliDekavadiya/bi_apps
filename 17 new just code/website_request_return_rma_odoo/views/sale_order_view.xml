@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+         <record id="view_order_form_inharit_rma_order_id" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='sale_reporting']" position="after">
+                    <group string="RMA Order" name="rma-order" groups="base.group_no_one">
+                        <field name='rma_order_id'/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

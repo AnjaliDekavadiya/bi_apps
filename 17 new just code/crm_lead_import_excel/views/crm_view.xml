@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- <menuitem id="import_crm" name="Import" parent="sale.sale_menu_root"
+                  groups="sales_team.group_sale_salesman"/>
+        <menuitem id="import_crm_file" name="Import Leads" groups="sales_team.group_sale_salesman" parent="import_crm" action="import_crm_action"/> -->
+        <menuitem id="import_crm" name="Import" parent="crm.crm_menu_root"
+                  groups="sales_team.group_sale_salesman"
+                  sequence="24"/>
+        <menuitem id="import_crm_file" name="Import Leads/Pipeline" groups="sales_team.group_sale_salesman" parent="import_crm" action="import_crm_action"/>
+    </data>
+</odoo>

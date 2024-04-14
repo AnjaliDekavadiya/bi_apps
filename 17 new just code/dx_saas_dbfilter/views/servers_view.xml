@@ -1,0 +1,133 @@
+<odoo>
+    <data>
+        <record id="view_dx_saas_dbfilter_servers_tree" model="ir.ui.view">
+            <field name="name">view.dx.saas.dbfilter.servers.tree</field>
+            <field name="model">dx.saas.dbfilter.servers</field>
+            <field name="arch" type="xml">
+                <tree string="Servers" default_order="name desc">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="url"/>
+                    <field name="odoo_version_id" />
+                    <field name="odoo_variant"/>
+                    <field name="domain_for_new_sub" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_dx_saas_dbfilter_servers_filter" model="ir.ui.view">
+            <field name="name">view.dx.saas.dbfilter.servers.filter</field>
+            <field name="model">dx.saas.dbfilter.servers</field>
+            <field name="arch" type="xml">
+                <search string="Saas Servers">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="public_http_port"/>
+                    <field name="http_port"/>
+                    <field name="long_polling_port"/>
+                    <field name="odoo_version_id"/>
+                    <field name="odoo_variant"/>
+                    <filter string="Confirmed" name="confirmed" domain="[('state', '=', 'confirm')]"/>
+                    <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_state" string="Status" context="{'group_by':'state'}"/>
+                        <filter name="group_by_odoo_version_id" string="Version" context="{'group_by':'odoo_version_id'}"/>
+                        <filter name="group_by_odoo_variant" string="Variant" context="{'group_by':'odoo_variant'}"/>
+                </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_dx_saas_dbfilter_servers" model="ir.actions.act_window">
+            <field name="name">Servers</field>
+            <field name="res_model">dx.saas.dbfilter.servers</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="view_dx_saas_dbfilter_servers_form" model="ir.ui.view">
+            <field name="name">view.dx.saas.dbfilter.servers.form</field>
+            <field name="model">dx.saas.dbfilter.servers</field>
+            <field name="arch" type="xml">
+                <form string="Servers">
+                    <header>
+                        <button name="action_confirm" type="object" invisible="state != 'draft'" string="Confirm"
+                                class="btn-primary"/>
+                        <button name="reset_to_draft" type="object" invisible="state != 'confirm'" string="Reset to draft"
+                        class="btn-primary"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="get_subscriptions" type="object"
+                                class="oe_stat_button" icon="fa-calendar"
+                                invisible="subscriptions_count == 0">
+                            <field name="subscriptions_count" widget="statinfo"
+                                   string="Subscriptions"/>
+                        </button>
+                        <button name="get_active_subscriptions" type="object"
+                                class="oe_stat_button" icon="fa-calendar"
+                                invisible="active_subscriptions_count == 0">
+                            <field name="active_subscriptions_count" widget="statinfo"
+                                   string="Active Subscriptions"/>
+                        </button>
+                    </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Server Name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="url_protocol" />
+                                <field name="url" placeholder="Do nor add http:// or https://"/>
+                                <field name="master_password" password="True"/>
+                                <field name="public_http_port" options="{'format': 0}"/>
+                                <field name="http_port" options="{'format': 0}"/>
+                                <field name="long_polling_port" options="{'format': 0}"/>
+                                <field name="domain_for_new_sub" />
+                                <field name="odoo_version_id" options="{'no_create':True}"/>
+                                <field name="odoo_variant"/>
+                            </group>
+                            <group>
+                                <field name="ssh_username" placeholder="root"/>
+                                <field name="ssh_password" password="True"/>
+                                <field name="ssh_port" options="{'format': 0}"/>
+                                <field name="country_id"/>
+                                <field name="state_id"/>
+                                <field name="custom_routes"/>
+                                <field name="custom_nginx_dirs"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="custom_routes_page" string="Custom Routes"
+                                  invisible="not custom_routes">
+                                <group>
+                                    <group>
+                                        <field name="create_db_path"/>
+                                        <field name="drop_db_path"/>
+                                        <field name="backup_db_path"/>
+                                        <field name="restore_db_path"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="custom_nginx_dirs_page" string="Custom Nginx Dirs"
+                                  invisible="not custom_nginx_dirs">
+                                <group>
+                                    <group>
+                                        <field name="nginx_available_dir"/>
+                                        <field name="nginx_enabled_dir"/>
+                                        <field name="nginx_root_dir"/>
+                                        <field name="restart_nginx_cmd"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

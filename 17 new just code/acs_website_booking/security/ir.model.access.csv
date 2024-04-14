@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_acs_schedule,access_acs_schedule,model_acs_schedule,base.group_user,1,1,1,1
+access_acs_schedule_slots,access_acs_schedule_slots,model_acs_schedule_slot,base.group_user,1,1,1,1
+access_acs_schedule_lines,access_acs_schedule_lines,model_acs_schedule_lines,base.group_user,1,1,1,1
+access_acs_schedule_slot_lines,access_acs_schedule_slot_lines,model_acs_schedule_slot_lines,base.group_user,1,1,1,1
+access_acs_scheduler_wizard,access_acs_scheduler_wizard,acs_website_booking.model_acs_scheduler_wizard,base.group_user,1,1,1,1
+
+access_acs_schedule_slot_lines_portal,Slot Line Portal,model_acs_schedule_slot_lines,base.group_portal,1,0,0,0
+access_acs_schedule_slots_portal,access_acs_schedule_slots_portal,model_acs_schedule_slot,base.group_portal,1,0,0,0

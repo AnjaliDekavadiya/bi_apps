@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.actions.report" id="action_report_ai_tmpl_logo_footer_green">
+            <field name="name">Logo Footer Green with payment (pdf)</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceLogoFooterGreen</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_logo_footer_green"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/footer_logo_green.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_logo_footer_red">
+            <field name="name">Logo Footer Red with payment</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceLogoFooterRed</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_logo_footer_red"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/footer_logo_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_logo_footer_orange">
+            <field name="name">Logo Footer Orange with payment</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceLogoFooterOrange</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_logo_footer_orange"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/footer_logo_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_logo_footer_blue">
+            <field name="name">Logo Footer Blue with payment</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceLogoFooterBlue</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_logo_footer_blue"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/footer_logo_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_bubble">
+            <field name="name">Bubble</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceBubble</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_bubble"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/burbuja.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_ElegantGreen">
+            <field name="name">Elegant Green (pdf)</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceElegantGreen</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_ElegantGreen"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/elegant_green.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_ElegantOrange">
+            <field name="name">Elegant Orange</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceElegantOrange</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_ElegantOrange"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/elegant_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_ElegantRed">
+            <field name="name">Elegant Red</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceElegantRed</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_ElegantRed"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/elegant_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_ElegantBlue">
+            <field name="name">Elegant Blue</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceElegantBlue</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_ElegantBlue"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/elegant_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_CleanGray">
+            <field name="name">Clean Gray (pdf)</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceCleanGray</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_CleanGray"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/clean_gray.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_CleanGreen">
+            <field name="name">Clean Green</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceCleanGreen</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_CleanGreen"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/clean_green.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_CleanOrange">
+            <field name="name">Clean Orange</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceCleanOrange</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_CleanOrange"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/clean_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_CleanBlue">
+            <field name="name">Clean Blue</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceCleanBlue</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_CleanBlue"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/clean_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_CleanRed">
+            <field name="name">Clean Red</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceCleanRed</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_CleanRed"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/clean_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_ModernRed">
+            <field name="name">Modern Red (pdf)</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceModernRed</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_ModernRed"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/modern_red.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_ModernOrange">
+            <field name="name">Modern Orange</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceModernOrange</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_ModernOrange"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/modern_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_ModernGreen">
+            <field name="name">Modern Green</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceModernGreen</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_ModernGreen"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/modern_green.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_ModernBlue">
+            <field name="name">Modern Blue</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceModernBlue</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_ModernBlue"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/modern_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_modern_stylish_green">
+            <field name="name">Modern Stylish Green (pdf)</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceModernStylishGreen</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_modern_stylish_green"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/modern_stylish_green.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_modern_stylish_red">
+            <field name="name">Modern Stylish Red</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceModernStylishRed</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_modern_stylish_red"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/modern_stylish_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_modern_stylish_orange">
+            <field name="name">Modern Stylish Orange</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceModernStylishOrange</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_modern_stylish_orange"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/modern_stylish_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_modern_stylish_blue">
+            <field name="name">Modern Stylish Blue</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceModernStylishBlue</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_modern_stylish_blue"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/modern_stylish_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_transparency">
+            <field name="name">Template Transparency</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceTransparency</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_transparency"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/transparency.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_watermark">
+            <field name="name">Template Watermark</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceWatermark</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_watermark"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/watermark.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_magenta">
+            <field name="name">Template Magenta</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceMagenta</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_magenta"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/magenta.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_terms_and_conditions">
+            <field name="name">Template Terms &amp; Conditions</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceTermsAndConditions</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_terms_and_conditions"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/terms_and_conditions.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_static">
+            <field name="name">Template Static</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceStatic</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_static"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/static.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_simple">
+            <field name="name">Template Simple</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceSimple</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_simple"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/simple.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_ai_tmpl_offer">
+            <field name="name">My Offer</field>
+            <field name="model">account.move</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">InvoiceOffer</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_account_invoice.ai_tmpl_offer"/>
+            <field name="url_theme_screenshot">report_extend_bf_account_invoice/static/src/img/offer.png</field>
+        </record>
+
+    </data>
+</odoo>

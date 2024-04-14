@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="machine_job_estimate_form_wizard_view" model="ir.ui.view">
+            <field name="name">Machine Job Estimate</field>
+            <field name="model">machine.job.estimate</field>
+            <field name="arch" type="xml">
+                <form>
+                    <separator string="This wizard will create Sales Estimate for this Machine Repair Request."/>
+                    <footer>
+                        <button name="create_job_estimate" type="object"
+                        class="oe_highlight" string="Create Estimate"/>
+                        or
+                        <button string="Cancel" special="cancel"
+                        class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_machine_job_estimate_wizard" model="ir.actions.act_window">
+            <field name="name">Create Machine Repair Estimate</field>
+            <field name="res_model">machine.job.estimate</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+    </data>
+</odoo>

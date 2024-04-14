@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="view_material_purchase_requisition_form_inherit_fleet_req" model="ir.ui.view">
+            <field name="name">material.purchase.requisition.inherit</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="inherit_id" ref="material_purchase_requisitions.material_purchase_requisition_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='reject_employee_id']" position="after">
+                    <field name="custom_fleet_request_id"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

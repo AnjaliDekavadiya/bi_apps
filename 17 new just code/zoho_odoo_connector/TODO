@@ -1,0 +1,8 @@
+* change create and edit to false in the mapping views.
+* refresh token, authorization token and access token read only field.
+* check the import crons.
+* add tax code in import and export process.
+* add update code from odoo to zoho.
+* add crons configuration page in notebook
+* add note in the redirect uri field.(Use the same redirect uri given, while creating the APP in zoho.)
+

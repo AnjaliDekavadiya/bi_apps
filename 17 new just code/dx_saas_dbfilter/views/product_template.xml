@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_dx_saas_product_template_form" model="ir.ui.view">
+        <field name="name">view.dx.saas.product.template.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']" position="inside">
+                <field name="saas_service"/>
+                <label for="saas_service"/>
+            </xpath>
+            <xpath expr="//page[@name='variants']" position="after">
+                <page name="saas_package_page" string="SAAS Service"
+                      invisible="not saas_service">
+                    <group>
+                        <group>
+                            <field name="saas_package" widget="many2many_tags" required="saas_service"/>
+                            <field name="saas_server" required="saas_service" options="{'no_create':True}"/>
+                            <field name="saas_users" required="saas_service"/>
+                            <field name="saas_valid_for" required="saas_service"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

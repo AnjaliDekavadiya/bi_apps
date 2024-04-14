@@ -1,0 +1,2 @@
+
+17.0.0.1 ==> Fixed issue when we alredy payment of credit note at that time show wrong balance amount in customer statement and supplier statement report.

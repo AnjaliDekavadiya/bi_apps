@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="website_portal_dashboard" name="Portal Dashboard Header" inherit_id="portal.portal_layout">
+        <xpath expr="//div[hasclass('o_portal')]" position="before">
+            <div class="dashboard_header">
+                <span class="dashboard_header_text">
+                    <h3 class="dashboard_header_text_h"></h3>
+                </span>
+            </div>
+            <t t-set="lnk" t-value="'/'+ request.httprequest.url.replace( request.httprequest.host_url,'')"/>
+
+        </xpath>
+
+        <xpath expr="//t/div[hasclass('o_portal_wrap')]/div/t/div/div[3]" position="replace">
+
+        </xpath>
+
+        <xpath expr="//t/div[hasclass('o_portal_wrap')]/div/t/div/div[2]" position="replace">
+
+        </xpath>
+        <xpath expr="//t/div[hasclass('o_portal_wrap')]/div/t/div/div[1]" position="replace">
+            <div t-attf-class="o_portal_content col-12 ">
+                <t t-out="0"/>
+            </div>
+
+        </xpath>
+
+
+    </template>
+
+
+    <template id="grid_view_in_menus">
+        <t t-set="recs" t-value="user_id.env['grid.data'].sudo().search([('check','=',True)])"/>
+        <t t-set="lnk" t-value="'/'+ request.httprequest.url.replace( request.httprequest.host_url,'')"/>
+        <t t-foreach="recs" t-as="rec">
+            <t t-set="count" t-value="rec.count"/>
+            <t t-set="color" t-value="rec.color"/>
+            <t t-set="icon" t-value="rec.icon"/>
+            <t t-set="placeholder_count" t-value="rec.placeholder_count"/>
+            <div t-if="lnk != url" t-att-title="title" class="grid_td">
+                <div class="grid_td_details h-lg-75 w-lg-100">
+                    <div id="grid_td_img_color" t-attf-class="grid_td_img #{color[1:] if color else 'gray'}">
+                        <h2 id="grid_td_icon">
+                            <i t-attf-class="#{icon if icon else ''}"/>
+                        </h2>
+                    </div>
+                    <div t-if="url != '/my/account'" class="grid_td_details_counts">
+                        <t t-if="count">
+                            <h2 class="grid_td_details_count">
+                                <span class="badge" t-esc="count"/>
+                            </h2>
+                        </t>
+                        <t t-elif="placeholder_count">
+                            <h2 class="grid_td_details_count">
+                                <b>
+                                    <span class="badge" t-att-data-placeholder_count="placeholder_count">
+                                        <i class="fa fa-spin fa-spinner"></i>
+                                    </span>
+                                </b>
+                            </h2>
+                        </t>
+                    </div>
+                    <div class="grid_td_details_titles">
+                        <h5 t-attf-class="grid_td_details_title ml32">
+                            <t t-esc="title"/>
+                        </h5>
+                    </div>
+                    <div class="grid_td_details_line"/>
+                    <div class="grid_td_details_links">
+                        <a t-att-href="url" class="grid_td_details_link">
+                            <h5 style="width:100%;height:100%;margin-bottom:0px">View</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="website_portal_dashboard_grids" name="Portal Dashboard Grids" inherit_id="portal.portal_docs_entry"
+              priority="1">
+        <xpath expr="//div" position="replace">
+            <t t-set="dic" t-value="user_id.grid_settings()"/>
+            <t t-set="data" t-value="dic[url] if url in dic else [False,False]"/>
+            <div t-att-title="title" class="grid_td list-group-item-action  mt32 margin_for_two o_portal_index_card">
+                <div class="grid_td_details">
+                    <div id="grid_td_img_color" t-attf-class="grid_td_img #{data[1][1:] if data[1] else 'gray'}">
+                        <h2 id="grid_td_icon">
+                            <i t-attf-class="#{data[0] if data[0] else ''}"/>
+                        </h2>
+                    </div>
+                    <div class="grid_td_details_counts">
+                        <t t-if="count">
+                            <h2 class="grid_td_details_count">
+                                <span class="badge" t-esc="count"/>
+                            </h2>
+                        </t>
+                        <t t-elif="placeholder_count">
+                            <h2 class="grid_td_details_count">
+                                <b>
+                                    <span class="badge" t-att-data-placeholder_count="placeholder_count">
+                                        <i class="fa fa-spin fa-spinner"></i>
+                                    </span>
+                                </b>
+                            </h2>
+                        </t>
+                    </div>
+                    <div class="grid_td_details_titles mr64">
+                        <h5 t-attf-class="grid_td_details_title">
+                            <t t-esc="title"/>
+                        </h5>
+                    </div>
+                    <div class="grid_td_details_line"/>
+                    <div class="grid_td_details_links">
+                        <a t-att-href="url" class="grid_td_details_link">
+                            <h5 style="width:100%;height:100%;margin-bottom:0px">View</h5>
+                        </a>
+                    </div>
+                </div>
+                <t t-set="dic" t-value="user_id.set_grid_setting([title,url,data[0],data[1],count,placeholder_count])"/>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="website_portal_dashboard_frontend" name="Portal Dashboard Frontend" inherit_id="portal.portal_layout">
+        <xpath expr="//t/div[hasclass('o_portal_wrap')]/div/t/div/div[1]" position="inside">
+            <t t-set="partner" t-value="user_id.partner_id"/>
+            <t t-set="setting" t-value="user_id.env['res.config.settings'].sudo().get_values()"/>
+            <div t-if="setting['show_sale_chart'] or setting['show_invoice_chart'] or setting['show_purchase_chart'] or setting['show_bill_chart'] or setting['show_quotaion_table'] or setting['show_so_table'] or setting['show_rfq_table'] or setting['show_po_table'] or setting['show_invoice_table'] or setting['show_bill_table']"
+                 class="row main_filter">
+                <div class="row filter_options">
+                    <div class="filter_options_text">
+                        <h4>
+                            <b>Filter Chart:</b>
+                        </h4>
+                    </div>
+                    <select name="Filter Options" id="filter_options_condition" class="filter_options_select">
+                        <option value="1">Today</option>
+                        <option value="2">Yesterday</option>
+                        <option value="3">Current Week</option>
+                        <option value="4">Current Month</option>
+                        <option value="5">Current Year</option>
+                    </select>
+                </div>
+            </div>
+            <div id="main_table_view" class="main_table_view">
+                <div id="tedt">
+                    <t t-call="bi_website_portal_dashboard.all_table_template"/>
+                </div>
+            </div>
+
+            <t t-if="(partner.is_vendor == False or (partner.is_vendor and partner.is_customer))">
+                <div t-if="setting['show_sale_chart'] or setting['show_invoice_chart']" class="row chart_view_first">
+                    <t t-set="ch_chart_first" t-value="user_id.check_chart_first()"/>
+                    <div t-if="setting['show_sale_chart']" class="chart_view_first_so">
+                        <div class="chart_so_title">
+                            <h4 id="chart_so_title_text" class="chart_so_title_text"/>
+                        </div>
+                        <canvas id="chart_so" dir="rtl"></canvas>
+                    </div>
+                    <div t-if="setting['show_invoice_chart']"
+                         t-attf-class="chart_view_first_inv #{ch_chart_first if ch_chart_first else ''}">
+                        <div class="chart_inv_title">
+                            <h4 id="chart_inv_title_text" class="chart_inv_title_text"></h4>
+                        </div>
+                        <canvas id="chart_inv" dir="rtl"></canvas>
+                    </div>
+                </div>
+            </t>
+            <t t-if="(partner.is_customer == False or (partner.is_vendor and partner.is_customer))">
+                <div t-if="setting['show_purchase_chart'] or setting['show_bill_chart']" class="row chart_view_second">
+                    <t t-set="ch_chart_second" t-value="user_id.check_chart_second()"/>
+                    <div t-if="setting['show_purchase_chart']" class="chart_view_second_po">
+                        <div class="chart_po_title">
+                            <h4 id="chart_po_title_text" class="chart_po_title_text"></h4>
+                        </div>
+                        <canvas id="chart_po" dir="rtl"></canvas>
+                    </div>
+                    <div t-if="setting['show_bill_chart']"
+                         t-attf-class="chart_view_second_bill #{ch_chart_second if ch_chart_second else ''}">
+                        <div class="chart_bill_title">
+                            <h4 id="chart_bill_title_text" class="chart_bill_title_text"></h4>
+                        </div>
+                        <canvas id="chart_bill" dir="rtl"></canvas>
+                    </div>
+                </div>
+            </t>
+
+
+            <div t-if="setting['show_purchase_chart'] or setting['show_sale_chart']" class="row product_chart_view">
+                <t t-set="ch_product_chart" t-value="user_id.check_chart_product()"/>
+                <t t-if="(partner.is_vendor == False or (partner.is_vendor and partner.is_customer))">
+                    <div t-if="setting['show_sale_chart']" class="product_chart_view_sold">
+                        <div class="product_chart_view_sold_title">
+                            <h4 id="product_chart_view_sold_title_text"></h4>
+                        </div>
+                        <canvas id="chart_product_sold" dir="rtl"></canvas>
+                    </div>
+                </t>
+                <t t-if="(partner.is_customer == False or (partner.is_vendor and partner.is_customer))">
+                    <div t-if="setting['show_purchase_chart']"
+                         t-attf-class="product_chart_view_purchase #{ch_product_chart if ch_product_chart else ''}">
+                        <div class="product_chart_view_purchase_title">
+                            <h4 id="product_chart_view_purchase_title_text"></h4>
+                        </div>
+                        <canvas id="chart_product_purchase" dir="rtl"></canvas>
+                    </div>
+                </t>
+            </div>
+
+
+            <div id="products_tables" class="products_tables">
+                <div t-if="setting['show_purchase_chart'] or setting['show_sale_chart']"
+                     class="row products_table_view">
+                    <t t-set="ch_product_table" t-value="user_id.check_table_product()"/>
+                    <div t-if="setting['show_sale_chart'] and (partner.is_vendor == False or (partner.is_vendor and partner.is_customer))"
+                         t-attf-class="product_table_view_sold #{ch_product_table if ch_product_table else ''}">
+                        <div class="product_table_view_header">
+                            <h4 id="sold_product_table_view_header_text"></h4>
+                        </div>
+                        <div class="product_view_table_sold">
+                            <t t-set="solds" t-value="user_id.get_solds(user_id)"/>
+                            <table class="table rounded mb-0 bg-white">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Products</th>
+                                        <th class="text-right">Amount</th>
+                                        <th>Qty Sold</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-if="solds">
+                                        <t t-foreach="list(solds.items())" t-as="sold">
+                                            <tr id="sold_prds"
+                                                t-attf-class="#{'sold_id_%s'%(sold[0]) if sold[0] else ''} o_hidden sold_prds">
+                                                <td>
+                                                    <span t-field="sold[1][0].image_1920" t-options="{'widget': 'image','style'
+						                        :'height:40px;min-width:40px;'}"
+                                                          class="justify-content-center align-items-center"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="sold[1][1]"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <t t-esc="sold[1][2]"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="sold[1][3]"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <div class="no_solds">
+                                <div class="table_view_table_text">
+                                    <h5>
+                                        <b>No records found!</b>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div t-if="setting['show_purchase_chart'] and (partner.is_customer == False or (partner.is_vendor and partner.is_customer))"
+                         t-attf-class="product_table_view_purchase #{ch_product_table+'_p' if ch_product_table else ''}">
+                        <div class="product_table_view_header">
+                            <h4 id="purchase_product_table_view_header_text"></h4>
+                        </div>
+                        <div class="product_view_table_purchase">
+                            <t t-set="purchases" t-value="user_id.get_purchases(user_id)"/>
+                            <table class="table rounded mb-0 bg-white">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Products</th>
+                                        <th class="text-right">Amount</th>
+                                        <th>Qty Bought</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-if="purchases">
+                                        <t t-foreach="list(purchases.items())" t-as="purchase">
+                                            <tr id="purchase_prds"
+                                                t-attf-class="#{'purchase_id_%s'%(purchase[0]) if purchase[0] else ''} o_hidden purchase_prds">
+                                                <td>
+                                                    <span t-field="purchase[1][0].image_1920" t-options="{'widget': 'image','style'
+						                        :'height:40px;min-width:40px;'}"
+                                                          class="justify-content-center align-items-center"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="purchase[1][1]"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <t t-esc="purchase[1][2]"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="purchase[1][3]"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <div class="no_purchase">
+                                <div class="table_view_table_text">
+                                    <h5>
+                                        <b>No records found!</b>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div t-if="setting['show_project_table']" class="row project_table_view">
+                <div class="project_table_view_header">
+                    <h4 id="project_table_view_header_text">
+                        <b>Project Task Data</b>
+                    </h4>
+                </div>
+                <div class="project_view_table">
+                    <t t-set="tasks" t-value="user_id.get_projects(user_id)"/>
+                    <table class="table rounded mb-0 bg-white">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <b>Project</b>
+                                </th>
+                                <th>
+                                    <b>Task</b>
+                                </th>
+                                <th>
+                                    <b>Deadline</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="tasks" t-as="task">
+                                <tr>
+                                    <td>
+                                        <t t-set="pro_lnk" t-value="'project/%s'%(task.project_id.id)"/>
+                                        <a t-att-href="pro_lnk">
+                                            <span t-esc="task.project_id.name"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <t t-set="task_lnk" t-value="'task/%s'%(task.id)"/>
+                                        <a t-att-href="pro_lnk">
+                                            <span t-esc="task.name"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span t-esc="task.date_deadline"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div t-if="tasks==False">
+                        <div class="table_view_table_text">
+                            <h5>
+                                <b>No records found!</b>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="all_table_template">
+        <t t-if="(partner.is_vendor == False or (partner.is_vendor and partner.is_customer))">
+            <div t-if="setting['show_quotaion_table'] or setting['show_so_table']" class="row table_view_first">
+                <t t-set="ch_first" t-value="user_id.check_table_first()"/>
+                <div t-if="setting['show_quotaion_table']"
+                     t-attf-class="table_view_first_qo oe_inline #{ch_first if ch_first else ''}">
+                    <div class="table_view_header">
+                        <div class="table_view_header_text">
+                            <h4>
+                                <b>Latest
+                                    <t t-esc="setting['no_records']"/>
+                                    Quotations
+                                </b>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="table_view_table">
+                        <t t-set="quotations" t-value="user_id.get_quotation(user_id)"/>
+                        <table class="table rounded mb-0 bg-white">
+                            <thead>
+                                <tr>
+                                    <th>Order Number</th>
+                                    <th>Order Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="quotations" t-as="quote">
+                                    <tr t-attf-class="table_view_table_quotes #{'id_%s'%str(quote.id) if quote else ''}">
+                                        <t t-set="lnk" t-value="'/my/orders/%s'%(quote.id)"/>
+                                        <td>
+                                            <a t-att-href="lnk">
+                                                <t t-esc="quote.name"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <t t-esc="quote.date_order.date()"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div t-if="quotations==False">
+                            <div class="table_view_table_text">
+                                <h5>
+                                    <b>No records found!</b>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div t-if="setting['show_so_table']"
+                     t-attf-class="table_view_first_so #{ch_first+'_p' if ch_first else ''}">
+                    <div class="table_view_header">
+                        <div class="table_view_header_text">
+                            <h4>
+                                <b>Latest
+                                    <t t-esc="setting['no_records']"/>
+                                    Sale Orders
+                                </b>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="table_view_table">
+                        <t t-set="sale_orders" t-value="user_id.get_sale_orders(user_id)"/>
+                        <table class="table rounded mb-0 bg-white">
+                            <thead>
+                                <tr>
+                                    <th>Order Number</th>
+                                    <th>Order Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="sale_orders" t-as="sale_order">
+                                    <tr t-attf-class="table_view_table_so #{'id_%s'%str(sale_order.id) if sale_order else ''}">
+                                        <t t-set="lnk" t-value="'/my/orders/%s'%(sale_order.id)"/>
+                                        <td>
+                                            <a t-att-href="lnk">
+                                                <t t-esc="sale_order.name"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <t t-esc="sale_order.date_order.date()"/>
+                                        </td>
+                                        <td>
+                                            <t t-set="chk_state" t-value="user_id.get_orders_status(sale_order,'so')"/>
+                                            <t t-if="chk_state == 3">
+                                                <span class="badge text-bg-success table_view_table_label">
+                                                    <i class="fa fa-check"/>
+                                                    Fully Delivered
+                                                </span>
+                                            </t>
+                                            <t t-if="chk_state == 2">
+                                                <span class="badge text-bg-warning table_view_table_label" style="color: #000000 !important">
+                                                    <i class="fa fa-truck"/>
+                                                    Partially Delivered
+                                                </span>
+                                            </t>
+                                            <t t-if="chk_state == 1">
+                                                <span class="badge text-bg-info table_view_table_label">
+                                                    <i class="fa fa-clock-o"/>
+                                                    Ready
+                                                </span>
+                                            </t>
+                                            <t t-if="chk_state == 4">
+                                                <span class="badge text-bg-danger table_view_table_label">
+                                                    <i class="fa fa-close"/>
+                                                    Cancel
+                                                </span>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div t-if="sale_orders==False">
+                            <div class="table_view_table_text">
+                                <h5>
+                                    <b>No records found!</b>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+        <t t-if="(partner.is_customer == False or (partner.is_vendor and partner.is_customer))">
+            <div t-if="setting['show_rfq_table'] or setting['show_po_table']" class="row table_view_second">
+                <t t-set="ch_second" t-value="user_id.check_table_second()"/>
+                <div t-if="setting['show_rfq_table']"
+                     t-attf-class="table_view_second_rfq #{ch_second if ch_second else ''}">
+                    <div class="table_view_header">
+                        <div class="table_view_header_text">
+                            <h4>
+                                <b>Latest
+                                    <t t-esc="setting['no_records']"/>
+                                    Request for Quotations
+                                </b>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="table_view_table">
+                        <t t-set="rfqs" t-value="user_id.get_rfqs(user_id)"/>
+                        <table class="table rounded mb-0 bg-white">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Order Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="rfqs" t-as="rfq">
+                                    <tr t-attf-class="table_view_table_rfq #{'id_%s'%str(rfq.id) if rfq else ''}">
+                                        <t t-set="lnk" t-value="'/my/purchase/%s'%(rfq.id)"/>
+                                        <td>
+                                            <a t-att-href="lnk">
+                                                <t t-esc="rfq.name"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <t t-esc="rfq.date_order"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div t-if="rfqs==False">
+                            <div class="table_view_table_text">
+                                <h5>
+                                    <b>No records found!</b>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div t-if="setting['show_po_table']"
+                     t-attf-class="table_view_second_po #{ch_second+'_p' if ch_second else ''}">
+                    <div class="table_view_header">
+                        <div class="table_view_header_text">
+                            <h4>
+                                <b>Latest
+                                    <t t-esc="setting['no_records']"/>
+                                    Purchase Orders
+                                </b>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="table_view_table">
+                        <t t-set="purchase_orders" t-value="user_id.get_purchase_orders(user_id)"/>
+                        <table class="table rounded mb-0 bg-white">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Order Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="purchase_orders" t-as="purchase_order">
+                                    <tr t-attf-class="table_view_table_po #{'id_%s'%str(purchase_order.id) if purchase_order else ''}">
+                                        <t t-set="lnk" t-value="'/my/purchase/%s'%(purchase_order.id)"/>
+                                        <td>
+                                            <a t-att-href="lnk">
+                                                <t t-esc="purchase_order.name"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <t t-esc="purchase_order.date_order"/>
+                                        </td>
+                                        <td>
+                                            <t t-set="chk_state"
+                                               t-value="user_id.get_orders_status(purchase_order,'po')"/>
+                                            <t t-if="chk_state == 3">
+                                                <span class="badge text-bg-success table_view_table_label">
+                                                    <i class="fa fa-check"/>
+                                                    Fully Shipped
+                                                </span>
+                                            </t>
+                                            <t t-if="chk_state == 2">
+                                                <span class="badge text-bg-warning table_view_table_label">
+                                                    <i class="fa fa-truck"/>
+                                                    Partially Shipped
+                                                </span>
+                                            </t>
+                                            <t t-if="chk_state == 1">
+                                                <span class="badge text-bg-info table_view_table_label">
+                                                    <i class="fa fa-clock-o"/>
+                                                    Ready
+                                                </span>
+                                            </t>
+                                            <t t-if="chk_state == 4">
+                                                <span class="badge text-bg-danger table_view_table_label">
+                                                    <i class="fa fa-close"/>
+                                                    Cancel
+                                                </span>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div t-if="purchase_orders==False">
+                            <div class="table_view_table_text">
+                                <h5>
+                                    <b>No records found!</b>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+
+        <div t-if="setting['show_invoice_table'] or setting['show_bill_table']" class="row table_view_third">
+            <t t-set="ch_third" t-value="user_id.check_table_third()"/>
+            <div t-if="setting['show_invoice_table'] and (partner.is_vendor == False or (partner.is_vendor and partner.is_customer))"
+                 t-attf-class="table_view_third_inv oe_inline #{ch_third if ch_third else ''}">
+                <div class="table_view_header">
+                    <div class="table_view_header_text">
+                        <h4>
+                            <b>Latest
+                                <t t-esc="setting['no_records']"/>
+                                Invoices
+                            </b>
+                        </h4>
+                    </div>
+                </div>
+                <div class="table_view_table">
+                    <t t-set="invoices" t-value="user_id.get_invoices(user_id)"/>
+                    <table class="table rounded mb-0 bg-white">
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Invoice Date</th>
+                                <th class='d-none d-md-table-cell'>Due Date</th>
+                                <th>Status</th>
+                                <th class="text-right">Amount Due</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="invoices" t-as="invoice">
+                                <tr t-attf-class="table_view_table_inv #{'id_%s'%str(invoice.id) if invoice else ''}">
+                                    <t t-set="lnk" t-value="'/my/invoices/%s'%(invoice.id)"/>
+                                    <td>
+                                        <a t-att-href="lnk">
+                                            <t t-esc="invoice.name" t-if="invoice.name != '/'"/>
+                                            <em t-else="">Draft Invoice</em>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <t t-esc="invoice.invoice_date"/>
+                                    </td>
+                                    <td class='d-none d-md-table-cell'>
+                                        <span t-field="invoice.invoice_date_due"/>
+                                    </td>
+                                    <td class="tx_status">
+                                        <t t-if="invoice.state == 'posted' and invoice.payment_state != 'paid'">
+                                            <span class="badge text-bg-info">
+                                                <i class="fa fa-fw fa-clock-o" aria-label="Opened" title="Opened"
+                                                   role="img"></i>
+                                                <span class="d-none d-md-inline">Waiting for Payment</span>
+                                            </span>
+                                        </t>
+                                        <t t-if="invoice.state == 'posted' and invoice.payment_state == 'paid'">
+                                            <span class="badge text-bg-success">
+                                                <i class="fa fa-fw fa-check" aria-label="Paid" title="Paid"
+                                                   role="img"></i>
+                                                <span class="d-none d-md-inline">Paid</span>
+                                            </span>
+                                        </t>
+                                        <t t-if="invoice.state == 'cancel'">
+                                            <span class="badge text-bg-warning">
+                                                <i class="fa fa-fw fa-remove" aria-label="Cancelled" title="Cancelled"
+                                                   role="img"></i>
+                                                <span class="d-none d-md-inline">Cancelled</span>
+                                            </span>
+                                        </t>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="invoice.amount_residual"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div t-if="invoices==False">
+                        <div class="table_view_table_text">
+                            <h5>
+                                <b>No records found!</b>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div t-if="setting['show_bill_table'] and (partner.is_customer == False or (partner.is_vendor and partner.is_customer))"
+                 t-attf-class="table_view_third_bill oe_inline #{ch_third+'_p' if ch_third else ''}">
+                <div class="table_view_header">
+                    <div class="table_view_header_text">
+                        <h4>
+                            <b>Latest
+                                <t t-esc="setting['no_records']"/>
+                                Bills
+                            </b>
+                        </h4>
+                    </div>
+                </div>
+                <div class="table_view_table">
+                    <t t-set="bills" t-value="user_id.get_bills(user_id)"/>
+                    <table class="table rounded mb-0 bg-white">
+                        <thead>
+                            <tr>
+                                <th>Bill #</th>
+                                <th>Bill Date</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th class="text-right">Amount Due</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="bills" t-as="bill">
+                                <tr t-attf-class="table_view_table_bill #{'id_%s'%str(bill.id) if bill else ''}">
+                                    <t t-set="lnk" t-value="'/my/invoices/%s'%(bill.id)"/>
+                                    <td>
+                                        <a t-att-href="lnk">
+                                            <t t-esc="bill.name" t-if="bill.name != '/'"/>
+                                            <em t-else="">Draft Invoice</em>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <t t-esc="bill.invoice_date"/>
+                                    </td>
+                                    <td class='d-none d-md-table-cell'>
+                                        <span t-field="bill.invoice_date_due"/>
+                                    </td>
+                                    <td class="tx_status">
+                                        <t t-if="bill.state == 'posted' and bill.payment_state != 'paid'">
+                                            <span class="badge text-bg-info">
+                                                <i class="fa fa-fw fa-clock-o" aria-label="Opened" title="Opened"
+                                                   role="img"></i>
+                                                <span class="d-none d-md-inline">Waiting for Payment</span>
+                                            </span>
+                                        </t>
+                                        <t t-if="bill.state == 'posted' and bill.payment_state == 'paid'">
+                                            <span class="badge text-bg-success">
+                                                <i class="fa fa-fw fa-check" aria-label="Paid" title="Paid"
+                                                   role="img"></i>
+                                                <span class="d-none d-md-inline">Paid</span>
+                                            </span>
+                                        </t>
+                                        <t t-if="bill.state == 'cancel'">
+                                            <span class="badge text-bg-warning">
+                                                <i class="fa fa-fw fa-remove" aria-label="Cancelled" title="Cancelled"
+                                                   role="img"></i>
+                                                <span class="d-none d-md-inline">Cancelled</span>
+                                            </span>
+                                        </t>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="bill.amount_residual"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div t-if="bills==False">
+                        <div class="table_view_table_text">
+                            <h5>
+                                <b>No records found!</b>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+</odoo>

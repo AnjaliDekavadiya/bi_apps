@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       
+        <template id="report_saleorder_quot_inehrit_custom" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@id='informations']" position="inside">
+                <!-- <t t-if="doc.state not in ['draft','sent']">
+                    <div name="custom_quotation" t-if="doc.custom_number_quote" class="col-xs-3">
+                        <strong>Quotation Number:</strong>
+                        <p t-field="doc.custom_number_quote"/>
+                    </div>
+                </t> -->
+                <div t-if="doc.custom_number_quote" class="col-auto col-3 mw-100 mb-2">
+                    <strong>Quotation Number:</strong>
+                    <p class="m-0" t-field="doc.custom_number_quote"/>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

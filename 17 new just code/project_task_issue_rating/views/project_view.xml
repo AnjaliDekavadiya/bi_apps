@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record model="ir.ui.view" id="view_task_form2_inherit_rating_request">
+            <field name="name">project.task.view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/header/field[@name='stage_id']" position="before">
+                    <!-- <button name="%(wizard_review_of_action_custom)d" type="action"  class="oe_highlight" attrs="{'invisible': [('customer_custom_rating', '!=', False),('customer_review_comment', '!=', False)]}" string="Request for Review" context="{'default_project_id':project_id, 'default_task':name,'default_partner_id':partner_id}"/>  -->
+                    <button name="%(wizard_review_of_action_custom)d" type="action"  class="oe_highlight" invisible="customer_custom_rating != False and customer_review_comment != False" string="Request for Review" context="{'default_project_id':project_id, 'default_task':name,'default_partner_id':partner_id}"/> 
+                 </xpath>
+                 <xpath expr="/form/sheet/notebook" position="inside">
+                     <page string="Review">
+                            <group>
+                                <group>
+                                    <field name="customer_custom_rating" widget="radio"/>
+                                    <field name="customer_review_comment"/>
+                                </group>
+                             </group>
+                        </page>
+                 </xpath>
+            </field>
+         </record>
+         <!--
+         <record model="ir.ui.view" id="project_issue_form_view_inherit_rating_request">
+            <field name="name">project.issue.view</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/header/field[@name='stage_id']" position="before">
+                     <button name="%(issue_rating_action1)d" type="action" class="oe_highlight" attrs="{'invisible': [('rating', '!=', False),('comment', '!=', False)]}"  string="Request for Feedback" context="{'default_project_id':project_id, 'default_issue':name,'default_partner_id':partner_id}"></button>
+                 </xpath>
+                 <xpath expr="/form/sheet/notebook" position="inside">
+                     <page string="Feedback">
+                            <group>
+                                <group>
+                                    <field name="rating" widget="radio"/>
+                                    <field name="comment"/>
+                                </group>
+                             </group>
+                        </page>
+                 </xpath>
+            </field>
+         </record>
+         -->
+      </data>
+</openerp>

@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="helpdesk_sla_form_view">
+            <field name="name">Helpdesk Service Level Agreement</field>
+            <field name="model">helpdesk.sla</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                     <group>
+                         <group>
+                                <field name="name"/>
+                                <field name="calendar_id"/>
+                                <field name="user_id"/>
+                         </group>
+                         <group>
+                                <field name="helpdesk_team_id"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                         </group>
+                     </group>
+                     <notebook>
+                        <page string="Service Agreement Lines" >
+                            <field name="sla_line_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="source_stage_id" string="Stage"/>
+                                    <field name="destination_stage_id" column_invisible="1"/>
+                                    <field name="service_time" widget="float_time" string="Estimate time(HH:MM)"/>
+                                    <field name="is_email" column_invisible="1"/>
+                                    <field name="sla_id" column_invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Notes" >
+                              <field name="notes"/>
+                        </page>
+                     </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="helpdesk_sla_tree_view">
+            <field name="name">Helpdesk Service Level Agreement</field>
+            <field name="model">helpdesk.sla</field>
+            <field name="arch" type="xml">
+                <tree>
+                     <field name="name"/>
+                     <field name="helpdesk_team_id"/>
+                     <field name="calendar_id"/>
+                     <field name="user_id"/>
+                     <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="helpdesk_support_search_view">
+            <field name="name">Helpdesk Service Level Agreement Search</field>
+            <field name="model">helpdesk.sla</field>
+            <field name="arch" type="xml">
+                <search>
+                     <field name="name"/>
+                     <field name="helpdesk_team_id"/>
+                     <field name="user_id"/>
+                     <field name="company_id"/>
+                     <group expand="0" string="Group By">
+                        <filter string="Name" name="grp_helpdesk_sla_name" context="{'group_by':'name'}"/>
+                        <filter string="Helpdesk" name="grp_helpdesk_sla_team" context="{'group_by':'helpdesk_team_id'}"/>
+                        <filter string="User" name="grp_helpdesk_sla_user" context="{'group_by':'user_id'}"/>
+                        <filter string="Company" name="grp_helpdesk_sla_company" context="{'group_by':'company_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_helpdesk_sla" model="ir.actions.act_window">
+            <field name="name">Service Level Agreement</field>
+            <field name="res_model">helpdesk.sla</field>
+<!--            <field name="view_type">form</field> odoo13-->
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem name="SLA" id="menu_helpdesk_sla" 
+        parent="website_helpdesk_support_ticket.main_helpdesk_support"
+        sequence="2"/>
+        <menuitem name="Service Level Agreements" id="menu_sla" parent="menu_helpdesk_sla" action="action_helpdesk_sla"/>
+        
+    </data>
+</odoo>

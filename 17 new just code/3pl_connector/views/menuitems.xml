@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menuitem_3pl_main"
+              name="3PL Connector"
+              sequence="10"
+              parent="stock.menu_stock_root"
+              groups="stock.group_stock_manager"/>
+
+    <menuitem id="menuitem_ftp_server"
+              name="FTP Server"
+              action="action_ftp_server"
+              sequence="1"
+              parent="menuitem_3pl_main"
+              groups="stock.group_stock_manager"/>
+
+    <menuitem id="menuitem_tpl_operations"
+              name="Operations"
+              action="action_tpl_operations"
+              sequence="2"
+              parent="menuitem_3pl_main"
+              groups="stock.group_stock_manager"/>
+
+    <menuitem id="menuitem_process_log"
+              name="Process Log"
+              action="action_process_log"
+              sequence="3"
+              parent="menuitem_3pl_main"
+              groups="stock.group_stock_manager"/>
+
+</odoo>

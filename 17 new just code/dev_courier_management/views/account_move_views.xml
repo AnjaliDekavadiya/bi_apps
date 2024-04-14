@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <record id="view_account_move_courier_form" model="ir.ui.view">
+        <field name="name">view.account.move.courier.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//field[@name='payment_reference']" position="after">
+                <field name="courier_request_id" 
+                       invisible = "courier_request_id == False" 
+                       groups="dev_courier_management.group_courier_user" readonly="1"/>
+           </xpath>
+        </field>
+    </record>
+</odoo>

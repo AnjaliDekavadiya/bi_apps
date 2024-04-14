@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+ <template id="my_laundry_service_requests_page" name="my laundry ticket: project menu entry" inherit_id="portal.portal_breadcrumbs" priority="28">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'laundry_requests' or laundry_request" t-attf-class="breadcrumb-item #{'active ' if not laundry_request else ''}">
+                
+                 <a t-if="laundry_request" t-attf-href="/my/laundry_requests?{{ keep_query() }}">Laundry Service Requests</a>
+                 <t t-else="">Laundry Service Requests</t>
+                </li>
+                <li t-if="laundry_request" class="breadcrumb-item active">
+                    <span t-field="laundry_request.name"/>
+                </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_laundry_service_request" name="Portal Menu: Laundry Service Requests" inherit_id="portal.portal_my_home" priority="28">
+       <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+           <t t-if="laundry_request_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Your Laundry Service Requests</t>
+                <t t-set="url" t-value="'/my/laundry_requests'"/>
+                <t t-set="placeholder_count" t-value="'laundry_request_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="display_laundry_business_requests" name="Display Laundry Business Request">
+        <t t-call="portal.portal_layout">
+            <t t-if="laundry_requests" t-call="portal.portal_table">
+                <thead>
+                  <tr class="active">
+                    <th>Request No</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Stage</th>
+                  </tr>
+                </thead>
+                <t t-foreach="laundry_requests" t-as="laundry_request">
+                    <tr>
+                        <td>
+                            <t t-set="access_token" t-value="laundry_request.get_portal_url()"/>
+                            <a t-attf-href="/my/laundry_request/#{laundry_request.id}?{{ keep_query() }}"><span t-field="laundry_request.name"/></a>
+                        </td>
+                        <td>
+                            <span t-field="laundry_request.subject"/>
+                        </td>
+                        <td>
+                            <span t-field="laundry_request.request_date"/>
+                        </td>
+                        <td>
+                            <span class="badge badge-pill badge-info" title="Current stage of the task" t-esc="laundry_request.stage_id.name" />
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    
+    <template id="display_laundry_service_request_from" name="display laundry service request from">
+        <t t-call="portal.portal_layout">
+            <div id="wrap">
+                <div class="container">
+                    <t t-call="portal.portal_record_layout">
+                    <t t-set="card_header">
+                        <div class="row no-gutters">
+                            <div class="col-md">
+                                <h5 class="mb-1 mb-md-0">
+                                    <t t-set="access_token" t-value="laundry_request.get_portal_url()"/>
+                                    <span t-field="laundry_request.name"/>
+                                    <small class="text-muted"> (#<span t-field="laundry_request.id"/>)</small>
+                                </h5>
+                            </div>
+                            <div class="col-md text-md-right">
+                                <small class="text-right">Status:</small>
+                                <span t-field="laundry_request.stage_id.name" class=" badge badge-pill badge-info" title="Current stage of this task"/>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-set="card_body">
+                    <div class="container">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p><h3>Your Details</h3></p>
+                                <div class='row'>
+                                    <div class="col-md-6">
+                                        <div class="mb8">
+                                            <strong>Customer:</strong> <span t-field="laundry_request.partner_id"/>
+                                        </div>
+                                        
+                                         <div class="mb8">
+                                            <strong>Email :</strong> <span t-field="laundry_request.email"/>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                        
+                                        <div class="mb8">
+                                            <strong>Phone :</strong> <span t-field="laundry_request.phone"/>
+                                        </div>
+                                         <div class="mb8">
+                                            <strong>Address :</strong> <span t-field="laundry_request.address"/>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <p><h3>Our Details</h3></p>
+                                <div class='row'>
+                                    <div class="col-md-6">
+                                        <div class="mb8">
+                                            <strong>Project:</strong><span t-field="laundry_request.project_id"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Create Date:</strong> <span t-field="laundry_request.request_date"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Laundry Team :</strong> <span t-field="laundry_request.team_id"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Department  :</strong> <span t-field="laundry_request.department_id"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb8">
+                                            <strong>Responsible User:</strong> <span t-field="laundry_request.user_id"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Laundry Manager:</strong> <span t-field="laundry_request.team_leader_id"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Analytic Account  :</strong> <span t-field="laundry_request.analytic_account_id"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Close Date:</strong> <span t-field="laundry_request.close_date"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p><h3>Laundry Request Details</h3></p>
+                                <div class='row'>
+                                    <div class="col-md-6">
+                                        <div class="mb8">
+                                            <strong>Pickup and Delivery:</strong> <span t-field="laundry_request.pickup_type"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Details:</strong> <span t-field="laundry_request.description"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Additional Details:</strong> <span t-field="laundry_request.problem"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb8">
+                                            <strong>Expected Pickup Date:</strong> <span t-field="laundry_request.expected_pickup_date"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Services:</strong> <span t-field="laundry_request.nature_of_service_id"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Total Hours Spent:</strong> <span t-field="laundry_request.sudo().total_spend_hours"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+            <div class="row mt32">
+                <div class="col-md-12">
+                    <h4><strong>Message and communication history</strong></h4>
+                </div>
+                <div class="col-md-10 col-md-offset-1 mt16">
+                    <t t-call="portal.message_thread">
+                        <t t-set="object" t-value="laundry_request"/>
+                        <t t-set="token" t-value="laundry_request.access_token"/>
+                    </t>
+                </div>
+            </div>        
+        </div>
+        </div>
+    </t>
+    </template>
+</odoo>

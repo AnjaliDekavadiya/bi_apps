@@ -1,0 +1,322 @@
+<odoo>
+    
+    <template id="return_rma" name="Return RMA" inherit_id="sale.sale_order_portal_content"
+        priority="28">
+        <xpath expr="//div[@id='introduction']" position="before">
+                <a t-attf-href="/rma_request/#{sale_order.id}?#{keep_query()}" align="right" 
+                class="btn btn-md btn-primary pull-right mt4 mr8">Create RMA</a>
+        </xpath>
+        <xpath expr="//a[@data-bs-target='#get_so']" position="attributes">
+              <attribute name="hidden">hidden</attribute>
+        </xpath>
+    </template>
+    
+    <template id="portal_my_home_menu_create_rma" name="Portal layout : Create RMA" 
+    inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'rma_request_create'" 
+            t-attf-class="breadcrumb-item #{'active ' if not order else ''}">
+                <a t-if="order" t-attf-href="/my/orders?{{ keep_query() }}">Sales Orders</a>
+                <t t-else="">Sales Orders</t>
+            </li>
+            <li t-if="page_name == 'rma_request_create'" 
+            t-attf-class="breadcrumb-item #{'active ' if not order else ''}">
+                <a t-att-href="order.get_portal_url()">Sales Order   <t t-esc="order.name"/></a>
+            </li>
+            <li t-if="order" class="breadcrumb-item active">
+                Create RMA
+            </li>
+        </xpath>
+    </template>
+
+    <template id="product_return" name="Return Product">
+        <t t-call="portal.portal_layout">
+            <form action="/rma_order" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <br/>
+                <center><h2><strong>Return Material Authorization Request</strong></h2></center>
+                <br/> <br/>
+                <t t-call="portal.portal_table">
+                    <tr>
+                        <td>Sale Order Number:</td>
+                        <td><span t-field="order.name"/></td>
+                        <td></td>
+                        <td>Sale Order Date:</td>
+<!--                        <td><span t-field="order.confirmation_date" t-field-options='{"format": "d/M/y"}'/></td> odoo13-->
+                        <td><span t-field="order.date_order" t-field-options='{"format": "d/M/y"}'/></td>
+                    </tr>
+                    <tr>
+                        <td>Return Reason:</td>
+                        <td>
+                            <select class="form-control" name="reason">
+                                <t t-foreach="reason" t-as="o">
+                                    <option t-att-value="o.id" t-att-selected="o.id == (o and o.id or -1)">
+                                        <t t-esc="o.name"/>
+                                    </option>
+                                </t>
+                            </select>
+                        </td>
+                        <td></td>
+                        <td>Shipping Reference:</td>
+                        <td><input type="text" name="shipping_reference" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                        <td>Return Address:</td>
+                        <td><input type="textarea" name="address" class="form-control"/></td>
+                        <td></td>
+                        <td>Return Note:</td>
+                        <td><input type="textarea" name="notes" class="form-control"/></td>
+                    </tr>
+                </t>
+                <br/> <br/>
+                <center><h3><strong>Return Merchandise (Check below box against item(s) you want to return.)</strong></h3></center>
+                <br/><br/>
+                
+                <t t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Tick</th>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Delivered Quantity</th>
+                            <th>Uom</th>
+                            <th>Quantity to Return</th>
+                            <th>Images/Attachments</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="order.order_line" t-as="ol">
+                        <tr>
+                            <td><input type="checkbox" name="return" t-att-value="ol.id" multiple="True"/>
+                                <input type="hidden" name="order" t-attf-value="#{order.id}"/>
+                                <input type="hidden" name="orderline" t-attf-value="#{ol.id}" multiple="True"/>
+                                <input type="hidden" name="return_identify" t-attf-value="multiple"/>
+                            </td>
+                            <td>
+                                <img t-if="ol.product_id.image_1920"
+                                t-att-src="image_data_uri(ol.product_id.image_1920)"
+                                style='border-radius: 30%; border:1px solid white;' height="48" width="48"/>
+                            </td>
+                            <td>
+                                <span t-esc="ol.product_id.name"/>
+                            </td>
+                            <td>
+                                <span t-esc="ol.qty_delivered"/>
+                            </td>
+                            <td>
+                                <span t-field="ol.product_id.uom_id.name"/>
+                            </td>
+                            <td>
+                                <input type="float" default='0.0' size="5" name="returnquantity" multiple="True"/>
+                            </td>
+                            <td>
+                                <input type="file"  class="oe_inline"  multiple="True" name="attachment" t-att-value="ol.id"/>
+                            </td>
+                        </tr>
+                         </t>
+                </t>
+                <div class="text-center" style="margin-top: 2.0em">
+                    <button class="btn btn-success btn">Submit </button> <span></span>
+                    <a class="btn btn-danger btn" onclick="history.go(-1);">Cancel</a>
+                </div>
+            </form>
+        </t>
+    </template>
+                
+<!--            <div class="row col">-->
+<!--               <div class="col-3">-->
+<!--                  Sale Order Number: -->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+<!--                  <span t-esc="order.name"/>-->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+<!--                  Sale Order Date: -->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+<!--                  <span t-field="order.confirmation_date" t-field-options='{"format": "d/M/y"}'/>-->
+<!--                </div>-->
+<!--              <br/> <br/>-->
+<!--                <div class="col-3">-->
+<!--                  Return Reason: -->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+<!--                  <select class="form-control" name="reason">-->
+<!--                       <t t-foreach="reason" t-as="o">-->
+<!--                                <option t-att-value="o.id" t-att-selected="o.id == (o and o.id or -1)">-->
+<!--                                    <t t-esc="o.name"/>-->
+<!--                                </option>-->
+<!--                       </t>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--                <div class="col-3 ">-->
+<!--                    Shipping Reference:-->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+<!--                    <input type="text" name="shipping_reference" class="form-control"/>-->
+<!--                </div>-->
+<!--            -->
+<!--            <br/> <br/>-->
+<!--                <div class="col-3">-->
+<!--                  Return Address:-->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+<!--                  <input type="textarea" name="address" class="form-control"/>-->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+<!--                  Return Note:-->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+<!--                  <input type="textarea" name="notes" class="form-control"/>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <br/><br/>-->
+<!--            <center><h3><strong>Return Merchandise (Check below box against item(s) you want to return.)</strong></h3></center>-->
+<!--            <br/><br/>-->
+<!--            <div class="row col" style="border: 1px solid">-->
+<!--                <div class="col-1 text-center" style="overflow: hidden; text-overflow: ellipsis;word-wrap: break-word">-->
+<!--                  <strong style="margin-bottom:5px">Tick</strong>-->
+<!--                </div>-->
+<!--                <div class="col-2 text-center" style="overflow: hidden; text-overflow: ellipsis;word-wrap: break-word">-->
+<!--                  <strong style="margin-bottom:5px">Product</strong>-->
+<!--                </div>-->
+<!--                <div class="col-md-2">-->
+<!--                  <strong></strong>-->
+<!--                </div-->
+<!--                <div class="col-2 text-center" style="overflow: hidden; text-overflow: ellipsis;word-wrap: break-word">-->
+<!--                  <strong style="margin-bottom:5px">Delivered Quantity</strong>-->
+<!--                </div>-->
+<!--                <div class="col-2 text-center" style="overflow: hidden; text-overflow: ellipsis;word-wrap: break-word">-->
+<!--                  <strong style="margin-bottom:5px">Uom</strong>-->
+<!--                </div>-->
+<!--                <div class="col-2 text-center" style="overflow: hidden; text-overflow: ellipsis;word-wrap: break-word">-->
+<!--                  <strong style="margin-bottom:5px">Quantity to Return</strong>-->
+<!--                </div>-->
+<!--                <div class="col-2 text-center" style="overflow: hidden; text-overflow: ellipsis;word-wrap: break-word">-->
+<!--                  <strong style="margin-bottom:5px">Images/Attachments</strong>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--              <t t-foreach="order.order_line" t-as="ol">-->
+<!--              <div class="row col" style="border: 1px solid;margin-top: 1.0em">-->
+<!--                <div class="col-1 text-center" style="overflow: hidden">-->
+<!--                  <input type="checkbox" name="return" t-att-value="ol.id" multiple="True"/>-->
+<!--                  <input type="hidden" name="order" t-attf-value="#{order.id}"/>-->
+<!--                  <input type="hidden" name="orderline" t-attf-value="#{ol.id}" multiple="True"/>-->
+<!--                  <input type="hidden" name="return_identify" t-attf-value="multiple"/>-->
+<!--                </div>-->
+<!--                <div class="col-1" style="overflow: hidden">-->
+<!--                  <span t-field="ol.product_image" t-options="{'widget': 'image', 'class': 'img-rounded', 'style':'width: 48px;height:48px'}"/>-->
+<!--                </div>-->
+<!--                <div class="col-1" style="overflow: hidden">-->
+<!--                  <span t-esc="ol.product_id.name"/>-->
+<!--                </div>-->
+<!--                <div class="col-2 text-center" style="overflow: hidden">-->
+<!--                  <span t-esc="ol.qty_delivered"/>-->
+<!--                </div>-->
+<!--                <div class="col-2 text-center" style="overflow: hidden">-->
+<!--                  <span t-field="ol.product_id.uom_id.name"/>-->
+<!--                </div>-->
+<!--                <div class="col-2 text-center" style="overflow: hidden">-->
+<!--                  <input type="float" default='0.0' size="5" name="returnquantity" multiple="True"/>-->
+<!--                </div>-->
+<!--                <div class="col-1 text-center">-->
+<!--                  <input type="file"  class="oe_inline"  multiple="True" name="attachment" t-att-value="ol.id"/>-->
+<!--                </div>-->
+<!--          </div>-->
+<!--              </t>-->
+<!--                        <div class="text-center" style="margin-top: 2.0em">-->
+<!--                                     <button class="btn btn-success btn">Submit </button> <span></span><a class="btn btn-danger btn" onclick="history.go(-1);">Cancel</a>-->
+<!--                        </div>-->
+                        
+<!--                        </form>-->
+<!--        -->
+<!--            -->
+<!--                  -->
+<!--                   -->
+<!--</t>-->
+<!--    </template>-->
+
+    <template id="successful_return_product" name="Success Return">
+        <!-- <t t-call="website.layout">
+              <div id="wrap">
+                <div class="oe_structure"/>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-success">
+                                      <button type="button" class="close" data-dismiss="alert">&amp;times;</button> -->
+                                     <!-- <h3>Dear <t t-esc="name"/>,</h3>
+                                     <h3>We have received your Return Material Authorization (RMA) request.Your Request number is <t t-esc="number"/> for your reference. Our Team will get back to you as soon your possible.<br/></h3>  
+                                    <h3>Thank you,</h3>
+                                    <p>
+                                        <h3>
+                                            <t t-esc="company"/>
+                                        </h3>
+                                    </p>
+                                </div>
+                                <p>
+                            <a class="btn btn-primary pull-left mb32" onclick="history.go(-2);">
+                                <span class="hidden-xs">Go Back</span>
+                                <span class="fa fa-long-arrow-left"/>
+                            </a>
+                        </p>
+                            </div>
+                        </div>
+                    </div>
+                <div class="oe_structure"/>
+              </div>
+            </t> -->
+            <t t-call="website.layout">
+                  <div id="wrap">
+                    <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_1"/>
+                    <div class="container mt-4">
+                        <div class="row">
+                            <div class="col-lg-7 col-xl-6 mr-lg-auto oe_structure">
+                                <section class="pt40 s_text_block pb40 o_colored_level o_cc o_cc1" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container">
+                                        <span class="d-block fa fa-4x fa-thumbs-up mx-auto rounded-circle bg-primary"/><br/>
+                                        <h1 class="text-center">Thank You!</h1>
+                                        <div class="pb16 pt16 s_hr" data-snippet="s_hr" data-name="Separator">
+                                            <hr class="mx-auto border-top w-50 border-dark text-center"/>
+                                        </div>
+                                        <h5 class="text-left">
+                                            Dear <span t-esc="name"/>,<br/><br/>
+                                            <span>We have received your Return Material Authorization (RMA) request and request number is <span t-esc="number"/></span> for your reference. Our team will get back to you as soon as possible.<br/><br/>
+                                            Best regards,<br/><t t-esc="request.env.user.company_id.name"/>
+                                        </h5>
+                                    </div>
+                                </section>
+
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </t>
+    </template>
+
+    <template id="select_product" name="Select Product">
+        <t t-call="website.layout">
+              <div id="wrap">
+                <div class="oe_structure"/>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="alert alert-danger">
+                                     <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                                     <h2>Warning !<br/></h2>
+                                     <h2>Invalid input please go back and correct.<br/></h2>  
+                                </div>
+                                <p>
+                            <a class="btn btn-primary pull-left mb32" onclick="history.go(-1);">
+                                <span class="hidden-xs">Go Back</span>
+                                <span class="fa fa-long-arrow-left"/>
+                            </a>
+                        </p>
+                            </div>
+                        </div>
+                    </div>
+                <div class="oe_structure"/>
+              </div>
+            </t>
+    </template>
+
+</odoo>

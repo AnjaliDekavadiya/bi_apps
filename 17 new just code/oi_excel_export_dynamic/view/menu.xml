@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<menuitem id="menu_oi_excel_export_config" action="action_oi_excel_export_config" parent="base.reporting_menuitem" sequence="10" />
+
+</odoo>

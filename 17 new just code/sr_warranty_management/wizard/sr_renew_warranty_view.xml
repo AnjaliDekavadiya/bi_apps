@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Renew warranty form view -->
+    <record id="sr_renew_warranty_view" model="ir.ui.view">
+        <field name="name">sr.renew.warranty.view</field>
+        <field name="model">sr.renew.warranty</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Warranty Period">
+                            <label for="period"/>
+                            <div>
+                                <field name="period" class="oe_inline" style="vertical-align:baseline"/>
+                                <field name="duration" class="oe_inline" style="vertical-align:baseline"/>
+                            </div>
+                        </group>
+                        <group string="Renew Informations">
+                            <field name="renew_cost"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="update_renew_warranty" string="Renew Warranty" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Renew warranty action -->
+    <record id="sr_renew_warranty_action" model="ir.actions.act_window">
+        <field name="name">Renew Warranty</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sr.renew.warranty</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sr_renew_warranty_view" />
+        <field name="target">new</field>
+    </record>
+</odoo>

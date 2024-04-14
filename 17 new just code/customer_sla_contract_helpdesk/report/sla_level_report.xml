@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- <report 
+            id="customer_sla_helpdesk_report"
+            model="account.analytic.account"
+            string="Service Level Agreement"
+            name="contract_recurring_invoice_analytic.contract_report_view" 
+            file="contract_recurring_invoice_analytic.contract_report_view"
+            report_type="qweb-pdf"
+            paperformat="contract_recurring_invoice_analytic.paperformat_analytic_account_report"/> -->
+
+        <record id="customer_sla_helpdesk_report" model="ir.actions.report">
+            <field name="name">Service Level Agreement</field>
+            <field name="model">account.analytic.account</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">contract_recurring_invoice_analytic.contract_report_view</field>
+            <field name="report_file">contract_recurring_invoice_analytic.contract_report_view</field>
+            <field name="binding_model_id" ref="analytic.model_account_analytic_account"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

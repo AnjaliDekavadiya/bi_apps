@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_form_property" model="ir.ui.view">
+        <field name="name">res.config.settings.form.property</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="26"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Property" string="Property" name="property_rental_mgt_app" groups="property_rental_mgt_app.group_manager">
+                    <block title="Property Reminder Mail Configuration" name="setting_container">
+                        <setting id="reminder_mail_on_invoice" help="Reminder Mail on Invoice/Instalment Payment Due Date.">
+                            <field name="reminder_on_due_date"/>
+                        </setting>
+                        <setting id="reminder_mail_on_spe" help="Reminder Mail on Specific Days Before Due Date.">
+                            <field name="reminder_before_due_date"/>
+                        
+                            <div class="row" invisible="reminder_before_due_date == False" required= "reminder_before_due_date == True">
+                                <label string="Before Days" for="reminder_before_days" class="col-lg-3 o_light_label"/>
+                                <field name="reminder_before_days"/>
+                            </div>
+                        </setting>
+                        <setting id="reminder_mail_every_day_while" help="Reminder Mail Every Day while Till not Come Due Date.">
+                            <field name="reminder_till_come_due_date"/>
+                        </setting>
+
+                        <setting id="send_mail_every_day" help=" Send Mail Everyday After Exceding Invoice Due Date">
+                            <field name="reminder_after_due_date"/>
+                        </setting>
+                    </block>
+                </app>      
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_property_configuration" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'property_rental_mgt_app', 'bin_size': False}</field>
+    </record>
+
+    <menuitem id="menu_property_general_settings" 
+        name="Settings" 
+        parent="menu_property_config" 
+        action="action_property_configuration" 
+        groups="base.group_system"
+        />
+
+</odoo>

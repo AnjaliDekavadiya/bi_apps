@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inv_signature_view" model="ir.ui.view">
+         <field name="name">inv.signature.view</field>
+         <field name="model">account.move</field>
+         <field name="inherit_id" ref="account.view_move_form"/>
+         <field name="arch" type="xml">
+	            <xpath expr="//notebook" position="inside">
+	                <page string="Signature">
+	                    <group>
+	                         
+	                        <field name="sig_flag"/>
+                            <field name="so_signature" widget="signature"/>
+                        </group>
+                    </page>
+                </xpath>
+     	</field>
+    </record>
+</odoo>

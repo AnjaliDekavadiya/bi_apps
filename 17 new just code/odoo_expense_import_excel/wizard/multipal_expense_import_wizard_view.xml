@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model ="ir.ui.view" id="multiple_expense_import_wizard_id">
+           <field name="name">import.multiple.expense.wizard.view</field>
+           <field name="model">multiple.expense.import</field>
+           <field name="arch" type="xml">
+               <form string="Expense Import Wizard">
+                   <separator string="This wizard will Import Expense and Expense Sheet entry from selected excel file. Make sure you have selected .xls/xlsx file..."/>
+                   <group>
+                      <group>
+                        <field name="company_id" class="oe_inline" widget="selection"/>
+                      </group>
+                      <group>
+                        <field name="method" widget="radio"/>
+                      </group>
+                   </group>                
+                   <group>
+                       <div>
+                            <field name="files" class="oe_inline" filename="datas_fname" required="True"/>
+                       </div>
+                   </group>
+                   <footer>
+                        <button string="Import" name="import_multiple_expense_with_excel" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+       <record model = "ir.actions.act_window" id = "multiple_expense_import_wizard_action">
+            <field name="name">Import Expense and Expense Sheet </field>
+           <field name="res_model">multiple.expense.import</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+        </record>
+       
+        <menuitem id="menu_hr_expense_hr_expense_sheet_import" name="Import" sequence="3" parent="hr_expense.menu_hr_expense_root" groups="hr_expense.group_hr_expense_manager"/>
+
+       
+        <menuitem name="Import Employee Expense" 
+            id="import_multiple_expense_excel" 
+            parent="odoo_expense_import_excel.menu_hr_expense_hr_expense_sheet_import" 
+            action="odoo_expense_import_excel.multiple_expense_import_wizard_action" 
+            sequence="110"/>
+    </data>
+</odoo>

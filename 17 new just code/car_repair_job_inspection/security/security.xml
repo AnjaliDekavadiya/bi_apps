@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="group_car_inspection_user" model="res.groups">
+                <field name="name">Car Repair Inspection User</field>
+                <field name="implied_ids" 
+                    eval="[(4, ref('project.group_project_user'))]"/>
+                <field name="comment">the car inspection user.</field>
+        </record>
+
+        <record id="group_car_inspection_manager" model="res.groups">
+                <field name="name">Car Repair Inspection Manager</field>
+                <field name="implied_ids"
+                eval="[(4, ref('project.group_project_manager')), (4, ref('car_repair_job_inspection.group_car_inspection_user'))]"/>
+                <field name="comment">the car inspection manager.</field>
+        </record>
+
+        <record id="car_inspection_user_own_rule" model="ir.rule">
+            <field name="name">Car Inspection User Own</field>
+            <field name="model_id" ref="model_car_repair_order_inspection"/>
+            <field name="domain_force">['|', ('user_id', '=', user.id), ('task_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('car_repair_job_inspection.group_car_inspection_user'))]"/>
+        </record>
+
+        <record id="car_inspection_manager_rule" model="ir.rule">
+            <field name="name">Inspection Manager All</field>
+            <field name="model_id" ref="model_car_repair_order_inspection"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" 
+                eval="[(4, ref('car_repair_job_inspection.group_car_inspection_manager'))]"/>
+        </record>
+
+        <record id="car_inspection_user_own_rule_line" model="ir.rule">
+            <field name="name">Car Inspection User Own Line</field>
+            <field name="model_id" ref="model_car_repair_order_inspection_line"/>
+            <field name="domain_force">['|', ('repair_inspection_id.user_id', '=', user.id), ('repair_inspection_id.task_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('car_repair_job_inspection.group_car_inspection_user'))]"/>
+        </record>
+
+        <record id="car_inspection_manager_rule_line" model="ir.rule">
+            <field name="name">Inspection Manager All Line</field>
+            <field name="model_id" ref="model_car_repair_order_inspection_line"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" 
+                eval="[(4, ref('car_repair_job_inspection.group_car_inspection_manager'))]"/>
+        </record>
+        
+        <!--Multi Company Record Rules -->
+        
+        <record model="ir.rule" id="carrepair_inspection_custom_multicomp_rule">
+            <field name="name">Car Repair Inspection Multi Company</field>
+            <field name="model_id" ref="model_car_repair_order_inspection"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','in', company_ids)]</field>
+        </record>
+        
+        <record model="ir.rule" id="carrepair_inspection_line_custom_multicomp_rule">
+            <field name="name">Car Repair Inspection Line Multi Company</field>
+            <field name="model_id" ref="model_car_repair_order_inspection_line"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('repair_inspection_id.company_id','=',False),('repair_inspection_id.company_id','in', company_ids)]</field>
+        </record>
+
+    </data>
+</odoo>

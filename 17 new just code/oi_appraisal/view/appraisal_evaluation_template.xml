@@ -1,0 +1,61 @@
+<odoo>
+
+	<record id="view_appraisal_evaluation_template_form" model="ir.ui.view">
+		<field name="name">appraisal.evaluation.template.form</field>
+		<field name="model">appraisal.evaluation.template</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<div class="oe_button_box" name="button_box"/>
+					<widget name="web_ribbon" text="Archived" bg_color="bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name"/></h1>
+                    </div>					
+					<group>
+						<group>
+						</group>
+						<group>
+							<field name="company_id" groups="base.group_multi_company"/>
+							<field name="active"/>							
+						</group>											
+					</group>
+					<group string="Questions">
+						<field name="line_ids" nolabel="1" colspan="2">
+							<tree editable="bottom">
+								<field name="sequence" widget="handle"/>
+								<field name="question_group_id"/>
+								<field name="weight" sum="Total Weight"/>
+								<field name="extra"/>							
+							</tree>
+						</field>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	
+	<record id="view_appraisal_evaluation_template_tree" model="ir.ui.view">
+		<field name="name">appraisal.evaluation.template.tree</field>
+		<field name="model">appraisal.evaluation.template</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="sequence" widget="handle"/>
+				<field name="name"/>
+				<field name="active"/>
+			</tree>
+		</field>
+	</record>	
+	
+	<record id="view_appraisal_evaluation_template_search" model="ir.ui.view">
+		<field name="name">appraisal.evaluation.template.search</field>
+		<field name="model">appraisal.evaluation.template</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<filter name="archived" string="Archived" domain="[('active','=', False)]"/>
+			</search>
+		</field>
+	</record>		
+
+</odoo>

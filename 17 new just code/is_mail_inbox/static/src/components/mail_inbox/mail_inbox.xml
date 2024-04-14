@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="is_mail_inbox.MailInbox">
+        <div class="o_mail_composer o_hidden">
+            <div class="o_mail_composer-header">
+                <span>New Email</span>
+                <span class="close" t-on-click="(ev)=>this.onClickMailClose(ev, true)">×</span>
+            </div>
+            <form class="o_compose_email_form" t-on-submit.prevent="onSendEmail" t-ref="eMail-Form">
+                <div class="form-group">
+                    <input type="text" class="form-control o_email_recipient" id="o_email_recipient" placeholder="To" style="width: 100% padding: 10px;" name="email" aria-label="To"/>
+                    <span class="ml2">
+                        <a href="#" aria-label="CC" t-on-click="(ev)=>this.onClickCC(ev)">CC</a>
+                        <a href="#" aria-label="BCC" t-on-click="(ev)=>this.onClickBCC(ev)" class="ml8">BCC</a>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control o_email_cc o_hidden" id="o_email_cc" placeholder="CC" name="cc"  aria-label="CC" style="width: 100% padding: 10px; margin-top:12px;"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control o_email_bcc o_hidden" id="o_email_bcc" placeholder="BCC" name="bcc" aria-label="BCC" style="width: 100% padding: 10px; margin-top:12px;"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="subject" class="form-control o_email_subject" placeholder="Subject" name="subject" required="true" aria-label="subject"/>
+                </div>
+                <div class="form-group">
+                    <textarea rows="8" id="message" placeholder="Compose your email..." class="form-control oe-bordered-editor" name="body" aria-label="Body"></textarea>
+                </div>
+                <div class="attachment-container mt8">
+                    <label for="attachment" class="attachment-label">Attach Files
+                        <input type="file" id="attachment" multiple="true" class="o_input_attachments" name="attachments"/>
+                    </label>
+                </div>
+                <button type="submit">Send</button>
+                <a href="#" title="Save to Draft" class="o_save_to_draft" t-on-click="(ev)=>this.onClickMailClose(ev, true)">Save to Draft</a>
+            </form>
+        </div>
+        <div class="d-flex h-100 flex-grow-1">
+            <div class="o_discuss_sidebar_icons_list">
+                <div class="o_discuss_plus_icon" >
+                    <a href="#" title="Create" class="o_create" t-on-click="onClickMailCreate"><i class="fa fa-plus"/></a>
+                </div>
+                <ul>
+                    <li>
+                        <a href="#" title="Inbox" class="o_inbox" t-on-click="onClickInbox"><i t-att-class="'fa custom-fa fa-envelope ' + (state.mailBoxContainer == 'inbox' ? 'o_fa_active' : '')"/></a>
+                    </li>
+                    <li>
+                        <a href="#" title="Draft" class="o_draft" t-on-click="onClickDraft"><i t-att-class="'fa custom-fa fa-file ' + (state.mailBoxContainer == 'draft' ? 'o_fa_active' : '')"/></a>
+                    </li>
+                    <li>
+                        <a href="#" title="Outbox" class="o_outbox" t-on-click="onClickOutbox"><i t-att-class="'fa custom-fa fa-inbox ' + (state.mailBoxContainer == 'outbox' ? 'o_fa_active' : '')"/></a>
+                    </li>
+                    <li>
+                        <a href="#" title="Sent" class="o_sent" t-on-click="onClickSent"><i t-att-class="'fa custom-fa fa-paper-plane ' + (state.mailBoxContainer == 'sent' ? 'o_fa_active' : '')"/></a>
+                    </li>
+                    <li>
+                        <a href="#" title="Archive" class="o_archive" t-on-click="onClickArchive"><i t-att-class="'fa custom-fa fa-archive ' + (state.mailBoxContainer == 'archive' ? 'o_fa_active' : '')"/></a>
+                    </li>
+                    <li>
+                        <a href="#" title="Trash" class="o_trash" t-on-click="onClickTrash"><i t-att-class="'fa fa-trash-o ' + (state.mailBoxContainer == 'trash' ? 'o_fa_active_trash' : '')"/></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- INBOX -->
+            <t t-if="state.mailBoxContainer == 'inbox'">
+                <div class="o_container">
+                    <div class="mail-box">
+                        <div class="lg-side">
+                            <div class="inbox-head">
+                                <span>Inbox</span>
+                            </div>
+                            <div class="search-container">
+                                <input type="text" t-ref="email-search-input" class="search-input" placeholder="Search Emails" t-on-keypress="ev => this.onKeyPress(ev)" t-on-keyup="ev => this.onKeyUp(ev)"/>
+                                <button class="clear-button" t-ref="clear-button" t-on-click="(ev)=>this.onClickSearchClear(ev)"><i class="fa fa-remove"/></button>
+                                <button class="search-button" t-on-click="(ev)=>this.onClickSearchEmail(ev)"><i class="fa fa-search"/></button>
+                            </div>
+                            <div class="inbox-body">
+                                <div class="mail-option">
+                                    <div class="chk-all">
+                                        <input type="checkbox" class="mail-checkbox mail-group-checkbox o_mail_inbox_check_all" t-on-change="(ev) => this.onChangeCheckAll(ev)"/>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a data-original-title="Refresh" data-placement="top" href="#" class="btn btn-secondary o_mail_refresh" t-on-click="(ev)=>this.getMailList(ev, true)" tooltip="Refresh" title="Refresh">
+                                            <i class=" fa fa-refresh"></i>
+                                        </a>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="#" t-att-class="'btn btn-primary ' + (!state.markAsReadList.length ? 'disabled' : '')" t-on-click="onClickmarkAsRead"><i class="fa fa-check"></i> Mark as Read </a>
+                                        <a href="#" t-att-class="'btn btn-secondary ' + (!state.isMarkAsArchiveList.length ? 'disabled' : '')" t-on-click="onClickArchiveBtn"><i class="fa fa-archive"></i> Archive </a>
+                                        <a href="#" t-att-class="'btn btn-primary ' + (!state.isMarkAsDeleteList.length ? 'disabled' : '')" t-on-click="() => this.onClickDelete(false, false)"><i class="fa fa-trash-o"></i> Delete </a>
+                                    </div>
+                                    <nav t-if="this.state.total > 0" class="o_pager align-items-center d-flex gap-2 float-end" aria-label="Pager">
+                                        <span class="o_pager_counter">
+                                            <span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1" t-esc="value"/>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" t-esc="this.state.total"/>
+                                        </span>
+                                        <span class="btn-group" aria-atomic="true">
+                                            <button type="button" class="fa fa-chevron-left btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1"  t-on-click.stop="() => this.navigate(-1)" />
+                                            <button type="button" class="fa fa-chevron-right btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1"  t-on-click.stop="() => this.navigate(1)"/>
+                                        </span>
+                                    </nav>
+                                </div>
+                                <div class="mail-list-wrap o_mail_box_table">
+                                    <div t-att-class="!email.is_read ? 'unread mail-item' : 'mail-item'" t-foreach="state.emailList" t-as="email" t-key="email.id" t-on-click="()=>this.onClickEmailRow(email)" t-if="email.state == 'received'">
+                                        <div class="mail-item-header">
+                                            <div class="mail-btn">
+                                                <div class="left">
+                                                    <div class="row">
+                                                        <div class="col-6" onclick="event.stopPropagation();">
+                                                            <label class="is-read" onclick="event.stopPropagation();">
+                                                                <input onclick="event.stopPropagation();" type="checkbox" class="mail-checkbox o_mail_inbox_line" t-on-change="(ev) => this.onChangeMailLine(ev, email)" t-att-email-id="email.id" t-att-email-is_read="email.is_read"/>
+                                                            </label>
+                                                        </div>
+                                                        <div t-att-class="'col-6 ' + (email.profile_pic ? 'icon-img' : 'icon')">
+                                                            <img t-if="email.profile_pic" t-attf-src="data:images/png;base64,#{email.profile_pic}"/>
+                                                            <t t-else="email.email_from_name" t-esc="email.email_from_name[0]"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="mail-name-info row">
+                                                        <div class="name col-3">
+                                                            <span t-att-class="!email.is_read ? 'o_font_bold900' : 'o_font_bold'">
+                                                                <t t-if="email.email_from_name" t-esc="this.titleCase(email.email_from_name)"/>
+                                                            </span>
+                                                        </div>
+                                                        <div class="subject col-5"><t t-esc="email.subject"/>
+                                                            - <span class="short-body"><t t-esc="this.htmlToPlainText(email.body_html)"/></span>
+                                                        </div>
+                                                        <div class="col-2 text-center" onclick="event.stopPropagation();">
+                                                            <span class="action-icon" t-on-click="()=>this.onClickArchiveBtn(email.id)"><i class="fa fa-archive"></i></span>
+                                                            <span class="action-icon" t-on-click="()=>this.onClickDelete(email.id)"><i class="fa fa-trash-o"></i></span>
+                                                            <span t-if="email.is_read" t-on-click="()=>this.markAsUnread([email.id], true)" class="action-icon"><i class="fa fa-envelope"></i></span>
+                                                            <span t-if="!email.is_read" t-on-click="()=>this.markAsRead([email.id], true)" class="action-icon"><i class="fa fa-envelope-open"></i></span>
+                                                        </div>
+                                                        <div class="time col-2"><t t-esc="this.formatDateString(email.date)"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+
+            <!-- DRAFT -->
+            <t t-if="state.mailBoxContainer == 'draft'">
+                <div class="o_container">
+                    <div class="mail-box">
+                        <div class="lg-side">
+                            <div class="inbox-head">
+                                <span>Draft</span>
+                            </div>
+                            <div class="search-container">
+                                <input type="text" t-ref="email-search-input" class="search-input" placeholder="Search Emails" t-on-keypress="ev => this.onKeyPress(ev)" t-on-keyup="ev => this.onKeyUp(ev)"/>
+                                <button class="clear-button" t-ref="clear-button" t-on-click="(ev)=>this.onClickSearchClear(ev)"><i class="fa fa-remove"/></button>
+                                <button class="search-button" t-on-click="(ev)=>this.onClickSearchEmail(ev)"><i class="fa fa-search"/></button>
+                            </div>
+                            <div class="inbox-body">
+                                <div class="mail-option">
+                                    <div class="chk-all">
+                                        <input type="checkbox" class="mail-checkbox mail-group-checkbox o_mail_inbox_check_all" t-on-change="(ev) => this.onChangeCheckAll(ev)"/>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="#" t-att-class="'btn btn-primary ' + (!state.isMarkAsDeleteList.length ? 'disabled' : '')" t-on-click="() => this.onClickDelete(false, false)"><i class="fa fa-trash-o"></i> Delete </a>
+                                    </div>
+                                    <nav t-if="this.state.total > 0" class="o_pager align-items-center d-flex gap-2 float-end" aria-label="Pager">
+                                        <span class="o_pager_counter">
+                                            <span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1" t-esc="value"/>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" t-esc="this.state.total"/>
+                                        </span>
+                                        <span class="btn-group" aria-atomic="true">
+                                            <button type="button" class="fa fa-chevron-left btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1"  t-on-click.stop="() => this.navigate(-1)" />
+                                            <button type="button" class="fa fa-chevron-right btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1"  t-on-click.stop="() => this.navigate(1)"/>
+                                        </span>
+                                    </nav>
+                                </div>
+                                <div class="mail-list-wrap o_mail_box_table">
+                                    <div class="mail-item" t-foreach="state.emailList" t-as="email" t-key="email.id"  t-on-click="()=>this.onClickRestoreDraft(email)" t-if="email.state == 'draft'">
+                                        <div class="mail-item-header">
+                                            <div class="mail-btn">
+                                                <div class="left">
+                                                    <div class="row">
+                                                        <div class="col-6" onclick="event.stopPropagation();">
+                                                            <label class="is-read" onclick="event.stopPropagation();">
+                                                                <input onclick="event.stopPropagation();" type="checkbox" class="mail-checkbox o_mail_inbox_line" t-on-change="(ev) => this.onChangeMailLine(ev, email)" t-att-email-id="email.id" t-att-email-is_read="email.is_read"/>
+                                                            </label>
+                                                        </div>
+                                                        <div t-att-class="'col-6 ' + (email.profile_pic ? 'icon-img' : 'icon')">
+                                                            <img t-if="email.profile_pic" t-attf-src="data:images/png;base64,#{email.profile_pic}"/>
+                                                            <t t-else="email.email_to_name" t-esc="email.email_to_name[0]"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="mail-name-info row">
+                                                        <div class="name col-2">
+                                                            <span t-att-class="!email.is_read ? 'o_font_bold900' : 'o_font_bold'">
+                                                                <t t-if="email.email_to_name" t-esc="this.titleCase(email.email_to_name)"/>
+                                                            </span>
+                                                        </div>
+                                                        <div class="subject col-6"><t t-esc="email.subject"/>
+                                                            - <span class="short-body"><t t-esc="this.htmlToPlainText(email.body_html)"/></span>
+                                                        </div>
+                                                        <div class="time col-2"><t t-esc="this.formatDateString(email.date)"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+
+            <!-- OUTBOX -->
+            <t t-if="state.mailBoxContainer == 'outbox'">
+                <div class="o_container">
+                    <div class="mail-box">
+                        <div class="lg-side">
+                            <div class="inbox-head">
+                                <span>Outbox</span>
+                            </div>
+                            <div class="search-container">
+                                <input type="text" t-ref="email-search-input" class="search-input" placeholder="Search Emails" t-on-keypress="ev => this.onKeyPress(ev)" t-on-keyup="ev => this.onKeyUp(ev)"/>
+                                <button class="clear-button" t-ref="clear-button" t-on-click="(ev)=>this.onClickSearchClear(ev)"><i class="fa fa-remove"/></button>
+                                <button class="search-button" t-on-click="(ev)=>this.onClickSearchEmail(ev)"><i class="fa fa-search"/></button>
+                            </div>
+                            <div class="inbox-body">
+                                <div class="mail-option">
+                                    <div class="chk-all">
+                                        <input type="checkbox" class="mail-checkbox mail-group-checkbox o_mail_inbox_check_all" t-on-change="(ev) => this.onChangeCheckAll(ev)"/>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="#" t-att-class="'btn btn-primary ' + (!state.isMarkAsDeleteList.length ? 'disabled' : '')" t-on-click="() => this.onClickDelete(false, false)"><i class="fa fa-trash-o"></i> Delete </a>
+                                    </div>
+                                    <nav t-if="this.state.total > 0" class="o_pager align-items-center d-flex gap-2 float-end" aria-label="Pager">
+                                        <span class="o_pager_counter">
+                                            <span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1" t-esc="value"/>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" t-esc="this.state.total"/>
+                                        </span>
+                                        <span class="btn-group" aria-atomic="true">
+                                            <button type="button" class="fa fa-chevron-left btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1"  t-on-click.stop="() => this.navigate(-1)" />
+                                            <button type="button" class="fa fa-chevron-right btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1"  t-on-click.stop="() => this.navigate(1)"/>
+                                        </span>
+                                    </nav>
+                                </div>
+                                <div class="mail-list-wrap o_mail_box_table">
+                                    <div class="mail-item" t-foreach="state.emailList" t-as="email" t-key="email.id" t-on-click="()=>this.onClickEmailRow(email)" t-if="email.state == 'outgoing'">
+                                        <div class="mail-item-header">
+                                            <div class="mail-btn">
+                                                <div class="left">
+                                                    <div class="row">
+                                                        <div class="col-6" onclick="event.stopPropagation();">
+                                                            <label class="is-read" onclick="event.stopPropagation();">
+                                                                <input onclick="event.stopPropagation();" type="checkbox" class="mail-checkbox o_mail_inbox_line" t-on-change="(ev) => this.onChangeMailLine(ev, email)" t-att-email-id="email.id" t-att-email-is_read="email.is_read"/>
+                                                            </label>
+                                                        </div>
+                                                        <div t-att-class="'col-6 ' + (email.profile_pic ? 'icon-img' : 'icon')">
+                                                            <img t-if="email.profile_pic" t-attf-src="data:images/png;base64,#{email.profile_pic}"/>
+                                                            <t t-else="email.email_to_name" t-esc="email.email_to_name[0]"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="mail-name-info row">
+                                                        <div class="name col-2">
+                                                            <span t-att-class="!email.is_read ? 'o_font_bold900' : 'o_font_bold'">
+                                                                <t t-if="email.email_to_name" t-esc="this.titleCase(email.email_to_name)"/>
+                                                            </span>
+                                                        </div>
+                                                        <div class="subject col-6"><t t-esc="email.subject"/>
+                                                            - <span class="short-body"><t t-esc="this.htmlToPlainText(email.body_html)"/></span>
+                                                        </div>
+                                                        <div class="time col-2"><t t-esc="this.formatDateString(email.date)"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+
+            <!-- SENT -->
+            <t t-if="state.mailBoxContainer == 'sent'">
+                <div class="o_container">
+                    <div class="mail-box">
+                        <div class="lg-side">
+                            <div class="inbox-head">
+                                <span>Sent</span>
+                            </div>
+                            <div class="search-container">
+                                <input type="text" t-ref="email-search-input" class="search-input" placeholder="Search Emails" t-on-keypress="ev => this.onKeyPress(ev)" t-on-keyup="ev => this.onKeyUp(ev)"/>
+                                <button class="clear-button" t-ref="clear-button" t-on-click="(ev)=>this.onClickSearchClear(ev)"><i class="fa fa-remove"/></button>
+                                <button class="search-button" t-on-click="(ev)=>this.onClickSearchEmail(ev)"><i class="fa fa-search"/></button>
+                            </div>
+                            <div class="inbox-body">
+                                <div class="mail-option">
+                                    <div class="chk-all">
+                                        <input type="checkbox" class="mail-checkbox mail-group-checkbox o_mail_inbox_check_all" t-on-change="(ev) => this.onChangeCheckAll(ev)"/>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="#" t-att-class="'btn btn-primary ' + (!state.isMarkAsDeleteList.length ? 'disabled' : '')" t-on-click="() => this.onClickDelete(false, false)"><i class="fa fa-trash-o"></i> Delete </a>
+                                    </div>
+                                    <nav t-if="this.state.total > 0" class="o_pager align-items-center d-flex gap-2 float-end" aria-label="Pager">
+                                        <span class="o_pager_counter">
+                                            <span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1" t-esc="value"/>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" t-esc="this.state.total"/>
+                                        </span>
+                                        <span class="btn-group" aria-atomic="true">
+                                            <button type="button" class="fa fa-chevron-left btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1"  t-on-click.stop="() => this.navigate(-1)" />
+                                            <button type="button" class="fa fa-chevron-right btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1"  t-on-click.stop="() => this.navigate(1)"/>
+                                        </span>
+                                    </nav>
+                                </div>
+                                <div class="mail-list-wrap o_mail_box_table">
+                                    <div class="mail-item" t-foreach="state.emailList" t-as="email" t-key="email.id" t-on-click="()=>this.onClickEmailRow(email)" t-if="email.state == 'sent'">
+                                        <div class="mail-item-header">
+                                            <div class="mail-btn">
+                                                <div class="left">
+                                                    <div class="row">
+                                                        <div class="col-6" onclick="event.stopPropagation();">
+                                                            <label class="is-read" onclick="event.stopPropagation();">
+                                                                <input onclick="event.stopPropagation();" type="checkbox" class="mail-checkbox o_mail_inbox_line" t-on-change="(ev) => this.onChangeMailLine(ev, email)" t-att-email-id="email.id" t-att-email-is_read="email.is_read"/>
+                                                            </label>
+                                                        </div>
+                                                        <div t-att-class="'col-6 ' + (email.profile_pic ? 'icon-img' : 'icon')">
+                                                            <img t-if="email.profile_pic" t-attf-src="data:images/png;base64,#{email.profile_pic}"/>
+                                                            <t t-else="email.email_to_name" t-esc="email.email_to_name[0]"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="mail-name-info row">
+                                                        <div class="name col-2">
+                                                            <span t-att-class="!email.is_read ? 'o_font_bold900' : 'o_font_bold'">
+                                                                 <t t-if="email.email_to_name" t-esc="this.titleCase(email.email_to_name)"/>
+                                                            </span>
+                                                        </div>
+                                                        <div class="subject col-6"><t t-esc="email.subject"/>
+                                                            - <span class="short-body"><t t-esc="this.htmlToPlainText(email.body_html)"/></span>
+                                                        </div>
+                                                        <div class="time col-2"><t t-esc="this.formatDateString(email.date)"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+
+            <!-- ARCHIVED -->
+            <t t-if="state.mailBoxContainer == 'archive'">
+                <div class="o_container">
+                    <div class="mail-box">
+                        <div class="lg-side">
+                            <div class="inbox-head">
+                                <span>Archived</span>
+                            </div>
+                            <div class="search-container">
+                                <input type="text" t-ref="email-search-input" class="search-input" placeholder="Search Emails" t-on-keypress="ev => this.onKeyPress(ev)" t-on-keyup="ev => this.onKeyUp(ev)"/>
+                                <button class="clear-button" t-ref="clear-button" t-on-click="(ev)=>this.onClickSearchClear(ev)"><i class="fa fa-remove"/></button>
+                                <button class="search-button" t-on-click="(ev)=>this.onClickSearchEmail(ev)"><i class="fa fa-search"/></button>
+                            </div>
+                            <div class="inbox-body">
+                                <div class="mail-option">
+                                    <div class="chk-all">
+                                        <input type="checkbox" class="mail-checkbox mail-group-checkbox o_mail_inbox_check_all" t-on-change="(ev) => this.onChangeCheckAll(ev)"/>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="#" t-att-class="'btn btn-primary ' + (!state.isMarkAsDeleteList.length ? 'disabled' : '')" t-on-click="() => this.onClickDelete(false, false)"><i class="fa fa-trash-o"></i> Delete </a>
+                                    </div>
+                                    <nav t-if="this.state.total > 0" class="o_pager align-items-center d-flex gap-2 float-end" aria-label="Pager">
+                                        <span class="o_pager_counter">
+                                            <span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1" t-esc="value"/>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" t-esc="this.state.total"/>
+                                        </span>
+                                        <span class="btn-group" aria-atomic="true">
+                                            <button type="button" class="fa fa-chevron-left btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1"  t-on-click.stop="() => this.navigate(-1)" />
+                                            <button type="button" class="fa fa-chevron-right btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1"  t-on-click.stop="() => this.navigate(1)"/>
+                                        </span>
+                                    </nav>
+                                </div>
+                                <div class="mail-list-wrap o_mail_box_table">
+                                    <div class="mail-item" t-foreach="state.emailList" t-as="email" t-key="email.id" t-on-click="()=>this.onClickEmailRow(email)" t-if="email.state == 'archived'">
+                                        <div class="mail-item-header">
+                                            <div class="mail-btn">
+                                                <div class="left">
+                                                    <div class="row">
+                                                        <div class="col-6" onclick="event.stopPropagation();">
+                                                            <label class="is-read" onclick="event.stopPropagation();">
+                                                                <input onclick="event.stopPropagation();" type="checkbox" class="mail-checkbox o_mail_inbox_line" t-on-change="(ev) => this.onChangeMailLine(ev, email)" t-att-email-id="email.id" t-att-email-is_read="email.is_read"/>
+                                                            </label>
+                                                        </div>
+                                                        <div t-att-class="'col-6 ' + (email.profile_pic ? 'icon-img' : 'icon')">
+                                                            <img t-if="email.profile_pic" t-attf-src="data:images/png;base64,#{email.profile_pic}"/>
+                                                            <t t-else="email.email_from_name" t-esc="email.email_from_name[0]"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="mail-name-info row">
+                                                        <div class="name col-3">
+                                                            <span t-att-class="!email.is_read ? 'o_font_bold900' : 'o_font_bold'">
+                                                                <t t-if="email.email_from_name" t-esc="this.titleCase(email.email_from_name)"/>
+                                                            </span>
+                                                        </div>
+                                                        <div class="subject col-5"><t t-esc="email.subject"/>
+                                                            - <span class="short-body"><t t-esc="this.htmlToPlainText(email.body_html)"/></span>
+                                                        </div>
+                                                        <div class="time col-2"><t t-esc="this.formatDateString(email.date)"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+
+            <!-- TRASHED -->
+            <t t-if="state.mailBoxContainer == 'trash'">
+                <div class="o_container">
+                    <div class="mail-box">
+                        <div class="lg-side">
+                            <div class="inbox-head">
+                                <span>Trash</span>
+                            </div>
+                            <div class="search-container">
+                                <input type="text" t-ref="email-search-input" class="search-input" placeholder="Search Emails" t-on-keypress="ev => this.onKeyPress(ev)" t-on-keyup="ev => this.onKeyUp(ev)"/>
+                                <button class="clear-button" t-ref="clear-button" t-on-click="(ev)=>this.onClickSearchClear(ev)"><i class="fa fa-remove"/></button>
+                                <button class="search-button" t-on-click="(ev)=>this.onClickSearchEmail(ev)"><i class="fa fa-search"/></button>
+                            </div>
+                            <div class="inbox-body">
+                                <div class="mail-option">
+                                    <div class="chk-all">
+                                        <input type="checkbox" class="mail-checkbox mail-group-checkbox o_mail_inbox_check_all" t-on-change="(ev) => this.onChangeCheckAll(ev)"/>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="#" t-att-class="'btn btn-primary ' + (!state.isMarkAsDeleteList.length ? 'disabled' : '')" t-on-click="() => this.onClickDelete(false, true)"><i class="fa fa-trash-o"></i> Delete Forever</a>
+                                    </div>
+                                    <nav t-if="this.state.total > 0" class="o_pager align-items-center d-flex gap-2 float-end" aria-label="Pager">
+                                        <span class="o_pager_counter">
+                                            <span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1" t-esc="value"/>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" t-esc="this.state.total"/>
+                                        </span>
+                                        <span class="btn-group" aria-atomic="true">
+                                            <button type="button" class="fa fa-chevron-left btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1"  t-on-click.stop="() => this.navigate(-1)" />
+                                            <button type="button" class="fa fa-chevron-right btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1"  t-on-click.stop="() => this.navigate(1)"/>
+                                        </span>
+                                    </nav>
+                                </div>
+                                <div class="mail-list-wrap o_mail_box_table">
+                                    <div class="mail-item" t-foreach="state.emailList" t-as="email" t-key="email.id" t-on-click="()=>this.onClickEmailRow(email)" t-if="email.state == 'trash'">
+                                        <div class="mail-item-header">
+                                            <div class="mail-btn">
+                                                <div class="left">
+                                                    <div class="row">
+                                                        <div class="col-6" onclick="event.stopPropagation();">
+                                                            <label class="is-read" onclick="event.stopPropagation();">
+                                                                <input onclick="event.stopPropagation();" type="checkbox" class="mail-checkbox o_mail_inbox_line" t-on-change="(ev) => this.onChangeMailLine(ev, email)" t-att-email-id="email.id" t-att-email-is_read="email.is_read"/>
+                                                            </label>
+                                                        </div>
+                                                        <div t-att-class="'col-6 ' + (email.profile_pic ? 'icon-img' : 'icon')">
+                                                            <t t-if="email.state == 'received'">
+                                                                <img t-if="email.profile_pic" t-attf-src="data:images/png;base64,#{email.profile_pic}"/>
+                                                                <t t-else="email.email_from_name" t-esc="email.email_from_name[0]"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <img t-if="email.profile_pic" t-attf-src="data:images/png;base64,#{email.profile_pic}"/>
+                                                                <t t-else="email.email_to_name" t-esc="email.email_to_name[0]"/>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="mail-name-info row">
+                                                        <div class="name col-3">
+                                                            <span t-att-class="!email.is_read ? 'o_font_bold900' : 'o_font_bold'">
+                                                                <t t-if="email.state == 'received'">
+                                                                    <t t-if="email.email_from_name" t-esc="this.titleCase(email.email_from_name)"/>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <t t-if="email.email_to_name" t-esc="this.titleCase(email.email_to_name)"/>
+                                                                </t>
+                                                            </span>
+                                                        </div>
+                                                        <div class="subject col-5"><t t-esc="email.subject"/>
+                                                            - <span class="short-body"><t t-esc="this.htmlToPlainText(email.body_html)"/></span>
+                                                        </div>
+                                                        <div class="time col-2"><t t-esc="this.formatDateString(email.date)"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

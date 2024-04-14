@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+    Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+-->
+<odoo>
+    <data>
+        <record id="property_management_inherit_form_view" model="ir.ui.view">
+            <field name="name">property.management.inherit.form.view</field>
+            <field name="model">property.details</field>
+            <field name="inherit_id" ref="rental_management.property_details_form_view"/>
+            <field name="arch" type="xml">
+                <field name="type" position="before">
+                    <field name="access_token" invisible="not access_token" readonly="1"
+                           force_save="1"/>
+                </field>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Website Property Details" name="website_settings">
+                        <group string="Website Description">
+                            <field name="short_description"/>
+                            <field name="website_description"/>
+                        </group>
+                        <group string="Similar Properties">
+                            <field name="similar_properties" widget="many2many_tags"/>
+                        </group>
+                        <group string="Listing Type">
+                            <group>
+                                <field name="is_popular_list"/>
+                            </group>
+                            <group>
+                                <field name="is_verify"/>
+                            </group>
+                        </group>
+
+                        <group string="Default Amenities">
+                            <group>
+                                <field name="web_gym"/>
+                                <field name="web_wifi"/>
+                                <field name="web_parking"/>
+                                <field name="web_pool"/>
+                                <field name="web_security"/>
+                                <field name="web_laundry"/>
+                            </group>
+                            <group>
+                                <field name="web_equip_kitchen"/>
+                                <field name="web_air_condition"/>
+                                <field name="web_semi_furnish"/>
+                                <field name="web_full_furnish"/>
+                                <field name="web_alarm"/>
+                                <field name="web_window_cover"/>
+                            </group>
+                        </group>
+                        <group string="Dynamic Amenities">
+                            <field name="website_amenity_ids" widget="many2many_tags"/>
+                        </group>
+                        <group string="Other Details">
+                            <group>
+                                <field name="accommodation"/>
+                            </group>
+                            <group>
+                                <field name="broker_id"/>
+                                <field name="visible_broker_on_property"/>
+                            </group>
+                        </group>
+
+                        <group string="VIDEO LINK">
+                            <group>
+                                <field name="video_url"/>
+                            </group>
+                            <group>
+                                <field name="video_background_image" widget="image" class="oe_avatar oe_left"/>
+                            </group>
+                        </group>
+
+                        <group string="360° Virtual Tour"/>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label for="three_sixty_view_link"/>
+                                <field name="three_sixty_view_link"/>
+                            </div>
+                            <div class="col-md-4">
+                                <button string="Create 360° Virtual Home Tour"
+                                        class="btn btn-info"
+                                        type="object"
+                                        icon="fa-street-view"
+                                        name="three_sixty_view_tour"/>
+                            </div>
+                        </div>
+                    </page>
+                </xpath>
+                <xpath expr="//button[@name='action_in_available']" position="after">
+                    <button name="assign_access_token"
+                            type="object"
+                            string="Assign Access Token"
+                            class="btn-info"
+                            invisible="access_token or not id"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="property_amenity_inherit_form_view" model="ir.ui.view">
+            <field name="name">property.amenity.inherit.form.view</field>
+            <field name="model">property.amenities</field>
+            <field name="inherit_id" ref="rental_management.property_amenities_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div" position="after">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="is_on_website" class="mr16"/>
+                            <field name="is_on_website"/>
+                        </div>
+                    </div>
+                    <group string="Font Awsome Class"/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="fa_class" class="mr16"/>
+                            <field name="fa_class" placeholder="fa-home" class="mr16" />
+                            <button string="Get Your Fa Icon"
+                                    class="btn btn-info"
+                                    type="object"
+                                    icon="fa-flag"
+                                    name="get_fa_icon"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="property_sub_type_inherit_form_view" model="ir.ui.view">
+            <field name="name">property.sub.type.inherit.form.view</field>
+            <field name="model">property.sub.type</field>
+            <field name="inherit_id" ref="rental_management.property_sub_type_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="after">
+                    <group string="Website Section">
+                        <group>
+                            <field name="display_on_home"/>
+                        </group>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar oe_left"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="property_sub_type_inherit_list_view" model="ir.ui.view">
+            <field name="name">property.sub.type.inherit.list.view</field>
+            <field name="model">property.sub.type</field>
+            <field name="inherit_id" ref="rental_management.property_sub_type_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="display_on_home"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

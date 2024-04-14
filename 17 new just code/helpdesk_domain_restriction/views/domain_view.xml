@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?><odoo>
+    <data>
+        <template id="domain_ticket_email" name="Domain Restricted Ticket">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure"/>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8" style="margin-top: 50px;">
+                                <div class="alert alert-danger">
+                                    <h3>Domain of your email is restricted by our system so please contact our team directly by Phone/Email.</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/helpdesk_support_ticket" class="btn btn-success mr64" role="button"> <i class="fa fa-chevron-left"></i> Back</a>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

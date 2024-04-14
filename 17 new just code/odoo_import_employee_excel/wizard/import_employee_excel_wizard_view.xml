@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model = 'ir.ui.view' id = "employee_import_wizard_id">
+            <field name="name">import.employee.wizard</field>
+            <field name="model">import.employee.wizard</field>
+            <field name = 'arch' type="xml">
+                <form >
+                    <group>
+                        <group>
+                            <field  name="files" class="oe_inline" filename="datas_fname" required="True"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Import Employees" name="import_employee_file" type="object" class="oe_highlight"/>
+                        or
+                        <button string="_Cancel" class="btn-default" special="cancel" />
+                   </footer>
+                </form>
+            </field>
+        </record>
+        <record model = "ir.actions.act_window" id = "employee_import_wizard_action">
+            <field name="name">Import Employees</field>
+           <field name="res_model">import.employee.wizard</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

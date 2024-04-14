@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+<!--        <template id="follow_unfollow_button_js_custom" name="web_expense assets"  inherit_id="website.assets_frontend">-->
+
+<!--            <xpath expr="script[last()]" position="after">-->
+<!--                <script type="text/javascript" src="/follow_website_shop_products/static/src/js/follow_unfollow.js"/>-->
+<!--            </xpath> -->
+<!--        </template>-->
+
+        <template id="product_follow_unfollow" name="Product Follow Unfollow Button">
+            <div class="o_website_form_follow_custom o_custom_follow_btn_div o_hidden">
+                <section class="container" t-if="not user_id._is_public()" data-anchor='true'>
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                    <input type="hidden" name="product_id" t-att-value="product.id" id="custom_product_id"/>
+                    <input type="hidden" name="partner_id" t-att-value="user_id.partner_id.id" id="custom_partner_id"/>
+
+                    <button type="submit" class="btn btn-primary btn-lg mt16" t-if="not request.env['custom.follow.product.history'].follow_check(product.id,user_id.partner_id.id)" id="follow_custom">Follow</button>
+                    
+                    <button type="submit" class="btn btn-success btn-lg mt16" t-if="request.env['custom.follow.product.history'].follow_check(product.id,user_id.partner_id.id)">Following</button>
+                    <button type="submit" class="btn btn-danger btn-lg mt16" t-if="request.env['custom.follow.product.history'].follow_check(product.id,user_id.partner_id.id)" id="unfollow_custom">Unfollow</button>
+                </section>
+            </div>
+        </template>
+
+
+        <template id="product_follow_button_custom" inherit_id="website_sale.product">
+            <xpath expr="//div[@id='product_details']/p[last()]" position="after">
+                <t t-call="follow_website_shop_products.product_follow_unfollow"/>
+<!--                <div class="o_website_form_follow_custom" t-if="not user_id._is_public()">-->
+<!--                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />-->
+<!--                    <input type="hidden" name="product_id" t-att-value="product.id" id="custom_product_id"/>-->
+<!--                    <input type="hidden" name="partner_id" t-att-value="user_id.partner_id.id" id="custom_partner_id"/>-->
+                    
+                    <!-- <button type="submit" class="btn btn-primary btn-lg mt16" t-if="not request.env['custom.follow.product.history']._check_partner_follow(product.id,user_id.partner_id.id)" id="follow_custom">Follow</button>
+                    
+                    <button type="submit" class="btn btn-success btn-lg mt16" t-if="request.env['custom.follow.product.history']._check_partner_follow(product.id,user_id.partner_id.id)">Following</button>
+                    <button type="submit" class="btn btn-danger btn-lg mt16" t-if="request.env['custom.follow.product.history']._check_partner_follow(product.id,user_id.partner_id.id)" id="unfollow_custom">Unfollow</button> -->
+
+<!--                    <button type="submit" class="btn btn-primary btn-lg mt16" t-if="not request.env['custom.follow.product.history'].follow_check(product.id,user_id.partner_id.id)" id="follow_custom">Follow</button>-->
+<!--                    -->
+<!--                    <button type="submit" class="btn btn-success btn-lg mt16" t-if="request.env['custom.follow.product.history'].follow_check(product.id,user_id.partner_id.id)">Following</button>-->
+<!--                    <button type="submit" class="btn btn-danger btn-lg mt16" t-if="request.env['custom.follow.product.history'].follow_check(product.id,user_id.partner_id.id)" id="unfollow_custom">Unfollow</button>-->
+<!--                </div>-->
+            </xpath>  
+        </template>
+    </data>
+</odoo>

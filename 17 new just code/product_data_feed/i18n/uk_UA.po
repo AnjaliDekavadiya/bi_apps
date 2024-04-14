@@ -1,0 +1,1104 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_data_feed
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-30 13:05+0000\n"
+"PO-Revision-Date: 2023-03-30 13:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__access_token
+msgid "Access Token"
+msgstr "Токен доступу"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_needaction
+msgid "Action Needed"
+msgstr "Потрібна Дія"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__active
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__active
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_search
+msgid "Active"
+msgstr "Активне"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__additional_image_link
+msgid "Additional Image Link"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__currency_position__after
+msgid "After price"
+msgstr "Після ціни"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__website_ids
+msgid "Allow this data feed for selected websites. Allow for all if not set."
+msgstr "Дозволити цей фід даних для вибраних веб-сайтів. Дозволити для всіх, якщо не встановлено."
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_search
+msgid "Archived"
+msgstr "Архівовано"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_attachment_count
+msgid "Attachment Count"
+msgstr "Кількість вкладень"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__product_attribute_id
+msgid "Attribute"
+msgstr "Атрибут"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_form
+msgid "Attribute Keys"
+msgstr "Ключі атрибутів"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__availability_type
+msgid "Availability Type"
+msgstr "Тип наявності"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__field_ids
+msgid "Available Fields"
+msgstr "Доступні поля"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__out_of_stock_mode__order
+msgid "Available for order"
+msgstr "Доступний для замовлення"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__currency_position__before
+msgid "Before price"
+msgstr "Перед ціною"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__currency_position__default
+msgid "By default"
+msgstr "За замовчуванням"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__file_type__csv
+msgid "CSV"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient__special_avail_order
+msgid "Can be order"
+msgstr "Можна замовити"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__column_count
+msgid "Column Count"
+msgstr "Підрахунок Колонок"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__description
+msgid "Column Description"
+msgstr "Опис Колонки"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column_value__column_name
+msgid "Column Name"
+msgstr "Назва колонки"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_value_view_form
+msgid "Column Value"
+msgstr "Значення"
+
+#. module: product_data_feed
+#: model:ir.actions.act_window,name:product_data_feed.action_data_feed_column_values
+#: model:ir.ui.menu,name:product_data_feed.menu_data_feed_column_values
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_value_view_tree
+msgid "Column Values"
+msgstr "Значення колонки"
+
+#. module: product_data_feed
+#: model:ir.actions.act_window,name:product_data_feed.action_column_list
+#: model:ir.actions.act_window,name:product_data_feed.action_data_feed_columns
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__column_ids
+#: model:ir.ui.menu,name:product_data_feed.menu_data_feed_column_list
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_form
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_tree
+msgid "Columns"
+msgstr "Колонки"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__create_uid
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__create_uid
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column_value__create_uid
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient__create_uid
+msgid "Created by"
+msgstr "Ким створенно"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__create_date
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__create_date
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column_value__create_date
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient__create_date
+msgid "Created on"
+msgstr "Коли створенно"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__currency_id
+msgid "Currency"
+msgstr "Валюта"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__currency_position
+msgid "Currency Position"
+msgstr "Позиція знаку валюти"
+
+#. module: product_data_feed
+#: model:ir.actions.act_window,name:product_data_feed.action_data_feeds
+#: model:ir.ui.menu,name:product_data_feed.menu_data_feed_config
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_tree
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_template_form_view
+msgid "Data Feeds"
+msgstr "Фіди даних"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__out_of_stock_mode
+msgid ""
+"Define which availability status should be used for products that are out of"
+" stock."
+msgstr ""
+"Визначте який статус доступності слід використовувати для товарів, яких немає в наявності"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__description
+msgid "Description"
+msgstr "Опис"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__availability_type
+msgid ""
+"Determine which stock measurement to use to calculate the stock of products."
+msgstr ""
+"Визначте, яке вимірювання запасів використовувати для розрахунку запасів товарів."
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_dict_key
+msgid "Dict Key"
+msgstr "Ключ словника"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_dict_keys
+msgid "Dict Keys"
+msgstr "Ключі словника"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_dict_value
+msgid "Dict Value"
+msgstr "Значення"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__sale_price
+msgid "Discounted Price"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__sale_price_effective_date
+msgid "Discounted Price Effective Dates"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__display_name
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__display_name
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column_value__display_name
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient__display_name
+msgid "Display Name"
+msgstr "Назва"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_form
+msgid "Do you want to change the access token?"
+msgstr "Змінити токен доступу?"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_domain
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_form
+msgid "Domain"
+msgstr "Фільтр"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_form
+msgid "Download"
+msgstr "Завантажити"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__escape_html
+msgid "Escape Html"
+msgstr "Екранувати HTML"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__feed_id
+msgid "Feed"
+msgstr "Фід"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_form
+msgid "Feed Column"
+msgstr "Колонка фіду"
+
+#. module: product_data_feed
+#: code:addons/product_data_feed/models/product_data_feed.py:0
+#, python-format
+msgid "Feed Items"
+msgstr "Елементи"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_search
+msgid "Feed Name"
+msgstr "Назва фіду"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__url
+msgid "Feed URL"
+msgstr "URL фіду"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_search
+msgid "Feeds"
+msgstr "Фіди"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__field_id
+msgid "Field"
+msgstr "Поле"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_field_name
+msgid "Field Name"
+msgstr "Назва поля"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_field_names
+msgid "Field Names"
+msgstr "Назви полей"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__field_ttype
+msgid "Field Type"
+msgstr "Тип поля"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__multi_field_names
+msgid "Field names separated by comma. For example: \"name,currency_id,amount\"."
+msgstr "Назви полів розділені комою. Наприклад: \"name,currency_id,amount\"."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__relation_field_id
+msgid ""
+"Field of the relation field, if you have selected the field with the type "
+"\"many2one\"."
+msgstr ""
+"Реляційне поле, якщо вибрано поле з типом "
+"\"many2one\"."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__multi_field_format
+msgid ""
+"Field value format should contain placeholders for all fields. For example: "
+"\"%(field_name_1)s - %(field_name_2)d / %(field_name_3).2f\"."
+msgstr ""
+"Формат для значення поля має містити стільки ж заповнювачів, скільки всього полів. Наприклад: "
+"\"%(field_name_1)s - %(field_name_2)d / %(field_name_3).2f\"."
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__file_type
+msgid "File Format"
+msgstr "Формат файлу"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__filename
+msgid "File Name"
+msgstr "Назва файлу"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__availability_type__virtual_available
+msgid "Forecast Quantity"
+msgstr "Прогнозована кількість"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__format
+msgid "Format"
+msgstr "Формат"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__availability_type__free_qty
+msgid "Free To Use Quantity"
+msgstr "Вільний залишок"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__stock_location_ids
+msgid ""
+"Get products only from these stock locations. Get products from all internal"
+" locations if not set."
+msgstr ""
+"Отримати товари лише з вказаних складів. Якщо склади не обрано, то товари будуть братися з усіх внутрішніх"
+" розташувань компанії."
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_search
+msgid "Group By"
+msgstr "Групувати за"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__id
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__id
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column_value__id
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient__id
+msgid "ID"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__message_needaction
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Якщо позначено, нові повідомлення вимагають вашої уваги."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__message_has_error
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Якщо позначено, деякі повідомлення мають помилку доставлення."
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__image_link
+msgid "Image Link"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__image_resolution
+msgid "Image Resolution"
+msgstr "Роздільна здатність зображень"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient__special_avail_in
+msgid "In Stock"
+msgstr "В наявності"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_form
+msgid "Index:"
+msgstr "Індекс:"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_is_follower
+msgid "Is Follower"
+msgstr "Є Послідовником"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_search
+msgid "Is Template"
+msgstr "Це шаблон"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__item_count
+msgid "Item Count"
+msgstr "Кількість елементів"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__model_domain
+msgid "Item Filter"
+msgstr "Фільтр товарів"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_form
+msgid "Items"
+msgstr "Товари"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__lang
+msgid "Language"
+msgstr "Мова"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed____last_update
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column____last_update
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column_value____last_update
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient____last_update
+msgid "Last Modified on"
+msgstr "Коли Востаннє Змінено"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__write_uid
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__write_uid
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column_value__write_uid
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient__write_uid
+msgid "Last Updated by"
+msgstr "Ким Востаннє Оновлено"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__write_date
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__write_date
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column_value__write_date
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient__write_date
+msgid "Last Updated on"
+msgstr "Коли Востаннє Оновлено"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__limit
+msgid "Limit"
+msgstr "Ліміт"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_form
+msgid "Limit:"
+msgstr "Ліміт:"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__multi_value_type__list
+msgid "List"
+msgstr "Список"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__multi_value_type__list_of_dict
+msgid "List of Dictionary"
+msgstr "Список словників"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Основне вкладення"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_form
+msgid "Mark the feed as template to clone it further."
+msgstr "Позначте фід як шаблон, щоб мати можливість клонувати його у подальшому."
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_has_error
+msgid "Message Delivery error"
+msgstr "Помилка доставки повідомлення"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_ids
+msgid "Messages"
+msgstr "Повідомлення"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__model_id
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__model_id
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_tree
+msgid "Model"
+msgstr "Модель"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__type__field
+msgid "Model Field"
+msgstr "Поле моделі"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__model_name
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__model_name
+msgid "Model Name"
+msgstr "Назва моделі"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_form
+msgid "Multi Field Specifications"
+msgstr "Специфікації мульті-полів"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__multi_field
+msgid "Multi Fields"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_value_separator
+msgid "Multi Value Separator"
+msgstr "Роздільник для мульті-значень"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_value_type
+msgid "Multi Value Type"
+msgstr "Мульті-значення"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_limit
+msgid "Multi value Limit"
+msgstr "Ліміт мульті-значень"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__name
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__name
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient__name
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_form
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_search
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_form
+msgid "Name"
+msgstr "Назва"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Кількість дій"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_has_error_counter
+msgid "Number of errors"
+msgstr "Кількість помилок"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Кількість повідомлень, які потребують дії"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Кількість повідомлень з помилкою доставлення"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Кількість непрочитаних повідомлень"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__multi_suffix__number
+msgid "Numbered (from 0)"
+msgstr "Нумерований (від 0)"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_recipient__special_avail_out
+msgid "Out of Stock"
+msgstr "Немає в наявності"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__out_of_stock_mode__out_of_stock
+msgid "Out of stock"
+msgstr "Немає в наявності"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__out_of_stock_mode
+msgid "Out of stock mode"
+msgstr "Якщо відсутний на складі"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__sale_pricelist_id
+msgid "Price list with discounted prices."
+msgstr "Прайс-лист зі знижками."
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__pricelist_id
+msgid "Pricelist"
+msgstr "Прайс-лист"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_form
+msgid "Prices"
+msgstr "Ціни товарів"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__product_attribute
+msgid "Product Attribute"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__product_attribute_multi
+msgid "Product Attributes"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__availability
+msgid "Product Availability"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__availability_date
+msgid "Product Availability Date"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model,name:product_data_feed.model_product_data_feed
+msgid "Product Data Feed"
+msgstr "Товарний фід даних"
+
+#. module: product_data_feed
+#: model:ir.model,name:product_data_feed.model_product_data_feed_column
+msgid "Product Data Feed Column"
+msgstr "Колонка товарного фіду даних"
+
+#. module: product_data_feed
+#: model:ir.model,name:product_data_feed.model_product_data_feed_column_value
+msgid "Product Data Feed Column Value"
+msgstr "Значення колонки товарного фіду даних"
+
+#. module: product_data_feed
+#: model:ir.model,name:product_data_feed.model_product_data_feed_recipient
+msgid "Product Data Feed Recipient"
+msgstr "Одержувач фіду даних"
+
+#. module: product_data_feed
+#: model:ir.ui.menu,name:product_data_feed.menu_data_feeds
+msgid "Product Data Feeds"
+msgstr "Товарні фіди даних"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__link
+msgid "Product Link"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__price
+msgid "Product Price"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__product_root_category
+msgid "Product Root Category"
+msgstr "Коренева категорія товарів"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__product_tax
+msgid "Product Tax Structure"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__product_weight
+msgid "Product Weight"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__product_type
+msgid "Public category hierarchy"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__special_type__stock
+msgid "Qty in Stock"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__availability_type__qty_available
+msgid "Quantity On Hand"
+msgstr "Кількість в наявності"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__recipient_id
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__recipient_id
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column_value__recipient_id
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_search
+msgid "Recipient"
+msgstr "Отримувач"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__relation_field_id
+msgid "Relation Field"
+msgstr "Реляційне поле"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__relation_model_id
+msgid "Relation Model"
+msgstr "Пов'язана модель"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__is_required
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_search
+msgid "Required"
+msgstr "Обов'язковий"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Помилка доставлення SMS"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__sale_pricelist_id
+msgid "Sale Pricelist"
+msgstr "Акційний прайс-лист"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_form
+msgid "Separator:"
+msgstr "Роздільник:"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__sequence
+msgid "Sequence"
+msgstr "Послідовність"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_recipient_view_form
+msgid "Service Name"
+msgstr "Назва"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_form
+msgid "Settings"
+msgstr "Налаштування"
+
+#. module: product_data_feed
+#: code:addons/product_data_feed/models/product_data_feed_column.py:0
+#, python-format
+msgid "Some field name is incorrect. Error: %s"
+msgstr "Ім'я одного з полів невірне. Помилка: %s"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__type__special
+msgid "Special"
+msgstr "Особливий"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__special_type
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_search
+msgid "Special Type"
+msgstr "Особливий підтип"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__product_root_category
+msgid "Specify a custom root category for the \"product_category\" columns."
+msgstr "Укажіть власну кореневу категорію для колонок \"product_category\"."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__multi_domain
+msgid "Specify domain to restrict Many2many and One2many fields."
+msgstr "Укажіть фільтр, щоб обмежити поля Many2many і One2many."
+
+#. module: product_data_feed
+#: code:addons/product_data_feed/models/product_data_feed_column.py:0
+#, python-format
+msgid ""
+"Specify the \"Customer Lead Time\" in some products that are not in stock ."
+msgstr ""
+"Вкажіть значення у полі \"Customer Lead Time\" для деяких товарів, яких немає в наявності."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__multi_value_type
+msgid ""
+"Specify the type for multi values.\n"
+"\"list\" is used to get values (field \"name\") from Many2many and One2many fields."
+msgstr ""
+"Укажіть тип для кількох значень.\n"
+"\"list\" використовується для отримання значень (поле \"ім'я\") з полів Many2many і One2many."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__multi_value_separator
+msgid "Specify which separator use to divide values in the string."
+msgstr "Укажіть, який роздільник використовується для розділення значень у рядку."
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_form
+msgid "Stock"
+msgstr "Запаси товарів"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_recipient_view_form
+msgid "Stock Availability Values"
+msgstr "Значення наявності запасів"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__stock_location_ids
+msgid "Stock Locations"
+msgstr "Склади"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__multi_value_type__string
+msgid "String with separator"
+msgstr "Рядок з роздільником"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_suffix
+msgid "Suffix"
+msgstr "Суфікс"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__file_type__tsv
+msgid "TSV"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__field_ids
+msgid "Technical field for a domain"
+msgstr "Технічне поле для домену"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__is_template
+msgid "Template"
+msgstr "Шаблон"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_search
+msgid "Templates"
+msgstr "Шаблони"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__type__text
+msgid "Text"
+msgstr "Текст"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__value
+msgid "Text Value"
+msgstr "Текстове значення"
+
+#. module: product_data_feed
+#: code:addons/product_data_feed/models/product_data_feed.py:0
+#, python-format
+msgid "The access token must be unique."
+msgstr "Токен доступу має бути унікальним."
+
+#. module: product_data_feed
+#: code:addons/product_data_feed/models/product_data_feed.py:0
+#, python-format
+msgid "The feed is generated."
+msgstr "Фід даних було згенеровано."
+
+#. module: product_data_feed
+#: code:addons/product_data_feed/models/product_data_feed.py:0
+#, python-format
+msgid "The filename must be unique."
+msgstr "Ім'я файлу має бути унікальним."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__format
+msgid "The format for the field value."
+msgstr "Формат значення поля."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__lang
+msgid "The language that will be used to translate all feed text values."
+msgstr "Мова, яка використовуватиметься для перекладу всіх текстових значень фіду."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__model_domain
+msgid "The model domain to filter items for the feed."
+msgstr "Домен моделі для фільтрування елементів фіду."
+
+#. module: product_data_feed
+#: code:addons/product_data_feed/models/product_data_feed_recipient.py:0
+#, python-format
+msgid "The name of a recipient must be unique."
+msgstr "Ім'я одержувача має бути унікальним."
+
+#. module: product_data_feed
+#: code:addons/product_data_feed/models/product_data_feed_column.py:0
+#, python-format
+msgid "The sale pricelist is not set."
+msgstr "Акційний прайс-лист не встановлений."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__multi_dict_key
+msgid ""
+"This param is used for the multi value type \"List of Dictionary\" to "
+"specify the repeated dict key name."
+msgstr ""
+"Цей параметр використовується для багатозначного типу \"Список словника\" для "
+"вказати повторюване ім'я ключа dict."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__multi_dict_keys
+msgid ""
+"This param is used for the multi value type \"List of Dictionary\" to "
+"specify the repeated dict key names, separated by comma. For example: "
+"\"country,rate,amount\"."
+msgstr ""
+"Цей параметр використовується для багатозначного типу \"Список Cловника\", щоб "
+"вказати повторювані імена ключів dict, розділені комами. Наприклад: "
+"\"країна, тариф, сума\"."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__multi_dict_value
+msgid ""
+"This param is used for the multi value type \"List of Dictionary\" to "
+"specify the repeated dict value name."
+msgstr ""
+"Цей параметр використовується для багатозначного типу \"Список Cловника\" для "
+"вказати назву повторюваного значення dict."
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__tz
+msgid "Timezone"
+msgstr "Часовий пояс"
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_tree
+msgid "Total"
+msgstr "Всього"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__type
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_search
+msgid "Type"
+msgstr "Тип"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_unread
+msgid "Unread Messages"
+msgstr "Непрочитані повідомлення"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__image_resolution__1024
+msgid "Up to 1024 px"
+msgstr "До 1024 px"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__image_resolution__128
+msgid "Up to 128 px"
+msgstr "До 128 px"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__image_resolution__1920
+msgid "Up to 1920 px"
+msgstr "До 1920 px"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__image_resolution__256
+msgid "Up to 256 px"
+msgstr "До 256 px"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__image_resolution__512
+msgid "Up to 512 px"
+msgstr "До 512 px"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__use_token
+msgid "Use Token"
+msgstr "Додати токен"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__use_filename
+msgid "Use a custom file name for the feed."
+msgstr "Використовуйте спеціальну назву файлу для фіду."
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__use_filename
+msgid "Use a custom file name."
+msgstr "Використовуйте власне ім'я файлу."
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_view_form
+msgid "Use model"
+msgstr "Модель"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__value_id
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column_value__name
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed_column__type__value
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_form
+msgid "Value"
+msgstr "Значення"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_field_format
+msgid "Value Format"
+msgstr "Формат значення"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_index
+msgid "Value Index"
+msgstr "Індекс значення"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_column__multi_index
+msgid ""
+"Value index from multi value list. Should starts from 1. Specify it if you "
+"need only one value from the list."
+msgstr ""
+"Індекс значення зі списку кількох значень. Має починатися з 1. Укажіть його, якщо вам "
+"потрібне лише одне значення зі списку."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_recipient__special_avail_in
+msgid "Value that is used when products are in stock."
+msgstr "Значення, яке використовується, коли товари є в наявності."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_recipient__special_avail_out
+msgid "Value that is used when products are out of stock."
+msgstr "Значення, яке використовується, коли товарів немає в наявності."
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed_recipient__special_avail_order
+msgid "Value that is used when products can be ordered."
+msgstr "Значення, яке використовується, коли товари можна замовити."
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__multi_field_values_are_required
+msgid "Values are Required"
+msgstr "Значення є обов’язковими"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__feed_warning
+msgid "Warning"
+msgstr "Попередження"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__website_message_ids
+msgid "Website Messages"
+msgstr "Повідомлення веб-сайту"
+
+#. module: product_data_feed
+#: model:ir.model.fields,help:product_data_feed.field_product_data_feed__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed__website_ids
+msgid "Websites"
+msgstr "Вебсайти"
+
+#. module: product_data_feed
+#: model:ir.model.fields,field_description:product_data_feed.field_product_data_feed_column__price_with_currency
+msgid "With Currency Code"
+msgstr "З кодом валюти"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__currency_position__none
+msgid "Without currency code"
+msgstr "Без коду валюти"
+
+#. module: product_data_feed
+#: model:ir.model.fields.selection,name:product_data_feed.selection__product_data_feed__file_type__xml
+msgid "XML"
+msgstr ""
+
+#. module: product_data_feed
+#: code:addons/product_data_feed/models/product_data_feed_column.py:0
+#, python-format
+msgid "You need to specify the field name."
+msgstr "Необхідно вказати назву поля."
+
+#. module: product_data_feed
+#: model_terms:ir.ui.view,arch_db:product_data_feed.product_data_feed_column_view_form
+msgid "country,rate,amount"
+msgstr ""

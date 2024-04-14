@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <!-- <report 
+            id="project_profit_loss_report_probc"
+            model="account.analytic.account" 
+            menu="True"
+            report_type="qweb-pdf" 
+            string="Profit Loss Report" 
+            name="project_profit_loss_report.profit_loss_report_probc"
+            file="project_profit_loss_report.profit_loss_report_probc" /> -->
+         <record id="project_profit_loss_report_probc" model="ir.actions.report">
+            <field name="name">Profit Loss Report</field>
+            <field name="model">account.analytic.account</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">project_profit_loss_report.profit_loss_report_probc</field>
+            <field name="report_file">project_profit_loss_report.profit_loss_report_probc</field>
+            <field name="binding_type">report</field>
+        </record>
+        
+        <template id="profit_loss_report_probc">
+            <t t-call="web.external_layout">
+                <t t-call="web.html_container">
+                    <!-- <t t-if="docs" t-as="doc"> -->
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="page pt-5">
+                            <t t-foreach="lines" t-as="line">
+                                <table class="table" style="padding-top:25px;">
+                                    <tr class="border-0">
+                                        <td colspan="3" class="border-0">
+                                            <div class="text-center">
+                                                <t t-if="data and 'start_date' in data">
+                                                    <h2><strong>Analytic Account / Project</strong></h2>
+                                                    <h2 class="mb32"><strong><t t-esc="line.name"/></strong></h2>
+                                                    <h2><strong>Profit and Loss</strong></h2>
+                                                    <h2><strong><span t-esc="data['start_date']"/> to </strong>  <strong t-esc="data['end_date']"/></h2>
+                                                </t>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="border"></th>
+                                        <th class="text-right border">Debit</th>
+                                        <th class="text-right border">Credit</th>
+                                    </tr>
+                                    <t t-set="account_data" t-value="lines[line]['account_types']"/>
+                                    <tr>
+                                        <td class="oe_group_title border">
+                                            <b>Income</b>
+                                        </td>
+                                        <td class="text-right border"><b><span t-esc="lines[line]['plus_amount']" t-options="{'widget': 'monetary', 'display_currency': line.currency_id}"/></b></td>
+                                        <td class="border"></td>
+                                    </tr>
+                                    <t t-foreach="account_data" t-as="Income">
+                                        <t t-foreach="Income" t-as="type">
+                                            <t t-if="type['bank_book'] == 'Income'">
+                                            <tr>
+                                                <t t-if="type['user_type']">
+                                                    <td class="text-right border"><t t-esc="type['user_type']"/></td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td class="text-right border">Other Income</td>
+                                                </t>
+                                                <td class="text-right border">
+                                                    <t t-esc="type['single_amount']" t-options="{'widget': 'monetary', 'display_currency': line.currency_id}"/>
+                                                </td>
+                                                <td class="text-right border">
+                                                </td>
+                                            </tr>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <tr>
+                                        <td class="oe_group_title border">
+                                            <b>Expense</b>
+                                        </td>
+                                        <td class="oe_group_title border"></td>
+                                        <td class="text-right border"><b><span t-esc="lines[line]['minus_amount']" t-options="{'widget': 'monetary', 'display_currency': line.currency_id}"/></b></td>
+                                    </tr>
+                                    <t t-foreach="account_data" t-as="Expense">
+                                        <t t-foreach="Expense" t-as="type">
+                                            <t t-if="type['bank_book'] == 'Expense'">
+                                                <tr>
+                                                <t t-if="type['user_type']">
+                                                    <td class="text-right border"><t t-esc="type['user_type']"/></td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td class="text-right border">Timesheets and Other Expense</td>
+                                                </t>
+                                                    <td class="text-right border">
+                                                    </td>
+                                                    <td class="text-right border">
+                                                        <t t-esc="type['single_amount']" t-options="{'widget': 'monetary', 'display_currency': line.currency_id}"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <tr>
+                                        <td class="text-left border" colspan="2">
+                                            <b>Project Profit &amp; Loss</b>
+                                        </td>
+                                        <td class="text-right border">
+                                            <b><t t-esc="lines[line]['total']" t-options="{'widget': 'monetary', 'display_currency': line.currency_id}"/></b>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <p style="page-break-after:always;"> </p>
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_sale_integration_form_magento" model="ir.ui.view">
+            <field name="name">sale.integration.form.magento</field>
+            <field name="model">sale.integration</field>
+            <field name="inherit_id" ref="integration.view_sale_integration_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='inventory_defaults']//field[@name='next_inventory_synchronization_date']" position="after">
+                    <field name="is_multi_source_inventory" 
+                           invisible="type_api != 'magento2'"
+                           groups="base.group_no_one"
+			   widget="boolean_toggle"
+		    />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

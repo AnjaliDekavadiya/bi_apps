@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<record id="view_subcontract_from_jo" model="ir.ui.view">
+			<field name="name">Subcontractor</field>
+			<field name="model">subcontract.job.order</field>
+			<field name="arch" type="xml">
+				<form string="Subcontractor">
+					<group string='Create Job Order for Subcontractor'/>
+					<group>
+						<group>
+							<field name="user_id"/>
+							<field name="job_id"/>
+						</group>
+						<group>
+							<field name="subcontractor_id"/>
+							<field name="job_desc"/>
+						</group>
+					</group>
+					<footer>
+		                <button name="create_subcontract_job_order" string="Create" type="object" class="btn-primary"/>
+		                <button string="Cancel" class="btn-default" special="cancel"/>
+		            </footer>
+				</form>
+			</field>
+		</record>
+		
+		<record id="action_view_subcontracting_jo" model="ir.actions.act_window">
+            <field name="name">Subcontractor</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">subcontract.job.order</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

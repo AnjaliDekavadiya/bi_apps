@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_reminder_single">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <div class="oe_structure"/>
+                <h3 class="text-center"><t t-out="doc.name"/></h3>
+                <h4 class="text-center"><i>Periods: <t t-out="doc.period_title"></t></i></h4>
+                <div t-if="instances">
+                    <table class="table table-sm o_main_table">
+                        <tbody>
+                            <tr>
+                                <t t-foreach="columns" t-as="column">
+                                    <td><b><t t-out="column"/></b></td>
+                                </t>
+                            </tr>
+                            <t t-foreach="instances" t-as="instance">
+                                <tr t-if="instance[0] == 'group_header'">
+                                    <td style="padding:12px 4px 8px 4px; text-align: center; background-color:#ededed;" t-att-colspan="len(columns)">
+                                        <b><t t-out="instance[1]"/></b>
+                                    </td>
+                                </tr>
+                                <tr t-elif="instance[0] == 'total_line'">
+                                    <td></td>
+                                    <t t-foreach="instance[1:]" t-as="group_line">
+                                        <td><i><t t-out="group_line"/></i></td>
+                                    </t>
+                                </tr>
+                                <tr t-else="">
+                                    <td>
+                                        <a t-if="url_included"
+                                           t-attf-href="#{instance[0]}" 
+                                           style="background-color: #5cb85c;padding: 2px 6px 2px 6px;border: 1px solid #4cae4c; text-decoration:none;border-radius: 5px;"
+                                        >
+                                            <span style="color:#FFFFFF;">&gt;</span>
+                                        </a>
+                                        <span t-if="not url_included" style="padding: 2px 6px 2px 6px"> 
+                                            <t t-out="instance[0]"/>
+                                        </span>
+                                    </td>
+                                    <t t-foreach="instance[1:]" t-as="record">
+                                        <td><t t-out="record"/></td>
+                                    </t>
+                                </tr>
+                            </t>                                        
+                            <tr t-if="group_operators">
+                                <td></td>
+                                <t t-foreach="group_operators[1:]" t-as="group_operator">
+                                    <td><b><t t-out="group_operator"/></b></td>
+                                </t>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="report_reminder">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="total_notify.report_reminder_single"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

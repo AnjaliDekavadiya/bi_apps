@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_calendar_config_settings_form" model="ir.ui.view">
+        <field name="name">view.calendar.config.settings.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="99"/>
+        <field name="inherit_id" ref="calendar.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <app name="calendar" position="inside">
+                <block title="Working Hours" name="working_hours">
+                    <setting string="Working Hours" id="calendar_schedule_id"
+                             help="Define the working hours for calendar view. LIMITATION: If the created meeting is on the non-working hours, you cannot drag or resize it. You can only edit the meeting in form view.">
+                        <div class="content-group">
+                            <div class="mt16">
+                                <field name="calendar_schedule_id" class="o_light_label"
+                                       options="{'no_create': True, 'no_open': True}"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting string="Apply to Calendar Meetings Only" id="calendar_schedule_event_only"
+                             help="Apply the working hours and restrictions in the calendar view of calendar meetings/events only.">
+                        <field name="calendar_schedule_event_only"/>
+                    </setting>
+                    <setting string="Restrict new meetings to be scheduled only to working hours in calendar view." id="calendar_schedule_select_check"
+                             help="Restrict new meetings to be scheduled only to working hours in calendar view. LIMITATION: You cannot create an all-day meeting in calendar view if this is enabled.">
+                        <field name="calendar_schedule_select_check"/>
+                    </setting>
+                    <setting string="Existing Meeting Restriction" id="calendar_schedule_event_check"
+                             help="Restrict dragging and resizing for existing meetings only to working hours in calendar view.">
+                        <field name="calendar_schedule_event_check"/>
+                    </setting>
+                    <setting string="Meeting Backend Restriction" id="calendar_schedule_backend_check"
+                             help="Restrict calendar meeting/event only to working hours in any view. It will raise an error prompt.">
+                        <field name="calendar_schedule_backend_check"/>
+                    </setting>
+                </block>
+            </app>
+        </field>
+    </record>
+
+</odoo>

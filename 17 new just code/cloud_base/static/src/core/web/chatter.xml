@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="cloud_base.Chatter" t-inherit="mail.Chatter" t-inherit-mode="extension">
+        <FileUploader position="attributes">
+            <attribute name="t-if">attachments.length === 0 and !state.folderExist</attribute>
+        </FileUploader>
+        <xpath expr="//div[hasclass('o-mail-AttachmentBox')]/div[hasclass('flex-column')]" position="before">
+            <div class="cb-attachment-box" t-if="state.folderExist">
+                <CloudJsTreeContainer t-props="getJsTreeProps('folders')"/>
+            </div>
+        </xpath>
+    </t>
+
+</templates>

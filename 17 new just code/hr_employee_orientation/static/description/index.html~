@@ -1,0 +1,101 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+            <h2 class="oe_slogan">Employee Orientation Process</h2>
+        <p>Employee orientation is part of a long-term investment in a new employee. It is an initial process that provides easy access to basic information, programs and services, gives clarification and allows new employees to take an active role in their organization.<br/>
+Effectively orienting new employees to the campus and to their positions is critical to establishing successful, productive working relationships. The employee's first interactions with you should create a positive impression of your department and the campus. The time you spend planning for the new person's first days and weeks on the job will greatly increase the chance for a successful start.
+<br/>
+<b>An effective orientation will:</b><br/>
+- Foster an understanding of the campus culture, its values, and its diversity<br/>
+- Help the new employee make a successful adjustment to the new job<br/>
+- Help the new employee understand his/her role and how he/she fits into the total organization<br/>
+- Help the new employee achieve objectives and shorten the learning curve<br/>
+- Help the new employee develop a positive working relationship by building a foundation of knowledge about campus mission, objectives, policies, organization structure, and functions<br/>
+</p>
+<p>
+<b>Workflow:</b><br/>
+
+HR Officer/Manager create Employee orientation (Orientations/Employee Orientations) for new employee coming in organization and by selecting orientation checklist field on orientation form that time it will fill all orientation checklist lines automatically... 
+Now once HR Officer/Manager confirm Employee orientation that time system will create Checklist requests and allocate jobs to responsible person assosicated with that checklist/task.(Orientations/Orientation Checklists Requests)<br/>
+
+Now when responsible person login in system, he/she will find job allocated under Orientations/Orientation Checklists Requests and finish it.<br/>
+
+Note that Orientation Checklist Configuration will be configured by department, for example new comer join IT department then he/she has going to process under Orientation Checklist Configuration of IT department...<br/>
+
+</p>
+        <p class="oe_mt32">
+<b>This module allow you to manage employee orientation process</b><br/>
+    &ensp;&ensp;* Employee Orientations<br/>
+    &ensp;&ensp;* Orientation Checklists Requests<br/>
+    &ensp;&ensp;* Configurations <br/>
+        <p>
+          <b>Menus:</b>
+            <ul>
+              <li>Orientations</li>
+              <li>Orientations/Employee Orientations</li>
+              <li>Orientations/Orientation Checklists Requests</li>
+              <li>Orientations/Configurations</li>
+              <li>Orientations/Configurations/Orientation Checklists</li>
+              <li>Orientations/Configurations/Orientation Checklists Lines</li>
+             </ul>
+        </p>
+        </p>
+        
+    </div>
+</section>
+<section class="oe_container oe_dark" >
+    <h2 class="oe_slogan">Employee Orientation Form View</h2>
+    <div class="oe_row oe_spaced">
+        <div class="oe_demo oe_screenshot">
+            <img class="oe_picture oe_screenshot" src="s1.png">
+            <img class="oe_picture oe_screenshot" src="s2.png">
+        </div>
+    </div>
+</section>
+<section class="oe_container oe_dark" >
+    <h2 class="oe_slogan">Orientation Checklists Requests Form & Tree</h2>
+    <div class="oe_row oe_spaced">
+        <div class="oe_demo oe_screenshot">
+            <img class="oe_picture oe_screenshot" src="s3.png">
+            <img class="oe_picture oe_screenshot" src="s9email.png">
+            <img class="oe_picture oe_screenshot" src="s4.png">
+        </div>
+    </div>
+</section>
+<section class="oe_container oe_dark" >
+    <h2 class="oe_slogan">Orientation Checklist Configuration Form & Tree</h2>
+    <div class="oe_row oe_spaced">
+        <div class="oe_demo oe_screenshot">
+            <img class="oe_picture oe_screenshot" src="s5.png">
+            <img class="oe_picture oe_screenshot" src="s6.png">
+        </div>
+    </div>
+</section>
+<section class="oe_container oe_dark" >
+    <h2 class="oe_slogan">Orientation Checklists Lines Form & Tree</h2>
+    <div class="oe_row oe_spaced">
+        <div class="oe_demo oe_screenshot">
+            <img class="oe_picture oe_screenshot" src="s8.png">
+            <img class="oe_picture oe_screenshot" src="s7.png">
+        </div>
+    </div>
+</section>
+<section class="oe_container" >
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Contact / Support</h2>
+        <div class="oe_span6">
+            <div class="oe_picture" style="margin: 25px 10%;">
+                <a href="http://www.probuse.com/">
+                    <img src="500X200-sm.png">
+                </a>
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+                If you need any help or want more additional features,<br/> you may contact us through e-mail at <br/>
+                Email:<a href="mailto:contact@probuse.com" target="new">contact@probuse.com</a><br/>
+                Website:<a href="http://www.probuse.com" target="new">www.probuse.com</a><br/>
+                Skype: mustufa_probuse
+            </p>
+        </div>
+    </div>
+</section>

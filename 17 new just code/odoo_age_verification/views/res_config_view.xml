@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+
+<odoo>
+    <data>
+    <record id="age_config_view" model="ir.ui.view">
+        <field name="name">Odoo Age Verification Settings</field>
+        <field name="model">age.verification.config.settings</field>
+        <field name="arch" type="xml">
+            <form string="Odoo Age Verification Overlay" class="oe_form_configuration">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_is_active" type="object" class="oe_stat_button" icon="fa-check">
+                            <field name="is_active" widget="boolean_toggle" options='{"terminology": "active"}' invisible="1" />
+                            <span class="text-danger" style = "font-size:1.5rem;" invisible="is_active != False">Inactive</span>
+                            <span class="text-success" style = "font-size:1.5rem;" invisible = "is_active == False">Active</span>
+                        </button>
+                    </div>
+
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="Name"/>
+                        <h1><field name="name"/></h1>
+                        <group>
+                            <field name="website_id"/>
+                            <field name="enable_age_verification" string="Enable Age Verification" class="oe_left"/>
+                        </group>
+                    </div>
+                    <separator class="fa fa-cogs" aria-label="Settings" title="Settings" string=" Settings"/>
+
+                    <group>
+                        <group>
+                            <field name="description" placeholder="Maximum 90 characters are allowed"/>
+                            <field name="dob"/>
+                            <field name="check_logged_in" string="Hide for Logged in User"/>
+                        </group>
+                        <group>
+                            <field name="deny_message" placeholder="Maximum 45 characters are allowed"/>
+                            <field name="minimum_age"/>
+                        </group>
+                    </group>
+                    <separator class="fa fa-hand-o-right" aria-label="Other Settings" title="Other Settings" string=" Other Settings"/>
+                    <group>
+                        <field name="image" widget="image" class="oe_left"/>
+                        <field name="terms_condition"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="age_config_view_inherited" model="ir.ui.view">
+        <field name="name">Custom Odoo Age Verification Settings</field>
+        <field name="model">age.verification.config.settings</field>
+        <field name="inherit_id" ref="odoo_age_verification.age_config_view" />
+        <field name="arch" type="xml">
+            <field name="minimum_age" position="after">
+                <field name="select_pages" widget="radio" />
+                <field name="pages_for_popup" invisible="select_pages != 'selected'" required="select_pages != 'all'" />
+            </field>
+        </field>
+    </record>
+
+    <record id="age_config_tree_view" model="ir.ui.view">
+        <field name="name">Age Config Tree View</field>
+        <field name="model">age.verification.config.settings</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="website_id"/>
+                <field name="is_active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_age_config_view" model="ir.actions.act_window">
+        <field name="name">Age Verification Config</field>
+        <field name="res_model">age.verification.config.settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="age_config_view" />
+    </record>
+    </data>
+</odoo>

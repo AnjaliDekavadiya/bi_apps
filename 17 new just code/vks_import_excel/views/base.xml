@@ -1,0 +1,373 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		
+		<!-- 1 so view dung chung -->
+		
+		<record id="view_responsibility_of_user_popup" model="ir.ui.view">
+			<field name="name">view.responsibility.of.user.popup</field>
+			<field name="model">res.partner</field>
+			<field name="priority">1000</field>
+			<field name="arch" type="xml">
+				<form>
+					<group name="group_main"></group>
+					<footer>
+	                    <button name="vks_button_cancel" string="Cancel operation" class="btn-secondary" special="cancel"/>
+	                </footer>
+				</form>
+			</field>
+		</record>
+				
+		<record id="view_responsibility_of_user_no_chat_form" model="ir.ui.view">
+			<field name="name">view.responsibility.of.user.no.chat.form</field>
+			<field name="model">res.partner</field>
+			<field name="priority">1000</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div class="oe_button_box" name="button_box">
+						</div>
+						<group name="group_main">
+							<group name="group_one">
+							</group>
+							<group name="group_two">
+								<field name="create_uid" readonly="1" options="{'no_open': True, 'no_create': True}"/>
+								<field name="create_date" readonly="1"/>
+							    <field name="write_uid" readonly="1" groups="base.group_no_one" options="{'no_open': True, 'no_create': True}"/>
+								<field name="write_date" readonly="1"/>
+							</group>
+						</group>
+					</sheet>
+					<div name="vks_chat_div"></div>
+				</form>
+			</field>
+		</record>
+		
+		<record id="view_responsibility_of_user_form" model="ir.ui.view">
+			<field name="name">view.responsibility.of.user.form</field>
+			<field name="model">res.partner</field>
+			<field name="priority">1000</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_no_chat_form"/>
+			<field name="arch" type="xml">
+				<div name="vks_chat_div" position="replace">
+					<div name="vks_chat_div"/>
+				</div>
+			</field>
+		</record>
+        
+        <record id="view_responsibility_of_user_activity_form" model="ir.ui.view">
+			<field name="name">view.responsibility.of.user.form</field>
+			<field name="model">res.partner</field>
+			<field name="priority">1000</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_no_chat_form"/>
+			<field name="arch" type="xml">
+				<div name="vks_chat_div" position="replace">
+					<div name="vks_chat_div"/>
+				</div>
+			</field>
+		</record>
+        
+        <record id="view_responsibility_of_user_kanban" model="ir.ui.view">
+			<field name="name">view.responsibility.of.user.kanban</field>
+			<field name="model">res.partner</field>
+			<field name="priority">1000</field>
+			<field name="arch" type="xml">
+				 <kanban class="o_kanban_mobile">
+                    <field name="id"/>
+                    <templates>
+                    	<t t-name="kanban-menu">
+                    		<div class="container" name="vks_tool_div" t-if="record.id.raw_value==-1">
+                    			<div class="row" name="vks_drop_menu_div">
+                    			</div>
+                    		</div>
+                    	</t>
+	                    <t t-name="kanban-box">
+	                   	    <div name="vks_main_kb_div" class="oe_kanban_card oe_kanban_global_click">
+	                   	    	<a name="vks_main_kb_link" type="open">
+	                   	    		<div name="vks_rec_id_div" style="display:none"></div>
+	                           	</a>
+	                        </div>
+	                    </t>
+                    </templates>
+                </kanban>
+			</field>
+		</record>
+        
+        <record id="view_responsibility_of_user_tree" model="ir.ui.view">
+			<field name="name">view.responsibility.of.user.tree</field>
+			<field name="model">res.partner</field>
+			<field name="priority">1000</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="create_uid" readonly="1" groups="base.group_no_one" options="{'no_open': True, 'no_create': True}"/>
+					<field name="create_date" readonly="1" groups="base.group_no_one"/>
+				    <field name="write_uid" readonly="1" groups="base.group_no_one" options="{'no_open': True, 'no_create': True}"/>
+				    <field name="write_date" readonly="1" groups="base.group_no_one"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="view_responsibility_of_user_filter" model="ir.ui.view">
+			<field name="name">view.responsibility.of.user.filter</field>
+			<field name="model">res.partner</field>
+			<field name="priority">1000</field>
+			<field name="arch" type="xml">
+				<search>
+                	<field name="create_uid"/>
+                	<separator/>
+                	<filter string="Created by me" name="f_my_record" domain="[('create_uid','=',uid)]"/>
+                	<separator/>
+					<filter string="Created on" name="f_create_date" date="create_date"/>
+                	<group expand="0" string="Group By">
+                    	<filter name="grb_create_uid" string="Owner" domain="[]" context="{'group_by':'create_uid'}"/>
+                	</group>
+                </search>
+			</field>
+		</record>
+		
+        <!-- IrExport views -->
+        
+		<record id="vks_ir_exports_form" model="ir.ui.view">
+            <field name="name">vks.ir.exports.form</field>
+			<field name="model">ir.exports</field>
+			<field name="type">form</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//form/sheet" position="before">
+					<header>
+	                    <button name="vks_export_to_save" string="Export data" type="object" class="btn-primary"/>
+						<button name="vks_export_to_send" string="Export and email" type="object" class="btn-primary"/>
+	                </header>
+				</xpath>
+				<group name="group_main" position="before">
+					<div class="oe_title">
+						<h1>
+							<field name="name" placeholder="Name" nolabel="1" required="1"/>
+						</h1>
+					</div>
+				</group>
+				<group name="group_one" position="inside">
+					<field name="related_object" options="{'no_create':True}" required="1"/>
+					<field name="resource" readonly="1"/>
+					<field name="privacy"/>
+					<field name="attachment_date"/>
+				</group>
+				<field name="create_uid" position="before">
+					<field name="related_filter" domain="[('model_id','=',resource)]"/>
+				</field>
+				<group name="group_main" position="after">
+					<group name="gr_privacy_groups" string="Groups are allowed to access" invisible="privacy != 'groups'">
+		     			<field name="privacy_groups" nolabel="1" colspan="2" options="{'no_create':True}" 
+		     				widget="many2many_tags" required="privacy == 'groups'"/>
+					</group>
+					<group name="gr_fields" string="Fields to export">
+		     			<field name="export_fields" nolabel="1" colspan="2"/>
+					</group>
+					<group name="gr_notes" string="Notes">
+		     			<field name="notes" nolabel="1" colspan="2"/>
+					</group>
+				</group>
+			</field>
+		</record>
+
+		<record id="vks_ir_exports_kanban" model="ir.ui.view">
+            <field name="name">vks.ir.exports.kanban</field>
+			<field name="model">ir.exports</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_kanban"/>
+			<field name="arch" type="xml">
+				<field name="id" position="after">
+            		<field name="color"/>
+            	</field>
+            	<xpath expr="//div[@name='vks_rec_id_div']" position="replace">
+            		<div name="vks_name_div">
+            			 <strong><field name="name"/></strong>
+                    </div>
+                    <div name="vks_related_object_div">
+            			 <span class="text-dark o_kanban_record_subtitle"><field name="related_object"/></span>
+                    </div>
+            	</xpath>
+            	<xpath expr="//div[@name='vks_tool_div']" position="attributes">
+            		<attribute name="t-if">record.id.raw_value!=-1</attribute>
+            	</xpath>
+            	<xpath expr="//div[@name='vks_drop_menu_div']" position="inside">
+            		<a name="vks_export_to_save" type="object" role="menuitem" class="dropdown-item">Export data</a>
+                	<a name="vks_export_to_send" type="object" role="menuitem" class="dropdown-item">Export and email</a>
+            	</xpath>
+			</field>
+		</record>
+		
+		<record id="vks_ir_exports_search" model="ir.ui.view">
+            <field name="name">vks.ir.exports.search</field>
+            <field name="model">ir.exports</field>
+            <field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_filter"/>
+            <field name="arch" type="xml">
+            	<field name="create_uid" position="before">
+            		<field name="name"/>
+            		<field name="resource"/>
+                    <field name="related_object"/>
+            	</field>
+            	<filter name="grb_create_uid" position="before">
+            		<filter string="Category" name="grb_categ" context="{'group_by':'related_object'}"/>
+            	</filter>
+            </field>
+        </record>
+		
+		<record id="vks_ir_exports_action" model="ir.actions.act_window">
+			<field name="name">Export data</field>
+			<field name="res_model">ir.exports</field>
+			<field name="view_mode">kanban,form</field>
+		</record>
+		
+		<menuitem id="vks_ir_exports_menu_all" action="vks_ir_exports_action" parent="base.menu_administration" sequence="5"/> 
+		
+		<record id="vks_select_export_method_popup_form" model="ir.ui.view">
+            <field name="name">vks.select.export.method.popup.form</field>
+            <field name="model">vks.select.export.method.popup</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_popup"/>
+            <field name="arch" type="xml">
+            	<group name="group_main" position="replace">
+            		<group>
+            			<field name="vks_export_method"/>
+            		</group>
+           		</group>
+            	<button name="vks_button_cancel" position="before">
+            		<button string="Download" name="download_file" type="object" class="btn-primary"/> 
+            	</button>
+            </field>
+        </record>
+
+        <!-- IrExportLine views -->
+        
+        <record id="ir_exports_line_tree" model="ir.ui.view">
+            <field name="name">ir.exports.line.tree</field>
+            <field name="model">ir.exports.line</field>
+            <field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//tree" position="attributes">
+			     	<attribute name="editable">bottom</attribute>
+			    </xpath>
+				<field name="create_uid" position="before">
+					<field name="sequence"/>
+					<field name="related_field" options="{'no_create':True}" domain="[('model_id','=',parent.related_object)]"/>
+					<field name="name" readonly="related_field != False"/>
+					<field name="heading"/>
+					<field name="empty_if_false"/>
+					<field name="import_note"/>
+				</field>
+			</field>
+        </record>
+        
+        <!-- Cac view dung cho xu ly thread co ban-->
+        
+        <record id="vks_process_by_thread_basic_form" model="ir.ui.view">
+			<field name="name">vks.process.by.thread.basic.form</field>
+			<field name="model">vks.process.by.thread.basic</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_activity_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//form/sheet" position="before">
+					<header name="main_state_header" invisible="0">
+						<button name="process_data_main_method" string="Process data" type="object" class="btn-primary" 
+							invisible="create_uid == False or (process_state in ('doing','done'))" 
+							confirm="Are you sure you want to process the data according to these criteria?"/>
+						
+						<button name="download_file_after_processed" string="Download processed data" type="object" 
+							invisible="1" class="btn-primary"/>
+						
+						<button name="action_reset_process_state" type="object" string="Reset status" groups="base.group_system" 
+							confirm="Maybe the data processing is still in progress. Are you sure you want to reset the processing status of this record for re-processing?" 
+							invisible="process_state != 'doing'"/>
+							
+                		<field name="process_state" widget="statusbar"/>
+					</header>
+				</xpath>
+				<group name="group_one" position="inside">
+					<field name="name"/>
+					<field name="id" invisible="1"/>
+				</group>
+				<field name="create_date" position="after">
+					<field name="vks_thread_start_time" groups="base.group_no_one"/>
+				</field>
+			</field>
+		</record>
+		
+		<record id="vks_process_by_thread_basic_kanban" model="ir.ui.view">
+            <field name="name">vks.process.by.thread.basic.kanban</field>
+            <field name="model">vks.process.by.thread.basic</field>
+            <field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_kanban"/>
+            <field name="arch" type="xml">
+            	<field name="id" position="after">
+            		<field name="process_state"/>
+            	</field>
+            	<xpath expr="//div[@name='vks_rec_id_div']" position="replace">
+            		<div name="vks_name_div">
+            			<strong><span class="o_kanban_record_title"><field name="name"/></span></strong>
+            		</div>
+            		<div name="vks_process_time_div">
+            			<span class="text-dark o_kanban_record_subtitle"><field name="vks_thread_start_time"/> - <field name="write_date"/></span>
+            		</div>
+            		<div name="vks_to_do_process_state_div" class="vks_kanban_state_section_style text-dark bg-light row no-gutters" t-if="record.process_state.raw_value=='to_do'">
+                   		<span name="main_state_to_do_des" t-esc="record.process_state.value"/> 
+                   	</div>
+                   	<div name="vks_doing_process_state_div" class="vks_kanban_state_section_style text-dark bg-info row no-gutters" t-if="record.process_state.raw_value=='doing'">
+                   		<span name="main_state_doing_des" t-esc="record.process_state.value"/> 
+                   	</div>
+                   	<div name="vks_error_process_state_div" class="vks_kanban_state_section_style text-white bg-danger row no-gutters" t-if="record.process_state.raw_value=='error'">
+                   		<span name="main_state_error_des" t-esc="record.process_state.value"/> 
+                   	</div>
+                   	<div name="vks_done_process_state_div" class="vks_kanban_state_section_style text-white bg-success row no-gutters" t-if="record.process_state.raw_value=='done'">
+                   		<span name="main_state_done_des" t-esc="record.process_state.value"/> 
+                   	</div>
+              </xpath>
+            </field>
+         </record>
+        
+        <record id="vks_process_by_thread_basic_tree" model="ir.ui.view">
+			<field name="name">vks.process.by.thread.basic.tree</field>
+			<field name="model">vks.process.by.thread.basic</field>
+			<field name="arch" type="xml">
+				<tree decoration-bf="process_state=='to_do'" decoration-info="process_state=='doing'" decoration-success="process_state=='done'" decoration-danger="process_state=='error'">
+					<field name="name"/>
+					<field name="create_uid"/>
+					<field name="create_date"/>
+					<field name="vks_thread_start_time" groups="base.group_no_one"/>
+				    <field name="write_uid" groups="base.group_no_one"/>
+				    <field name="write_date"/>
+				    <field name="process_state"/>
+				</tree>
+			</field>
+		</record>
+       
+		<record id="vks_process_by_thread_basic_filter" model="ir.ui.view">
+			<field name="name">vks.process.by.thread.basic.filter</field>
+			<field name="model">vks.process.by.thread.basic</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_filter"/>
+			<field name="arch" type="xml">
+				<field name="create_uid" position="before">
+            		<field name="name"/>
+				    <field name="process_state"/>
+            	</field>
+				<filter name="f_my_record" position="before">
+           		 	<filter name="f_to_do" string="Unprocessed" domain="[('process_state','=','to_do')]"/>
+				    <filter name="f_doing" string="Processing" domain="[('process_state','=','doing')]"/>
+                    <filter name="f_done" string="Done" domain="[('process_state','=','done')]"/>
+                    <filter name="f_error" string="Error handling" domain="[('process_state','=','error')]"/>
+                    <separator/>
+            	</filter>
+            	<filter name="grb_create_uid" position="before">
+            		<filter name="grb_process_state" string="Processing status" domain="[]" context="{'group_by':'process_state'}"/>
+            	</filter>
+			</field>
+		</record>
+		       
+	</data>
+</odoo> 

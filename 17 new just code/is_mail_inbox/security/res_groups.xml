@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="res.groups" id="group_mail_box_user">
+            <field name="name">Mail Box User</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record model="res.groups" id="group_mail_box_config_user">
+            <field name="name">Mail Box Configuration</field>
+            <field name="implied_ids" eval="[(4, ref('is_mail_inbox.group_mail_box_user'))]"/>
+        </record>
+        <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('is_mail_inbox.group_mail_box_config_user'))]"/>
+        </record>
+        <record id="base.group_system" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('is_mail_inbox.group_mail_box_config_user'))]"/>
+        </record>
+    </data>
+</odoo>

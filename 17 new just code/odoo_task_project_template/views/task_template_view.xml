@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+    
+        <record id="view_task_form2_inherit_task_template_custom" model="ir.ui.view">
+            <field name="name">view.task.form2.inherit.task.template.custom</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//field[@name='date_last_stage_update']" position="after"> -->
+                <xpath expr="//page[@name='extra_info']" position="after">
+                    <page name="task_template" string="Task Template">
+                        <group>
+                            <field name="custom_is_task_template"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button string="Create Task" type="object" name="custom_create_task" class="oe_highlight" invisible="not custom_is_task_template" groups="project.group_project_manager"/>
+                     <button string="Create Task Template" type="object" name="custom_create_task_template" class="oe_highlight" invisible="custom_is_task_template" groups="project.group_project_manager"/>
+                </xpath>
+
+                 <xpath expr="//div[hasclass('oe_button_box')]" position="before">
+                     <div style="left: 0; top: 400;right ;0;background-color: #3498db; margin-left:0px; margin-right:0px;   margin-bottom: 40px;justify-content: center; align-items: center; text-align: center;" invisible ="custom_is_task_template == False">
+                        <span class="custom-label" style="font-weight: bold;font-size: 18px;">Task Template</span>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="action_view_task_template_custom" model="ir.actions.act_window">
+            <field name="name">Task Templates</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{ 'default_custom_is_task_template': 1,'custom_special_task_template':1}</field>
+            <field name="domain">[('custom_is_task_template', '=', True)]</field>
+        </record>
+        <menuitem id="main_project_task_template_custom_parent" name="Templates" parent="project.menu_main_pm" sequence="3" groups="project.group_project_manager"/>
+        <menuitem id="main_project_task_template_custom" name="Task Templates" parent="odoo_task_project_template.main_project_task_template_custom_parent" action="odoo_task_project_template.action_view_task_template_custom" groups="project.group_project_manager" sequence="2"/>
+        <menuitem id="main_project_template_custom" name="Project Templates" parent="odoo_task_project_template.main_project_task_template_custom_parent" action="odoo_task_project_template.open_view_project_template_custom_all" groups="project.group_project_manager" sequence="1"/>  
+
+        <record id="view_task_type_inherit_task_template_custom" model="ir.ui.view">
+            <field name="name">view.task.type.form2.inherit.task.template.custom</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='project_ids']" position="attributes">
+                    <attribute name="context">{'special':True}</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+ </odoo>

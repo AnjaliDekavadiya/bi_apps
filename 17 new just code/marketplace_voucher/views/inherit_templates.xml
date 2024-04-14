@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+        <template id="mp_inherit_coupon_modal" inherit_id="website_voucher.coupon_modal" name="Marketplace Voucher Code">
+            <xpath expr="//div[@id='open_vouchers_modal']/div/div/div[2]" position="replace">
+
+                <div class="modal-body wk_modal" style="clear:both;background-color:hsla(285, 6%, 85%, 0.45)">
+                    <t t-set="voucher_ids" t-value="website.wk_get_customer_vouchers()"/>
+                    <t t-set="has_voucher" t-value="0"/>
+                        <t t-foreach="voucher_ids" t-as="voucher_id">
+                            <t t-set="remained_voucher" t-value="website.get_remained_voucher_value(voucher_id)"/>
+                            <t t-set="flag" t-value="0"/>
+                            <t t-set="mp_flag" t-value="0"/>
+                            <t t-if="website_sale_order">
+                                <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                                    <t t-if="not voucher_id.marketplace_seller_id">
+                                        <t t-set="flag" t-value="1"/>
+                                    </t>
+                                    <t if="voucher_id.marketplace_seller_id">
+                                        <t t-if="voucher_id.marketplace_seller_id == line.product_id.product_tmpl_id.marketplace_seller_id">
+                                            <t t-set="mp_flag" t-value="1"/>
+                                        </t>
+                                    </t>
+                                </t>
+                            </t>
+
+                            <t >
+                                <t t-set="has_voucher" t-value="1"/>
+                                <div class="voucher">
+                                    <div class="voucher_code">
+                                    <span  style="margin-left:60px;" t-out="voucher_id.voucher_code"/>
+                                    <span class="copy_code">Copy Code</span>
+                                    </div>
+                                    <div t-if="remained_voucher['value_remained'] and remained_voucher['total_availability'] != 0" class="value_div">Get a maxiumum discount of
+                                        <span t-if="voucher_id.voucher_val_type == 'amount'" class="voucher_value" t-out="voucher_id.voucher_value" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                        <span class="voucher_value" t-if="voucher_id.voucher_val_type == 'percent'"> <t t-out="voucher_id.voucher_value"/> %</span>
+                                        <div t-if="voucher_id.use_minumum_cart_value and voucher_id.minimum_cart_amount &gt; 0">To avail this offer minimum purchase should be <span class="voucher_value" t-out="voucher_id.minimum_cart_amount"  t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/> </div>
+                                        <div>This offer is valid till <span class="expirty_date" t-out="website.get_expiry_date(voucher_id)"/> </div>
+                                        <div><t t-out="remained_voucher['rdm_msg']"/> </div>
+                                        <div><t t-out="remained_voucher['msg']"/> </div>
+                                        <div t-if="voucher_id.marketplace_seller_id"> By Seller : <span id="seller_name" t-esc="voucher_id.marketplace_seller_id.sudo().name"/></div>
+                                    </div>
+                                    <div t-if="remained_voucher['total_availability'] == 0" class="value_div">
+                                        <span class="no_voucher" t-out="remained_voucher['msg']"></span>
+                                    </div>
+                                    <div t-if="not remained_voucher['value_remained']" class="value_div">
+                                        <span t-out="remained_voucher['msg']"></span>
+                                    </div>
+                                    <div class="voucher_desc" t-if="voucher_id.display_desc_in_web and remained_voucher['total_availability'] != 0"><span  t-out="voucher_id.note"/>
+                                    </div>
+                                </div>
+                            </t>
+                        </t>
+                        <div t-if="not voucher_ids" class="no_vouchers">
+                            No <br/>Coupons <br/>Available
+                        </div>
+                        <div t-if="voucher_ids and not has_voucher" class="no_vouchers">
+                            No <br/>Coupons <br/>Available
+                        </div>
+                    </div>
+                </xpath>
+        </template>
+        <template id="wk_seller_wise_voucher_code" inherit_id="website_voucher.voucher_code">
+                <xpath expr="//form//input[@id='voucher_8d_code']" position="attributes">
+                    <attribute name="id"></attribute>
+                    <attribute name="class" add="voucher_8d_code" separator=" "></attribute>
+                    <attribute name="t-att-data-mp_seller_id">website_sale_order.sudo().marketplace_seller_id.id</attribute>
+                </xpath>
+            </template>
+
+            <template id="wk_seller_wise_voucher_click_here" inherit_id="website_voucher.voucher_code">
+                <xpath expr="//a[@data-bs-target='#open_vouchers_modal']" position="attributes">
+                    <attribute name="t-att-id">website_sale_order.marketplace_seller_id.name</attribute>
+                </xpath>
+            </template>
+            <template id="wk_seller_wise_voucher_mp_loader" inherit_id="marketplace_seller_wise_checkout.mp_checkout_inherit_cart">
+                <xpath expr="//div[hasclass('col')]" position="after">
+                    <div class="mp-box-review_loader" style="display:none;"/>
+                </xpath>
+                <xpath expr="//div[hasclass('col-12','col-xl-4')]//div[hasclass('ml-2','p-lg-4')]/t[last()]" position="before">                   
+                    <t t-call="website_voucher.voucher_code">
+                        <t t-set="side_cart_summary" t-value="True"/>
+                    </t>
+                </xpath>
+            </template>
+
+</odoo>

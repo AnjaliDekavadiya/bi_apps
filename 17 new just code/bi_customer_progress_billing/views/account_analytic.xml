@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- followup of analytic account views -->
+		<record id="account_analytic_extend_form" model="ir.ui.view">
+			<field name="name">account.analytic.extend.form</field>
+			<field name="model">account.analytic.account</field>
+			<field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+			<field name="arch" type="xml">
+				<field name="partner_id" position="after">
+					<field name="total_progress_billing"/>
+				</field>
+			</field>
+		</record>
+
+	</data>
+</odoo>

@@ -1,0 +1,130 @@
+<odoo>
+    <data>
+        <template id="portal_my_expense_custom_home" name="Portal My Home : expense entries" inherit_id="portal.portal_my_home" priority="50">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-call="portal.portal_docs_entry">  
+                    <t t-set="title">Expenses</t>
+                    <t t-set="url" t-value="'/my/expense_custom'"/>
+                    <t t-set="placeholder_count" t-value="'custom_expense_count'"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="custom_expense_breadcrumbs" name="Portal layout: project menu entry" inherit_id="portal.portal_breadcrumbs" priority="40">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'custom_expense_order_page' or custom_expense" t-attf-class="breadcrumb-item #{'active ' if not custom_expense else ''}">
+                <a t-if="custom_expense" t-attf-href="/my/expense_custom?{{ keep_query() }}">Expenses</a>
+                <t t-else="">Expenses</t>
+            </li>
+            <li t-if="custom_expense" class="breadcrumb-item active">
+                <t t-esc="custom_expense.name"/>
+            </li>
+        </xpath>
+    </template>
+
+        <template id="portal_my_expense_custom" name="My Expense">
+          <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Expense</t>
+            </t>
+            <t t-if="expense" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Expense Name</th>
+                        <th>Product</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="expense" t-as="expense">
+                        <tr>
+                            <td>
+                                <a t-attf-href="/my/expense_custom/#{expense.id}?{{keep_query()}}"><span t-field="expense.name"/></a>
+
+                           </td>
+                           <td><span t-field="expense.product_id"/></td>
+                           <td><span t-field="expense.date"/></td>
+                           <td><span t-field="expense.total_amount"/></td>
+                        </tr>
+                    </t>
+                </tbody>
+            </t>
+          </t>
+        </template>
+
+        <template id="custom_portal_my_expense" name="My Expense">
+            <t t-call="portal.portal_layout">
+                <!-- <t t-set="o_portal_fullwidth_alert">
+                    <t t-call="portal.portal_back_in_edit_mode">
+                        <t t-set="backend_url" t-value="'/web#model=hr.expense&amp;id=%s&amp;view_type=form' % (custom_expense.id)"/>
+                    </t>
+                </t> -->
+                <t t-call="portal.portal_record_layout">
+                    <t t-set="card_body">
+                        <div class="row mb-4">
+                            <!-- <div class="col-lg-6"> -->
+                                <!-- <div class="row"> -->
+                                    <div class="col-md-6">
+                                        <strong>Expense Name</strong>
+                                        <span t-field="custom_expense.name"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>Product</strong>
+                                        <span t-field="custom_expense.product_id"/>
+                                    </div>
+                                    <!-- <div class="col-md-6">
+                                        <strong>Unit Price</strong>
+                                        <span t-field="custom_expense.unit_amount"/>
+                                    </div> -->
+                                    <div class="col-md-6">
+                                        <strong>Unit Price</strong>
+                                        <span t-field="custom_expense.price_unit"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>Quantity</strong>
+                                        <span t-field="custom_expense.quantity"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>Total</strong>
+                                        <span t-field="custom_expense.total_amount"/>
+                                    </div>
+                                    <!-- <div class="row">
+                                        <label class="col-4"><strong>Paid By</strong></label>
+                                        <span t-field="custom_expense.payment_mode"/>
+                                    </div> -->
+                                <!-- </div> -->
+                            <!-- </div> -->
+                            <!-- <div class="col-lg-6"> -->
+                                <div class="col-md-6">
+                                    <strong>Bill Referenece</strong>
+                                    <!-- <span t-field="custom_expense.reference"/> -->
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Date</strong>
+                                    <span t-field="custom_expense.date"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Employee</strong>
+                                    <span t-field="custom_expense.employee_id"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Customer</strong>
+                                    <span t-field="custom_expense.custom_partner_id"/>
+                                </div>
+                            <!-- </div> -->
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <label class="col-4"><strong>Description</strong></label>
+                                    <span t-field="custom_expense.description"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

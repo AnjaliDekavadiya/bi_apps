@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="view_qbo_map_sale_order_tree" model="ir.ui.view">
+        <field name="model">qbo.map.sale.order</field>
+        <field name="name">Default tree view for qbo.map.sale.order</field>
+        <field name="inherit_id" ref="quickbooks_sync_online.view_qbo_map_model_tree"/>
+        <field name="mode">primary</field>
+        <field type="xml" name="arch">
+            <xpath expr="//field[@name='qbo_name']" position="after">
+                <field name="order_id"/>
+                <field name="qbo_lib_type"/>
+                <field name="partner_id"/>
+                <field name="total_tax"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_qbo_map_sale_order_form" model="ir.ui.view">
+        <field name="model">qbo.map.sale.order</field>
+        <field name="name">Default form view for qbo.map.sale.order</field>
+        <field name="inherit_id" ref="quickbooks_sync_online.view_qbo_map_model_form"/>
+        <field name="mode">primary</field>
+        <field type="xml" name="arch">
+            <xpath expr="//field[@name='qbo_name']" position="after">
+                <field name="order_id"
+                       domain="[('company_id', '=', company_id)]"
+                       options="{'no_create': True, 'no_quick_create': True, 'no_create_edit': True}"/>
+                <field name="qbo_lib_type"/>
+                <field name="partner_id"/>
+                <field name="qbo_tax_ids" readonly="1" widget="many2many_tags"/>
+                <field name="total_tax" readonly="1"/>
+                <field name="order_map_line_ids" readonly="1">
+                    <tree>
+                        <field name="line_num"/>
+                        <field name="item_map_id"/>
+                        <field name="tax_class"/>
+                        <field name="tax_code"/>
+                        <field name="tax_map_ids" widget="many2many_tags"/>
+                    </tree>
+                </field>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

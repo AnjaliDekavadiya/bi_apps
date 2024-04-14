@@ -1,0 +1,67 @@
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+           <h2 class="oe_slogan"  style="color:olive;"><b>Import Chart of Accounts using Excel</h2>
+           <p class="oe_mt32"  style="color:olive;">
+Import your company chart of accounts into Odoo using Excel.<br>
+        </p>
+<p class="oe_mt32" style="color:olive;">
+        Make sure you have xlwt Python libarary installed. 
+        </p>
+          <p style="color:CRIMSON;"><b>Menus Available:</b>
+            <ul style="color:olive;"><i>
+              <li>Import Chart of Account</li>
+             </ul></p>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h3 class="oe_slogan"><b style="color:CRIMSON;"><b>Wizard to Import Account / Chart of Accounts</b></h3>
+<p style="color:CRIMSON;"> Open Wizard From Import  Chart of Account menu.
+       <div class="oe_demo oe_screenshot">
+           <img src="account_1.png">
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h3 class="oe_slogan"><b style="color:CRIMSON;"><b>Sample Data of Excel/.xls file</b></h3>
+       <div class="oe_demo oe_screenshot">
+           <img src="account_5.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h3 class="oe_slogan"><b style="color:CRIMSON;"><b>Created Chart Of Accounts</b></h3>
+       <div class="oe_demo oe_screenshot">
+            <img src="account_2.png">
+       </div>
+       <center><h4  style="color:CRIMSON;"><b>Form Of Created Chart of Account</h4></center>
+       <div class="oe_demo oe_screenshot">
+           <img src="account_3.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container" >
+   <div class="oe_row oe_spaced">
+       <div class="oe_span6">
+           <div class="oe_picture" style="margin: 25px 10%;">
+               <a href="http://www.probuse.com/">
+                   <img src="logo.png">
+               </a>
+           </div>
+       </div>
+       <div class="oe_span6">
+           <p class="oe_mt32">
+               If you need any help or want more additional features,<br/> you may contact us through:<br/>
+               Email: <a href="contact@probuse.com">contact@probuse.com</a> <br/>
+               Website: <a href="http://www.probuse.com/" target='new'><u>www.probuse.com</u></a> <br/>
+               Skype: mustufa_probuse<br/>
+           </p>
+       </div>
+   </div>
+</section>
+
+

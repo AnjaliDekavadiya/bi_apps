@@ -1,0 +1,132 @@
+<odoo>
+    
+    <template id="return_rma_button_pos_order_custom" name="Return RMA" inherit_id="website_portal_pos_orders.portal_my_pos_orders"
+        priority="28">
+        <xpath expr="//tbody//tr/td[last()]" position="after">
+           <td>
+                <a t-attf-href="/custom/rma_request/pos/#{order.id}?#{keep_query()}" align="right" 
+                class="btn btn-sm btn-primary mt4 mr8" style="    background-color: #7c6576;border: none;">Create RMA</a>
+            </td>
+        </xpath>
+        <xpath expr="//t[@t-call='portal.portal_table']//thead/tr" position="inside">
+            <th>RMA</th>
+        </xpath>
+    </template>
+
+    <template id="custom_product_return_pos_rma" name="Return Product">
+        <t t-call="portal.portal_layout">
+            <form action="/custom/rma_order/pos" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <br/>
+                <center><h2><strong>Return Material Authorization Request</strong></h2></center>
+                <br/> <br/>
+                <t t-call="portal.portal_table">
+                    <tr>
+                        <td>POS Order Number:</td>
+                        <td><span t-field="order.name"/></td>
+                        <td></td>
+                        <td>POS Order Date:</td>
+                        <td><span t-field="order.date_order" t-field-options='{"format": "d/M/y"}'/></td>
+                    </tr>
+                    <tr>
+                        <td>Return Reason:</td>
+                        <td>
+                            <select class="form-control" name="reason">
+                                <t t-foreach="reason" t-as="o">
+                                    <option t-att-value="o.id" t-att-selected="o.id == (o and o.id or -1)">
+                                        <t t-esc="o.name"/>
+                                    </option>
+                                </t>
+                            </select>
+                        </td>
+                        <td></td>
+                        <td>Shipping Reference:</td>
+                        <td><input type="text" name="shipping_reference" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                        <td>Return Address:</td>
+                        <td><input type="textarea" name="address" class="form-control"/></td>
+                        <td></td>
+                        <td>Return Note:</td>
+                        <td><input type="textarea" name="notes" class="form-control"/></td>
+                    </tr>
+                </t>
+                <br/> <br/>
+                <center><h3><strong>Return Merchandise (Check below box against item(s) you want to return.)</strong></h3></center>
+                <br/><br/>
+                
+                <t t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Tick</th>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Delivered Quantity</th>
+                            <th>Uom</th>
+                            <th>Quantity to Return</th>
+                            <th>Images/Attachments</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="order.lines" t-as="ol">
+                        <tr>
+                            <td><input type="checkbox" name="return" t-att-value="ol.id" multiple="True"/>
+                                <input type="hidden" name="order" t-attf-value="#{order.id}"/>
+                                <input type="hidden" name="orderline" t-attf-value="#{ol.id}" multiple="True"/>
+                                <input type="hidden" name="return_identify" t-attf-value="multiple"/>
+                            </td>
+                            <td>
+                                <img t-if="ol.product_id.image_1920"
+                                t-att-src="image_data_uri(ol.product_id.image_1920)"
+                                style='border-radius: 30%; border:1px solid white;' height="48" width="48"/>
+                            </td>
+                            <td>
+                                <span t-esc="ol.product_id.name"/>
+                            </td>
+                            <td>
+                                <span t-esc="ol.qty"/>
+                            </td>
+                            <td>
+                                <span t-field="ol.product_id.uom_id.name"/>
+                            </td>
+                            <td>
+                                <input type="float" default='0.0' size="5" name="returnquantity" multiple="True"/>
+                            </td>
+                            <td>
+                                <input type="file"  class="oe_inline"  multiple="True" name="attachment" t-att-value="ol.id"/>
+                            </td>
+                        </tr>
+                         </t>
+                </t>
+                <div class="text-center" style="margin-top: 2.0em">
+                    <button class="btn btn-success btn">Submit </button> <span></span>
+                    <a class="btn btn-danger btn" onclick="history.go(-1);">Cancel</a>
+                </div>
+            </form>
+        </t>
+    </template>
+    <template id="custom_select_product_pos" name="Select Product">
+        <t t-call="website.layout">
+              <div id="wrap">
+                <div class="oe_structure"/>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="alert alert-danger">
+                                     <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                                     <h2>Warning !<br/></h2>
+                                     <h2>Invalid input please go back and correct.<br/></h2>  
+                                </div>
+                                <p>
+                            <a class="btn btn-primary pull-left mb32" onclick="history.go(-1);">
+                                <span class="hidden-xs">Go Back</span>
+                                <span class="fa fa-long-arrow-left"/>
+                            </a>
+                        </p>
+                            </div>
+                        </div>
+                    </div>
+                <div class="oe_structure"/>
+              </div>
+            </t>
+    </template>
+</odoo>

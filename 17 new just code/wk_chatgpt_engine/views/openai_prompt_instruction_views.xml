@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+    <data>
+        <record id="openai_prompt_instruction_tree_view" model="ir.ui.view">
+            <field name="name">openai.prompt.instruction.tree.view</field>
+            <field name="model">openai.prompt.instruction</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name='model_id' />
+                    <field name="temperature"/>
+                    <field name="content_length"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id='openai_prompt_instruction_form_view' model='ir.ui.view'>
+            <field name='name'>openai.prompt.instruction.form.view</field>
+            <field name='model'>openai.prompt.instruction</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form>
+                    <header>
+                        <field name="bulk_update" invisible="1"/>
+                        <button name="action_allow_bulk_updates" string="Enable Bulk Updates"
+                                type="object" class="oe_highlight" data-hotkey="w" title="Enable Bulk Updates" invisible="bulk_update" />
+                        <button name="action_disallow_bulk_updates" string="Disable Bulk Updates"
+                                type="object" class="oe_highlight" data-hotkey="w" title="Disable Bulk Updates" invisible="not bulk_update" />
+                    </header>
+                    <sheet>
+
+                        <div class="oe_title">
+                            <h1><field name="name" placeholder="Name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name='temperature'/>                                     
+                                <field name='openai_model'/>                                     
+                            </group>
+                            <group>
+                                <field name='content_length'/>
+                            </group>
+                        </group>
+                        <br></br>
+                        <group>
+                            <group>
+                                <field name='model_id' options="{'no_create_edit': True, 'no_create': True}"/>
+                            </group>
+                            <group>
+                                <field name='model_field_ids' widget="many2many_tags" options="{'no_create_edit': True, 'no_create': True}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Tone">
+                                <field name="tone_ids">
+                                    <tree>
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="name"/>
+                                        <field name="content_style"/>
+                                    </tree>
+                                    <form >
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name='name' />                                     
+                                                </group>
+                                                <group>
+                                                    <field name="sequence" />                                   
+                                                </group>
+                                            </group>
+                                            <br></br>
+                                            <div>
+                                                <label for="content_style" />
+                                                <field name='content_style' widget="text"/>  
+                                            </div>
+                                            <group>
+                                                <group>                              
+                                                    <field name='visibility' widget="radio" invisible="1"/>
+                                                    <field name='model_id'  invisible="['|',('visibility','=', 'global'),('visibility','=', False)]" required="visibility == 'specific'"  readonly="1"/>
+                                                </group>
+                                            </group>                          
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id='openai_prompt_instruction_actions' model='ir.actions.act_window'>
+            <field name='name'>OpenAi Prompt Instruction</field>
+            <field name='res_model'>openai.prompt.instruction</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                        No Prompt Instruction Available 
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

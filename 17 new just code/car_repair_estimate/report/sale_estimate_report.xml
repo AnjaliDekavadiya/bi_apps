@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="template_estimate_print_inherited" inherit_id="odoo_sale_estimates.estimate_print">
+            <xpath expr="//div[hasclass('page')]/div/table/tr[3]" position="after">
+                <tr style="border: 2px solid black;">
+                    <td><strong>Car Repair</strong></td><td> <span t-field="doc.custom_car_repair_id.name"/></td>
+                    <td><strong></strong> </td><td></td>
+                </tr>
+            </xpath>
+        </template>
+
+  </data>
+</odoo>

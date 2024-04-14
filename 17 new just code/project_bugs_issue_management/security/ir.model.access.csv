@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_issues_type_manager,custom.issues.type.manager,model_custom_issues_type,project.group_project_manager,1,1,1,1
+access_custom_issues_type_user,custom.issues.type.user,model_custom_issues_type,project.group_project_user,1,0,0,0
+access_project_bugs_issues_wizard_manager,project.bugs.issues.wizard.manager,model_project_bugs_issues_wizard,project.group_project_user,1,1,1,0

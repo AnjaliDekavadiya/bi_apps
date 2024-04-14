@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_repair_request_wizard_project_user,access.repair.request.wizard.project.user,model_repair_request_wizard,project.group_project_user,1,1,1,0
+access_repair_product_wizard_project_user,access.repair.product.wizard.project.user,model_repair_product_wizard,project.group_project_user,1,1,1,0

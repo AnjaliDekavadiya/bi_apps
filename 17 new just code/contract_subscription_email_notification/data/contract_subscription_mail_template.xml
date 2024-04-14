@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--Email template -->
+        <record id="email_template_contract_subscription_expiring_soon" model="mail.template">
+            <field name="name">Contract Subscription Expiring Soon</field>
+            <field name="model_id" ref="contract_subscription_email_notification.model_account_analytic_account"/>
+            <field name="email_from">${object.company_id.email |safe} </field>
+            <field name="email_to" >${object.partner_id.email |safe}</field>
+            <field name="subject">Your Contract (${object.name}) - Expiring Soon</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p>
+                       Hello ${object.partner_id.name},
+                      <ul>Your Contract ${object.name} is going to expire soon on: ${object.end_date.strftime("%d-%m-%Y")}.</ul>
+                      Do not hesitate to contact us if you have any question.
+                    </p>
+                </div>
+               </field>
+       </record>
+
+       <record id="email_template_contract_subscription_running" model="mail.template">
+            <field name="name">Contract Subscription Running</field>
+            <field name="model_id" ref="contract_subscription_email_notification.model_account_analytic_account"/>
+            <field name="email_from">${object.company_id.email |safe} </field>
+            <field name="email_to" >${object.partner_id.email |safe}</field>
+            <field name="subject">Contract Subscription (${object.name}) - Running</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p>
+                       Hello ${object.partner_id.name},
+                      <ul>Your Contract ${object.name} is in progress on: ${object.start_date.strftime("%d-%m-%Y")}.</ul>
+                      Do not hesitate to contact us if you have any question.
+                    </p>
+                </div>
+               </field>
+       </record>
+
+       <record id="email_template_contract_subscription_expired" model="mail.template">
+            <field name="name">Contract Subscription Expired</field>
+            <field name="model_id" ref="contract_subscription_email_notification.model_account_analytic_account"/>
+            <field name="email_from">${object.company_id.email |safe} </field>
+            <field name="email_to" >${object.partner_id.email |safe}</field>
+            <field name="subject">Contract Subscription (${object.name}) - Expired</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p>
+                       Hello ${object.partner_id.name},
+                      <ul>Your Contract ${object.name} has been expired on: ${object.end_date.strftime("%d-%m-%Y")}.</ul>
+                      Do not hesitate to contact us if you have any question.
+                    </p>
+                </div>
+               </field>
+       </record>
+    </data>
+</odoo>

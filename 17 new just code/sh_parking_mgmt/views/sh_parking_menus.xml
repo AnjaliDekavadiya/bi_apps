@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Top menu item -->
+        <menuitem id="sh_parking_menu_root"
+            name="Parking Management"
+            web_icon="sh_parking_mgmt,static/description/icon.png"
+            groups="sh_parking_mgmt.group_employee_sh_parking" 
+            sequence="1"/>
+
+        <menuitem id="sh_parking_dashboard_menu"
+            name="Dashboard"
+            action="sh_parking_mgmt.sh_parking_subslot_action"
+            parent="sh_parking_menu_root"
+            sequence="4"/>
+
+        <menuitem id="sh_parking_membership_menu"
+            name="Membership"
+            action="sh_member_res_partner_action"
+            parent="sh_parking_menu_root"
+            sequence="6"/>
+
+        <menuitem id="sh_parking_members_submenu"
+            name="Members"
+            action="sh_parking_mgmt.sh_member_res_partner_action"
+            parent="sh_parking_membership_menu"
+            sequence="3"/>
+        
+        <menuitem id="sh_parking_membership_submenu"
+            name="Membership"
+            parent="sh_parking_membership_menu"
+            action="sh_parking_mgmt.sh_parking_membership_action"
+            sequence="4"/>
+        
+        <menuitem id="sh_parking_configuration_menu"
+            name="Configuration"
+            parent="sh_parking_menu_root"
+            sequence="10"/>
+        
+        <!-- Sub Menu item -->
+        
+
+        <!-- <menuitem id="sh_parking_member_menu"
+            name="Member"
+            parent="sh_parking_booking_menu"
+            action='sh_parking_mgmt.sh_parking_member_action'
+            sequence="10"/> -->
+        
+        <!-- <menuitem id="sh_parking_parking_report_menu"
+            name="Parking Report"
+            action='sh_parking_mgmt.sh_parking_report_action'
+            parent="sh_parking_report_menu"
+            sequence="10"/>
+         -->
+        <menuitem id="sh_parking_location_submenu"
+            name="Location"
+            action='sh_parking_mgmt.sh_parking_location_action'
+            parent="sh_parking_configuration_menu"
+            groups="sh_parking_mgmt.group_manager_sh_parking"
+            sequence="10"/>
+        
+        <menuitem id="sh_parking_vehicle_submenu"
+            name="Vehicle"
+            action='sh_parking_mgmt.sh_parking_vehicle_action'
+            parent="sh_parking_configuration_menu"
+            groups="sh_parking_mgmt.group_manager_sh_parking"
+            sequence="10"/>
+            
+        <menuitem id="sh_parking_slot_submenu"
+            name="Slot"
+            action='sh_parking_mgmt.sh_parking_slot_action'
+            parent="sh_parking_configuration_menu"
+            groups="sh_parking_mgmt.group_manager_sh_parking"
+            sequence="10"/>
+        <menuitem id="sh_parking_parking_history_menu"
+            name="History"
+            action='sh_parking_mgmt.sh_parking_history_action'
+            parent="sh_parking_configuration_menu"
+            sequence="10"/>
+        <menuitem id="sh_parking_setting_menu"
+            name="Setting"
+            parent="sh_parking_configuration_menu"
+            action='sh_parking_mgmt.action_parking_config_settings'
+            groups="sh_parking_mgmt.group_manager_sh_parking"
+            sequence="10"/>
+</odoo>

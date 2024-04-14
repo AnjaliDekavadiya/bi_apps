@@ -1,0 +1,341 @@
+<html>
+
+<body class="c28 c34 doc-content">
+        <center class="c28 c32" id="h.gjdgxs"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image9.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></center>
+        <h2 style="color:#714b67;">Credit Management</h2>
+        <p class="c17"><span class="c26"></span></p>
+        <h5 class="c18" id="h.30j0zll"><span class="c0">Description</span></h5>
+        <p class="c17"><span class="c26"></span></p>
+        <p class="c20"><span class="c1">This module is configured to apply credit limits to customers and allows
+                        customers
+                        to be placed on a credit hold if the customer should be restricted from placing any new orders
+                        or receiving
+                        any additional orders.</span></p>
+        <p class="c17"><span class="c26"></span></p>
+        <h5 class="c18" id="h.1fob9te"><span class="c0">Configuration</span></h5>
+        <p class="c17"><span class="c26"></span></p>
+        <b class="c30"><span class="c2">Access Rights</span></b>
+        <p class="c17"><span class="c26"></span></p>
+        <ul class="c19 lst-kix_list_1-0 start">
+                <li class="c20 c13 c12 li-bullet-0"><span class="c1">On user &ldquo;Manage Credit Limit&rdquo;, will
+                                give users
+                                the access rights to edit the credit management field on the contact.</span></li>
+                <li class="c4 c12 li-bullet-0"><span class="c1">Access rights do not restrict the &ldquo;Override Credit
+                                Limit&rdquo; field on sales order.</span></li>
+        </ul>
+        <p class="c14"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image10.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c17"><span class="c26"></span></p>
+        <ul class="c19 lst-kix_list_2-0 start">
+                <li class="c8 li-bullet-0"><span class="c10">Upon install all customers will have a credit limit of
+                                zero. When
+                                the credit limit is &ldquo;zero&rdquo; there is no credit limit assigned to that
+                                contact.</span></li>
+                <li class="c8 li-bullet-0"><span class="c10">Credit Management field can be set on any parent contact
+                                through
+                                the &ldquo;Sales &amp; Purchase&rdquo; tab.</span></li>
+                <li class="c25 c13 c12 li-bullet-0"><span class="c10">Add Prepayment Test set under Settings - - &gt;
+                                Sales - -
+                                &gt; Quotations &amp; Orders </span></li>
+        </ul>
+        <p class="c5 c28 c13"><span class="c1">Enable &quot;Add Prepayment Test&quot; to test even if the credit limit
+                        is
+                        equal to 0.</span></p>
+        <p class="c22 c31"><span class="c1"></span></p>
+        <p class="c5 c28"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image2.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5 c22 c28"><span class="c1"></span></p>
+        <ul class="c19 lst-kix_list_2-0">
+                <li class="c25 c13 c12 li-bullet-0"><span class="c10">No. Of Overdue Days set under Settings - - &gt;
+                                Accounting
+                                - - &gt; Customer Payments</span></li>
+                <li class="c13 c12 c25 li-bullet-0"><span class="c10">Allow DO Check Availability even If Hold Delivery
+                                Till is
+                                selected set under Settings - - &gt; Sales - - &gt; Quotations &amp; Orders</span></li>
+        </ul>
+        <p class="c25 c22 c13"><span class="c1"></span></p>
+        <b class="c18" id="h.3znysh7"><span class="c2">Credit Management Fields</span></b>
+        <p class="c17"><span class="c26"></span></p>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image7.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <h5 class="c18" id="h.2et92p0"><span class="c0">Functionality</span></h5>
+        <p class="c17"><span class="c26"></span></p>
+        <b class="c18" id="h.6ppkgpgv6q4n"><span class="c2">Credit Management on Sales Orders</span></b>
+        <p class="c17"><span class="c26"></span></p>
+        <p class="c5 c6"><span class="c2">1. Credit Limit</span></p>
+        <ul class="c19 lst-kix_list_7-0 start">
+                <li class="c4 c12 li-bullet-0"><span class="c10">This will restrict confirmation of any SO that is over
+                                the
+                                value entered in this field or restrict confirmation of a combination of SO over this
+                                value if invoice
+                                has not been paid.</span></li>
+        </ul>
+        <p class="c14"><span class="c1">Note: if the credit limit is &ldquo;0&rdquo; on the customer contact, no credit
+                        limit will be assigned to this contact.</span></p>
+        <p class="c14"><span class="c1">Credit Limit is set for the newly added contact under Sales &amp; Purchase
+                        Tab.</span></p>
+        <p class="c14"><span class="c1">If Credit limit = $100</span></p>
+        <ul class="c19 lst-kix_list_3-0 start">
+                <li class="c20 c13 c12 li-bullet-0"><span class="c1">Sales order will not confirm if total value of sale
+                                is
+                                greater than $100.</span></li>
+        </ul>
+        <p class="c4 c22"><span class="c1"></span></p>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image21.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5 c22"><span class="c15"></span></p>
+        <p class="c7"><span class="c1"></span></p>
+        <p class="c7"><span class="c1"></span></p>
+        <p class="c14"><span class="c1">While confirming the Sale Order, &ldquo;Credit Limit Warning&rdquo; appears as
+                        there
+                        is Over Credit Limit for the contact.</span></p>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image14.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c14"><span class="c10">The Sale order can be overridden by checking the boolean &ldquo;Override Credit
+                        Limit&rdquo; true and confirm the sale order.</span></p>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image19.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5 c22"><span class="c2"></span></p>
+        <p class="c5 c22"><span class="c2"></span></p>
+        <b class="c5"><span class="c2">Tracking use of &ldquo;Over Credit&rdquo;</span></b>
+        <p class="c5"><span class="c1">On the list view of all Sale orders, column named &ldquo;Over Credit&rdquo; will
+                        be
+                        marked true if the credit was overridden.</span></p>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image17.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5 c22"><span class="c15"></span></p>
+        <p class="c14 c6"><span class="c23 c35">2.</span><span class="c35">&nbsp;</span><span class="c2">Total Credit
+                        Used</span></p>
+        <p class="c14 c6"><span class="c1">The Total Credit Used is a computed field and is calculated based on the
+                        below
+                        cases,</span></p>
+        <ul class="c19 lst-kix_list_7-0">
+                <li class="c13 c12 c20 li-bullet-0"><span class="c10">Confirmed sales orders</span></li>
+                <li class="c20 c13 c12 li-bullet-0"><span class="c10">Sales orders with items partially or completely
+                                delivered</span></li>
+                <li class="c20 c13 c12 li-bullet-0"><span class="c10">Sales orders with Draft invoice(s)</span></li>
+                <li class="c4 c12 li-bullet-0"><span class="c10">Sales orders with posted and not paid invoice(s)</span>
+                </li>
+        </ul>
+        <p class="c3"><span class="c2"></span></p>
+        <p class="c3"><span class="c2"></span></p>
+        <p class="c3"><span class="c2"></span></p>
+        <p class="c3"><span class="c2"></span></p>
+        <p class="c3"><span class="c2"></span></p>
+        <p class="c3"><span class="c2"></span></p>
+        <p class="c3"><span class="c2"></span></p>
+        <p class="c7 c28"><span class="c2"></span></p>
+        <p class="c14 c6"><span class="c2">3. Credit hold</span></p>
+        <ul class="c19 lst-kix_list_6-0 start">
+                <li class="c4 c12 c28 li-bullet-0"><span class="c10">If Credit Hold field is enabled in the
+                                Contact.</span></li>
+        </ul>
+        <p class="c14 c28"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image3.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <ul class="c19 lst-kix_list_8-0 start">
+                <li class="c20 c13 c12 li-bullet-0"><span class="c10">While choosing the customer in a sales order,
+                                &ldquo;Credit Limit Warning&rdquo; appears. The user will not be able to confirm any new
+                                sales orders
+                                for any amount.</span></li>
+        </ul>
+        <p class="c7"><span class="c1"></span></p>
+        <p class="c5 c13"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image1.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <ul class="c19 lst-kix_list_8-0">
+                <li class="c4 c12 li-bullet-0"><span class="c10">This can not be overridden. Only way to confirm the
+                                sales order
+                                is to remove the credit hold on the customer.</span></li>
+        </ul>
+        <p class="c5 c9"><span class="c2">On Delivery Order</span></p>
+        <ul class="c19 lst-kix_list_4-0 start">
+                <li class="c4 c12 li-bullet-0"><span class="c10">The user will not be able to process the any open
+                                Delivery
+                                orders for this customer while on credit hold.</span></li>
+                <li class="c4 c12 li-bullet-0"><span class="c10">&ldquo;User Error&rdquo; appears as The customer is on
+                                Credit
+                                hold.</span></li>
+        </ul>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image22.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5 c22"><span class="c2"></span></p>
+        <p class="c5 c9"><span class="c2">4. Has Overdue Invoices </span></p>
+        <p class="c14"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image13.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <ul class="c19 lst-kix_list_10-0 start">
+                <li class="c4 c12 li-bullet-0"><span class="c10">This will be marked true automatically when invoice(s)
+                                have not
+                                been paid by the due date based on the no. of days entered in the field &ldquo;No. Of
+                                Overdue
+                                Days&rdquo; set under Settings.</span></li>
+        </ul>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image6.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <ul class="c19 lst-kix_list_10-0">
+                <li class="c4 c12 li-bullet-0"><span class="c10">This will not effect confirming future Sales
+                                orders.</span>
+                </li>
+        </ul>
+        <p class="c7"><span class="c1"></span></p>
+        <p class="c5 c9"><span class="c2">5. Override Credit Threshold </span></p>
+        <ul class="c19 lst-kix_list_9-0 start">
+                <li class="c20 c13 c12 li-bullet-0"><span class="c10">Any Sales order that is below the &ldquo;override
+                                Credit
+                                Threshold&rdquo; can be confirmed even when the credit limit has been hit. If this field
+                                is zero no
+                                threshold will exist.</span></li>
+                <li class="c4 c12 li-bullet-0"><span class="c10">For example, if our credit limit is 100 and the
+                                threshold is
+                                40.</span></li>
+        </ul>
+        <p class="c4"><span class="c1">We have $110 on credit currently and want to place another Sales order for $35
+                        dollars.</span></p>
+        <p class="c4"><span class="c1">The threshold will allow this Sales order to be confirmed.</span></p>
+        <p class="c7"><span class="c1"></span></p>
+        <p class="c13 c36"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image18.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5 c22"><span class="c11"></span></p>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image15.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5 c22"><span class="c11"></span></p>
+        <p class="c5 c9"><span class="c10 c23">6. Hold Delivery Till Payment </span></p>
+        <ul class="c19 lst-kix_list_11-0 start">
+                <li class="c20 c13 c12 li-bullet-0"><span class="c10">This field can be set on the contact or on the
+                                Sales
+                                order.</span></li>
+                <li class="c20 c13 c12 li-bullet-0"><span class="c10">If boolean is true on the contact, boolean will be
+                                maked
+                                true on all sales orders then propagated to the Delivery order.</span></li>
+                <li class="c20 c13 c12 li-bullet-0"><span class="c10">If the boolean is marked true on the Sales order
+                                it is
+                                only true for that sales order and delivery order.</span></li>
+                <li class="c20 c13 c12 li-bullet-0"><span class="c10">If the boolean is marked false, then it allows to
+                                process
+                                the delivery order.</span></li>
+                <li class="c4 c12 li-bullet-0"><span class="c1">If payment is processed then the boolean on the DO is
+                                automatically updated as False. User allowed to process the DO once the boolean is
+                                false.</span></li>
+        </ul>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image16.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5 c22"><span class="c11"></span></p>
+        <p class="c5 c9"><span class="c2">7. Allow DO Check Availability even If Hold Delivery Till is selected</span>
+        </p>
+        <ul class="c19 lst-kix_list_5-0 start">
+                <li class="c4 c12 li-bullet-0"><span class="c10">When enabled, it will allow check availability for all
+                                the
+                                transfers including transfers with hold delivery till payment and credit hold boolean
+                                enabled.</span>
+                </li>
+        </ul>
+        <p class="c14"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image5.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c7"><span class="c1"></span></p>
+        <p class="c7"><span class="c1"></span></p>
+        <p class="c14"><span class="c1">We can see two transfers in waiting status with one transfer with Hold Delivery
+                        enabled.</span></p>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image12.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c14"><span class="c1">After enabling the &ldquo;Allow DO Check Availability even if Hold Delivery Till
+                        is
+                        selected&rdquo;, select the transfers and click on &ldquo;Check Availability&rdquo; where even
+                        the transfer
+                        with Hold Delivery enabled will be moved to Ready status.</span></p>
+        <p class="c14"><span class="c1">When disabled, check availability will not happen by any sources such as
+                        Scheduled
+                        Action, Confirming the sale order and manually clicking on Check Availability.</span></p>
+        <p class="c14"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image20.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image11.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5 c9"><span class="c2">8. Credit Management on Multi-Companies</span></p>
+        <ul class="c19 lst-kix_list_13-0 start">
+                <li class="c4 c12 li-bullet-0"><span class="c10">For Multi-Companies, there&rsquo;s a field created
+                                under
+                                General Information tab of the company &ldquo;Is Partner Credit&rdquo; which creates
+                                Partner Credit
+                                Limit when enabled.</span></li>
+        </ul>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image8.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 100%; max-width: 624.00px; height: auto;"><img
+                                alt="" src="images/image4.png" class="img-fluid"
+                                style="width: 100%; height: auto; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                                title=""></span></p>
+        <p class="c7"><span class="c0"></span></p>
+        <h2 class="c18" id="h.yc3wivwhrpeo"><span class="c23 c27">Credits</span></h2>
+        <h3 class="c18" id="h.k4mbu7xgdv6"><span class="c16">Contributors</span></h3>
+        <ul class="c19 lst-kix_list_12-0 start">
+                <li class="c5 c13 c12 li-bullet-0"><span class="c24">Sodexis &lt;</span><span class="c21"><a class="c29"
+                                        href="mailto:apps@sodexis.com">apps@sodexis.com</a></span><span
+                                class="c24">&gt;</span></li>
+        </ul>
+        <p class="c5 c28"><span class="c24">This module is maintained by Sodexis.</span></p>
+        <p class="c17"><span class="c26"></span></p>
+</body>
+
+</html>

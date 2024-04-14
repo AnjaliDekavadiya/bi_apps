@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+
+<odoo>
+    <data noupdate="1">
+        <function model="ir.default" name="set" eval="('res.config.settings', 'enable_notify_admin_on_event_approve_reject', True)"/>
+        <function model="ir.default" name="set" eval="('res.config.settings', 'enable_notify_seller_on_event_approve_reject', True)"/>
+        <function model="ir.default" name="set" eval="('res.config.settings', 'notify_admin_on_event_approve_reject_m_tmpl_id', False)"/>
+        <function model="ir.default" name="set" eval="('res.config.settings', 'notify_seller_on_event_approve_reject_m_tmpl_id', False)"/>
+        <function model="ir.default" name="set" eval="('res.config.settings', 'notify_admin_on_event_approve_reject_m_tmpl_id', ref('marketplace_template_for_event_status_changeto_admin'))"/>
+        <function model="ir.default" name="set" eval="('res.config.settings', 'notify_seller_on_event_approve_reject_m_tmpl_id', ref('marketplace_template_for_event_status_change_to_seller'))"/>
+    </data>
+</odoo>

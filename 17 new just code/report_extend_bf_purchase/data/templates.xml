@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="purchase_tmpl_logo_footer_green" model="ir.attachment">
+            <field name="name">purchase_tmpl_logo_footer_green.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/logo_footer_green.odt"/>
+        </record>
+        <record id="purchase_tmpl_logo_footer_red" model="ir.attachment">
+            <field name="name">purchase_tmpl_logo_footer_red.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/logo_footer_red.odt"/>
+        </record>
+        <record id="purchase_tmpl_logo_footer_orange" model="ir.attachment">
+            <field name="name">purchase_tmpl_logo_footer_orange.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/logo_footer_orange.odt"/>
+        </record>
+        <record id="purchase_tmpl_logo_footer_blue" model="ir.attachment">
+            <field name="name">purchase_tmpl_logo_footer_blue.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/logo_footer_blue.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_bubble" model="ir.attachment">
+            <field name="name">purchase_tmpl_bubble.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/Bubble.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_ElegantGreen" model="ir.attachment">
+            <field name="name">purchase_tmpl_ElegantGreen.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ElegantGreen.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_ElegantOrange" model="ir.attachment">
+            <field name="name">purchase_tmpl_ElegantOrange.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ElegantOrange.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_ElegantRed" model="ir.attachment">
+            <field name="name">purchase_tmpl_ElegantRed.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ElegantRed.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_ElegantBlue" model="ir.attachment">
+            <field name="name">purchase_tmpl_ElegantBlue.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ElegantBlue.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_CleanGray" model="ir.attachment">
+            <field name="name">purchase_tmpl_CleanGray.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/CleanGray.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_CleanGreen" model="ir.attachment">
+            <field name="name">purchase_tmpl_CleanGreen.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/CleanGreen.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_CleanOrange" model="ir.attachment">
+            <field name="name">purchase_tmpl_CleanOrange.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/CleanOrange.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_CleanBlue" model="ir.attachment">
+            <field name="name">purchase_tmpl_CleanBlue.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/CleanBlue.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_CleanRed" model="ir.attachment">
+            <field name="name">purchase_tmpl_CleanRed.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/CleanRed.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_ModernRed" model="ir.attachment">
+            <field name="name">purchase_tmpl_ModernRed.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ModernRed.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_ModernOrange" model="ir.attachment">
+            <field name="name">purchase_tmpl_ModernOrange.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ModernOrange.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_ModernGreen" model="ir.attachment">
+            <field name="name">purchase_tmpl_ModernGreen.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ModernGreen.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_ModernBlue" model="ir.attachment">
+            <field name="name">purchase_tmpl_ModernBlue.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ModernBlue.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_modern_stylish_green" model="ir.attachment">
+            <field name="name">purchase_tmpl_modern_stylish_green.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ModernStylishGreen.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_modern_stylish_red" model="ir.attachment">
+            <field name="name">purchase_tmpl_modern_stylish_red.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ModernStylishRed.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_modern_stylish_orange" model="ir.attachment">
+            <field name="name">purchase_tmpl_modern_stylish_orange.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ModernStylishOrange.odt"/>
+        </record>
+    
+        <record id="purchase_tmpl_modern_stylish_blue" model="ir.attachment">
+            <field name="name">purchase_tmpl_modern_stylish_blue.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/ModernStylishBlue.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_transparency" model="ir.attachment">
+            <field name="name">purchase_tmpl_transparency.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/transparency.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_watermark" model="ir.attachment">
+            <field name="name">purchase_tmpl_watermark.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/watermark.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_magenta" model="ir.attachment">
+            <field name="name">purchase_tmpl_magenta.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/magenta.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_terms_and_conditions" model="ir.attachment">
+            <field name="name">purchase_tmpl_terms_and_conditions.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/terms_and_conditions.odt"/>
+        </record>
+        
+        <record id="purchase_tmpl_static" model="ir.attachment">
+            <field name="name">purchase_tmpl_static.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/static.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_simple" model="ir.attachment">
+            <field name="name">purchase_tmpl_simple.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/simple.odt"/>
+        </record>
+
+        <record id="purchase_tmpl_offer" model="ir.attachment">
+            <field name="name">purchase_tmpl_offer.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_purchase/templates/offer.odt"/>
+        </record>
+    </data>
+</odoo>

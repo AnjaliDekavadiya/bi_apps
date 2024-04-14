@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <report 
+            id="customer_sal_helpdesk_report"
+            model="account.analytic.account"
+            string="Service Level Agreement"
+            name="contract_recurring_invoice_analytic.contract_report_view" 
+            file="contract_recurring_invoice_analytic.contract_report_view"
+            report_type="qweb-pdf"
+            paperformat="contract_recurring_invoice_analytic.paperformat_analytic_account_report"/>
+
+    </data>
+</odoo>

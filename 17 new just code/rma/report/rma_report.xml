@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data>
+        <!-- <report
+            id="report_wk_rma"
+            string="RMA"
+            model="rma.rma"
+            report_type="qweb-pdf"
+            file="rma.report_rma"
+            name="rma.report_rma"
+        /> -->
+        <record id="report_wk_rma" model="ir.actions.report">
+            <field name="name">RMA</field>
+            <field name="model">rma.rma</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">rma.report_rma</field>
+            <field name="report_file">rma.report_rma</field>
+            <field name="print_report_name">'%s report.pdf' % (object.name)</field>
+            <field name="binding_model_id" ref="model_rma_rma"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

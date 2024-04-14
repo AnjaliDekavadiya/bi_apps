@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+        <record model='ir.ui.view' id="sale_order_cancel_custom_wizard_form">
+            <field name="name">sale.order.cancel.wizard.form</field>
+            <field name="model">sale.order.cancel.custom.wizard</field>
+            <field name='arch' type="xml">
+                <form string="Sales Order Cancel Reason Wizard">
+                    <group>
+                        <field name="so_cancel_reason_custom_id" widget="selection"/>
+                        <field name="send_email_tocustomer_custom"/>
+                        <field name="sale_cancel_reason" placeholder="Reason details...."/>
+                    </group>
+                   <footer>
+                        <button string="Cancel Order" name="sale_cancel_wizard_method" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Close" class="oe_link" special="cancel"/>
+                   </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="sale_order_cancel_custom_action">
+           <field name="name">Cancel Sales Order</field>
+           <field name="res_model">sale.order.cancel.custom.wizard</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+        </record>
+
+</odoo>

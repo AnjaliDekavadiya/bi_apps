@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amazon Connector - Odoo Enterprise FBM Extension</title>
+    <style>
+
+   </style>
+
+</head>
+<body>
+    <div class="o_equal_col_sm">
+        <div class="shadow bg-white pb32 pt32 px-2" style="border-radius:15px">
+            <h3 class="oe_slogan" style="color:#0f1e40; font-family:Arial; font-weight:700; text-align:center; text-transform:uppercase; opacity:1; font-size:24px; margin-bottom:18px; margin-top:18px">
+                Get all necessary functions to run your Amazon Fuflilled by merchant (FBM) business in Odoo Enterprise.
+            </h3>
+            <p class="mb16 text-black-dark px-3" style="font-family:Arial; text-align:center; font-weight:normal; font-size:14px">
+                As the core features from <a href="https://www.odoo.com/app/amazon-connector" class="font-weight-bold">native Amazon connector</a> provided by Odoo S.A. are not sufficient enough to run a smooth Amazon business - this 4EG Amazon FBM Extension gives you back the required features.
+            </p>
+            <h3 style="color:#940404; font-family:Arial; font-weight:600; text-align:center; font-size:17px; opacity:1; margin:8px 0 16px" class="oe_slogan">FOR DEMO</h3>
+            <div class="text-center mb-3">
+                <a href="mailto:4egrowth@gmail.com?subject=Free Demo of Amazon FBM connector" target="_blank" style="color:#091E42; font-family:Arial; display:inline-block; padding:13px 30px; border:1px solid #1900ff; border-radius:10px" class="mx-1 mb-2 deep-1 deep_hover">
+                    <span class="fa fa-envelope-o mr-2" style="color:#026d32; font-size:20px; vertical-align:middle"></span>
+                    <span style="color:#0f1e40; font-size:16px; vertical-align:middle">Email Us</span>
+                </a>
+            </div>
+        </div>
+    </div>
+<section class="oe_container mt32 mb32" style="margin-left:calc(-42vw + 50%); width:84vw">
+    <div class="row" style="max-width:1540px; margin:0 auto; padding-bottom:64px; border-radius:15px">
+        <ul role="tablist" class="nav nav-tabs justify-content-center" data-tabs="tabs" style="border:none; margin:0 auto">
+            <li class="nav-item">
+                <a aria-controls="overview" aria-selected="true" class="nav-link" data-toggle="tab" href="#overview" id="overview-tab" role="tab" style="color:#4F4F4F; font-weight:400; font-size:24px">
+                    Overview</a>
+            </li>
+            <li class="nav-item">
+                <a aria-controls="support" aria-selected="false" class="nav-link" data-toggle="tab" href="#support" id="support-tab" role="tab" style="color:#4F4F4F; font-weight:400; font-size:24px">Support</a>
+            </li>
+        </ul>
+
+        <div class="container-fluid" style="border:1px solid #eee; border-radius:10px">
+            <div class="tab-content container pt-3" id="tabs_content">
+                <!-- Features Tabs -->
+                <div class="tab-pane show active" id="overview">
+                    <div class="container mt48">
+                        <p class="mb16 text-left text-black-dark px-3" style="font-family:Arial; font-weight:normal; font-size:16px">
+                            <span style="font-weight:bold;">What is necessary to run a smooth Amazon FBM business?</span>
+                            <span><ul>
+                                <li>Import of Amazon orders securely</li>
+                                <li>Sync stock for all or single product</li>
+                                <li>Update order status</li>
+                                <li>Log your data</li>
+                            </ul></span>
+                            <br/><br/>
+                            <span>As the native Odoo Amazon connector is only able to import sales orders <a href="https://www.odoo.com/app/amazon-connector-features" class="font-weight-bold">(Amazon Connector Documentation)</a> and has some major "challenges", this might not be enough for E-commerce businesses to succeed. We (4EGrowth GmbH) run our own Amazon business in Germany since 2010 and are aware of all important features when it comes to connecting Odoo with Amazon. <span style="font-weight:bold;">We built our features on Odoo's native "solution" and made it usable for every Amazon Seller.</span></span>
+                            <br/><br/>
+                        </p>
+                    </div>
+                    <br/><br/><br/><br/>
+                    <div style="margin-bottom:4%">
+                        <h3 class="text-center mb32" style="letter-spacing:-1px !important; font-family:Arial; font-size:30px; font-weight:500;">This 4EG FBM Amazon core extension provides</h3>
+                        <div class="mt16 mb16" style="text-align: left;">
+                            <span class="text-left"><span style="font-weight:bold;">1) Import data at a specific time</span> (for example if you missed/failed orders for any reason you can reimport). Pls note that Amazon has currently a threshold of ~ 40 orders.</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot" src="/img/import_order.jpg">
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: left;">
+                            <span class="text-left"><span style="font-weight:bold;">2) Super important!</span> Sync your odoo stock to Amazon. With native Odoo Amazon connector you have to do that manually! Just create a cron to update with our extension. (see also picture below 3.)</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot" src="/img/export_fbm_stock.png">
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: left;">
+                            <span class="text-left"><span style="font-weight:bold;">3) Update orders status</span> manually or by cron. If for any reason you want to update your shipped orders again or if something went wrong</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot" src="/img/update_shipment.jpg">
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: left;">
+                            <span class="text-left"><span style="font-weight:bold;">4) Log your data.</span> Super important to identify problems with import/export. Furthermore you will see all imported sales order data of every sales order in sales order view. For example if some address data or tax is not set appropriate. (Only visible in debug mode)</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot" src="/img/feed_submission.png">
+                            <img class="img img-responsive center-block oe_picture oe_screenshot" src="/img/sync_log.png">
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <h3 class="text-center mb32" style="letter-spacing:-1px !important; font-family:Arial;  font-size:30px; font-weight:500;">Add on for a better Amazon business</h3>
+                        <div class="mt16 mb16" style="text-align: left;">
+                            <span class="text-center"><span style="font-weight:bold;">5) Set your unique debitor account</span> per marketplace instance. To get a better overview in accounting you might want to see on which marketplace you are having the profit. (see screenshot below 8.)</span>
+                            <br/>
+                            <span class="text-center"><span style="font-weight:bold;">6) Set a sales team per marketplace.</span> Get a quick overview wich marketplace is doing best in sales and compare over product categories/products/countries and more. Compare different times to see increase/decrease of sales per marketplace. (see screenshot below 8.)</span>
+                            <br/>
+                            <span class="text-center"><span style="font-weight:bold;">7) Set a Warehouse per Marketplace.</span> If you want to for any reason sell different stocks on different Marketplaces. (see screenshot below 8.)</span>
+                            <br/>
+                        </div>
+                        <div class="mt16 mb16" style="text-align: left;">
+                            <span class="text-center"><span style="font-weight:bold;">8) Set a pricelist per marketplace</span> (prices are not synced so far)</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot" src="/img/pricelist.png">
+                        </div>
+                        <div class="mt16 mb16" style="text-align: left;">
+                            <span class="text-center">9) Having easy access menu on sales.</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot" src="/img/amz_menu.jpg">
+                        </div>
+                        <div class="mt16 mb16" style="text-align: left;">
+                            <span class="text-center">10) The marketplace (country) is set for each Amazon order</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot" src="/img/marketplace.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="support" role="tabpanel" aria-labelledby="support_tab">
+                    <div class="mb64">
+                        <div class="mt32 mb32">
+                            <div class="mt32 mx-auto text-center">
+                                <h4 class="text-center mt16 mb16 font-weight-bold" style="color:#0f1e40">You need more functions or help with setup? Reach out to us: We are selling on Amazon since 2010 - with Odoo since 2012.</h4>
+                            <span style="font-weight:bold; color:red;">What is 4EG stands for? 4EGrowth is our company vision to succeed.<br/>Find out more by contacting us.</span>
+                            </div>
+                            <div class="mt32 mx-auto text-center">
+                                <a href="https://fouregrowth.com/r/hef" style="color:#091E42; font-family:Arial; display:inline-block; padding:13px 30px; border:1px solid #000000; border-radius:10px" class="mx-1 mb-2 deep-1 deep_hover">
+                                    <span style="color:#007bff; font-size:16px; font-weight:bold; vertical-align:middle">https://fouregrowth.com/r/hef</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

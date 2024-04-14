@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_challenge,access.crm.challenge,sales_team_incentives_app.model_crm_challenge,,1,1,1,1
+access_crm_goals,access.crm.goals,sales_team_incentives_app.model_crm_goals,,1,1,1,1
+access_crm_incen_scheme,access.crm.incen.scheme,sales_team_incentives_app.model_crm_incen_scheme,,1,1,1,1
+access_crm_incen_calc,access.crm.incen.calc,sales_team_incentives_app.model_crm_incen_calc,,1,1,1,1
+access_crm_incen_reward,access.crm.incen.reward,sales_team_incentives_app.model_crm_incen_reward,,1,1,1,1
+access_crm_accounting,access.crm.accounting,sales_team_incentives_app.model_crm_accounting,,1,1,1,1
+access_crm_goal_defination,access_crm_goal_defination,sales_team_incentives_app.model_crm_goal_defination,base.group_user,1,1,1,1
+access_crm_goal_details,access_crm_goal_details,model_crm_goal_details,,1,1,1,1

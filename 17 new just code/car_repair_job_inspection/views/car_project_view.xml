@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="car_repair_inspection_button_project_view" model="ir.ui.view">
+        <field name="name">car.project.project.formview</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="object" string="Inspections" 
+                name="car_show_repair_inspection"  icon="fa-inbox">
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+
+<odoo>
+    <data>
+        <!-- <report
+            id="top_sale_report_items"
+            model="topsaleitem.report"
+            string="Top Sale Products Report"
+            report_type="qweb-pdf"
+            name="top_sales_by_item_customer.report_topsaleitem"
+            file="top_sales_by_item_customer.report_topsaleitem"
+        /> -->
+        <record id="top_sale_report_items" model="ir.actions.report">
+            <field name="name">Top Sale Products Report</field>
+            <field name="model">topsaleitem.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">top_sales_by_item_customer.report_topsaleitem</field>
+            <field name="report_file">top_sales_by_item_customer.report_topsaleitem</field>
+            <field name="binding_model_id" ref="top_sales_by_item_customer.model_topsaleitem_report"/>
+            <field name="binding_type">report</field>
+        </record>
+        
+        <template id="report_topsaleitem">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <t t-call="web.html_container">
+                    <div class="page">
+                        <div>
+                        <center><h2>Top <span t-esc="doc.top_sale_value"/> Products</h2></center>
+                        </div>
+                        <div class="row mt32 mb32">
+                            <table class="table table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>From Date:</strong>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.start_date"/>
+                                        </td>
+                                        <td>
+                                            <strong>To Date:</strong>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.end_date"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="row mt32 mb32">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Sequence</th>
+                                        <th>Product</th>
+                                        <th>Total Quantity Sold</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="count" t-value="1"/>
+                                    <tr t-foreach="products" t-as="product">
+                                        <td>
+                                            <span t-esc="count"/>
+                                            <t t-set="count" t-value="count + 1"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="product['product_id'].name"/><t t-if="product['product_id'].default_code"> [<span t-esc="product['product_id'].default_code"/>]</t> 
+                                        </td>
+                                        <td>
+                                            <span t-esc="product['qty']"/> / <span t-esc="product['product_id'].uom_id.name"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+        </template>
+    </data>
+</odoo>
+
+

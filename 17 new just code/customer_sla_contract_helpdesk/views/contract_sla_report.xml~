@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+    
+        <template id="contarct_sla_helpdesk_level_add" inherit_id ="contract_recurring_invoice_analytic.report_contract_document">
+            <xpath expr="//table[1]/tr[4]" position="after">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><strong>Service Level Agreement Level</strong></td>
+                    <td><span t-field="doc.helpdesk_sla_level"/></td>
+                </tr>
+            </xpath>
+        </template>
+
+</data>
+</odoo>

@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+           <record id="mail_template_delivered_product" model="mail.template">
+    <field name="name">Product delivered mail</field>
+    <field name="model_id" ref="model_stock_picking"/>
+    <field name="subject">Delivered Product</field>
+    <field name="email_from">{{(object.company_id and object.company_id.email) or ''}}</field>
+    <field name="email_to">{{object.partner_id.email}}</field>
+    <field name="auto_delete" eval="False"/>
+    <field name="body_html" type="html">
+        <t>
+            <h6>Delivery Status:</h6>
+            <ul>
+                <h3>Dear <t t-out="object.partner_id.name" /> ,</h3>
+                <br/>
+                <h3>Your products:<br/>
+                    <p><t t-foreach="object.move_ids_without_package.product_id" t-as="product">
+                        <t t-if="len(product) > 1">
+                            <t t-set="product_names" t-value="', '.join([p.name for p in product])" />
+                            <t t-out="product_names" />
+                        </t>
+                        <t t-else="">
+                            <t t-out="product[0].name" /><br/>
+                        </t>
+                    </t></p>
+                    with Order ID: <t t-out="object.origin" /> is delivered
+                </h3>
+                <br/>
+            </ul>
+            <h3>Thank you for choosing us!</h3>
+        </t>
+    </field>
+</record>
+
+
+
+    </data>
+</odoo>
+<!-- ****************************Delivery mail Template**************************** -->

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record id="email_template_edi_work" model="mail.template">
+            <field name="name">Work packages: Send by email</field>
+            <field name="model_id" ref="bi_job_costing_work_package.model_work_packages"/>
+            <field name="email_from">{{ object.user_id.email_formatted }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="subject">{{ object.name }} work (Ref {{ object.work_name or 'n/a' }})</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear
+                        <t t-out="object.partner_id.name"/>
+                        <br/>
+                        <br/>
+                        We are sending here with your work package
+                        <strong>
+                            <t t-out="object.name"/>
+                        </strong>
+                        <br/>
+                        <br/>
+                        Please find attachment on the package.
+                        <br/>
+                        <br/>
+                        Do not hesitate to contact us if you have any question.
+                        <br/>
+                        <br/>
+                        Thank You.
+                    </p>
+                </div>
+            </field>
+            <field name="report_template_ids" eval="[(4, ref('bi_job_costing_work_package.job_work_report_id'))]"/>
+            <field name="lang">{{ object.user_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_equipment_equipment,user_equipment_equipment,model_equipment_equipment,,1,1,1,1
+access_equipment_category,user_equipment_category,model_equipment_category,,1,1,1,1
+access_maintainance_type,user_maintainance_type,model_maintainance_type,,1,1,1,1
+access_equipment_request,user_equipment_request,model_equipment_request,,1,1,1,1
+access_job_order,user_job_order,model_job_order,,1,1,1,1
+access_make_euipment_wizard,make.euipment.wizard,bi_job_equipments_maintenance_request.model_make_euipment_wizard,,1,1,1,1
+access_make_euipment_request_wizard,make.euipment.request.wizard,bi_job_equipments_maintenance_request.model_make_euipment_request_wizard,,1,1,1,1
+
+
+

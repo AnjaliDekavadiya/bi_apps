@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--Tender Type-->
+        <record id="tender_type_1" model="tender.type">
+            <field name="name">Construction Tender</field>
+            <field name="is_site_specific">True</field>
+        </record>
+        <record id="tender_type_2" model="tender.type">
+            <field name="name">Maintenance Tender</field>
+        </record>
+        <record id="tender_type_3" model="tender.type">
+            <field name="name">Electrical Tender</field>
+        </record>
+        <record id="tender_type_4" model="tender.type">
+            <field name="name">Plumbing Tender</field>
+        </record>
+        <record id="tender_type_5" model="tender.type">
+            <field name="name">IT Tender</field>
+        </record>
+        <record id="tender_type_6" model="tender.type">
+            <field name="name">Consulting Tender</field>
+        </record>
+        <record id="tender_type_7" model="tender.type">
+            <field name="name">Healthcare Tender</field>
+        </record>
+        <record id="tender_type_8" model="tender.type">
+            <field name="name">Transportation Tender</field>
+        </record>
+        <record id="tender_type_9" model="tender.type">
+            <field name="name">Education Tender</field>
+        </record>
+        <record id="tender_type_10" model="tender.type">
+            <field name="name">Environmental Tender</field>
+        </record>
+        <!--Document Type-->
+        <!--Tender-->
+        <record id="doc_type_1" model="document.type">
+            <field name="name">Tender Notice</field>
+            <field name="type">tender</field>
+        </record>
+        <record id="doc_type_2" model="document.type">
+            <field name="name">Instructions to Bidders</field>
+            <field name="type">tender</field>
+        </record>
+        <record id="doc_type_3" model="document.type">
+            <field name="name">Tender Form</field>
+            <field name="type">tender</field>
+        </record>
+        <record id="doc_type_4" model="document.type">
+            <field name="name">Scope of Work</field>
+            <field name="type">tender</field>
+        </record>
+        <record id="doc_type_5" model="document.type">
+            <field name="name">Contract or Agreement Template</field>
+            <field name="type">tender</field>
+        </record>
+        <record id="doc_type_6" model="document.type">
+            <field name="name">Evaluation Criteria</field>
+            <field name="type">tender</field>
+        </record>
+        <record id="doc_type_7" model="document.type">
+            <field name="name">Bid Security</field>
+            <field name="type">tender</field>
+        </record>
+        <record id="doc_type_8" model="document.type">
+            <field name="name">Supporting Documents</field>
+            <field name="type">tender</field>
+        </record>
+        <!--Bid-->
+        <record id="doc_type_9" model="document.type">
+            <field name="name">Bid Submission Form</field>
+            <field name="type">bid</field>
+        </record>
+        <record id="doc_type_10" model="document.type">
+            <field name="name">Technical Proposal</field>
+            <field name="type">bid</field>
+        </record>
+        <record id="doc_type_11" model="document.type">
+            <field name="name">Financial Proposal</field>
+            <field name="type">bid</field>
+        </record>
+        <record id="doc_type_12" model="document.type">
+            <field name="name">Company Profile</field>
+            <field name="type">bid</field>
+        </record>
+        <record id="doc_type_13" model="document.type">
+            <field name="name">References and Past Performance</field>
+            <field name="type">bid</field>
+        </record>
+        <record id="doc_type_14" model="document.type">
+            <field name="name">Qualifications and Certifications</field>
+            <field name="type">bid</field>
+        </record>
+        <record id="doc_type_15" model="document.type">
+            <field name="name">Financial Statements</field>
+            <field name="type">bid</field>
+        </record>
+        <record id="doc_type_16" model="document.type">
+            <field name="name">Compliance Documents</field>
+            <field name="type">bid</field>
+        </record>
+        <record id="doc_type_17" model="document.type">
+            <field name="name">Bid Security</field>
+            <field name="type">bid</field>
+        </record>
+    </data>
+</odoo>

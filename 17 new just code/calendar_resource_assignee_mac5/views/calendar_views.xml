@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_calendar_event_tree" model="ir.ui.view">
+        <field name="name">calendar.event.assignee.view.tree</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar_resource_base_mac5.view_calendar_event_tree"/>
+        <field name="arch" type="xml">
+            <field name="assignee_user_id" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_calendar_event_form" model="ir.ui.view">
+        <field name="name">calendar.event.assignee.view.form</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar_resource_base_mac5.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+            <field name="assignee_user_id" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_calendar_event_form_quick_create" model="ir.ui.view">
+        <field name="name">calendar.event.quick.create.assignee.view.form</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form_quick_create"/>
+        <field name="arch" type="xml">
+            <field name="partner_ids" position="after">
+                <field name="assignee_user_id" widget="many2one_avatar_user"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="calendar_event_assignee_view_calendar" model="ir.ui.view">
+        <field name="name">calendar.event.assignee.view.calendar</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_calendar"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="999"/>
+        <field name="arch" type="xml">
+            <calendar position="attributes">
+                <attribute name="color">assignee_user_id</attribute>
+            </calendar>
+            <field name="partner_ids" position="after">
+                <field name="assignee_user_id" options="{'icon': 'fa fa-calendar-check-o'}" filters="1" widget="many2one_avatar_user"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="calendar_event_assignee_view_search" model="ir.ui.view">
+        <field name="name">calendar.event.assignee.view.search</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_search"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="999"/>
+        <field name="arch" type="xml">
+            <field name="partner_ids" position="after">
+                <field name="assignee_user_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_calendar_event_by_assignee" model="ir.actions.act_window">
+        <field name="name">Meetings by Assignee</field>
+        <field name="res_model">calendar.event</field>
+        <field name="view_mode">calendar,tree,form</field>
+        <field name="view_id" ref="calendar_event_assignee_view_calendar"/>
+        <field name="search_view_id" ref="calendar_event_assignee_view_search"/>
+        <field name="context">{'resource_by_assignee': True}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Schedule a new meeting by assignee
+          </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_calendar_event_by_assignee"
+        parent="web_calendar_base_mac5.menu_calendar_event"
+        action="action_calendar_event_by_assignee"
+        groups="base.group_user"
+        sequence="99"/>
+
+</odoo>

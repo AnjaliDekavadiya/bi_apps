@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!-- Warranty Template -->
+        <template id="warranty_template">
+            <table class="table table-sm o_main_table">
+                <thead>
+                    <tr class="border-black">
+                        <th name="th_name" class="text-center">
+                            <span>Name</span>
+                        </th>
+                        <th name="th_date" class="text-center">
+                            <span>Warranty Date</span>
+                        </th>
+                        <th name="th_customer" class="text-center">
+                            <span>Customer</span>
+                        </th>
+                        <th name="th_product" class="text-center">
+                            <span>Product</span>
+                        </th>
+                        <t t-if="is_product_code">
+                            <th name="th_product_code" class="text-center">
+                                <span>Product Code</span>
+                            </th>
+                        </t>
+                        <t t-if="is_product_number">
+                            <th name="th_serial_number" class="text-center">
+                                <span>Serial Number</span>
+                            </th>
+                        </t>
+                        <th name="th_start_date" class="text-center">
+                            <span>Start Date</span>
+                        </th>
+                        <th name="th_end_date" class="text-center">
+                            <span>End Date</span>
+                        </th>
+                        <th name="th_SO" class="text-center">
+                            <span>Sale Order</span>
+                        </th>
+                        <th name="th_state" class="text-center">
+                            <span>State</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="warranty_ids" t-as="warranty_id">
+                        <tr>
+                            <td class="text-center">
+                                <span t-esc="warranty_id.name"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="warranty_id.warranty_date"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="warranty_id.partner_id.name"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="warranty_id.product_id.name"/>
+                            </td>
+                            <t t-if="is_product_code">
+                                <t t-if="warranty_id.product_ref_code">
+                                    <td class="text-center">
+                                        <span t-esc="warranty_id.product_ref_code"/>
+                                    </td>
+                                </t>
+                                <t t-if="not warranty_id.product_ref_code">
+                                    <td class="text-center">
+                                        <span> - </span>
+                                    </td>
+                                </t>
+                            </t>
+                            <t t-if="is_product_number">
+                                <t t-if="warranty_id.serial_number">
+                                    <td class="text-center">
+                                        <span t-esc="warranty_id.serial_number"/>
+                                    </td>
+                                </t>
+                                <t t-if="not warranty_id.serial_number">
+                                    <td class="text-center">
+                                        <span> - </span>
+                                    </td>
+                                </t>
+                            </t>
+
+                            <td class="text-center">
+                                <span t-esc="warranty_id.start_date"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="warranty_id.end_date"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="warranty_id.sale_order_id.name"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="dict(warranty_id.fields_get(allfields=['state'])['state']['selection'])[warranty_id.state]"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </template>
+
+
+        <!-- Warranty Report Template -->
+        <template id="sr_warranty_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="text-center">
+                        <h3>
+                            <strong>
+                                <span>Product Warranty Report</span>
+                            </strong>
+                        </h3>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td class="text-center">
+                                        <span>
+                                            <strong>Start Date</strong>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span>
+                                            <strong>End Date</strong>
+                                        </span>
+                                    </td>
+                                    <t t-if="docs.state">
+                                        <td class="text-center">
+                                            <span>
+                                                <strong>State</strong>
+                                            </span>
+                                        </td>
+                                    </t>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        <span t-field="docs.start_date"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-field="docs.end_date"/>
+                                    </td>
+                                    <t t-if="docs.state">
+                                        <td class="text-center">
+                                            <span t-field="docs.state"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <t t-if="warranty_ids">
+                        <div class="page">
+                            <t t-call="sr_warranty_management.warranty_template" />
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div class="text-center">
+                            <span style="text-center">There is no data available</span>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+    <data>
+        <record id="pos_gift_card_inherited_product_template_form" model="ir.ui.view">
+            <field name="name">product.product.gift.card</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']" position="inside">
+                    <span>
+                        <field name="wk_is_gift_card" />
+                        <label for="wk_is_gift_card" />
+                    </span>
+                </xpath>
+                <notebook position='inside'>
+                    <page string='POS Gift Card' invisible="not wk_is_gift_card">
+                        <group col="2">
+                            <label for="wk_validity" class="oe_inline" style="width:20%" />
+                            <div>
+                                <field name="wk_validity" style="width:120px" required='wk_is_gift_card'/>
+                                <field name="wk_validity_unit" style="width:80px" required='wk_is_gift_card'/>
+                            </div>
+                        </group>
+                        <!-- <group col="4">
+                            <field name="wk_is_partially_redemed"/>
+                            <field name="wk_redeemption_limit" attrs= "{'required':[('wk_is_partially_redemed','=', True)],'invisible':[('wk_is_partially_redemed','!=', True)]}"/>
+                        </group> -->
+                        <group col="4">
+                            <field name="wk_use_minimum_cart_value" />
+                            <field name="wk_minimum_cart_value" invisible="not wk_use_minimum_cart_value"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record id="action_pos_gift_card_products" model="ir.actions.act_window">
+            <field name="name">Gift Cards</field>
+            <field name="res_model">product.template</field>
+            <field name="domain">[('wk_is_gift_card', '=', True),('available_in_pos','=',True)]</field>
+            <field name="context">{'default_wk_is_gift_card':True}</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="product.product_template_kanban_view" />
+        </record>
+        <menuitem id="pos_gift_card_products_webiste" name="Gift Cards" parent="pos_coupons.id_parent_pos_coupons" action="action_pos_gift_card_products" sequence="2" />
+
+    </data>
+</odoo>

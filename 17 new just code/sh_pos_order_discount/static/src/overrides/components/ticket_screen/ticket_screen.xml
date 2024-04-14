@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="TicketScreen" t-inherit="point_of_sale.TicketScreen" t-inherit-mode="extension">
+        <xpath expr="//OrderWidget" position="attributes">
+            <attribute name="global_discount">env.services.pos.config.sh_allow_global_discount ? _selectedSyncedOrder.order_global_discount : 0.0</attribute>
+        </xpath>
+    </t>
+
+</templates>

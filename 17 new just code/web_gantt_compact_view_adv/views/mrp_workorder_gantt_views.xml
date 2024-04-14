@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="mrp_workorder_form_view_inherited_gantt" model="ir.ui.view">
+        <field name="name">mrp.workorder.view.inherited</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp.mrp_production_workorder_form_view_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[1]" position="after">
+                <page string="Gantt Details" name="gantt_details" groups="mrp.group_mrp_user">
+                    <group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_finished"/>                                      
+                        </group>
+                        <group>
+                            <field name="task_priority"/>
+                            <field name="task_type"/>
+                            <field name="progress"/>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                    </group>
+                </page>
+                <page name="link_workorder" string="Link Orders" groups="mrp.group_mrp_manager">
+                    <field name="workorder_link_ids" widget="one2many" context="{'show_attribute': False}">
+                        <tree string="Link Type" editable="bottom">
+                            <field name="target_id"/>
+                            <field name="link_type"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mrp_workorder_view_ganttview" model="ir.ui.view">
+        <field name="name">mrp.workorder.view.gantt</field>
+        <field name="model">mrp.workorder</field>
+        <field name="arch" type="xml">
+            <ganttview
+                date_start = "date_start"
+                date_stop = "date_finished"                 
+                color ="color"
+                round_dnd_dates = "false"
+                default_group_by = "workcenter_id"
+                default_scale = "month"
+                task_type = "task_type"
+                show_links = "true"
+                progress = "progress"
+                deadline = "date_finished"
+                link_model = "mrp.workorder.link"
+                priority = 'task_priority'
+            />
+        </field>
+    </record>
+
+    <record id="mrp.mrp_workorder_todo" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,ganttview</field>
+    </record>
+
+</odoo>

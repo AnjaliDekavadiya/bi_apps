@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View Section -->
+    <record id="msegat_sms_send_tree_view" model="ir.ui.view">
+        <field name="name">msegat.sms.send.tree</field>
+        <field name="model">msegat.sms.send</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="msegat_account_id"/>
+                <field name="send_sms_to"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View Section -->
+    <record id="msegat_sms_send_from_view" model="ir.ui.view">
+        <field name="name">msegat.sms.send.form</field>
+        <field name="model">msegat.sms.send</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button class="btn-primary"
+                            name="action_send_sms_to_recipients" type="object"
+                            string="Send Message"
+                            invisible="state in ['done', 'error']"
+                            confirm="This will send the SMS to all recipients. Do you still want to proceed ?"/>
+
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_recipients" style="width:16%"
+                                type="object" class="oe_stat_button" icon="fa-users"
+                                invisible="recipients_count == 0">
+                            <field name="recipients_count" widget="statinfo"
+                                   string="Recipients"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="ID"/>
+                        <h1 class="d-flex flex-row justify-content-between">
+                            <field name="name" default_focus="1" class="text-truncate"
+                                   readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <field name="msegat_account_id" required="1"
+                               options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
+                               readonly="state != 'draft'"/>
+                        <field name="send_sms_to" widget='radio' required="1"
+                               readonly="state != 'draft'"/>
+                        <field name="partner_id"
+                               readonly="state != 'draft'"
+                               invisible="send_sms_to != 'single_contact'"
+                               required="send_sms_to == 'single_contact'"
+                               options="{'no_create': True,'no_create_edit': True , 'no_open': True}"/>
+                        <field name="partner_ids" widget='many2many_tags'
+                               readonly="state != 'draft'"
+                               invisible="send_sms_to != 'multiple_contacts'"
+                               required="send_sms_to == 'multiple_contacts'"
+                               options="{'no_create': True,'no_create_edit': True , 'no_open': True}"/>
+                        <field name="sms_group_id"
+                               readonly="state != 'draft'"
+                               invisible="send_sms_to != 'sms_group'"
+                               required="send_sms_to == 'sms_group'"
+                               options="{'no_create': True,'no_create_edit': True , 'no_open': True}"/>
+                        <field name="mobile_number"
+                               eadonly="state != 'draft'"
+                               invisible="send_sms_to != 'mobile'"
+                               required="send_sms_to == 'mobile'"/>
+
+                        <field name="sms_template_id"
+                               options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
+                               readonly="state != 'draft'"/>
+                        <field name="message" required="1"
+                               readonly="state != 'draft'"/>
+                    </group>
+
+                    <notebook>
+                        <page string="SMS Log History">
+                            <group string="Msegat Information">
+                                <group>
+                                    <field name="total_messages" readonly="1"/>
+                                    <field name="total_successfully_send_messages"
+                                           readonly="1"/>
+                                    <field name="total_error_messages" readonly="1"/>
+                                </group>
+                            </group>
+
+                            <group string="Log History">
+                                <field name="sms_log_history_ids" mode="tree, form"
+                                       nolabel="1" colspan="2">
+                                    <tree create="0" edit="0"
+                                          decoration-success="status in ('Success')"
+                                          decoration-danger="status in ('Failed')">
+                                        <field name="name"/>
+                                        <field name="msegat_account_id"/>
+                                        <field name="partner_id" invisible="1"/>
+                                        <field name="mobile_number"/>
+                                        <field name="status"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="name" readonly="1"/>
+                                                <field name="sms_send_rec_id" readonly="1"/>
+                                                <field name="msegat_account_id" readonly="1"/>
+                                            </group>
+                                            <group>
+                                                <field name="partner_id" readonly="1" invisible="1"/>
+                                                <field name="mobile_number" readonly="1"/>
+                                                <field name="status" readonly="1"/>
+                                                <field name="message" readonly="1"/>
+                                            </group>
+                                        </group>
+
+                                        <group string="Failed Message Information">
+                                            <group>
+                                                <field name="error_status_code" readonly="1"/>
+                                                <field name="error_message" readonly="1"/>
+                                                <field name="error_code" readonly="1"/>
+                                            </group>
+                                            <group>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Action View Section -->
+    <record id="msegat_sms_send_action"
+            model="ir.actions.act_window">
+        <field name="name">Send SMS</field>
+        <field name="res_model">msegat.sms.send</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="msegat_sms_send_tree_view"/>
+    </record>
+
+    <!-- Parent/Top Menu Section -->
+    <menuitem id="msegat_sms_main_menu" name="SMS"
+              parent="msegat_sms_gateway_gsc.msegat_sms_gateway_main_app_menu"
+              sequence="5"/>
+
+    <!-- Child Menu Section -->
+    <menuitem id="msegat_sms_send_menu" name="Send SMS"
+              parent="msegat_sms_main_menu" sequence="1"
+              action="msegat_sms_send_action"/>
+</odoo>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="tk_tender_management.template_tender_dashboard" owl="1">
+        <section class="section tender_dashboard">
+            <div class="container tender_dashboard">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 mb-4 mt32 mb16">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-5">
+                                    <h2 class="section-header">Tenders</h2>
+                                </div>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 col-sm-6 total-tender" t-on-click="() => this.viewTenderStatic('all')">
+                            <div class="card card-xl-stretch mb-xl-8">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-stack card-p flex-grow-1">
+                                        <span class="symbol symbol-50px me-2">
+                                            <span class="symbol-label bg-light-info">
+                                                <span class="svg-icon svg-icon-info svg-icon-muted svg-icon-2hx">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path opacity="0.3" d="M3 13H10C10.6 13 11 13.4 11 14V21C11 21.6 10.6 22 10 22H3C2.4 22 2 21.6 2 21V14C2 13.4 2.4 13 3 13Z" fill="currentColor"/>
+                                                        <path d="M7 16H6C5.4 16 5 15.6 5 15V13H8V15C8 15.6 7.6 16 7 16Z" fill="currentColor"/>
+                                                        <path opacity="0.3" d="M14 13H21C21.6 13 22 13.4 22 14V21C22 21.6 21.6 22 21 22H14C13.4 22 13 21.6 13 21V14C13 13.4 13.4 13 14 13Z" fill="currentColor"/>
+                                                        <path d="M18 16H17C16.4 16 16 15.6 16 15V13H19V15C19 15.6 18.6 16 18 16Z" fill="currentColor"/>
+                                                        <path opacity="0.3" d="M3 2H10C10.6 2 11 2.4 11 3V10C11 10.6 10.6 11 10 11H3C2.4 11 2 10.6 2 10V3C2 2.4 2.4 2 3 2Z" fill="currentColor"/>
+                                                        <path d="M7 5H6C5.4 5 5 4.6 5 4V2H8V4C8 4.6 7.6 5 7 5Z" fill="currentColor"/>
+                                                        <path opacity="0.3" d="M14 2H21C21.6 2 22 2.4 22 3V10C22 10.6 21.6 11 21 11H14C13.4 11 13 10.6 13 10V3C13 2.4 13.4 2 14 2Z" fill="currentColor"/>
+                                                        <path d="M18 5H17C16.4 5 16 4.6 16 4V2H19V4C19 4.6 18.6 5 18 5Z" fill="currentColor"/>
+                                                    </svg>
+                                                </span>
+
+                                            </span>
+                                        </span>
+                                        <div class="d-flex flex-column text-end">
+                                            <span class="text-dark fw-bolder fs-2" id="total_tender">
+                                                <t t-esc="state.tenderStats['total_tender']" />
+                                            </span>
+                                            <span class="text-muted fw-bold mt-1">Total Tenders</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-6 view-active_tender" t-on-click="() => this.viewTenderStatic('active_tender')">
+                            <div class="card card-xl-stretch mb-xl-8">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-stack card-p flex-grow-1">
+                                        <span class="symbol symbol-50px me-2">
+                                            <span class="symbol-label bg-light-success">
+                                                <span class="svg-icon svg-icon-success svg-icon-muted svg-icon-2hx">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M6.5 11C8.98528 11 11 8.98528 11 6.5C11 4.01472 8.98528 2 6.5 2C4.01472 2 2 4.01472 2 6.5C2 8.98528 4.01472 11 6.5 11Z" fill="currentColor"/>
+                                                        <path opacity="0.3" d="M13 6.5C13 4 15 2 17.5 2C20 2 22 4 22 6.5C22 9 20 11 17.5 11C15 11 13 9 13 6.5ZM6.5 22C9 22 11 20 11 17.5C11 15 9 13 6.5 13C4 13 2 15 2 17.5C2 20 4 22 6.5 22ZM17.5 22C20 22 22 20 22 17.5C22 15 20 13 17.5 13C15 13 13 15 13 17.5C13 20 15 22 17.5 22Z" fill="currentColor"/>
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <div class="d-flex flex-column text-end">
+                                            <span class="text-dark fw-bolder fs-2" id="active_tender">
+                                                <t t-esc="state.tenderStats['active_tender']"/>
+                                            </span>
+                                            <span class="text-muted fw-bold mt-1">Active Tender</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-6 view-in-process-tender" t-on-click="() => this.viewTenderStatic('in_progress')">
+                            <div class="card card-xl-stretch mb-xl-8">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-stack card-p flex-grow-1">
+                                        <span class="symbol symbol-50px me-2">
+                                            <span class="symbol-label bg-light-danger">
+                                                <span class="svg-icon svg-icon-muted svg-icon-2hx svg-icon-danger   ">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M18.0002 22H6.00019C5.20019 22 4.8002 21.1 5.2002 20.4L12.0002 12L18.8002 20.4C19.3002 21.1 18.8002 22 18.0002 22Z" fill="currentColor"/>
+                                                        <path opacity="0.3" d="M18.8002 3.6L12.0002 12L5.20019 3.6C4.70019 3 5.20018 2 6.00018 2H18.0002C18.8002 2 19.3002 2.9 18.8002 3.6Z" fill="currentColor"/>
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <div class="d-flex flex-column text-end">
+                                            <span class="text-dark fw-bolder fs-2" id="tender_in_process">
+                                                <t t-esc="state.tenderStats['tender_in_process']"/>
+                                            </span>
+                                            <span class="text-muted fw-bold mt-1">In Process</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt32">
+                        <div class="col-md-12 mb-4 mt32 mb16">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-5">
+                                    <h2 class="section-header">Bidding</h2>
+                                </div>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 col-sm-6 pre-qualification-bid" t-on-click="() => this.viewTenderStatic('pre_qualification')">
+                            <div class="card card-xl-stretch mb-xl-8">
+                                <!--begin::Body-->
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-stack card-p flex-grow-1">
+                                        <span class="symbol symbol-50px me-2">
+                                            <span class="symbol-label bg-light-info">
+                                                <span class="svg-icon svg-icon-info svg-icon-muted svg-icon-2hx">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
+                                                        <path d="M11.9343 12.5657L9.53696 14.963C9.22669 15.2733 9.18488 15.7619 9.43792 16.1204C9.7616 16.5789 10.4211 16.6334 10.8156 16.2342L14.3054 12.7029C14.6903 12.3134 14.6903 11.6866 14.3054 11.2971L10.8156 7.76582C10.4211 7.3666 9.7616 7.42107 9.43792 7.87962C9.18488 8.23809 9.22669 8.72669 9.53696 9.03696L11.9343 11.4343C12.2467 11.7467 12.2467 12.2533 11.9343 12.5657Z" fill="currentColor"/>
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <div class="d-flex flex-column text-end">
+                                            <span class="text-dark fw-bolder fs-2" id="pre_qualification_bid">
+                                                <t t-esc="state.tenderStats['pre_qualification_bid']"/>
+                                            </span>
+                                            <span class="text-muted fw-bold mt-1">Pre Qualification</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-6 active-bid" t-on-click="() => this.viewTenderStatic('active_bid')">
+                            <div class="card card-xl-stretch mb-xl-8">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-stack card-p flex-grow-1">
+                                        <span class="symbol symbol-50px me-2">
+                                            <span class="symbol-label bg-light-danger">
+                                                <span class="svg-icon svg-icon-danger svg-icon-muted svg-icon-2hx">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path opacity="0.3" d="M10.9607 12.9128H18.8607C19.4607 12.9128 19.9607 13.4128 19.8607 14.0128C19.2607 19.0128 14.4607 22.7128 9.26068 21.7128C5.66068 21.0128 2.86071 18.2128 2.16071 14.6128C1.16071 9.31284 4.96069 4.61281 9.86069 4.01281C10.4607 3.91281 10.9607 4.41281 10.9607 5.01281V12.9128Z" fill="currentColor"/>
+                                                        <path d="M12.9607 10.9128V3.01281C12.9607 2.41281 13.4607 1.91281 14.0607 2.01281C16.0607 2.21281 17.8607 3.11284 19.2607 4.61284C20.6607 6.01284 21.5607 7.91285 21.8607 9.81285C21.9607 10.4129 21.4607 10.9128 20.8607 10.9128H12.9607Z" fill="currentColor"/>
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <div class="d-flex flex-column text-end">
+                                            <span class="text-dark fw-bolder fs-2" id="active_bid">
+                                                <t t-esc="state.tenderStats['active_bid']"/>
+                                            </span>
+                                            <span class="text-muted fw-bold mt-1">Active Bid</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt32">
+                        <div class="col-md-12 mb-4 mt32 mb16">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-5">
+                                    <h2 class="section-header">Pending Task</h2>
+                                </div>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 col-sm-6 pending-edit_request" t-on-click="() => this.viewTenderStatic('pending_request')">
+                            <div class="card card-xl-stretch mb-xl-8">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-stack card-p flex-grow-1">
+                                        <span class="symbol symbol-50px me-2">
+                                            <span class="symbol-label bg-light-success">
+                                                <span class="svg-icon svg-icon-success svg-icon-muted svg-icon-success svg-icon-2hx">
+                                                    <span class="svg-icon svg-icon-muted svg-icon-2hx">
+                                                        <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path opacity="0.3" d="M12 6.20001V1.20001H2V6.20001C2 6.50001 2.1 6.70001 2.3 6.90001L5.6 10.2L2.3 13.5C2.1 13.7 2 13.9 2 14.2V19.2H12V14.2C12 13.9 11.9 13.7 11.7 13.5L8.4 10.2L11.7 6.90001C11.9 6.70001 12 6.50001 12 6.20001Z" fill="currentColor"/>
+                                                            <path d="M13 2.20001H1C0.4 2.20001 0 1.80001 0 1.20001C0 0.600012 0.4 0.200012 1 0.200012H13C13.6 0.200012 14 0.600012 14 1.20001C14 1.80001 13.6 2.20001 13 2.20001ZM13 18.2H10V16.2L7.7 13.9C7.3 13.5 6.7 13.5 6.3 13.9L4 16.2V18.2H1C0.4 18.2 0 18.6 0 19.2C0 19.8 0.4 20.2 1 20.2H13C13.6 20.2 14 19.8 14 19.2C14 18.6 13.6 18.2 13 18.2ZM4.4 6.20001L6.3 8.10001C6.7 8.50001 7.3 8.50001 7.7 8.10001L9.6 6.20001H4.4Z" fill="currentColor"/>
+                                                        </svg>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <div class="d-flex flex-column text-end">
+                                            <span class="text-dark fw-bolder fs-2" id="pending_request">
+                                                <t t-esc="state.tenderStats['pending_request']"/>
+                                            </span>
+                                            <span class="text-muted fw-bold mt-1">Edit Request</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-6 pending-qualification" t-on-click="() => this.viewTenderStatic('pending_qualification')">
+                            <div class="card card-xl-stretch mb-xl-8">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-stack card-p flex-grow-1">
+                                        <span class="symbol symbol-50px me-2">
+                                            <span class="symbol-label bg-light-success">
+                                                <span class="svg-icon svg-icon-muted svg-icon-success svg-icon-2hx">
+                                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path opacity="0.3" d="M12 6.20001V1.20001H2V6.20001C2 6.50001 2.1 6.70001 2.3 6.90001L5.6 10.2L2.3 13.5C2.1 13.7 2 13.9 2 14.2V19.2H12V14.2C12 13.9 11.9 13.7 11.7 13.5L8.4 10.2L11.7 6.90001C11.9 6.70001 12 6.50001 12 6.20001Z" fill="currentColor"/>
+                                                        <path d="M13 2.20001H1C0.4 2.20001 0 1.80001 0 1.20001C0 0.600012 0.4 0.200012 1 0.200012H13C13.6 0.200012 14 0.600012 14 1.20001C14 1.80001 13.6 2.20001 13 2.20001ZM13 18.2H10V16.2L7.7 13.9C7.3 13.5 6.7 13.5 6.3 13.9L4 16.2V18.2H1C0.4 18.2 0 18.6 0 19.2C0 19.8 0.4 20.2 1 20.2H13C13.6 20.2 14 19.8 14 19.2C14 18.6 13.6 18.2 13 18.2ZM4.4 6.20001L6.3 8.10001C6.7 8.50001 7.3 8.50001 7.7 8.10001L9.6 6.20001H4.4Z" fill="currentColor"/>
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <div class="d-flex flex-column text-end">
+                                            <span class="text-dark fw-bolder fs-2" id="pending_qualification">
+                                                <t t-esc="state.tenderStats['pending_qualification']"/>
+                                            </span>
+                                            <span class="text-muted fw-bold mt-1">Pending Qualification</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt32 mb16">
+                        <h2>Tender Statistic</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="box mt16 mb16">
+                                <h5 class="mb16">Tender Type</h5>
+                                <div id="tender_type" t-ref='tenderType'></div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="box mt16 mb16">
+                                <h5 class="mb16">Tender Category</h5>
+                                <div id="tender_category" t-ref='tenderCategory'></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="box mt16 mb16">
+                                <h5 class="mb16">Tender Timeline</h5>
+                                <div id="tender_time_line" t-ref='tenderTimeline'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </t>
+</templates>

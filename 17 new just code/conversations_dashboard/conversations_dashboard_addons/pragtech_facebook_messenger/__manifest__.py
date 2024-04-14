@@ -1,0 +1,15 @@
+{
+    'name': 'Facebook messenger',
+    'version': '17.0.0.1',
+    'summary': 'Facebook messenger system',
+    'description': 'Facebook messenger system',
+    'depends': ['base', 'base_setup', 'mail', 'product'],
+    'data': ['views/resconfig.xml',
+             'views/facebook_view.xml',
+             'security/ir.model.access.csv',
+             'security/facebook_group.xml'],
+    'demo': [],
+    'installable': True,
+    'auto-install': False,
+    'application': True,
+}

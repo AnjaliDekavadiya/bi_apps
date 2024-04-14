@@ -1,0 +1,52 @@
+# -*- coding: utf-8 -*-
+#########################################################################################
+#
+#    OpenERP, Open Source Management Solution
+#    Copyright (C) 2014-TODAY Probuse Consulting Service Pvt. Ltd. (<http://probuse.com>).
+
+#    This program is free software: you can modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version. You can not redistribute or sale
+#    without permission of Probuse Consulting Service Pvt. Ltd. (<http://probuse.com>).
+
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#    
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#########################################################################################
+
+{
+    'name' : 'Website Footer Extended',
+    'version': '1.0',
+    'author': 'Probuse Consulting Service Pvt. Ltd.',
+    'price': 10.0,
+    'license': 'Other proprietary',
+    'currency': 'EUR',
+    'category' : 'Website',
+    'website': 'https://www.probuse.com',
+    'summary': 'Website Footer Extend - Privacy / Term of Use / Legal Disclosure / Copy Right / Trademark',
+    'description': ''' 
+Website footer extend
+This module enables the feature to allow add menus in website footer from website settings. User can add menus like Privacy, Term of Use, Legal disclosure, Copy Right and Trademark.
+Privacy
+Term of Use
+Legal disclosure
+Copy Right
+Trademark
+
+  ''',
+    'depends':['website'],
+    'data' : [
+              'views/website_config_view.xml',
+              'views/website_template.xml'
+              ],
+    'installable':True,
+    'auto_install':False
+}
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

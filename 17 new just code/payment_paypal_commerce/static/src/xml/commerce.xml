@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+
+<template xml:space="preserve">
+    <t t-name="SellerOnboardingMenu">
+        <div class="o_content">
+            <script>
+                function onboardedCallback(authCode, sharedId) {
+                    console.log("-----authCode-----",authCode,"----sharedId----",sharedId,"----");
+                    fetch('/seller-server/login-seller', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            authCode: authCode,
+                            sharedId: sharedId
+                            })
+                    }).then(function(res) {
+                        if (!response.ok) {
+                            alert("Something went wrong!");
+                        }
+                    });
+                }                
+            </script>
+            <script id="paypal-js" src="https://www.sandbox.paypal.com/webapps/merchantboarding/js/lib/lightbox/partner.js"></script>
+            <div class="paycomm_container">
+                <span class="paycomm_backdrop"/>
+                <div class="paycomm_main" style="margin-top: 300px;">
+                    <a target="PPFrame" data-paypal-onboard-complete="onboardedCallback" href="#" data-paypal-button="true">Sign up for PayPal</a>
+                    <div t-if="widget">
+                        <div t-if="widget.status == 'error'" class="alert alert-danger" role="alert"><t t-esc="widget.error_msg"/></div>
+                        <div t-else="">
+                            <a t-if="widget.status == 'draft'" target="PPFrame" class="btn btn-primary" data-paypal-onboard-complete="onboardedCallback" t-attf-href="#{widget.url}&amp;displayMode=minibrowser" data-paypal-button="true">Connect With PayPal</a>
+                            <div t-else="">
+                                <div>Setup is complete!</div>
+                                <div t-if="!widget.email_status" class="alert alert-UserError" role="alert">Please confirm you primary email address in order to receive the payments</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="replacement_reason_custom_form_view" model="ir.ui.view">
+            <field name="name">replacement.reason.custom.form</field>
+            <field name="model">replacement.reason.custom</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <form string="Replacement Reason Custom">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="replacement_reason_custom_tree_view" model="ir.ui.view">
+            <field name="name">replacement.reason.custom.tree</field>
+            <field name="model">replacement.reason.custom</field>
+            <field name="arch" type="xml">
+                <tree string="Replacement Reason Custom">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="replacement_reason_custom_filter_view" model="ir.ui.view">
+            <field name="name">replacement.reason.custom.select</field>
+            <field name="model">replacement.reason.custom</field>
+            <field name="arch" type="xml">
+                <search string="Search Replacement Reason Custom">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="replacement_reason_custom_action" model="ir.actions.act_window">
+            <field name="name">Replacement Reasons</field>
+            <field name="res_model">replacement.reason.custom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_replacement_reason_custom"
+            action="replacement_reason_custom_action"
+            name='Replacement Reasons'
+            parent="sale.menu_sale_config"
+            />
+
+        
+    </data>
+</odoo>

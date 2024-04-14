@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="signup_inherit" inherit_id="auth_signup.fields">
+		<xpath expr="//div[hasclass('field-confirm_password')]" position="after">
+			<t t-set="otp_record" t-value="request.env['website.otp'].sudo().search([], limit=1)"/>
+			<t t-if="otp_record.signup_auth == True">
+				<p id="email_msg" class="alert alert-danger d-none">Please enter valid email address.</p>
+				<input type="hidden" class="otp_type" name="otp_type" t-att-value="otp_record.otp_auth_type"/>
+                <input type="hidden" class="otp_limit" name="otp_limit" t-att-value="otp_record.otp_auth_limit"/>
+                <p id="signupotp">
+                	<a class="btn btn-link pull-left send_otp" href="#">Send OTP</a>
+                </p>
+                <div class="form-group field-otp" style="display: none;">
+                	<input type="password" class="otp_input form-control form-control-sm" name="otp" id="otp" placeholder="Enter OTP"/>
+                </div>
+                <p id="bi_signup_otpvalue"/>
+			</t>
+		</xpath>
+	</template>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_tailor_team_manager,custom.tailor.team.manager,model_tailor_team,cloth_tailor_management_odoo.custom_group_tailor_manager,1,1,1,1
+access_custom_tailor_team_user,custom.tailor.team.user,model_tailor_team,cloth_tailor_management_odoo.custom_group_tailor_user,1,0,0,0
+access_custom_tailor_team_internal_user,custom.tailor.team.internal.user,model_tailor_team,base.group_user,1,0,0,0

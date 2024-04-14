@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+     <data>
+          <record id="openai_prompt_tone_tree_view" model="ir.ui.view">
+               <field name="name">openai.prompt.tone.tree.view</field>
+               <field name="model">openai.prompt.tone</field>
+               <field name="type">tree</field>
+               <field name="arch" type="xml">
+                    <tree>
+                         <field name="sequence" widget="handle"/>
+                         <field name="name"/>
+                         <field name="content_style"/>
+                         <field name='visibility'/>
+                    </tree>
+               </field>
+          </record>
+
+          <record id='openai_prompt_tone_form_view' model='ir.ui.view'>
+               <field name='name'>openai.prompt.tone.form.view</field>
+               <field name='model'>openai.prompt.tone</field>
+               <field name='type'>form</field>
+               <field name='arch' type='xml'>
+                    <form>
+                         <sheet>
+                              <group>
+                                   <group>
+                                        <field name='name' />                                     
+                                        <field name="sequence" />                                   
+                                   </group>
+                                   <group>
+                                        <field name='content_style' />  
+                                   </group>
+                              </group>
+                              <br></br>
+                              <group>
+                                   <group>                              
+                                        <field name='visibility' widget="radio"/>
+                                   </group>
+                                   <group>
+                                        <field name='model_id' invisible="['|','|',('visibility','=', 'global'),('tone_model_id','!=', False),('visibility','=', False)]"  />
+                                        <field name='tone_model_id'  invisible="['|',('visibility','=', 'global'),('model_id','!=', False)]" />
+                                   </group>
+                              </group>                          
+                         </sheet>
+                    </form>
+               </field>
+          </record>
+
+          <record id='openai_prompt_tone_actions' model='ir.actions.act_window'>
+               <field name='name'>OpenAi Prompt Tone</field>
+               <field name='res_model'>openai.prompt.tone</field>
+               <field name='view_mode'>tree,form</field>
+               <field name="help" type="html">
+                    <p class="o_view_nocontent_smiling_face">
+                         No Prompt Tone Available 
+                    </p>
+               </field>
+          </record>
+     </data>
+     <menuitem name="OpenAi"
+               id="openai_main_menu"
+               web_icon="wk_chatgpt_engine,static/description/icon.png"/>
+
+     <menuitem name="Prompt Instruction"
+               id="openai_prompt_instruction"
+               parent="openai_main_menu"
+               action="openai_prompt_instruction_actions"
+               sequence="1"
+               />
+
+     <menuitem name="Prompt Tone"
+               id="openai_prompt_tone_menu"
+               parent="openai_main_menu"
+               action="openai_prompt_tone_actions"
+               sequence="2"
+               />
+
+     <menuitem name="SEO"
+               id="suggest_seo_main_menu"
+               parent="openai_main_menu"
+               sequence="3"
+               />
+
+     <menuitem name="Generate SEO"
+               id="suggest_seo_menu"
+               action="action_suggest_seo" 
+               parent="suggest_seo_main_menu" 
+               sequence="1" />
+               
+
+</odoo>

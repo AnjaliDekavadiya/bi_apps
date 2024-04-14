@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_orders.AllOrdersButton" owl="1">
+        <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="() => this.onClick()">
+            All Orders
+        </button>
+    </t>
+
+    <t t-name="pos_orders.OrdersScreenWidget" owl="1">
+        <div class="partnerlist-screen screen h-100 d-flex flex-column bg-100">
+            <div class="top-content d-flex align-items-center p-2 border-bottom text-center">
+                <div class="button back btn btn-lg btn-secondary mx-2" t-on-click="clickBack">
+                    <i class='fa fa-angle-double-left'/> Back
+                </div>
+                <span class="wk-searchbox">
+                    <input placeholder="Search Orders" t-on-keyup="keyup_order_search" class="order_search wk-order-search-input"/>
+                    <span class="search-clear"></span>
+                </span>
+                <i class="fa fa-refresh" style="margin-top:1%;width: 5%;font-size:30px" t-on-click="refresh"/>
+            </div>
+            <div class='order-details-contents'>
+            </div>
+            <section class="overflow-auto">
+                <table class='partner-list table table-striped w-100 wk_order_list'>
+                    <thead>
+                        <tr style="background-color: rgb(135, 160, 166);color: white;">
+                            <th>Order Ref.</th>
+                            <th>Receipt Ref.</th>
+                            <th>Customer</th>
+                            <th>Order Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class='wk-order-list-contents'>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </t>
+
+    <t t-name="WkOrderLine">
+        <tr class='wk-order-line partner-line gap-2 gap-lg-0 align-top ' t-att-data-id='order.id' style="cursor:pointer;">
+            <td>
+                <t t-esc='order.name' />
+            </td>
+            <td>
+                <t t-esc='order.pos_reference' />
+            </td>
+            <td>
+                <t t-esc="order.partner_id[1] || '-'" />
+            </td>
+            <td>
+                <t t-esc='order.date_order' />
+            </td>
+        </tr>
+    </t>
+
+    <t t-name="PartnerListScreen" t-inherit="point_of_sale.PartnerListScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//table[hasclass('partner-list')]//thead//tr//th[5]" position="after">
+            <th>Orders</th>
+        </xpath>
+    </t>
+
+    <t t-name="PartnerLine" t-inherit="point_of_sale.PartnerLine" t-inherit-mode="extension" owl="1">
+        <xpath expr="//td[5]" position="after">
+            <td>
+                <button class="view_all_order btn btn-light border" t-on-click.stop="click_all_orders" t-att-id='props.partner.id'>
+                    <i class="fa fa-filter"></i> View orders
+                </button>
+            </td>
+        </xpath>
+    </t>
+</templates>

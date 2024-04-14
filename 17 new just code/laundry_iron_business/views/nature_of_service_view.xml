@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="laundry_service_type_form_view">
+            <field name="name">Laundry Service Type Form</field>
+            <field name="model">laundry.service.type.custom</field>
+            <field name="arch" type="xml">
+                <form> 
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                         </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="laundry_service_type_tree_view">
+            <field name="name">Laundry Service Type Tree</field>
+            <field name="model">laundry.service.type.custom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_laundry_service_type" model="ir.actions.act_window">
+            <field name="name">Services</field>
+            <field name="res_model">laundry.service.type.custom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+
+</odoo>

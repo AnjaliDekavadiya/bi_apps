@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="mail.WhatsappSidebarCategory" owl="1">
+        <t t-if="watsapcategory">
+            <t t-set="o_DiscussSidebarCategory_hoverItem" t-value="'btn p-0 text-start text-500 opacity-100-hover opacity-75'"/>
+            <div class="o_DiscussSidebarCategory dropdown" t-attf-class="{{ className }}" t-att-data-category-local-id="watsapcategory.localId" t-ref="root">
+                <div class="o_DiscussSidebarCategory_content dropdown-menu">
+                    <!-- <t t-if="sidebardropdown !== 'close'"> -->
+                        <t t-foreach="watsapcategory.filteredCategoryItems" t-as="item" t-key="item.localId">
+                            <t t-if="item.channel.channel_type == 'multi_livechat_sent_channel'">
+                                <WhatsappSidebarCategoryItem
+                                    className="'o_DiscussSidebar_item menuitem'"
+                                    record="item"
+                                />
+                            </t>
+                        </t>
+                    <!-- </t> -->
+                    <t t-if="!watsapcategory.isOpen and watsapcategory.activeItem">
+                        <WhatsappSidebarCategoryItem
+                            className="'o_DiscussSidebar_item menuitem'"
+                            record="watsapcategory.activeItem"
+                        />
+                    </t>
+                </div>
+                <div class="o_DiscussSidebarCategory_header d-flex align-items-center my-1">
+                    <div class="dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" t-attf-class="o_DiscussSidebarCategory_title o_DiscussSidebarCategory_headerItem d-flex align-items-baseline mx-1 {{ o_DiscussSidebarCategory_hoverItem }}" t-on-click="_onclickCategory">
+                        <!-- <i class="o_DiscussSidebarCategory_titleIcon small" t-att-class="watsapcategory.isOpen ? 'fa fa-chevron-down' : 'fa fa-chevron-right'"/> -->
+                        <span class="o_DiscussSidebarCategory_titleText btn-sm p-0 text-uppercase fw-bolder"> <i t-attf-class="fa fa-whatsapp"></i> whatsapp Chats<!--<t t-esc="category.discussAsMultichat"/>--></span>
+                    </div>
+                    <div class="o_DiscussSidebarCategory_headerItem flex-grow-1"/>
+                    <div class="o_DiscussSidebarCategory_commands o_DiscussSidebarCategory_headerItem d-flex me-3">
+                        <t t-if="watsapcategory.hasViewCommand">
+                            <i t-attf-class="o_DiscussSidebarCategory_command o_DiscussSidebarCategory_commandView fa fa-cog {{ o_DiscussSidebarCategory_hoverItem }}" title="View or join channels" t-on-click="watsapcategory.onClickCommandView" role="img"/>
+                        </t>
+                        <t t-if="watsapcategory.hasAddCommand and watsapcategory.isOpen">
+                            <i t-attf-class="o_DiscussSidebarCategory_command o_DiscussSidebarCategory_commandAdd fa fa-plus {{ o_DiscussSidebarCategory_hoverItem }} ms-1" t-on-click="category.onClickCommandAdd" t-att-title="watsapcategory.commandAddTitleText" role="img"/>
+                        </t>
+                    </div>
+                    <!-- <t t-if="!category.isOpen and category.counter > 0">
+                        <div class="o_DiscussSidebarCategory_counter o_DiscussSidebarCategory_headerItem badge rounded-pill text-bg-primary me-3">
+                            <t t-esc="category.counter"/>
+                        </div>
+                    </t> -->
+                    <div class="o_DiscussSidebarCategory_content dropdown-menu" role="menu" id="Instagrammenu" style="width: 100%; background: #354052;; border: transparent; z-index: 1; color: white;">
+                        <!-- <t t-if="sidebardropdown"> -->
+                            <!-- <t t-if="category.addingItemAutocompleteInputView">
+                                <div class="o_DiscussSidebarCategory_addingItem d-flex mb-2">
+                                    <AutocompleteInputView
+                                        className="'o_DiscussSidebarCategory_addingItemInput form-control mx-4 rounded'"
+                                        record="category.addingItemAutocompleteInputView"
+                                    />
+                                </div>
+                            </t> -->
+                            <t t-foreach="watsapcategory.filteredCategoryItems" t-as="item" t-key="item.localId">
+                                <t t-if="item.channel.channel_type == 'multi_livechat_NAMEs'">
+                                    <WhatsappSidebarCategoryItem
+                                        className="'o_DiscussSidebar_item menuitem'"
+                                        record="item"
+                                    />
+                                </t>
+                            </t>
+                        <!-- </t> -->
+                        <!-- <t t-if="!watsapcategory.isOpen and watsapcategory.activeItem">
+                            <WhatsappSidebarCategoryItem
+                                className="'o_DiscussSidebar_item menuitem'"
+                                record="watsapcategory.activeItem"
+                            />
+                        </t> -->
+                    </div>
+                </div>
+                
+            </div>
+        </t>
+    </t>
+    <t t-name="mail.FacebookSidebarCategory" owl="1">
+        <t t-if="facebookcategory">
+            <t t-set="o_DiscussSidebarCategory_hoverItem" t-value="'btn p-0 text-start text-500 opacity-100-hover opacity-75'"/>
+            <!-- <div class="dropdown"> -->
+            <div class="o_DiscussSidebarCategory" t-attf-class="{{ className }}" t-att-data-category-local-id="facebookcategory.localId">
+                <div class="o_DiscussSidebarCategory_content dropdown-menu">
+                    <!-- <t t-if="facebookcategory.isOpen"> -->
+                        <t t-foreach="facebookcategory.filteredCategoryItems" t-as="item" t-key="item.localId">
+                            <t t-if="item.channel.channel_type == 'multi_livechat_sent_channel'">
+                                <WhatsappSidebarCategoryItem
+                                    className="'o_DiscussSidebar_item menuitem'"
+                                    record="item"
+                                />
+                            </t>
+                        </t>
+                    <!-- </t> -->
+                    <t t-if="!facebookcategory.isOpen and facebookcategory.activeItem">
+                        <WhatsappSidebarCategoryItem
+                            className="'o_DiscussSidebar_item menuitem'"
+                            record="facebookcategory.activeItem"
+                        />
+                    </t>
+                </div>
+                
+                <div class="o_DiscussSidebarCategory_header dropdown d-flex align-items-center my-1">
+                    <div class="dropdown-toggle" id="togglefacebook" data-target="#Facebookmenu" data-bs-toggle="dropdown" data-bs-display="static" t-attf-class="o_DiscussSidebarCategory_title o_DiscussSidebarCategory_headerItem d-flex align-items-baseline mx-1 {{ o_DiscussSidebarCategory_hoverItem }}">
+                        <!-- <i class="o_DiscussSidebarCategory_titleIcon small" t-att-class="facebookcategory.isOpen ? 'fa fa-chevron-down' : 'fa fa-chevron-right'"/> -->
+                        <span class="o_DiscussSidebarCategory_titleText btn-sm p-0 text-uppercase fw-bolder"> <i t-attf-class="fa fa-facebook"></i> facebook Chats</span>
+                    </div>
+                    <div class="o_DiscussSidebarCategory_headerItem flex-grow-1"/>
+                    <div class="o_DiscussSidebarCategory_commands o_DiscussSidebarCategory_headerItem d-flex me-3">
+                        <t t-if="facebookcategory.hasViewCommand">
+                            <i t-attf-class="o_DiscussSidebarCategory_command o_DiscussSidebarCategory_commandView fa fa-cog {{ o_DiscussSidebarCategory_hoverItem }}" title="View or join channels" t-on-click="facebookcategory.onClickCommandView" role="img"/>
+                        </t>
+                        <t t-if="facebookcategory.hasAddCommand and facebookcategory.isOpen">
+                            <i t-attf-class="o_DiscussSidebarCategory_command o_DiscussSidebarCategory_commandAdd fa fa-plus {{ o_DiscussSidebarCategory_hoverItem }} ms-1" t-on-click="facebookcategory.onClickCommandAdd" t-att-title="facebookcategory.commandAddTitleText" role="img"/>
+                        </t>
+                    </div>
+                    <!-- <t t-if="!category.isOpen and category.counter > 0">
+                        <div class="o_DiscussSidebarCategory_counter o_DiscussSidebarCategory_headerItem badge rounded-pill text-bg-primary me-3">
+                            <t t-esc="category.counter"/>
+                        </div>
+                    </t> -->
+                    <div class="o_DiscussSidebarCategory_content dropdown-menu" x-placement="below-start" data-parent="#togglefacebook" role="menu" id="Facebookmenu" style="width: 100%; background: #354052; border: transparent; z-index: 1; color: white;">
+                        <!-- <t t-if="facebookcategory.isOpen"> -->
+                            <!-- <t t-if="category.addingItemAutocompleteInputView">
+                                <div class="o_DiscussSidebarCategory_addingItem d-flex mb-2">
+                                    <AutocompleteInputView
+                                        className="'o_DiscussSidebarCategory_addingItemInput form-control mx-4 rounded'"
+                                        record="category.addingItemAutocompleteInputView"
+                                    />
+                                </div>
+                            </t> -->
+                            <t t-foreach="facebookcategory.filteredCategoryItems" t-as="item" t-key="item.localId">
+                                <t t-if="item.channel.channel_type == 'multi_livechat_NAME'">
+                                    <FacebookSidebarCategoryItem
+                                        className="'o_DiscussSidebar_item menuitem'"
+                                        record="item"
+                                    />
+                                </t>
+                            </t>
+                        <!-- </t> -->
+                        <!-- <t t-if="!facebookcategory.isOpen and facebookcategory.activeItem">
+                            <WhatsappSidebarCategoryItem
+                                className="'o_DiscussSidebar_item'"
+                                record="facebookcategory.activeItem"
+                            />
+                        </t> -->
+                    </div>
+                </div>
+                
+            </div>
+        </t>
+    </t>
+    <t t-name="mail.InstagramSidebarCategory" owl="1">
+        <t t-if="instagramcategory">
+            <t t-set="o_DiscussSidebarCategory_hoverItem" t-value="'btn p-0 text-start text-500 opacity-100-hover opacity-75'"/>
+            <div class="o_DiscussSidebarCategory" t-attf-class="{{ className }}" t-att-data-category-local-id="instagramcategory.localId" t-ref="root">
+                <div class="o_DiscussSidebarCategory_content dropdown-menu">
+                    <!-- <t t-if="category.isOpen"> -->
+                        <!-- <t t-foreach="category.filteredCategoryItems" t-as="item" t-key="item.localId">
+                            <t t-if="item.channel.channel_type == 'multi_livechat_sent_channel'">
+                                <WhatsappSidebarCategoryItem
+                                    className="'o_DiscussSidebar_item'"
+                                    record="item"
+                                />
+                            </t>
+                        </t> -->
+                    <!-- </t> -->
+                    <t t-if="!instagramcategory.isOpen and instagramcategory.activeItem">
+                        <WhatsappSidebarCategoryItem
+                            className="'o_DiscussSidebar_item menuitem'"
+                            record="instagramcategory.activeItem"
+                        />
+                    </t>
+                </div>
+                <div class="o_DiscussSidebarCategory_header dropdown d-flex align-items-center my-1">
+                    <div class="dropdown-toggle" data-bs-toggle="dropdown" t-attf-class="o_DiscussSidebarCategory_title o_DiscussSidebarCategory_headerItem d-flex align-items-baseline mx-1 {{ o_DiscussSidebarCategory_hoverItem }}">
+                        <!-- <i class="o_DiscussSidebarCategory_titleIcon small" t-att-class="instagramcategory.isOpen ? 'fa fa-chevron-down' : 'fa fa-chevron-right'"/> -->
+                        <span class="o_DiscussSidebarCategory_titleText btn-sm p-0 text-uppercase fw-bolder"> <i t-attf-class="fa fa-instagram"></i> Instagram Chats<!--<t t-esc="category.discussAsMultichat"/>--></span>
+                    </div>
+                    <div class="o_DiscussSidebarCategory_headerItem flex-grow-1"/>
+                    <div class="o_DiscussSidebarCategory_commands o_DiscussSidebarCategory_headerItem d-flex me-3">
+                        <t t-if="instagramcategory.hasViewCommand">
+                            <i t-attf-class="o_DiscussSidebarCategory_command o_DiscussSidebarCategory_commandView fa fa-cog {{ o_DiscussSidebarCategory_hoverItem }}" title="View or join channels" t-on-click="instagramcategory.onClickCommandView" role="img"/>
+                        </t>
+                        <t t-if="instagramcategory.hasAddCommand and instagramcategory.isOpen">
+                            <i t-attf-class="o_DiscussSidebarCategory_command o_DiscussSidebarCategory_commandAdd fa fa-plus {{ o_DiscussSidebarCategory_hoverItem }} ms-1" t-on-click="instagramcategory.onClickCommandAdd" t-att-title="instagramcategory.commandAddTitleText" role="img"/>
+                        </t>
+                    </div>
+                    <!-- <t t-if="!category.isOpen and category.counter > 0">
+                        <div class="o_DiscussSidebarCategory_counter o_DiscussSidebarCategory_headerItem badge rounded-pill text-bg-primary me-3">
+                            <t t-esc="category.counter"/>
+                        </div>
+                    </t> -->
+                    <div class="o_DiscussSidebarCategory_content dropdown-menu" role="menu" id="Instagrammenu" style="width: 100%; background: #354052;; border: transparent; z-index: 1;">
+                    <!-- <t t-if="instagramcategory.isOpen"> -->
+                    <!-- <div id="Instagrammenu" class="dropdown-menu scoop-submenu" aria-labelledby="Instagramtop" data-parent="#Instagramtop"> -->
+                    <!-- <t t-if="sidebardropdown"> -->
+                        <!-- <t t-if="category.addingItemAutocompleteInputView">
+                            <div class="o_DiscussSidebarCategory_addingItem d-flex mb-2">
+                                <AutocompleteInputView
+                                    className="'o_DiscussSidebarCategory_addingItemInput form-control mx-4 rounded'"
+                                    record="category.addingItemAutocompleteInputView"
+                                />
+                            </div>
+                        </t> -->
+                        <t t-foreach="instagramcategory.filteredCategoryItems" t-as="item" t-key="item.localId">
+                            <t t-if="item.channel.channel_type == 'multi_livechat_NAME2'">
+                                <WhatsappSidebarCategoryItem
+                                    className="'o_DiscussSidebar_item menuitem'"
+                                    record="item"
+                                />
+                            </t>
+                        </t>
+                        <!-- </t> -->
+                        <!-- </div> -->
+                        <!-- <t t-if="!instagramcategory.isOpen and instagramcategory.activeItem">
+                            <WhatsappSidebarCategoryItem
+                                className="'o_DiscussSidebar_item'"
+                                record="instagramcategory.activeItem"
+                            />
+                        </t> -->
+                    </div>
+                </div>
+                
+            </div>
+        </t>
+    </t>
+</templates>

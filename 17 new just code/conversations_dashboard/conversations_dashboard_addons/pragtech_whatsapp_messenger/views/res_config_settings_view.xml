@@ -1,0 +1,69 @@
+<odoo>
+    <data>
+        <record id="view_general_configuration_inherit" model="ir.ui.view">
+            <field name="name">res.config.settings.form.inherit</field>
+            <field name="model">res.config.settings</field>
+<!--            <field name="priority" eval="10"/>-->
+            <field name="inherit_id" ref="pragtech_conversations_dashboard.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//app[@name='pragtech_conversations_dashboard']" position="inside">
+                    <!-- <h2>Whatsapp Integration</h2> -->
+                    <block title="Whatsapp Integration" name="whatsapp_chatapi_integration">
+                        <!-- <div class="row mt16 o_settings_container" name="whatsapp_integration"> -->
+                            <setting id="whatsapp_control_setting" title="Whatsapp Api" string="Whatsapp Integration">
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <group>
+                                            <field name="api_selection" class="oe_inline"/>
+                                        </group>
+                                        <group>
+                                            <field name="whatsapp_meta_api_token" password="True" class="oe_inline"
+                                                invisible="api_selection != 'meta'"/>
+                                        </group>
+                                        <group>
+                                            <field name="whatsapp_meta_webhook_token" class="oe_inline"
+                                                invisible="api_selection != 'meta'"/>
+                                        </group>
+                                        <group>
+                                            <field name="whatsapp_meta_phone_number_id" class="oe_inline"
+                                                invisible="api_selection != 'meta'"/>
+                                        </group>
+                                        <group>
+                                            <field name="meta_whatsapp_business_account_id" class="oe_inline"
+                                                invisible="api_selection != 'meta'"/>
+                                        </group>
+                                        <group>
+                                            <field name="whatsapp_endpoint" class="oe_inline"
+                                                invisible="api_selection != '1msg'"/>
+                                        </group>
+                                        <group>
+                                            <field name="whatsapp_token" class="oe_inline" password="True"
+                                                invisible="api_selection != '1msg'"/>
+                                        </group>
+                                        <group>
+                                            <field name="whatsapp_authenticate" class="oe_inline" invisible="1"/>
+                                            <div class="col-lg-6 col-12 o_setting_box" invisible="whatsapp_authenticate != False">
+                                                <button string="Get QR Code" type="object" class="oe_highlight" name="action_get_qr_code"
+                                                    invisible="whatsapp_authenticate == False"/>
+                                            </div>
+                                        </group>
+                                        <group>
+                                            <div class="col-lg-6 col-12 o_setting_box" invisible="whatsapp_authenticate != False">
+                                                <button string="Logout" type="object" class="oe_highlight" name="action_logout_from_whatsapp"
+                                                        invisible="whatsapp_authenticate == False"/>
+
+                                                <div class="text-muted">
+                                                    This will take 1 or 2 minutes to logout from whatsapp
+                                                </div>
+                                            </div>
+                                        </group>
+                                    </div>
+                                </div>
+                            </setting>
+                        <!-- </div> -->
+                    </block>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

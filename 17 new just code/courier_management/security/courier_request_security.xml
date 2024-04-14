@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    Courier requests record rule-->
+    <data noupdate="1">
+        <record id="courier_requests_rule_administrator" model="ir.rule">
+            <field name="name">Courier Requests Administrator</field>
+            <field ref="model_courier_request" name="model_id"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups"
+                   eval="[(4, ref('courier_management.courier_management_group_administrator'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+        <record id="courier_requests_rule_user" model="ir.rule">
+            <field name="name">Courier Requests User</field>
+            <field ref="model_courier_request" name="model_id"/>
+            <field name="domain_force">[('sender_id','=',user.partner_id.id)]
+            </field>
+            <field name="groups"
+                   eval="[(4, ref('courier_management.courier_management_group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

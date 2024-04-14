@@ -1,0 +1,15 @@
+{
+    'name': 'Instagram messenger',
+    'version': '17.0.0.1',
+    'summary': 'Instagram messenger system',
+    'description': 'Instagram messenger system',
+    'depends': ['base', 'base_setup', 'mail'],
+    'data': ['views/resconfig.xml',
+             #'views/facebook_view.xml',
+             'security/ir.model.access.csv',
+             'security/instagram_group.xml'],
+    'demo': [],
+    'installable': True,
+    'auto-install': False,
+    'application': True,
+}

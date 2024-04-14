@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- RFI menu -->
+
+    <template id="header_issue_request_menu" name="Header Job Work Order Link">
+        <li class="nav-item dropdown">
+            <a href="#" role="button" class="btn dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                RFI
+            </a>
+            <ul class="dropdown-menu js_usermenu" role="menu" style="padding: 14px 5px;">
+                <li>
+                    <a class="dropdown-item" href="/create/information">
+                        Create RFI
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </template>
+
+    <template id="rfi_menu_template_header_default" inherit_id="website.template_header_default">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_project_request_for_information.header_issue_request_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="rfi_menu_template_header_hamburger" inherit_id="website.template_header_hamburger">
+        <xpath expr="//t[@t-call='portal.placeholder_user_sign_in']" position="after">
+            <t t-call="bi_website_project_request_for_information.header_issue_request_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="rfi_menu_template_header_vertical" inherit_id="website.template_header_vertical">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_project_request_for_information.header_issue_request_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="rfi_menu_template_header_sidebar" inherit_id="website.template_header_sidebar">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_project_request_for_information.header_issue_request_menu"></t>
+        </xpath>
+    </template>
+
+
+    <template id="rfi_menu_template_header_boxed" inherit_id="website.template_header_boxed">
+        <xpath expr="//t[@t-call='portal.placeholder_user_sign_in']" position="before">
+            <t t-call="bi_website_project_request_for_information.header_issue_request_menu"></t>
+        </xpath>
+    </template>
+    <template id="create_rfi_information" name="Create RFI Information">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 p-xl-4">
+                                <h1 class="text-center">RFI Information</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <form action="/rfi/info/thanks" method="POST"
+                      class="form-horizontal mt32 container" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="mb-0 py-2 col-12 form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="subject">RFI Subject</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="text" class="form-control o_website_form_input" name="subject"
+                                   t-attf-value="#{subject or ''}" required="True"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-0 py-2 col-12 form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="name">Name</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="text" class="form-control o_website_form_input" name="name"
+                                   t-attf-value="#{name or ''}" required="True"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-0 py-2 col-12 form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="email">Email</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="text" class="form-control o_website_form_input" name="email"
+                                   t-attf-value="#{email or ''}" required="True"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-0 py-2 col-12 form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="phone">Phone</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="text" class="form-control o_website_form_input" name="phone"
+                                   t-attf-value="#{phone or ''}"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-0 py-2 col-12 form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="rfi_categ">RFI Category</label>
+                        <div class="col-lg-7 col-md-8">
+                            <t t-set="website_rfi_category" t-value="website.get_rfi_category()"/>
+                            <select name="rfi_category_id" class="form-control">
+                                <option value="">Select RFI Category</option>
+                                <t t-foreach="website_rfi_category or []" t-as="category">
+                                    <option t-att-value="category.id">
+                                        <t t-esc="category.name"/>
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-0 py-2 col-12 form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="description">RFI Description</label>
+                        <div class="col-lg-7 col-md-8">
+                            <textarea type="text" style="min-height: 120px" class="form-control o_website_form_input"
+                                      name="description" t-attf-value="#{description or ''}"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-0 py-2 col-12 form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="priority">RFI Priority</label>
+                        <div class="col-lg-7 col-md-8">
+                            <select name="priority" class="form-control">
+                                <option value="">Select one</option>
+                                <option value="0">Low</option>
+                                <option value="1">Normal</option>
+                                <option value="2">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-0 py-2 col-12 form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="file">Attach Files</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="file" value="Choose images" name="upload" multiple="multiple"
+                                   accept="image/*"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-0 py-2 col-12 form-group row form-field o_website_form_required_custom">
+                        <div class="col-lg-7 col-md-8">
+                            <button class="oe_unremovable btn btn-primary btn_cta">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="rfi_info_thank_you" name="RFI Thank You">
+        <t t-call="website.layout">
+
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">we have received your request.</h1>
+                                <h3 class="text-muted text-center">We will get back to you shortly.</h3>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Customeer Rating Thankyou -->
+    <template id="rfi_rating_thank_you" name="RFI Thank You">
+        <t t-call="website.layout">
+
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">Thank You</h1>
+                                <h3 class="text-muted text-center">Thank you for giving review for Request For
+                                    Information.
+                                </h3>
+                                <a href="/my/rfis" class="btn btn-info">
+                                    <span class="fa fa-long-arrow-left"/>
+                                    Go Back
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Message Send -->
+    <template id="rfi_message_thank_you" name="RFI Message Thank You">
+        <t t-call="website.layout">
+
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">Thank You</h1>
+                                <h3 class="text-muted text-center">
+                                    Your Message/Attachments have been send successfully.
+                                    <br/>
+                                </h3>
+                                <a href="/my/rfis" class="btn btn-info">
+                                    <span class="fa fa-long-arrow-left"/>
+                                    Go Back
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="rfi_comment" name="RFI Comment/Rating">
+        <t t-call="website.layout">
+
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">Request For Information Customer Rating</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <form action="/rfi/comment/send" method="POST"
+                      class="form-horizontal mt32 container">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input name="rfi_id" t-att-value="rfi.id" type="hidden"/>
+
+                    <div class="form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="customer_rating">Rating</label>
+                        <div class="col-lg-7 col-md-8">
+                            <label class="radio-inline">
+                                <input type="radio" t-att-value="1" name="customer_rating"/>
+                                Poor
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" t-att-value="2" name="customer_rating"/>
+                                Average
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" t-att-value="3" name="customer_rating"/>
+                                Good
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" t-att-value="4" name="customer_rating"/>
+                                Excellent
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="comment">Comment</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="text" class="form-control o_website_form_input" name="comment"
+                                   t-attf-value="#{comment or ''}" required="True"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row form-field o_website_form_required_custom">
+                        <div class="col-lg-7 col-md-8">
+                            <button class="oe_unremovable btn btn-primary btn_cta">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="rfi_view" name="Request For Information View">
+        <t t-call="portal.portal_layout">
+            <t t-call="portal.portal_record_layout">
+                <t t-set="card_header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>
+                                <span t-field="rfi.sequence"/>
+                                -
+                                <span t-field="rfi.name"/>
+                            </h4>
+                        </div>
+                    </div>
+                </t>
+                <t t-set="card_body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb8" t-if="rfi.name">
+                                <strong>Assigned to :</strong>
+                                <span t-field="rfi.assign_to_id"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Project :</strong>
+                                <span t-field="rfi.project_id"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Job Order :</strong>
+                                <span t-field="rfi.job_order_id"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Job Cost Sheet :</strong>
+                                <span t-field="rfi.job_cost_sheet_id"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Create Date :</strong>
+                                <span t-field="rfi.create_date"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Is Closed? :</strong>
+                                <span t-field="rfi.is_closed"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Close Date :</strong>
+                                <span t-field="rfi.closed_date"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb8">
+                                <strong>Customer/Supplier :</strong>
+                                <span t-field="rfi.partner_id"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Email</strong>
+                                <span t-field="rfi.email"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Phone</strong>
+                                <span t-field="rfi.phone"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Analytic Account :</strong>
+                                <span t-field="rfi.analytic_account_id"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Team Leader :</strong>
+                                <span t-field="rfi.rfi_team_id"/>
+                            </div>
+
+                            <div class="mb8">
+                                <strong>Priority :</strong>
+                                <span t-field="rfi.priority"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <span t-field="rfi.description"/>
+                    <div class="row mt32">
+                        <form t-attf-action="/rfi/message" method="POST"
+                              enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="col-md-12">
+                                <h4>
+                                    <strong>Send Message and Attachments</strong>
+                                </h4>
+                            </div>
+                            <div class="col-md-6">
+                                <textarea class="col-md-10 col-md-offset-1 mt16" name="message"></textarea>
+                                <input name="rfi_id" t-att-value="rfi.id" type="hidden"/>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:18px;">
+                                <input name="upload" type="file" value="Choose images"
+                                       multiple="multiple" accept="image/*"/>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="oe_unremovable btn btn-primary btn_cta" type="submit">Send Now
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="row mt32">
+                        <t t-if="rfi.is_closed">
+                            <form t-attf-action="/rfi/comment/#{rfi.id}" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input name="rfi_id" t-att-value="rfi.id" type="hidden"/>
+                                <div class="col-md-12">
+                                    <button style="margin-top:20px;" class="oe_unremovable btn btn-primary btn_cta">
+                                        Customer Rating
+                                    </button>
+                                </div>
+                            </form>
+                        </t>
+                    </div>
+                    <div class="row mt32">
+                        <div class="col-md-12">
+                            <h4>
+                                <strong>Message and communication history</strong>
+                            </h4>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1 mt16">
+                            <t t-call="portal.message_thread">
+                                <t t-set="object" t-value="rfi"/>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+
+        </t>
+    </template>
+
+    <template id="portal_my_home_rfi" name="Portal My Home: RFI entries"
+              inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <div class="o_portal_index_card col-md-6 order-2">
+                <a class="d-flex justify-content-start gap-2 gap-md-3 align-items-center py-3 pe-2 px-md-3 h-100 rounded text-decoration-none text-reset text-bg-light"
+                   href="/my/rfis">
+                    <div class="o_portal_icon align-self-start">
+                        <img data-oe-model="ir.ui.view" data-oe-id="549" data-oe-field="arch"
+                             data-oe-xpath="/t[1]/div[1]/a[1]/div[1]/img[1]"
+                             src="/bi_website_project_request_for_information/static/portal_logo.jpg" loading="lazy"
+                             style="height: 65px;"/>
+                    </div>
+                    <div>
+                        <h5 class="mt-0 mb-1 d-flex gap-2">
+                            <span>Request For Informations</span>
+                        </h5>
+
+                    </div>
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_menu_rfi" name="Portal layout : RFI menu entries"
+              inherit_id="portal.portal_breadcrumbs" priority="30">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+
+            <li t-if="page_name == 'RFI' or rfi" t-attf-class="breadcrumb-item active}">
+                <a t-if="rfi" t-attf-href="/my/rfis?{{ keep_query() }}">My Requests</a>
+                <t t-else="">My Requests</t>
+            </li>
+            <li t-if="rfi" class="breadcrumb-item active">
+                <t t-esc="rfi.name"/>
+            </li>
+        </xpath>
+    </template>
+
+
+    <template id="portal_my_rfi" name="My Request For Information">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Request For Informations</t>
+            </t>
+            <t t-if="not rfis">
+                <p>There are currently no Request For Information for your account.</p>
+            </t>
+            <t t-if="rfis" t-call="portal.portal_table">
+                <t t-set="website_rfi" t-value="website.get_rfi_details()"/>
+                <thead>
+                    <tr class="active">
+                        <th>RFI No.</th>
+                        <th>RFI Subject</th>
+                        <th>Date</th>
+                        <th>Priority</th>
+                        <th>Stage</th>
+                    </tr>
+                </thead>
+                <t t-foreach="rfis" t-as="rfi">
+                    <tr>
+                        <td>
+                            <a t-attf-href="/my/rfi/#{rfi.id}?{{ keep_query() }}">
+                                <t t-esc="rfi.sequence"/>
+                            </a>
+                        </td>
+                        <td>
+                            <span t-field="rfi.name"/>
+                        </td>
+                        <td>
+                            <span t-field="rfi.create_date"/>
+                        </td>
+                        <td>
+                            <span t-field="rfi.priority"/>
+                        </td>
+                        <td>
+                            <span t-field="rfi.stage_id.name"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

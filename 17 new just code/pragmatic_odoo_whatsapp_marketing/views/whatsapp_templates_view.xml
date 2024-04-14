@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_whatsapp_template_marketing_form" model="ir.ui.view">
+        <field name="name">view.whatsapp.template.marketing.form</field>
+        <field name="model">whatsapp.templates</field>
+        <field name="inherit_id" ref="pragtech_whatsapp_base.view_whatsapp_template_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='send_template']" position="after">
+                <field name="marketing_template" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_whatsapp_templates_marketing" model="ir.actions.act_window">
+        <field name="name">Marketing Templates</field>
+        <field name="view_mode">tree,form</field>
+        <field name="res_model">whatsapp.templates</field>
+        <field name="domain">[('marketing_template', '!=', False)]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_marketing_templates" name="Marketing Templates" parent="menu_whatsapp_marketing" action="action_whatsapp_templates_marketing" sequence="4"/>
+
+
+</odoo>

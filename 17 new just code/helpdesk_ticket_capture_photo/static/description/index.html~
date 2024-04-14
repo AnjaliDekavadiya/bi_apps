@@ -1,0 +1,205 @@
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:olive;">Helpdesk Ticket Scan and Upload Photo by Customer and Technician</h2>
+<p style="color:green;">This app allow your customers and technician to Scan and Submit Images from Support Ticket my account menu.
+
+</p>
+      <p style="color:crimson;">
+        <b>Main Features:</b>
+        <ul>
+            <li style="color:olive;">Agents / Technician / Support Responsible and Customer can able to Scan and Upload images.</li>
+            <li style="color:olive;">Uploaded Images is stored as Attachments and Chatter.</li>
+            <li style="color:olive;">Preview of Attachments.</li>
+            <li style="color:red;">Only for Odoo Community Edition.</li>
+            <li style="color:olive;">For more details see video and below screenshots.</li>
+        </ul>
+      </p>
+   </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+         <h2 class="oe_slogan" style="color:crimson;"><b>Agent/Technician and Customer Tickets on Portal/My Account</b></h2>
+            <div class="oe_span6">
+                <strong class="oe_slogan">Agent/Technician Tickets</strong>
+                <img class="oe_picture oe_screenshot oe_demo" src="1_technician_my_account_1.jpg">
+            </div>
+            <div class="oe_span6">
+                <strong class="oe_slogan">Customer Tickets</strong>
+                <img class="oe_picture oe_screenshot"  src="13_customer_my_account_1.jpg">
+            </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+         <h2 class="oe_slogan" style="color:crimson;"><b>Agent/Technician and Customer Tickets List on Portal/My Account</b></h2>
+            <div class="oe_span6  ">
+                <strong class="oe_slogan">Ticket List For Agent/Technician</strong>
+                <img class="oe_picture oe_screenshot"  src="2_technician_ticket_list11.jpg">
+            </div>
+            <div class="oe_span6  ">
+                <strong class="oe_slogan">Ticket List For Customer</strong>
+                <img class="oe_picture oe_screenshot" src="14_customer_ticket_list_1.jpg">
+            </div>
+    </div>
+</section>
+
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+         <h2 class="oe_slogan" style="color:crimson;"><b>Scan and Submit option on Form of Agent/Technician and Customer Tickets Portal/My Account<b></h2>
+            <div class="oe_span6  ">
+                <strong class="oe_slogan">Scan and Submit Section of Agent/Technician Ticket</strong>
+                <img class="oe_picture oe_screenshot" src="3_technician_form_view_1_1.jpg">
+            </div>
+            <div class="oe_span6  ">
+                <strong class="oe_slogan">Scan and Submit Section of Customer Ticket</strong>
+                <img class="oe_picture oe_screenshot" src="15_customer_ticket_form_view_1_1.jpg">
+            </div>
+    </div>
+    <div class="oe_row oe_spaced ">
+      <div class="oe_span6  ">
+                <img class="oe_picture oe_screenshot" src="4_technician_form_view_2_1.jpg">
+            </div>
+            <div class="oe_span6  ">
+                <img class="oe_picture oe_screenshot" src="16_customer_ticket_form_view_2_1.jpg">
+            </div>
+    </div>
+</section>
+
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced"><b>
+         <h2 class="oe_slogan" style="color:crimson;"><b>Scan your image/images</b></h2>
+         <h4 class="oe_slogan">Scan and Upload By Agent/Technician Or Customer</h4>
+            <div class="oe_span6">
+                <img class="oe_picture oe_screenshot" src="5_technician_capture_photo_1.jpg">
+            </div>
+            <div class="oe_span6  ">
+                <img class="oe_picture oe_screenshot" src="6_technician_capture_photo_2_1.jpg">
+            </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced"><b>
+          <h2 class="oe_slogan" style="color:crimson;">
+            <b>Submit your image/images</b>
+          </h2>
+          <h4 class="oe_slogan">Submit Images By Agent/Technician Or Customer</h4>
+            <div class="oe_span6  ">
+                <img class="oe_picture oe_screenshot" src="7_technician_image_submit_1.jpg">
+            </div>
+            <div class="oe_span6  ">
+                <img class="oe_picture oe_screenshot" src="18_customer_submit_image_1.jpg">
+            </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced"><b>
+         <h2 class="oe_slogan" style="color:crimson;"><b>Check your image/images as attachments and preview</b></h2>
+            <div class="oe_span4  ">
+                <strong class="oe_slogan">Attachment of Agent/Technician On Ticket</strong>
+                <img class="oe_picture oe_screenshot" src="8_technician_captured_photos_1.jpg">
+            </div>
+            <div class="oe_span4  ">
+                <strong class="oe_slogan">Attachment of Customer On Ticket</strong>
+                <img class="oe_picture oe_screenshot" src="19_customer_attachment_images_1.jpg">
+            </div>
+            <div class="oe_span4  ">
+                <strong class="oe_slogan">We can see Preview Of Attachment</strong>
+                <img class="oe_picture oe_screenshot" src="10_technician_photo_preview_1.jpg">
+            </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced"><b>
+         <h2 class="oe_slogan" style="color:crimson;"><b>Check your image/images as chatter</b></h2>          
+            <div class="oe_span6" >
+                <img class="oe_picture oe_screenshot oe_demo"  src="9_technician_chatter_1.jpg">
+            </div>
+            <div class="oe_span6" >
+                <p  class='oe_mt32 text-justify'>Submitted Images is also available in Chatter Of Customer and Agent/Technician</p>
+            </div>
+    </div>
+</section>
+
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced"><b>
+         <h2 class="oe_slogan" style="color:crimson;"><b>Image/images stored in backend</b></h2>
+         <div class="oe_span6">
+                <p class='oe_mt32 text-justify'>All the Submmitted Images are also stored in Backend of Ticket</p>
+            </div>
+            <div class="oe_span6">
+                <img class="oe_picture oe_screenshot  " src="11_technician_photos_backend_1.jpg" >
+            </div>
+    </div>
+</section>
+  
+<section class="oe_container" >
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">
+            <strong><font style="color:#2dd280;" class="text-epsilon">Contact / Support<br/></font></strong>
+            <strong><font style="color:crimson" class="text-epsilon">Introducing</font>
+            <font style="color:crimson;" class="text-epsilon">Probuse Consulting Services Pvt. Ltd.</font></strong>
+          </h2>
+       <div class="oe_span6">
+           <div class="mt32 col-md-10">
+           <div class="oe_picture" style="margin: 25px 10%;">
+               <a  target='new' href="http://www.probuse.com/">
+                   <img src="logo.png">
+               </a>
+           </div>
+           <p class="oe_mt32">
+               <font style="color:crimson;">If you need any help or want more additional features, you may contact us through:</font><br/>
+               <font style="color:crimson;">Email: <a href="contact@probuse.com">contact@probuse.com</a> <br/>
+               <font style="color:crimson;">Website: </font><a href="http://www.probuse.com/" target='new'><u>www.probuse.com</u></a> <br/>
+               <font style="color:crimson;">Skype: mustufa_probuse</font><br/>
+           </p>
+           <p>
+                <h2>
+                    <a href="https://www.facebook.com/probusecs" target="new">
+                      <i class="fa fa-facebook-square" style="font-size:38px;"></i>
+                    </a>
+                    <a href="https://twitter.com/mustufa_odoo" target="new">
+                      <i class="fa fa-twitter" style="font-size:38px;"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mustufa-rangwala-odoo-openerp-0a46777/" target="new">
+                      <i class="fa fa-linkedin" style="font-size:38px;"></i>
+                    </a>
+                    <!--<a href="https://www.youtube.com/channel/UCHlyoC4khP44M1cOCJXo2FQ" target="new">
+                      <i class="fa fa-youtube-play" style="font-size:38px;"></i>
+                    </a>-->
+                    <a href="https://plus.google.com/u/0/113284573788891837715/posts" target="new" rel="publisher">
+                      <i class="fa fa-google-plus-square" style="font-size:38px;"></i>
+                    </a>
+              </h2>
+            </p>
+           </div>
+       </div>
+    <div class="mt32 col-md-5">
+           <p style="text-align: justify; ">
+            <font class="text-epsilon" style="color:crimson;">Probuse Consulting Service Pvt Ltd is an Software and Web development specialist which offers complete business application together. We are well experienced to provide a face for your business on the software and Internet level.</font>
+          </p>
+          <p style="text-align: justify;">
+            <font class="text-epsilon" style="color:crimson">Probuse Consulting Service Pvt Ltd is a specialist in Odoo/OpenERP services and could give your business open source hand to drive.</font>
+          </p>
+            <h3 class="o_animate o_anim_bounce_in" style="text-align: left; animation-play-state: paused;">
+                <font style="font-size: 18px;color:#ff8000;" class="text-epsilon"><strong>Our Services</strong></font>
+            </h3>
+            <ul style="list-style-type:square">
+                <a href="http://www.probuse.com/page/odoo-implementation" target="new"><li list-style-type: "*";><p style="text-align: left; color:crimson;">Odoo Implementation</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-support" target="new"><li><p style="text-align: left; color:crimson;">Odoo Support</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-customization" target="new"><li><p style="text-align: left; color:crimson;">Odoo Customization</p></li></a>
+                <a href="http://www.probuse.com/page/odoo-migration" target="new"><li><p style="text-align: left; color:crimson;">Odoo Migration</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-training" target="new"><li><p style="text-align: left; color:crimson;">Odoo Training</p></a></li>
+            </ul>
+           </p>
+       </div>
+   </div>
+</section>
+

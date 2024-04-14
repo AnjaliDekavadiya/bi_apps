@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_sales_unique_id" name="unique id" inherit_id="website_sale.payment">
+        <xpath expr="//div[@id='payment_method']" position="before">
+<!--            <t t-if='website_sale_order.partner_id.custom_search_agent == "have_an_agent_id" '>-->
+            <t t-if="request.env['ir.config_parameter'].sudo().get_param('sales_commission_agent_uniqueid.custom_search_agent') == 'have_an_agent_id'">
+                <a class="pull-right btn btn-primary" id="custom_add_sales_uniq_agent" href="#" data-html="true" data-bs-toggle="modal"
+                            data-bs-target="#terms_and_condition_custom_unique_fade" t-if="not website_sale_order.custom_webshop_add_unique_agent and web_shop_agent_level">Search Agent</a>
+            </t>
+            <t t-if="sale_unique_users_partner_search">
+                <span class="text-danger mt-3 mr6" >Couldn't found User you want to search </span> 
+                <strong class="text-danger">"<span class="text-danger mt-3 mr6" t-esc="sale_unique_users_partner_search"/>"</strong>
+            </t>
+            <div class="modal fade" id="terms_and_condition_custom_unique_fade" role="dialog">
+            
+                <div class="modal-dialog modal-md">
+                    <form action="/sale/shop/search_agent_custom" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="modal-content">
+                                <header class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" 
+                                    aria-hidden="true">&amp;times;
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <div align="center">
+                                        <strong>
+                                            <h3 class="modal-title" aling="center">Select sales agent for this order</h3>
+                                        </strong>
+                                    </div>
+                                </header>
+                                <main class="modal-body">
+                                    <section>
+                                        <input type="hidden" name="website_sale_order" t-att-value="website_sale_order.id"/>
+                                        <div class="row dol-12">
+                                            <div class="col-3">
+                                                <label for="custom_sales_agent_id_uniq" class="col-form-label" string="Select sales agent for this order">Select Agent</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input type="hidden" name="custom_sale_unique_user_id" t-attf-value="#{custom_sale_unique_user_id.id if custom_sale_unique_user_id else None}"/>
+                                                <input type="hidden" name="custom_web_shop_agent_level" t-attf-value="#{web_shop_agent_level.id}"/>
+                                                <input type="text" class="form-control" name="custom_sale_unique_users_input" required="True"/>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </main>
+                                <footer class="modal-footer custom">
+                                    <button type="submit" class="btn btn-success">Set Agent</button>
+                                    <a id="get_ecomm_quote_custom" class="btn btn-danger btn-md d-block d-sm-inline-block" t-att-href="'/custom/sales_aget/remove?website_sale_order=%d' %website_sale_order.id" t-if="website_sale_order.custom_webshop_add_unique_agent"> Remove Agent </a>
+                                    <button type="button" class="btn btn-link" data-bs-dismiss="modal" style="padding: 0">Cancel</button>
+                                </footer>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="total_sales_aget_shop_template_unique" inherit_id="website_sale.total" name="Sales Agent SHOP Unique">
+        <xpath expr="//div[@id='cart_total']//table/tr[last()]" position="after">
+            <tr t-if="website_sale_order.custom_webshop_add_unique_agent">
+                <td colspan="3" class="text-center text-xl-right border-0" t-if="custom_sale_unique_user_id">
+                    <strong>Sales Commission Agents:<span t-field="custom_sale_unique_user_id.user_id"/></strong>
+                     <a class="pull-right btn btn-sm btn-primary ml8" id="custom_add_sales_uniq_agent" href="#" data-html="true" data-bs-toggle="modal"
+                        data-bs-target="#terms_and_condition_custom_unique_fade"> <i class="fa fa-pencil"/> </a> 
+                </td>
+            </tr>
+        </xpath>
+    </template>
+
+    <!-- <template id="custom_sales_agent_payment_inherit_config_based" name="unique id" inherit_id="sales_agent_representative_shop.custom_sales_agent_payment"> -->
+    <template id="custom_sales_agent_payment_inherit_config_based" name="unique id" inherit_id="sales_agent_representative_shop.sale_agent_payment">
+        <xpath expr="//a[@id='custom_add_sales_agent']" position="attributes">
+            <attribute name="t-if">not website_sale_order.custom_webshop_add_agent and web_shop_agent_level and request.env['ir.config_parameter'].sudo().get_param('sales_commission_agent_uniqueid.custom_search_agent') == 'custom_agent_id'</attribute>
+        </xpath>
+    </template>
+
+</odoo>

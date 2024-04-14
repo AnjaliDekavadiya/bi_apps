@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bf_barcode_template_all,access.bf.barcode.template.all,model_bf_barcode_template,,0,0,0,0
+access_bf_barcode_template_user,access.bf.barcode.template.user,model_bf_barcode_template,base.group_user,1,0,0,0
+access_bf_barcode_template_system,access.bf.barcode.template.system,model_bf_barcode_template,base.group_system,1,1,1,1
+
+access_bf_barcode_user,access.bf.barcode.user,model_bf_barcode,base.group_user,1,1,1,1
+access_bf_barcode_line_user,access.bf.barcode.line.user,model_bf_barcode_line,base.group_user,1,1,1,1

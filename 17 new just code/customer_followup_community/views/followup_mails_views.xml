@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    Modifies the form view ('followup_mails_view_tree') for the
+    'followup.mails' model. It includes a description of the action and buttons
+     to send emails, print letters, and cancel. The number of emails sent is
+     displayed when applicable.-->
+    <record id="followup_mails_view_tree" model="ir.ui.view">
+        <field name="name">followup.mails.view.form</field>
+        <field name="model">followup.mails</field>
+        <field name="arch" type="xml">
+            <form string="Followups">
+                <div>
+                    <p>This action will send email to customers with due
+                        payments according to follow-up levels
+                    </p>
+                </div>
+                <div invisible="email_count_value == False">
+                    <p>
+                        <field name="email_count_value" nolabel="1"
+                               readonly="1"/>
+                        emails send
+                    </p>
+                </div>
+                <footer>
+                    <button name="action_send_followup_mail" string="Send emails"
+                            type="object" class="btn-primary"
+                            invisible="email_count_value != False"
+                    />
+                    <button name="action_print_all_letter" string="Print Letter"
+                            type="object" class="btn-primary"
+                            invisible="email_count_value != False"
+                    />
+                    <button string="Cancel" class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <!--   Defines an action server ('call_followup_function_action') named
+           "Send letters and emails" that triggers the 'model.followp_wizard()'
+            method.-->
+    <record id="call_followup_function_action" model="ir.actions.server">
+        <field name="name">Send letters and emails</field>
+        <field name="model_id" ref="model_followup_mails"/>
+        <field name="state">code</field>
+        <field name="type">ir.actions.server</field>
+        <field name="code">action=model.followp_wizard()</field>
+    </record>
+    <!--Adds a menu item ('call_followup_function_menu') named "Send Overdue"
+        under the "Finance" menu, linked to the 'call_followup_function_action'.-->
+    <menuitem id="call_followup_function_menu" name="Send Overdue"
+              parent="account.menu_finance"
+              action="call_followup_function_action"/>
+</odoo>

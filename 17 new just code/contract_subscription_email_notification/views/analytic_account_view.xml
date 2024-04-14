@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_analytic_account_form_inherit_subscription" model="ir.ui.view">
+            <!-- <field name="name">analytic.analytic.account.subscription.form</field> -->
+            <field name="name">analytic.support.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='number_of_days']" position="after">
+                    <field name="reminder_date"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

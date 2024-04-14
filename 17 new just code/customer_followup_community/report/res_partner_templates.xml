@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Displaying an invoice list with due amounts. The template includes the
+         date, a header, and body with details for each partner, including a
+         table of invoice details and a total amount due.-->
+    <template id="report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <header>
+                    <span>
+                        <b>Date:</b>
+                        <t t-esc="today"/>
+                    </span>
+                    <br/>
+                    <br/>
+                    <h4 align="center">Invoice List With Due Amount</h4>
+                    <br/>
+                </header>
+                <body>
+                    <t t-foreach="partner" t-as="values">
+                        <br/>
+                        <div align="left">
+                            <strong>
+                                <t t-esc="values.name"/>
+                            </strong>
+                            <br/>
+                        </div>
+                        <t t-if="values.invoice_ids">
+                            <table border="2" class="table" cellpadding="10">
+                                <t t-set="total" t-value="0"/>
+                                <tbody>
+                                    <tr>
+                                        <th>Invoice Date</th>
+                                        <th>Description</th>
+                                        <th>Reference</th>
+                                        <th>Due Date</th>
+                                        <th>Amount</th>
+                                    </tr>
+
+                                    <t t-foreach="values.invoice_ids" t-as="t">
+                                        <tr>
+                                            <td>
+                                                <t t-esc="t.invoice_date"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="t.name"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="t.payment_reference"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="t.invoice_date_due"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="t.amount_residual_signed"/>
+                                            </td>
+                                        </tr>
+                                        <t t-set="total"
+                                           t-value="total+t.amount_residual_signed"/>
+                                    </t>
+                                    <tr>
+                                        <td>
+                                            <span>Total Amount Due:
+                                                <t t-esc="total"/>
+                                            </span>
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </t>
+                        <hr/>
+                    </t>
+                </body>
+            </t>
+        </t>
+    </template>
+</odoo>

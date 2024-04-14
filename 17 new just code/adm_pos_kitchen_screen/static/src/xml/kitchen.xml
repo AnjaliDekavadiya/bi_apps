@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+	<t t-name="kitchen_template">
+		<div class="o_action o_view_controller">
+			<div class="o_content kitchen">
+				<div class="setup_container" style="display: none;">You dont have any POS or category configured to show. Please, contact your administrator to configure it in your user profile.</div>
+				<div class="recipie_container" style="display: none;">
+					
+				</div>
+				<div class="note_container" style="display:none;">
+					
+				</div>
+				<div class="options_container">
+					<div class="options_header">
+						<i class="fa fa-cogs"></i>
+						<strong>Options</strong>
+						<div class="chevron-icons">
+							<i class="fa fa-chevron-circle-down"></i>
+							<i style="display: none;" class="fa fa-chevron-circle-up"></i>
+						</div>
+					</div>
+					<div class="options_body" style="display: none;">
+						<div class="buttons-group">
+							<button class="pending-orders-filter active">Pending Orders</button>
+							<button class="in-progress-orders-filter active">In Progress Orders</button>
+							<button class="done-orders-filter active">Done Orders</button>
+						</div>
+						<button class="pause-play-refresh"><i class="fa fa-pause-circle"></i> Disable auto refresh</button>
+						<button class="pause-play-refresh active" style="display:none;"><i class="fa fa-play-circle"></i> Enable auto refresh</button>
+						<label class="refresh-time-label">Seconds: </label>
+						<input type="number" class="refresh-time" value="30" min="10" max="300" step="10" />
+						<button style="display: none;" class="save-refresh-seconds"><i class="fa fa-save" /></button>
+						<button class="manual-refresh" style="display:none;"><i class="fa fa-refresh"></i> Refresh</button>
+						<select class="theme-select">
+							<option value="theme-light">Light</option>
+							<option value="theme-dark">Dark</option>
+							<option value="theme-blue">Blue</option>
+							<option value="theme-light-green">Light Green</option>
+							<option value="theme-pink">Pink</option>
+							<option value="theme-odoo">Odoo</option>
+							<option value="theme-green">Green</option>
+						</select>
+					</div>
+				</div>
+				<div>
+					<div class="kanban_view"></div>
+				</div>
+			</div>
+		</div>
+	</t>
+
+
+
+</templates>

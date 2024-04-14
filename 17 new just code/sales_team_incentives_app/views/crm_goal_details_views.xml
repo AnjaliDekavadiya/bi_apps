@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="crm_goal_defination_tree" model="ir.ui.view">
+        <field name="name">crm.goal.defination.tree</field>
+        <field name="model">crm.goal.defination</field>
+        <field name="arch" type="xml">
+            <tree string="Goal Defination" editable="bottom">
+                <field name="name" required="1"/>
+                <field name="requirements" required="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="crm_goal_defination_form" model="ir.ui.view">
+        <field name="name">crm.goal.defination.form</field>
+        <field name="model">crm.goal.defination</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <form string="Goal Defination">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    <div class="oe_title">
+                        <div class="oe_edit_only">
+                            <label for="name"/>
+                        </div>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <field name="active" invisible="1"/>
+                    </div>
+                    <separator string="Requirements"/>
+                    <field name="requirements" nolabel="1" placeholder="Give your team the requirements to move an opportunity to this stage."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="crm_goal_defination_action" model="ir.actions.act_window">
+        <field name="name">Goals Defination</field>
+        <field name="res_model">crm.goal.defination</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="crm_goal_defination_tree"/>
+    </record>
+
+    <menuitem id="menu_crm_goal_defination_act"
+        name="Goals Defination"
+        sequence="8"
+        action="crm_goal_defination_action"
+        parent="crm.menu_crm_config_lead"/>
+
+</odoo>

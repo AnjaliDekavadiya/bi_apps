@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mail_inbox_form" model="ir.ui.view">
+        <field name="name">mail.inbox.form</field>
+        <field name="model">mail.inbox</field>
+        <field name="arch" type="xml">
+            <form duplicate="0" string="Email message">
+                <header>
+                    <button class="oe_highlight" invisible="state not in ['outgoing']" name="send" string="Send Now" type="object"/>
+                    <button invisible="state not in ['exception','cancel']" name="mark_outgoing" string="Retry" type="object"/>
+                    <button invisible="state not in ['outgoing']" name="cancel" string="Cancel" type="object"/>
+                    <field name="state" statusbar_visible="outgoing,sent,received,archived,exception,cancel" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <field invisible="1" name="id"/>
+                    <label class="oe_edit_only" for="subject"/>
+                    <h2>
+                        <field name="subject"/>
+                    </h2>
+                    <div style="vertical-align: top;">
+                        by
+                        <field class="oe_inline" name="author_id" string="User"/>
+                        on
+                        <field class="oe_inline" name="date" readonly="1"/>
+                        <button context="{'default_composition_mode':'comment', 'default_parent_id': id}" icon="fa-reply text-warning" invisible="state not in ['received','sent','archived','exception','cancel']" name="%(action_email_compose_wizard)d" string="Reply" type="action"/>
+                    </div>
+                    <group>
+                        <field name="email_from"/>
+                        <field name="email_to"/>
+                        <field domain="[('type', '!=', 'private'), ('active', '=', True)]" name="recipient_ids" widget="many2many_tags"/>
+                        <field name="email_cc"/>
+                        <field name="reply_to"/>
+                        <field name="scheduled_date" placeholder="YYYY-MM-DD HH:MM:SS"/>
+                    </group>
+                    <notebook>
+                        <page name="body" string="Body">
+                            <field name="body_html" options="{'sandboxedPreview': true}" readonly="state not in ['outgoing', 'exception']" widget="html"/>
+                        </page>
+                        <page groups="base.group_no_one" name="advanced" string="Advanced">
+                            <group>
+                                <group string="Status">
+                                    <field invisible="state != 'outgoing' and state != 'exception'" name="auto_delete"/>
+                                    <!-- <field invisible="1" name="to_delete"/> -->
+                                    <field name="is_notification"/>
+                                    <field name="message_type"/>
+                                    <field name="mail_server_id"/>
+                                </group>
+                                <group string="Headers">
+                                    <field name="message_id"/>
+                                    <field name="references"/>
+                                    <field name="fetchmail_server_id"/>
+                                    <field name="headers"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="attachments" string="Attachments">
+                            <div class="alert alert-warning" invisible="restricted_attachment_count == 0" role="alert">
+                                You do not have access to
+                                <field name="restricted_attachment_count"/>
+                                attachment(s) of this email.
+                            </div>
+                            <field domain="[('res_field','=', False)]" name="unrestricted_attachment_ids"/>
+                        </page>
+                        <page invisible="state != 'exception'" name="failure_reason" string="Failure Reason">
+                            <field name="failure_reason"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form></field>
+    </record>
+    <record id="action_mail_inbox" model="ir.actions.client">
+        <field name="name">Mail Inbox</field>
+        <field name="tag">is_mail_inbox.action_mail_inbox</field>
+        <field eval="&quot;{ 'default_active_id': 'is_mail_inbox.action_mail_inbox' }&quot;" name="params"/>
+    </record>
+    <menuitem action="action_mail_inbox" groups="is_mail_inbox.group_mail_box_user" id="menu_root_mail_box" name="Mail Box" sequence="1" web_icon="is_mail_inbox,static/description/icon.png">
+    </menuitem>
+    <menuitem id="menu_mail_box_configuration" name="Configuration" parent="menu_root_mail_box"/>
+    <menuitem action="mail.action_email_server_tree" id="menu_mail_box_configuration_incoming" name="Incoming Mail Servers" parent="menu_mail_box_configuration"/>
+    <menuitem action="base.action_ir_mail_server_list" id="menu_mail_box_configuration_outgoing" name="Outgoing Mail Servers" parent="menu_mail_box_configuration"/>
+</odoo>

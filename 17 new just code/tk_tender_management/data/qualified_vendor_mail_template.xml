@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="qualified_vendor_mail_template" model="mail.template">
+            <field name="name">Tender Management : Qualified Vendor Mail Template</field>
+            <field name="model_id" ref="tk_tender_management.model_tender_bidding"/>
+            <field name="subject">Notification of Qualification for Tender Bidding</field>
+            <field name="email_from">{{object.company_id.email}}</field>
+            <field name="partner_to">{{ object.vendor_id.id }}</field>
+            <field name="body_html" type="html">
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            Dear
+                            <br/>
+                            <h4>
+                                <strong>
+                                    <t t-out="object.vendor_id.name"/>
+                                </strong>
+                            </h4>
+                        </td>
+                    </tr>
+                </table>
+                <hr/>
+                <p>
+                    We are writing to inform you that your company has successfully
+                    qualified for the bidding process in response to our recent tender
+                    <strong>
+                        "<span t-field="object.tender_id.name"/>"
+                    </strong>
+                    . We have carefully
+                    reviewed the applications received, and based on our evaluation criteria, your company has been
+                    selected as one of the qualified vendors. We appreciate your interest in participating in this
+                    tender and acknowledge the effort you have put into your submission.
+                </p>
+                <br/>
+                <p>
+                    Please be advised that the deadline for submitting your bid is
+                    <strong>
+                        <span t-field="object.tender_id.bid_end_date"/>
+                    </strong>
+                    . We kindly request you to
+                    review the tender documents thoroughly, prepare your bid proposal accordingly, and submit it before
+                    the specified deadline. Any bids received after the deadline will not be considered for evaluation.
+                </p>
+                <br/>
+                <p>
+                    Should you have any questions or require further clarification regarding the tender specifications
+                    or submission process, please do not hesitate to reach out to us. We are here to assist you and
+                    ensure a fair and transparent bidding process.
+                </p>
+                <br/>
+                <h6>
+                    Best regards
+                </h6>
+                <h5>
+                    <strong>
+                        <t t-out="object.company_id.name"/>
+                    </strong>
+                </h5>
+                <hr/>
+                <span>
+                    <h6>
+                        <t t-out="object.company_id.name"/>
+                    </h6>
+                    <t t-out="object.company_id.phone"/>
+                    <br/>
+                    <t t-out="object.company_id.email"/>
+                    <br/>
+                    <t t-out="object.company_id.website"/>
+                </span>
+            </field>
+            <field name="auto_delete" eval="False"/>
+        </record>
+        <record id="disqualified_vendor_mail_template" model="mail.template">
+            <field name="name">Tender Management : Disqualified Vendor Mail Template</field>
+            <field name="model_id" ref="tk_tender_management.model_tender_bidding"/>
+            <field name="subject">Notification of Qualification for Tender Bidding</field>
+            <field name="email_from">{{object.company_id.email}}</field>
+            <field name="partner_to">{{ object.vendor_id.id }}</field>
+            <field name="body_html" type="html">
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            Dear
+                            <br/>
+                            <h4>
+                                <strong>
+                                    <t t-out="object.vendor_id.name"/>
+                                </strong>
+                            </h4>
+                        </td>
+                    </tr>
+                </table>
+                <hr/>
+                <p>
+                    We regret to inform you that your company has been disqualified from the bidding process for the
+                    tender "
+                    <strong>
+                        <span t-field="object.tender_id.name"/>
+                    </strong>
+                    ". We appreciate your interest, but unfortunately, Your company did not meet the minimum
+                    requirements
+                    for participation. We thank you for your participation and encourage you to consider future
+                    opportunities with our organization.
+                </p>
+                <br/>
+                <p>
+                    <strong>
+                        Disqualify Reason is Following
+                    </strong>
+                    <br/>
+                    <span t-field="object.dis_qualified_reason"/>
+                </p>
+                <t t-if="object.allow_resubmit">
+                    <br/>
+                    <p>
+                        But we believe that providing you with the chance to make the necessary revisions will allow you
+                        to
+                        present a stronger bid.
+                        <br/>
+                        <strong>
+                            Please visit our website where you can proceed with the resubmission of your documents.
+                        </strong>
+                    </p>
+                </t>
+                <br/>
+                <h6>
+                    Best regards
+                </h6>
+                <h5>
+                    <strong>
+                        <t t-out="object.company_id.name"/>
+                    </strong>
+                </h5>
+                <hr/>
+                <span>
+                    <h6>
+                        <t t-out="object.company_id.name"/>
+                    </h6>
+                    <t t-out="object.company_id.phone"/>
+                    <br/>
+                    <t t-out="object.company_id.email"/>
+                    <br/>
+                    <t t-out="object.company_id.website"/>
+                </span>
+            </field>
+            <field name="auto_delete" eval="False"/>
+        </record>
+    </data>
+</odoo>

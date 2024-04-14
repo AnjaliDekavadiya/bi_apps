@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- sale_order form -->
+        <record id="view_order_form_website_wallet" model="ir.ui.view">
+            <field name="name">sale.order.form.website.wallet</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//field[@name='amount_total']" position="after">-->
+<!--                <xpath expr="//field[@name='tax_totals_json']" position="after">-->
+                <xpath expr="//group[@name='sale_total']" position="inside">
+                    <field name="wallet_used" readonly="1"/>
+                    <field name="wallet_transaction_id" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

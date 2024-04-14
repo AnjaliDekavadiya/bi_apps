@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="machine_repair_support_form_view_inherited" model="ir.ui.view">
+            <field name="name">machine.repair.support.form</field>
+            <field name="model">machine.repair.support</field>
+            <field name="inherit_id" ref="machine_repair_management.machine_repair_support_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='show_machine_diagnosys_task']" position="before">
+                    <button class="oe_stat_button" type="object" name="show_hr_expense_sheet" icon="fa-pencil-square">
+                        <field string="Expenses" name="expense_sheet_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+
+</odoo>

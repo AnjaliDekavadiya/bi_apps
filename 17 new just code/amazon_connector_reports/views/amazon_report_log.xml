@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="amazon_report_log_form" model="ir.ui.view">
+        <field name="name">amazon.report.log.form</field>
+        <field name="model">amazon.report.log</field>
+        <field name="inherit_id" ref="amazon_connector_base.amazon_report_log_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="request_report_list" type="object"
+                    string="Request Report List"
+                    invisible="not account_id or not report_type_id or report_id or child_ids" />
+                <button name="convert_report_to_document" string="Convert to Document Sheet" type="object"
+                    invisible="not report_file"/>
+                <button name="create_odoo_report_lines" string="Create Odoo Report Lines" type="object"
+                    invisible="not report_file or report_lines_count"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="button_view_report_lines" type="object" class="oe_stat_button"
+                    icon="fa-pencil-square-o" invisible="not report_lines_count">
+                    <field name="report_lines_count" widget="statinfo" string="Report Lines"/>
+                </button>
+                <button name="button_view_statement_lines" type="object" class="oe_stat_button"
+                    string="Settlement Lines" icon="fa-pencil-square-o"
+                    invisible="not statement_id">
+                </button>
+            </xpath>
+            <field name="requested_date" position="after">
+                <field name="statement_id" readonly="1" />
+            </field>
+            <xpath expr="//notebook" position="inside">
+                <page string="Amazon Auto-Generated Reports" invisible="not child_ids">
+                    <field name="child_ids" nolabel="1" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem id="menu_amazon_report_log"
+        name="Amazon Reports"
+        action="amazon_connector_base.amazon_report_log_action"
+        parent="amazon_connector_base.amazon_connector_menu_report"
+        sequence="20" />
+
+</odoo>

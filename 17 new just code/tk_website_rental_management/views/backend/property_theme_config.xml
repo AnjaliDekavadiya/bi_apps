@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+    Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+-->
+<odoo>
+    <data>
+        <record id="property_theme_config_view_form" model="ir.ui.view">
+            <field name="name">property.theme.config.view.form</field>
+            <field name="model">property.theme.config</field>
+            <field name="arch" type="xml">
+                <form string="Property Theme Configuration">
+                    <h3>
+                        <field name="name" readonly="1" force_save="1"/>
+                    </h3>
+                    <group string="Google Map API Key">
+                        <group>
+                            <field name="google_map_api" password="true" />
+                        </group>
+                    </group>
+                    <group string="Map Center Coordination">
+                        <group>
+                            <field name="map_center_address"/>
+                        </group>
+                        <group>
+                            <group>
+                            <field name="latitude" placeholder="-90.00000000"/>
+                                </group>
+                            <group>
+                            <field name="longitude" placeholder="-180.00000000"/>
+                                </group>
+                        </group>
+                        <group>
+                            <field name="zoom_level"/>
+                        </group>
+                    </group>
+                    <group string="Website RTL Config">
+                        <group>
+                            <field name="is_rtl"/>
+                        </group>
+                    </group>
+                    <group string="Show Landlord on Property">
+                        <group>
+                            <field name="display_landlord" string="Show Landlord on Property in Website"/>
+                        </group>
+                    </group>
+                    <group string="Listing Property per page">
+                        <group>
+                            <field name="list_property_per_page"/>
+                        </group>
+                    </group>
+                    <group string="Lisiting Filters">
+                        <group string="Price Range Filters">
+                            <field name="price_start"/>
+                            <field name="price_end"/>
+                        </group>
+                        <group string="Area Range Filters">
+                            <field name="area_start"/>
+                            <field name="area_end"/>
+                        </group>
+                    </group>
+                    <group string="Website Newsletter">
+                        <group>
+                            <field name="mailling_list_id"/>
+                        </group>
+                    </group>
+                    <group string="Property Listing Limits">
+                        <group>
+                            <field name="no_latest_list"/>
+                        </group>
+                        <group>
+                            <field name="no_popular_list"/>
+                        </group>
+                    </group>
+                    <group string="Home stats figure">
+                        <group>
+                            <field name="hs_one"/>
+                            <field name="hs_two"/>
+                        </group>
+                        <group>
+                            <field name="hs_three"/>
+                            <field name="hs_four"/>
+                        </group>
+                    </group>
+                    <group string="Home Video Link">
+                        <group>
+                            <field name="video_link"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="reviews" string="Reviews">
+                            <field name="review_ids" nolabel="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="role"/>
+                                    <field name="rate"/>
+                                    <field name="reviews"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                        </group>
+                                        <group>
+                                            <field name="image_1920" widget="image" nolabel="1"/>
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <group>
+                                            <field name="role"/>
+                                            <field name="rate"/>
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <field name="reviews"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="city" string="Cities">
+                            <field name="city_ids" nolabel="1">
+                                <tree>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="city_id"/>
+                                    <field name="size"/>
+                                    <field name="property_count"/>
+                                    <field name="tag_line"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="city_id"/>
+                                            <field name="size"/>
+                                            <field name="tag_line"/>
+                                            <field name="config_id" invisible="1"/>
+                                        </group>
+                                        <group>
+                                            <field name="cover_image" widget="image" nolabel="1"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="partners" string="Partners">
+                            <field name="partner_ids" nolabel="1">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                        </group>
+                                        <group>
+                                            <field name="partner_logo" widget="image" nolabel="1"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="bg_images" string="Home Page Backgrounds">
+                            <group col="4">
+                                <group>
+                                    <field name="hero_choice" widget="radio" />
+                                </group>
+                            </group>
+                            <group col="4" invisible="hero_choice != 'vid'">
+                                <group>
+                                    <field name="video_bg_url" placeholder="https://your-site.com/video/bg-video.mp4" />
+                                </group>
+                            </group>
+                            <group col="4" invisible="hero_choice != 'youtube'">
+                                <group>
+                                    <field name="youtube_bg_video" placeholder="iTPtpU-IpiM" />
+                                </group>
+                            </group>
+                            <group col="4" invisible="hero_choice not in ['vid', 'youtube']">
+                                <group>
+                                    <field name="mob_background" widget="image" style="width:25%!important;" />
+                                </group>
+                            </group>
+                            <group col="4" string="Search Section Backgrounds" invisible="hero_choice != 'img'">
+                                <group>
+                                    <field name="image_1920_0" widget="image" style="width:25%!important;" />
+                                </group>
+                                <group>
+                                    <field name="image_1920_1" widget="image" style="width:25%!important;" />
+                                </group>
+                                <group>
+                                    <field name="image_1920_2" widget="image" style="width:25%!important;"/>
+                                </group>
+                                <group>
+                                    <field name="image_1920_3" widget="image" style="width:25% !important;"/>
+                                </group>
+                            </group>
+                            <group col="2" string="Stats BG &amp; Promo Video BG">
+                                <group>
+                                    <field name="sec_img_2" widget="image" style="width:25%!important;" />
+                                </group>
+                                <group>
+                                    <field name="sec_img_3" widget="image" style="width:25%!important;" />
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record id="property_theme_config_action" model="ir.actions.act_window">
+            <field name="name">Property Theme Configuration</field>
+            <field name="res_model">property.theme.config</field>
+            <field name="view_mode">form</field>
+            <field name="res_id" ref="tk_website_rental_management.property_theme_config_rec"/>
+        </record>
+
+        <menuitem name="Property Theme Config"
+                  id="menu_property_theme_config"
+                  parent="rental_management.menu_configuration"
+                  groups="rental_management.property_rental_manager,rental_management.property_rental_officer"
+                  action="property_theme_config_action"/>
+    </data>
+</odoo>

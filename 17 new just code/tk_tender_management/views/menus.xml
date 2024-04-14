@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--Root Menu-->
+        <menuitem name="Tender Management" id="menu_tender_root" sequence="0" web_icon="tk_tender_management,static/description/icon.png"/>
+        <!--Dashboard Menu-->
+        <menuitem id="menu_construction_dashboard" name="Dashboard" sequence="0" action="action_tender_dashboard"
+                  parent="menu_tender_root"/>
+        <!--Tender Information-->
+        <menuitem id="menu_tender_info" name="Tenders" parent="menu_tender_root"
+                  sequence="1" action="tender_information_action"/>
+
+        <!--Tender Bidding-->
+        <menuitem id="menu_tender_bidding" name="Tender Bidding" parent="menu_tender_root"
+                  action="tender_bidding_action" sequence="2"/>
+
+        <!--Vendor-->
+        <menuitem id="menu_vendors" name="Vendors" parent="menu_tender_root" sequence="3"
+                  action="tender_vendor_action"/>
+
+        <!--Tender Product-->
+        <menuitem id="menu_tender_product" name="Products" parent="menu_tender_root" action="tender_product_action"
+                  sequence="4"/>
+
+        <!--Configuration-->
+        <menuitem id="menu_configuration_tender" name="Configurations" parent="menu_tender_root"
+                  sequence="5"/>
+        <!--Tender Type-->
+        <menuitem id="menu_tender_type" name="Tender Types" parent="menu_configuration_tender"
+                  action="tender_type_action" sequence="2"/>
+        <!-- Document Type -->
+        <menuitem id="menu_document_type" name="Document Types" parent="menu_configuration_tender"
+                  action="document_type_action" sequence="3"/>
+    </data>
+</odoo>

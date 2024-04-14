@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <openerp> -->
+<odoo>
+    <data>
+        
+        <template id="product_warranty_description" name="Product" inherit_id='website_sale.product'>
+            <!-- <xpath expr="//div[@class='row']/div[2]/p[@class='text-muted']" position="replace"> -->
+            <xpath expr="//div[hasclass('row')]/div[2]/p[hasclass('text-muted')]" position="replace">
+                <p class="text-muted">
+                    <span t-field="product.custom_website_policies" />
+                </p>
+            </xpath>
+            <!-- <xpath expr="//div[@class='row']/div[2]/p[@class='text-muted']" position="after"> -->
+            <xpath expr="//div[hasclass('row')]/div[2]/p[hasclass('text-muted')]" position="after">
+                <t t-if='product.custom_show_product_warranty'>
+                    <hr t-if="product.custom_product_warranty"/>
+                        <p class='text-muted'>
+                            <strong>WARRANTY</strong><br/>
+                            <span t-field='product.custom_product_warranty'/> <span t-field='product.custom_warranty_type'/>
+                        </p>
+                    <hr/>
+                </t>
+            </xpath>
+        </template>
+        
+    </data>
+<!-- </openerp> -->
+</odoo>

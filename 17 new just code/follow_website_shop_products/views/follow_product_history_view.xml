@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="follow_product_history_form_view_custom">
+            <field name="name">Follow Product History Form</field>
+            <field name="model">custom.follow.product.history</field>
+            <field name="arch" type="xml">
+                <form string="Follow Product History" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="follow_time"/>
+                            </group>
+                            <group>
+                                <field name="partner_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="follow_product_history_tree_view_custom">
+            <field name="name">Follow Product History List</field>
+            <field name="model">custom.follow.product.history</field>
+            <field name="arch" type="xml">
+                <tree string="Follow Product History List" create="false" edit="false">
+                    <field name="product_id"/>
+                    <field name="follow_time"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_follow_product_history">
+            <field name="name">Follow Product History</field>
+            <field name="res_model">custom.follow.product.history</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem id="custom_follow_product_history_menu" name="Customer Follow History" parent="sale.product_menu_catalog"
+                  action="action_follow_product_history" groups="sales_team.group_sale_salesman"/>
+        <menuitem id="custom_follow_product_history_menu_website" name="Customer Follow History" parent="website_sale.menu_catalog"
+                  action="action_follow_product_history" groups="sales_team.group_sale_salesman"/>
+    </data>
+</odoo>

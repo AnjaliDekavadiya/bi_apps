@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_helpdesk_domain_restriction_form" model="ir.ui.view">
+                <field name="name">Helpdesk Form View</field>
+                <field name="model">helpdesk.domain.restriction</field>
+                <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name" string='Name'/>
+                        </group>
+                        <group>
+                            <field name='active' string='Active'/>
+                        </group>
+                    </group>
+                        <notebook>
+                            <page string="Domains">
+                                <field name="email_ids"/>
+                            </page>
+                        </notebook>
+                </form>
+                </field>
+        </record>
+        <record id="view_helpdesk_domain_restriction_tree" model="ir.ui.view">
+                <field name="name">Helpdesk Tree View</field>
+                <field name="model">helpdesk.domain.restriction</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name='name' string='Name'/>
+                        <field name="email_ids"/>
+                    </tree>
+                </field>
+        </record>
+        <record model="ir.actions.act_window" id="helpdesk_domain_restriction_view">
+            <field name="name">Domains Restriction</field>
+            <field name="res_model">helpdesk.domain.restriction</field>
+            <!-- <field name="view_type">form</field> --> <!-- odoo13 -->
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

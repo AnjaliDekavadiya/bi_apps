@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  Scheduled job ('customer_follow_up_job') to send customer
+        follow-up emails  daily using the 'model_followup_mails' model.-->
+    <data noupdate="1">
+        <record id="customer_follow_up_job" model="ir.cron">
+            <field name="name">Base: Customer Follow up mail</field>
+            <field name="model_id" ref="model_followup_mails"/>
+            <field name="state">code</field>
+            <field name="code">model.action_send_followup_mail()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>days</field>
+            <field name="numbercall">-1</field>
+        </record>
+    </data>
+</odoo>

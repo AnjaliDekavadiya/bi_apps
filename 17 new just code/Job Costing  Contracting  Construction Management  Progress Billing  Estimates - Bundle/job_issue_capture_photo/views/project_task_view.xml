@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_task_form2_inherit_capture_photo" model="ir.ui.view">
+        <field name="name">project.task.form.inherit.capture_photo</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                  <page string="Capture Photos">
+                        <field name="capture_attachment_ids"  domain="[('res_model','=','project.task')]" nolabel="1"/>
+                    </page>
+            </xpath>
+        </field>
+    </record>
+ </odoo>

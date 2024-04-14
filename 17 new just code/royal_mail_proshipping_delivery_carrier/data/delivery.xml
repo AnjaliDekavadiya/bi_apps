@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Copyright (c) 2018-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+        <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+
+        
+        <record forcecreate="True" id="royal_mail_pro_crl1" model="delivery.royal_mail_pro.product">
+            <field name="name">ROYAL MAIL 24</field>
+            <field name="code">CRL1</field>
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_ola" model="delivery.royal_mail_pro.product">
+            <field name="name">INTERNATIONAL STANDARD ON ACCOUNT</field>
+            <field name="code">OLA</field>
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_crl2" model="delivery.royal_mail_pro.product">
+            <field name="name">ROYAL MAIL 48</field>
+            <field name="code">CRL2</field>
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_ols" model="delivery.royal_mail_pro.product">
+            <field name="name">INTERNATIONAL ECONOMY ON ACCOUNT</field>
+            <field name="code">OLS</field>
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_tpn" model="delivery.royal_mail_pro.product">
+            <field name="name">ROYAL MAIL TRACKED 24</field>
+            <field name="code">TPN</field>
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_tps" model="delivery.royal_mail_pro.product">
+            <field name="name">ROYAL MAIL TRACKED 48</field>
+            <field name="code">TPS</field>
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_trn" model="delivery.royal_mail_pro.product">
+            <field name="name">ROYAL MAIL TRACKED 24 (LBT)</field>
+            <field name="code">TRN</field>
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_trs" model="delivery.royal_mail_pro.product">
+            <field name="name">ROYAL MAIL TRACKED 48 (LBT)</field>
+            <field name="code">TRS</field>
+        </record>
+
+        <record forcecreate="True" id="royal_mail_pro_domestic1" model="delivery.royal_mail_pro.service">
+            <field name="name">Domestic - CRL1</field>
+            <field name="product_id" ref="royal_mail_pro_crl1" />
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_domestic2" model="delivery.royal_mail_pro.service">
+            <field name="name">Domestic - CRL2</field>
+            <field name="product_id" ref="royal_mail_pro_crl2" />
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_domestic3" model="delivery.royal_mail_pro.service">
+            <field name="name">Domestic - TPN</field>
+            <field name="product_id" ref="royal_mail_pro_tpn" />
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_domestic4" model="delivery.royal_mail_pro.service">
+            <field name="name">Domestic - TPS</field>
+            <field name="product_id" ref="royal_mail_pro_tps" />
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_domestic5" model="delivery.royal_mail_pro.service">
+            <field name="name">Domestic - TRN</field>
+            <field name="product_id" ref="royal_mail_pro_trn" />
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_domestic6" model="delivery.royal_mail_pro.service">
+            <field name="name">Domestic - TRS</field>
+            <field name="product_id" ref="royal_mail_pro_trs" />
+        </record>
+
+        <record forcecreate="True" id="royal_mail_pro_international1" model="delivery.royal_mail_pro.service">
+            <field name="name">International - OLA</field>
+            <field name="product_id" ref="royal_mail_pro_ola" />
+            <field name="is_international">True</field>
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_international2" model="delivery.royal_mail_pro.service">
+            <field name="name">International - OLS</field>
+            <field name="product_id" ref="royal_mail_pro_ols" />
+            <field name="is_international">True</field>
+        </record>
+
+
+        <record forcecreate="True" id="product_product_royal_mail_pro_delivery" model="product.product">
+            <field name="name">Delivery by Royal Mail Pro shipping</field>
+            <field name="default_code">Delivery</field>
+            <field name="type">service</field>
+            <field name="standard_price">10.0</field>
+            <field name="list_price">10.0</field>
+        </record>
+
+        <record forcecreate="True" id="royal_mail_pro_stock_packaging1" model="stock.package.type">
+            <field name="name">Royal Mail Pro Shipping Parcel</field>
+            <field name='package_carrier_type'>royal_mail_pro</field>
+            <field name="shipper_package_code">Parcel</field>
+            <field name="height">10</field>
+            <field name="max_weight">2</field>
+            <field name="width">10</field>
+            <field name="packaging_length">10</field>
+            <field name="cover_amount">100</field>
+        </record>
+        <record forcecreate= "True" id="royal_mail_pro_packaging1" model="product.packaging">
+            <field name= "name">Royal Mail Pro Shipping Parcel</field>
+            <field name= "package_type_id" ref='royal_mail_pro_stock_packaging1'/>
+            <field name= "product_id" ref='product_product_royal_mail_pro_delivery'/>
+            <field name='qty'>1</field>
+        </record>
+
+
+        <record forcecreate="True" id="royal_mail_pro_stock_packaging2" model="stock.package.type">
+            <field name="name">Royal Mail Pro Shipping Letter</field>
+            <field name='package_carrier_type'>royal_mail_pro</field>
+            <field name="shipper_package_code">Letter</field>
+            <field name="height">10</field>
+            <field name="max_weight">2</field>
+            <field name="width">10</field>
+            <field name="packaging_length">10</field>
+            <field name="cover_amount">100</field>
+        </record>
+        <record forcecreate= "True" id="royal_mail_pro_packaging2" model="product.packaging">
+            <field name= "name">Royal Mail Pro Shipping Letter</field>
+            <field name= "package_type_id" ref='royal_mail_pro_stock_packaging2'/>
+            <field name= "product_id" ref='product_product_royal_mail_pro_delivery'/>
+            <field name='qty'>1</field>
+        </record>
+
+        <record forcecreate="True" id="royal_mail_pro_stock_packaging3" model="stock.package.type">
+            <field name="name">Royal Mail Pro Shipping Large Letter</field>
+            <field name='package_carrier_type'>royal_mail_pro</field>
+            <field name="shipper_package_code">LargeLetter</field>
+            <field name="height">10</field>
+            <field name="max_weight">2</field>
+            <field name="width">10</field>
+            <field name="packaging_length">10</field>
+            <field name="cover_amount">100</field>
+        </record>
+        <record forcecreate= "True" id="royal_mail_pro_packaging3" model="product.packaging">
+            <field name= "name">Royal Mail Pro Shipping Large Letter</field>
+            <field name= "package_type_id" ref='royal_mail_pro_stock_packaging3'/>
+            <field name= "product_id" ref='product_product_royal_mail_pro_delivery'/>
+            <field name='qty'>1</field>
+        </record>
+
+        <record forcecreate="True" id="royal_mail_pro_stock_packaging4" model="stock.package.type">
+            <field name="name">Royal Mail Pro Shipping PrintedPapers</field>
+            <field name='package_carrier_type'>royal_mail_pro</field>
+            <field name="shipper_package_code">PrintedPapers</field>
+            <field name="height">10</field>
+            <field name="max_weight">2</field>
+            <field name="width">10</field>
+            <field name="packaging_length">10</field>
+            <field name="cover_amount">100</field>
+        </record>
+        <record forcecreate= "True" id="royal_mail_pro_packaging4" model="product.packaging">
+            <field name= "name">Royal Mail Pro Shipping PrintedPapers</field>
+            <field name= "package_type_id" ref='royal_mail_pro_stock_packaging4'/>
+            <field name= "product_id" ref='product_product_royal_mail_pro_delivery'/>
+            <field name='qty'>1</field>
+        </record>
+
+        <record forcecreate="True" id="royal_mail_pro_delivery_carrier_dom_24" model="delivery.carrier">
+            <field name="name">Royal mail Pro Shipping Domestic 24</field>
+            <field name="delivery_type">royal_mail_pro</field>
+            <field name="product_id" ref="product_product_royal_mail_pro_delivery"></field>
+            <field name="royal_pro_service_type_id" ref="royal_mail_pro_domestic1" />
+            <field name="packaging_id" ref="royal_mail_pro_packaging1" />
+            <field name="royal_pro_fixed_price">10</field>
+            <field name="void_shipment">False</field>
+            <field name="uom_id" ref='uom.product_uom_cm' />
+            <field name='delivery_uom'>KG</field>
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_delivery_carrier_dom_48" model="delivery.carrier">
+            <field name="name">Royal mail Pro Shipping Domestic 48</field>
+            <field name="delivery_type">royal_mail_pro</field>
+            <field name="product_id" ref="product_product_royal_mail_pro_delivery"></field>
+            <field name="royal_pro_service_type_id" ref="royal_mail_pro_domestic2" />
+            <field name="packaging_id" ref="royal_mail_pro_packaging1" />
+            <field name="royal_pro_fixed_price">10</field>
+            <field name="void_shipment">False</field>
+            <field name="uom_id" ref='uom.product_uom_cm' />
+            <field name='delivery_uom'>KG</field>
+        </record>
+
+        <record forcecreate="True" id="royal_mail_pro_delivery_carrier_int_std" model="delivery.carrier">
+            <field name="name">Royal mail Pro Shipping International Standard</field>
+            <field name="delivery_type">royal_mail_pro</field>
+            <field name="product_id" ref="product_product_royal_mail_pro_delivery"></field>
+            <field name="royal_pro_service_type_id" ref="royal_mail_pro_international1" />
+            <field name="packaging_id" ref="royal_mail_pro_packaging1" />
+            <field name="royal_pro_fixed_price">10</field>
+            <field name="void_shipment">False</field>
+            <field name="uom_id" ref='uom.product_uom_cm' />
+            <field name='delivery_uom'>KG</field>
+        </record>
+        <record forcecreate="True" id="royal_mail_pro_delivery_carrier_int_eco" model="delivery.carrier">
+            <field name="name">Royal mail Pro Shipping International Economy</field>
+            <field name="delivery_type">royal_mail_pro</field>
+            <field name="product_id" ref="product_product_royal_mail_pro_delivery"></field>
+            <field name="royal_pro_service_type_id" ref="royal_mail_pro_international2" />
+            <field name="packaging_id" ref="royal_mail_pro_packaging1" />
+            <field name="royal_pro_fixed_price">10</field>
+            <field name="void_shipment">False</field>
+            <field name="uom_id" ref='uom.product_uom_cm' />
+            <field name='delivery_uom'>KG</field>
+        </record>
+
+
+    </data>
+</odoo>

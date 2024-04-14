@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pragtech_veterinary_app.prescription_demo_report_view">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <div style="font-size: 30px; font-weight: bold;margin: 0px 280px 0px;">
+                            <strong>
+                                <u>PRESCRIPTION REPORT</u>
+                            </strong>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-7">
+                            <strong>Prescription ID</strong>
+                            <strong class="px-2">:</strong>
+                            <span t-field="doc.pres_id1.prescription_id"/>
+                        </div>
+                        <div class="col-6">
+                            <strong>Prescription Date</strong>
+                            <strong class="px-2">:</strong>
+                            <span t-field="doc.pres_id1.prescription_date"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-7">
+                            <strong>Prescribing Doctor</strong>
+                            <strong class="px-2">:</strong>
+                            <span t-field="doc.pres_id1.doctor"/>
+                        </div>
+                        <div class="col-6">
+                            <strong>Patient Name</strong>
+                            <strong class="px-2">:</strong>
+                            <span t-field="doc.patient"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div>
+                        <div style="font-size: 18px; font-weight:bold">
+                            <strong>
+                                <u>Prescription Details</u>
+                            </strong>
+                        </div>
+                        <br/>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr class="table-dark" style="background-color: #006DCC;color: white;">
+                                    <th style="color: black;border: 1px solid black;">Medicament</th>
+                                    <th style="color: black;border: 1px solid black;">Quantity</th>
+                                    <th style="color: black;border: 1px solid black;">Start</th>
+                                    <th style="color: black;border: 1px solid black;">Stop</th>
+                                    <th style="color: black;border: 1px solid black;">Form</th>
+                                    <th style="color: black;border: 1px solid black;">Common Dosage</th>
+                                    <th style="color: black;border: 1px solid black;">Frequency</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+                                <t t-foreach="doc.pres_id1.prescription_line" t-as="test">
+                                    <tr>
+                                        <td style="border: 1px solid black;">
+                                            <span t-field="test.medicament"/>
+                                        </td>
+                                        <td style="border: 1px solid black;" class="text-right">
+                                            <span t-field="test.quantity"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-field="test.start_treatment"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-field="test.end_treatment"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-field="test.qty"/>
+                                            <span t-field="test.form"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-field="test.common_dosage"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            Every
+                                            <span t-field="test.frequency"/>
+                                            <span t-field="test.frequency_unit"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-1"/>
+                        <div class="col-7">
+                            <strong>Notes</strong>
+                            <strong class="px-2">:</strong>
+                            <span t-field="doc.pres_id1.notes"/>
+                        </div>
+                        <div class="col-4">
+                            <strong>Doctor Signature</strong>
+                        </div>
+                    </div>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

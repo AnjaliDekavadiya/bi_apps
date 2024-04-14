@@ -1,0 +1,95 @@
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+           <h2 class="oe_slogan">Manufacturing WorkOrder Integration Task</h2>
+       <p class="oe_mt32">
+Manufacturing WorkOrder Integration Task.<br/>
+This module will create tasks from manufacturing work-orders.
+       </p>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+           <h3 class="oe_slogan">Select<b>Project</b> on Manufacturing order.</h3>
+<p>Manufacturing User/Manager can set project on Manufacturing order and based on this project tasks will be created from workorder.</p>
+           <div class="oe_demo oe_screenshot">
+               <img src="s1.png">
+           </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h3 class="oe_slogan">Clicking on <b>Start Working </b>button on <b>Workorder</b> will create Task</h3>
+<p>When user will click start working then it will create task for that workorder.</p>
+       <div class="oe_demo oe_screenshot">
+           <img src="s2.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h3 class="oe_slogan">Created Task will be display on Workorder and Smart Button to Move to Task</h3>
+       <div class="oe_demo oe_screenshot">
+           <img src="s3.png">
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h3 class="oe_slogan">Task Form - Work Instruction from Workorder</b></h3>
+       <div class="oe_demo oe_screenshot">
+           <img src="s4.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h3 class="oe_slogan">Task Form- Work Order Details</b></h3>
+       <div class="oe_demo oe_screenshot">
+           <img src="s5.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h3 class="oe_slogan"><b>Print WorkOrder Report</b></h3>
+       <div class="oe_demo oe_screenshot">
+           <img src="s6.png">
+           
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h3 class="oe_slogan">PDF Report</h3>
+       <div class="oe_demo oe_screenshot">
+           <img src="s7.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container" >
+   <div class="oe_row oe_spaced">
+       <div class="oe_span6">
+           <div class="oe_picture" style="margin: 25px 10%;">
+               <a href="http://www.probuse.com/">
+                   <img src="logo.png">
+               </a>
+           </div>
+       </div>
+       <div class="oe_span6">
+           <p class="oe_mt32">
+               If you need any help or want more additional features,<br/> you may contact us through:<br/>
+               Email: <a href="contact@probuse.com">contact@probuse.com</a> <br/>
+               Website: <a href="http://www.probuse.com/" target='new'><u>www.probuse.com</u></a> <br/>
+               Skype: mustufa_probuse<br/>
+           </p>
+       </div>
+   </div>
+</section>
+
+

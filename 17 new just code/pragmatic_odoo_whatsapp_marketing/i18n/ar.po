@@ -1,0 +1,812 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pragmatic_odoo_whatsapp_marketing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-26 12:28+0000\n"
+"PO-Revision-Date: 2021-07-26 12:28+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+msgid "<span name=\"next_departure_text\">This message is scheduled for </span>"
+msgstr ""
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_needaction
+msgid "Action Needed"
+msgstr "الإجراءات اللازمة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__active
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__active
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__active
+msgid "Active"
+msgstr "نشيط"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_ids
+msgid "Activities"
+msgstr "أنشطة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "زخرفة استثناء النشاط"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "رمز نوع النشاط"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__partner_ids
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_form__contact_ids
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_list_action__contact_ids
+msgid "Associated Partner"
+msgstr "الشريك المنتسب"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.odoo_group_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.send_odoo_group_view_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.send_whatsapp_msg_marketing_view_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_contact_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_group_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+msgid "Attach a file"
+msgstr "إرفاق ملف"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_form__attachment_ids
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_list_action__attachment_ids
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact_list_action__attachment_ids
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group_list_action__attachment_ids
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__attachment_ids
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__attachment_ids
+msgid "Attachments"
+msgstr "Attachments"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__body_arch
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__message_body
+msgid "Body"
+msgstr "الجسم"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__body_html
+msgid "Body converted to be sent by mail"
+msgstr "تم تحويل الجثة ليتم إرسالها بالبريد"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.odoo_group_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.send_odoo_group_view_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.send_whatsapp_msg_marketing_view_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_contact_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_group_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+msgid "Cancel"
+msgstr "يلغي"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__chatId
+msgid "Chat ID"
+msgstr "معرف الدردشة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__create_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_form__create_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_list_action__create_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__create_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact_list_action__create_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__create_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group_list_action__create_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__create_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_message_schedule_date__create_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__create_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_form__create_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_list_action__create_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__create_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact_list_action__create_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__create_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group_list_action__create_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__create_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_message_schedule_date__create_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__null_value
+msgid "Default Value"
+msgstr "القيمة الافتراضية"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_schedule_date_view_form
+msgid "Discard"
+msgstr "ينبذ"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_form__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_list_action__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact_list_action__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group_list_action__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_message_schedule_date__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_messages__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__whatsapp_domain
+msgid "Domain"
+msgstr "اختصاص"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields.selection,name:pragmatic_odoo_whatsapp_marketing.selection__whatsapp_marketing__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+msgid "Dynamic Placeholder Generator"
+msgstr "مولد نائب ديناميكي"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__model_object_field
+msgid "Field"
+msgstr "حقل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__copyvalue
+msgid ""
+"Final placeholder expression, to be copy-pasted in the desired template "
+"field."
+msgstr ""
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_follower_ids
+msgid "Followers"
+msgstr "متابعون"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "المتابعون (القنوات)"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "رمز الخط الرائع ، على سبيل المثال FA- المهام"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__odoo_group_id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__group_id
+msgid "Group Id"
+msgstr "معرف مجموعة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_form__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_list_action__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact_list_action__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group_list_action__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_message_schedule_date__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_messages__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__id
+msgid "ID"
+msgstr "بطاقة تعريف"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_exception_icon
+msgid "Icon"
+msgstr "أيقونة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "رمز للإشارة إلى نشاط استثناء."
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_needaction
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "إذا تم تحديدها ، فإن الرسائل الجديدة تتطلب انتباهك."
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_has_error
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا تم تحديده ، فإن بعض الرسائل بها خطأ في التسليم."
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields.selection,name:pragmatic_odoo_whatsapp_marketing.selection__whatsapp_marketing__state__in_queue
+msgid "In Queue"
+msgstr "في قائمة الانتظار"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_is_follower
+msgid "Is Follower"
+msgstr "تابع"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__lang
+msgid "Language"
+msgstr "لغة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_form____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_list_action____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact_list_action____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group_list_action____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_message_schedule_date____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_messages____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing____last_update
+msgid "Last Modified on"
+msgstr "تاريخ آخر تعديل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__write_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_form__write_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_list_action__write_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__write_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact_list_action__write_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__write_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group_list_action__write_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__write_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_message_schedule_date__write_uid
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__write_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_form__write_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_list_action__write_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__write_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact_list_action__write_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__write_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group_list_action__write_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__write_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_message_schedule_date__write_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "المرفق الرئيسي"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.actions.act_window,name:pragmatic_odoo_whatsapp_marketing.action_whatsapp_message
+#: model:ir.ui.menu,name:pragmatic_odoo_whatsapp_marketing.menu_whatsapp
+#: model:ir.ui.menu,name:pragmatic_odoo_whatsapp_marketing.menu_whatsapp_message
+msgid "Mass Messages"
+msgstr "الرسائل الجماعية"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_form__message
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group_list_action__message
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact_list_action__message
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group_list_action__message
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message
+#: model:ir.model.fields.selection,name:pragmatic_odoo_whatsapp_marketing.selection__whatsapp_marketing__message_type__message
+msgid "Message"
+msgstr "رسالة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+msgid "Message Body"
+msgstr "نص الرسالة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+msgid "Message Campaign"
+msgstr "حملة الرسائل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__message_type
+msgid "Message Type"
+msgstr "نوع الرسالة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_ids
+msgid "Messages"
+msgstr "رسائل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__mobile
+msgid "Mobile"
+msgstr "التليفون المحمول"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__name
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__name
+msgid "Name"
+msgstr "اسم"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "الموعد النهائي للنشاط التالي"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص النشاط التالي"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل غير المقروءة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.actions.act_window,name:pragmatic_odoo_whatsapp_marketing.action_odoo_group
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_odoo_group
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__odoo_group_id
+#: model:ir.ui.menu,name:pragmatic_odoo_whatsapp_marketing.menu_odoo_group
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.odoo_group_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.odoo_group_tree
+msgid "Odoo Group"
+msgstr "مجموعة أودو"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__lang
+msgid ""
+"Optional translation language (ISO code) to select when sending out an "
+"email. If not set, the english version will be used. This should usually be "
+"a placeholder expression that provides the appropriate language, e.g. "
+"${object.partner_id.lang}."
+msgstr ""
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__null_value
+msgid "Optional value to use if the target field is empty"
+msgstr "قيمة اختيارية لاستخدامها إذا كان الحقل الهدف فارغًا"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__partner_id
+msgid "Partner"
+msgstr "شريك"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__copyvalue
+msgid "Placeholder Expression"
+msgstr "تعبير العنصر النائب"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/odoo_group.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/odoo_group.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/odoo_group.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/odoo_group.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_contact.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_contact.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_marketing.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_marketing.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_marketing.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/wizard/whatsapp_msg_marketing.py:0
+#, python-format
+msgid "Please add valid whatsapp number for %s customer"
+msgstr "الرجاء إضافة رقم واتس اب صالح لعميل٪ s"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/odoo_group.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/odoo_group.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_contact.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_contact.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_group.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_group.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/wizard/whatsapp_msg_marketing.py:0
+#, python-format
+msgid "Please authorize your mobile number with chat api"
+msgstr "يرجى تفويض رقم هاتفك المحمول مع واجهة برمجة تطبيقات الدردشة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/odoo_group.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/odoo_group.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_marketing.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_marketing.py:0
+#: code:addons/pragmatic_odoo_whatsapp_marketing/models/whatsapp_marketing.py:0
+#, python-format
+msgid "Please enter %s mobile number or select country"
+msgstr "الرجاء إدخال رقم الهاتف المحمول٪ s أو تحديد الدولة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: code:addons/pragmatic_odoo_whatsapp_marketing/wizard/whatsapp_message_schedule_date.py:0
+#, python-format
+msgid "Please select a date equal/or greater than the current date."
+msgstr "الرجاء تحديد تاريخ يساوي / أو أكبر من التاريخ الحالي."
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__whatsapp_model_id
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+msgid "Recipients"
+msgstr "المستلمون"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__whatsapp_model_name
+msgid "Recipients Model Name"
+msgstr "اسم نموذج المستلمين"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__whatsapp_model_real
+msgid "Recipients Real Model"
+msgstr "النموذج الحقيقي للمستلمين"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__user_id
+msgid "Responsible"
+msgstr "مسؤول"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_user_id
+msgid "Responsible User"
+msgstr "مستخدم مسؤول"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "خطأ في تسليم الرسائل القصيرة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_schedule_date_view_form
+msgid "Schedule"
+msgstr "جدول"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__next_departure
+msgid "Scheduled date"
+msgstr "التاريخ المقرر"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__schedule_date
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_message_schedule_date__schedule_date
+msgid "Scheduled for"
+msgstr "المقرر ل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__model_object_field
+msgid ""
+"Select target field from the related document model.\n"
+"If it is a relationship field you will be able to select a target field at the destination of the relationship."
+msgstr ""
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.odoo_group_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.send_odoo_group_view_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.send_whatsapp_msg_marketing_view_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_contact_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_group_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+msgid "Send"
+msgstr "يرسل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_group_form
+msgid "Send Messages"
+msgstr "إرسل رسائل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.actions.act_window,name:pragmatic_odoo_whatsapp_marketing.send_odoo_group_form_action
+#: model:ir.actions.act_window,name:pragmatic_odoo_whatsapp_marketing.send_whatsapp_msg_marketing_form_action
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_whatsapp_msg_marketing
+msgid "Send WhatsApp Message"
+msgstr "أرسل رسالة WhatsApp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.odoo_group_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_contact_form
+msgid "Send Whatsapp Message"
+msgstr "أرسل رسالة Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.odoo_group_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.send_odoo_group_view_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.send_whatsapp_msg_marketing_view_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_contact_target_form_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_group_target_form_marketing
+msgid "Send a WhatsApp Message"
+msgstr "أرسل رسالة WhatsApp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_schedule_date_view_form
+msgid "Send on"
+msgstr "أرسل على"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.actions.act_window,name:pragmatic_odoo_whatsapp_marketing.action_send_msg_odoo_group_target
+#: model:ir.actions.act_window,name:pragmatic_odoo_whatsapp_marketing.action_send_msg_whatsapp_contact_target
+#: model:ir.actions.act_window,name:pragmatic_odoo_whatsapp_marketing.action_send_msg_whatsapp_group_target
+msgid "Send whatsapp message"
+msgstr "إرسال رسالة whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_contact_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_group_form
+msgid "Sender"
+msgstr "مرسل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields.selection,name:pragmatic_odoo_whatsapp_marketing.selection__whatsapp_marketing__state__done
+msgid "Sent"
+msgstr "مرسل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__sent_date
+msgid "Sent Date"
+msgstr ""
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+msgid "Settings"
+msgstr "إعدادات"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__source_id
+msgid "Source"
+msgstr "مصدر"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__state
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_contact_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_group_form
+msgid "Status"
+msgstr "حالة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__sub_model_object_field
+msgid "Sub-field"
+msgstr "المجال الفرعي"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__sub_object
+msgid "Sub-model"
+msgstr "النموذج الفرعي"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_schedule_date_view_form
+msgid "Take Future Schedule Date"
+msgstr "خذ موعد الجدول الزمني في المستقبل"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+msgid ""
+"This will send the message to all recipients. Do you still want to proceed ?"
+msgstr ""
+"سيؤدي هذا إلى إرسال الرسالة إلى جميع المستلمين. هل مازلت تريد المتابعة؟"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع نشاط الاستثناء المسجل."
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__campaign_id
+msgid "UTM Campaign"
+msgstr "حملة UTM"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__unique_user
+msgid "Unique User"
+msgstr ""
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_unread
+msgid "Unread Messages"
+msgstr "مستخدم فريد"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "عداد الرسائل غير المقروءة"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_msg_marketing__website_message_ids
+msgid "Website communication history"
+msgstr "سجل اتصال الموقع"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__whatsapp_msg_ids
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__whatsapp_msg_whatsapp_group_ids
+msgid "WhatsApp Messages"
+msgstr "رسائل WhatsApp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.actions.server,name:pragmatic_odoo_whatsapp_marketing.get_whatsapp_contacts_ir_actions_server
+#: model:ir.cron,cron_name:pragmatic_odoo_whatsapp_marketing.get_whatsapp_contacts
+#: model:ir.cron,name:pragmatic_odoo_whatsapp_marketing.get_whatsapp_contacts
+msgid "Whatsapp - Get Whatsapp Contacts"
+msgstr "Whatsapp - احصل على جهات اتصال Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.actions.server,name:pragmatic_odoo_whatsapp_marketing.get_whatsapp_groups_ir_actions_server
+#: model:ir.cron,cron_name:pragmatic_odoo_whatsapp_marketing.get_whatsapp_groups
+#: model:ir.cron,name:pragmatic_odoo_whatsapp_marketing.get_whatsapp_groups
+msgid "Whatsapp - Get Whatsapp Groups"
+msgstr "Whatsapp - احصل على مجموعات Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.actions.server,name:pragmatic_odoo_whatsapp_marketing.send_whatsapp_msg_marketing_ir_actions_server
+#: model:ir.cron,cron_name:pragmatic_odoo_whatsapp_marketing.send_whatsapp_msg_marketing
+#: model:ir.cron,name:pragmatic_odoo_whatsapp_marketing.send_whatsapp_msg_marketing
+msgid "Whatsapp - Send Whatsapp Message from Whatsapp Marketing"
+msgstr "Whatsapp - أرسل رسالة Whatsapp من Whatsapp Marketing"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.actions.act_window,name:pragmatic_odoo_whatsapp_marketing.action_whatsapp_contact
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_whatsapp_contact
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_odoo_group__whatsapp_contact_id
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group__whatsapp_contact
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_messages__whatsapp_contact_id
+#: model:ir.ui.menu,name:pragmatic_odoo_whatsapp_marketing.menu_whatsapp_contacts
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_contact_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_contact_tree
+msgid "Whatsapp Contact"
+msgstr "واتس اب الاتصال"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_odoo_group_form
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_odoo_group_list_action
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_whatsapp_contact_list_action
+msgid "Whatsapp Contact List Action"
+msgstr "Whatsapp Contact List Action"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact_list_action__contact_ids
+msgid "Whatsapp Contacts"
+msgstr "اتصالات Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.actions.act_window,name:pragmatic_odoo_whatsapp_marketing.action_whatsapp_group
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_whatsapp_group
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__whatsapp_group
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_messages__whatsapp_group_id
+#: model:ir.ui.menu,name:pragmatic_odoo_whatsapp_marketing.menu_whatsarepp_group
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_group_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_group_tree
+msgid "Whatsapp Group"
+msgstr "مجموعة Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_whatsapp_group_list_action
+msgid "Whatsapp Group List Action"
+msgstr "إجراءات قائمة مجموعة Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_group_list_action__group_ids
+msgid "Whatsapp Groups"
+msgstr "مجموعات Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__odoo_group_ids
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_message_tree
+msgid "Whatsapp Message"
+msgstr "رسالة Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_message_schedule_date__whatsapp_message_id
+msgid "Whatsapp Message Id"
+msgstr "معرف رسالة Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_whatsapp_message_schedule_date
+msgid "Whatsapp Message Scheduling"
+msgstr "جدولة رسائل Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model,name:pragmatic_odoo_whatsapp_marketing.model_whatsapp_messages
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_contact_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_whatsapp_marketing.whatsapp_group_form
+msgid "Whatsapp Messages"
+msgstr "رسائل Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,field_description:pragmatic_odoo_whatsapp_marketing.field_whatsapp_contact__whatsapp_id
+msgid "Whatsapp id"
+msgstr "معرف Whatsapp"
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__sub_model_object_field
+msgid ""
+"When a relationship field is selected as first field, this field lets you "
+"select the target field within the destination document model (sub-model)."
+msgstr ""
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.model.fields,help:pragmatic_odoo_whatsapp_marketing.field_whatsapp_marketing__sub_object
+msgid ""
+"When a relationship field is selected as first field, this field shows the "
+"document model the relationship goes to."
+msgstr ""
+
+#. module: pragmatic_odoo_whatsapp_marketing
+#: model:ir.actions.act_window,name:pragmatic_odoo_whatsapp_marketing.whatsapp_message_schedule_date_action
+msgid "When do you want to send your message?"
+msgstr "متى تريد ارسال رسالتك؟"

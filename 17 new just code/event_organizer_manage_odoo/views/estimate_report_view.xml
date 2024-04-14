@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="estimate_print_inherit_event_custom" inherit_id="odoo_sale_estimates.estimate_print">
+        <xpath expr="//div/div[@t-field='doc.partner_id']"  position="after">
+            <div class="row mt32 mb32" id="salereport_event_organizor_custom">
+                <div t-if="doc.event_custom_id" class="col-auto col-3 mw-100 mb-2">
+                    <strong>Event:</strong>
+                    <p class="m-0" t-field="doc.event_custom_id"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,90 @@
+<odoo>
+
+    <template id="portal_payments" inherit_id="portal.portal_my_home" 
+    name="Website Portal Sale" priority="31">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+           <!-- <t t-if="custom_payment_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Your Payment Receipts</t>
+                <t t-set="url" t-value="'/my/custom_payments'"/>
+                <t t-set="count" t-value="custom_payment_count"/>
+            </t> -->
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Your Payment Receipts</t>
+                <t t-set="url" t-value="'/my/custom_payments'"/>
+                <t t-set="placeholder_count" t-value="'custom_payment_count'"/>
+            </t>
+      </xpath>
+    </template>
+
+    <template id="portal_payment_my_home_menu_sale" name="Portal layout : sales menu entries" inherit_id="portal.portal_breadcrumbs">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+           
+             <li t-if="page_name == 'payment' or payment" t-attf-class="breadcrumb-item #{'active ' if not payment else ''}">
+                <a t-if="payment" t-attf-href="/my/custom_payments">Payment Receipts</a>
+                <t t-else="">Payment Receipts</t>
+            </li>
+            <li t-if="payment" class="breadcrumb-item active">
+                <span t-field="payment.name"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_payments" name="My Payments">
+      <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+        <t t-call="portal.portal_searchbar">
+            <t t-set="title">Payment Receipts</t>
+        </t>
+        <t t-if="not payments">
+            <p>There are currently no payment receipts for your account.</p>
+        </t>
+        <t t-if="payments">
+            <table class="table table-hover o_my_status_table">
+                <thead>
+                  <tr class="active">
+                    <th>Ref. Number #</th>
+                    <th>Memo</th>
+                    <th>Journal</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Print</th>
+                  </tr>
+                </thead>
+                <t t-foreach="payments" t-as="payment">
+                    <tr>
+                        <td  >
+                            <span t-field="payment.name"/>
+                        </td>
+                        <td  >
+                            <span t-field="payment.ref"/>
+                        </td>
+                        <!-- <td>
+                            <t t-if="payment.payment_type == 'inbound'">
+                                <span>Received</span>
+                            </t>
+                            <t t-if="payment.payment_type == 'outbound'">
+                                <span >Send</span>
+                            </t>
+                        </td> -->
+
+                        <td>
+                            <span t-field="payment.journal_id"/>
+                        </td>
+                        <td>
+                            <span t-field="payment.date"/>
+                        </td>
+                        <td><span t-field="payment.amount" t-options='{"widget": "monetary", "display_currency": payment.currency_id}'/></td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" t-attf-href="/custom_payment/printpayment/{{slug(payment)}}" target="_blank">
+                                      <i class="fa fa-print"></i> Print Receipt
+                            </a>
+                        </td>
+                    </tr>
+                </t>
+            </table>
+        </t>
+      </t>
+    </template>
+
+</odoo>

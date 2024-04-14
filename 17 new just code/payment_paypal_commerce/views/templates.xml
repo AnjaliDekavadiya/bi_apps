@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+
+<odoo>
+    <data>
+
+        <template id="commerce_inherit_payment_tokens_list" inherit_id="payment.form">
+            <xpath expr="//form[hasclass('o_payment_form')]" position="before">
+                <div class="paypal_commerce_error alert alert-danger" role="alert" style="margin:0;display:none;">
+                </div>
+            </xpath>
+        </template>
+
+        <template id="commerce_inherit_footer" inherit_id="payment.submit_button">
+            <xpath expr="//button[@name='o_payment_submit_button']" position="after">
+                <div id="commerce_button" style="display:none;width: 280px;"></div>
+                <div id="paypal_commerce_loader" style="display:none;"/>
+            </xpath>
+        </template>
+        
+    </data>
+</odoo>

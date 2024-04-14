@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amazon FBA Connector - Odoo Enterprise FBA & FBM Extension</title>
+    <style>
+
+   </style>
+
+</head>
+<body>
+    <div class="o_equal_col_sm">
+        <div class="shadow bg-white pb32 pt32 px-2" style="border-radius:15px">
+            <h3 class="oe_slogan" style="color:#0f1e40; font-family:Arial; font-weight:700; text-align:center; text-transform:uppercase; opacity:1; font-size:24px; margin-bottom:18px; margin-top:18px">
+                Run your full Amazon FBM & FBA business in Odoo Enterprise.
+            </h3>
+            <p class="mb16 text-black-dark px-3" style="font-family:Arial; text-align:center; font-weight:normal; font-size:14px">
+                As the core features from <a href="https://www.odoo.com/app/amazon-connector" class="font-weight-bold">native Amazon connector</a> provided by Odoo S.A. are not sufficient enough to run a smooth Amazon business - this 4EG Amazon Connector Extension gives you back the required features.
+            </p>
+            <h3 style="color:#940404; font-family:Arial; font-weight:600; text-align:center; font-size:17px; opacity:1; margin:8px 0 16px" class="oe_slogan">FOR DEMO</h3>
+            <div class="text-center mb-3">
+                <a href="mailto:4egrowth@gmail.com?subject=Free Demo of Amazon FBA connector" target="_blank" style="color:#091E42; font-family:Arial; display:inline-block; padding:13px 30px; border:1px solid #1900ff; border-radius:10px" class="mx-1 mb-2 deep-1 deep_hover">
+                    <span class="fa fa-envelope-o mr-2" style="color:#026d32; font-size:20px; vertical-align:middle"></span>
+                    <span style="color:#0f1e40; font-size:16px; vertical-align:middle">Email Us</span>
+                </a>
+            </div>
+        </div>
+    </div>
+<section class="oe_container mt32 mb32" style="margin-left:calc(-42vw + 50%); width:84vw">
+    <div class="row" style="max-width:1540px; margin:0 auto; padding-bottom:64px; border-radius:15px">
+        <ul role="tablist" class="nav nav-tabs justify-content-center" data-tabs="tabs" style="border:none; margin:0 auto">
+            <li class="nav-item">
+                <a aria-controls="overview" aria-selected="true" class="nav-link" data-toggle="tab" href="#overview" id="overview-tab" role="tab" style="color:#4F4F4F; font-weight:400; font-size:24px">
+                    Overview</a>
+            </li>
+            <li class="nav-item">
+                <a aria-controls="screenshots" aria-selected="false" class="nav-link" data-toggle="tab" href="#screenshots" id="screenshots-tab" role="tab" style="color:#4F4F4F; font-weight:400; font-size:24px">Details</a>
+            </li>
+            <li class="nav-item">
+                <a aria-controls="support" aria-selected="false" class="nav-link" data-toggle="tab" href="#support" id="support-tab" role="tab" style="color:#4F4F4F; font-weight:400; font-size:24px">Support</a>
+            </li>
+        </ul>
+
+        <div class="container-fluid" style="border:1px solid #eee; border-radius:10px">
+            <div class="tab-content container pt-3" id="tabs_content">
+                <!-- Features Tabs -->
+                <div class="tab-pane show active" id="overview">
+                    <div class="container mt48">
+                        <p class="mb16 text-left text-black-dark px-3" style="font-family:Arial; font-weight:normal; font-size:16px">
+                            <span style="font-weight:bold;">The Core features</span>
+                            <span><ol>
+                                <li><span style="font-weight:bold;">Import of all Amazon (FBA/FBM) orders from every Amazon Marketplace</span>
+                                    <br/>
+                                    Based on order date. Also the cron job can automate the process. Set debitor, sales team, price list per Marketplace.
+                                </li>
+                                <li><span style="font-weight:bold;">Log your data</span>
+                                    <br/>
+                                    Get every detail of the imported order and also submitted feed. Get to know the feed result for any case you have.
+                                </li>
+                                <li><span style="font-weight:bold;">FBM: Sync stock for all or single product</span>
+                                    <br/>
+                                    You can sync the stock manually for a single product or all products by marketplace or run the Stock sync by cron. Set WH and location per Marketplace.
+                                </li>
+                                <li><span style="font-weight:bold;">FBM: Update order status</span>
+                                    <br/>
+                                    Once you have shipped our orders the connector will set the tracking reference and the status to shipped on Amazon.
+                                </li>
+                                <li><span style="font-weight:bold;">FBA: Set fiscal positions with Taxes for all cross border situations (OSS compatible)</span>
+                                    <br/>
+                                    As it is out of your influence from where Amazon is shipping the orders, it can be necessary to set taxes and income accounts per country. With the connector you can set any possible way of shipping from to country. Also OSS (for Europe) is covered.
+                                </li>
+                                <li><span style="font-weight:bold;">FBA: Split orders into different shipments and invoices per WH (VAT relevant)</span>
+                                    <br/>
+                                    This topic is related to VAT as well. When a customer orders 2 products Amazon is able to ship it from different WH and countries. Based on fiscal position the VAT and income account will be set for the correct invoice.
+                                </li>
+                                <li><span style="font-weight:bold;">FBA: Get the FBA stock into Odoo</span>
+                                    <br/>
+                                    Run by cron a stock report to have all product stock in Odoo. Offer also your FBA stock to any other Marketplace or Shop.
+                                </li>
+                                <li><span style="font-weight:bold;">FBA: Get and process FBA returns automatically (Helpdesk)</span>
+                                    <br/>
+                                    The core feature from Odoo native is already good and we did build the process on it.
+                                    When running the return report there will be tickets created with a return and refund from existing shipment. Moreover you will get an overview of returned reason from the report for statistical purpose.
+                                </li>
+                                <li><span style="font-weight:bold;">FBA: Upload your Odoo invoices into Amazon</span>
+                                    <br/>
+                                    Amazon is forcing you to upload your invoice if you sell FBM or FBA by creating your own invoices.
+                                </li>
+                                <li><span style="font-weight:bold;">FBA: Run the VIDR report for B2B VAT invoices und uploads</span>
+                                    <br/>
+                                    If you create your own invoices but use FBA than you are forced to upload the invoices within 24hours after shipment. For that reason we have implemented the VIDR report to check for shipments and upload the invoice by cron.
+                                </li>
+                                <li><span style="font-weight:bold;">Create outbound shipments from Odoo</span>
+                                    <br/>
+                                    If you sell on other marketplaces or shops but want to use also your FBA stock you can do so by shipping your FBA inventory to customers. These "outbound shipments" can be created from the sale order.
+                                </li>
+                            </ol></span>
+                            <br/><br/>
+                            <span>As the native Odoo Amazon connector is only able to import sales orders <a href="https://www.odoo.com/app/amazon-connector-features" class="font-weight-bold">(Amazon Connector Documentation)</a> and has some major "challenges", this might not be enough for E-commerce businesses to succeed. We (4EGrowth GmbH) run our own Amazon business in Germany since 2010 and are aware of all important features when it comes to connecting Odoo with Amazon. <span style="font-weight:bold;">We built our features on Odoo's native "solution" and made it usable for every Amazon Seller.</span></span>
+                            <br/><br/>
+                        </p>
+                    </div>
+                    <br/><br/><br/><br/>
+                </div>
+                <div class="tab-pane" id="screenshots" role="tabpanel" aria-labelledby="screenshots_tab">
+                    <div style="margin-bottom:4%">
+                        <h3 class="text-center mb32" style="letter-spacing:-1px !important; font-family:Arial; font-size:30px; font-weight:500;">For mentioned FBM features 1-4 please have a <a href="https://apps.odoo.com/apps/modules/16.0/amazon_connector_base/">look into the description here.</a></h3>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: center;">
+                            <h3 class="text-center mb32" style="letter-spacing:-1px !important; font-family:Arial;  font-size:30px; font-weight:500;">5. FBA: Set fiscal positions with Taxes for all cross border situations (OSS compatible)</h3>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: center;">
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image2.png">
+                            <span class="text-left">5.1 Example of FBA PAN EU config with OSS for Germany</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image1.png">
+                            <span class="text-left">5.2 Set the correct income account per from - to country. Example PAN EU Germany with OSS</span>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: center;">
+                            <h3 class="text-center mb32" style="letter-spacing:-1px !important; font-family:Arial;  font-size:30px; font-weight:500;">6. FBA: Split orders into different shipments and invoices per WH (VAT relevant)</h3>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: center;">
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image11.jpg">
+                            <span class="text-center">6.1 Example is showing the sale order with 2 shipments</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image5.jpg">
+                            <span class="text-center">6.2 Example of 2 shipments from the sale order 6.1</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image4.png">
+                            <span class="text-center">6.3 Example of 2 invoices crete from one sale order and 2 shipments</span>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <h3 class="text-center mb32" style="letter-spacing:-1px !important; font-family:Arial;  font-size:30px; font-weight:500;">7. FBA: Get the FBA stock into Odoo</h3>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: center;">
+                            <span class="text-center" style="font-weight:bold;"></span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image10.jpg">
+                            <span class="text-center">7.1 Example of FBA Manage inventory</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image12.jpg">
+                            <span class="text-center">7.2 Example of inventory adjustments based on the FBA manage inventory report</span>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <h3 class="text-center mb32" style="letter-spacing:-1px !important; font-family:Arial;  font-size:30px; font-weight:500;">8. FBA: Get and process FBA returns automatically (Helpdesk)</h3>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: center;">
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image9.jpg">
+                            <span class="text-center">8.1 Example of a ticket (helpdesk) from the FBA return report. Get all insides of return reason and status. Run the report automatically and create credit notes. Set an Helpdesk Team for Amazon.</span>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <h3 class="text-center mb32" style="letter-spacing:-1px !important; font-family:Arial;  font-size:30px; font-weight:500;">9. FBA: Upload your odoo invoices into Amazon</h3>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: center;">
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image3.jpg">
+                            <span class="text-center">9.1 Example shows the 2 invoices from the splitted FBA order of example under 6.3</span>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <h3 class="text-center mb32" style="letter-spacing:-1px !important; font-family:Arial;  font-size:30px; font-weight:500;">10. FBA: Run the VIDR report for B2B VAT invoices and uploads</h3>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: center;">
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image8.jpg">
+                            <span class="text-center">10.1 Example of a downloaded and processed VIDR report with 24 new order created. You can get also the full scope of status when requesting the report from Amazon</span>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <h3 class="text-center mb32" style="letter-spacing:-1px !important; font-family:Arial;  font-size:30px; font-weight:500;">11. Create outbound shipments from Odoo</h3>
+                    </div>
+                    <div style="margin-bottom:4%">
+                        <div class="mt16 mb16" style="text-align: center;">
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image7.png">
+                            <span class="text-center">11.1 Example of sale order where the button "create amazon outbound" shows up when Amazon WH is set.</span>
+                            <img class="img img-responsive center-block oe_picture oe_screenshot text-center" src="/img/image6.png">
+                            <span class="text-center">11.2 Example of the set the necessary values for FBA shipment. After creating it is showing up in Seller Central within a few seconds. </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="support" role="tabpanel" aria-labelledby="support_tab">
+                    <div class="mb64">
+                        <div class="mt32 mb32">
+                            <div class="mt32 mx-auto text-center">
+                                <h4 class="text-center mt16 mb16 font-weight-bold" style="color:#0f1e40">You need more functions or help with setup? Reach out to us: We are selling on Amazon since 2010 - with Odoo since 2012.</h4>
+                            <span style="font-weight:bold; color:red;">What is 4EG stands for? 4EGrowth is our company vision to succeed.<br/>Find out more by contacting us.</span>
+                            </div>
+                            <div class="mt32 mx-auto text-center">
+                                <a href="https://fouregrowth.com/r/hef" style="color:#091E42; font-family:Arial; display:inline-block; padding:13px 30px; border:1px solid #000000; border-radius:10px" class="mx-1 mb-2 deep-1 deep_hover">
+                                    <span style="color:#007bff; font-size:16px; font-weight:bold; vertical-align:middle">https://fouregrowth.com/r/hef</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

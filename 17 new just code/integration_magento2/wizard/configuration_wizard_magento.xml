@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_configuration_wizard" model="ir.ui.view">
+            <field name="name">configuration.wizard.magento.form</field>
+            <field name="model">configuration.wizard.magento</field>
+            <field name="inherit_id" ref="integration.view_configuration_wizard" />
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <field name="configuration_magento_line_ids" invisible="1"/>
+                    <div name="step_url" invisible="state != 'step_url'">
+                        <div class="alert alert-info" role="alert">
+                            <strong>Tips. Login to Magento admin:</strong>
+                            <ul>
+                                <li>System >> Extensions >> Integrations --> Create new integration, activate it and get "Access Token"</li>
+                                <li>Stores >> Settings >> Configuration >> SERVICES >> Magento Web API >> Web API Security >> Allow Anonymous Guest Access --> Yes</li>
+                                <li>Stores >> Settings >> Configuration >> SERVICES >> OAuth >> Consumer Settings >> Allow OAuth Access Tokens to be used as standalone Bearer tokens --> Yes</li>
+                            </ul>
+                        </div>
+                        <group>
+                            <field name="url" required="1"/>
+                            <field name="admin_url" required="1"/>
+                            <field name="key" required="1"/>
+                        </group>
+                    </div>                  
+                    <div name="step_shops" invisible="state != 'step_shops'">
+                        <div class="alert alert-info" role="alert">
+                            If you are going to activate more than one store place the most priority one to the first line
+                            with the help of drag-and-drop option.
+                        </div>
+                        <field name="configuration_store_ids" nolabel="1">
+                            <tree create="0" delete="0" editable="bottom" no_open="1">
+                                <field name="configuration_wizard_id" column_invisible="1"/>
+                                <field name="sequence" widget="handle"/>
+                                <field name="external_id" column_invisible="1"/>
+                                <field name="activate" widget="boolean_toggle"/>
+                                <field name="code" readonly="1"/>
+                                <field name="info" readonly="1"/>
+                            </tree>
+                        </field>
+                    </div>
+                    <div name="step_tax_group" invisible="state != 'step_tax_group'">
+                        <div class="alert alert-info" role="alert">
+                            There is a difference between Magento and Odoo taxes definition on the product.
+                            On Magento you define "Tax Class" for the product. While in Odoo you define "Customer Tax"
+                            on the product. So if we want to export Product from Odoo to Magento we need to take
+                            "Customer Tax" from Odoo product and convert it to "Tax Class" that is understandable by Magento.
+                            Or if we want to import product from Magento to Odoo , we need to take "Tax Class" defined
+                            in Magento Product and convert it to "Customer Tax".
+                            <br/>
+                            This mapping allows to define both Default Tax that will be used when importing product from Magento
+                            to Odoo. And also define which taxes are corresponding to which Tax Rule (that is needed when we
+                            exporting from Odoo to Magento)
+                            <br/>
+                            <br/>
+                            Note that you can drag&amp;drop tax groups to define their priority. First in the list will be used first.
+                            That is important when exporting products from Odoo to Magento. In case multiple tax rules found for the selected tax,
+                            connector will use tax rule with the highest priority
+                        </div>
+                        <field name="configuration_tax_group_ids" nolabel="1">
+                            <tree editable="bottom" create="0" delete="0">
+                                <field name="sequence" widget="handle"/>
+                                <field name="external_tax_group_id"/>
+                                <field name="external_tax_ids" widget="many2many_tags"/>
+                                <field name="default_external_tax_id" domain="[('id', 'in', external_tax_ids)]"/>
+                            </tree>
+                        </field>
+                    </div>
+                    <div name="step_order_status" invisible="state != 'step_order_status'">
+                        <field name="configuration_order_status_ids" nolabel="1">
+                            <tree create="0" edit="1" delete="0" editable="bottom" no_open="1">
+                                <field name="configuration_wizard_id" column_invisible="1"/>
+                                <field name="external_id" column_invisible="1"/>
+                                <field name="activate" widget="boolean_toggle"/>
+                                <field name="name" readonly="1"/>
+                                <field name="code" column_invisible="1"/>
+                                <field name="info" readonly="1"/>
+                            </tree>
+                        </field>
+                    </div>
+                    <div name="step_product_category_id" invisible="state != 'step_product_category_id'">
+                        <group>
+                            <field name="product_category_id"
+                                   domain="[('line_type', '=', 'is_category'), ('configuration_wizard_id', '=', id)]"
+                                   required="state == 'step_product_category_id'"/>
+                        </group>
+                    </div>
+                    <div name="step_attribute_set_id" invisible="state != 'step_attribute_set_id'">
+                        <div class="alert alert-info" role="alert">
+                            One of the first steps when creating a product is to choose the attribute set that is used as
+                            a template for the product record. The attribute set determines the fields that are available
+                            during data entry, and the values that appear to the customer.
+                            <br/>
+                            Your store comes with an initial attribute set, called default, that includes a set of commonly-used attributes.
+                            If you would like to add only a small number of attributes, you can add them to this default attribute set.
+                        </div>
+                        <group>
+                            <field name="attribute_set_id"
+                                   domain="[('line_type', '=', 'is_attribute_set'), ('configuration_wizard_id', '=', id)]"
+                                   required="state == 'step_attribute_set_id'"/>
+                        </group>
+                    </div>
+                    <div name="step_attribute_group_id" invisible="state != 'step_attribute_group_id'">
+                        <group>
+                            <field name="attribute_set_external_id" invisible="1"/>
+                        </group>
+                        <div class="alert alert-info" role="alert">
+                            The attributes are organized into groups that determine where they appear in the product record.
+                        </div>
+                        <group>
+                            <field name="attribute_group_id"
+                                   domain="[('line_type', '=', 'is_attribute_group'), ('external_id', '=', attribute_set_external_id), ('configuration_wizard_id', '=', id)]"
+                                   required="state == 'step_attribute_group_id'"/>
+                        </group>
+                    </div>
+                    <div name="step_product_attributes" invisible="state != 'step_product_attributes'">
+                        <div class="alert alert-info" role="alert">
+                            This step allowing to define which Product fields should be attributes.
+                            Note that attributes marked as "Is Default" have to be activated primarily because of they were parsed from configurable products.
+                            Selecting the attributes with the same names, which lead to the inconsistent database data, is not allowed.
+                        </div>
+                        <field name="configuration_magento_attribute_ids" nolabel="1">
+                            <tree create="0" edit="1" delete="0" editable="bottom" no_open="1" limit="1000"
+                                 decoration-info="is_default == True"
+                                 decoration-danger="set_readonly == True"
+                            >
+                                <field name="configuration_wizard_id" column_invisible="1"/>
+                                <field name="set_readonly" column_invisible="1"/>
+                                <field name="external_id" groups="base.group_no_one"/>
+                                <field name="activate" readonly="set_readonly" widget="boolean_toggle"/>
+                                <field name="name" readonly="1"/>
+                                <field name="code" column_invisible="1"/>
+                                <field name="info" readonly="1"/>
+                                <field name="is_default" readonly="1" help="The attribute from configurable product"/>
+                            </tree>
+                        </field>
+                    </div>
+                    <div name="step_location_id" invisible="state != 'step_location_id'">
+                        <div class="alert alert-info" role="alert">
+                            Choose the default Inventory Location.
+                        </div>
+                        <group>
+                            <field name="location_id"
+                                   domain="[('line_type', '=', 'is_inventory_location'), ('configuration_wizard_id', '=', id)]"
+                                   required="state == 'step_location_id'"/>
+                        </group>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

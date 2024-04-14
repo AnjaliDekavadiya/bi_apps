@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<function model ='vks.import.excel.initdata' name='vks_import_excel_initdata_method' />
+	</data>
+</odoo>

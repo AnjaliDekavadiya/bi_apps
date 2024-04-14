@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_task_view_form_tailor_team" model="ir.ui.view">
+            <field name="name">task.form.inherit.tailor_team</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="cloth_tailor_management_odoo.custom_task_view_form_cloth_request"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='cloth_request_id']" position="after">
+                    <field name="tailor_team_id"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

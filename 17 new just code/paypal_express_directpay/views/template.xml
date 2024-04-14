@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+
+    <template id="paypal_checkout_product_template" inherit_id="website_sale.product">
+        <xpath expr="//div[@id='add_to_cart_wrap']" position="after">
+        <t t-set="is_public_user" t-value="request.env.user.has_group('base.group_public')"/>
+          <t t-set="paypal_payment_acquirer" t-value="request.env['payment.provider'].sudo().search([('code','=','paypal_express'),'|', ('website_id', '=', False), ('website_id', '=', request.website.id)], limit=1)"/>
+            <t t-if="paypal_payment_acquirer.product_paypal and paypal_payment_acquirer.state != 'disabled'">
+                <t t-if="not is_public_user or is_public_user == paypal_payment_acquirer.enable_for_public">
+                <div id="paypal-button"></div>
+                </t>
+            </t>
+            <div id="paypal_express_loader" style="display:none;"/>
+        </xpath>
+    </template>
+    <template id="paypal_checkout_cart_template" inherit_id="website_sale.navigation_buttons">
+        <xpath expr="//a[@name='website_sale_main_button']" position="after">
+            <t t-set="is_public_user" t-value="request.env.user.has_group('base.group_public')"/>
+            <t t-set="paypal_payment_acquirer" t-value="request.env['payment.provider'].sudo().search([('code','=','paypal_express'),'|', ('website_id', '=', False), ('website_id', '=', request.website.id)], limit=1)"/>
+            <t t-if="paypal_payment_acquirer.cart_paypal and paypal_payment_acquirer.state != 'disabled'">
+                <t t-if="not is_public_user or is_public_user == paypal_payment_acquirer.enable_for_public">
+                    <div t-if="not optional_products and website_sale_order and website_sale_order.website_order_line" id="paypal-button" class="pull-right mt-1"></div>
+                </t>
+            </t>
+            <div id="paypal_express_loader" style="display:none;"/>
+        </xpath>
+    </template>
+
+
+</odoo>

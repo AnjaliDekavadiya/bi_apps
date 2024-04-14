@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_marketplace_seller,loyalty.seller,model_website_loyalty_management,odoo_marketplace.marketplace_seller_group,1,1,1,1
+access_marketplace_seller_history,loyalty.history.seller,model_website_loyalty_history,odoo_marketplace.marketplace_seller_group,1,0,0,0
+access_credit_base,credit.base.seller,model_credit_base,odoo_marketplace.marketplace_seller_group,1,1,1,1
+admin_publish_group,wk_publish_group,model_wk_publish_group,odoo_marketplace.marketplace_seller_group,1,1,1,1

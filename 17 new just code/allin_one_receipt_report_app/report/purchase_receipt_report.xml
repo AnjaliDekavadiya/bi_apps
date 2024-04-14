@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="paperformat_purchase_receipt" model="report.paperformat">
+        <field name="name">Purchasereceipt-Paperformat</field>
+        <field name="default" eval="True" />
+        <field name="format">custom</field>
+        <field name="page_height">300</field>
+        <field name="page_width">150</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">23</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+        <record id="purchase_receipt" model="ir.actions.report">
+        <field name="name">Purchase Order Receipt</field>
+        <field name="model">purchase.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">allin_one_receipt_report_app.receipt_purchase</field>
+        <field name="report_file">allin_one_receipt_report_app.receipt_purchase</field>
+        <field name="paperformat_id" ref="paperformat_purchase_receipt"/>
+        <field name="print_report_name">'Order Receipt - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+        <field name="binding_type">report</field>
+    </record>
+        <record id="request_purchase_receipt" model="ir.actions.report">
+        <field name="name">Request for Quotation Receipt</field>
+        <field name="model">purchase.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">allin_one_receipt_report_app.receipt_request_purchase</field>
+        <field name="report_file">allin_one_receipt_report_app.receipt_request_purchase</field>
+        <field name="paperformat_id" ref="paperformat_purchase_receipt"/>
+        <field name="print_report_name">'Request for Quotation Receipt - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="website_job_order_report_id" model="ir.actions.report">
+            <field name="name">Job Orders</field>
+            <field name="model">job.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_website_job_workorder.website_job_order_temp_id</field>
+            <field name="report_file">bi_website_job_workorder.website_job_order_temp_id</field>
+            <field name="binding_model_id" ref="model_job_order"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_normal_form_view_integration" model="ir.ui.view">
+        <field name="name">product.product.form.integration.woocommerce</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="integration.product_normal_form_view_integration"/>
+        <field name="arch" type="xml">
+            <field name="allow_backorders_on_template" position="replace">
+                <field name="allow_backorders_on_product" />
+            </field>
+        </field>
+    </record>
+
+    <record id="product_product_view_form_easy_inherit_woocommerce" model="ir.ui.view">
+        <field name="name">product.product.form.easy.integration.woocommerce</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="integration.product_product_view_form_easy_inherit_website_sale"/>
+        <field name="arch" type="xml">
+            <group name="integrations" position="after">
+                <group name="woocommerce_settings" string="Woocommerce Settings">
+                    <field name="allow_backorders_on_product"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record model ="ir.ui.view" id="odoo_journal_entry_import_wizard_view">
+           <field name="name">journal.entry.import.wizard</field>
+           <field name="model">journal.entry.import</field>
+           <field name="arch" type="xml">
+               <form string="Journal Entry Import Wizard">
+                   <separator string="This wizard will import journal entry from selected excel file. Make sure you have selected .xls/xlsx file..."/>
+                   <group>
+                       <field name="company_id"/>
+                   </group>                
+                   <group>
+                       <!-- <div> -->
+                            <field name="files" class="oe_inline" filename="datas_fname" required="True"/>
+                            <field name="datas_fname" class="oe_inline" invisible="0" readonly="1"/>
+                       <!-- </div> -->
+                   </group>
+                   <footer>
+                        <button string="Import" name="journal_item" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+       <record model="ir.actions.act_window" id="journal_entry_import_action">
+           <field name="name">Import Journal Entries</field>
+           <field name="res_model">journal.entry.import</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+       </record>
+       
+       
+        <menuitem name="Import Journal Entries" id="menu_import_journal_entry_wizard" 
+                 parent="account.menu_finance_entries"
+                 action="journal_entry_import_action"/>
+       
+    </data>
+</odoo>

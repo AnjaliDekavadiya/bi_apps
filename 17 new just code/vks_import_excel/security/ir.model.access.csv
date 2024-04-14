@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_model_ir_model_user,model_ir_model.user,base.model_ir_model,base.group_user,1,0,0,0
+access_model_ir_model_fields_user,model_ir_model_fields.user,base.model_ir_model_fields,base.group_user,1,0,0,0
+access_model_ir_model_fields_selection_user,model_ir_model_fields_selection.user,base.model_ir_model_fields_selection,base.group_user,1,0,0,0
+access_model_ir_model_data_user,model_ir_model_data.user,base.model_ir_model_data,base.group_user,1,1,1,0
+access_vks_select_export_method_popup_user,vks_select_export_method_popup.user,model_vks_select_export_method_popup,base.group_user,1,1,1,1
+access_vks_process_by_thread_basic_user,vks_process_by_thread_basic.user,model_vks_process_by_thread_basic,base.group_user,1,0,0,0
+access_manage_object_import_user,manage_object_import.user,model_manage_object_import,base.group_user,1,1,1,1
+access_manage_field_import_user,manage_field_import.user,model_manage_field_import,base.group_user,1,1,1,1
+access_import_data_user,import_data.user,model_import_data,base.group_user,1,1,1,1
+access_import_data_status_user,import_data_status.user,model_import_data_status,base.group_user,1,1,1,1

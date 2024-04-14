@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_page_url_translation_portal,access_page_url_translation_portal,model_page_url_translation,base.group_portal,1,0,0,0
+access_page_url_translation_public,access_page_url_translation_public,model_page_url_translation,base.group_public,1,0,0,0
+access_page_url_translation_internal,access_page_url_translation_internal,model_page_url_translation,base.group_user,1,0,0,0
+access_page_url_translation_page_manager,access_page_url_translation_page_manager,model_page_url_translation,website.group_website_designer,1,1,1,1

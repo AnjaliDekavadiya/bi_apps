@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!-- <template id="assets_frontend" inherit_id="website.assets_frontend">
+            <xpath expr="script[last()]" position="after">
+                <script type="text/javascript" src="/helpdesk_support_ticket_pos/static/src/js/helpdesk.js"></script>
+            </xpath>
+        </template> -->
+
+        <template id="custom_portal_pos_orders_inherit_helpdesk" name="Portal layout : POS Helpdesk" inherit_id="website_portal_pos_orders.portal_my_pos_orders">
+            <xpath expr="//t[@t-if='pos_orders']/thead/tr[hasclass('active')]/th[last()]" position="after">
+                 <th>Support</th>
+            </xpath>
+            <xpath expr="//t[@t-if='pos_orders']//tbody/t[@t-as='order']/tr/td[last()]" position="after">
+                <td>
+                    <a t-attf-href="/helpdesk_pos_support_ticket/#{order.id}?{{ keep_query() }}">
+                        <i class="fa fa-print"></i> Open Ticket
+                    </a>
+                </td>
+            </xpath>
+        </template>
+
+        <template id="custom_website_helpdesk_inherit_pos_orders" name="Portal layout : POS Helpdesk" inherit_id="website_helpdesk_support_ticket.website_helpdesk_support_ticket">
+            <!-- <xpath expr="//div[(@t-attf-class='form-group form-field o_website_form_custom_attchments')]" position="after"> -->
+             <xpath expr="//div[contains(@t-attf-class, 'form-group form-field o_website_form_custom_attchments')]" position="after">
+                <t t-if="pos_order_id">
+                    <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                        <label class="col-md-3 col-sm-4 control-label" for="name">POS Order</label>
+                        <div class="col-md-7 col-sm-8">
+                            <input type="text" class="form-control" name="helpdesk_pos_order_name" t-attf-value="#{pos_order_id.name}" readonly="True"/>
+                            <input type="hidden" class="form-control" name="helpdesk_pos_order_id" t-attf-value="#{pos_order_id.id}" readonly="True"/>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div t-attf-class="form-group">
+                        <label class="col-md-3 col-sm-4 control-label" for="name">POS Order</label>
+                        <div class="col-md-7 col-sm-8" id="helpdesk_support_ticket_pos">
+                            <select class="form-control" name="helpdesk_pos_order_id">
+                                <option value="">Select POS...</option>
+                                    <t t-foreach="pos_ids or []" t-as="order">
+                                        <option t-att-value="order.id">
+                                            <t t-esc="order.name" />
+                                        </option>
+                                    </t>
+                            </select>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="custom_customer_pos_order">
+            <select class="form-control" name="helpdesk_pos_order_id">
+                <option value="">Select POS...</option>
+                    <t t-foreach="pos_ids or []" t-as="order">
+                        <option t-att-value="order.id">
+                            <t t-esc="order.name" />
+                        </option>
+                    </t>
+            </select>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,25 @@
+<odoo>
+
+	<record id="hr_contract_view_form" model="ir.ui.view">
+		<field name="name">hr.contract.form</field>
+		<field name="model">hr.contract</field>
+		<field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//group[@name='salary']/div[@name='wage']" position="attributes">
+           		<attribute name="invisible">grade_id and step_id</attribute></xpath>
+			<xpath expr="//group[@name='salary']/label[@for='wage']" position="attributes">
+           		<attribute name="invisible">grade_id and step_id</attribute></xpath>
+			<group name="salary" position="before">
+				<group name="salary_schedule" string="Salary Schedule">
+					<field name="schedule_id" readonly="0"/>
+					<field name="schedule_type" invisible="1" />
+					<field name="grade_id" domain="[('schedule_id','=', schedule_id)]" options="{'no_create_edit' : True}" required="schedule_id"/>
+					<field name="step_id" domain="[('grade_ids','=', grade_id)]" options="{'no_create_edit' : True}" invisible="schedule_id and schedule_type != 'grades_and_steps'"/>
+					<field name="salary" invisible="schedule_id and schedule_type != 'grades_and_steps'"/>
+				</group>
+			</group>
+		</field>
+	</record>
+
+
+</odoo>

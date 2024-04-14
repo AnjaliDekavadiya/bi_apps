@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+
+        <record id="google_contract_drawings_form" model="ir.ui.view">
+            <field name="name">google.contract.drawings.form.view</field>
+            <field name="model">google.contract.drawings</field>
+            <field name="arch" type="xml">
+                <form string="Google contract drawings">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="drawing_url"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="google_contract_drawings_tree" model="ir.ui.view">
+            <field name="name">google.contract.drawings.tree.view</field>
+            <field name="model">google.contract.drawings</field>
+            <field name="arch" type="xml">
+                <tree string="Google contract drawings">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="drawing_url"/>
+                    <button class="btn-primary" name="attachment_contract_img_button" type="object" string="open"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="google_contract_drawings_action" model="ir.actions.act_window">
+            <field name="name">google_contract_drawings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">google.contract.drawings</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a new employee.
+                </p>
+            </field>
+        </record>
+
+        <record id="inherit_job_order" model="ir.ui.view">
+            <field name="name">inherit.sale.button</field>
+            <field name="model">job.order</field>
+            <field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="google_contract_drawings" string="Google Contract Drawing">
+                        <button class="btn-primary" name="create_google_drawing" type="object"
+                                string="Create Google Drawing"/>
+                        <field name="google_contract_drawings_ids"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

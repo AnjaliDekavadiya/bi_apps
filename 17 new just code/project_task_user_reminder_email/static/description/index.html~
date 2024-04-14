@@ -1,0 +1,57 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+            <h2 class="oe_slogan"><b>Project Task Reminder Email</b></h2>
+        <p class="oe_mt32">
+This module send auto reminder to responsible user of task if deadline = Today. Cron job will run everyday and search for task which due today and send reminder email to employee.<br/><br/>
+Custom Email template available with name <b>Project Task Reminder Email</b>
+        </p>
+    </div>
+</section>
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+            <h3 class="oe_slogan"><b>Project Task Form - Configuration of Task Reminder</h3>
+            <p><b>If set this box then only this task will be consider for reminder.</p>
+            <div class="oe_demo oe_screenshot">
+                <img src="project_task.png">
+            </div>
+    </div>
+</section>
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan"><b>Automation Scheduled Action - Cron Job</h3>
+        <div class="oe_demo oe_screenshot">
+            <img src="cron.png">
+        </div>
+    </div>
+</section>
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan"><b>Email to User/Employee</h3>
+        <p> <b>View Now button will allow user to jump to related task directly. This email will group all tasks which are deadline today for that user and send summary table to user/employee by email.</p>
+        <div class="oe_demo oe_screenshot">
+            <img src="mail_msg.png">
+        </div>
+    </div>
+</section>
+
+<section class="oe_container" >
+    <div class="oe_row oe_spaced">
+        <div class="oe_span6">
+            <div class="oe_picture" style="margin: 25px 10%;">
+                <a href="http://www.probuse.com/">
+                    <img src="logo.png">
+                </a>
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+                If you need any help or want more additional features,<br/> you may contact us through:<br/>
+                Email: <a href="mailto:contact@probuse.com">contact@probuse.com</a> <br/>
+                Website: <a href="http://www.probuse.com/" target='new'><u>www.probuse.com</u></a> <br/>
+                Skype: mustufa_probuse<br/>
+            </p>
+        </div>
+    </div>
+</section>
+
+

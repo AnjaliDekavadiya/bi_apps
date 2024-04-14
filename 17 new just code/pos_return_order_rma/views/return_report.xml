@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_return_report_pos_order_inherit" inherit_id="website_request_return_rma_odoo.rma_report">
+        <xpath expr="//div[@t-if='doc.company_id']" position="after">
+            <div t-if="doc.posorder_id" class="col-3">
+                <strong>POS Order:</strong>
+                <p class="m-0"  t-field="doc.posorder_id.name"/>
+             </div>
+        </xpath>
+    </template>
+    <template id="custom_return_pos_order_form" inherit_id="website_request_return_rma_odoo.display_return_request_order_details_probc">
+        <xpath expr="//div[@id='oe_sales_team']" position="after">
+            <br/>
+            <div id="oe_pos_order" t-if='return_details.posorder_id.name'>
+                <strong>POS Order:</strong>
+                <span t-field="return_details.posorder_id.name"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_oi_excel_export_config_form" model="ir.ui.view">
+		<field name="name">oi_excel_export.config.form</field>
+		<field name="model">oi_excel_export.config</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="create_action" type="object" string="Create Action" invisible="action_id" />
+					<button name="remove_action" type="object" string="Remove Action" invisible="not action_id" />
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button name="action_lines" type="object" class="oe_stat_button" icon="fa-columns">
+							<field name="line_count" string="Columns" widget="statinfo" />
+						</button>
+					</div>				
+					<group>
+						<group>
+							<field name="name" />
+							<field name="model_id" />
+							<field name="crosstab" />
+							<field name="pdf" />
+							<field name="seperate_rows" />
+						</group>
+						<group>
+							<field name="action_id" />
+							<field name="decimal_places" />
+							<field name="add_row_total" />
+							<field name="add_column_total" />
+						</group>
+					</group>
+					<group string="Python Code">
+						<field name="lines" nolabel="1" widget="ace" options="{'mode': 'python'}" colspan="2" />
+					</group>
+					<group string="Column">
+						<field name="line_ids" nolabel="1" colspan="2">
+							<tree>
+								<field name="sequence" widget="handle" />
+								<field name="name" />								
+								<field name="value" />						
+								<field name="crosstabloc" column_invisible="not parent.crosstab" required="parent.crosstab" />	
+								<field name="show_title" column_invisible="not parent.crosstab"/>
+								<field name="visible_condition" />	
+							</tree>
+							<form>
+								<group>
+									<field name="sequence" />
+									<field name="name" />
+									<field name="crosstabloc" column_invisible="not parent.crosstab"/>
+									<field name="show_title" column_invisible="not parent.crosstab"/>
+								</group>		
+								<group string="Value">
+									<field name="value" nolabel="1" widget="ace" options="{'mode': 'python'}" colspan="2" />	
+								</group>	
+								<group string="Visible Condition">
+									<field name="visible_condition" nolabel="1" widget="ace" options="{'mode': 'python'}" colspan="2" />	
+								</group>																				
+							</form>
+						</field>
+					</group>
+					<group string="Images">
+						<field name="image_ids" nolabel="1" colspan="2">
+							<tree editable="bottom">
+								<field name="name" invisible="1" />								
+								<field name="data" filename="name" />
+								<field name="cell" />			
+								<field name="offset_x" />			
+								<field name="offset_y" />		
+								<field name="scale_x" />
+								<field name="scale_y" />
+							</tree>
+						</field>
+					</group>
+					
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="view_oi_excel_export_config_tree" model="ir.ui.view">
+		<field name="name">oi_excel_export.config.tree</field>
+		<field name="model">oi_excel_export.config</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+				<field name="model_id" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_oi_excel_export_config_search" model="ir.ui.view">
+		<field name="name">oi_excel_export.config.search</field>
+		<field name="model">oi_excel_export.config</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name" />
+				<field name="model_id" />
+			</search>
+		</field>
+	</record>
+
+</odoo>

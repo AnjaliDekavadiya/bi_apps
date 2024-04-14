@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="view_crm_opportunity_form_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.request.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page[2]" position="after">
+                    <page string="Requisitions Lines">
+                        <field name="material_requisition_lead_line_ids">
+                            <tree editable="bottom">
+                                <field name="custom_requisition_line_id" column_invisible="1"/>
+                                <field name="requisition_type"/>
+                                <field name="product_id"/>
+                                <field name="description"/>
+                                <field name="qty"/>
+                                <field name="uom"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                <!-- <xpath expr="//field[@name='company_id']" position="after"> -->
+                <xpath expr="//field[@name='tag_ids']" position="after">
+
+                    <field name="custom_material_requisition_ids" widget="many2many_tags"/>
+                </xpath>
+                <xpath expr="//button[@name='action_set_won_rainbowman']" position="before">
+                    <button name="%(action_crm_lead_material_requisition_wizard)d" string="Create Material Requisition" type="action" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="view_material_requisition" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+                        invisible="requisition_count == 0">
+                        <!-- attrs="{'invisible': [('requisition_count', '==', 0)]}"> -->
+                        <field string="Requisitions" name="requisition_count" widget="statinfo"/>
+                    </button>
+            </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

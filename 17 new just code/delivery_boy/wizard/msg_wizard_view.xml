@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+    <record model="ir.ui.view" id="view_msg_wizard">
+		<field name="name">msg.wizard.form</field>
+		<field name="model">msg.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Message" >
+				<div style="line-height:normal;">
+					<div>
+						<field name="text" readonly="1"/>
+					</div>
+				</div>
+				<footer>
+					<button string="Ok" class="btn-primary" special="cancel" />
+				</footer>
+			</form>
+		</field>
+   	</record>
+
+	<record model="ir.ui.view" id="view_authentication_warning_wizard">
+			<field name="name">authentication.warning.wizard.form</field>
+			<field name="model">authentication.warning.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<h1>Warning!!!</h1>
+					<p>All the login user will be forcely logout . Do you want to perform this action ?</p>
+					<footer>
+	              		<button name="force_reset_authentication_object" string="Force Reset" class="btn-danger" type="object" />
+	              		<button string="Cancel" class="btn-primary" special="cancel" />
+              		</footer>
+				</form>
+			</field>
+   	</record>
+
+</odoo>

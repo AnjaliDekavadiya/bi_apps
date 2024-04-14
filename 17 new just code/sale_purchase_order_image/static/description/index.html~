@@ -1,0 +1,96 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+            <h2 class="oe_slogan">Sales & Purchase Order Report Image</h2>
+        <p class="oe_mt32">
+This module allow use to print product image and serial number on following reports: <br/>
+* Sales order report<br/>
+* Purchase order report<br/>
+<br/>
+</p>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_padded">
+        <h2 class="oe_slogan">Configure On Sales and purchase settings</h2>
+        <div class="oe_span12">
+            <p>
+For display image and sequence number on order line and report the configuration is available in sale setting and purchase setting respectively.<br> 
+            </p>
+        </div>
+        <div class="oe_span6 ">
+            <h3 class="text-center">Sale</h3>
+            <div class="oe_row_img oe_centered">
+            <img class="oe_picture oe_screenshot" src="sale_setting.png">
+            </div>
+        </div>
+        <div class="oe_span6 ">
+            <h3 class="text-center">Purchase</h3>
+            <img class="oe_picture oe_screenshot" src="purchse_setting.png">
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_padded">
+        <h2 class="oe_slogan">Options on the sale and purchase order</h2>
+        <div class="oe_span12">
+            <p>
+Also, display image and sequence configuration is available on sale and purchase form.<br> 
+            </p>
+        </div>
+        <div class="oe_span6 ">
+            <h3 class="text-center">Sale Form</h3>
+            <div class="oe_row_img oe_centered">
+            <img class="oe_picture oe_screenshot" src="sale_form.png">
+            </div>
+        </div>
+        <div class="oe_span6 ">
+            <h3 class="text-center">Purchase Form</h3>
+            <img class="oe_picture oe_screenshot" src="purchase_form.png">
+        </div>
+    </div>
+</section>
+
+
+<section class="oe_container">
+    <div class="oe_row oe_padded">
+        <h2 class="oe_slogan">Image and Sequence number in report</h2>
+        <div class="oe_span12">
+            <p>
+Based on cofiguration of image and sequence number it will shows the image and sequence number in report.<br> 
+            </p>
+        </div>
+        <div class="oe_span6 ">
+            <h3 class="text-center">Sale Report</h3>
+            <div class="oe_row_img oe_centered">
+            <img class="oe_picture oe_screenshot" src="sale_highlight.png">
+            </div>
+        </div>
+        <div class="oe_span6 ">
+            <h3 class="text-center">Purchase Report</h3>
+            <img class="oe_picture oe_screenshot" src="report_p.png">
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark" >
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Contact / Support</h2>
+        <div class="oe_span6">
+            <div class="oe_picture" style="margin: 25px 10%;">
+                <a href="http://www.probuse.com/">
+                    <img src="logo.png">
+                </a>
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+                If you need any help or want more additional features,<br/> you may contact us through:<br/>
+                Email: <a href="mailto:contact@probuse.com">contact@probuse.com</a> <br/>
+                Website: <a href="http://www.probuse.com/" target='new'><u>www.probuse.com</u></a> <br/>
+                Skype: mustufa_probuse<br/>
+            </p>
+        </div>
+    </div>
+</section>

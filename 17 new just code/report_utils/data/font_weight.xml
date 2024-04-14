@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--Normal-->
+        <record id="data_options_combo_box_font_weight_normal" model="report.template.options.combo.box.item">
+            <field name="name">Normal</field>
+            <field name="name_technical">unset</field>
+            <field name="key">report_utils__font_weight</field>
+        </record>
+
+        <!--Bold-->
+        <record id="data_options_combo_box_font_weight_bold" model="report.template.options.combo.box.item">
+            <field name="name">Bold</field>
+            <field name="name_technical">bold</field>
+            <field name="key">report_utils__font_weight</field>
+        </record>
+
+
+    </data>
+</odoo>

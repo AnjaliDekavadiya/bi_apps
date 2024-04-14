@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+
+from odoo import http
+from odoo.http import request
+from odoo.addons.website_form.controllers.main import WebsiteForm
+from odoo.addons.website_sale.controllers.main import WebsiteSale
+from odoo.addons.website_sale.controllers.main import ProductConfiguratorController
+from odoo import exceptions, _
+
+
+class WebsiteSale(ProductConfiguratorController):
+
+	@http.route(['/link'], type='json', auth="user", website=True)
+	def data_processing(self, output_data , data):
+		user_id = request.env.user.partner_id.email
+		ctx = request._context.copy()
+		ctx.update({
+					'email_to':output_data
+					})
+		sale_order_id = request.env['sale.order'].browse(int(data))
+		template = request.env.ref('website_send_by_email.email_template_edi_customer_overdue_set1')
+		template.with_context(ctx).sudo().send_mail(sale_order_id.id)
+		return True

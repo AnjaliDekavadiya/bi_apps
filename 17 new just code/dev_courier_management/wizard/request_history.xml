@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <record id="form_dev_courier_request_history" model="ir.ui.view">
+        <field name="name">form_dev_courier_request_history_</field>
+        <field name="model">dev.courier.request.history</field>
+        <field name="arch" type="xml">
+            <form string="Courier Request History">
+                <group>
+                    <group>
+                        <field name="start_date"/>
+                    </group>
+                    <group>
+                        <field name="end_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="&#160;Print PDF" icon="fa-print" name="print_pdf" type="object"
+                            class="oe_highlight"/>&#160;&#160;or&#160;&#160;
+                    <button string="Close Window" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dev_courier_request_history" model="ir.actions.act_window">
+        <field name="name">Courier Request History</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dev.courier.request.history</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="form_dev_courier_request_history"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem name="Courier Request History"
+              id="menu_dev_courier_request_history1"
+              parent="main_menu_courier_reporting"
+              action="action_dev_courier_request_history"
+              sequence="4"/>
+</odoo>

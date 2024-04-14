@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+       <record id="view_warehouse" model="ir.ui.view">
+            <field name="name">stock.warehouse.form.inherit</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="quickbooks_online" string="QuickBooks Online">
+                        <group>
+                            <field name="qbo_state" readonly="1"/>
+                            <field name="qbo_transaction_date" widget="datetime" readonly="1"/>
+                            <field name="qbo_transaction_info" readonly="1"/>
+                            <field name="qbo_department_ids">
+                                <tree>
+                                    <field name="qbo_id"/>
+                                    <field name="qbo_name"/>
+                                    <field name="is_imported"/>
+                                    <field name="is_exported"/>
+                                    <field name="company_id"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>

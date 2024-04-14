@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="so_tmpl_logo_footer_green" model="ir.attachment">
+            <field name="name">so_tmpl_logo_footer_green.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/logo_footer_green.odt"/>
+        </record>
+        <record id="so_tmpl_logo_footer_red" model="ir.attachment">
+            <field name="name">so_tmpl_logo_footer_red.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/logo_footer_red.odt"/>
+        </record>
+        <record id="so_tmpl_logo_footer_orange" model="ir.attachment">
+            <field name="name">so_tmpl_logo_footer_orange.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/logo_footer_orange.odt"/>
+        </record>
+        <record id="so_tmpl_logo_footer_blue" model="ir.attachment">
+            <field name="name">so_tmpl_logo_footer_blue.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/logo_footer_blue.odt"/>
+        </record>
+
+        <record id="so_tmpl_bubble" model="ir.attachment">
+            <field name="name">so_tmpl_bubble.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/Bubble.odt"/>
+        </record>
+
+        <record id="so_tmpl_ElegantSaleGreen" model="ir.attachment">
+            <field name="name">so_tmpl_ElegantSaleGreen.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ElegantSaleGreen.odt"/>
+        </record>
+
+        <record id="so_tmpl_ElegantSaleOrange" model="ir.attachment">
+            <field name="name">so_tmpl_ElegantSaleOrange.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ElegantSaleOrange.odt"/>
+        </record>
+
+        <record id="so_tmpl_ElegantSaleRed" model="ir.attachment">
+            <field name="name">so_tmpl_ElegantSaleRed.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ElegantSaleRed.odt"/>
+        </record>
+
+        <record id="so_tmpl_ElegantSaleBlue" model="ir.attachment">
+            <field name="name">so_tmpl_ElegantSaleBlue.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ElegantSaleBlue.odt"/>
+        </record>
+
+        <record id="so_tmpl_CleanSaleGray" model="ir.attachment">
+            <field name="name">so_tmpl_CleanSaleGray.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/CleanSaleGray.odt"/>
+        </record>
+
+        <record id="so_tmpl_CleanSaleGreen" model="ir.attachment">
+            <field name="name">so_tmpl_CleanSaleGreen.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/CleanSaleGreen.odt"/>
+        </record>
+
+        <record id="so_tmpl_CleanSaleOrange" model="ir.attachment">
+            <field name="name">so_tmpl_CleanSaleOrange.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/CleanSaleOrange.odt"/>
+        </record>
+
+        <record id="so_tmpl_CleanSaleBlue" model="ir.attachment">
+            <field name="name">so_tmpl_CleanSaleBlue.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/CleanSaleBlue.odt"/>
+        </record>
+
+        <record id="so_tmpl_CleanSaleRed" model="ir.attachment">
+            <field name="name">so_tmpl_CleanSaleRed.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/CleanSaleRed.odt"/>
+        </record>
+
+        <record id="so_tmpl_modern_sale_red" model="ir.attachment">
+            <field name="name">so_tmpl_modern_sale_red.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ModernSaleRed.odt"/>
+        </record>
+
+        <record id="so_tmpl_modern_sale_orange" model="ir.attachment">
+            <field name="name">so_tmpl_modern_sale_orange.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ModernSaleOrange.odt"/>
+        </record>
+
+        <record id="so_tmpl_modern_sale_green" model="ir.attachment">
+            <field name="name">so_tmpl_modern_sale_green.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ModernSaleGreen.odt"/>
+        </record>
+
+        <record id="so_tmpl_modern_sale_order" model="ir.attachment">
+            <field name="name">so_tmpl_modern_sale_order.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ModernSaleBlue.odt"/>
+        </record>
+
+        <record id="so_tmpl_modern_stylish_green" model="ir.attachment">
+            <field name="name">so_tmpl_modern_stylish_green.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ModernStylishGreen.odt"/>
+        </record>
+
+        <record id="so_tmpl_modern_stylish_red" model="ir.attachment">
+            <field name="name">so_tmpl_modern_stylish_red.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ModernStylishRed.odt"/>
+        </record>
+
+        <record id="so_tmpl_modern_stylish_orange" model="ir.attachment">
+            <field name="name">so_tmpl_modern_stylish_orange.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ModernStylishOrange.odt"/>
+        </record>
+    
+        <record id="so_tmpl_modern_stylish_blue" model="ir.attachment">
+            <field name="name">so_tmpl_modern_stylish_blue.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/ModernStylishBlue.odt"/>
+        </record>
+
+        <record id="sale_order_tmpl_transparency" model="ir.attachment">
+            <field name="name">sale_order_tmpl_transparency.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/sale_order_tmpl_transparency.odt"/>
+        </record>
+
+        <record id="sale_order_tmpl_watermark" model="ir.attachment">
+            <field name="name">sale_order_tmpl_watermark.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/sale_order_tmpl_watermark.odt"/>
+        </record>
+
+        <record id="sale_order_tmpl_magenta" model="ir.attachment">
+            <field name="name">sale_order_tmpl_magenta.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/magenta.odt"/>
+        </record>
+
+        <record id="sale_order_tmpl_term" model="ir.attachment">
+            <field name="name">sale_order_tmpl_term.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/sale_order_tmpl_term.odt"/>
+        </record>
+        
+        <record id="sale_order_tmpl_static" model="ir.attachment">
+            <field name="name">sale_order_tmpl_static.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/sale_order_tmpl_static.odt"/>
+        </record>
+
+        <record id="sale_order_tmpl_simple" model="ir.attachment">
+            <field name="name">sale_order_tmpl_simple.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/sale_order_tmpl_simple.odt"/>
+        </record>
+
+        <record id="sale_order_offer" model="ir.attachment">
+            <field name="name">sale_order_offer.odt</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="report_extend_bf_sale_order/templates/sale_order_offer.odt"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_transmittals_submittal_doc">
+	<t t-call="web.html_container">
+			<t t-call="web.external_layout">
+				<br/><br/><br/>
+				<div class="page">
+					<center>
+						<h2>
+						<strong ><t t-esc="doc.sequence" />
+						- <t t-esc="doc.name" />
+						</strong>
+						</h2>
+					</center>
+					<br /><br /> 
+					<table class="table table-condensed table table-striped" style="width: 945px; margin-left: auto; margin-right: auto; height: 253px;">
+						<tbody class="sale_tbody">
+							<tr style="height: 23px;">
+								<td style="width: 227.1px; height: 23px;"><strong>Project:</strong></td>
+								<td style="width: 240.333px; height: 23px;"><span t-esc="doc.project_id.name"/></td>
+								<td style="width: 195.4px; height: 23px;"><strong>Date of Sending:
+								</strong></td>
+								<td style="width: 281.167px; height: 23px;"><span t-esc="doc.send_date"/></td>
+							</tr>
+							<tr style="height: 23px;">
+								<td style="width: 227.1px; height: 23px;"><strong>Analytic Account:
+								</strong></td>
+								<td style="width: 240.333px; height: 23px;"><span t-esc="doc.account_analytic_id.name"/></td>
+								<td style="width: 195.4px; height: 23px;"><strong>Deadline:
+								</strong></td>
+								<td style="width: 281.167px; height: 23px;"><span t-esc="doc.end_date"/></td>
+							</tr>
+							<tr style="height: 23px;">
+								<td style="width: 227.1px; height: 23px;"><strong>Job Order:
+								</strong></td>
+								<td style="width: 240.333px; height: 23px;"><span t-esc="doc.job_order_id.name"/></td>
+								<td style="width: 195.4px; height: 23px;"><strong>Sender Company:
+								</strong></td>
+								<td style="width: 281.167px; height: 23px;"><span t-esc="doc.sender_company.name"/></td>
+							</tr>
+							<tr style="height: 23px;">
+								<td style="width: 227.1px; height: 23px;"><strong>Job Cost Sheet:
+								</strong></td>
+								<td style="width: 240.333px; height: 23px;"><span t-esc="doc.job_cost_sheet_id.name"/></td>
+								<td style="width: 195.4px; height: 23px;"><strong>Receiver Company:
+								</strong></td>
+								<td style="width: 281.167px; height: 23px;"><span t-esc="doc.reciver_company.name"/></td>
+							</tr>
+							<tr style="height: 23px;">
+								<td style="width: 227.1px; height: 23px;"><strong>Company:</strong>
+								</td>
+								<td style="width: 240.333px; height: 23px;"><span t-esc="doc.sender_company.name"/></td>
+								<td style="width: 195.4px; height: 23px;"><strong>Responsible User:
+								</strong></td>
+								<td style="width: 281.167px; height: 23px;"><span t-esc="doc.user_id.name"/></td>
+							</tr>
+						</tbody>
+					</table>     
+					<br /><br />
+					<h3 class="text-left">Information</h3><br/>
+					<table class="table table-condensed table table-striped" style=" margin-left: auto; margin-right: auto; ">
+					<thead style=" background-color: #DB7093; color:#FFF !important;">
+							<tr>
+								<th>Name</th>
+								<th>Description</th>
+								<th class="text-right">Submittal Type</th>
+								<th class="text-right">Transmittal Channel</th>
+							</tr>
+						</thead>
+						<tbody class="sale_tbody" style="text-align:center;">
+							<t t-foreach="doc.transmittal_line" t-as="l">
+								<tr>
+									<td style="text-align:left">
+										<span t-field="l.name" />
+									</td>
+									<td style="text-align:left">
+										<span t-field="l.description" />
+									</td>
+									<td style="text-align:left">
+										<span t-field="l.transmital_type" />
+									</td>
+									<td style="text-align:left">
+										<span t-field="l.transmital_medium" />
+									</td>
+								</tr>
+							</t>
+						</tbody>
+						</table>
+						<br /><br /><br />
+					<footer>
+						<table class="table table-condensed">
+							<tr>
+								<td>
+									<th class="text-left">Authorised Signature:______________</th>
+								</td>
+								<td>
+									<th class="text-right">Receiver Signature:______________</th>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<th class="text-left">Date:______________</th>
+								</td>
+								<td>
+									<th class="text-right">Date:______________</th>
+								</td>
+							</tr>
+						</table>
+					</footer>
+				</div>
+			</t>
+	</t>
+</template>
+
+<template id="report_transmittal_submittal">
+	<t t-call="web.html_container">
+		<t t-foreach="docs" t-as="doc">
+		<t t-call="bi_transmittals_submittals_communication.report_transmittals_submittal_doc"/>
+		</t>
+	</t>
+</template>
+</odoo>
+
+
+
+

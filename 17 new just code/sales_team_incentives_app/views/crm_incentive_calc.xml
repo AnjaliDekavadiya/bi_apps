@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="crm_incen_calc_tree_view" model="ir.ui.view">
+        <field name="name">crm.incen.calc.view</field>
+        <field name="model">crm.incen.calc</field>
+        <field name="arch" type="xml">
+            <tree string="CRMIncentiveCalc" create="false" edit="false">
+                <field name="salesperson_id"/>
+                <field name="target"/>   
+                <field name="achieve"/>
+                <field name="achieve_percent"/>
+                <field name="incentive"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="state"/>
+            
+            </tree>
+        </field>
+    </record>
+
+    <record id="crm_incen_calc_form_view" model="ir.ui.view">
+        <field name="name">crm.incen.calc.view</field>
+        <field name="model">crm.incen.calc</field>
+        <field name="arch" type="xml">
+            <form string="CRMIncenCalc">
+                <header>
+                    <button name="submit_accountant" class="btn-primary" type="object" string="Sumbit To Accountant" invisible="state != 'not_paid'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="not_paid,submit,paid"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="salesperson_id"/>
+                        <field name="target"/>   
+                        <field name="achieve"/>
+                        <field name="achieve_percent"/>
+                        <field name="incentive"/>
+                    </group>
+                </sheet>                
+            </form>
+
+        </field>
+    </record>
+
+    <record id="crm_incen_calc_action_view" model="ir.actions.act_window">
+            <field name="name">CRM Incentive Calc</field>
+            <field name="res_model">crm.incen.calc</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="crm_incentive_calc_menuitem_id" parent="crm_challenge_menuitem_id" name="Incentive Calculation" sequence="5" action="crm_incen_calc_action_view" />
+
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="service_purchase_order_form_ext" model="ir.ui.view">
+            <field name="name">inherit.purchase.order.form.ext</field>
+            <field name="model">purchase.order</field>
+            <field name="priority" eval="8"/>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_ref']" position="after">
+                    <field name="is_service_po" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="serivece_purchase_order">
+            <field name="name">Service Purchase Order</field>
+            <field name="res_model">purchase.order</field>
+            <field name="context">{'default_is_service_po':True}</field>
+            <field name="domain">[('is_service_po','=',True)]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="serivece_purchase_rfq">
+            <field name="name">Service Requests for Quotation</field>
+            <field name="res_model">purchase.order</field>
+             <field name="context">{'default_is_service_po':True}</field>
+             <field name="domain">[('is_service_po','=',True)]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="transmittal_submittal_type_form_view" model="ir.ui.view">
+			<field name="name">transmittal.submittal.type.form.view</field>
+			<field name="model">transmittal.submittal.type</field>
+			<field name="arch" type="xml">
+				<form string="Transmittal Submittal Types">
+				<sheet>
+					<group>
+							<field name="name"/>
+					</group>
+				</sheet>
+				</form>    
+			</field>
+		</record>
+	
+		<record id="transmital_submital_type_tree_view" model="ir.ui.view">
+			<field name="name">transmittal.submittal.type.tree.view</field>
+			<field name="model">transmittal.submittal.type</field>
+			<field name="arch" type="xml">
+				<tree string="Transmittal Submittal Types">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+	
+		<record id="action_transmittal_submittal_type" 
+				model="ir.actions.act_window">
+			<field name="name">Transmittal Submittal Types</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">transmittal.submittal.type</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<menuitem name="Types"
+			id="menu_transmittal_submittal_type"
+			parent = "bi_odoo_job_costing_management.sub_menu_configuration"
+			action = "action_transmittal_submittal_type"
+			sequence = '2'
+			/>
+
+		<record id="transmittal_submittal_medium_form_view" model="ir.ui.view">
+			<field name="name">transmittal.submittal.medium.form.view</field>
+			<field name="model">transmittal.submittal.medium</field>
+			<field name="arch" type="xml">
+				<form string="Transmittal Submittal Mediums">
+				<sheet>
+					<group>
+							<field name="name"/>
+					</group>
+				</sheet>
+				</form>    
+			</field>
+		</record>
+	
+		<record id="transmittal_submittal_medium_tree_view"
+				model="ir.ui.view">
+			<field name="name">transmittal.submittal.medium.tree.view</field>
+			<field name="model">transmittal.submittal.medium</field>
+			<field name="arch" type="xml">
+				<tree string="Transmittal Submittal Mediums">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+	
+		<record id="action_transmittal_submittal_medium" model="ir.actions.act_window">
+			<field name="name">Transmittal Submittal Mediums</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">transmittal.submittal.medium</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<menuitem name="Mediums"
+			id="menu_transmittal_submittal_medium"
+			parent = "bi_odoo_job_costing_management.sub_menu_configuration"
+			action = "action_transmittal_submittal_medium"
+			sequence = '3'
+			/>
+
+	</data>
+</odoo>

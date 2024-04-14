@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<!-- Reporting menu -->
+	<menuitem id="sr_reporting_menu" name="Reporting" sequence="3" parent="sr_warranty_management_root"/>
+
+	<!-- Warranty report menu -->
+	<menuitem id="sr_warranty_report_menu" name="Warranty Report" action="sr_warranty_report_action" parent="sr_reporting_menu" sequence="1"/>
+
+	<!-- Claim report menu -->
+	<menuitem id="sr_claim_report_menu" name="Claim Report" action="sr_claim_report_action" parent="sr_reporting_menu" sequence="2"/>
+</odoo>

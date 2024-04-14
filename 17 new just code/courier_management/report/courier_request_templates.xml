@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--        Courier requests pdf template-->
+    <template id="report_courier_request">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="doc">
+                        <h1 style="color:black;align:center">Courier Request
+                            Report
+                        </h1>
+                        <table class="table">
+                            <tr>
+                                <h2 style="color:black">
+                                    <t t-esc="doc['name']"/>
+                                </h2>
+                            </tr>
+                        </table>
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <strong>Sender Name</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['sender_id'].name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Sender Mobile Number</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['sender_mobile_number']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Sender Email</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['sender_email']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Receiver Name</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['receiver_id'].name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Receiver Mobile Number</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['receiver_mobile_number']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Receiver Email</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['receiver_email']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Registration Date</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['registration_date']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Delivery Date</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['delivery_date']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Total Kilometres</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['total_kilometres']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Distance Amount</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['distance_amount']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>L X W X H</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['l_w_h_id'].name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Volumetric Weight</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['volumetric_weight']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Volumetric Weight Price</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['volumetric_weight_price']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Priority</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['priority_id'].name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Priority Amount</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['priority_amount']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Type</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['type_id'].courier_type"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>Category</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['category_id'].courier_category"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Responsible User</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['responsible_user_id'].name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Company</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc['company_id'].name"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h5 style="color:black;align:center">Courier Details
+                        </h5>
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Weight</th>
+                                    <th>Total Weight</th>
+                                    <th>Weight Price</th>
+                                    <th>Sub Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc['courier_details_ids']"
+                                   t-as="details">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="details['product_id'].name"/>
+                                        </td>
+
+                                        <td>
+                                            <t t-esc="details['quantity']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="details['weight']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="details['total_weight']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="details['weight_price']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="details['sub_total']"/>
+                                        </td>
+
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <tr>
+                            <td>
+                                <strong>Description</strong>
+                            </td>
+                            <td>
+                                <t t-esc="doc['description']"/>
+                            </td>
+                        </tr>
+                        <br/>
+                        <tr>
+                            <td>
+                                <strong>Internal Note</strong>
+                            </td>
+                            <td>
+                                <t t-esc="doc['internal_note']"/>
+                            </td>
+                        </tr>
+                        <br/>
+                        <br/>
+                        <div style="margin-left:550px">
+                            <td>
+                                <h7>Total Courier Charges:
+                                    <t t-esc="doc['total_courier_charges']"/>
+                                </h7>
+                            </td>
+                            <br/>
+                            <td>
+                                <h7 style="font-size: 1.19166667rem;font-weight: revert;">
+                                    Total:
+                                    <t t-esc="doc['total']"/>
+                                </h7>
+                            </td>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

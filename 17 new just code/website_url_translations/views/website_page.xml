@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="website_page_properties_view_form" model="ir.ui.view">
+        <field name="name">website.page.properties.form.view</field>
+        <field name="model">website.page</field>
+        <field name="inherit_id" ref="website.website_page_properties_view_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="URL Transliterations">
+                    <field name="url_translation_ids" context="{'default_translation': url}" >
+                        <tree editable="top">
+                            <field name="lang"/>
+                            <field name="translation"/>
+                        </tree>
+                    </field>
+                    <group>
+                        <field name="sitemap_t_add"/>
+                    </group>
+                    <div class="text-muted mt16">
+                        <p>Do not use language codes in transliterated URLs. "fr/mypage" is not good. "/mypage" is good. URLs with excess code will NOT be addressed at all.</p>
+                        <p>Always start transliterated URLs with '/'. Otherwise, it will be automatically added.</p>
+                        <p>Avoid using special or language-specific symbols and spaces. '/schönes haus' is not good. '/shoenes-haus' is good. Otherwise, such characters will be automatically replaced or converted.</p>
+                        <p>Avoid applying transliteration for the default language. Otherwise, the direct page URL will not be applied at all, only translations.</p>
+                    </div>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>

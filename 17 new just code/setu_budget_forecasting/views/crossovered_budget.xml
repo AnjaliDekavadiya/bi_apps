@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="kanban_crossovered_budget_view" model="ir.ui.view">
+            <field name="name">kanban_crossovered_budget_view</field>
+            <field name="model">crossovered.budget</field>
+            <field name="arch" type="xml">
+                <kanban class="o_crossovered_budget_kanban">
+                    <!--                    banner_route="/setu_cash_flow_forecasting/cash_dashboard_onboarding"-->
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="">
+                                <div class="oe_kanban_details">
+                                    <div t-attf-class="o_kanban_card_header">
+                                        <div class="o_kanban_card_header_title">
+                                            <div class="o_primary">
+                                                <a type="object" class="h3 o_primary cursor-pointer" name="open_action"
+                                                   style="color: #017e84;">
+                                                    <field name="name"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="o_gauge_value o_dashboard_graph m-4">
+                                        <field name="kanban_dashboard_graph" graph_type="gauge"
+                                               widget="dashboard_graph"/>
+                                    </div>
+
+                                    <div groups="base.group_multi_company" t-if="record.company_id.raw_value">
+                                        Company :
+                                        <field name="company_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="crossovered_budget_view_form_inherit" model="ir.ui.view">
+            <field name="name">crossovered_budget_view_form_inherit</field>
+            <field name="model">crossovered.budget</field>
+            <field name="inherit_id" ref="account_budget.crossovered_budget_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group/group[2]/label" position="before">
+                    <field name="year_id"  string ="Year" domain="[('company_id','=',company_id)]"
+                           readonly="state != 'draft'"/>
+                </xpath>
+                <xpath expr="//div[@name='date_edit_only']" position="before">
+                    <field name="period_id" domain="[('company_id','=',company_id)]"
+                           readonly="state != 'draft'"/>
+                    <field name="is_from_cash_forecast" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='date_from']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='date_to']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <!--##########Budget Lines##############-->
+                <xpath expr="//notebook/page[@name='budget_lines']/field/tree/field[@name='date_from']"
+                       position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="optional">'hide'</attribute>
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[@name='budget_lines']/field/tree/field[@name='date_to']"
+                       position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="optional">'hide'</attribute>
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[@name='budget_lines']/field/tree/field[@name='date_to']"
+                       position="after">
+                    <field name="period_id" readonly="1"/>
+                    <field name="percentage_ratio" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="setu_act_crossovered_budget_view">
+            <field name="name">Budgets</field>
+            <field name="res_model">crossovered.budget</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="setu_budget_forecasting.kanban_crossovered_budget_view"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Click to create a new budget.
+                </p>
+                <p>
+                    Use budgets to compare actual with expected revenues and costs
+                </p>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="setu_view_crossovered_budget_line_tree">
+            <field name="name">setu.crossovered.budget.line.tree</field>
+            <field name="model">crossovered.budget.lines</field>
+            <field name="arch" type="xml">
+                <tree string="Budget Lines" create="0">
+                    <field name="currency_id" column_invisible="True"/>
+                    <field name="crossovered_budget_id" column_invisible="True"/>
+                    <field name="general_budget_id"/>
+                    <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="paid_date" groups="base.group_no_one"/>
+                    <field name="percentage_ratio"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="setu_view_crossovered_budget_line_pivot">
+            <field name="name">setu.crossovered.budget.line.pivot</field>
+            <field name="model">crossovered.budget.lines</field>
+            <field name="arch" type="xml">
+                <pivot string="Budget Lines" sample="1">
+                    <field name="general_budget_id" type="row"/>
+                    <field name="crossovered_budget_id" type="col"/>
+                    <field name="percentage_ratio" type="measure" string="Percentage(%)"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="setu_view_crossovered_budget_line_graph">
+            <field name="name">setu.crossovered.budget.line.graph</field>
+            <field name="model">crossovered.budget.lines</field>
+            <field name="arch" type="xml">
+                <graph string="Budget Lines" sample="1">
+                    <field name="general_budget_id" type="row"/>
+                    <field name="crossovered_budget_id" type="col"/>
+                    <field name="percentage_ratio" type="measure" string="Percentage(%)"/>
+                </graph>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="setu_crossovered_budget_lines_view">
+            <field name="name">Budgets Analysis Setu</field>
+            <field name="res_model">crossovered.budget.lines</field>
+            <field name="view_mode">pivot,graph,tree</field>
+            <field name="context">{'tree_view_ref':'setu_budget_forecasting.setu_view_crossovered_budget_line_tree',
+                'pivot_view_ref':'setu_budget_forecasting.setu_view_crossovered_budget_line_pivot',
+                'graph_view_ref':'setu_budget_forecasting.setu_view_crossovered_budget_line_graph'}
+            </field>
+        </record>
+        <record model="ir.ui.view" id="setu_view_crossovered_budget_calculation_tree">
+            <field name="name">setu.crossovered.budget.calculation.tree</field>
+            <field name="model">crossovered.budget.lines</field>
+            <field name="arch" type="xml">
+                <tree string="Budget Lines" create="0">
+                    <field name="currency_id" column_invisible="True"/>
+                    <field name="crossovered_budget_id" column_invisible="True"/>
+                    <field name="general_budget_id"/>
+                    <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="paid_date" groups="base.group_no_one"/>
+                    <field name="planned_amount"/>
+                    <field name="percentage_ratio"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="setu_view_crossovered_budget_calculation_pivot">
+            <field name="name">setu.crossovered.budget.calculation.pivot</field>
+            <field name="model">crossovered.budget.lines</field>
+            <field name="arch" type="xml">
+                <pivot string="Budget Lines" sample="1">
+                    <field name="general_budget_id" type="row"/>
+                    <field name="crossovered_budget_id" type="col"/>
+                    <field name="planned_amount" type="measure" string="Planned Amount"/>
+                    <field name="percentage_ratio" type="measure" string="Percentage(%)"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="setu_view_crossovered_budget_calculation_graph">
+            <field name="name">setu.crossovered.budget.calculation.graph</field>
+            <field name="model">crossovered.budget.lines</field>
+            <field name="arch" type="xml">
+                <graph string="Budget Lines" sample="1">
+                    <field name="general_budget_id" type="row"/>
+                    <field name="crossovered_budget_id" type="col"/>
+                    <field name="planned_amount" type="measure" string="Planned Amount"/>
+                    <field name="percentage_ratio" type="measure" string="Percentage(%)"/>
+                </graph>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="setu_crossovered_budget_calculation_view">
+            <field name="name">Budget Calculation</field>
+            <field name="res_model">crossovered.budget.lines</field>
+            <field name="view_mode">pivot,graph,tree</field>
+            <field name="context">
+                {'tree_view_ref':'setu_budget_forecasting.setu_view_crossovered_budget_calculation_tree',
+                'pivot_view_ref':'setu_budget_forecasting.setu_view_crossovered_budget_calculation_pivot',
+                'graph_view_ref':'setu_budget_forecasting.setu_view_crossovered_budget_calculation_graph'}
+            </field>
+        </record>
+
+    </data>
+</odoo>

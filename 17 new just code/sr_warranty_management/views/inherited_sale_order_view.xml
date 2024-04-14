@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- Inherited sale order form view -->
+	<record id="view_sale_order_form_extends_add_fields" model="ir.ui.view">
+		<field name="name">view.sale.order.form.extends.add.fields</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//div[@name='button_box']" position="inside">
+				<button name="action_view_warranty" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="warranty_count == 0">
+					<field name="warranty_count" widget="statinfo" string="Warranty"/>
+				</button>
+
+				<button name="action_view_claim_warranty" type="object" class="oe_stat_button" icon="fa-th-list" invisible="claim_count == 0">
+					<field name="claim_count" widget="statinfo" string="Claim"/>
+				</button>
+			</xpath>
+			<xpath expr="//field[@name='payment_term_id']" position="after">
+				<field name="warranty_ids" widget="many2many_tags" invisible="1"/>
+				<field name="is_warranty" invisible="1"/>
+			</xpath>
+			<xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
+				<attribute name="domain">[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id), ('is_warranty', '=', parent.is_warranty)]</attribute>
+			</xpath>
+			<xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_template_id']" position="attributes">
+				<attribute name="domain">[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id), ('is_warranty', '=', parent.is_warranty)]</attribute>
+			</xpath>
+			<xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_id']" position="before">
+				<field name="warranty_id" invisible="1"/>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Inherited sale order action -->
+	<record id="inherited_sale_order_actions" model="ir.actions.act_window">
+		<field name="name">Sale Orders</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">sale.order</field>
+		<field name="view_id" ref="sale.view_quotation_tree_with_onboarding"/>
+		<field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+		<field name="search_view_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+		<field name="context">{'search_default_my_quotation': 1, 'default_is_warranty' : True,}</field>
+		<field name="domain">[('is_warranty', '=', True)]</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+            Create a new quotation, the first step of a new sale!
+			</p>
+			<p>
+            Once the quotation is confirmed by the customer, it becomes a sales order.<br/>
+ You will be able to create an invoice and collect the payment.
+			</p>
+		</field>
+	</record>
+
+	<!-- Warranty Sale Order Menu -->
+	<menuitem id="sr_warranty_sale_menu" name="Orders" sequence="2" parent="sr_warranty_management_root"/>
+
+	<!-- Sale order menu -->
+	<menuitem id="sr_sale_order_menu" name="Orders" action="inherited_sale_order_actions" parent="sr_warranty_sale_menu" sequence="1" />
+</odoo>

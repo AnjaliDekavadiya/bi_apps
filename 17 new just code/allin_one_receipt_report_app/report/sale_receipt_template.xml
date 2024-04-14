@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<odoo>
+
+<template id="receipt_sale">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="sale.report_saleorder" t-lang="o.partner_id.lang"/>
+        </t>
+    </t>
+</template>
+</odoo>    

@@ -1,0 +1,92 @@
+@charset "utf-8";
+/*--
+	Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+    Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+--*/
+.green-bg, div.datedropper.primary .pick-submit, .footer-bg-pin, .gsd_open, .verified-badge, .toggle-filter-btn.tsb_act, .status.st_online span, .slide-progress, .reply-item, #progressbar li.active:last-child span, .user-profile-menu li a span, .infobox-status.open, .map-popup-location-category.shop-cat, .process-item_time-line:after {
+    background: #5ECFB1;
+}
+
+.clear-wishlist:hover, .lang-tooltip li a:before, .opening-hours ul li.todaysDay span.opening-hours-time, .pricerange, .tags-stylwrap .tags-title i, .faq-nav li a i, .tfp-det p a, .tfp-btn:before, .green-bg_color, .testi-link:hover {
+    color: #5ECFB1;
+}
+
+.orange-bg {
+    background: #E9776D;
+}
+
+.clear-singleinput {
+    color: #E9776D;
+}
+
+.blue-bg, .map-popup-location-category.gym-cat {
+    background: #4C97FD;
+}
+
+.blue-bg_color {
+    color: #4C97FD;
+}
+
+.red-bg, .gsd_close, .map-popup-location-category.cafe-cat, .infobox-status.close {
+    background: #F75C96;
+}
+
+.red-bg_color {
+    color: #F75C96;
+}
+
+.yellow-bg, .map-popup-location-category.hotels-cat {
+    background: #F8BD38;
+}
+
+.yellow-bg_color {
+    color: #F8BD38;
+}
+
+.purp-bg, .map-popup-location-category.event-cat {
+    background: #BE31E3;
+}
+
+.purp-bg_color {
+    color: #BE31E3;
+}
+
+.dark-blue-bg {
+    background: #3d528b;
+}
+
+.purp-gradient-bg {
+    background: linear-gradient(to left, #DBA9CB, #9451DA);
+}
+
+.green-gradient-bg {
+    background: linear-gradient(to left, #5ECFB1, #47EEB0);
+}
+
+.blue-gradient-bg {
+    background: linear-gradient(to top, #6DB6FD, #60B6FD);
+}
+
+/*--
+	gradient
+--*/
+.gradient-bg, .header-modal .tabs-menu li.current, .scrollbar-inner2 .simplebar-scrollbar:before {
+    background-color: #6DB6FD;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#6DB6FD), to(#6FCFFD));
+    background: -webkit-linear-gradient(top, #6DB6FD, #6FCFFD);
+    background: -moz-linear-gradient(top, #6DB6FD, #6FCFFD);
+    background: -ms-linear-gradient(top, #6DB6FD, #6FCFFD);
+    background: -o-linear-gradient(top, #6DB6FD, #6FCFFD);
+}
+
+/*--
+	dark gradient
+--*/
+.gradient-dark {
+    background-color: #325096;
+    background: -webkit-gradient(linear, 20% 0%, 0% 10%, from(#4E65A3), to(#325096));
+    background: -webkit-linear-gradient(right, #4E65A3, #325096);
+    background: -moz-linear-gradient(right, #4E65A3, #325096);
+    background: -ms-linear-gradient(right, #4E65A3, #325096);
+    background: -o-linear-gradient(right, #4E65A3, #325096);
+}

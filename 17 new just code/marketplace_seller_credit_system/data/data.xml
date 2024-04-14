@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+       <record id="website_loyalty_management.product_loyalty_management" model="product.product">
+            <field name="invoice_policy">order</field>
+        </record>
+
+        <record id="website_loyalty_management.product_loyalty_management" model="product.product">
+            <field name="is_credit">True</field>
+        </record>
+
+    </data>
+</odoo>

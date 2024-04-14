@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+		<menuitem
+		id="main_menu_document"
+		name="Document"/>
+
+		<record id="view_attachment_inherir_view" model="ir.ui.view">
+            <field name="name">view.attachment.inherit.view</field>
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="base.view_attachment_form"/>
+            <field name="arch" type="xml">
+        	<xpath expr="//form/sheet" position="before">
+        		<header>
+        		<button name="action_attachment_send" string="Send by Email" type="object" class="btn-primary"/>
+        		</header>
+            </xpath>
+            	<xpath expr="//field[@name='name']" position="after">
+           			<field name="document_name"/>
+			   </xpath>
+            	<xpath expr="//field[@name='name']" position="replace">
+           			<field name="name" invisible='1'/>
+			   </xpath>
+
+            	<xpath expr="//field[@name='mimetype']" position="after">
+           			<field name="directory_id" force_save="1"/>
+           			<field name="directory_name"/>
+			   </xpath>
+        	</field>
+		</record>
+
+
+		 <record id="view_document_form" model="ir.ui.view">
+				<field name="name">view.document.form</field>
+				<field name="model">directorie.document</field>
+				<field name="arch" type="xml">
+					<form string="Directory">
+						<sheet>
+							<div class="oe_button_box" name="button_box" position="inside">
+			                    <button class="oe_stat_button" name="butoon_count_payslip"
+			                            type="object" icon="fa-file-o"> 
+			                        <field name="document_count" widget="statinfo" string="Documents" />
+			                    </button>
+			                </div>
+							<group col="2" colspan= "1">
+							<group>
+								<field name="name"/>
+								<field name="parent_directory"/>
+								<field name="entry_sequence"/>
+							</group>
+							<group>
+								<field name="directory_code"/>
+								<field name="model"/>
+							</group>
+							</group>
+							<notebook>
+								<page name="group" string="Group">
+									<field name="groups_ids">
+									<tree>
+										<field name="name"/>
+										<field name="code"/>
+									</tree>
+								</field>
+								</page>
+							</notebook>
+						</sheet>
+					</form>
+					</field>
+				</record>
+
+		<record id="directory_structure_tree" model="ir.ui.view">
+            <field name="name">directory.structure.tree</field>
+            <field name="model">directorie.document</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="model"/>
+                    <field name="parent_directory" />
+                </tree>
+            </field>
+        </record>
+
+	 	<record id="directory_action_view_tree" model="ir.actions.act_window">
+	 		<field name="name">directure.action.view</field>
+			<field name="res_model">directorie.document</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" eval="directory_structure_tree"/>
+
+        </record>
+
+
+		<record id="open_view_directories_list_my" model="ir.actions.act_window">
+				<field name="name">Directories</field>
+				<field name="res_model">directorie.document</field>
+				<field name="binding_view_types">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="view_id" eval="False"/>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+							Click to add a new Directory.
+						</p>
+				</field>
+		 </record>
+
+		<menuitem
+				id="menu_directory_main"
+				name="Directory"
+				parent="bi_document.main_menu_document"
+				sequence="1"
+				groups="bi_document.group_support_manager"/>
+
+		<menuitem
+				id="menu_directories_child"
+				name="Directories"
+				parent="bi_document.menu_directory_main"
+				action="open_view_directories_list_my"
+				sequence="1"/>
+
+		<menuitem
+				id="menu_attachment_document"
+				name="Documents"
+				parent="bi_document.main_menu_document"
+				sequence="2"
+				groups="bi_document.group_support_manager"/>
+
+		<menuitem
+				id="menu_attachment_child"
+				name="Documents"
+				parent="bi_document.menu_attachment_document"
+				action="base.action_attachment"
+				sequence="1"/>
+
+		<record id="sequece_document" model="ir.sequence">
+        	<field name="name">attachment</field>
+        	<field name="padding">1</field>
+        	<field name="prefix">/000</field>
+        	<field name="code">ir.attachment</field>
+        </record>
+
+</odoo>

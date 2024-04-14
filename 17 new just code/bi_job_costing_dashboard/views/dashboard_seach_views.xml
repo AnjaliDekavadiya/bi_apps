@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		<record id="job_order_dashboard_search" model="ir.ui.view">
+			<field name="name">job.order.search</field>
+			<field name="model">job.order</field>
+			<field name="arch" type="xml">
+				<search string="Job Order">
+					<field name="project_id" string="Project"/>
+					<group expand="0" name="Group By" string="Group By">
+						<filter string="Project" name="groupby_project" domain="[]" context="{'group_by':'project_id'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+</odoo>

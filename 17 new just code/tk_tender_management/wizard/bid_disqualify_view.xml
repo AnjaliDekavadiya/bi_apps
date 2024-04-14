@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="bid_disqualify_form_view" model="ir.ui.view">
+            <field name="name">bid.disqualify.form.view</field>
+            <field name="model">disqualify.reason</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="allow_resubmit" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <br/>
+                    <h6>
+                        Disqualify Reason
+                    </h6>
+                    <hr/>
+                    <field name="name" required="1"/>
+                    <footer>
+                        <button string="Disqualify" type="object" class="btn btn-outline-danger"
+                                name="action_dis_qualify"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="bid_disqualify_action" model="ir.actions.act_window">
+            <field name="name">Disqualify Reason</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">disqualify.reason</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

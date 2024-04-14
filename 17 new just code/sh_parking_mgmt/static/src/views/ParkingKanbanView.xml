@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-name="sh_parking_mgmt.ShParkingMgmtDashboard" owl="1">
+        <input type="text" name="sh_qr_code_no" id="sh_qr_code_no" 
+        placeholder="Enter QR No." style="margin: 10px;width: 20%;" t-on-change="(ev) => this.sh_onchange_qr(ev.target.value)" />
+    </t>
+
+</templates>

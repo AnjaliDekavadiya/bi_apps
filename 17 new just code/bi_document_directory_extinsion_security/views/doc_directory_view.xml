@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="view_inherit_document_form" model="ir.ui.view">
+        <field name="name">view.inherit.document.form</field>
+        <field name="model">directorie.document</field>
+        <field name="inherit_id" ref="bi_document.view_document_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='model']" position="after">
+                <field name="tags_ids" widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//form/sheet/notebook" position="inside">
+                <page string="Users">
+                    <group>
+                        <field name="user_ids" widget="many2many_tags" force_save="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_inherit_ir_attachment_form" model="ir.ui.view">
+        <field name="name">view.inherit.ir.atachment.form</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='directory_id']" position="after">
+                <field name="directory_tag_ids" widget="many2many_tags"/>
+                <field name="user_ids" widget="many2many_tags" string="Users"/>
+                <!-- <field name="char_user" string="user_name"/> -->
+                <field name="attachment_tags_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_document_tag_form" model="ir.ui.view">
+        <field name="name">view.document.tag.form</field>
+        <field name="model">document.managemenet.document</field>
+        <field name="arch" type="xml">
+            <form string="Document Tags">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_document_tag_tree" model="ir.ui.view">
+        <field name="name">view.document.tag.tree</field>
+        <field name="model">document.managemenet.document</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_directory_tag_form" model="ir.ui.view">
+        <field name="name">view.directory.tag.form</field>
+        <field name="model">document.managemenet.directory</field>
+        <field name="arch" type="xml">
+            <form string="Directory Tags">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_directory_tag_tree" model="ir.ui.view">
+        <field name="name">view.directory.tag.tree</field>
+        <field name="model">document.managemenet.directory</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_view_directories_tag" model="ir.actions.act_window">
+        <field name="name">Directory Tags</field>
+        <field name="res_model">document.managemenet.directory</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new Directory tag.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_view_document_tag" model="ir.actions.act_window">
+        <field name="name">Documents Tags</field>
+        <field name="res_model">document.managemenet.document</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new Document tag.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_attachment_my_document" model="ir.actions.act_window">
+        <field name="name">Attachments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="domain">[('user_ids','=',uid)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Documents are assigned by the Manager.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="menu_configuration_main"
+            name="Configuration"
+            parent="bi_document.main_menu_document"
+            sequence="2"
+            groups="bi_document.group_support_manager"/>
+
+
+    <menuitem
+            id="menu_tag_directory_main"
+            name="Directory Tags"
+            parent="menu_configuration_main"
+            action="action_view_directories_tag"
+            sequence="1"/>
+
+    <menuitem
+            id="menu_tag_document_main"
+            name="Document Tags"
+            parent="menu_configuration_main"
+            action="action_view_document_tag"
+            sequence="2"/>
+
+    <menuitem
+            id="menu_my_document_parent_document"
+            name="My Document"
+            parent="bi_document.main_menu_document"
+            sequence="3"/>
+
+    <menuitem
+            id="menu_my_document_child"
+            name="My Document"
+            parent="menu_my_document_parent_document"
+            action="action_attachment_my_document"
+            sequence="1"/>
+
+</odoo>
+

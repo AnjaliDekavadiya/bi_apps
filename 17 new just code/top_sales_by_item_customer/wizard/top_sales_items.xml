@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<odoo>
+   <data>
+        <record model="ir.ui.view" id="top_sale_item_report_view">
+           <field name="name">top_sale_report.form</field>
+           <field name="model">topsaleitem.report</field>
+           <field name="arch" type="xml">
+               <form string="Topsale Items Report">
+                    <group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="top_sale_value"/>
+                        </group>
+                        <group>
+                            <field name="end_date"/>
+                        </group>
+                   </group>
+                   <footer>
+                       <button string="Print" name="top_sale_item" type="object" class="oe_highlight"/> or 
+                       <!-- <button string="Cancel" name ="cancle" type="cancel"/> -->
+                       <button string="Cancel" name ="cancel" special="cancel"/> <!-- odoo13 -->
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+       <!-- <act_window 
+           id="top_sale_item_report_action"
+           multi="True"
+           key2="client_action_multi" 
+           name="Top Selling Products"
+           res_model="topsaleitem.report" 
+           src_model="sale.order"
+           view_mode="form" 
+           target="new" 
+           view_type="form" /> -->
+
+        <!-- <act_window
+            name="Top Selling Products"
+            id="top_sale_item_report_action"
+            res_model="topsaleitem.report"
+            binding_model="sale.order"
+            view_mode="form"
+            target="new"
+            /> --> <!-- odoo13 -->
+
+        <record id="top_sale_item_report_action" model="ir.actions.act_window">
+            <field name="name">Top Selling Products</field>
+            <field name="res_model">topsaleitem.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="model_sale_order"/>
+        </record> 
+       
+   </data>
+</odoo>

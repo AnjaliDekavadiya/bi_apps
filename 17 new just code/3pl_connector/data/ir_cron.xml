@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo noupdate="1">
+
+    <record forcecreate="True" id="3pl_auto_export_products" model="ir.cron">
+        <field name="name">3PL : Export Products</field>
+        <field name="active" eval="False" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall">1</field>
+        <field name="model_id" ref="model_product_product"/>
+        <field name="state">code</field>
+        <field name="code">model.export_products_to_3pl_cron()</field>
+    </record>
+
+    <record forcecreate="True" id="3pl_auto_export_sales" model="ir.cron">
+        <field name="name">3PL : Export Sales</field>
+        <field name="active" eval="False" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall">1</field>
+        <field name="model_id" ref="model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">model.export_so_pickings_to_3pl_cron()</field>
+    </record>
+
+    <record forcecreate="True" id="3pl_auto_export_sales_return" model="ir.cron">
+        <field name="name">3PL : Export Sales Return</field>
+        <field name="active" eval="False" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall">1</field>
+        <field name="model_id" ref="model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">model.export_sr_pickings_to_3pl_cron()</field>
+    </record>
+
+    <record forcecreate="True" id="3pl_auto_export_purchase" model="ir.cron">
+        <field name="name">3PL : Export Purchase</field>
+        <field name="active" eval="False" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall">1</field>
+        <field name="model_id" ref="model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">model.export_po_pickings_to_3pl_cron()</field>
+    </record>
+
+    <record forcecreate="True" id="3pl_auto_import_stock" model="ir.cron">
+        <field name="name">3PL : Import Stock</field>
+        <field name="active" eval="False" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall">1</field>
+        <field name="model_id" ref="model_stock_quant"/>
+        <field name="state">code</field>
+        <field name="code">model.import_stock_from_3pl_cron()</field>
+    </record>
+
+    <record forcecreate="True" id="3pl_auto_import_sales" model="ir.cron">
+        <field name="name">3PL : Import Sales</field>
+        <field name="active" eval="False" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall">1</field>
+        <field name="model_id" ref="model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">model.import_so_response_from_3pl_cron()</field>
+    </record>
+
+    <record forcecreate="True" id="3pl_auto_import_sales_return" model="ir.cron">
+        <field name="name">3PL : Import Sales Return</field>
+        <field name="active" eval="False" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall">1</field>
+        <field name="model_id" ref="model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">model.import_sr_response_from_3pl_cron()</field>
+    </record>
+
+    <record forcecreate="True" id="3pl_auto_import_purchase" model="ir.cron">
+        <field name="name">3PL : Import Sales Purchase</field>
+        <field name="active" eval="False" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall">1</field>
+        <field name="model_id" ref="model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">model.import_po_response_from_3pl_cron()</field>
+    </record>
+
+</odoo>

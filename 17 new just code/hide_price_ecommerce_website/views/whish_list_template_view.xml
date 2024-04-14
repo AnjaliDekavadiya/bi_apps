@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="product_wishlist_hide_website_price_custom" inherit_id="website_sale_wishlist.product_wishlist">
+        <xpath expr="//table//t[@t-set='combination_info']/.." position="attributes">
+            <attribute name="t-if">request.env.user.has_group('hide_price_ecommerce_website.group_website_shop_show_price_custom') or not request.website.is_hide_price_on_shop_custom</attribute>
+        </xpath>
+        <!-- <xpath expr="//table//button[hasclass('o_wish_add')]/.." position="attributes"> -->
+        <xpath expr="//button[@id='add_to_cart_button']/.." position="attributes">
+            <attribute name="t-if">request.env.user.has_group('hide_price_ecommerce_website.group_website_shop_show_price_custom') or not request.website.is_hide_price_on_shop_custom</attribute>
+        </xpath>
+    </template>
+
+    <template id="product_compare_hide_website_price_custom" inherit_id="website_sale_comparison.product_compare">
+        <xpath expr="//span[@t-else='']" position="attributes">
+            <attribute name="t-if">request.env.user.has_group('hide_price_ecommerce_website.group_website_shop_show_price_custom') or not request.website.is_hide_price_on_shop_custom</attribute>
+        </xpath>
+    </template>
+</odoo>

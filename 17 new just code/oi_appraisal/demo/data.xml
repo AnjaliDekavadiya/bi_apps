@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="template_1" model="appraisal.template">
+		<field name="job_ids" model="hr.job" search="[]" />
+		<field name="objectives_write_states" eval="['employee','emp_manager']" />
+	</record>
+
+</odoo>

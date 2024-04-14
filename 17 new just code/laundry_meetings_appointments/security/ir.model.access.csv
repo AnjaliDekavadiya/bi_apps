@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_create_meeting_appointment_user,access_create_meeting_appointment,model_create_meeting_laundry_custom,laundry_iron_business.group_laundry_service_user,1,1,1,1

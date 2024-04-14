@@ -1,0 +1,71 @@
+# -*- coding: utf-8 -*-
+
+# Part of Probuse Consulting Service Pvt Ltd. See LICENSE file for full copyright and licensing details.
+
+from odoo import models, api
+
+class HelpdeskSupport(models.Model):
+    _inherit = "helpdesk.support"
+    
+    def send_mail_responsible_user(self, stage_id, rec, ctx):
+        send_to = ''
+        if stage_id.is_auto_response:
+            if stage_id.to_customer and rec.partner_id:
+                if rec.partner_id.email and not rec.partner_id.email in send_to:
+                    if send_to == '':
+                        send_to += rec.partner_id.email
+                    else:
+                        send_to += ',' + rec.partner_id.email
+                
+            if stage_id.document_follower and rec.message_partner_ids:
+                for message_partner_id in rec.message_partner_ids:
+                    if not (message_partner_id == rec.partner_id and stage_id.to_customer):
+                        if message_partner_id.email and not message_partner_id.email in send_to:
+                            if send_to == '':
+                                send_to += message_partner_id.email
+                            else:
+                                send_to += ',' + message_partner_id.email
+            if stage_id.internal_users:
+                for user in stage_id.internal_user_ids:
+                    if user.email and not user.email in send_to:
+                        if send_to == '':
+                            send_to += user.email
+                        else:
+                            send_to += ',' + user.email
+            if send_to != '':
+                ctx.update({
+                    'email_to':send_to,
+                })
+                stage_id.custom_tempalte_id.with_context(ctx).send_mail(rec.id)
+        return True
+
+    @api.model
+    def create(self, vals):
+        res = super(HelpdeskSupport, self).create(vals)
+        if res.stage_id.is_auto_response:
+            ctx={
+                'ticket_name':res.name,
+                'ticket_subject':res.subject,
+                'stage':res.stage_id.name,
+                'old_stage': 'create'
+            }
+            self.send_mail_responsible_user(res.stage_id, res, ctx)
+        return res
+
+    @api.multi
+    def write(self, vals):
+        for rec in self:
+            ctx = {'old_stage': rec.stage_id.name}
+            if "stage_id" in vals:
+                stage_id = rec.env['helpdesk.stage.config'].browse(vals.get('stage_id'))
+                ctx.update({
+                    'ticket_name':rec.name,
+                    'ticket_subject':rec.subject,
+                    'stage':stage_id.name,
+                })
+                send_to = ''
+                if stage_id.is_auto_response:
+                    self.send_mail_responsible_user(stage_id, rec, ctx)
+        return super(HelpdeskSupport, self).write(vals) 
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

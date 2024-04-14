@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="plaid_integration_app_view_res_config_settings" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.plaid.integration</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="12"/>
+        <field name="inherit_id" ref="account.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='account']" position="inside" >
+                <h2  >Plaid Integration</h2>
+                <div class="row mt16 o_settings_container" name="plaid_integration_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box" id="bi_plaid_client_id">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="bi_plaid_client_id"/>
+                            <field name="bi_plaid_client_id" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="bi_plaid_secret_key">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="bi_plaid_secret_key"/>
+                            <field name="bi_plaid_secret_key" type="password"/>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="bi_plaid_environment">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="bi_plaid_environment"/>
+                            <field name="bi_plaid_environment" />
+                        </div>
+                    </div>
+                </div>
+                <h2  >Plaid Automatic Get Transactions Configurations</h2>
+                <div class="row mt16 o_settings_container" name="plaid_integration_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box" id="bi_auto_bank_id">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="bi_auto_bank_id"/>
+                            <field name="bi_auto_bank_id" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="bi_plaid_access_token" invisible="bi_auto_bank_id==False">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="bi_plaid_access_token"/>
+                            <field name="bi_plaid_access_token"/>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="bi_auto_bank_journal_id" invisible="bi_auto_bank_id==False">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="bi_auto_bank_journal_id"/>
+                            <field name="bi_auto_bank_journal_id" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="bi_auto_transaction_start_date" invisible="bi_auto_bank_id==False">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="bi_auto_transaction_start_date"/>
+                            <field name="bi_auto_transaction_start_date"/>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="bi_auto_plaid_account_ids" invisible="bi_auto_bank_id==False">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="bi_auto_plaid_account_ids"/>
+                            <field name="bi_auto_plaid_account_ids" widget="many2many_tags"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

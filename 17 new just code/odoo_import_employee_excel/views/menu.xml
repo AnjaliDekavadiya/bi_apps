@@ -1,0 +1,5 @@
+<odoo>
+    <data>
+        <menuitem name="Import Employees" id="import_employee_excel_employee" parent="hr.menu_hr_root" action="odoo_import_employee_excel.employee_import_wizard_action" sequence="99"/>
+    </data>
+</odoo>

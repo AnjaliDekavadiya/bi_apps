@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+seller_access_rma,rma_seller,rma.model_rma_rma,odoo_marketplace.marketplace_seller_group,1,1,0,0
+seller_access_procurement_group,seller.procurement.group,stock.model_procurement_group,odoo_marketplace.marketplace_seller_group,1,1,0,0
+seller_access_retur_wizard,retur_wizard_seller_access,marketplace_rma.model_product_return_wizard,odoo_marketplace.marketplace_seller_group,1,1,1,0
+seller_access_delivery_order_wizard,delivery_order_wizard_seller_access,marketplace_rma.model_new_delivery_order_wizard,odoo_marketplace.marketplace_seller_group,1,1,0,0
+seller_access_rma_stage,seller.rma.stage,rma.model_rma_stages,odoo_marketplace.marketplace_seller_group,1,1,1,0
+seller_access_delivery,seller.rma.delivery,rma.model_new_delivery_order_wizard,odoo_marketplace.marketplace_seller_group,1,1,1,0
+sale_order_line_seller_rma,sale_order_line_seller_rma,odoo_marketplace.model_sale_order_line,odoo_marketplace.marketplace_seller_group,1,1,1,0

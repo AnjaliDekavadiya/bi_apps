@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record model="product.public.category" id="product_category_men">
+            <field name="name">Men</field>
+            </record>
+           
+            <record model="product.public.category" id="product_category_women">
+            <field name="name">Women</field>
+            </record>
+           
+            <record model="product.public.category" id="product_category_kids">
+            <field name="name">Kids</field>
+            </record>
+    </data>
+</odoo>

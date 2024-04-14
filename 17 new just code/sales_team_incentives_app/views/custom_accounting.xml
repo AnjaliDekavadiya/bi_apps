@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="crm_accounting_tree_view" model="ir.ui.view">
+            <field name="name">crm.accounting.tree.view</field>
+            <field name="model">crm.accounting</field>
+            <field name="arch" type="xml">
+                <tree string="CustomAccounting">
+                    <field name="salesperson_id"/>
+                    <field name="target"/>
+                    <field name="achievement"/>
+                    <field name="achieve_percent"/>   
+                    <field name="incentive"/>
+                    <field name="state"/>
+
+                </tree>
+            </field>
+        </record>
+
+    <record id="crm_accounting_form_view" model="ir.ui.view">
+            <field name="name">crm.accounting.form.view</field>
+            <field name="model">crm.accounting</field>
+            <field name="arch" type="xml">
+            <form string="CustomAccounting">
+
+        <header>
+        <button name="approve" class="btn-primary" type="object" string="Approve" invisible="state != 'submit'"/>
+
+        <button name="reject" class="btn-primary" type="object" string="Reject" invisible="state != 'submit'"/>
+
+        <field name="state" widget="statusbar" statusbar_visible="not_paid,submit,paid,reject"/>
+        </header>
+
+            <sheet>
+                <group>
+            <field name="salesperson_id"/>
+            <field name="target"/>   
+            <field name="achievement"/>
+            <field name="achieve_percent"/>
+            <field name="incentive"/>
+            <field name="journal_id"/>
+            <field name="debit"/>
+            <field name="credit"/>
+        </group>
+                </sheet>
+            </form>
+        </field>
+        </record>
+
+<record id="crm_accounting_action_view" model="ir.actions.act_window">
+        <field name="name">Incentives Approval</field>
+        <field name="res_model">crm.accounting</field>
+        <field name="view_mode">tree,form</field>
+</record>
+
+<menuitem id="crm_accounting_menuitem_id" name="Accounting" sequence="26" />
+
+<menuitem id="crm_incentives_menuitem_id" parent="crm_accounting_menuitem_id" name="Incentive" sequence="1" action="crm_accounting_action_view" />
+
+
+</odoo>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- XML configuration defining three email templates for customer follow-up:-->
+    <data>
+        <!-- Template for sending emails after the due date ('after_due_date_mail_template_followup').-->
+        <record id="after_due_date_mail_template_followup"
+                model="mail.template">
+            <field name="name">Email for customer followup</field>
+            <field name="subject">Customer Followup Mail</field>
+            <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="email_to">{{object.email}}</field>
+            <field name="lang">{{object.lang}}</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" type="html">
+                <div>
+                    <t t-out="object.customer_followup_done_ids.description_after"/>
+                    <br/>
+                    <p>Here is your invoice details</p>
+                    <div style="margin-left: 15px;">
+                        <div class="row">
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Invoice Date</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Description</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Reference</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Due Date</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Amount</strong>
+                            </div>
+                        </div>
+                        <newline/>
+                        <t t-foreach="object.invoice_ids" t-as="lines">
+                            <div class="row">
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.invoice_date or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.name or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.payment_reference or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.invoice_date_due or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.amount_residual_signed or ''"/>
+                                </div>
+                            </div>
+                            <newline/>
+                        </t>
+                    </div>
+                </div>
+            </field>
+        </record>
+        <!--Template for sending emails before the due date ('before_due_date_mail_template_followup').-->
+        <record id="before_due_date_mail_template_followup"
+                model="mail.template">
+            <field name="name">Before- Email for customer followup</field>
+            <field name="subject">Customer Followup Mail</field>
+            <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="email_to">{{object.email}}</field>
+            <field name="lang">{{object.lang}}</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" type="html">
+                <div>
+                    <t t-out="object.customer_followup_done_ids.description_before"/>
+                    <p>Here is your invoice details</p>
+                    <div style="margin-left: 15px;">
+                        <div class="row">
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Invoice Date</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Description</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Reference</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Due Date</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Amount</strong>
+                            </div>
+                        </div>
+                        <newline/>
+                        <t t-foreach="object.invoice_ids" t-as="lines">
+                            <div class="row">
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.invoice_date or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.name or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.payment_reference or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.invoice_date_due or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.amount_residual_signed or ''"/>
+                                </div>
+                            </div>
+                            <newline/>
+                        </t>
+                    </div>
+                </div>
+            </field>
+        </record>
+        <!--Template for general follow-up emails ('mail_template_data_follow_cust_test')-->
+        <record id="mail_template_data_follow_cust_test" model="mail.template">
+            <field name="name">Email send for customer followup</field>
+            <field name="subject">Customer Followup Mail</field>
+            <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="email_to">{{ object.email }}</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="lang">{{object.lang}}</field>
+            <field name="body_html" type="html">
+                <div>
+                    <div align="right">
+                        <t t-out="object.name or ''"/>
+                        <br/>
+                        <t t-out="object.street or ''"/>
+                        <br/>
+                        <t t-out="object.city or ''"/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                    <p align="justify">Dear Sir/Madam, Our records indicate
+                        that some payments on your account are still due.
+                        Please find details below. If the amount has already
+                        been paid, please disregard this notice.
+                        Otherwise, please forward us the total amount stated
+                        below. If you have any queries regarding your account,
+                        Please contact us. Thank you in advance for your
+                        cooperation.
+                        Best Regards,
+                    </p>
+                    <br/>
+                    <p>Here is your invoice details</p>
+
+                    <div style="margin-left: 15px;">
+                        <div class="row">
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Invoice Date</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Description</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Reference</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Due Date</strong>
+                            </div>
+                            <div style="border: 2px solid black;" class="col"
+                                 align="center">
+                                <strong>Amount</strong>
+                            </div>
+                        </div>
+                        <newline/>
+                        <t t-foreach="object.invoice_ids" t-as="lines">
+                            <div class="row">
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.invoice_date or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.name or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.payment_reference or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.invoice_date_due or ''"/>
+                                </div>
+                                <div style="border: 2px solid black;"
+                                     class="col" align="center">
+                                    <t t-out="lines.amount_residual_signed or ''"/>
+                                </div>
+                            </div>
+                            <newline/>
+                        </t>
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

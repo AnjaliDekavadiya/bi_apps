@@ -1,0 +1,181 @@
+<odoo>
+
+    <template id="custom_pos_customer_feedback_temp" name="plumbing feedback">
+            <t t-call="website.layout">
+                <div class="container">
+                    <form action="/custom_pos_customer/feedback" method="post" class="form-horizontal mt32">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="row">
+                            <group>
+
+                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                    <h4><label class="col-md-12 control-label" for="name"><font color="#00A09D">Your Name
+                                    </font></label></h4>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control hidden" name="partner_id" required="True" t-attf-value="#{pos_order_id.partner_id.name}" readonly="readonly"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                    <h4><label class="col-md-12 control-label" for="name"><font color="#00A09D">POS Receipt Number
+                                    </font></label></h4>
+                                    <div class="col-md-12">
+                                        <input type="text"  class="form-control hidden" name="pos_order_id" t-attf-value="#{pos_order_id and pos_order_id.sudo().pos_reference or False}" readonly="readonly"/>
+                                        <input type="hidden"  class="form-control hidden" name="request_id" t-attf-value="#{request_id and request_id or False}"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                    <center>
+                                        <h4><label class="col-md-12 control-label" for="name" widget="priority"><font color="#00A09D">
+                                        Please Give Rating</font></label></h4>
+                                    </center>
+                                </div>
+                            
+                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                    <h4><label class="col-md-12 control-label" for="name" widget="priority"><font color="#00A09D">
+                                    Service</font></label></h4>
+                                    <div class="stars col-md-12">
+                                        <input type="radio" name="star" class="star-1" id="star-1" value = "poor" />
+                                        <label class="star-1" for="star-1">Poor</label>
+                                        <input type="radio" name="star" class="star-2" id="star-2" value = "average" />
+                                        <label class="star-2" for="star-2">Average</label>
+                                        <input type="radio" name="star" class="star-3" id="star-3" value = "good" />
+                                        <label class="star-3" for="star-3">Good</label>
+                                        <input type="radio" name="star" class="star-4" id="star-4" value = "very good" />
+                                        <label class="star-4" for="star-4">Very Good</label>
+                                        <input type="radio" name="star" class="star-5" id="star-5" value = "excellent" />
+                                        <label class="star-5" for="star-5">Excellent</label>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                    <h4><label class="col-md-12 control-label" for="name" widget="priority"><font color="#00A09D">
+                                    Product</font></label></h4>
+                                    <div class="stars col-md-12">
+                                        <input type="radio" name="product" class="product-1" id="product-1" value = "unsatisfied" />
+                                        <label class="product-1" for="product-1">Unsatisfied</label>
+                                        <input type="radio" name="product" class="product-2" id="product-2" value = "very unsatisfied" />
+                                        <label class="product-2" for="product-2">Very Unsatisfied</label>
+                                        <input type="radio" name="product" class="product-3" id="product-3" value = "neutral" />
+                                        <label class="product-3" for="product-3">Neutral</label>
+                                        <input type="radio" name="product" class="product-4" id="product-4" value = "satisfied" />
+                                        <label class="product-4" for="product-4">Satisfied</label>
+                                        <input type="radio" name="product" class="product-5" id="product-5" value = "very satisfied" />
+                                        <label class="product-5" for="product-5">Very Satisfied</label>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                    <h4><label class="col-md-12 control-label" for="name" widget="priority"><font color="#00A09D">
+                                    Price</font></label></h4>
+                                    <div class="stars col-md-12">
+                                        <input type="radio" name="price" class="price-1" id="price-1" value = "unsatisfied" />
+                                        <label class="price-1" for="price-1">Unsatisfied</label>
+                                        <input type="radio" name="price" class="price-2" id="price-2" value = "very unsatisfied" />
+                                        <label class="price-2" for="price-2">Very Unsatisfied</label>
+                                        <input type="radio" name="price" class="price-3" id="price-3" value = "neutral" />
+                                        <label class="price-3" for="price-3">Neutral</label>
+                                        <input type="radio" name="price" class="price-4" id="price-4" value = "satisfied" />
+                                        <label class="price-4" for="price-4">Satisfied</label>
+                                        <input type="radio" name="price" class="price-5" id="price-5" value = "very satisfied" />
+                                        <label class="price-5" for="price-5">Very Satisfied</label>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                    <h4><label class="col-md-12 control-label" for="name" widget="priority"><font color="#00A09D">
+                                    Ordering and Billing</font></label></h4>
+                                    <div class="stars col-md-12">
+                                        <input type="radio" name="waitting" class="waitting-1" id="waitting-1" value = "unsatisfied" />
+                                        <label class="waitting-1" for="waitting-1">Unsatisfied</label>
+                                        <input type="radio" name="waitting" class="waitting-2" id="waitting-2" value = "average" />
+                                        <label class="waitting-2" for="waitting-2">Average</label>
+                                        <input type="radio" name="waitting" class="waitting-3" id="waitting-3" value = "satisfied" />
+                                        <label class="waitting-3" for="waitting-3">Satisfied</label>
+                                        <input type="radio" name="waitting" class="waitting-4" id="waitting-4" value = "outstanding" />
+                                        <label class="waitting-4" for="waitting-4">Outstanding</label>
+                                        
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                    <h4><label class="col-md-12 control-label" for="name" widget="priority"><font color="#00A09D">
+                                    Shopping Experiences</font></label></h4>
+                                    <div class="stars col-md-12">
+                                        <input type="radio" name="experiences" class="experiences-1" id="experiences-1" value = "unsatisfied" />
+                                        <label class="experiences-1" for="experiences-1">Unsatisfied</label>
+                                        <input type="radio" name="experiences" class="experiences-2" id="experiences-2" value = "average" />
+                                        <label class="experiences-2" for="experiences-2">Average</label>
+                                        <input type="radio" name="experiences" class="experiences-3" id="experiences-3" value = "satisfied" />
+                                        <label class="experiences-3" for="experiences-3">Satisfied</label>
+                                        <input type="radio" name="experiences" class="experiences-4" id="experiences-4" value = "outstanding" />
+                                        <label class="experiences-4" for="experiences-4">Outstanding</label>
+                                        <span></span>
+                                    </div>
+                                </div>
+
+                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+
+                                    <h4><label class="col-md-12 control-label" for="name"><font color="#00A09D">Your Feedback Comment
+                                    </font></label></h4>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" name="comment" required="True" t-attf-value="#{}" placeholder="Your Comment....."/>
+                                    </div>
+                                </div>
+                  
+                                <div class="form-group">
+                                    <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7 mt32">
+                                        <button class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </group>
+                         </div>
+                     </form>
+                </div>
+            </t>
+        </template>
+
+        <template id="custom_pos_feedback_rating_successful_probc" name="POS Feedback">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure"/>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8"><br/><br/><br/>
+                            <div class="alert alert-success" style="align:center;" >
+                                <h5>Dear <span t-esc="order_id.partner_id.name"/>,<br/><br/>
+                                    Your feedabck has been received.
+                                    <br/><br/>
+                                    Thank You, <br/><span t-esc="order_id.company_id.name"/>
+                                </h5>
+                            </div>
+                            <a class="btn btn-primary pull-left mb32" href="/" ><span class="hidden-xs"><span class="fa fa-home"/>Goto Website</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="custom_pos_unsubscribe_successful_probc" name="POS Unsatisfied">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure"/>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8"><br/><br/><br/>
+                            <div class="alert alert-success" style="align:center;" >
+                                <h5>
+                                    You have been unsubscribe successfully.
+                                    <br/><br/>
+                                </h5>
+                            </div>
+                            <a class="btn btn-primary pull-left mb32" href="/" ><span class="hidden-xs"><span class="fa fa-home"/>Goto Website</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+</odoo>

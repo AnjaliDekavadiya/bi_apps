@@ -1,0 +1,72 @@
+<odoo>
+
+    <template id="my_contract" name="my contract: project menu entry" inherit_id="website_portal.portal_layout" priority="20">
+       <xpath expr="//ul[contains(@class,'o_portal_submenu')]" position="inside">
+            <li   t-att-class="page_name == 'pplicant' and 'active' or ''">
+                 <a href="/my/contracts">Contracts</a>
+            </li>
+        </xpath>
+    </template>
+    
+    <template id="portal_my_contract" name="Portal My contract: project entries" inherit_id="website_portal.portal_my_home" priority="30">
+        <xpath expr="//div[contains(@class,'o_my_home_content')]" position="inside">
+            <h3  class="page-header">
+                <a href="/my/contracts">Your Contracts
+                    <small class="ml8">
+                      <t t-if="contract_count">
+                        <span class='badge'><t t-esc="contract_count"/></span>
+                    </t>
+                    <t t-if =" not contract_count">
+                        There are currently no application for your account.
+                    </t>
+                    </small>
+                </a>
+            </h3>
+        </xpath>
+    </template>
+    
+    <template id="display_contracts" name="Display Contracts">
+        <t t-call="website_portal.portal_layout">
+            <h3 class="page-header">Your Contracts</h3>
+                <table class="table table-hover o_my_status_table">
+                <thead>
+                  <tr class="active">
+                    <th>Contract Name</th>
+                    <th>Customer Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Date of Next Invoice</th>
+                    <th>Stage</th>
+                    <th>Print</th>
+                  </tr>
+                </thead>
+                <t t-foreach="contracts" t-as="contract">
+                    <tr>
+                        <td>
+                            <span t-field="contract.name"/>
+                        </td>
+                        <td>
+                            <span t-field="contract.partner_id.name"/>
+                        </td>
+                        <td>
+                            <span t-field="contract.start_date" t-field-options='{"format": "d/M/y"}'/>
+                        </td>
+                        <td>
+                            <span t-field="contract.end_date" t-field-options='{"format": "d/M/y"}'/>
+                        </td>
+                        <td>
+                            <span t-field="contract.recurring_next_date" t-field-options='{"format": "d/M/y"}'/>
+                        </td>
+                        <td>
+                            <span t-field="contract.stage"/>
+                        </td>
+                        <td>
+                            <a class="btn btn-xs btn-primary" t-attf-href="/my/print/#{contract.id}">Report</a>
+                        </td>
+                    </tr>
+                </t>
+            </table>
+        </t>
+    </template>
+    
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="conversations.Sidebar" owl="1">
+        <t t-if="discussView">
+            <div name="root" class="o_DiscussSidebar2" t-ref="root">
+                <hr class="o_DiscussSidebar_separator w-100 border-top"/>
+                <t t-if="MultiLivechatGroups and MultiLivechatGroups.length > 0">
+                    <t t-foreach="MultiLivechatGroups" t-as="livechat_group" t-key="livechat_group.channel_type">
+                        <t t-if="livechat_group.channel_type == 'multi_livechat_NAMEs'">
+                            <t t-if="livechat_group.chats">
+                                <div t-attf-class="{{livechat_group.name}}">
+                                    <WhatsappSidebarCategory
+                                        t-if="livechat_group.chats.channel.discussSidebarCategory"
+                                        className="'o_DiscussSidebar_item scoop-name-menu'"
+                                        record="livechat_group.chats.channel.discussSidebarCategory"
+                                    />
+                                </div>
+                            </t>
+                        </t>
+                        <t t-if="livechat_group.channel_type == 'multi_livechat_NAME'">
+                            <t t-if="livechat_group.chats">
+                                <div t-attf-class="{{livechat_group.name}}">
+                                    <FacebookSidebarCategory
+                                        t-if="livechat_group.chats.channel.discussSidebarCategory"
+                                        className="'o_DiscussSidebar_item scoop-name-menu'"
+                                        record="livechat_group.chats.channel.discussSidebarCategory"
+                                    />
+                                </div>
+                            </t>
+                        </t>
+                        <t t-if="livechat_group.channel_type == 'multi_livechat_NAME2'">
+                            <t t-if="livechat_group.chats">
+                                <div t-attf-class="{{livechat_group.name}}">
+                                    <InstagramSidebarCategory
+                                        t-if="livechat_group.chats.channel.discussSidebarCategory"
+                                        className="'o_DiscussSidebar_item scoop-name-menu'"
+                                        record="livechat_group.chats.channel.discussSidebarCategory"
+                                    />
+                                </div>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </div>
+        </t>
+    </t>
+
+</templates>

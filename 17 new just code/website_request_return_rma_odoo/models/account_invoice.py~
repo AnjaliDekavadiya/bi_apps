@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+
+from odoo import models, fields, api
+
+class AccountInvoice(models.Model):
+    _inherit = 'account.invoice'
+    
+    @api.multi
+    def show_invoice(self):
+        for rec in self:
+            res = self.env.ref('account.action_invoice_tree1')
+            res = res.read()[0]
+            res['domain'] = str([('id','in', rec.saleorder_id.invoice_ids.ids)])
+        return res
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="sh_contact_address_google_place.CharField" t-inherit="web.CharField" owl="1">
+        <xpath expr="//input" position="attributes">
+            <attribute name="t-on-input">onInputEventAddress</attribute>
+        </xpath>
+    </t>
+
+    <t t-name="sh_contact_address_google_place.AddressDropDown">
+        <div t-attf-class="js_cls_address_dropdown dropdown-menu #{results.length ? 'show' : ''}">
+            <a class="dropdown-item js_cls_address_result_item"
+               t-foreach="results" t-as="result" t-key="result"
+               t-att-data-place-id="result['place_id']">
+                <t t-out="result['description']"/>
+            </a>
+            <img class="ms-auto pe-1" src="/sh_contact_address_google_place/static/src/img/pw_by_google.png" alt="Powered by Google"/>
+        </div>
+    </t>
+
+</templates>

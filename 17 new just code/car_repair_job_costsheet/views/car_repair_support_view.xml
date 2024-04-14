@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="car_repair_support_form_view_inherit_jobcosting" model="ir.ui.view">
+            <field name="name">car.repair.support.form.inherit.jobcosting</field>
+            <field name="model">car.repair.support</field>
+            <field name="inherit_id" ref="car_repair_maintenance_service.car_repair_support_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='create_work_order']" position="after">
+                    <button name="create_jobcost" string="Create Job Cost Sheet" invisible="jobcost_sheet_id != False" type="object" class="oe_highlight" confirm="Are you sure you want to create job cost sheet?"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" type="object" name="show_jobcost_sheet" string="Job Sheet" icon="fa-book"/>
+                </xpath>
+                <xpath expr="//field[@name='cosume_part_ids']/tree/field" position="before">
+                    <field name="job_type_id"/>
+                </xpath>
+                <xpath expr="//field[@name='repair_types_ids']" position="after">
+                    <field name="jobcost_sheet_id"/>
+                </xpath>
+                <xpath expr="//notebook/page[last()]" position="before">
+                    <page string="Labours Planning" name="job_cost_labour_page">
+                        <field name="labour_jobcost_line_ids" nolabel="1" context="{'default_job_type':'labour'}" readonly="jobcost_sheet_id != False">
+                            <tree editable="bottom">
+                                <field name="job_type" invisible="1"/>
+                                <field name="job_type_id" domain="[('job_type','=',job_type)]"/>
+                                <field name="product_id"/>
+                                <field name="description"/>
+                                <field name="hours" widget="float_time" sum="Total"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Overheads Planning" name="job_cost_overhead_page">
+                        <field name="overhead_jobcost_line_ids" nolabel="1" context="{'default_job_type':'overhead'}" readonly="jobcost_sheet_id != False">
+                            <tree editable="bottom">
+                                <!-- <field name="job_type" invisible="1"/> -->
+                                <field name="job_type" column_invisible="True"/>
+                                <field name="job_type_id" domain="[('job_type','=',job_type)]"/>
+                                <field name="product_id"/>
+                                <field name="description"/>
+                                <field name="product_qty" sum="Total"/>
+                                <field name="uom_id"/>
+                                <!-- <field name="currency_id" invisible="1"/> -->
+                                <field name="currency_id" column_invisible="True"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

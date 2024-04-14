@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="customer_wallet_form_view" model="ir.ui.view">
+            <field name="name">customer.wallet.form.view</field>
+            <field name="model">customer.wallet</field>
+            <field name="arch" type="xml">
+                <form create="false" edit="false">
+                    <header>
+                        <button name="action_done" states="draft" string="Done" type="object" class="btn-primary"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="customer_id"/>
+                                <field name="amount"/>
+                                <field name="balance_type"/>
+                                <field name="reference"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="currency_id"/>
+                                <field name="company_id"/>
+                                <field name="sale_order_id"/>
+                            </group>
+                        </group>
+                        <field name="note" class="oe_inline"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="customer_wallet_tree_view" model="ir.ui.view">
+            <field name="name">customer.wallet.tree</field>
+            <field name="model">customer.wallet</field>
+            <field name="arch" type="xml">
+                <tree create="false" edit="false">
+                    <field name="name"/>
+                    <field name="customer_id"/>
+                    <field name="date"/>
+                    <field name="balance_type"/>
+                    <field name="currency_id"/>
+                    <field name="state"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="customer_wallet_search_view" model="ir.ui.view">
+            <field name="name">customer.wallet.search</field>
+            <field name="model">customer.wallet</field>
+            <field name="arch" type="xml">
+                <search>
+                     <field name="name"/>
+                     <field name="customer_id"/>
+                     <field name="balance_type"/>
+                     <field name="currency_id"/>
+                     <field name="state"/>
+                     <group expand="0" string="Group By">
+                        <filter name="Customer" context="{'group_by': 'customer_id'}"/>
+                        <filter name="Creadit/Debit" context="{'group_by': 'balance_type'}"/>
+                        <filter name="Currency" context="{'group_by': 'currency_id'}"/>
+                        <filter name="State" context="{'group_by': 'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_customer_wallet">
+            <field name="name">Customer Wallet</field>
+            <field name="res_model">customer.wallet</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="view_type">form</field>-->
+        </record>
+        
+        <menuitem id="menu_customer_wallet" name="Sales Wallet" parent="sale.menu_sale_config"
+            action="action_customer_wallet"/>
+
+    </data>
+</odoo>

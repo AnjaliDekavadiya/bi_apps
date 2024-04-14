@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<templates id="template" xml:space="preserve">
+
+    <t t-name="NotificationPopUp">
+
+        <div class="popup popup-notification">
+            <div class="modal-header">
+                <h4 class="modal-title title">
+                    <t t-esc=" props.title || 'Message' " />
+                </h4>
+            </div>
+            <main class="modal-body">
+                <t t-esc="  props.body || '' " />
+            </main>
+            <div class="footer modal-footer justify-content-end">
+                <div class="button cancel btn btn-primary" t-on-click="cancel" style="width:130px">
+                    OK
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+</templates>

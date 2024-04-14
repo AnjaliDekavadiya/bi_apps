@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_update_do_ref" model="ir.actions.server">
+            <field name="name">Update DO Reference</field>
+            <field name="model_id" ref="jt_service_management.model_crm_claim"/>" />
+            <field name="binding_model_id" ref="jt_service_management.model_crm_claim"/>
+            <field name="state">code</field>
+            <field name="code">action = records.update_do_ref()</field>
+        </record>
+    </data>
+</odoo>

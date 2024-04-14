@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+
+        <record id="custom_view_pos_form_rating" model="ir.ui.view">
+            <field name="name">pos.order.form.rating</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook//page[last()]" position="after" >
+                    <page string="Feedback">
+                        <group>
+                            <group>
+                                <field name="custom_service_rating"/>
+                                <field name="custom_product_rating"/>
+                                <field name="custom_price_rating"/>
+                            </group>
+                            <group>
+                                <field name="custom_Waitting_rating"/>
+                                <field name="custom_shopping_experiences_rating"/>
+                                <field name="custom_comment"/>
+                            </group>
+                        </group>
+                        
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

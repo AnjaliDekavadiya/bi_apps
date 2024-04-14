@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="seq_transmittal" model="ir.sequence">
+			<field name="name">omega_sequencer</field>
+			<field name="code">transmittal</field>
+			<field name="prefix">TRANSMITTAL/</field>
+			<field name="padding">3</field>
+		</record>
+
+		<record id="seq_submittal" model="ir.sequence">
+			<field name="name">omega_sequence</field>
+			<field name="code">submittal</field>
+			<field name="prefix">SUBMITTAL/</field>
+			<field name="padding">3</field>
+		</record>
+
+		<record id="transmittal_submittal_form_view" model="ir.ui.view">
+			<field name="name">transmittal.submittal.form.view</field>
+			<field name="model">transmittal.submittal</field>
+			<field name="arch" type="xml">
+				<form string="Transmital Submittal">
+					<header>
+						<button name="action_send_transmittal_email" string="Send by Email" type="object" invisible="state not in 'approved'"/>
+						<button name="action_confirm" string="Confirm" type="object" class="btn-primary" invisible="state in ['confirmed','approved', 'sent','refused']"/>
+						<button name="action_approved" string="Approved" type="object" class="btn-primary" invisible="state in ['new', 'approved', 'sent','refused']"/>
+						<button name="action_sent" string="Sent" type="object" class="btn-primary" invisible="state in ['new',  'confirmed','sent','refused']"/>
+						<button name="action_refused" string="Refuse" type="object" class="btn-primary" invisible="state == 'refused'"/>
+						<field name="state" widget="statusbar" />
+					</header>
+					<sheet>
+						<div class="oe_title">
+							<h1>
+								<field name="sequence" /><br />
+								<field name="name" />
+							</h1>
+						</div>               
+						<group>
+							<group>
+								<field name="project_id"/>
+								<field name="account_analytic_id"/>
+								<field name="job_order_id"/>
+								<field name="job_cost_sheet_id"/>
+								<field name="document_type"/>
+							</group>
+							<group>
+								<field name="send_date"/>
+								<field name="end_date"/>
+								<field name="sender_company"/>
+								<field name="reciver_company"/>
+								<field name="user_id"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Information">
+								<field name="transmittal_line" nolabel="1">
+									<tree string="Material Plannings" editable="bottom">
+										<field name="name" />
+										<field name="description" />
+										<field name="transmital_type" />
+										<field name="transmital_medium" />
+									</tree>
+								</field>
+							</page>
+							<page string="Reason for Sending">
+								<field name="reason_of_sending" />
+							</page>
+							<page string="Description taken by Recipient">
+								<field name="descriptin_by_recipient" />
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="transmittal_tree_view" model="ir.ui.view">
+			<field name="name">transmittal.tree.view</field>
+			<field name="model">transmittal.submittal</field>
+			<field name="arch" type="xml">
+				<tree string="Transmital">
+					<field name="sequence"/>
+					<field name="name"/>
+					<field name="project_id"/>
+					<field name="job_order_id"/>
+					<field name="send_date"/>
+					<field name="end_date"/>
+					<field name="user_id"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_transmittal" model="ir.actions.act_window">
+			<field name="name">Transmitals</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">transmittal.submittal</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'default_document_type':'transmittal'}</field>
+			<field name="domain">[('document_type','=', 'transmittal')]</field>
+		</record>
+
+		<record id="submittal_tree_view" model="ir.ui.view">
+			<field name="name">submittal.tree.view</field>
+			<field name="model">transmittal.submittal</field>
+			<field name="arch" type="xml">
+				<tree string="Transmital">
+					<field name="sequence"/>
+					<field name="name"/>
+					<field name="project_id"/>
+					<field name="job_order_id"/>
+					<field name="send_date"/>
+					<field name="end_date"/>
+					<field name="user_id"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_submittal" model="ir.actions.act_window">
+			<field name="name">Submittals</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">transmittal.submittal</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'default_document_type':'submittal'}</field>
+			<field name="domain">[('document_type','=', 'submittal')]</field>
+		</record>
+
+		<menuitem name="Transmitals"
+			id="sub_menu_transmital"
+			parent = "bi_odoo_job_costing_management.main_menu_job_estimates"
+			action="action_transmittal"
+			sequence = '3'
+			/>
+
+		<menuitem name="Submittals"
+			id="sub_menu_submittal"
+			parent = "bi_odoo_job_costing_management.main_menu_job_estimates" action="action_submittal"
+			sequence = '4'
+			/>
+
+		<record id="bi_project_button_form" model="ir.ui.view">
+			<field name="name">inherit.project.button.form.view</field>
+			<field name="model">project.project</field>
+			<field name="inherit_id" ref="project.edit_project" />
+			<field name="arch" type="xml">
+				<div class="oe_button_box" name="button_box" position="inside"> 
+					<button class="oe_stat_button" name="invoice_line_button" type="object" icon="fa-envelope-open" > 
+					<field name="count" widget="statinfo" string="Transmittals/Submittals"/>
+				  
+					</button>
+				</div>
+			</field>
+		</record>
+
+		<record id="bi_job_cost_button_form" model="ir.ui.view">
+			<field name="name">inherit.job_order.button.form.view</field>
+			<field name="model">job.order</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view" />
+			<field name="arch" type="xml">
+				<div class="oe_button_box" name="button_box" position="inside"> 
+					<button class="oe_stat_button" name="job_order_button" type="object" icon="fa-envelope-open" > 
+					<field name="count" widget="statinfo" string="Transmittals/Submittals"/>
+				  
+					</button>
+				</div>
+			</field>
+		</record>
+
+	</data>
+</odoo>

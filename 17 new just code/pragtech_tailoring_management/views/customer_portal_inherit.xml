@@ -1,0 +1,48 @@
+<odoo>
+    <template id="customer_portal_inherit" name="Customer Portal Sale Order"
+        inherit_id="sale.portal_my_orders">
+        <xpath expr="//tr[hasclass('active')]" position="replace">
+            <th>
+            <span class='d-none d-md-inline'>Tailoring Order #</span>
+            <span class='d-block d-md-none'>Ref.</span>
+            </th>
+            <th class="text-end">Order Date</th>
+            <th class="text-end">Total</th>
+            <th class="text-end">status</th>
+            </xpath>
+        <xpath expr="//t[@t-foreach='orders']/tr" position="replace">
+            <tr>
+                <td>
+                    <a t-att-href="order.get_portal_url()">
+                        <t t-out="order.name" />
+                    </a>
+                </td>
+                <td class="text-end">
+                    <span t-field="order.date_order" t-options="{'widget': 'date'}" />&amp;nbsp; <span
+                        class='d-none d-md-inline' t-field="order.date_order"
+                        t-options="{'time_only': True}" />
+                </td>
+                <td class="text-end">
+                    <span t-field="order.amount_total" />
+                </td>
+                <td class="text-end">
+                    <t t-if="order.state=='sale'">
+                    <span class="badge rounded-pill text-bg-info" t-field="order.state"/>
+                    </t>
+                    <t t-if="order.state=='tailor assigned'">
+                    <span class="badge rounded-pill text-bg-primary" t-field="order.state"/>
+                    </t>
+                    <t t-if="order.state=='ready to deliver'">
+                    <span class="badge rounded-pill text-bg-info" t-field="order.state"/>
+                    </t>
+                    <t t-if="order.state=='shipped'">
+                    <span class="badge rounded-pill text-bg-primary" t-field="order.state"/>
+                    </t>
+                    <t t-if="order.state=='delivered'">
+                    <span class="badge rounded-pill text-bg-success" t-field="order.state"/>
+                    </t>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+</odoo>

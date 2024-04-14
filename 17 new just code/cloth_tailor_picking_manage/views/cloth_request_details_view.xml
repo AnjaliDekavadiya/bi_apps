@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_cloth_request_inherit_picking" model="ir.ui.view">
+            <field name="name">cloth.request.form.inherit.picking</field>
+            <field name="model">cloth.request.details</field>
+            <field name="inherit_id" ref="cloth_tailor_management_odoo.cloth_request_details_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='stage_id']" position="before">
+                    <button string="Receive Fabric" name="action_new_incoming_stock_picking" type="object" class="oe_highlight"/>
+                    <button string="Deliver Cloth" name="action_new_outgoing_stock_picking" type="object" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="custom_action_view_incoming_picking" type="object" class="oe_stat_button" icon="fa-truck" string="Incoming Pickings"></button>
+                    <button name="custom_action_view_outgoing_picking" type="object" class="oe_stat_button" icon="fa-truck fa-flip-horizontal" string="Outgoing Pickings"></button>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

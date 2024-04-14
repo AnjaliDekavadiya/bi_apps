@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="jt_ticket_report_external_layout">
+			<t t-if="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id"></t>
+			</t>
+			<t t-if="not o or not 'company_id' in o">
+				<t t-set="company" t-value="res_company"></t>
+			</t>
+			<div class="article">
+				<t t-call="jt_service_management.ticket_external_header"/>
+				<t t-raw="0" />
+				<t t-call="jt_service_management.ticket_external_footer" />
+			</div>
+		</template>
+		<template id="ticket_external_footer">
+			<div class="footer">
+				<table width="100%" style="font-size:12px;">
+					<tr class="list-inline" style="text-align:center;">
+						<td>
+							<span class="page"/>
+							<span>/</span>
+							<span class="topage"/>
+						</td>
+					</tr>
+					<tr class="list-inline footer" style="text-align:left;">
+						<td>Printed By : 
+							<span t-out="user.name"></span>
+                            on 
+							<t t-set="print_time" t-value="context_timestamp(datetime.datetime.now()).strftime('%d,%b-%y %H:%M')"/>
+							<span t-out="print_time"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</template>
+		<template id="ticket_external_header">
+			<div class="header">
+				<style>
+                    table{
+                    font-size:12px;
+                    line-height:18px;
+                    width:100%;
+                    border-collapse: collapse;
+                    }
+
+                    /* vertical-align Top Middle*/
+                    .vat{
+                    vertical-align: top;
+                    }
+                    
+                    .padding_right{
+                    padding-right:10px;
+                    }
+                    .padding_left{
+                    padding-left:10px;
+                    }
+                    }
+                </style>
+				<div class="row">
+					<t t-if="company.name == 'ht FZE'">
+						<table width="100%" style="font-size:12px;text-align:justify">
+							<tr>
+								<td width="2%"/>
+								<td width="34%">
+									<img t-if="company.logo" height="70px"
+                                         t-att-src="image_data_uri(company.logo)"
+                                         width="250px"/>
+								</td>
+								<td width="15%"/>
+								<td width="26%" style="border-right:1px solid #D3D3D3"
+                                    class="padding_right vat">
+									<p>
+										<span t-field="company.name"/>,
+                                        
+										<span t-field="company.zip"/>,
+                                        
+										<span t-field="company.city"/>,
+                                        
+										<span t-field="company.country_id.name"/>
+									</p>
+								</td>
+								<td width="5%" style="paddding-left:10px;" class="padding_left vat">
+									<span>Email</span>
+									<br/>
+									<span>Website</span>
+									<br/>
+									<span>Phone</span>
+									<br/>
+									<span>TRN</span>
+									<br/>
+								</td>
+								<td width="1%" class="vat">
+									<span>:</span>
+									<br/>
+									<span>:</span>
+									<br/>
+									<span>:</span>
+									<br/>
+									<span>:</span>
+									<br/>
+								</td>
+								<td width="30%" style="text-align:left" align="right" class="vat">
+									<span t-field="company.email"/>
+									<br/>
+									<t t-if="company.website">
+										<t t-set="website" t-value="company.website.split('//')"/>
+										<t t-if="len(website) &gt;= 2">
+											<span t-out="website[1]"/>
+										</t>
+									</t>
+									<br/>
+									<span t-field="company.phone"/>
+									<br/>
+									<span t-field="company.vat"/>
+									<br/>
+								</td>
+							</tr>
+						</table>
+					</t>
+					<t t-if="not company.name == 'ht FZE'">
+						<table width="100%" style="font-size:12px;text-align:justify">
+							<tr>
+								<td width="2%"/>
+								<td width="34%">
+									<img t-if="company.logo" height="70px"
+                                         t-att-src="image_data_uri(company.logo)"
+                                         width="250px"/>
+								</td>
+								<td width="15%"/>
+								<td width="26%" style="border-right:1px solid #D3D3D3"
+                                    class="padding_right vat">
+									<p>
+										<span t-field="company.name"/>,
+                                        
+										<span t-field="company.zip"/>,
+                                        
+										<span t-field="company.city"/>,
+                                        
+										<span t-field="company.country_id.name"/>
+									</p>
+								</td>
+								<td width="5%" style="paddding-left:10px;" class="padding_left vat">
+									<span>Email</span>
+									<br/>
+									<span>Website</span>
+									<br/>
+									<span>Phone</span>
+									<br/>
+									<span>TRN</span>
+									<br/>
+								</td>
+								<td width="1%" class="vat">
+									<span>:</span>
+									<br/>
+									<span>:</span>
+									<br/>
+									<span>:</span>
+									<br/>
+									<span>:</span>
+									<br/>
+								</td>
+								<td width="22%" style="text-align:left" align="right" class="vat">
+									<span t-field="company.email"/>
+									<br/>
+									<t t-if="company.website">
+										<t t-set="website" t-value="company.website.split('//')"/>
+										<t t-if="len(website) &gt;= 2">
+											<span t-out="website[1]"/>
+										</t>
+									</t>
+									<br/>
+									<span t-field="company.phone"/>
+									<br/>
+									<span t-field="company.vat"/>
+									<br/>
+								</td>
+							</tr>
+						</table>
+					</t>
+				</div>
+			</div>
+		</template>
+		<template id="view_print_wizard_report">
+			<t t-call="web.html_container">
+				<t t-call="jt_service_management.jt_ticket_report_external_layout">
+					<t t-foreach="docs" t-as="o">
+						<div class="page">
+							<style>
+							body {
+							color: #000 !important;
+							word-wrap: break-word;
+							}
+							.padding_right{
+								padding-right:10px;
+							}
+							.padding_left{
+								padding-left:10px;
+							}
+							table{
+							font-size:12px;
+							line-height:18px;
+							width:100%;
+							border-collapse: collapse;
+							}
+							.tright{
+							border-right:1px solid #888;
+							}
+							.tleft{
+							border-left:1px solid #888;
+							}
+							{#p{#}
+							{#padding:0px;#}
+							{#margin:0px;#}
+							{#}#}
+							/* vertical-align Top Middle*/
+							.vat{
+							vertical-align: top;
+							}
+							.vam{
+							vertical-align: middle;
+							}
+
+							/* table Border */
+							.ttop{
+							border-top:1px solid #888;
+							}
+							.tbottom{
+							border-bottom:1px solid #888;
+							}
+							.padding_all{
+							padding:8px;
+							}
+							.grid{
+							border:1px solid #888;
+							}
+							.grid td{
+							}
+							.center{
+							text-align:center;
+							}
+							.right{
+							text-align:right;
+							}
+							.left{
+							text-align:left;
+							}
+						</style>
+							<t set="do_ref" t-value=""/>
+							<table>
+								<tr>
+									<t t-if="o.report_type == 'receipt'">
+										<h3>
+											<b>Service Center Receipt</b>
+										</h3>
+									</t>
+									<t t-if="o.report_type == 'delivery'">
+										<!--<t t-set="do_ref" t-value="docs.get_do_ref()"/>-->
+										<h3>
+											<b>
+												<t t-out="o.do_ref"/>
+											</b>
+										</h3>
+									</t>
+								</tr>
+							</table>
+							<table width="100%">
+								<tr height="180px" class="vat">
+									<td class="tright tleft tbottom ttop vat" width="49%">
+										<table style="font-size:14px" align="left">
+											<tr class="vat">
+												<td rowspan="3" style="vertical-align: text-top;text-align:left" width="1.5%">
+													<b>
+														<span>Company</span>
+													</b>
+												</td>
+												<td width="2%">
+													<b>
+														<span>:</span>
+													</b>
+												</td>
+												<td width="45.5%" rowspan="3">
+													<span t-field="docs.partner_id.name"/>
+													<br/>
+													<t t-if="docs.partner_id.street and docs.partner_id.street2">
+														<span t-field="docs.partner_id.street"/>,
+													
+														<span t-field="docs.partner_id.street2"/>
+														<br/>
+													</t>
+													<t t-if="docs.partner_id.street and not docs.partner_id.street2">
+														<span t-field="docs.partner_id.street"/>
+														<br/>
+													</t>
+													<t t-if="not docs.partner_id.street and docs.partner_id.street2">
+														<span t-field="docs.partner_id.street2"/>
+														<br/>
+													</t>
+													<t t-if="docs.partner_id.city">
+														<span t-field="docs.partner_id.city"/>
+														<span>, </span>
+													</t>
+													<t t-if="docs.partner_id.country_id">
+														<span t-field="docs.partner_id.country_id.name"/>
+													</t>
+													<br/>
+													<t t-if="docs.partner_id.phone">
+														<span t-field="docs.partner_id.phone"/>
+														<br />
+													</t>
+													<t t-if="docs.partner_id.vat">
+														<span>TRN</span>
+														<span t-field="docs.partner_id.vat"/>
+													</t>
+												</td>
+											</tr>
+										</table>
+										<table style="font-size:14px" align="left">
+											<tr class="vat">
+												<td rowspan="3" style="vertical-align: text-top;text-align:left" width="2%">
+													<b>
+														<span>Attention</span>
+													</b>
+													<br/>
+												</td>
+												<td width="2%">
+													<b>
+														<span>:</span>
+													</b>
+												</td>
+												<td width="45%" rowspan="3">
+													<t t-set="attention_dict" t-value="docs.get_attention_data(docs.tickets)"/>
+													<t t-out="attention_dict.get('name')"/>
+													<br/>
+													<span t-out="attention_dict.get('email')"/>
+													<br/>
+													<span t-out="attention_dict.get('mobile')"/>
+													<br/>
+												</td>
+											</tr>
+										</table>
+									</td>
+									<td width="2%"/>
+									<td class="tright tleft tbottom ttop vat" width="49%">
+										<table width="100%" style="font-size:14px" align="left">
+											<tr class="vat">
+												<td width="2%">
+													<b>
+														<span>Date</span>
+													</b>
+												</td>
+												<td width="1%">
+													<b>
+														<span >:</span>
+													</b>
+												</td>
+												<td width="30%" style="vertical-align:text-top">
+													<span t-out="(context_timestamp(datetime.datetime.now()) + datetime.timedelta(hours=4)).strftime('%d-%b-%Y')"/>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<br/>
+							<br/>
+							<table class=" table table-condensed">
+								<thead>
+									<tr>
+										<th width="10%" class="tbottom padding_all vam left" align="left">Ticket #</th>
+										<th width="30%" class="tbottom padding_all vam left" align="left">Product Name</th>
+										<th width="15%" class="tbottom padding_all vam  left" align="left">Serial Number</th>
+										<t t-if="docs.report_type == 'receipt'">
+											<th width="25%" class="tbottom padding_all vam   left" align="left">Description</th>
+										</t>
+										<t t-if="docs.report_type == 'delivery'">
+											<th width="15%" class="tbottom padding_all vam  left" align="left">Action Taken</th>
+											<th width="10%" class="tbottom padding_all vam  left" align="left">Order Reference</th>
+										</t>
+										<th width="10%" class="tbottom padding_all vam  left" align="left">Status</th>
+									</tr>
+								</thead>
+								<tbody class="invoice_tbody">
+									<t t-set="list_val" t-value="docs.get_tickets(docs.tickets)"/>
+									<t t-foreach="list_val" t-as="o">
+										<tr class="vat">
+											<td class="padding_all tbottom">
+												<span t-out="o['ticket_no']"/>
+											</td>
+											<td class="padding_all tbottom">
+												<b>[
+													<span t-out="o['product_code']"/>]
+												</b>
+												<span t-out="o['product_name']"/>
+											</td>
+											<td class="padding_all tbottom">
+												<span t-out="o['serial_no']"/>
+											</td>
+											<td class="padding_all tbottom">
+												<t t-if="docs.report_type == 'receipt'">
+													<span t-out="o['description']"/>
+												</t>
+												<t t-if="docs.report_type == 'delivery'">
+													<span t-out="o['action_take']"/> :
+												
+													<span t-out="o['action_desc']"/>
+												</t>
+											</td>
+											<t t-if="docs.report_type == 'delivery'">
+												<td class="padding_all tbottom">
+													<span t-out="o['sale_id']" />
+												</td>
+											</t>
+											<td class="padding_all tbottom">
+												<span t-out="o['status']" />
+											</td>
+										</tr>
+									</t>
+								</tbody>
+							</table>
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+							<table>
+								<tr>
+									<td width="10%">
+										<strong>Received by:</strong>
+									</td>
+									<td width="38%"/>
+									<td width="4%"/>
+									<td width="10%">
+										<strong>Delivered by:</strong>
+									</td>
+									<td width="38%"/>
+								</tr>
+								<tr>
+									<td> &amp;nbsp;</td>
+									<td/>
+									<td/>
+									<td/>
+								</tr>
+								<tr>
+									<td width="10%">Name:</td>
+									<td width="38%" class="tbottom"/>
+									<td width="4%"/>
+									<td width="10%">Name:</td>
+									<td width="38%" class="tbottom"/>
+								</tr>
+								<tr>
+									<td> &amp;nbsp;</td>
+									<td/>
+									<td/>
+									<td/>
+								</tr>
+								<tr>
+									<td> &amp;nbsp;</td>
+									<td/>
+									<td/>
+									<td/>
+								</tr>
+								<tr>
+									<td> &amp;nbsp;</td>
+									<td/>
+									<td/>
+									<td/>
+								</tr>
+								<tr>
+									<td width="10%">Signature:</td>
+									<td width="38%" class="tbottom"/>
+									<td width="4%"/>
+									<td width="10%">Signature:</td>
+									<td width="38%" class="tbottom"/>
+								</tr>
+							</table>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

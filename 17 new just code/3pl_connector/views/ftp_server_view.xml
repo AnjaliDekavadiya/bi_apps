@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ftp_server_tree_view" model="ir.ui.view">
+        <field name="name">ftp.server.tree.view</field>
+        <field name="model">ftp.server</field>
+        <field name="arch" type="xml">
+            <tree string="FTP Servers">
+                <field name="name"/>
+                <field name="port"/>
+                <field name="username"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ftp_server_form_view" model="ir.ui.view">
+        <field name="name">ftp.server.form.view</field>
+        <field name="model">ftp.server</field>
+        <field name="arch" type="xml">
+            <form string="FTP Server">
+                <header>
+                    <field name="ftp_connection_working_properly" invisible="1"/>
+                    <button name="test_connection" string="Test Connection" type="object" class="oe_highlight" invisible="state == 'confirmed'" />
+                    <button name="confirm_instance" string="Confirm Instance" type="object" class="oe_highlight" invisible="state == 'confirmed'" />
+                    <button name="reset_to_draft" string="Reset To Draft" type="object" class="oe_highlight" invisible="state == 'draft'" />
+                     <!-- attrs="{'invisible':[('state','=','draft')]}" -->
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <field name="active" widget="boolean_button" options='{"terminology": "archive"}' invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active" />
+                    </div>
+                    <div class="oe_title">
+                        <h2><field name="name" readonly="state == 'confirmed'" /></h2>
+                    </div>
+                    <group name="ftp_server_main_group">
+                        <group name="ftp_server_left_group">
+                            <field name="host" readonly="state == 'confirmed'" />
+                            <field name="username" readonly="state == 'confirmed'" />
+                            <field name="company_id" groups="base.group_multi_company" readonly="state == 'confirmed'" />
+                        </group>
+                        <group name="ftp_server_right_group">
+                            <field name="port" readonly="state == 'confirmed'" />
+                            <field name="password" password="True" readonly="state == 'confirmed'" />
+                            <field name="connection_type" readonly="state == 'confirmed'" required="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="directories" string="Directories">
+                            <field name="directory_ids" nolabel="1" readonly="state == 'confirmed'">
+                                <tree editable="top">
+                                    <field name="name"/>
+                                    <field name="path"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="processes" string="Process">
+                            <group name="processes_main">
+                                <group name="processes_left">
+                                    <field name="is_product_process"/>
+                                    <field name="is_stock_process"/>
+                                    <field name="is_purchase_process"/>
+                                </group>
+                                <group name="processes_right">
+                                    <field name="is_sales_process"/>
+                                    <field name="is_sales_return_process"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ftp_server" model="ir.actions.act_window">
+        <field name="name">FTP Server</field>
+        <field name="res_model">ftp.server</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="ftp_directory_tree_view" model="ir.ui.view">
+        <field name="name">ftp.directory.tree.view</field>
+        <field name="model">ftp.directory</field>
+        <field name="arch" type="xml">
+            <tree string="FTP Servers">
+                <field name="name"/>
+                <field name="path"/>
+                <field name="ftp_server_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ftp_directory_form_view" model="ir.ui.view">
+        <field name="name">ftp.directory.form.view</field>
+        <field name="model">ftp.directory</field>
+        <field name="arch" type="xml">
+            <form string="FTP Server">
+                <sheet>
+                    <div class="oe_title">
+                        <h2><field name="name"/></h2>
+                    </div>
+                    <group name="ftp_directory_main_group">
+                        <group name="ftp_directory_left_group">
+                            <field name="ftp_server_id"/>
+                        </group>
+                        <group name="ftp_directory_right_group">
+                            <field name="path"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

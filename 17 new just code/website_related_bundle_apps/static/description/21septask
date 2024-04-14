@@ -1,0 +1,61 @@
+website_payment_customer_signature
+
+working
+================================
+
+print_receipts
+
+need to change report registaration as per odoo14
+==============================================
+
+odoo_bom_product_image
+
+
+======================================
+
+odoo_sale_delivery_notes
+
+change in xpath in report
+========================================
+
+invoice_payment_receipt
+
+need to change report registaration as per odoo14
+
+change fields name communication to ref on account.payment object
+
+chnage field name invoice_payment_state to payment_state
+
+===================================================
+
+bulk_sale_order_confirm
+need to given acl of wizard object
+
+=============================
+
+employee_self_service_odoo
+
+its working
+=============================
+hr_leave_approval 
+
+field name change validation_type to leave_validation_type on leave type object
+
+======================================================
+
+hr_timesheet_create_invoice
+
+need to given acl of wizard object
+
+remove fields project_task_ids, analytic_line_ids from account.move object
+change the field name type to move_type
+
+change the method get to _get
+chnage the onchange method _onchange_project to _onchange_task_company
+
+=============================================
+
+equipment_insurance_management
+
+need to given acl of wizard object
+

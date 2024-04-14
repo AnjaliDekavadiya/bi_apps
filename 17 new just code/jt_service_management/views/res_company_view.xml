@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="base_view_company_form" model="ir.ui.view">
+            <field name="name">res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name='website' position="after">
+                    <field name="source_location_id"/>
+                    <field name="destination_location_id"/></field>
+            </field>
+        </record>
+    </data>
+</odoo>

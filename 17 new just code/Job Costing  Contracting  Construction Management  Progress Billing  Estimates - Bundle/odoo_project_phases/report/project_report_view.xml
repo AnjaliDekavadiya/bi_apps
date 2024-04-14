@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_task_project_user_search_inherit_project_phase" model="ir.ui.view">
+            <field name="name">report.project.task.user.inherit.project_phase</field>
+            <field name="model">report.project.task.user</field>
+            <field name="inherit_id" ref="project.view_task_project_user_search"/>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//filter[@name='own_projects']" position="after"> -->
+                <xpath expr="//filter[@name='project']" position="after">
+                    <separator/>
+                    <filter string="Project Phase" name="project_phase_id" context="{'group_by':'project_phase_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

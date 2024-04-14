@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data>
+        <record id="paypal_subscrioption_form_view" model="ir.ui.view">
+            <field name="name">paypal.subscription.subscription.form</field>
+            <field name="model">subscription.subscription</field>
+            <field name="inherit_id" ref="subscription_management.subscription_subscription_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='reason']" position="after">
+                    <group string="PayPal Recurring Payment Reference">
+                        <field name="paypal_sub_tx_ids" readonly="True" nolabel="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="provider_form_for_paypal_recurring" model="ir.ui.view">
+            <field name="name">provider.form.paypal.recurring</field>
+            <field name="model">payment.provider</field>
+            <field name="inherit_id" ref="payment_paypal_express.acquirer_form_for_paypal_checkout"/>
+            <field name="arch" type="xml">
+            <field name="paypal_client_id" position="after">
+            <field name="paypal_secret_id" required="code == 'paypal_express'"/>
+                <div>
+                <button type="object" name="registered_paypal_recurring_webhook" string="Register Webhook" class="btn btn-primary"/>
+                <div class="oe_inline">
+                    <span> => </span>
+                    <span invisible="state != 'enabled'">
+                        <field name="paypal_recurring_webhook_id" invisible="1"/>
+                        <span invisible="paypal_recurring_webhook_id != False">Yet to be registered</span>
+                        <span invisible="paypal_recurring_webhook_id == False">Already registered</span>
+                    </span>
+                    <span invisible="state == 'enabled'">
+                        <field name="sb_paypal_recurring_webhook_id" invisible="1"/>
+                        <span invisible="sb_paypal_recurring_webhook_id != False">Yet to be registered</span>
+                        <span invisible="sb_paypal_recurring_webhook_id == False">Already registered</span>
+                    </span>
+                </div>
+            </div>
+            </field>
+            </field>
+        </record>
+    </data>
+</odoo>

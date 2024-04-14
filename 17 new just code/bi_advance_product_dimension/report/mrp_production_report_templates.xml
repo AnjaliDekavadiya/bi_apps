@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="inherit_report_mrporder"
+        inherit_id="mrp.report_mrporder">
+        <xpath expr="//div/div[4]" position="after">
+            <div class="row mt32 mb32 mt-3">
+                <t t-if="o.dimension_method == 'l_w_h'">
+                    <div class="col-2">
+                        <strong>Length :</strong><br/>
+                        <span t-field="o.pro_length"/>
+                    </div>
+                    <div class="col-2">
+                        <strong>width:</strong><br/>
+                        <span t-field="o.pro_width"/>
+                    </div>
+                    <div class="col-2">
+                        <strong>Height:</strong><br/>
+                        <span t-field="o.pro_height"/>
+                    </div>
+                    <div class="col-2" >
+                        <strong>Dim qty:</strong><br/>
+                        <span t-field="o.tot_qty"/>
+                    </div>
+                    <div class="col-2">
+                        <strong>Weight Ea. :</strong><br/>
+                        <span t-field="o.custom_weight"/>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+  	</template>
+
+</odoo>
+

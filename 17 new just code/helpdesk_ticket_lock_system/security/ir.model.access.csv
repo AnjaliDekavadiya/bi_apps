@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lock_support_ticket_wizard,access_lock_support_ticket_wizard,model_lock_support_ticket_wizard,website_helpdesk_support_ticket.group_helpdesk_user,1,1,1,0

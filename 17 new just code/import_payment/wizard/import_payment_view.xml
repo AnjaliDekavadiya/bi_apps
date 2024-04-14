@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <record id="import_payment_wizard_probc" model="ir.ui.view">
+        
+            <field name="name">payment.import.excel.form</field>
+            <field name="model">payment.import.excel</field>
+            <field name="arch" type="xml">
+                <form string="Import Payment Wizard">
+                    <separator string="This wizard will Import Payments from .xls or .xlsx file."/>
+                    <group>
+                        <group>
+                            <field name="file_import" required='1'/>
+                            <field name="posted_payment" />
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Import" name="import_payment" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+           </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="import_payment_action_probc">
+           <field name="name">Import Payment File</field>
+           <field name="res_model">payment.import.excel</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+       </record>
+       
+       <!-- <act_window id="import_payment_wizard_action"
+           multi="True"
+           key2="client_action_multi" name="user_report"
+           res_model="payment.import.excel" src_model="account.payment"
+           view_mode="form" target="new" view_type="form" /> -->
+        
+       <menuitem id="import_payment_menu_probc" name="Import" parent="account.menu_finance" />
+       <menuitem id="import_payment_menu_items" name="Import Payments" parent="import_payment_menu_probc" action="import_payment_action_probc" />
+    </data>
+</odoo>

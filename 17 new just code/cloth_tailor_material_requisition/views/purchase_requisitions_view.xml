@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="view_material_purchase_requisition_form_inherit_cloth_req" model="ir.ui.view">
+            <field name="name">material.purchase.requisition.inherit</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="inherit_id" ref="material_purchase_requisitions.material_purchase_requisition_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='reject_employee_id']" position="after">
+                    <field name="custom_cloth_request_id"/>
+                    <field name='custom_workorder_request_id'/>
+                </xpath>
+                <xpath expr="//field[@name='requisition_line_ids']//tree" position="inside">
+                    <field name='custom_line_id' column_invisible='1'/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

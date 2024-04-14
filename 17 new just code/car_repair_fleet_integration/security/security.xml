@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="car_repair_maintenance_service.group_car_repair_manager" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('fleet.fleet_group_manager'))]"/>
+        </record>
+        <record id="car_repair_maintenance_service.group_car_repair_user" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('fleet.fleet_group_user'))]"/>
+        </record>
+     </data>
+</odoo>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="global_custom_fields_partner_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="base.model_res_partner"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_user_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="base.model_res_users"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_sale_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="sale.model_sale_order"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+		
+		<record id="global_custom_fields_purchase_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="purchase.model_purchase_order"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_picking_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="stock.model_stock_picking"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_invoice_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="account.model_account_move"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_product_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="product.model_product_product"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record> 
+
+ 		<record id="global_custom_fields_variant_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="product.model_product_template"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record> 
+
+		<record id="global_custom_fields_project_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="project.model_project_project"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record> 
+
+		<record id="global_custom_fields_task_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="project.model_project_task"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record> 
+
+		<record id="global_custom_fields_lead_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="crm.model_crm_lead"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_pipeline_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Fields</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.models.fields.custom</field>
+			<field name="binding_model_id" ref="crm.model_crm_lead"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_fields_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_tab_contact_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="base.model_res_partner"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_user_tab_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="base.model_res_users"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_sale_tab_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="sale.model_sale_order"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_purchase_tab_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="purchase.model_purchase_order"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_picking_tab_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="stock.model_stock_picking"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_invoice_tab_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="account.model_account_move"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_product_tab_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="product.model_product_product"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_variant_tab_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="product.model_product_template"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_fields_project_tab_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="project.model_project_project"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_tabs_task_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="project.model_project_task"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_tabs_lead_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="crm.model_crm_lead"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+		<record id="global_custom_tabs_pipeline_menu" model="ir.actions.act_window">
+			<field name="name">Add Global Custom Tab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ir.global.tabs</field>
+			<field name="binding_model_id" ref="crm.model_crm_lead"/>
+			<field name="view_id" ref="bi_global_custom_fields.global_custom_tabs_wizard_view"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="groups_id" eval="[(4, ref('bi_global_custom_fields.global_custom_fields_group'))]"/>
+		</record>
+
+
+		<menuitem id="custom_global_fields_root" name="Custom Fields" sequence="3" groups="bi_global_custom_fields.global_custom_fields_group" />
+
+		<menuitem id="custom_global_fields" name="Custom Global Fields" sequence="4" parent="custom_global_fields_root" action="global_custom_fields_action"/>
+
+		<menuitem id="custom_global_tabs" name="Custom Global Tabs" sequence="4" parent="custom_global_fields_root" action="global_custom_tabs_action"/>
+
+		<!-- <menuitem id="all_model_tabs" name="All Tabs" sequence="4" parent="custom_global_fields_root" action="all_tabs_action"/> -->
+		
+	</data>
+
+</odoo>
+
+	 

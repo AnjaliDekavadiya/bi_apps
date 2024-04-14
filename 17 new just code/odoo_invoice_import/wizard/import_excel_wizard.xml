@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record model ="ir.ui.view" id="invoice_import_wizard_from_view">
+           <field name="name">import.invoice.wizard</field>
+           <field name="model">import.invoice.wizard</field>
+           <field name="arch" type="xml">
+               <form string="Invoice Import Wizard">
+                   <separator string="This wizard will import invoices from selected excel file. Make sure you have selected .xls/xlsx file..."/>
+                   <group>                
+                       <group>
+                           <field name="import_type" widget="radio"/>
+                           <field name="invoice_stage_option" widget="radio"/>
+                           <field name="company_id" widget="selection"/>
+                       </group>
+                       <group>
+                           <field name="import_product_by" widget="radio"/>
+                           <field name="account_option" widget="radio" invisible="1"/><!-- Invisible due to remove account from excel -->
+                           <field name="journal_id" widget="selection" domain="[('company_id','=',company_id)]"/>
+                       </group>
+                   </group> 
+                   <!-- <group> -->
+                       <div>
+                            <label for="datas_fname"/>
+                            <field  name="files" class="oe_inline" filename="datas_fname" required="True"/>
+                            <field name="datas_fname" class="oe_inline" invisible="0" readonly="1"/>
+                       </div>
+                   <!-- </group> -->
+                   <footer>
+                        <button string="Import" name="import_file" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+       <record model="ir.actions.act_window" id="action_invoice_import_wizard">
+           <field name="name">Import Invoices Wizard</field>
+           <field name="res_model">import.invoice.wizard</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+       </record>
+       
+       <menuitem name="Import Invoices" id="menu_import_invoice_wizard" 
+                 parent="account.menu_finance_entries"
+                 action="action_invoice_import_wizard"/>
+    </data>
+</odoo>

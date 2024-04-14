@@ -1,0 +1,273 @@
+<odoo>
+
+    <!-- <template id="my_contract" name="my contract: project menu entry" inherit_id="portal.portal_breadcrumbs" priority="20"> -->
+       <!--xpath expr="//ul[contains(@class,'o_portal_submenu')]" position="inside">
+            <li   t-att-class="page_name == 'pplicant' and 'active' or ''">
+                 <a href="/my/custom/contracts">Contracts</a>
+            </li>
+        </xpath-->
+       <!-- <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside"> -->
+<!--            <li t-att-class="page_name == 'contract' and 'active' or ''">-->
+<!--                 <a href="/my/custom/contracts">Contracts</a>-->
+<!--            </li>-->
+            <!-- <li t-if="page_name == 'contract' or contract">
+                <a t-if="contract" t-attf-href="/my/custom/contracts?{{ keep_query() }}">Contracts</a>
+                <t t-else="">Contracts</t>
+            </li>
+        </xpath>
+    </template> -->
+    <template id="custom_my_contract" name="my contract: project menu entry" inherit_id="portal.portal_breadcrumbs" priority="20">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+<!--                <li t-if="page_name == 'contract' or contract">-->
+                <li t-if="page_name == 'contract' or contract" t-attf-class="breadcrumb-item #{'active' if not contract else ''}">
+                    <span>Contracts</span>
+                </li>
+            </xpath>
+    </template>
+
+    
+    <template id="custom_portal_my_contract" name="Portal My contract: project entries" inherit_id="portal.portal_my_home" priority="30">
+           <!--  <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <a class="list-group-item list-group-item-action d-flex align-items-center justify-content-between" href="/my/custom/contracts" title="Your Contracts">Your Contracts
+                <span class="badge badge-secondary badge-pill" t-esc="custom_contract_count"/>   
+                </a>
+            </xpath> -->
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+               <t t-if="custom_contract_count" t-call="portal.portal_docs_entry">
+                    <t t-set="title">Your Contracts</t>
+                    <t t-set="url" t-value="'/my/custom/contracts'"/>
+                    <t t-set="placeholder_count" t-value="'custom_contract_count'"/>
+                </t>
+            </xpath>
+    </template>
+
+    <!-- <template id="portal_my_contract" name="Portal My contract: project entries" inherit_id="portal.portal_my_home" priority="30"> -->
+        <!--xpath expr="//div[contains(@class,'o_my_home_content')]" position="inside">
+            <h3  class="page-header">
+                <a href="/my/custom/contracts">Your Contracts
+                    <small class="ml8">
+                      <t t-if="custom_contract_count">
+                        <span class='badge'><t t-esc="custom_contract_count"/></span>
+                    </t>
+                    <t t-if =" not custom_contract_count">
+                        There are currently no application for your account.
+                    </t>
+                    </small>
+                </a>
+            </h3>
+        </xpath-->
+       <!--  <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <li t-if="custom_contract_count" class="list-group-item">
+                <span class="badge" t-esc="custom_contract_count"/>
+                <a href="/my/custom/contracts">Your Contracts</a>
+            </li>
+        </xpath>
+    </template> -->
+    
+    <template id="custom_display_contracts" name="Display Contracts">
+        <t t-call="portal.portal_layout">
+            <h3 class="page-header">Your Contracts</h3>
+                <table class="table table-hover o_my_status_table">
+                <thead>
+                  <tr class="active">
+                    <th>Contract Name</th>
+                    <th>Customer Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Date of Next Invoice</th>
+                    <th>Stage</th>
+                    <th>Print</th>
+                  </tr>
+                </thead>
+                <t t-foreach="contracts" t-as="contract">
+                    <tr>
+                        <td>
+                            <a t-attf-href="/my/custom/contract/#{contract.id}?#{keep_query()}"><t t-esc="contract.name"/></a>
+<!--                            <span t-field="contract.name"/>-->
+                        </td>
+                        <td>
+                            <span t-field="contract.partner_id.name"/>
+                        </td>
+                        <td>
+                            <span t-field="contract.start_date" t-field-options='{"format": "d/M/y"}'/>
+                        </td>
+                        <td>
+                            <span t-field="contract.end_date" t-field-options='{"format": "d/M/y"}'/>
+                        </td>
+                        <td>
+                            <span t-field="contract.recurring_next_date" t-field-options='{"format": "d/M/y"}'/>
+                        </td>
+                        <td>
+                            <span t-field="contract.stage"/>
+                        </td>
+                        <td>
+                            <a class="btn btn-xs btn-primary" t-attf-href="/my/custom/contact_print/#{contract.id}" target="_blank">Report</a>
+                        </td>
+                    </tr>
+                </t>
+            </table>
+        </t>
+    </template>
+    
+<!--     <template id="display_contracts" name="Display Contracts">
+        <t t-call="portal.portal_layout">
+            <h3 class="page-header">Your Contracts</h3>
+                <table class="table table-hover o_my_status_table">
+                <thead>
+                  <tr class="active">
+                    <th>Contract Name</th>
+                    <th>Customer Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Date of Next Invoice</th>
+                    <th>Stage</th>
+                    <th>Print</th>
+                  </tr>
+                </thead>
+                <t t-foreach="contracts" t-as="contract">
+                    <tr>
+                        <td>
+                            <a t-attf-href="/my/custom/contract/#{contract.id}?#{keep_query()}"><t t-esc="contract.name"/></a>
+                        </td>
+                        <td>
+                            <span t-field="contract.partner_id.name"/>
+                        </td>
+                        <td>
+                            <span t-field="contract.start_date" t-field-options='{"format": "d/M/y"}'/>
+                        </td>
+                        <td>
+                            <span t-field="contract.end_date" t-field-options='{"format": "d/M/y"}'/>
+                        </td>
+                        <td>
+                            <span t-field="contract.recurring_next_date" t-field-options='{"format": "d/M/y"}'/>
+                        </td>
+                        <td>
+                            <span t-field="contract.stage"/>
+                        </td>
+                        <td>
+                            <a class="btn btn-xs btn-primary" t-attf-href="/my/custom/contact_print/#{contract.id}">Report</a>
+                        </td>
+                    </tr>
+                </t>
+            </table>
+        </t>
+    </template> -->
+    
+    <template id="custom_display_contract" name="Display Contract">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="oe_structure">
+                        <div t-if="not no_breadcrumbs and not my_details and not breadcrumbs_searchbar" class="o_portal container mt-3">
+                            <div class="row align-items-center bg-white no-gutters border rounded">
+                                <div class="col">
+                                    <ol class="o_portal_submenu breadcrumb mb-0 py-2 flex-grow-1">
+                                        <li class="breadcrumb-item"><a href="/my/home" aria-label="Home" title="Home"><i class="fa fa-home"/></a></li>
+                                        <li class="breadcrumb-item"><a t-attf-href="/my/custom/contracts?#{keep_query(access_token=contract_id.access_token)}">Contracts</a></li>
+                                        <li class="breadcrumb-item"><span t-field="contract_id.name"/></li>
+                                    </ol>
+                                </div>
+                                <div t-if="prev_record or next_record" class="col flex-grow-0">
+                                    <t t-call='portal.record_pager'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mt16">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <span t-field="contract_id.name"/>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel-body">
+                                <div class='row'>
+                                    <div class="col-md-6">
+                                        <div class="mb8">
+                                            <strong>Customer :</strong> <span t-field="contract_id.partner_id.name"/>
+                                        </div>
+                                         <div class="mb8">
+                                            <strong>Reference :</strong> <span t-field="contract_id.code"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Stage :</strong> <span t-field="contract_id.stage"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb8">
+                                            <strong>Start Date:</strong> <span t-field="contract_id.start_date"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>End Date :</strong> <span t-field="contract_id.end_date"/>
+                                        </div>
+                                        <div class="mb8">
+                                            <strong>Date of Next Invoice:</strong> <span t-field="contract_id.recurring_next_date"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <table class="table table-sm mt32" id="sales_order_table">
+                                    <thead class="bg-100">
+                                        <tr>
+                                            <t t-set="colspan" t-value="6"/>
+                                            <th class="text-left">Products</th>
+                                            <th class="text-right">Description</th>
+                                            <th class="text-right">Order Quantity</th>
+                                            <th class="text-right">Unit Price</th>
+                                            <th class="text-right">Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="sale_tbody">
+
+                                        <t t-set="current_subtotal" t-value="0"/>
+
+                                        <t t-foreach="contract_id.subscription_product_line_ids" t-as="line">
+
+                                            <tr t-att-class="'bg-200 font-weight-bold'">
+                                                <td id="product_name"><span t-field="line.product_id.name"/></td>
+                                                <td class="text-right"> <span t-field="line.name"/></td>
+                                                <td class="text-right">
+                                                    <div id="quote_qty">
+                                                        <span t-field="line.product_uom_qty"/>
+                                                        <span t-field="line.product_uom" groups="uom.group_uom"/>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="line.price_unit" t-options='{"widget": "monetary", "display_currency": contract_id.currency_id}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="line.price_subtotal" t-options='{"widget": "monetary", "display_currency": contract_id.currency_id}'/>
+                                                </td>
+                                            </tr>
+
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row mt32" id="prob_button_add">
+                            <div class="col-md-12">
+                                <h4><strong>Message and communication history</strong></h4>
+                            </div>
+                            <div class="col-md-10 col-md-offset-1 mt16">
+<!--                                <t t-call="website_mail.message_thread"-->
+                                <t t-call="portal.message_thread">
+                                    <t t-set="object" t-value="contract_id"/>
+                                    <t t-set="token" t-value="contract_id.access_token"/>
+                                    <t t-set="pid" t-value="pid"/>
+                                    <t t-set="hash" t-value="hash"/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

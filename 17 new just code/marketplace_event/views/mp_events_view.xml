@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="wk_mp_view_event_kanban">
+            <field name="name">wk.mp.event.event.kanban</field>
+            <field name="model">event.event</field>
+            <field name="arch" type="xml">
+                <kanban class="o_event_kanban_view" default_group_by="stage_id" quick_create_view="event.event_event_view_form_quick_create" sample="1">
+                    <field name="user_id"/>
+                    <field name="name"/>
+                    <field name="stage_id" options='{"group_by_tooltip": {"description": "Description"}}'/>
+                    <field name="address_id"/>
+                    <field name="date_begin"/>
+                    <field name="date_end"/>
+                    <!-- <field name="auto_confirm"/> -->
+                    <!-- <field name="seats_unconfirmed"/> -->
+                    <field name="seats_reserved"/>
+                    <field name="seats_used"/>
+                    <field name="seats_taken"/>
+                    <field name="legend_blocked"/>
+                    <field name="legend_normal"/>
+                    <field name="legend_done"/>
+                    <field name="activity_ids"/>
+                    <field name="activity_state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="d-flex flex-column p-0 oe_kanban_card oe_kanban_global_click">
+                                <div class="o_kanban_content p-0 m-0 position-relative row d-flex flex-fill">
+                                    <div class="col-3 text-bg-primary p-2 text-center d-flex flex-column justify-content-center">
+                                        <div t-out="luxon.DateTime.fromISO(record.date_begin.raw_value).toFormat('d')" class="o_event_fontsize_20"/>
+                                        <div>
+                                            <t t-out="luxon.DateTime.fromISO(record.date_begin.raw_value).toFormat('MMM yyyy')"/>
+                                        </div>
+                                        <div><t t-out="luxon.DateTime.fromISO(record.date_begin.raw_value).toFormat('t')"/></div>
+                                            <div t-if="record.date_begin.raw_value !== record.date_end.raw_value">
+                                                <i class="fa fa-arrow-right me-2 o_event_fontsize_09" title="End date"/>
+                                                <t t-out="luxon.DateTime.fromISO(record.date_end.raw_value).toFormat('d MMM')"/>
+                                            </div>
+                                    </div>
+                                    <div class="col-9 py-2 px-3 d-flex flex-column justify-content-between pt-3">
+                                        <div>
+                                            <div class="o_kanban_record_title o_text_overflow" t-att-title="record.name.value">
+                                                <field name="name"/>
+                                            </div>
+                                            <div t-if="record.address_id.value" class="d-flex ps-1">
+                                                <i class="fa fa-map-marker mt-1 me-2 text-center ps-1" title="Location"/>
+                                                <span t-esc="record.address_id.value" class="ms-1"/>
+                                            </div>
+                                            <div class="d-flex ps-1">
+                                                <i class="fa fa-group mt-1 me-2 text-center" title="Attendees"/>
+                                                <span t-out="record.seats_taken.raw_value" class="me-1"/> Attendees
+                                            </div>
+                                        </div>
+                                        <!-- <div>
+                                            <div class="o_kanban_record_title o_text_overflow" t-att-title="record.name.value">
+                                                <field name="name"/>
+                                            </div>
+                                            <div t-if="record.address_id.value"><i class="fa fa-map-marker" title="Location"/> <span class="o_text_overflow o_event_kanban_location" t-out="record.address_id.value"/></div>
+                                        </div>
+                                        <h5 class="o_event_fontsize_11 p-0">
+                                            <a name="%(marketplace_event.wk_act_event_registration_from_event)d" type="action" context="{'search_default_expected': True}">
+                                                <t t-out="record.seats_taken.raw_value"/> Expected attendees
+                                            </a>
+                                            <t t-set="total_seats" t-value="record.seats_reserved.raw_value + record.seats_used.raw_value"/>
+                                            <div  class="pt-2 pt-md-0" t-if="total_seats > 0 and ! record.auto_confirm.raw_value"><br/>
+                                                <a class="pl-2" name="%(marketplace_event.wk_act_event_registration_from_event)d" type="action" context="{'search_default_confirmed': True}">
+                                                    <i class="fa fa-level-up fa-rotate-90" title="Confirmed"/><span class="pl-2"><t t-out="total_seats"/> Confirmed</span>
+                                                </a>
+                                            </div>
+                                        </h5> -->
+                                        <div class="o_kanban_record_bottom">
+                                           <div class="oe_kanban_bottom_left">
+                                                <field name="activity_ids" widget="kanban_activity"/>
+                                            </div>
+                                            <div class="oe_kanban_bottom_right">
+                                                <field name="kanban_state" widget="state_selection"/>
+                                                <field name="user_id" widget="many2one_avatar_user"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="wk_mp_view_event_tree" model="ir.ui.view">
+            <field name="name">wk.mp.event.tree</field>
+            <field name="model">event.event</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Events" decoration-danger="(seats_max and seats_max&lt;seats_reserved)"
+                    multi_edit="1"
+                    sample="1">
+                    <field name="name"/>
+                    <field name="address_id" readonly="1"/>
+                    <field name="organizer_id" readonly="1" optional="hide"/>
+                    <field name="user_id" readonly="1" widget="many2one_avatar_user" groups="odoo_marketplace.marketplace_officer_group"/>
+                    <field name="marketplace_seller_id" string="Seller" groups="odoo_marketplace.marketplace_officer_group"/>
+                    <field name="company_id" groups="base.group_multi_company" readonly="1" optional="show"/>
+                    <field name="company_id" invisible="1" groups="!base.group_multi_company"/>
+                    <field name="date_begin" readonly="1" widget="date"/>
+                    <field name="date_end" readonly="1" widget="date"/>
+                    <field name="stage_id" readonly="1"/>
+                    <field name="seats_taken" string="Expected Attendees" sum="Total" readonly="1"/>
+                    <field name="seats_used" sum="Total" readonly="1"/>
+                    <field name="seats_max" string="Maximum Seats" sum="Total" readonly="1" optional="hide"/>
+                    <field name="seats_reserved" sum="Total" readonly="1" optional="hide"/>
+                    <!-- <field name="seats_unconfirmed" string="Unconfirmed Seats" sum="Total" readonly="1" optional="hide"/> -->
+                    <field name="message_needaction" invisible="1" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="wk_view_event_form_inherit" model="ir.ui.view">
+            <field name="name">wk.mp.event.form</field>
+            <field name="model">event.event</field>
+            <field name="arch" type="xml">
+                <form string="Events">
+                    <header>
+                        <!-- <button name="action_open_badge_editor" type="object" string="Preview Badges" groups="odoo_marketplace.marketplace_officer_group"/> -->
+                        <button name="set_pending" type="object" string="Request To Approve" invisible="status in ('pending','approved','rejected')" class="btn-primary"/>
+						<button name="approved" type="object" string="Approve" invisible="status in ('draft','approved','rejected',False)" groups="odoo_marketplace.marketplace_officer_group" class="btn-primary"/>
+						<button name="reject" type="object" string="Reject" invisible="status in ('draft','rejected', False)" groups="odoo_marketplace.marketplace_officer_group"/>
+						<button name="send_to_draft" type="object" invisible="status in ('pending','approved','draft', False)" string="Send To Draft"/>
+                        <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <sheet>
+                        <field name="website_published" invisible="True"/>
+                        <div class="oe_button_box" name="button_box" groups="odoo_marketplace.marketplace_seller_group">
+                            <span class="border-left" style="padding: 15px 20px;margin: 0px;" invisible="status == ''">
+                                <field name="status" readonly="1" class="text-success" invisible="status != 'approved'"/>
+                                <field name="status" readonly="1" class="text-danger" invisible="status != 'rejected'"/>
+                                <field name="status" readonly="1" class="text-primary" invisible="status != 'draft'"/>
+                                <field name="status" readonly="1" class="text-warning" invisible="status != 'pending'"/>
+                                <field name="status" invisible="1" groups="!odoo_marketplace.marketplace_seller_group"/>
+                            </span>
+
+                            <button name="toggle_website_published" type="object" invisible="status in ('pending','draft','rejected')" class="oe_stat_button" icon="fa-globe">
+                                <field name="website_published" widget="website_publish_button"/>
+                            </button>
+                            <button name="%(marketplace_event.wk_act_event_registration_from_event)d"
+                                    type="action"
+                                    context="{'search_default_expected': True}"
+                                    class="oe_stat_button"
+                                    icon="fa-users"
+                                    help="Total Registrations for this Event">
+                                <field name="seats_taken" widget="statinfo" string="Attendees"/>
+                            </button>
+                        </div>
+                        <field name="legend_blocked" invisible="1"/>
+                        <field name="legend_normal" invisible="1"/>
+                        <field name="legend_done" invisible="1"/>
+                        <widget name="web_ribbon" text="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <field name="kanban_state" widget="state_selection" class="ml-auto float-right"/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Event Name"/>
+                            <h1><field name="name" placeholder="e.g. Conference for Architects"/></h1>
+                        </div>
+                        <div name="event_menu_configuration" groups="odoo_marketplace.marketplace_officer_group">
+                            <label for="website_menu" string="Website Submenu"/>
+                            <field name="website_menu"/>
+                            <label for="menu_register_cta" string="Register Button"/>
+                            <field name="menu_register_cta"/>
+                            <label for="community_menu" string="Community" invisible="1"/>
+                            <field name="community_menu" invisible="1"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="active" invisible="1"/>
+                                <label for="date_begin" string="Date"/>
+                                <div class="o_row">
+                                    <field name="date_begin" widget="daterange" nolabel="1" class="oe_inline" options="{'related_end_date': 'date_end'}"/>
+                                    <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
+                                    <field name="date_end" widget="daterange" nolabel="1" class="oe_inline" options="{'related_start_date': 'date_begin'}"/>
+                                </div>
+                                <field name="date_tz"/>
+                                <field name="event_type_id" string="Template" options="{'no_create':True,'no_open':True}"/>
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_quick_create': True}"/>
+                            </group>
+                            <group>
+                                <field name="organizer_id"
+                                    context="{'show_address': 1,'form_view_ref': 'marketplace_event.wk_venue_address_form_view'}"
+                                    options='{"always_reload": True, "no_open": True,}'
+                                    create="1"/>
+                                <field name="user_id" domain="[]" create="1" groups="odoo_marketplace.marketplace_officer_group"/>
+                                <field name="website_id" options="{'no_create': True}" domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]" groups="odoo_marketplace.marketplace_officer_group"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                                <field name="company_id" invisible="1" groups="!base.group_multi_company"/>
+                                <field name="address_id"
+                                    context="{'show_address': 1,'form_view_ref': 'marketplace_event.wk_venue_address_form_view'}"
+                                    options='{"always_reload": True, "no_open": True,}' create="1"/>
+                                <field name="marketplace_seller_id"
+                                    string="Seller"
+                                    required="1"
+                                    domain="[('seller', '=', True), ('state', '=', 'approved')]"
+                                    options="{'no_create': True}"
+                                    readonly="status in ('approved','rejected')"
+                                    groups="odoo_marketplace.marketplace_officer_group"/>
+                                    <field name="marketplace_seller_id" invisible="1" groups="!odoo_marketplace.marketplace_officer_group"/>
+                                <label for="seats_limited" string="Limit Registrations"/>
+                                <div>
+                                    <field name="seats_limited"/>
+                                    <span invisible="seats_limited == False" required="seats_limited == False">to <field name="seats_max" class="oe_inline"/> Attendees</span>
+                                </div>
+                                <!-- <field name="auto_confirm"/> -->
+                                <field name="is_seller_event" readonly="1" groups="odoo_marketplace.marketplace_officer_group"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Tickets" name="tickets">
+                                <field name="event_ticket_ids" options="{'no_quick_create': True, 'no_open': True,}" context="{
+                                    'default_event_name': name,}">
+                                    <tree string="Tickets" editable="bottom">
+                                        <field name="name"/>
+                                        <field name="product_id" options="{'no_quick_create': True, 'no_create_edit':True, 'no_open': True,}" context="{'default_detailed_type': 'event'}" domain="[('marketplace_seller_id','=',parent.marketplace_seller_id),('detailed_type', '=', 'event')]"/>
+                                        <field name="description" optional="hide"/>
+                                        <field name="price"/>
+                                        <field name="start_sale_datetime" string="Sales Start" optional="show"/>
+                                        <field name="end_sale_datetime" string="Sales End" optional="show"/>
+                                        <field name="seats_max" sum="Total" width="105px" string="Maximum"/>
+                                        <field name="seats_reserved" sum="Total" width="105px" string="Confirmed"/>
+                                        <!-- <field name="seats_unconfirmed" sum="Total" width="110px" string="Unconfirmed"/> -->
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Communication" name="event_communication">
+                                <field name="event_mail_ids">
+                                    <tree string="Communication" editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="notification_type" invisible="0"/>
+                                        <field name="template_model_id" invisible="1"/>
+                                        <field name="template_ref" options="{'model_field': 'template_model_id', 'no_create_edit':True, 'no_quick_create': True, 'no_open': True,}" context="{'filter_template_on_event': True, 'default_model': 'event.registration'}"/>
+                                        <field name="interval_nbr" readonly="interval_unit == 'now'"/>
+                                        <field name="interval_unit"/>
+                                        <field name="interval_type"/>
+                                        <field name="scheduled_date" groups="base.group_no_one"/>
+                                        <field name="mail_count_done"/>
+                                        <field name="mail_state" widget="icon_selection" string=" "
+                                            options="{'sent': 'fa fa-check', 'scheduled': 'fa fa-hourglass-half', 'running': 'fa fa-cogs'}"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Notes" name="event_notes">
+                                <field name="note" placeholder="Add a note..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Filters -->
+        <record id="wk_status_view_filter" model="ir.ui.view">
+            <field name="name">Event Status</field>
+            <field name="model">event.event</field>
+            <field name="groups_id" eval="[(6, 0, [ref('odoo_marketplace.marketplace_officer_group') ])]"/>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <group string="Group By">
+                        <filter string="Status" context="{'group_by':'status'}" name="status_filter" groups="odoo_marketplace.marketplace_officer_group"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="wk_seller_action_event_view" model="ir.actions.act_window">
+            <field name="name">Sellers Events</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">event.event</field>
+            <field name="binding_view_types">form</field>
+            <field name="domain">[('marketplace_seller_id','in',['get_marketplace_seller_id()'])]</field>
+            <field name="context">{'default_is_seller_event': True,'search_default_status_filter': 1}</field>
+            <field name="search_view_id" ref="wk_status_view_filter"/>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_ids"
+                eval="[(5, 0, 0),
+                    (0, 0, {'sequence': 1, 'view_mode': 'kanban','view_id': ref('marketplace_event.wk_mp_view_event_kanban')}),
+                    (0, 0, {'sequence': 2, 'view_mode': 'tree', 'view_id': ref('marketplace_event.wk_mp_view_event_tree')}),
+                    (0, 0, {'sequence': 3, 'view_mode': 'form', 'view_id': ref('marketplace_event.wk_view_event_form_inherit')})
+                ]"/>
+        </record>
+
+        <menuitem id="wk_seller_dashboard_event_menu"
+            name="Events"
+            parent="odoo_marketplace.wk_seller_dashboard"
+            groups="odoo_marketplace.marketplace_seller_group"
+            sequence="2"/>
+
+        <menuitem id="wk_seller_event_menu_child"
+            name="Events"
+            parent="wk_seller_dashboard_event_menu"
+            sequence="1"
+            action="marketplace_event.wk_seller_action_event_view"
+            groups="odoo_marketplace.marketplace_seller_group"/>
+
+        <menuitem id="wk_seller_event_menu_child2"
+            name="Venues"
+            parent="wk_seller_dashboard_event_menu"
+            sequence="1"
+            action="marketplace_event.wk_venue_action_for_event"
+            groups="odoo_marketplace.marketplace_seller_group"/>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ Actions for Marketplace Dashboard ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <!-- Pending -->
+        <record model="ir.actions.act_window" id="mp_events_action_pending">
+            <field name="name">MP Pending Events</field>
+            <field name="res_model">event.event</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('status', '=', 'pending'),('marketplace_seller_id','in',['get_marketplace_seller_id()'])]</field>
+            <field name="view_ids"
+                eval="[(5, 0, 0),
+                    (0, 0, {'sequence': 1, 'view_mode': 'kanban','view_id': ref('marketplace_event.wk_mp_view_event_kanban')}),
+                    (0, 0, {'sequence': 2, 'view_mode': 'tree', 'view_id': ref('marketplace_event.wk_mp_view_event_tree')}),
+                    (0, 0, {'sequence': 3, 'view_mode': 'form', 'view_id': ref('marketplace_event.wk_view_event_form_inherit')})
+                ]"/>
+        </record>
+
+        <!-- Approved -->
+        <record model="ir.actions.act_window" id="mp_events_action_approved">
+            <field name="name">MP Approved Events</field>
+            <field name="res_model">event.event</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('status', '=', 'approved'),('marketplace_seller_id','in',['get_marketplace_seller_id()'])]</field>
+        </record>
+
+        <record id="mp_events_action_approved_for_kanban" model="ir.actions.act_window.view">
+            <field name="view_mode">kanban</field>
+            <field name="sequence">1</field>
+            <field name="view_id" ref="marketplace_event.wk_mp_view_event_kanban"/>
+            <field name="act_window_id" ref="marketplace_event.mp_events_action_approved"/>
+        </record>
+
+        <record id="mp_events_action_approved_for_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="sequence">2</field>
+            <field name="view_id" ref="marketplace_event.wk_mp_view_event_tree"/>
+            <field name="act_window_id" ref="marketplace_event.mp_events_action_approved"/>
+        </record>
+
+        <record id="mp_events_action_approved_for_form" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="sequence">3</field>
+            <field name="view_id" ref="marketplace_event.wk_view_event_form_inherit"/>
+            <field name="act_window_id" ref="marketplace_event.mp_events_action_approved"/>
+        </record>
+
+        <!-- Rejected -->
+        <record model="ir.actions.act_window" id="mp_events_action_rejected">
+            <field name="name">MP Rejected Events</field>
+            <field name="res_model">event.event</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('status', '=', 'rejected'),('marketplace_seller_id','in',['get_marketplace_seller_id()'])]</field>
+        </record>
+
+         <record id="mp_events_action_rejected_for_kanban" model="ir.actions.act_window.view">
+            <field name="view_mode">kanban</field>
+            <field name="sequence">1</field>
+            <field name="view_id" ref="marketplace_event.wk_mp_view_event_kanban"/>
+            <field name="act_window_id" ref="marketplace_event.mp_events_action_rejected"/>
+        </record>
+
+        <record id="mp_events_action_rejected_for_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="sequence">2</field>
+            <field name="view_id" ref="marketplace_event.wk_mp_view_event_tree"/>
+            <field name="act_window_id" ref="marketplace_event.mp_events_action_rejected"/>
+        </record>
+
+        <record id="mp_events_action_rejected_for_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="sequence">3</field>
+            <field name="view_id" ref="marketplace_event.wk_view_event_form_inherit"/>
+            <field name="act_window_id" ref="marketplace_event.mp_events_action_rejected"/>
+        </record>
+
+        <!-- Draft -->
+
+        <record model="ir.actions.act_window" id="mp_events_action_draft">
+            <field name="name">MP Pending Events</field>
+            <field name="res_model">event.event</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('status', '=', 'draft'),('marketplace_seller_id','in',['get_marketplace_seller_id()'])]</field>
+        </record>
+
+        <record id="mp_events_action_pending_for_kanban" model="ir.actions.act_window.view">
+            <field name="view_mode">kanban</field>
+            <field name="sequence">1</field>
+            <field name="view_id" ref="marketplace_event.wk_mp_view_event_kanban"/>
+            <field name="act_window_id" ref="marketplace_event.mp_events_action_draft"/>
+        </record>
+
+        <record id="mp_events_action_pending_for_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="sequence">2</field>
+            <field name="view_id" ref="marketplace_event.wk_mp_view_event_tree"/>
+            <field name="act_window_id" ref="marketplace_event.mp_events_action_draft"/>
+        </record>
+
+        <record id="mp_events_action_pending_for_form" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="sequence">3</field>
+            <field name="view_id" ref="marketplace_event.wk_view_event_form_inherit"/>
+            <field name="act_window_id" ref="marketplace_event.mp_events_action_draft"/>
+        </record>
+
+        <!-- Create Action -->
+        <record id="wk_seller_action_event_create" model="ir.actions.act_window">
+            <field name="name">Sellers Events Create</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">event.event</field>
+            <field name="binding_view_types">form</field>
+            <field name="domain">[('marketplace_seller_id','in',['get_marketplace_seller_id()'])]</field>
+            <field name="context">{'default_is_seller_event': True,'default_product_id': False}</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="marketplace_event.wk_view_event_form_inherit"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_task_project_user_search_inherit_event_custom" model="ir.ui.view">
+            <field name="name">report.project.task.user.inherit.event</field>
+            <field name="model">report.project.task.user</field>
+            <field name="inherit_id" ref="project.view_task_project_user_search"/>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//filter[@name='own_projects']" position="after"> -->
+                <xpath expr="//search" position="inside">
+                    <separator/>
+                    <filter string="Event" name="event_custom_id" context="{'group_by':'event_custom_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

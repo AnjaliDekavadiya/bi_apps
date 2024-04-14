@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="cheque_format.payment_cheque_format" model="cheque.format">
+            <field name="name">Default Cheque format</field>
+            <field name="font_size">20</field>
+            <field name="font_css">font-size:20px;</field>
+            <field name="ac_pay_margin_top">37</field>
+            <field name="ac_pay_margin_left">12</field>
+            <field name="ac_pay_letter_space">0</field>
+            <field name="ac_pay_rotate">-47</field>
+            <field name="ac_pay_css">margin-top:37px;margin-left:12px;letter-spacing:0px;transform: rotate(-47deg);-webkit-transform:rotate(-47deg);</field>
+            <field name="date_margin_top">60</field>
+            <field name="date_margin_left">792</field>
+            <field name="date_letter_space">1</field>
+            <field name="date_css">margin-top:60px;margin-left:792px;letter-spacing:1px;</field>
+            <field name="ben_margin_top">100</field>
+            <field name="ben_margin_left">20</field>
+            <field name="beneficiary_css">margin-top:100px;margin-left:20px;</field>
+            <field name="amount_digit_top">180</field>
+            <field name="amount_digit_left">800</field>
+            <field name="amount_digit_letter_space">1</field>
+            <field name="amount_digit_css">margin-top:180px;margin-left:800px;letter-spacing:1px;</field>
+            <field name="amount_word_top">150</field>
+            <field name="amount_word_left">20</field>
+            <field name="amount_word_letter_space">1</field>
+            <field name="amount_word_css">margin-top:150px;margin-left:20px;letter-spacing:1px;</field>
+        </record>
+    </data>
+</odoo>

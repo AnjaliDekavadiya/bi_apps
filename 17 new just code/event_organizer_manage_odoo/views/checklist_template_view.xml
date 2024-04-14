@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_checklist_template_custom_form" model="ir.ui.view">
+            <field name="name">checklist.template.custom.form</field>
+            <field name="model">checklist.template.custom</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name='name'/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name='checklist_name_custom' string='Checklists'>
+                                <field name='checklist_ids' />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_checklist_template_custom_tree" model="ir.ui.view">
+            <field name="name">checklist.template.custom.form</field>
+            <field name="model">checklist.template.custom</field>
+            <field name="arch" type="xml">
+                <tree string="Checklist Templates">
+                    <field name="name"/>
+                    <field name='checklist_ids' widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_checklist_template_view_custom">
+            <field name="name">Checklist Templates</field>
+            <field name="res_model">checklist.template.custom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    </data>
+</odoo>

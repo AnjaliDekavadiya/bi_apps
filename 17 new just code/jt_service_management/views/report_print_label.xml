@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_print_ticket_label">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <table style="font-size:16px;" align="left">
+                            <tr>
+                                <td style="width:65%">
+                                    <b>
+                                        <span t-out="o.name"/>
+                                    </b>
+                                </td>
+                                <td style="width:65%;text-align:center">
+                                    <b>
+                                        <span t-out="datetime.datetime.strftime(o.create_date,'%d-%b-%Y')"/>
+                                    </b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="100%" colspan="2"
+                                    style="white-space: nowrap; overflow: visible; text-overflow:ellipsis;">
+                                    <t t-if="o.partner_id.is_company == True">
+                                        <t t-set="name" t-value="o.partner_id.name.split(' ')"/>
+                                        <t t-if="len(name) &gt; 3">
+                                            <span t-out="name[0]"/>
+                                            <span></span>
+                                            <span t-out="name[1]"/>
+                                            <span></span>
+                                            <span t-out="name[2]"/>
+                                        </t>
+                                        <t t-if="len(name) &lt;= 3">
+                                            <span t-out="o.partner_id.name"/>
+                                        </t>
+                                    </t>
+                                    <t t-if="o.partner_id.is_company == False and o.partner_id.parent_id">
+                                        <t t-set="name" t-value="o.partner_id.parent_id.name.split(' ')"/>
+                                        <t t-if="len(name) &gt; 3">
+                                            <span t-out="name[0]"/>
+                                            <span></span>
+                                            <span t-out="name[1]"/>
+                                            <span></span>
+                                            <span t-out="name[2]"/>
+                                        </t>
+                                        <t t-if="len(name) &lt;=3">
+                                            <span t-out="o.partner_id.parent_id.name"/>
+                                        </t>
+                                    </t>
+                                    <t t-if="o.partner_id.is_company == False and not o.partner_id.parent_id">
+                                        <t t-set="name" t-value="o.partner_id.name.split(' ')"/>
+                                        <t t-if="len(name) &gt; 3">
+                                            <span t-out="name[0]"/>
+                                            <span></span>
+                                            <span t-out="name[1]"/>
+                                            <span></span>
+                                            <span t-out="name[2]"/>
+                                        </t>
+                                        <t t-if="len(name) &lt;= 3">
+                                            <span t-out="o.partner_id.name"/>
+                                        </t>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="100%" colspan="2">
+                                    <span t-if="o.product_id.default_code" t-field="o.product_id.default_code"/>
+                                    <span t-if="not o.product_id.default_code">
+                                        <br/>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="100%" colspan="2">
+                                    <span t-field="o.serial_number"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <record id="paper_ticket_label_print" model="report.paperformat">
+            <field name="name">Print Ticket Label</field>
+            <field name="default" eval="True" />
+            <field name="format">custom</field>
+            <field name="page_height">28</field>
+            <field name="page_width">89</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">1</field>
+            <field name="margin_bottom">1</field>
+            <field name="margin_left">2</field>
+            <field name="margin_right">2</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+          <record id="print_ticket_label" model="ir.actions.report">
+            <field name="name">Print Ticket Label</field>
+            <field name="model">crm.claim</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">jt_service_management.report_print_ticket_label</field>
+            <field name="report_file">jt_service_management.report_print_ticket_label</field>
+            <field name="print_report_name">'Print Report'</field>
+            <field name="binding_model_id" ref="model_crm_claim"/>
+            <field name="binding_type">report</field>
+              <field name="paperformat_id" ref="jt_service_management.paper_ticket_label_print"/>
+        </record>
+
+    </data>
+</odoo>

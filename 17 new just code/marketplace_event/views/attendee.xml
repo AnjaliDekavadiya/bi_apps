@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+
+<odoo>
+    <data>
+        <record id="wk_mp_event_registration_view_kanban" model="ir.ui.view">
+            <field name="name">wk.mp.event.registration.kanban</field>
+            <field name="model">event.registration</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <kanban class="o_event_attendee_kanban_view" default_order="name, create_date desc" sample="1">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="state"/>
+                    <field name="email"/>
+                    <field name="event_ticket_id"/>
+                    <templates>
+                        <t t-name="event_attendees_kanban_icons_desktop">
+                            <div class="d-none d-md-block h-100">
+                                <div id="event_attendees_kanban_icons_desktop" class="h-100 float-right p-2 d-flex align-items-end flex-column">
+                                    <a class="btn btn-md btn-primary" string="Confirm Registration" name="action_confirm" type="object" invisible="state != 'draft'" role="button">
+                                        <i class="fa fa-check" role="img" aria-label="Confirm button" title="Confirm Registration"/>
+                                    </a>
+                                    <a class="btn btn-md btn-primary" string="Confirm Attendance" name="action_set_done" type="object" invisible="state != 'open'" role="button">
+                                        <i class="fa fa-user-plus" role="img" aria-label="Attended button" title="Confirm Attendance"/>
+                                    </a>
+                                    <span class="text-muted" invisible="state != 'done'" >Attended</span>
+                                    <span class="text-muted" invisible="state != 'cancel'">Canceled</span>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-name="event_attendees_kanban_icons_mobile">
+                            <div id="event_attendees_kanban_icons_mobile" class="d-md-none h-100 pl-4">
+                                <a class="btn btn-primary d-flex justify-content-center align-items-center h-100 w-100"
+                                    string="Confirm Registration" name="action_confirm" type="object" invisible="state != 'draft'" role="button">
+                                    <i class="fa fa-check fa-3x" role="img" aria-label="Confirm button" title="Confirm Registration"/>
+                                </a>
+                                <a class="btn btn-primary d-flex justify-content-center align-items-center h-100 w-100"
+                                    string="Confirm Attendance" name="action_set_done" type="object" invisible="state != 'open'" role="button">
+                                    <i class="fa fa-user-plus fa-3x" role="img" aria-label="Attended button" title="Confirm Attendance"/>
+                                </a>
+                                <div class="d-flex justify-content-center align-items-center h-100 w-100">
+                                    <span class="text-muted" invisible="state != 'done'" >Attended</span>
+                                    <span class="text-muted" invisible="state != 'cancel'" >Canceled</span>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_event_registration_kanban container-fluid p-0">
+                                <div class="row h-100">
+                                    <div class="col-9 pr-0">
+                                        <div class="oe_kanban_content h-100">
+                                            <div class="o_kanban_record_body pt-1 pl-2 h-100 d-flex flex-column">
+                                                <b class="o_kanban_record_title"><field name="name"/></b>
+                                                <field name="event_id" invisible="context.get('default_event_id')" />
+                                                <span invisible="partner_id == False">Booked by <field name="partner_id" /></span>
+                                                <div id="event_ticket_id" class="o_field_many2manytags o_field_widget d-flex mt-auto">
+                                                    <t t-if="record.event_ticket_id.raw_value">
+                                                        <div t-attf-class="badge badge-pill o_tag_color_#{(record.event_ticket_id.raw_value % 11) + 1}" >
+                                                            <b><span class="o_badge_text"><t t-out="record.event_ticket_id.value"/></span></b>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="event_attendees_kanban_icons" class="col-3 pl-0">
+                                        <t t-call="event_attendees_kanban_icons_desktop"/>
+                                        <t t-call="event_attendees_kanban_icons_mobile"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="wk_event_view_event_registration_form">
+            <field name="name">wk.mp.event.registration.form</field>
+            <field name="model">event.registration</field>
+            <field name="arch" type="xml">
+                <form string="Event Registration">
+                    <header>
+                        <button name="action_send_badge_email" string="Send by Email" type="object" invisible="state not in ('open','done')" class="oe_highlight"/>
+                        <button name="action_confirm" string="Confirm" invisible="state != 'draft'" type="object" class="oe_highlight"/>
+                        <button name="action_set_done" string="Attended" invisible="state != 'open'" type="object" class="oe_highlight"/>
+                        <button name="action_set_draft" string="Set To Unconfirmed" invisible="state not in ('cancel','done')" type="object" />
+                        <button name="action_cancel" string="Cancel Registration" invisible="state not in ('draft','open')" type="object"/>
+                        <field name="state" nolabel="1" colspan="2" widget="statusbar" statusbar_visible="draft,open,done"/>
+                    </header>
+                    <sheet string="Registration">
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_sale_order" type="object" class="oe_stat_button" icon="fa-usd" string="Sale Order" groups="odoo_marketplace.marketplace_officer_group">
+                            </button>
+                        </div>
+                        <field name="sale_status" invisible="1"/>
+                        <widget name="web_ribbon" title="Sold" bg_color="text-bg-success"
+                            invisible="sale_status != 'sold'"/>
+                        <widget name="web_ribbon" title="Not Sold" bg_color="text-bg-danger"
+                            invisible="sale_status in ('sold', 'free') or not id"/>
+                        <group>
+                            <group string="Attendee" name="attendee">
+                                <field name="partner_id" readonly="1" options="{'no_open':True}"/>
+                                <field name="visitor_id" readonly="1" options="{'no_open':True}"/>
+                                <field name="name" />
+                                <field name="email" />
+                                <field name="phone" class="o_force_ltr" />
+                                <!-- <field name="mobile" class="o_force_ltr" /> -->
+                            </group>
+                            <group string="Event Information" name="event">
+                                <field name="event_id" readonly="1" options="{'no_create': True, 'no_open':True}"/>
+                                <field
+                                    name="event_ticket_id"
+                                    domain="[('event_id', '=', event_id)]"
+                                    invisible="event_id == False"
+                                    context="{'name_with_seats_availability': True}"
+                                    options="{'no_open': True, 'no_create': True}"
+                                />
+                                <field name="create_date" string="Registration Date" groups="odoo_marketplace.marketplace_seller_group"/>
+                                <field name="date_closed" groups="odoo_marketplace.marketplace_seller_group"/>
+                            </group>
+                            <group string="Transaction" groups="odoo_marketplace.marketplace_seller_group">
+                                <field name="sale_order_id" readonly="1" string="Order Refrece" options="{'no_open':True}"/>
+                            </group>
+                            <group string="Marketing" name="utm_link" groups="odoo_marketplace.marketplace_seller_group">
+                                <field name="utm_campaign_id"/>
+                                <field name="utm_medium_id"/>
+                                <field name="utm_source_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="wk_view_event_registration_tree">
+            <field name="name">event.registration.tree</field>
+            <field name="model">event.registration</field>
+            <field name="arch" type="xml">
+                <tree string="Registration" multi_edit="1" sample="1">
+                    <field name="create_date" optional="show" string="Registration Date"/>
+                    <field name="name"/>
+                    <field name="partner_id" optional="hide"/>
+                    <field name="email" optional="show"/>
+                    <field name="phone" optional="show"/>
+                    <!-- <field name="mobile" optional="hide"/> -->
+                    <field name="event_id" invisible="context.get('default_event_id')"/>
+                    <field name="event_ticket_id" domain="[('event_id', '=', event_id)]"/>
+                    <field name="state" readonly="0"/>
+                    <field name="marketplace_seller_id" string="Seller" groups="odoo_marketplace.marketplace_officer_group"/>
+                    <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                    <field name="message_needaction" invisible="1"/>
+                    <button name="action_confirm" string="Confirm" invisible="state != 'draft'" type="object" icon="fa-check"/>
+                    <button name="action_set_done" string="Mark as Attending" invisible="state != 'open'" type="object" icon="fa-level-down"/>
+                    <button name="action_cancel" string="Cancel" invisible="state not in ('draft','open')" type="object" icon="fa-times"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- MARKETPLACE_EVENT.REGISTRATION ACTIONS -->
+        <record id="wk_act_event_registration_from_event" model="ir.actions.act_window">
+            <field name="res_model">event.registration</field>
+            <field name="name">WK Attendees</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('event_id', '=', active_id)]</field>
+            <field name="context">{'default_event_id': active_id}</field>
+            <field name="view_ids"
+                eval="[(5, 0, 0),
+                    (0, 0, {'sequence':1, 'view_mode': 'kanban', 'view_id': ref('wk_mp_event_registration_view_kanban')}),
+                    (0, 0, {'sequence':2, 'view_mode': 'tree', 'view_id': ref('wk_view_event_registration_tree')}),
+                    (0, 0, {'sequence':3, 'view_mode': 'form', 'view_id': ref('wk_event_view_event_registration_form')}),
+                ]"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create an Attendee
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,7 @@
+# -*- coding: utf-8 -*-
+
+from . import cloth_request_details
+from . import mrp_bom
+from . import mrp_production
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

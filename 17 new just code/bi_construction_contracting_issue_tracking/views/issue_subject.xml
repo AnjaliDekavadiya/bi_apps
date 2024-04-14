@@ -1,0 +1,77 @@
+<odoo>
+		<record id="issue_subject_form" model="ir.ui.view">
+			<field name="name">view.issue.subject.form</field>
+			<field name="model">type.issue.subject</field>
+			<field name="arch" type="xml">
+				<form string="Issue Subject Type">
+					<sheet>
+						<group>
+							<field name="name" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		
+		<record id="issue_subject_tree" model="ir.ui.view">
+			<field name="name">view.issue.subject.tree</field>
+			<field name="model">type.issue.subject</field>
+			<field name="arch" type="xml">
+					<tree string="Issue Subject Type">
+							<field name="name"/>
+					</tree>
+			</field>
+		</record>
+
+		<record id="issue_subject_action" model="ir.actions.act_window">
+			<field name="name">Issue Subject Type </field>
+			<field name="res_model">type.issue.subject</field>
+			<field name="binding_view_types">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new employee.
+			  </p>
+			</field>
+		</record>
+
+		<record id="issue_category_form" model="ir.ui.view">
+			<field name="name">view.categories.form</field>
+			<field name="model">categories</field>
+			<field name="arch" type="xml">
+				<form string="Issue Subject Type">
+					<sheet>
+						<group>
+							<field name="name" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		
+		<record id="issue_category_tree" model="ir.ui.view">
+			<field name="name">view.categories.tree</field>
+			<field name="model">categories</field>
+			<field name="arch" type="xml">
+					<tree string="Issue Subject Type">
+							<field name="name"/>
+					</tree>
+			</field>
+		</record>
+
+		<record id="issue_category_action" model="ir.actions.act_window">
+			<field name="name">Issue categories Type </field>
+			<field name="res_model">categories</field>
+			<field name="binding_view_types">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new employee.
+			  </p>
+			</field>
+		</record>
+</odoo>

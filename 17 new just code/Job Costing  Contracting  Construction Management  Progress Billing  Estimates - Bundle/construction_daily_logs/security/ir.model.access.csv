@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_construction_daily_logs,access.construction.daily.logs,model_construction_daily_log,base.group_user,1,1,1,1
+access_construction_daily_project_user,access.construction.daily.project.user,model_construction_daily_log,project.group_project_user,1,1,1,1

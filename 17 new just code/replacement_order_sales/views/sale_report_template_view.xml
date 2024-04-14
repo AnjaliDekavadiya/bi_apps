@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_saleorder_document_inherit_custom_replacementreason" inherit_id="sale.report_saleorder_document">
+       
+        <!-- <xpath expr="//h2[@class='mt16']/t" position="replace"> -->
+        <xpath expr="//h2[hasclass('mt-4')]" position="replace">
+            <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                    <span t-if="doc.state not in ['draft','sent'] and doc.replacement_custom_name"></span>
+                    <span t-if="doc.state not in ['draft','sent'] and not doc.replacement_custom_name">Order # </span>
+                    <span t-if="doc.state in ['draft','sent'] and doc.replacement_custom_name"></span>
+                    <span t-if="doc.state in ['draft','sent'] and not doc.replacement_custom_name">Quotation # </span>
+                    <t t-if="doc.replacement_custom_name">
+                        Replacement Order # <span t-field='doc.replacement_custom_name'/>
+                    </t>
+                    <t t-else="">
+                        <span t-field='doc.name'/>
+                    </t>
+            </t>
+        </xpath>
+        <!-- <xpath expr="//span[@t-field='doc.name']" position="replace">
+        
+            <span t-if="doc.state not in ['draft','sent'] and doc.replacement_custom_name"></span>
+            <span t-if="doc.state not in ['draft','sent'] and not doc.replacement_custom_name"><span t-field="doc.name"/></span>
+            <span t-if="doc.state in ['draft','sent'] and doc.replacement_custom_name"></span>
+            <span t-if="doc.state in ['draft','sent'] and not doc.replacement_custom_name"><span t-field="doc.name"/> </span>
+        </xpath> -->
+        <xpath expr="//div[@id='informations']" position="inside">
+             <div t-if="doc.replacement_reason_custom_id" class="col-auto mw-100 mb-2">
+                <strong>Replacement Reason:</strong>
+                <p class="m-0" t-field="doc.replacement_reason_custom_id.name"/>
+            </div>
+             <div t-if="doc.replacement_custoriginal_salesorder_id" class="col-auto mw-100 mb-2">
+                <strong>Original Sales Order:</strong>
+                <p class="m-0" t-field="doc.replacement_custoriginal_salesorder_id"/>
+            </div>
+        </xpath>
+      
+    </template>
+</odoo>

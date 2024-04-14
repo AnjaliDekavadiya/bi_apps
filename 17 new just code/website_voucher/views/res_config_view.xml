@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="res_config_settings_view_form_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.website.vouchers.config</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="wk_coupons.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='advanced_coupon_config']" position="after">
+              <block title="Advanced Website Sale Order Settings">
+                <setting>
+                  <field name="voucher_value_type"/>
+                </setting>
+              </block>
+            </xpath>
+        </field>
+  </record>
+
+</odoo>

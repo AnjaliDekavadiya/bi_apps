@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!-- Reporting menus -->
+        <menuitem
+        	name="Costing Reports"
+        	id="menu_job_costing_report_volumn_tread_menu"
+        	parent="odoo_job_costing_management.menu_job_managmt"
+        	sequence="5"
+        />
+
+        <menuitem
+        	name="Job costing Volumn Trends"
+        	id="menu_report_job_costing_tread_menu"
+        	parent="job_costing_volumn_trend.menu_job_costing_report_volumn_tread_menu"
+        	action="job_costing_volumn_trend.job_costing_volumn_trend_report_action_view"
+        />
+
+</odoo>
+ 
+
+        

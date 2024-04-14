@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020-2023 Sodexis
+     License OPL-1 (See LICENSE file for full copyright and licensing details). -->
+<odoo>
+
+    <record id="res_config_settings_view_form_inherit_sale_stock" model="ir.ui.view">
+        <field name="name">sale settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//block[@name='quotation_order_setting_container']"
+                position="inside"
+            >
+                <setting
+                    id="prepayment_test"
+                    string="Add Prepayment Test"
+                    help="Credit Limit"
+                >
+                    <field name="add_prepayment_test" />
+                </setting>
+                <setting
+                    id="stock_check_availability"
+                    string="Allow DO Check Availability even if Hold Delivery Till is selected"
+                    help="Stock Allow Check Availability"
+                >
+                    <field name="stock_allow_check_availability" />
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">Overdue days settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="45" />
+        <field name="inherit_id" ref="account.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//block[@id='pay_invoice_online_setting_container']"
+                position="inside"
+            >
+                <setting id="overdue_days_settings">
+                    <div class="mt16">
+                        <label for="x_no_of_overdue_days" />
+                        <field
+                            name="x_no_of_overdue_days"
+                            class="text-center"
+                            style="width: 5rem;"
+                        />
+                        <div class="d-inline-block">days</div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="amazon_report_log_tree" model="ir.ui.view">
+        <field name="name">amazon.report.log.tree</field>
+        <field name="model">amazon.report.log</field>
+        <field name="arch" type="xml">
+            <tree string="Amazon Report Log">
+                <field name="report_type_id" />
+                <field name="amz_marketplace_ids" widget="many2many_tags" />
+                <field name="report_id" />
+                <field name="requested_date" />
+                <field name="report_filename" invisible="1" />
+                <field name="report_file" filename="report_filename" readonly="1" />
+                <field name="report_date_from" />
+                <field name="report_date_to" />
+                <field name="user_id" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="amazon_report_log_form" model="ir.ui.view">
+        <field name="name">amazon.report.log.form</field>
+        <field name="model">amazon.report.log</field>
+        <field name="arch" type="xml">
+            <form string="Amazon Report Log">
+                <header>
+                    <button name="request_report" string="Request Report"
+                        type="object" class="oe_highlight"
+                        invisible="not account_id or not report_type_id or report_id" />
+                    <button name="check_report_status" string="Check Report Status" type="object"
+                        invisible="not report_id or state in ['CANCELLED','DONE']" />
+                    <button name="retrieve_report_document" string="Retrieve Report Document" type="object"
+                        invisible="not report_document_id or state != 'DONE'" />
+                    <button name="process_report" string="Process Report" type="object"
+                        invisible="not report_file or state != 'DONE'"/>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <group>
+                        <group>
+                            <field name="account_id" />
+                            <field name="report_type_id" />
+                            <field name="amz_marketplace_ids" widget="many2many_tags" />
+                            <field name="report_id" readonly="1" />
+                            <field name="requested_date" readonly="1" />
+                        </group>
+                        <group>
+                            <field name="report_document_id" readonly="1" />
+                            <field name="report_date_from" />
+                            <field name="report_date_to" />
+                            <field name="user_id" readonly="1" />
+                            <field name="report_filename" invisible="1" />
+                            <field name="report_file" filename="report_filename" readonly="1" />
+                        </group>
+                    </group>
+                <notebook>
+                </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="amazon_report_log_search_view" model="ir.ui.view">
+        <field name="name">Amazon Report Log Search</field>
+        <field name="model">amazon.report.log</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Amazon Report Log">
+                <field name="report_type_id" />
+                <field name="amz_marketplace_ids" />
+                <field name="report_id" />
+                <field name="report_filename" />
+                <group expand="0" string="Group By...">
+                    <filter name="report_type_id" string="Report Type" context="{'group_by':'report_type_id'}" />
+                    <filter name="requested_date" string="Requested Date" context="{'group_by':'requested_date'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="amazon_report_log_action" model="ir.actions.act_window">
+        <field name="name">Amazon Report Log</field>
+        <field name="res_model">amazon.report.log</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

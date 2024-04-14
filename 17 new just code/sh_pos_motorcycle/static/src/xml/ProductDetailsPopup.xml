@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="sh_pos_motorcycle.ProductDetailsPopup">
+        <!-- <div class="popup popup-text popup-med product-configurator-popup sh_shortcut_modal_dialog"> -->
+            <div class="popup popup-text product-configurator-popup sh_auto_part_popup">
+                <div class="modal-header">
+                    <h4 class="modal-title">Details</h4>
+                </div>
+                <div class="modal-body body touch-scrollable scrollable-y main_div_sh_payment">
+                    <table class='product_details_tbl' >
+                        <thead>
+                            <th class="sh_make_th">Make</th>
+                            <th class="sh_model_th">Model</th>
+                            <th class="sh_start_th">Start Year</th>
+                            <th class="sh_end_th">ENd Year</th>
+                        </thead>
+                        <tbody>
+                            <t t-foreach='props.details' t-as='detail' t-key="detail.id">
+                                <tr>
+                                    <td>
+                                        <t t-if="detail.make_id and pos.db.motorcycle_make_by_id and pos.db.motorcycle_make_by_id[detail.make_id] and pos.db.motorcycle_make_by_id[detail.make_id].display_name">
+                                            <t t-esc='pos.db.motorcycle_make_by_id[detail.make_id].display_name' />
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="detail.make_id and pos.db.motorcycle_model_by_id and pos.db.motorcycle_model_by_id[detail.mmodel_id] and pos.db.motorcycle_model_by_id[detail.mmodel_id].display_name">
+                                            <t t-esc='pos.db.motorcycle_model_by_id[detail.mmodel_id].display_name' />
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="detail.make_id and pos.db.motorcycle_year_by_id and pos.db.motorcycle_year_by_id[detail.year_id] and pos.db.motorcycle_year_by_id[detail.year_id].display_name">
+                                            <t t-esc='pos.db.motorcycle_year_by_id[detail.year_id].display_name' />
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="detail.make_id and pos.db.motorcycle_year_by_id and pos.db.motorcycle_year_by_id[detail.end_year_id] and pos.db.motorcycle_year_by_id[detail.end_year_id].display_name">
+                                            <t t-esc='pos.db.motorcycle_year_by_id[detail.end_year_id].display_name' />
+                                        </t>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        
+                    </table>
+                </div>
+                <footer class="footer footer-flex modal-footer sh_footer">
+                            <div class="button cancel btn btn-lg btn-secondary" t-on-click="cancel">
+                                Ok
+                            </div>
+                        </footer>
+            </div>
+        <!-- </div> -->
+    </t>
+</templates>

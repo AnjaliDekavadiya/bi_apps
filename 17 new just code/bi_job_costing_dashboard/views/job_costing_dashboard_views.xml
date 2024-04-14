@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="job_costing_kanban_dashboard" model="ir.ui.view">
+        <field name="name">project.project.kanban</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" create="false">
+                <field name="user_id" string="Project Manager"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_content oe_kanban_global_click o_kanban_get_form">
+                            <div class="oe_kanban_global_click o_has_icon">
+                                <div class="o_project_kanban_main">
+                                    <div class="o_kanban_card_content">
+                                        <div class="o_kanban_primary_left">
+                                            <div class="o_primary">
+                                                <strong>
+                                                    <field name="name" string="Project Name"/>
+                                                </strong>
+                                            </div>
+                                            <div class="o_primary">
+                                                <strong>
+                                                    <a name="%(base.action_attachment)d" type="action">Document</a>
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="o_kanban_card_content">
+                                        <button class="btn btn-primary" 
+                                        name="%(action_job_cost_sheet_button_form)d" 
+                                        type="action">New Job Cost Sheets</button>      
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="o_kanban_card_content">
+                                        <button class="btn btn-primary" name="%(action_job_order_button_form)d" 
+                                        type="action">New Job Orders</button>       
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            
+                            <div class="row" style="padding-top: 8px;">
+                                <div class="col-sm-6">
+                                    <div class="o_kanban_card_content">
+                                        <h6><a style="color:#712081;"
+                                        name="%(action_job_cost_sheet_tree_button)d" 
+                                        type="action">Job Cost Sheets</a></h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="o_kanban_card_content">
+                                       <h6><a style="color:#712081;"
+                                        name="%(action_job_order_tree_button)d"
+                                        type="action">Job Orders</a></h6>       
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row" style="padding-top: 8px;">
+                                <div class="col-sm-6">
+                                    <div class="o_kanban_card_content">
+                                        <h6><a style="color:#124E1E;"
+                                        name="%(hr_timesheet.act_hr_timesheet_line_by_project)d" 
+                                        type="action">TimeSheets</a></h6>       
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="o_kanban_card_content">
+                                        <h6><a style="color:#124E1E;"
+                                        name="%(action_job_cost_sheet_material_tree_button)d"
+                                        type="action">Material Cost lines</a></h6>       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top: 8px;">
+                                <div class="col-sm-6">
+                                    <div class="o_kanban_card_content">
+                                       <h6> <a style="color:#CC230C;"
+                                        name="%(action_view_invoice_project_day)d" 
+                                        type="action">Vendor Invoices</a> </h6>      
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="o_kanban_card_content">
+                                       <h6> <a style="color:#CC230C;"
+                                        name="%(action_job_cost_sheet_overhead_tree_button)d"
+                                        type="action">Overhead Cost lines</a>  </h6>    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top: 8px;">
+                                <div class="col-sm-6">
+                                    <div class="o_kanban_card_content">
+                                     <h6>  <a style="color:#3D360E;"
+                                        name="%(action_view_purchase_order_project_day)d" 
+                                        type="action">Purchase Orders</a> </h6> 
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="o_kanban_card_content">
+                                      <h6>  <a style="color:#3D360E;"
+                                        name="%(action_job_cost_sheet_labour_tree_button)d"
+                                        type="action">Labour Cost lines</a>  </h6>   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="job_costing_kanban_dashboard_actiion" model="ir.actions.act_window">
+        <field name="name">All Projects &amp; Jobs</field>
+        <field name="res_model">project.project</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="job_costing_kanban_dashboard"/>
+        <field name="usage">menu</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new project.
+            </p>
+        </field>
+    </record>
+
+    <menuitem action="job_costing_kanban_dashboard_actiion"
+            id="job_costing_kanban_dashboard_view"
+            parent="bi_odoo_job_costing_management.main_menu_job_estimates" sequence="0"
+            name="Dashboard"/>
+
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="helpdesk_support_form_view_inherit_reassign" model="ir.ui.view" >
+            <field name="name">helpdesk.support.form.inherit.reassign</field>
+            <field name="model">helpdesk.support</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_support_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/header" position="inside">
+                    <button name="%(helpdesk_support_reassign_action)d" 
+                            string="Reassign Ticket" type="action" class="oe_highlight" 
+                            invisible="is_close"
+                            groups="website_helpdesk_support_ticket.group_helpdesk_manager"
+                    />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+
+        <record id="hr_leave_view_gantt" model="ir.ui.view">
+            <field name="name">hr.leave.view.gantt</field>
+            <field name="model">hr.leave</field>
+            <field name="arch" type="xml">
+                <ganttview
+                    date_start = "date_from" 
+                    date_stop = "date_to"                 
+                    color ="color"
+                    round_dnd_dates = "false"
+                    default_group_by = "employee_id"
+                    default_scale = "month"
+                    task_type = "task_type"
+                    show_links = "true"
+                    progress = "progress"
+                    deadline = "date_to"
+                    link_model = "hr.leave.link"
+                    priority = 'task_priority'
+                />   
+            </field>
+        </record>
+
+        <record id="hr_leave_view_form_gantt_inherit_1" model="ir.ui.view">
+            <field name="name">Gantt Task inherit</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+            <field eval="0" name="priority"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="task_priority"/>
+                    <field name="task_type"/>
+                    <field name="progress"/>
+                    <field name="color" widget="color_picker"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_leave_view_form_gantt_inherit_2" model="ir.ui.view">
+            <field name="name">Gantt Task inherit</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+            <field eval="0" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <notebook>
+                        <page name="link_hr_leave" string="Link Leave">
+                            <field name="leave_link_ids" widget="one2many" context="{'show_attribute': False}">
+                                <tree string="Link Type" editable="bottom">
+                                    <field name="target_id"/>
+                                    <field name="link_type"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_holidays.hr_leave_action_my" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,kanban,activity,ganttview</field>
+        </record>
+        <record id="hr_holidays.hr_leave_action_action_approve_department" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,kanban,activity,ganttview</field>
+        </record>
+    </data>
+</odoo>

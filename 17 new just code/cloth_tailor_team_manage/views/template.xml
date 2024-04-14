@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_custom_tailor_request_details_inherit_team" inherit_id="cloth_tailor_management_odoo.portal_custom_tailor_request_details">
+        <xpath expr="//div[@t-if='tailor_request_id.fabric_color']" position="after">
+            <div class="col-12 col-md-6" t-if="tailor_request_id.tailor_team_id">
+                <strong>Team:</strong> <span t-field="tailor_request_id.tailor_team_id"/>
+            </div>
+            <div class="col-12 col-md-6" t-if="tailor_request_id.tailor_team_leader_id">
+                <strong>Team Leader:</strong> <span t-field="tailor_request_id.tailor_team_leader_id"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

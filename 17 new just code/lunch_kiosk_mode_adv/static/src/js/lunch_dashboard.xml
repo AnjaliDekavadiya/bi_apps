@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+
+    <t t-name="lunch_kiosk_mode_adv.LunchUser" owl="1">
+        <div t-attf-class="lunch_user pb-1 {{ kiosk_mode ? 'disabled' : '' }}">
+            <span t-if="!props.isManager" t-esc="props.username"/>
+            <Many2XAutocomplete
+                t-else=""
+                value="props.username"
+                resModel="'res.users'"
+                getDomain="getDomain"
+                fieldString="props.username"
+                activeActions="{}"
+                update.bind="props.onUpdateUser"
+            />
+        </div>
+    </t>
+
+</template>

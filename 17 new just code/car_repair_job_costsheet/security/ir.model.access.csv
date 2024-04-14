@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_carsheet_cost_line_project_manager,carsheet_cost_line_project_manager,car_repair_job_costsheet.model_car_jobcost_line,car_repair_maintenance_service.group_car_repair_user,1,1,1,1
+access_carsheet_cost_line_employee,carsheet_cost_line_employee,car_repair_job_costsheet.model_car_jobcost_line,base.group_user,1,0,0,0

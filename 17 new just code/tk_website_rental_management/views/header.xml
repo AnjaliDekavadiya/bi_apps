@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+    Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+-->
+<odoo>
+    <template id="techkhedut_header" inherit_id="website.layout" name="TechKhedut Header" active="True" priority="99">
+        <xpath expr="//header" position="replace">
+            <!-- header -->
+            <t t-set="display_footer" t-value="True" />
+            <t t-set="user_flag" t-value="True if request.env.user.has_group('base.group_user') else False" />
+            <t t-set="cities" t-value="request.env['property.details'].sudo().get_all_cities()" />
+            <header class="main-header">
+                <!-- logo-->
+                <t t-call="website.placeholder_header_brand">
+                    <t t-set="_link_class" t-valuef="logo-holder"/>
+                </t>
+                <!-- logo end-->
+                <!-- header-search_btn-->
+                <div class="header-search_btn show-search-button">
+                    <i class="fal fa-search"></i>
+                    <span>Search</span>
+                </div>
+                <!-- header-search_btn end-->
+                <t t-set="book_prop" t-value="request.env['property.bookmark'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)]).mapped('property_id') if request.env.user.id != request.env.ref('base.public_user').id else False" />
+                <div class="cart-btn show-header-modal" data-microtip-position="bottom"  role="tooltip"
+                     aria-label="Your Wishlist">
+                    <i class="fal fa-heart"></i>
+                    <span class="cart-counter green-bg"><t t-if="book_prop"><t t-esc="len(book_prop)" /> </t></span>
+                </div>
+                <t t-set="show_cart" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'website_sale'), ('state', '=', 'installed')])"/>
+                <div class="cart-btn"
+                     aria-label="Your Wishlist" t-if="show_cart">
+                     <li class="o_wsale_my_cart align-self-md-start">
+                        <a href="/shop/cart" class="text-white">
+                            <i class="fa fa-shopping-cart"/>
+                            <sup class="my_cart_quantity badge badge-primary" t-esc="website_sale_order and website_sale_order.cart_quantity or '0'" t-att-data-order-id="website_sale_order and website_sale_order.id or ''"/>
+                        </a>
+                     </li>
+                </div>
+
+                <div class="show-reg-form avatar-img" t-if="user_id._is_public()" data-srcav="/tk_website_rental_management/static/src/images/avatar/3.jpg">
+                    <a class="text-white" href="/web/login"><i
+                        class="fal fa-user"></i>Sign In</a>
+                </div>
+                <!-- header opt end-->
+                <div class="header-user-menu" t-if="not user_id._is_public()">
+                    <div class="header-user-name">
+                        <span class="dummy_class">
+                            <t t-set="avatar_source" t-value="image_data_uri(user_id.avatar_256)"/>
+                            <img t-att-src="avatar_source"
+                                 t-attf-class="rounded-circle o_object_fit_cover #{_avatar_class}" alt=""
+                                 loading="eager"/>
+                        </span>
+                        <p class="hide_user_name">
+                            <t t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
+                        </p>
+                    </div>
+                    <ul>
+                        <li><a href="/my/home">My Account</a></li>
+                        <li><a href="/web/session/logout?redirect=/">Log Out</a></li>
+                    </ul>
+                </div>
+                <!-- header opt end-->
+                <!-- lang-wrap-->
+                <div class="lang-wrap js_language_selector">
+                    <t t-set="active_lang" t-value="list(filter(lambda lg : lg[0] == lang, languages))[0]"/>
+                    <div class="show-lang">
+                        <span >
+                            <i class="fal fa-globe-europe"></i>
+                            <strong t-esc="active_lang[1].upper()" />
+                        </span>
+                        <i class="fa fa-caret-down arrlan"></i>
+                    </div>
+                    <ul class="lang-tooltip lang-action no-list-style head-lang">
+                        <t t-foreach="languages" t-as="lg">
+                            <li>
+                                <a t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"
+                                   t-attf-class="js_change_lang #{active_lang == lg and 'current-lan'}"
+                                   t-att-data-url_code="lg[1]">
+                                    <span t-if="not no_text" t-esc="lg[2].split('/').pop()"/>
+                                </a>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+                <!-- lang-wrap end-->
+                <!-- nav-button-wrap-->
+                <div class="nav-button-wrap color-bg">
+                    <div class="nav-button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <!-- nav-button-wrap end-->
+                <!--  navigation -->
+                <div class="nav-holder main-menu">
+                    <nav>
+                        <ul class="no-list-style">
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="tk_website_rental_management.sub_menu">
+                                    <t t-set="item_class" t-value="None"/>
+                                    <t t-set="link_class" t-value="None"/>
+                                </t>
+                            </t>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- navigation  end -->
+                <!-- header-search_container -->
+                <div class="header-search_container header-search vis-search">
+                    <div class="p-container container small-container">
+                        <div class="header-search-input-wrap fl-wrap">
+                            <!-- header-search-input -->
+                            <form method="get" action="/properties-list">
+                                <div class="header-search-input">
+                                    <label>
+                                        <i class="fal fa-keyboard"></i>
+                                    </label>
+                                    <input type="text" placeholder="What are you looking for ?" name="search_term" value=""/>
+                                </div>
+                                <!-- header-search-input end -->
+                                <!-- header-search-input -->
+                                <div class="header-search-input header-search_selectinpt">
+                                    <select data-placeholder="All Categories" name="categ" class="chosen-select no-radius no-search-select">
+                                        <option selected="selected">All Categories</option>
+                                        <option value="lands">Lands</option>
+                                        <option value="residential">Residential</option>
+                                        <option value="commercial">Commercial</option>
+                                        <option value="industrial">Industrials</option>
+                                    </select>
+                                </div>
+                                <!-- header-search-input end -->
+                                <!-- header-search-input -->
+                                <div class="header-search-input">
+                                    <select data-placeholder="City" name="cn" class="chosen-select">
+                                        <option selected="selected">All Cities</option>
+                                        <t t-foreach="cities" t-as="city">
+                                            <option t-att-value="city"><t t-esc="city" /></option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <!-- header-search-input end -->
+                                <button class="header-search-button green-bg" type="submit">
+                                    <i class="far fa-search"></i>
+                                    Search
+                                </button>
+                            </form>
+                        </div>
+                        <div class="header-search_close color-bg">
+                            <i class="fal fa-long-arrow-up"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- header-search_container  end -->
+                <!-- wishlist-wrap-->
+                <div class="header-modal novis_wishlist" t-if="book_prop">
+                    <!-- header-modal-container-->
+                    <div class="header-modal-container scrollbar-inner fl-wrap" data-simplebar="data-simplebar">
+                        <!--widget-posts-->
+                        <div class="widget-posts  fl-wrap">
+                            <ul class="no-list-style" t-if="book_prop">
+                                <t t-foreach="book_prop" t-as="ll">
+                                    <li>
+                                        <div class="widget-posts-img">
+                                            <a t-attf-href="/property-details/{{slug(ll)}}"><img t-att-src="image_data_uri(ll.image) if ll.image else '/tk_website_rental_management/static/src/images/property-placeholder.jpg'" alt="ll.landlord_id.name" /></a>
+                                        </div>
+                                        <div class="widget-posts-descr">
+                                            <h4><a t-attf-href="/property-details/{{slug(ll)}}"><t t-esc="ll.name" /></a></h4>
+                                            <div class="geodir-category-location fl-wrap"><a t-attf-href="https://maps.google.com/maps?q=loc:#{ll.latitude},#{ll.longitude}" target="_blank"><i class="fas fa-map-marker-alt"></i> <t t-esc="ll.street" />, <t t-if="ll.city_id"><t t-esc="ll.city_id.name" />,</t> <t t-esc="ll.state_id.code" />, <t t-esc="ll.country_id.code" /></a></div>
+                                            <div class="clear-wishlist" t-att-data-access="ll.access_token">
+                                                <i class="fal fa-times-circle"></i>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                        <!-- widget-posts end-->
+                    </div>
+                    <!-- header-modal-container end-->
+                    <div class="header-modal-top fl-wrap">
+                        <h4>Your Wishlist :
+                            <span>
+                                <strong></strong>
+                                Properties
+                            </span>
+                        </h4>
+                        <div class="close-header-modal">
+                            <i class="far fa-times"></i>
+                        </div>
+                    </div>
+                </div>
+                <!--wishlist-wrap end -->
+            </header>
+            <!-- header end-->
+        </xpath>
+    </template>
+    <template id="sub_menu" name="Submenu">
+        <t t-set="show_dropdown" t-value="(submenu.is_mega_menu and submenu.is_visible) or submenu.child_id.filtered(lambda menu: menu.is_visible)"/>
+        <li t-if="submenu.is_visible and not (submenu.child_id or submenu.is_mega_menu)" class="">
+            <span>
+                <a t-att-href="submenu._clean_url()"
+                    t-attf-class="#{link_class or ''} #{submenu._is_active() and 'active'}"
+                    role="menuitem"
+                    t-ignore="true"
+                    t-att-target="'_blank' if submenu.new_window else None">
+                    <t t-esc="submenu.name"/>
+                </a>
+            </span>
+        </li>
+        <li t-elif="show_dropdown" t-attf-class="#{item_class or ''} dropdown #{submenu.is_mega_menu and 'position-static'}">
+            <a t-attf-class="#{link_class or ''} dropdown-toggle #{submenu.is_mega_menu and 'o_mega_menu_toggle'} #{submenu._is_active() and 'active'} #{dropdown_toggler_classes}"
+               data-bs-toggle="dropdown" href="#" t-att-data-bs-display="'static' if submenu.is_mega_menu else None">
+                <span t-field="submenu.name"/>
+            </a>
+            <div t-if="submenu.is_mega_menu"
+                 t-attf-class="dropdown-menu o_mega_menu #{submenu.mega_menu_classes}"
+                 data-name="Mega Menu"
+                 t-field="submenu.mega_menu_content"/>
+            <ul t-else="" t-attf-class="dropdown-menu #{dropdown_menu_classes}" role="menu">
+                <t t-foreach="submenu.child_id" t-as="submenu">
+                    <t t-call="website.submenu">
+                        <t t-set="item_class" t-value="None"/>
+                        <t t-set="link_class" t-valuef="dropdown-item"/>
+                    </t>
+                </t>
+            </ul>
+        </li>
+	</template>
+    <template id="techkhedut_header_switches" inherit_id="website.snippet_options">
+        <xpath expr="//div/we-select[@data-variable='header-template']" position="inside">
+            <we-button title="Property Website: Header"
+                data-name="techkhedut_header"
+                data-customize-website-views="tk_website_rental_management.techkhedut_header"
+                data-customize-website-variable="'techkhedut_header'"
+                data-img="/tk_website_rental_management/static/src/img/header-1.png"/>
+        </xpath>
+    </template>
+</odoo>

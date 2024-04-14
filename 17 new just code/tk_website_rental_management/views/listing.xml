@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+    Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+-->
+<odoo>
+    <data>
+        <template id="property_list" name="Listing">
+            <t t-call="website.layout">
+                <div id="wrapper">
+                    <!-- content-->
+                    <div class="content">
+                        <!--  section  -->
+                        <section class="p-section parallax-section single-par" data-scrollax-parent="true">
+                            <div class="bg par-elem"  data-bg="/tk_website_rental_management/static/src/images/bg/04.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+                            <div class="overlay op7"></div>
+                            <div class="p-container container">
+                                <div class="section-title center-align big-title">
+                                    <h2>
+                                        <t t-if="city or list_type">
+                                            <span t-if="city"><t t-esc="city.name" />&#160;Listings</span>
+                                            <span t-if="list_type" class="text-capitalize">
+                                                <t t-esc="list_type" />&#160;Listing
+                                            </span>
+                                        </t>
+                                        <span t-else="">Properties</span>
+                                    </h2>
+                                    <span class="section-separator"></span>
+                                    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec tincidunt arcu, sit amet fermentum sem.</h4>
+                                </div>
+                            </div>
+                            <div class="header-sec-link">
+                                <a href="#sec1" class="custom-scroll-link"><i class="fal fa-angle-double-down"></i></a>
+                            </div>
+                        </section>
+                        <section class="oe_structure oe_empty"></section>
+                        <!--  section end-->
+                        <section class="p-section gray-bg small-padding no-top-padding-sec" id="sec1">
+                            <div class="p-container container">
+                                <div class="breadcrumbs inline-breadcrumbs fl-wrap block-breadcrumbs">
+                                    <a href="/">Home</a><a href="properties-list">Listings</a><span t-if="city" t-esc="city.name" />
+                                </div>
+                                <div class="mob-nav-content-btn  color2-bg show-list-wrap-search ntm fl-wrap"><i class="fal fa-filter"></i>  Filters</div>
+                                <div class="fl-wrap">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class=" fl-wrap lws_mobile  tabs-act block_box">
+                                                <div class="filter-sidebar-header fl-wrap" id="filters-column">
+                                                    <ul class="tabs-menu fl-wrap no-list-style">
+                                                        <li class="current"><a href="#filters-search"> <i class="fal fa-sliders-h"></i> Filters </a></li>
+                                                    </ul>
+                                                </div>
+                                                <t t-call="tk_website_rental_management.property_filters" />
+                                            </div>
+                                            <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="#filters-column">Back to filters <i class="fas fa-caret-up"></i></a>
+                                        </div>
+                                        <div class="col-md-8 col-sm-12">
+                                            <div class="list-main-wrap-header fl-wrap block_box no-vis-shadow">
+                                                <div class="list-main-wrap-title">
+                                                </div>
+                                                <div class="list-main-wrap-opt">
+                                                    <t t-call="tk_website_rental_management.sorting_filters" />
+                                                    <div class="grid-opt">
+                                                        <ul class="no-list-style">
+                                                            <li class="grid-opt_act"><span class="two-col-grid act-grid-opt tolt" data-microtip-position="bottom" data-tooltip="Grid View"><i class="fal fa-th"></i></span></li>
+                                                            <li class="grid-opt_act"><span class="one-col-grid tolt" data-microtip-position="bottom" data-tooltip="List View"><i class="fal fa-list"></i></span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <t t-set="logged_user" t-value="request.env.user.id != request.env.ref('base.public_user').id" />
+                                            <div class="listing-item-container init-grid-items fl-wrap nocolumn-lic" t-if="listing">
+                                                <t t-foreach="listing" t-as="ll">
+                                                    <div class="listing-item">
+                                                        <article class="geodir-category-listing fl-wrap">
+                                                            <div class="geodir-category-img">
+                                                                <div t-attf-class="geodir-js-favorite_btn #{' liked' if ll.id in book_properties else ''}" t-att-data-access="ll.access_token" t-if="logged_user"><i class="fal fa-heart"></i></div>
+                                                                <a t-attf-href="/property-details/#{slug(ll)}" class="geodir-category-img-wrap fl-wrap">
+                                                                <img class="popular_property" t-att-src="image_data_uri(ll.image) if ll.image else '/tk_website_rental_management/static/src/images/property-placeholder.jpg'" t-att-alt="ll.name" />
+                                                                </a>
+                                                                <t t-if="theme_config and theme_config.display_landlord">
+                                                                    <div class="listing-avatar"><a href="#"><img t-att-src="image_data_uri(ll.landlord_id.sudo().image_1920) if ll.landlord_id.sudo().image_1920 else '/tk_website_rental_management/static/src/images/user.png'" t-att-alt="ll.landlord_id.name" /></a>
+                                                                        <span class="avatar-tooltip">Added By  <strong><t t-esc="ll.landlord_id.name"  /></strong></span>
+                                                                    </div>
+                                                                </t>
+                                                                <div class="geodir_status_date gsd_open">Available</div>
+                                                                <div class="geodir-category-opt">
+                                                                    <div class="listing-rating-count-wrap">
+                                                                        <div class="review-score"><t t-if="ll.sale_lease == 'for_sale'">Sale</t><t t-else="">Rent</t></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                                <div class="geodir-category-content-title fl-wrap">
+                                                                    <div class="geodir-category-content-title-item">
+                                                                        <h3 class="title-sin_map"><a t-attf-href="/property-details/#{slug(ll)}"><t t-esc="ll.name" /></a><span t-if="ll.is_verify" class="verified-badge"><i class="fal fa-check"></i></span></h3>
+                                                                        <div class="geodir-category-location fl-wrap"><a t-attf-href="https://maps.google.com/maps?q=loc:#{ll.latitude},#{ll.longitude}" target="_blank" ><i class="fas fa-map-marker-alt"></i> <t t-if="ll.street"><t t-esc="ll.street" />, </t> <t t-if="ll.street2"><t t-esc="ll.street2" />, </t><t t-if="ll.city_id"><t t-esc="ll.city_id.name" />,</t> <t t-if="ll.state_id and ll.state_id.code"> <t t-esc="ll.state_id.code" />, </t> <t t-esc="ll.country_id.code" /></a></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="geodir-category-text fl-wrap">
+                                                                    <p class="small-text" t-esc="ll.short_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                                                    <div class="facilities-list fl-wrap">
+                                                                        <div class="facilities-list-title p-price">
+                                                                            <t t-if="ll.sale_lease == 'for_sale'">
+                                                                                <t t-esc="ll.price" t-options='{"widget": "monetary", "display_currency": ll.currency_id}' />
+                                                                            </t>
+                                                                            <t t-else="">
+                                                                                <t t-esc="ll.price" t-options='{"widget": "monetary", "display_currency": ll.currency_id}' /> <t t-if="ll.rent_unit">/ <t t-esc="ll.rent_unit" /></t>
+                                                                            </t>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="facilities-list fl-wrap">
+                                                                        <div class="facilities-list-title">Facilities : </div>
+                                                                        <ul class="no-list-style">
+                                                                            <li class="tolt" data-microtip-position="top" data-tooltip="Internet Available" t-if="ll.web_gym"><i class="fal fa-dumbbell"></i></li>
+                                                                            <li class="tolt" data-microtip-position="top" data-tooltip="Internet Available" t-if="ll.web_wifi"><i class="fal fa-wifi"></i></li>
+                                                                            <li class="tolt" data-microtip-position="top" data-tooltip="Parking Available" t-if="ll.web_parking"><i class="fal fa-parking"></i></li>
+                                                                            <li class="tolt" data-microtip-position="top" data-tooltip="Air Conditioned" t-if="ll.web_air_condition"><i class="fal fa-cloud"></i></li>
+                                                                            <li class="tolt" data-microtip-position="top" data-tooltip="Semi Furnished" t-if="ll.web_semi_furnish"><i class="fal fa-couch"></i></li>
+                                                                            <li class="tolt" data-microtip-position="top" data-tooltip="Full Furnished" t-if="ll.web_full_furnish"><i class="fal fa-loveseat"></i></li>
+                                                                            <li class="tolt" data-microtip-position="top" data-tooltip="Security" t-if="ll.web_security"><i class="fal fa-cctv"></i></li>
+                                                                            <li class="tolt" data-microtip-position="top" data-tooltip="Laundry Room" t-if="ll.web_laundry"><i class="fal fa-washer"></i></li>
+                                                                            <t t-foreach="ll.website_amenity_ids" t-as="dm" t-if="ll.website_amenity_ids">
+                                                                                <li class="tolt" data-microtip-position="top" t-att-data-tooltip="dm.title" ><i t-attf-class="fal #{dm.fa_class}"></i></li>
+                                                                            </t>
+                                                                            <li class="tolt" data-microtip-position="top" data-tooltip="Not Available" t-if="not ll.web_equip_kitchen and not ll.web_wifi and not ll.web_parking and not ll.web_air_condition and not ll.web_semi_furnish and not ll.web_full_furnish and not ll.web_security and not ll.web_laundry and not ll.website_amenity_ids">
+                                                                                <i class="fal fa-ban"></i>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="geodir-category-footer fl-wrap">
+                                                                    <t t-if="ll.type == 'residential'">
+                                                                        <a class="listing-item-category-wrap">
+                                                                            <div class="listing-item-category green-gradient-bg "><i class="fal fa-building"></i></div>
+                                                                            <span t-esc="ll.property_subtype_id.name"/>
+                                                                        </a>
+                                                                    </t>
+                                                                    <t t-if="ll.type == 'land'">
+                                                                        <a class="listing-item-category-wrap">
+                                                                            <div class="listing-item-category purp-gradient-bg"><i class="fal fa-map"></i></div>
+                                                                            <span t-esc="ll.property_subtype_id.name"/>
+                                                                        </a>
+                                                                    </t>
+                                                                    <t t-if="ll.type == 'commercial'">
+                                                                        <a class="listing-item-category-wrap">
+                                                                            <div class="listing-item-category coral-bg"><i class="fal fa-dumpster"></i></div>
+                                                                            <span t-esc="ll.property_subtype_id.name"/>
+                                                                        </a>
+                                                                    </t>
+                                                                    <t t-if="ll.type == 'industrial'">
+                                                                        <a class="listing-item-category-wrap">
+                                                                            <div class="listing-item-category yellow-bg"><i class="fal fa-industry"></i></div>
+                                                                            <span t-esc="ll.property_subtype_id.name"/>
+                                                                        </a>
+                                                                    </t>
+                                                                    <div class="geodir-opt-list">
+                                                                        <ul class="no-list-style">
+                                                                            <li><a t-attf-href="https://www.google.com/maps?q=loc:#{ll.latitude},#{ll.longitude}" class="single-map-item" target="_blank" t-if="ll.latitude and ll.longitude" t-att-data-newlatitude="ll.latitude" t-att-data-newlongitude="ll.longitude"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span> </a></li>
+                                                                            <li t-if="ll.property_images_ids">
+                                                                                <t t-set="d_gal" t-value="[]" />
+                                                                                <t t-foreach="ll.property_images_ids" t-as="img">
+                                                                                    <t t-set="d_gal" t-value="d_gal + [{'src': image_data_uri(img.image)}]" />
+                                                                                </t>
+                                                                                <div class="dynamic-gal gdop-list-link" t-att-data-dynamicPath="str(d_gal)"><i class="fal fa-search-plus"></i><span class="geodir-opt-tooltip">Gallery</span></div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="geodir-category_contacts">
+                                                                        <div class="close_gcc"><i class="fal fa-times-circle"></i></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </t>
+                                                <t t-call="tk_website_rental_management.pager" />
+                                            </div>
+                                            <div class="listing-item-container init-grid-items fl-wrap nocolumn-lic" t-else="">
+                                                <div class="section-title">
+                                                    <h2>No Property list found.</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="limit-box fl-wrap"></div>
+                        <section class="oe_structure oe_empty"></section>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <template id="pager" name="Pager">
+            <div t-if="pager['page_count'] > 1" t-attf-class="pagination fwmpag">
+                <a t-att-href="pager['page_previous']['url'] if pager['page']['num'] != 1 else None" t-attf-class="prevposts-link #{'disabled' if pager['page']['num'] == 1 else ''}"><i class="fas fa-caret-left"></i><span>Prev</span></a>
+                <t t-foreach="pager['pages']" t-as="page">
+                    <a t-att-href="page['url']" t-attf-class="#{'current-page' if page['num'] == pager['page']['num'] else ''}" t-out="page['num']"/>
+                </t>
+                <a t-att-href="pager['page_next']['url'] if pager['page']['num'] != pager['page_count'] else None" t-attf-class="nextposts-link #{'disabled' if pager['page']['num'] == pager['page_count'] else ''}"><span>Next</span><i class="fas fa-caret-right"></i></a>
+            </div>
+        </template>
+        <template id="amenities_filters" name="Amenities">
+            <div class="listsearch-input-item clact">
+                <div class=" fl-wrap filter-tags">
+                    <ul class="no-list-style">
+                        <li class="gym" t-if="request.params.get('facility') and 'gym' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-gym" type="checkbox" name="facility" value="gym" checked="checked" />
+                            <label for="check-gym">Fitness Gym</label>
+                        </li>
+                        <li class="gym" t-else="">
+                            <input class="facility_filter" id="check-gym" type="checkbox" value="gym" />
+                            <label for="check-gym">Fitness Gym</label>
+                        </li>
+
+                        <li class="wifi" t-if="request.params.get('facility') and 'wifi' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-wifi" type="checkbox" name="facility" value="wifi" checked="checked" />
+                            <label for="check-wifi">WiFi</label>
+                        </li>
+                        <li class="wifi" t-else="">
+                            <input class="facility_filter" id="check-wifi" type="checkbox" value="wifi" />
+                            <label for="check-wifi">WiFi</label>
+                        </li>
+
+                        <li class="parking" t-if="request.params.get('facility') and 'parking' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-parking" type="checkbox" value="parking" name="facility" checked="checked" />
+                            <label for="check-parking">Parking</label>
+                        </li>
+                        <li class="parking" t-else="">
+                            <input class="facility_filter" id="check-parking" type="checkbox" value="parking" />
+                            <label for="check-parking">Parking</label>
+                        </li>
+
+                        <li class="pool" t-if="request.params.get('facility') and 'pool' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-pool" type="checkbox" value="pool" name="facility" checked="checked"/>
+                            <label for="check-pool">Swimming Pool</label>
+                        </li>
+                        <li class="pool" t-else="">
+                            <input class="facility_filter" id="check-pool" type="checkbox" value="pool" />
+                            <label for="check-pool">Swimming Pool</label>
+                        </li>
+
+                        <li class="security" t-if="request.params.get('facility') and 'security' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-security" type="checkbox" value="security" name="facility" checked="checked" />
+                            <label for="check-security">Security</label>
+                        </li>
+                        <li class="security" t-else="">
+                            <input class="facility_filter" id="check-security" type="checkbox" value="security" />
+                            <label for="check-security">Security</label>
+                        </li>
+
+                        <li class="laundry" t-if="request.params.get('facility') and 'laundry' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-laundry" type="checkbox" value="laundry" name="facility" checked="checked" />
+                            <label for="check-laundry">Laundry</label>
+                        </li>
+                        <li class="laundry" t-else="">
+                            <input class="facility_filter" id="check-laundry" type="checkbox" value="laundry" />
+                            <label for="check-laundry">Laundry</label>
+                        </li>
+
+                        <li class="eq_kitchen" t-if="request.params.get('facility') and 'kitchen' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-eq-kitchen" type="checkbox" value="kitchen" name="facility" checked="checked" />
+                            <label for="check-eq-kitchen">Equipped Kitchen</label>
+                        </li>
+                        <li class="eq_kitchen" t-else="">
+                            <input class="facility_filter" id="check-eq-kitchen" type="checkbox" value="kitchen" />
+                            <label for="check-eq-kitchen">Equipped Kitchen</label>
+                        </li>
+
+                        <li class="air_condition" t-if="request.params.get('facility') and 'air' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-air-condition" type="checkbox" value="air" name="facility" checked="checked" />
+                            <label for="check-air-condition">Air Conditioned</label>
+                        </li>
+                        <li class="air_condition" t-else="">
+                            <input class="facility_filter" id="check-air-condition" type="checkbox" value="air" />
+                            <label for="check-air-condition">Air Conditioned</label>
+                        </li>
+
+                        <li class="s_furnish" t-if="request.params.get('facility') and 'sfur' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-semi-furnish" type="checkbox" value="sfur" name="facility" checked="checked" />
+                            <label for="check-semi-furnish">Semi Furnished</label>
+                        </li>
+                        <li class="s_furnish" t-else="">
+                            <input class="facility_filter" id="check-semi-furnish" type="checkbox" value="sfur" />
+                            <label for="check-semi-furnish">Semi Furnished</label>
+                        </li>
+
+                        <li class="f_furnish" t-if="request.params.get('facility') and 'fuf' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-full-furnish" type="checkbox" value="fuf" name="facility" checked="checked" />
+                            <label for="check-full-furnish">Full Furnished</label>
+                        </li>
+                        <li class="f_furnish" t-else="">
+                            <input class="facility_filter" id="check-full-furnish" type="checkbox" value="fuf" />
+                            <label for="check-full-furnish">Full Furnished</label>
+                        </li>
+
+                        <li class="alarm" t-if="request.params.get('facility') and 'alarm' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-alarm" type="checkbox" value="alarm" name="facility" checked="checked" />
+                            <label for="check-alarm">Safety Alarm</label>
+                        </li>
+                        <li class="alarm" t-else="">
+                            <input class="facility_filter" id="check-alarm" type="checkbox" value="alarm" />
+                            <label for="check-alarm">Safety Alarm</label>
+                        </li>
+
+                        <li class="wc" t-if="request.params.get('facility') and 'window' in request.params.get('facility')">
+                            <input class="facility_filter_checked" id="check-wc" type="checkbox" value="window" name="facility" checked="checked" />
+                            <label for="check-wc">Window Covering</label>
+                        </li>
+                        <li class="wc" t-else="">
+                            <input class="facility_filter" id="check-wc" type="checkbox" value="window" />
+                            <label for="check-wc">Window Covering</label>
+                        </li>
+                        <input type="hidden" name="da" t-att-value="request.params.get('da')" t-if="request.params.get('da')" id="da"/>
+                        <input type="hidden" name="da" t-else="" id="da"/>
+                        <t t-foreach="da_ids" t-as="da">
+                            <li>
+                                <input t-attf-id="da-#{da.id}" t-if="da_list and da.id in da_list" t-att-data-id="da.id" class="extra_facility_filter_checked da" type="checkbox" t-attf-value="0#{da.id}" checked="checked" />
+                                <input t-attf-id="da-#{da.id}" t-else="" t-att-data-id="da.id" class="extra_facility_filter da" type="checkbox" t-attf-value="0#{da.id}"  />
+                                <label t-attf-for="da-#{da.id}"><t t-esc="da.title" /></label>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+            </div>
+        </template>
+        <template id="property_filters" name="Listing Filters">
+            <div class="scrl-content filter-sidebar fs-viscon">
+                <div class="tabs-container fl-wrap">
+                    <div class="tab">
+                        <div id="filters-search" class="tab-content  first-tab">
+                            <form method="GET" class="search-filters" t-att-action="request.httprequest.full_path">
+                                <div class="listsearch-input-item location autocomplete-container">
+                                    <span class="iconn-dec"><i class="far fa-keyboard"></i></span>
+                                    <input type="text" placeholder="What you are looking for ?" name="search_term" t-attf-value="#{request.params.get('search_term') if request.params.get('search_term') else '' }" class="autocomplete-input" id="autocompleteid3"/>
+                                </div>
+                                <div class="listsearch-input-item w49 mr4">
+                                    <select data-placeholder="Any Status" name="st" class="status_filter chosen-select no-search-select">
+                                        <t t-if="not request.params.get('st') or (request.params.get('st') and request.params.get('st') not in ['rent', 'sale'])">
+                                            <option selected="selected">Any Status</option>
+                                            <option value="rent">For Rent</option>
+                                            <option value="sale">For Sale</option>
+                                        </t>
+                                        <t t-if="request.params.get('st') and request.params.get('st') == 'rent'">
+                                            <option>Any Status</option>
+                                            <option value="rent" selected="selected">For Rent</option>
+                                            <option value="sale">For Sale</option>
+                                        </t>
+                                        <t t-if="request.params.get('st') and request.params.get('st') == 'sale'">
+                                            <option>Any Status</option>
+                                            <option value="rent">For Rent</option>
+                                            <option value="sale" selected="selected">For Sale</option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="listsearch-input-item w49">
+                                    <select data-placeholder="City/Location" name="cn" class="city_filter chosen-select">
+                                        <option selected="selected" t-if="not request.params.get('cn') or request.params.get('cn') == 'All Cities'">All Cities</option>
+                                        <option t-else="">All Cities</option>
+                                        <t t-foreach="cities" t-as="city">
+                                            <t t-if="request.params.get('cn') and request.params.get('cn') == city">
+                                                <option t-att-value="city" selected="selected" ><t t-esc="city" /></option>
+                                            </t>
+                                            <t t-else="">
+                                                <option t-att-value="city"><t t-esc="city" /></option>
+                                            </t>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="listsearch-input-item ">
+                                    <select data-placeholder="Categories" name="categ" id="categ" class="category_filter chosen-select no-search-select">
+                                        <t t-if="not request.params.get('categ') or (request.params.get('categ') and request.params.get('categ') not in ['lands', 'residential', 'commercial', 'industrial'])">
+                                            <option selected="selected">All Categories</option>
+                                            <option value="lands">Lands</option>
+                                            <option value="residential">Residential</option>
+                                            <option value="commercial">Commercial</option>
+                                            <option value="industrial">Industrials</option>
+                                        </t>
+                                        <t t-if="request.params.get('categ') and request.params.get('categ') == 'lands'">
+                                            <option>All Categories</option>
+                                            <option value="lands" selected="selected">Lands</option>
+                                            <option value="residential">Residential</option>
+                                            <option value="commercial">Commercial</option>
+                                            <option value="industrial">Industrials</option>
+                                        </t>
+                                        <t t-if="request.params.get('categ') and request.params.get('categ') == 'residential'">
+                                            <option>All Categories</option>
+                                            <option value="lands">Lands</option>
+                                            <option value="residential" selected="selected">Residential</option>
+                                            <option value="commercial">Commercial</option>
+                                            <option value="industrial">Industrials</option>
+                                        </t>
+                                        <t t-if="request.params.get('categ') and request.params.get('categ') == 'commercial'">
+                                            <option>All Categories</option>
+                                            <option value="lands">Lands</option>
+                                            <option value="residential">Residential</option>
+                                            <option value="commercial" selected="selected">Commercial</option>
+                                            <option value="industrial">Industrials</option>
+                                        </t>
+                                        <t t-if="request.params.get('categ') and request.params.get('categ') == 'industrial'">
+                                            <option>All Categories</option>
+                                            <option value="lands">Lands</option>
+                                            <option value="residential">Residential</option>
+                                            <option value="commercial">Commercial</option>
+                                            <option value="industrial" selected="selected">Industrials</option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div t-attf-class="listsearch-input-item #{'d-none' if not request.params.get('categ') or not categories else '' }" >
+                                    <select data-placeholder="All Sub Categories" name="dc" class="sub_category_filter chosen-select">
+                                        <option selected="selected" t-if="not request.params.get('dc') or request.params.get('dc') == 'All Sub Categories'">All Sub Categories</option>
+                                        <option t-else="">All Sub Categories</option>
+                                        <t t-foreach="categories" t-as="category">
+                                            <t t-if="request.params.get('dc') and request.params.get('dc') == ('0' + str(category.id))">
+                                                <option t-attf-value="0#{category.id}" selected="selected"> <t t-esc="category.name"/> </option>
+                                            </t>
+                                            <t t-else="">
+                                                <option t-attf-value="0#{category.id}"><t t-esc="category.name" /></option>
+                                            </t>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="listsearch-input-item">
+                                    <div class="price-rage-wrap fl-wrap">
+                                        <input type="hidden" id="price_start" />
+                                        <input type="hidden" id="price_end" />
+                                        <div class="price-rage-wrap-title"><i class="fal fa-hand-holding-usd"></i> Price :</div>
+                                        <div class="price-rage-item fl-wrap">
+                                            <input type="range" class="price-range" t-att-data-min="theme_config.price_start" t-att-data-max="theme_config.price_end" id="price-range" data-step="1" value="1" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="listsearch-input-item area-filter" t-if="request.params.get('categ') and request.params.get('categ') != 'All Categories'">
+                                    <div class="price-rage-wrap fl-wrap">
+                                        <input type="hidden" id="area_start" />
+                                        <input type="hidden" id="area_end" />
+                                        <div class="price-rage-wrap-title"><i class="fal fa-hand-holding-usd"></i> Area :</div>
+                                        <div class="price-rage-item fl-wrap">
+                                            <input type="range" class="area-range" t-att-data-min="theme_config.area_start" t-att-data-max="theme_config.area_end" id="area-range"  data-step="1" value="1" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="listsearch-input-item w49 mr4 rooms" t-if="request.params.get('categ') and request.params.get('categ') in ['residential']">
+                                    <select data-placeholder="Rooms" id="rooms" name="rooms" class="bedrooms_filter chosen-select">
+                                        <option selected="selected" t-if="not request.params.get('rooms') or request.params.get('rooms') == 'Bedrooms'">Bedrooms</option>
+                                        <option t-else="">Bedrooms</option>
+                                        <t t-foreach="range(1,11)" t-as="r">
+                                             <t t-if="request.params.get('rooms') and request.params.get('rooms') == str(r)">
+                                                <option t-att-value="r" selected="selected" ><t t-esc="r" /></option>
+                                            </t>
+                                            <t t-else="">
+                                                <option t-att-value="r"><t t-esc="r" /></option>
+                                            </t>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="listsearch-input-item w49 mr4 rooms d-none" t-else="">
+                                    <select data-placeholder="Rooms" id="rooms" class="bedrooms_filter chosen-select">
+                                        <option selected="selected">Bedrooms</option>
+                                        <t t-foreach="range(1,11)" t-as="r">
+                                            <option t-att-value="r"><t t-esc="r" /></option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="listsearch-input-item w49 bathrooms" t-if="request.params.get('categ') and request.params.get('categ') in ['residential', 'commercial']" >
+                                    <select data-placeholder="Beds" id="bathroom" name="bathrooms" class="bathrooms_filter chosen-select">
+                                        <option selected="selected" t-if="not request.params.get('bathrooms') or request.params.get('bathrooms') == 'Bathrooms'">Bathrooms</option>
+                                        <option t-else="">Bathrooms</option>
+                                        <t t-foreach="range(1,11)" t-as="r">
+                                             <t t-if="request.params.get('bathrooms') and request.params.get('bathrooms') == str(r)">
+                                                <option t-att-value="r" selected="selected" ><t t-esc="r" /></option>
+                                            </t>
+                                            <t t-else="">
+                                                <option t-att-value="r"><t t-esc="r" /></option>
+                                            </t>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="listsearch-input-item w49 bathrooms d-none" t-else="" >
+                                    <select data-placeholder="Beds" id="bathroom" class="bathrooms_filter chosen-select">
+                                        <option selected="selected">Bathrooms</option>
+                                        <t t-foreach="range(1,11)" t-as="r">
+                                            <option t-att-value="r"><t t-esc="r" /></option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="listsearch-input-item w49 floor" t-if="request.params.get('categ') and request.params.get('categ') in ['residential', 'houses', 'commercial']">
+                                    <select data-placeholder="Floors" id="floor" class="floor_filter chosen-select">
+                                        <option selected="selected" t-if="not request.params.get('floor') or request.params.get('floor') == 'Floors'">Floors</option>
+                                        <option t-else="">Floors</option>
+                                        <t t-foreach="range(1,11)" t-as="r">
+                                             <t t-if="request.params.get('floor') and request.params.get('floor') == str(r)">
+                                                <option t-att-value="r" selected="selected" ><t t-esc="r" /></option>
+                                            </t>
+                                            <t t-else="">
+                                                <option t-att-value="r"><t t-esc="r" /></option>
+                                            </t>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="listsearch-input-item w49 floor d-none" t-else="">
+                                    <select data-placeholder="Floors" id="floor" class="floor_filter chosen-select">
+                                        <option selected="selected">Floors</option>
+                                        <t t-foreach="range(1,11)" t-as="r">
+                                            <option t-att-value="r"><t t-esc="r" /></option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <t t-call="tk_website_rental_management.amenities_filters" />
+                                <div class="listsearch-input-item w49 mr4">
+                                    <button class="header-search-button color-bg"><i class="far fa-search"></i><span>Search</span></button>
+                                </div>
+                            </form>
+                            <a href="/properties-list" class="clear-filter-btn"><i class="far fa-redo"></i> Reset Filters</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="sorting_filters" name="Sorting Filters">
+            <div class="price-opt">
+                <span class="price-opt-title">Sort by:</span>
+                <div class="listsearch-input-item mr16">
+                    <select class="chosen-select no-search-select" id="sort_type">
+                        <t t-if="request.params.get('property_type') and request.params.get('property_type')=='rent'">
+                            <option disabled="disabled">Property Type</option>
+                            <option value="rent" selected="selected">Property for Rent</option>
+                            <option value="sale">Property for Sale</option>
+                        </t>
+                        <t t-if="request.params.get('property_type') and request.params.get('property_type')=='sale'">
+                            <option disabled="disabled">Property Type</option>
+                            <option value="rent">Property for Rent</option>
+                            <option value="sale" selected="selected">Property for Sale</option>
+                        </t>
+                        <t t-if="not request.params.get('property_type') or request.params.get('property_type') not in ['sale', 'rent']">
+                            <option selected="selected" disabled="disabled">Property Type</option>
+                            <option value="rent">Property for Rent</option>
+                            <option value="sale">Property for Sale</option>
+                        </t>
+                    </select>
+                </div>
+                <div class="listsearch-input-item" t-if="request.params.get('property_type') and request.params.get('property_type') in ['sale', 'rent']">
+                    <select class="chosen-select no-search-select" id="price_type">
+                        <t t-if="not request.params.get('price_order') or request.params.get('price_order') not in ['lh', 'hl']">
+                            <option disabled="disabled" selected="selected">Property Price</option>
+                            <option value="lh">Price: low to high</option>
+                            <option value="hl">Price: high to low</option>
+                        </t>
+                        <t t-if="request.params.get('price_order') and request.params.get('price_order') == 'lh'">
+                            <option disabled="disabled">Property Price</option>
+                            <option value="lh" selected="selected">Price: low to high</option>
+                            <option value="hl">Price: high to low</option>
+                        </t>
+                        <t t-if="request.params.get('price_order') and request.params.get('price_order') == 'hl'">
+                            <option disabled="disabled">Property Price</option>
+                            <option value="lh">Price: low to high</option>
+                            <option value="hl" selected="selected">Price: high to low</option>
+                        </t>
+                    </select>
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>

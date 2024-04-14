@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_res_users_pos_restaurant_access_form" model="ir.ui.view">
+        <field name="name">view.res.users.pos.restaurant.access.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="pos_user_access_mac5.view_res_users_pos_access_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='user_access1']/.." position="after">
+                <group name="user_access_restaurant" string="For Restaurant">
+                    <group name="user_access_restaurant1">
+                        <field name="pos_access_close_sent_kitchen"/>
+                        <field name="pos_access_delete_orderline_sent_kitchen"/>
+                    </group>
+                    <group name="user_access_restaurant2">
+                        <field name="pos_access_delete_order_sent_kitchen"/>
+                        <field name="pos_access_decrease_quantity_sent_kitchen"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,2390 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tk_website_rental_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-12 05:40+0000\n"
+"PO-Revision-Date: 2024-01-12 05:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "-180.00000000"
+msgstr "-180.00000000"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "-90.00000000"
+msgstr "-90.00000000"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid ". All rights reserved."
+msgstr ". Reservados todos los derechos."
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields.selection,name:tk_website_rental_management.selection__property_website_reviews__rate__1
+msgid "1 Star"
+msgstr "1 estrella"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields.selection,name:tk_website_rental_management.selection__property_by_city__size__10
+msgid "10"
+msgstr "diez"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields.selection,name:tk_website_rental_management.selection__property_by_city__size__12
+msgid "12"
+msgstr "doce"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields.selection,name:tk_website_rental_management.selection__property_website_reviews__rate__2
+msgid "2 Stars"
+msgstr "2 estrellas"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields.selection,name:tk_website_rental_management.selection__property_website_reviews__rate__3
+msgid "3 Stars"
+msgstr "3 estrellas"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "360° Virtual Tour"
+msgstr "Visita virtual de 360°"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__three_sixty_view_link
+msgid "360° Virtual Tour Link"
+msgstr "Enlace de visita virtual de 360°"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields.selection,name:tk_website_rental_management.selection__property_website_reviews__rate__4
+msgid "4 Stars"
+msgstr "4 estrellas"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields.selection,name:tk_website_rental_management.selection__property_website_reviews__rate__5
+msgid "5 Stars"
+msgstr "5 estrellas"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<br/>\n"
+"                                                        or\n"
+"                                                        <br/>"
+msgstr ""
+"<br/>\n"
+"                                                        o\n"
+"                                                        <br/>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.enquiry_details
+msgid ""
+"<br/>\n"
+"                        <strong>If you have any questions then please write them down.</strong>"
+msgstr ""
+"<br/>\n"
+"                        <strong>Si tiene alguna pregunta, por favor escríbala.</strong>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<i class=\"fa fa-bars\"/>\n"
+"                                                            <span class=\"list-title\">Type: </span>"
+msgstr ""
+"<i class=\"fa fa-bars\"/>\n"
+"                                                            <span class=\"list-title\">Tipo: </span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<i class=\"fa fa-bath\"/>\n"
+"                                                            <span class=\"list-title\">Bathrooms: </span>"
+msgstr ""
+"<i class=\"fa fa-bath\"/>\n"
+"                                                            <span class=\"list-title\">Baños:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<i class=\"fa fa-bed\"/>\n"
+"                                                            <span class=\"list-title\">Bed Rooms: </span>"
+msgstr ""
+"<i class=\"fa fa-bed\"/>\n"
+"                                                            <span class=\"list-title\">Dormitorio:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<i class=\"fa fa-building\"/>\n"
+"                                                            <span class=\"list-title\">Floors: </span>"
+msgstr ""
+"<i class=\"fa fa-building\"/>\n"
+"                                                            <span class=\"list-title\">Pisos:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fa fa-cloud\"/> Air Conditioned"
+msgstr "<i class=\"fa fa-cloud\"/>Aire Acondicionado"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<i class=\"fa fa-compass\"/>\n"
+"                                                            <span class=\"list-title\">Facing: </span>"
+msgstr ""
+"<i class=\"fa fa-compass\"/>\n"
+"                                                            <span class=\"list-title\">Frente a:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<i class=\"fa fa-info\"/>\n"
+"                                                            <span class=\"list-title\">Property ID: </span>"
+msgstr ""
+"<i class=\"fa fa-info\"/>\n"
+"                                                            <span class=\"list-title\">Identificación de la propiedad:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<i class=\"fa fa-info\"/>\n"
+"                                                            <span class=\"list-title\">Property Name: </span>"
+msgstr ""
+"<i class=\"fa fa-info\"/>\n"
+"                                                            <span class=\"list-title\">Nombre de la propiedad:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-alarm-exclamation\"/> Safety Alarm"
+msgstr "<i class=\"fal fa-alarm-exclamation\"/>Alarma de seguridad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-bars\"/>Features"
+msgstr "<i class=\"fal fa-bars\"/>Características"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-cctv\"/> Security"
+msgstr "<i class=\"fal fa-cctv\"/>Seguridad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-couch\"/> Semi Furnished"
+msgstr "<i class=\"fal fa-couch\"/>Semi amueblada"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-dumbbell\"/>Gym"
+msgstr "<i class=\"fal fa-dumbbell\"/>Gimnasia"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "<i class=\"fal fa-filter\"/>  Filters"
+msgstr "<i class=\"fal fa-filter\"/>Filtros"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-globe\"/>Near by Connectivity"
+msgstr "<i class=\"fal fa-globe\"/>Cerca de Conectividad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "<i class=\"fal fa-hand-holding-usd\"/> Area :"
+msgstr "<i class=\"fal fa-hand-holding-usd\"/>Área :"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "<i class=\"fal fa-hand-holding-usd\"/> Price :"
+msgstr "<i class=\"fal fa-hand-holding-usd\"/>Precio :"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-image\"/>360° Virtual Tour"
+msgstr "<i class=\"fal fa-image\"/>Visita virtual de 360°"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-images\"/> Gallery"
+msgstr "<i class=\"fal fa-images\"/>Galería"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-info\"/>Details"
+msgstr "<i class=\"fal fa-info\"/>Detalles"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-location\"/>Location"
+msgstr "<i class=\"fal fa-location\"/>Ubicación"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<i class=\"fal fa-map\"/>\n"
+"                                                            <span class=\"list-title\">Total Area: </span>"
+msgstr ""
+"<i class=\"fal fa-map\"/>\n"
+"                                                            <span class=\"list-title\">Área total:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<i class=\"fal fa-map\"/>\n"
+"                                                            <span class=\"list-title\">Usable Area: </span>"
+msgstr ""
+"<i class=\"fal fa-map\"/>\n"
+"                                                            <span class=\"list-title\">Área utilizable:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-map\"/>Plans"
+msgstr "<i class=\"fal fa-map\"/>planes"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "<i class=\"fal fa-map-marker-alt\"/>  View on map"
+msgstr "<i class=\"fal fa-map-marker-alt\"/>Ver en el mapa"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid ""
+"<i class=\"fal fa-map-marker-alt\"/><span class=\"geodir-opt-tooltip\">On "
+"the map <strong>1</strong></span>"
+msgstr ""
+"<i class=\"fal fa-map-marker-alt\"/><span class=\"geodir-opt-tooltip\">Enel "
+"mapa<strong>uno</strong></span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "<i class=\"fal fa-play\"/><span>Promo Video</span>"
+msgstr "<i class=\"fal fa-play\"/><span>Vídeo promocional</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-play\"/><span>Property Video</span>"
+msgstr "<i class=\"fal fa-play\"/><span>Vídeo de propiedad</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid ""
+"<i class=\"fal fa-search\"/>\n"
+"                    <span>Search</span>"
+msgstr ""
+"<i class=\"fal fa-search\"/>\n"
+"                    <span>Buscar</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid ""
+"<i class=\"fal fa-search-plus\"/><span class=\"geodir-opt-"
+"tooltip\">Gallery</span>"
+msgstr ""
+"<i class=\"fal fa-search-plus\"/><span class=\"geodir-opt-"
+"tooltip\">Galería</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "<i class=\"fal fa-sliders-h\"/> Filters"
+msgstr "<i class=\"fal fa-sliders-h\"/>Filtros"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-swimmer\"/> Swimming Pool"
+msgstr "<i class=\"fal fa-swimmer\"/>Piscina"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "<i class=\"fal fa-tags\"/>Facilities"
+msgstr "<i class=\"fal fa-tags\"/>Instalaciones"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "<i class=\"fal fa-tasks\"/>More Filters"
+msgstr "<i class=\"fal fa-tasks\"/>Más filtros"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid "<i class=\"fal fa-user\"/>Sign In"
+msgstr "<i class=\"fal fa-user\"/>Iniciar sesión"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-utensils\"/> Equipped Kitchen"
+msgstr "<i class=\"fal fa-utensils\"/>Cocina Equipada"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-video\"/>Property Detail Video"
+msgstr "<i class=\"fal fa-video\"/>Vídeo de detalle de la propiedad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-washer\"/> Laundry Room"
+msgstr "<i class=\"fal fa-washer\"/>Cuarto de lavado"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-wifi\"/> Free Wi Fi"
+msgstr "<i class=\"fal fa-wifi\"/>Wi-Fi gratis"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fal fa-window\"/> Window Covering"
+msgstr "<i class=\"fal fa-window\"/>Cubierta de ventana"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "<i class=\"far fa-plus\"/> <span>More Options</span>"
+msgstr "<i class=\"far fa-plus\"/> <span>Mas opciones</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "<i class=\"far fa-redo\"/> Reset Filters"
+msgstr "<i class=\"far fa-redo\"/>Restablecer filtros"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid ""
+"<i class=\"far fa-search\"/>\n"
+"                                    Search"
+msgstr ""
+"<i class=\"far fa-search\"/>\n"
+"                                    Buscar"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "<i class=\"far fa-search\"/><span>Search</span>"
+msgstr "<i class=\"far fa-search\"/><span>Buscar</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.pager
+msgid "<i class=\"fas fa-caret-left\"/><span>Prev</span>"
+msgstr "<i class=\"fas fa-caret-left\"/><span>Anterior</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fas fa-flag-alt\"/> Report"
+msgstr "<i class=\"fas fa-flag-alt\"/>Informe"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fas fa-heart\"/> Bookmarks -"
+msgstr "<i class=\"fas fa-heart\"/>Marcadores -"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fas fa-loveseat\"/> Full Furnished"
+msgstr "<i class=\"fas fa-loveseat\"/>Completamente amueblada"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"<i class=\"fas fa-parking\"/>\n"
+"                                                            <span class=\"list-title\">Parking: </span>"
+msgstr ""
+"<i class=\"fas fa-parking\"/>\n"
+"                                                            <span class=\"list-title\">Estacionamiento:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<i class=\"fas fa-parking\"/> Free Parking"
+msgstr "<i class=\"fas fa-parking\"/>Estacionamiento gratis"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option disabled=\"disabled\" selected=\"selected\">Property Price</option>\n"
+"                                                    <option value=\"lh\">Price: low to high</option>\n"
+"                                                    <option value=\"hl\">Price: high to low</option>"
+msgstr ""
+"<option disabled=\"disabled\" selected=\"selected\">Precio de la propiedad</option>\n"
+"                                                    <option value=\"lh\">Precio: baja a alta</option>\n"
+"                                                    <option value=\"hl\">Precio: de mayor a menor</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.sorting_filters
+msgid ""
+"<option disabled=\"disabled\" selected=\"selected\">Property Price</option>\n"
+"                            <option value=\"lh\">Price: low to high</option>\n"
+"                            <option value=\"hl\">Price: high to low</option>"
+msgstr ""
+"<option disabled=\"disabled\" selected=\"selected\">Precio de la propiedad</option>\n"
+"                            <option value=\"lh\">Precio: baja a alta</option>\n"
+"                            <option value=\"hl\">Precio: de mayor a menor</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option disabled=\"disabled\">Property Price</option>\n"
+"                                                    <option value=\"lh\" selected=\"selected\">Price: low to high</option>\n"
+"                                                    <option value=\"hl\">Price: high to low</option>"
+msgstr ""
+"<option disabled=\"disabled\">Precio de la propiedad</option>\n"
+"                                                    <option value=\"lh\" selected=\"selected\">Precio: baja a alta</option>\n"
+"                                                    <option value=\"hl\">Precio: de mayor a menor</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option disabled=\"disabled\">Property Price</option>\n"
+"                                                    <option value=\"lh\">Price: low to high</option>\n"
+"                                                    <option value=\"hl\" selected=\"selected\">Price: high to low</option>"
+msgstr ""
+"<option disabled=\"disabled\">Precio de la propiedad</option>\n"
+"                                                    <option value=\"lh\">Precio: baja a alta</option>\n"
+"                                                    <option value=\"hl\" selected=\"selected\">Precio: de mayor a menor</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.sorting_filters
+msgid ""
+"<option disabled=\"disabled\">Property Price</option>\n"
+"                            <option value=\"lh\" selected=\"selected\">Price: low to high</option>\n"
+"                            <option value=\"hl\">Price: high to low</option>"
+msgstr ""
+"<option disabled=\"disabled\">Precio de la propiedad</option>\n"
+"                            <option value=\"lh\" selected=\"selected\">Precio: baja a alta</option>\n"
+"                            <option value=\"hl\">Precio: de mayor a menor</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.sorting_filters
+msgid ""
+"<option disabled=\"disabled\">Property Price</option>\n"
+"                            <option value=\"lh\">Price: low to high</option>\n"
+"                            <option value=\"hl\" selected=\"selected\">Price: high to low</option>"
+msgstr ""
+"<option disabled=\"disabled\">Precio de la propiedad</option>\n"
+"                            <option value=\"lh\">Precio: baja a alta</option>\n"
+"                            <option value=\"hl\" selected=\"selected\">Precio: de mayor a menor</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option disabled=\"disabled\">Property Type</option>\n"
+"                                                    <option value=\"rent\" selected=\"selected\">Property for Rent</option>\n"
+"                                                    <option value=\"sale\">Property for Sale</option>"
+msgstr ""
+"<option disabled=\"disabled\">Tipo de propiedad</option>\n"
+"                                                    <option value=\"rent\" selected=\"selected\">Propiedad en alquiler</option>\n"
+"                                                    <option value=\"sale\">Propiedad en venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option disabled=\"disabled\">Property Type</option>\n"
+"                                                    <option value=\"rent\">Property for Rent</option>\n"
+"                                                    <option value=\"sale\" selected=\"selected\">Property for Sale</option>"
+msgstr ""
+"<option disabled=\"disabled\">Tipo de propiedad</option>\n"
+"                                                    <option value=\"rent\">Propiedad en alquiler</option>\n"
+"                                                    <option value=\"sale\" selected=\"selected\">Propiedad en venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.sorting_filters
+msgid ""
+"<option disabled=\"disabled\">Property Type</option>\n"
+"                            <option value=\"rent\" selected=\"selected\">Property for Rent</option>\n"
+"                            <option value=\"sale\">Property for Sale</option>"
+msgstr ""
+"<option disabled=\"disabled\">tipo de propiedad</option>\n"
+"                            <option value=\"rent\" selected=\"selected\">Propiedad en Renta</option>\n"
+"                            <option value=\"sale\">Propiedad en venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.sorting_filters
+msgid ""
+"<option disabled=\"disabled\">Property Type</option>\n"
+"                            <option value=\"rent\">Property for Rent</option>\n"
+"                            <option value=\"sale\" selected=\"selected\">Property for Sale</option>"
+msgstr ""
+"<option disabled=\"disabled\">tipo de propiedad</option>\n"
+"                            <option value=\"rent\">Propiedad en Renta</option>\n"
+"                            <option value=\"sale\" selected=\"selected\">Propiedad en venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option selected=\"selected\" disabled=\"disabled\">Property Type</option>\n"
+"                                                    <option value=\"rent\">Property for Rent</option>\n"
+"                                                    <option value=\"sale\">Property for Sale</option>"
+msgstr ""
+"<option selected=\"selected\" disabled=\"disabled\">Tipo de propiedad</option>\n"
+"                                                    <option value=\"rent\">Propiedad en alquiler</option>\n"
+"                                                    <option value=\"sale\">Propiedad en venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.sorting_filters
+msgid ""
+"<option selected=\"selected\" disabled=\"disabled\">Property Type</option>\n"
+"                            <option value=\"rent\">Property for Rent</option>\n"
+"                            <option value=\"sale\">Property for Sale</option>"
+msgstr ""
+"<option selected=\"selected\" disabled=\"disabled\">tipo de propiedad</option>\n"
+"                            <option value=\"rent\">Propiedad en Renta</option>\n"
+"                            <option value=\"sale\">Propiedad en venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option selected=\"selected\">All Categories</option>\n"
+"                                                                    <option value=\"lands\">Lands</option>\n"
+"                                                                    <option value=\"residential\">Residential</option>\n"
+"                                                                    <option value=\"commercial\">Commercial</option>\n"
+"                                                                    <option value=\"industrial\">Industrials</option>"
+msgstr ""
+"<option selected=\"selected\">Todas las categorias</option>\n"
+"                                                                    <option value=\"lands\">Tierras</option>\n"
+"                                                                    <option value=\"residential\">Residencial</option>\n"
+"                                                                    <option value=\"commercial\">Comercial</option>\n"
+"                                                                    <option value=\"industrial\">Acciones industriales</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid ""
+"<option selected=\"selected\">All Categories</option>\n"
+"                                            <option value=\"lands\">Lands</option>\n"
+"                                            <option value=\"residential\">Residential</option>\n"
+"                                            <option value=\"commercial\">Commercial</option>\n"
+"                                            <option value=\"industrial\">Industrials</option>"
+msgstr ""
+"<option selected=\"selected\">Todas las categorias</option>\n"
+"                                            <option value=\"lands\">Tierras</option>\n"
+"                                            <option value=\"residential\">Residencial</option>\n"
+"                                            <option value=\"commercial\">Comercial</option>\n"
+"                                            <option value=\"industrial\">Acciones industriales</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid "<option selected=\"selected\">All Cities</option>"
+msgstr "<option selected=\"selected\">Todas las ciudades</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option selected=\"selected\">Any Status</option>\n"
+"                                                                <option value=\"rent\">For Rent</option>\n"
+"                                                                <option value=\"sale\">For Sale</option>"
+msgstr ""
+"<option selected=\"selected\">Cualquier estatus</option>\n"
+"                                                                <option value=\"rent\">En renta</option>\n"
+"                                                                <option value=\"sale\">En venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid ""
+"<option selected=\"selected\">Any Status</option>\n"
+"                                            <option value=\"rent\">For Rent</option>\n"
+"                                            <option value=\"sale\">For Sale</option>"
+msgstr ""
+"<option selected=\"selected\">Cualquier estatus</option>\n"
+"                                            <option value=\"rent\">En renta</option>\n"
+"                                            <option value=\"sale\">En venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "<option selected=\"selected\">Bathrooms</option>"
+msgstr "<option selected=\"selected\">Baños</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "<option selected=\"selected\">Bedrooms</option>"
+msgstr "<option selected=\"selected\">Dormitorios</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "<option selected=\"selected\">Floors</option>"
+msgstr "<option selected=\"selected\">Pisos</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option>All Categories</option>\n"
+"                                                                    <option value=\"lands\" selected=\"selected\">Lands</option>\n"
+"                                                                    <option value=\"residential\">Residential</option>\n"
+"                                                                    <option value=\"commercial\">Commercial</option>\n"
+"                                                                    <option value=\"industrial\">Industrials</option>"
+msgstr ""
+"<option>Todas las categorias</option>\n"
+"                                                                    <option value=\"lands\" selected=\"selected\">Tierras</option>\n"
+"                                                                    <option value=\"residential\">Residencial</option>\n"
+"                                                                    <option value=\"commercial\">Comercial</option>\n"
+"                                                                    <option value=\"industrial\">Acciones industriales</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option>All Categories</option>\n"
+"                                                                    <option value=\"lands\">Lands</option>\n"
+"                                                                    <option value=\"residential\" selected=\"selected\">Residential</option>\n"
+"                                                                    <option value=\"commercial\">Commercial</option>\n"
+"                                                                    <option value=\"industrial\">Industrials</option>"
+msgstr ""
+"<option>Todas las categorias</option>\n"
+"                                                                    <option value=\"lands\">Tierras</option>\n"
+"                                                                    <option value=\"residential\" selected=\"selected\">Residencial</option>\n"
+"                                                                    <option value=\"commercial\">Comercial</option>\n"
+"                                                                    <option value=\"industrial\">Acciones industriales</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option>All Categories</option>\n"
+"                                                                    <option value=\"lands\">Lands</option>\n"
+"                                                                    <option value=\"residential\">Residential</option>\n"
+"                                                                    <option value=\"commercial\" selected=\"selected\">Commercial</option>\n"
+"                                                                    <option value=\"industrial\">Industrials</option>"
+msgstr ""
+"<option>Todas las categorias</option>\n"
+"                                                                    <option value=\"lands\">Tierras</option>\n"
+"                                                                    <option value=\"residential\">Residencial</option>\n"
+"                                                                    <option value=\"commercial\" selected=\"selected\">Comercial</option>\n"
+"                                                                    <option value=\"industrial\">Acciones industriales</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option>All Categories</option>\n"
+"                                                                    <option value=\"lands\">Lands</option>\n"
+"                                                                    <option value=\"residential\">Residential</option>\n"
+"                                                                    <option value=\"commercial\">Commercial</option>\n"
+"                                                                    <option value=\"industrial\" selected=\"selected\">Industrials</option>"
+msgstr ""
+"<option>Todas las categorias</option>\n"
+"                                                                    <option value=\"lands\">Tierras</option>\n"
+"                                                                    <option value=\"residential\">Residencial</option>\n"
+"                                                                    <option value=\"commercial\">Comercial</option>\n"
+"                                                                    <option value=\"industrial\" selected=\"selected\">Acciones industriales</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid ""
+"<option>All Categories</option>\n"
+"                                            <option value=\"lands\" selected=\"selected\">Lands</option>\n"
+"                                            <option value=\"residential\">Residential</option>\n"
+"                                            <option value=\"commercial\">Commercial</option>\n"
+"                                            <option value=\"industrial\">Industrials</option>"
+msgstr ""
+"<option>Todas las categorias</option>\n"
+"                                            <option value=\"lands\" selected=\"selected\">Tierras</option>\n"
+"                                            <option value=\"residential\">Residencial</option>\n"
+"                                            <option value=\"commercial\">Comercial</option>\n"
+"                                            <option value=\"industrial\">Acciones industriales</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid ""
+"<option>All Categories</option>\n"
+"                                            <option value=\"lands\">Lands</option>\n"
+"                                            <option value=\"residential\" selected=\"selected\">Residential</option>\n"
+"                                            <option value=\"commercial\">Commercial</option>\n"
+"                                            <option value=\"industrial\">Industrials</option>"
+msgstr ""
+"<option>Todas las categorias</option>\n"
+"                                            <option value=\"lands\">Tierras</option>\n"
+"                                            <option value=\"residential\" selected=\"selected\">Residencial</option>\n"
+"                                            <option value=\"commercial\">Comercial</option>\n"
+"                                            <option value=\"industrial\">Acciones industriales</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid ""
+"<option>All Categories</option>\n"
+"                                            <option value=\"lands\">Lands</option>\n"
+"                                            <option value=\"residential\">Residential</option>\n"
+"                                            <option value=\"commercial\" selected=\"selected\">Commercial</option>\n"
+"                                            <option value=\"industrial\">Industrials</option>"
+msgstr ""
+"<option>Todas las categorias</option>\n"
+"                                            <option value=\"lands\">Tierras</option>\n"
+"                                            <option value=\"residential\">Residencial</option>\n"
+"                                            <option value=\"commercial\" selected=\"selected\">Comercial</option>\n"
+"                                            <option value=\"industrial\">Acciones industriales</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid ""
+"<option>All Categories</option>\n"
+"                                            <option value=\"lands\">Lands</option>\n"
+"                                            <option value=\"residential\">Residential</option>\n"
+"                                            <option value=\"commercial\">Commercial</option>\n"
+"                                            <option value=\"industrial\" selected=\"selected\">Industrials</option>"
+msgstr ""
+"<option>Todas las categorias</option>\n"
+"                                            <option value=\"lands\">Tierras</option>\n"
+"                                            <option value=\"residential\">Residencial</option>\n"
+"                                            <option value=\"commercial\">Comercial</option>\n"
+"                                            <option value=\"industrial\" selected=\"selected\">Acciones industriales</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "<option>All Cities</option>"
+msgstr "<option>Todas las ciudades</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option>Any Status</option>\n"
+"                                                                <option value=\"rent\" selected=\"selected\">For Rent</option>\n"
+"                                                                <option value=\"sale\">For Sale</option>"
+msgstr ""
+"<option>Cualquier estatus</option>\n"
+"                                                                <option value=\"rent\" selected=\"selected\">En renta</option>\n"
+"                                                                <option value=\"sale\">En venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid ""
+"<option>Any Status</option>\n"
+"                                                                <option value=\"rent\">For Rent</option>\n"
+"                                                                <option value=\"sale\" selected=\"selected\">For Sale</option>"
+msgstr ""
+"<option>Cualquier estatus</option>\n"
+"                                                                <option value=\"rent\">En renta</option>\n"
+"                                                                <option value=\"sale\" selected=\"selected\">En venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid ""
+"<option>Any Status</option>\n"
+"                                            <option value=\"rent\" selected=\"selected\">For Rent</option>\n"
+"                                            <option value=\"sale\">For Sale</option>"
+msgstr ""
+"<option>Cualquier estatus</option>\n"
+"                                            <option value=\"rent\" selected=\"selected\">En renta</option>\n"
+"                                            <option value=\"sale\">En venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid ""
+"<option>Any Status</option>\n"
+"                                            <option value=\"rent\">For Rent</option>\n"
+"                                            <option value=\"sale\" selected=\"selected\">For Sale</option>"
+msgstr ""
+"<option>Cualquier estatus</option>\n"
+"                                            <option value=\"rent\">En renta</option>\n"
+"                                            <option value=\"sale\" selected=\"selected\">En venta</option>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid ""
+"<select data-placeholder=\"All Categories\" name=\"categ\" class=\"chosen-select no-radius no-search-select\">\n"
+"                                        <option selected=\"selected\">All Categories</option>\n"
+"                                        <option value=\"lands\">Lands</option>\n"
+"                                        <option value=\"residential\">Residential</option>\n"
+"                                        <option value=\"commercial\">Commercial</option>\n"
+"                                        <option value=\"industrial\">Industrials</option>\n"
+"                                    </select>"
+msgstr ""
+"<select data-placeholder=\"Todas las categorias\" name=\"categ\" class=\"chosen-select no-radius no-search-select\">\n"
+"                                        <option selected=\"selected\">Todas las categorias</option>\n"
+"                                        <option value=\"lands\">Tierras</option>\n"
+"                                        <option value=\"residential\">Residencial</option>\n"
+"                                        <option value=\"commercial\">Comercial</option>\n"
+"                                        <option value=\"industrial\">Acciones industriales</option>\n"
+"                                    </select>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid ""
+"<span class=\"one-col-grid tolt\" data-microtip-position=\"bottom\" data-"
+"tooltip=\"List View\"><i class=\"fal fa-list\"/></span>"
+msgstr ""
+"<span class=\"one-col-grid tolt\" data-microtip-position=\"bottom\" data-"
+"tooltip=\"Vista de la lista\"><i class=\"fal fa-list\"/></span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.sorting_filters
+msgid "<span class=\"price-opt-title\">Sort by:</span>"
+msgstr "<span class=\"price-opt-title\">Ordenar por:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "<span class=\"process-count\">01 </span>"
+msgstr "<span class=\"process-count\">uno</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "<span class=\"process-count\">02</span>"
+msgstr "<span class=\"process-count\">dos</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "<span class=\"process-count\">03</span>"
+msgstr "<span class=\"process-count\">tres</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<span class=\"title\">Price : </span>"
+msgstr "<span class=\"title\">Precio :</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid ""
+"<span class=\"two-col-grid act-grid-opt tolt\" data-microtip-"
+"position=\"bottom\" data-tooltip=\"Grid View\"><i class=\"fal fa-"
+"th\"/></span>"
+msgstr ""
+"<span class=\"two-col-grid act-grid-opt tolt\" data-microtip-"
+"position=\"bottom\" data-tooltip=\"Vista en cuadrícula\"><i class=\"fal fa-"
+"th\"/></span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "<span><i class=\"fal fa-envelope\"/> Mail :</span>"
+msgstr "<span><i class=\"fal fa-envelope\"/>Correo :</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "<span><i class=\"fal fa-phone\"/> Phone :</span>"
+msgstr "<span><i class=\"fal fa-phone\"/>Teléfono :</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<span>Apartment</span>"
+msgstr "<span>Departamento</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<span>Bungalow</span>"
+msgstr "<span>Bungalow</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<span>Commercial</span>"
+msgstr "<span>Comercial</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<span>Duplex</span>"
+msgstr "<span>Dúplex</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "<span>Find  us on: </span>"
+msgstr "<span>Encuéntranos en:</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<span>Industrial</span>"
+msgstr "<span>Industrial</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<span>Land</span>"
+msgstr "<span>Tierra</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.pager
+msgid "<span>Next</span><i class=\"fas fa-caret-right\"/>"
+msgstr "<span>Próxima</span><i class=\"fas fa-caret-right\"/>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "<span>Popular Properties</span>"
+msgstr "<span>Propiedades populares</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<span>Raw House</span>"
+msgstr "<span>casa cruda</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<span>Single Studio</span>"
+msgstr "<span>Estudio Individual</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "<span>Villa</span>"
+msgstr "<span>Villa</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "About"
+msgstr "Acerca de"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "About this listing"
+msgstr "Acerca de este listado"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__access_token
+msgid "Access Token"
+msgstr "Ficha de acceso"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__accommodation
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Accommodation"
+msgstr "Alojamiento"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Added By"
+msgstr "Añadido por"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Additional Information:"
+msgstr "Información adicional:"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_air_condition
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Air Conditioned"
+msgstr "Aire Acondicionado"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Aliquam erat volutpat interdum"
+msgstr "Aliquam erat volutpat interdum"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "All Categories"
+msgstr "Todas las categorias"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "All Cities"
+msgstr "Todas las ciudades"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "All Sub Categories"
+msgstr "Todas las subcategorías"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Andy Dimasky"
+msgstr "andy dimasky"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Any Status"
+msgstr "Cualquier estatus"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__image_1920_1
+msgid "Any Status BG Image"
+msgstr "Imagen de GS de cualquier estado"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__area_end
+msgid "Area End Range"
+msgstr "Rango final de área"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Area Range Filters"
+msgstr "Filtros de rango de área"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__area_start
+msgid "Area Start Range"
+msgstr "Rango de inicio de área"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "Assign Access Token"
+msgstr "Asignar token de acceso"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Available"
+msgstr "Disponible"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Back to filters <i class=\"fas fa-caret-up\"/>"
+msgstr "volver a filtros<i class=\"fas fa-caret-up\"/>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "Bathrooms"
+msgstr "Baños"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "Bedrooms"
+msgstr "Dormitorios"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "Blog"
+msgstr "Blog"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Book Property"
+msgstr "Reservar Propiedad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Broker Details"
+msgstr "Detalles de la corredora"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Check Out All Listings<i class=\"fal fa-arrow-alt-right\"/>"
+msgstr "Echa un vistazo a todos los listados<i class=\"fal fa-arrow-alt-right\"/>"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__city_ids
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Cities"
+msgstr "Ciudades"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__city_id
+msgid "City"
+msgstr "Ciudad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Clients Reviews"
+msgstr "Reseñas de clientes"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Commercial"
+msgstr "Comercial"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__config_id
+msgid "Config"
+msgstr "Configuración"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Contact a Few Owners"
+msgstr "Póngase en contacto con algunas propietarias"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "Contacts"
+msgstr "Contactos"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "Create 360° Virtual Home Tour"
+msgstr "Crear un recorrido virtual por el hogar de 360°"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_bookmark__create_uid
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__create_uid
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__create_uid
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_partner__create_uid
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_bookmark__create_date
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__create_date
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__create_date
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_partner__create_date
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.enquiry_list
+msgid "Currently, there is not any Enquiry in your account.."
+msgstr "Actualmente, no hay ninguna consulta en su cuenta."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "Default Amenities"
+msgstr "Servicios predeterminados"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Details"
+msgstr "Detalles"
+
+#. module: tk_website_rental_management
+#: model:ir.model,name:tk_website_rental_management.model_property_amenities
+msgid "Details About Property Amenities"
+msgstr "Detalles sobre las comodidades de la propiedad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Discover &amp; Connect"
+msgstr "Descubre &amp; Conectar"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__display_landlord
+msgid "Display Landlord on Property ?"
+msgstr "¿Mostrar propietario en la propiedad?"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_bookmark__display_name
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__display_name
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__display_name
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_partner__display_name
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_sub_type__display_on_home
+msgid "Display On Home Page?"
+msgstr "¿Mostrar en la página de inicio?"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "Dynamic Amenities"
+msgstr "Servicios dinámicos"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "East (E)"
+msgstr "Este (E)"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Email Address *"
+msgstr "Dirección de correo electrónico *"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "Enable Scrolling"
+msgstr "Habilitar desplazamiento"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Enquiry already submitted."
+msgstr "Consulta ya enviada."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Enquiry of Property"
+msgstr "Consulta de Propiedad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "Enter Your Email"
+msgstr "Introduce tu correo electrónico"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_equip_kitchen
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "Equipped Kitchen"
+msgstr "Cocina Equipada"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Explore Best Property In City"
+msgstr "Explore la mejor propiedad en la ciudad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "FT²"
+msgstr "pies²"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "FT³"
+msgstr "pies³"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_amenities__fa_class
+msgid "Fa Class"
+msgstr "Clase del Fa"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Facilities :"
+msgstr "Instalaciones :"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid ""
+"Faucibus ante, in porttitor tellus blandit et. Phasellus tincidunt metus "
+"lectus sollicitudin feugiat pharetra consectetur."
+msgstr ""
+"Faucibus ante, in porttitor tellus blandit et. Phasellus tincidunt "
+"metuslectus sollicitudin feugiat pharetra consectetur."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Featured Listings"
+msgstr "Listas destacadas"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Find Interesting Property"
+msgstr "Encuentra Propiedad Interesante"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid ""
+"Find some of the best tips from around the city from our partners and "
+"friends."
+msgstr ""
+"Encuentre algunos de los mejores consejos de toda la ciudad de nuestros "
+"socios y amigas."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "Fitness Gym"
+msgstr "Gimnasio"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Floor Plans -"
+msgstr "Planos de planta -"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "Floors"
+msgstr "Pisos"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_amenity_inherit_form_view
+msgid "Font Awsome Class"
+msgstr "Fuente impresionante clase"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "For Rent"
+msgstr "En renta"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__image_1920_3
+msgid "For Rent BG Image"
+msgstr "En Renta BG Imagen"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "For Sale"
+msgstr "En venta"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__image_1920_2
+msgid "For Sale BG Image"
+msgstr "En venta Imagen BG"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_full_furnish
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Full Furnished"
+msgstr "Completamente amueblada"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_amenity_inherit_form_view
+msgid "Get Your Fa Icon"
+msgstr "Obtén tu ícono del Fa"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid ""
+"Get ready to start your exciting journey. <br/> Our agency will lead you "
+"through the amazing digital world"
+msgstr ""
+"Prepárate para comenzar tu emocionante viaje. <br/> Nuestra agencia te "
+"guiará a través del asombroso mundo digital"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__google_map_api
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Google Map API Key"
+msgstr "Clave API de mapa de Google"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_gym
+msgid "Gym"
+msgstr "Gimnasia"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Happy customers every year"
+msgstr "Clientes felices cada año"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.enquiry_details
+msgid "History"
+msgstr "Historia"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Home"
+msgstr "Hogar"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Home Page Backgrounds"
+msgstr "Fondos de la página de inicio"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Home Video Link"
+msgstr "Enlace de vídeo de inicio"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__hs_one
+msgid "Home stats 1"
+msgstr "Estadísticas locales 1"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__hs_two
+msgid "Home stats 2"
+msgstr "Estadísticas locales 2"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__hs_three
+msgid "Home stats 3"
+msgstr "Estadísticas locales 3"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__hs_four
+msgid "Home stats 4"
+msgstr "Estadísticas locales 4"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Home stats figure"
+msgstr "Cifra de estadísticas de local"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "How it works"
+msgstr "Cómo funciona"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_bookmark__id
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__id
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__id
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_partner__id
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__id
+msgid "ID"
+msgstr "IDENTIFICACIÓN"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__cover_image
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_sub_type__image
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_partner__partner_logo
+msgid "Image"
+msgstr "Imagen"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields.selection,name:tk_website_rental_management.selection__property_theme_config__hero_choice__img
+msgid "Image Background"
+msgstr "Fondo de imagen"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid ""
+"In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis "
+"cursus."
+msgstr ""
+"In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis "
+"cursus"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid ""
+"In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis "
+"cursus. Nulla eu mi magna. Etiam suscipit commodo gravida."
+msgstr ""
+"In ut odio libero, at vulputate urna. Nulla tristique mi a massa "
+"convalliscursus Nulla eu mi magna. Etiam suscipit commodo gravida."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Industrial"
+msgstr "Industrial"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Internet Available"
+msgstr "Internet disponible"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__is_popular_list
+msgid "Is Popular Listing ?"
+msgstr "¿Es el listado popular?"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_amenities__is_on_website
+msgid "Is Published on Website?"
+msgstr "¿Se publica en el sitio web?"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__is_rtl
+msgid "Is RTL Enable ?"
+msgstr "¿Está habilitado RTL?"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__is_verify
+msgid "Is Verified ?"
+msgstr "¿Está verificada?"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Just looking around ? Use quick search by category :"
+msgstr "Sólo mirando alrededor ? Utilice la búsqueda rápida por categoría:"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Land"
+msgstr "Tierra"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_bookmark__write_uid
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__write_uid
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__write_uid
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_partner__write_uid
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_bookmark__write_date
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__write_date
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__write_date
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_partner__write_date
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__latitude
+msgid "Latitude"
+msgstr "Latitud"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "Laundry"
+msgstr "Lavadero"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_laundry
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Laundry Room"
+msgstr "Cuarto de lavado"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__lead_count
+msgid "Leads"
+msgstr "Dirige"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Lisiting Filters"
+msgstr "Filtros de listado"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Listing"
+msgstr "Listado"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Listing Features"
+msgstr "Listado de características"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__list_property_per_page
+msgid "Listing Properties per Page"
+msgstr "Listado de propiedades por página"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Listing Property per page"
+msgstr "Listado de propiedades por página"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "Listing Type"
+msgstr "Tipo de listado"
+
+#. module: tk_website_rental_management
+#: model:website.menu,name:tk_website_rental_management.properties_list_menu
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Listings"
+msgstr "listados"
+
+#. module: tk_website_rental_management
+#: model:website.menu,name:tk_website_rental_management.properties_list_map_menu
+msgid "Listings on Map"
+msgstr "Listados en el mapa"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid "Log Out"
+msgstr "Cerrar sesión"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Login"
+msgstr "Acceso"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__longitude
+msgid "Longitude"
+msgstr "Longitud"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid ""
+"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+msgstr ""
+"Lorem Ipsum es simplemente un texto ficticio de la industria de la impresión"
+" y la composición tipográfica."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in "
+"pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. "
+"Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. "
+"Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed "
+"tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a "
+"consequat purus viverra."
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mecenas enneque "
+"pulvinar. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.Nulla "
+"posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt.Aliquam "
+"erat volutpat. Curabitur convallis fringilla diam sed aliquam. sedtempor "
+"iaculis massa faucibus feugiat. En fermentum facilisis massa, unconsequat "
+"purus viverra."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec tincidunt "
+"arcu, sit amet fermentum sem."
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec "
+"tinciduntarcu, sit amet fermentum sem."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid ""
+"Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a "
+"consectetur nulla."
+msgstr ""
+"Mecenas en pulvinar neque. Nulla finibus lobortis pulvinar. Donec "
+"unconsectetur nulla."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid ""
+"Maecenas pulvinar, risus in facilisis dignissim, quam nisi hendrerit nulla, "
+"id vestibulum metus nullam viverra porta."
+msgstr ""
+"Mecenas pulvinar, risus in facilisis dignissim, quam nisi hendrerit nulla, "
+"id vestibulum metus nullam viverra porta."
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__image_1920_0
+msgid "Main BG Image"
+msgstr "Imagen principal de BG"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__map_center_address
+msgid "Map Center Address"
+msgstr "Dirección del centro de mapas"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Map Center Coordination"
+msgstr "Coordinación del Centro de Mapas"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid ""
+"Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi "
+"varius, nulla sit amet rutrum elementum."
+msgstr ""
+"Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbí"
+"varius, nulla sit amet rutrum elementum."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Max Price"
+msgstr "Precio máximo"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__mob_background
+msgid "Mobile BG Image for video"
+msgstr "Imagen BG móvil para vídeo"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid ""
+"Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut "
+"tristique elit risus at metus."
+msgstr ""
+"Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, "
+"uttristique elit risus at metus."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Most Popular Places"
+msgstr "Lugares más populares"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid "My Account"
+msgstr "Mi cuenta"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "M²"
+msgstr "M²"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "M³"
+msgstr "M³"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_partner__name
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Near by Connectivity"
+msgstr "Cerca de Conectividad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "New Listing Every Week"
+msgstr "Nuevo listado cada semana"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "New Visiters Every Week"
+msgstr "Nuevos visitantes cada semana"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Newest  Listings"
+msgstr "Listados más nuevos"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__mailling_list_id
+msgid "Newsletter"
+msgstr "Boletin informativo"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "No Property list found."
+msgstr "No se encontró ninguna lista de propiedades."
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__no_latest_list
+msgid "No. of Latest Listing"
+msgstr "No. de listado más reciente"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__no_popular_list
+msgid "No. of Popular Listing"
+msgstr "No. de lista popular"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__property_count
+msgid "No. of Properties"
+msgstr "Nº de Propiedades"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "North (N)"
+msgstr "Norte (N)"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "North-East (NE)"
+msgstr "Noreste (NE)"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Not Available"
+msgstr "No disponible"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "Other Details"
+msgstr "Otros detalles"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "Our Latest News"
+msgstr "Nuestras últimas noticias"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_parking
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "Parking"
+msgstr "Estacionamiento"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Parking Available"
+msgstr "Estacionamiento disponible"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__partner_ids
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Partners"
+msgstr "Socias"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Phone *"
+msgstr "Teléfono *"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_pool
+msgid "Pool"
+msgstr "Piscina"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid ""
+"Praesent eros turpis, commodo vel justo at, pulvinar mollis eros. Mauris "
+"aliquet eu quam id ornare. Morbi ac quam enim. Cras vitae nulla condimentum,"
+" semper dolor non, faucibus dolor. Vivamus adipiscing eros quis orci "
+"fringilla, sed pretium lectus viverra. Pellentesque habitant morbi tristique"
+" senectus et netus et malesuada fames ac turpis egestas. Donec nec velit non"
+" odio aliquam suscipit. Sed non neque faucibus, condimentum lectus at, "
+"accumsan enim."
+msgstr ""
+"Praesent eros turpis, commodo vel justo at, pulvinar mollis eros. "
+"maurialiquet eu quam id ornare. Morbi ac quam enim. Cras vitae nulla "
+"condimento, semper dolor non, faucibus dolor. Vivamus adipiscing eros quis "
+"orcifringilla, sed pretium lectus viverra. Habitante pellentesco morbi "
+"tristique senectus et netus et malesuada farmes ac turpis egestas. Donec nec"
+" velit noodio aliquam suscipit. Sed non neque faucibus, condimentum lectus "
+"at,accumsan enim."
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__price_end
+msgid "Price End Range"
+msgstr "Rango final de precio"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Price Range"
+msgstr "Rango de precios"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Price Range Filters"
+msgstr "Filtros de rango de precios"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__price_start
+msgid "Price Start Range"
+msgstr "Rango de inicio de precio"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "Privacy Policy"
+msgstr "política de privacidad"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__image_1920
+msgid "Profile Image"
+msgstr "Imagen de perfil"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid ""
+"Proin dapibus nisl ornare diam varius tempus. Aenean a quam luctus, finibus "
+"tellus ut, convallis eros sollicitudin turpis."
+msgstr ""
+"Proin dapibus nisl ornare diam varius tempus. Aenean a quam luctus, "
+"finibustellus ut, convallis eros sollicitudin turpis."
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__sec_img_3
+msgid "Promo Video BG Image"
+msgstr "Video promocional Imagen BG"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Properties"
+msgstr "Propiedades"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Properties In Most Popular Places"
+msgstr "Propiedades en los lugares más populares"
+
+#. module: tk_website_rental_management
+#: model:ir.model,name:tk_website_rental_management.model_property_by_city
+msgid "Properties by city"
+msgstr "Propiedades por ciudad"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_bookmark__property_id
+msgid "Property"
+msgstr "Propiedad"
+
+#. module: tk_website_rental_management
+#: model:ir.model,name:tk_website_rental_management.model_property_bookmark
+msgid "Property Bookmark"
+msgstr "Marcador de propiedad"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__broker_id
+msgid "Property Broker"
+msgstr "Corredora de propiedades"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Property Detail Video"
+msgstr "Vídeo de detalle de la propiedad"
+
+#. module: tk_website_rental_management
+#: model:ir.model,name:tk_website_rental_management.model_property_details
+msgid "Property Details and for registration new Property"
+msgstr "Detalles de la propiedad y para el registro de una nueva propiedad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.portal_my_enquiry
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.portal_my_home_menu_enquiry
+msgid "Property Enquiries"
+msgstr "Consultas sobre propiedades"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.enquiry_details
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.enquiry_list
+msgid "Property Enquiry"
+msgstr "Consulta de propiedad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.enquiry_list
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "Property List"
+msgstr "Lista de propiedades"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Property Listing Limits"
+msgstr "Límites de listado de propiedades"
+
+#. module: tk_website_rental_management
+#: model:ir.model,name:tk_website_rental_management.model_property_website_reviews
+msgid "Property Rental Website Reviews"
+msgstr "Reseñas del sitio web de alquiler de propiedades"
+
+#. module: tk_website_rental_management
+#: model:ir.model,name:tk_website_rental_management.model_property_sub_type
+msgid "Property Sub Type"
+msgstr "Subtipo de propiedad"
+
+#. module: tk_website_rental_management
+#: model:ir.ui.menu,name:tk_website_rental_management.menu_property_theme_config
+msgid "Property Theme Config"
+msgstr "Configuración del tema de la propiedad"
+
+#. module: tk_website_rental_management
+#: model:ir.actions.act_window,name:tk_website_rental_management.property_theme_config_action
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Property Theme Configuration"
+msgstr "Configuración del tema de la propiedad"
+
+#. module: tk_website_rental_management
+#: model:ir.model,name:tk_website_rental_management.model_property_website_partner
+msgid "Property Website Partners"
+msgstr "Socios de sitios web de propiedades"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header_switches
+msgid "Property Website: Header"
+msgstr "Sitio web de la propiedad: Encabezado"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__rate
+msgid "Rating"
+msgstr "Clasificación"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "Read all <i class=\"fal fa-long-arrow-right\"/>"
+msgstr "Lee todo<i class=\"fal fa-long-arrow-right\"/>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Rent"
+msgstr "Alquilar"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Residential"
+msgstr "Residencial"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Restaurant Owner"
+msgstr "dueño del restaurante"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__reviews
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Reviews"
+msgstr "Reseñas"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_website_reviews__role
+msgid "Role"
+msgstr "Role"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_alarm
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "Safety Alarm"
+msgstr "Alarma de seguridad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Sale"
+msgstr "Venta"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Search <i class=\"far fa-search\"/>"
+msgstr "Buscar <i class=\"far fa-search\"/>"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__hero_choice
+msgid "Search Section Background Type"
+msgstr "Tipo de fondo de la sección de búsqueda"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Search Section Backgrounds"
+msgstr "Fondos de la sección de búsqueda"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_security
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Security"
+msgstr "Seguridad"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_semi_furnish
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_list
+msgid "Semi Furnished"
+msgstr "Semi amueblada"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Send Enquiry"
+msgstr "Enviar Consulta"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__short_description
+msgid "Short Description"
+msgstr "Breve descripción"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Show Landlord on Property"
+msgstr "Mostrar propietario en la propiedad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Show Landlord on Property in Website"
+msgstr "Mostrar propietario de la propiedad en el sitio web"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Signup"
+msgstr "Inscribirse"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__similar_properties
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "Similar Properties"
+msgstr "Propiedades similares"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Similar listings :"
+msgstr "Anuncios similares:"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__size
+msgid "Size"
+msgstr "Tamaño"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "South (S)"
+msgstr "Sur (S)"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "South-East (SE)"
+msgstr "Sudeste (SE)"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "South-West (SW)"
+msgstr "Suroeste (SW)"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Stats BG & Promo Video BG"
+msgstr "Estadísticas BG y video promocional BG"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__sec_img_2
+msgid "Stats BG Image"
+msgstr "Imagen de estadísticas de GS"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "Subscribe For a <span>Newsletter</span>"
+msgstr "Suscribirse a una<span>Boletin informativo</span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "Swimming Pool"
+msgstr "Piscina"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_by_city__tag_line
+msgid "Tag Line"
+msgstr "línea de etiqueta"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "Terms of use"
+msgstr "Condiciones de uso"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "The Latest Listings"
+msgstr "Los últimos listados"
+
+#. module: tk_website_rental_management
+#: model:ir.model,name:tk_website_rental_management.model_property_theme_config
+msgid "Theme Config"
+msgstr "Configuración del tema"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__name
+msgid "Title"
+msgstr "Título"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_bookmark__partner_id
+msgid "User"
+msgstr "Usuaria"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "VIDEO LINK"
+msgstr "ENLACE DE VIDEO"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields.selection,name:tk_website_rental_management.selection__property_theme_config__hero_choice__vid
+msgid "Video Background"
+msgstr "Fondo de vídeo"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__video_background_image
+msgid "Video Background Image"
+msgstr "Imagen de fondo del vídeo"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__video_url
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__video_link
+msgid "Video Link"
+msgstr "Enlace de video"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__video_bg_url
+msgid "Video URL"
+msgstr "URL del vídeo"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "View All Properties<i class=\"fal fa-arrow-alt-right\"/>"
+msgstr "Ver todas las propiedades<i class=\"fal fa-arrow-alt-right\"/>"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__visible_broker_on_property
+msgid "Visible Broker on Property"
+msgstr "Agente visible en la propiedad"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.theme_tk_footer
+msgid "Want to be notified about new properties ?  Just subscribe it."
+msgstr "¿Quieres ser notificado sobre nuevas propiedades? Solo suscríbete."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.enquiry_details
+msgid ""
+"We will contact you soon.\n"
+"                            Thank you for your patience."
+msgstr ""
+"La contactaremos pronto.\n"
+"                            Gracias por su paciencia."
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__website_description
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "Website Description"
+msgstr "Descripcion del Sitio Web"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__website_amenity_ids
+msgid "Website Extra Amenities"
+msgstr "Servicios adicionales del sitio web"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Website Newsletter"
+msgstr "Boletín del sitio web"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_management_inherit_form_view
+msgid "Website Property Details"
+msgstr "Detalles de la propiedad del sitio web"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "Website RTL Config"
+msgstr "Configuración RTL del sitio web"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__review_ids
+msgid "Website Reviews"
+msgstr "Reseñas del sitio web"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_sub_type_inherit_form_view
+msgid "Website Section"
+msgstr "Sección del sitio web"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "West (W)"
+msgstr "Oeste (O)"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "What Our Clients Say"
+msgstr "Lo que dicen nuestras clientas"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid "What are you looking for ?"
+msgstr "Qué estás buscando ?"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_filters
+msgid "What you are looking for ?"
+msgstr "Qué estás buscando ?"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_wifi
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "WiFi"
+msgstr "Wifi"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_details__web_window_cover
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.amenities_filters
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "Window Covering"
+msgstr "Cubierta de ventana"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.homes
+msgid "Won Amazing Awards"
+msgstr "Ganó premios increíbles"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "YD²"
+msgstr "YD²"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.enquiry_details
+msgid "Your Enquiry"
+msgstr "Tu investigación"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "Your Name *"
+msgstr "Su nombre *"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid "Your Wishlist"
+msgstr "Tu lista de deseos"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid ""
+"Your Wishlist :\n"
+"                            <span>\n"
+"                                <strong/>\n"
+"                                Properties\n"
+"                            </span>"
+msgstr ""
+"Tu lista de deseos :\n"
+"                            <span>\n"
+"                                <strong/>\n"
+"                                Propiedades\n"
+"                            </span>"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.map_view
+msgid "Your location"
+msgstr "Tu ubicación"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields.selection,name:tk_website_rental_management.selection__property_theme_config__hero_choice__youtube
+msgid "Youtube Video"
+msgstr "Video de Youtube"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__youtube_bg_video
+msgid "Youtube Video ID"
+msgstr "Identificación de vídeo de Youtube"
+
+#. module: tk_website_rental_management
+#: model:ir.model.fields,field_description:tk_website_rental_management.field_property_theme_config__zoom_level
+msgid "Zoom Level"
+msgstr "Nivel de zoom"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_amenity_inherit_form_view
+msgid "fa-home"
+msgstr "fa-home"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.enquiry_details
+msgid "has been submitted."
+msgstr "ha sido enviado."
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "https://your-site.com/video/bg-video.mp4"
+msgstr "https://your-site.com/video/bg-video.mp4"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_theme_config_view_form
+msgid "iTPtpU-IpiM"
+msgstr "iTPtpU-IpiM"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_header
+msgid "ll.landlord_id.name"
+msgstr "ll.landlord_id.name"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.property_details
+msgid "prop.landlord_id.sudo().name"
+msgstr "prop.landlord_id.sudo().name"
+
+#. module: tk_website_rental_management
+#: model_terms:ir.ui.view,arch_db:tk_website_rental_management.techkhedut_footer_switch
+msgid "theme_tk_footer"
+msgstr "theme_tk_footer"

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_geotracking" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.hr.attendance.geotracking</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="93"/>
+        <field name="inherit_id" ref="hr_attendance.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@data-key='hr_attendance']" position="inside">
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-8 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="geotracking_access"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Geotracking access</span>
+                                    <div class="text-muted">
+                                        Completely disable / enable geotracking on users' devices.
+                                        If disabled, all mobile devices will stop sending geolocations forcibly.
+                                        If enabled, users will be able to enable geotracking in mobile app
+                                        either manually or at the first check in / out
+                                    </div>
+                                </div>
+
+                                <div attrs="{'invisible':[('geotracking_access','=',False)]}">
+                                <div class="o_setting_left_pane">                                    
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Distanse coming</span>
+                                    <field name="distanse_notify_check_in"/>
+                                    <div class="text-muted">
+                                        Metr count distansem when push notification sended, coming geofence
+                                    </div>
+                                </div>
+
+                                <div class="o_setting_left_pane">
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Distanse removal</span>
+                                    <field name="distanse_notify_check_out"/>
+                                    <div class="text-muted">
+                                        Metr count distansem when push notification sended, distanse geofence
+                                    </div>
+                                </div>
+
+                                <div class="o_setting_left_pane">
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Batch size</span>
+                                    <field name="geotracking_batch_mode"/>
+                                    <div class="text-muted">
+                                        Count accumulate geo coords before send to server
+                                    </div>
+                                </div>
+
+                                <div class="o_setting_left_pane">
+                                    <field name="geotracking_period_server_enable"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Geotracking server period enable</span>
+                                    <div class="text-muted">
+                                        Set device period send geo coords 
+                                    </div>
+                                </div>
+                                <div class="o_setting_left_pane" attrs="{'invisible':[('geotracking_period_server_enable','=',False)]}">
+                                </div>
+                                <div class="o_setting_right_pane" attrs="{'invisible':[('geotracking_period_server_enable','=',False)]}">
+                                    <span class="o_form_label">Geotracking server period count</span>
+                                    <field name="geotracking_period_server_qty"/>
+                                    <div class="text-muted">
+                                        Geotracking server period count milliseconds
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+
+                            <!-- <group string="Geotracking users settings">
+                                <div>
+                                    <button
+                                        type="action"
+                                        name="post_rus.post_list_user_auth_act"
+                                        string="Setup your users auth"
+                                        class="oe_link" />
+                                </div>
+                                <div class="text-muted">
+                                    Configure geotracking settings directly for each user,
+                                    its applied when app send geolocation or
+                                    if firebase push notifications are available - immediately.
+                                </div>
+                            </group> -->
+                        </div>
+                </xpath> 
+        </field>
+    </record>
+</odoo>

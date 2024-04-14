@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="heldpesk_ticket_child_wizard_view" model="ir.ui.view">
+            <field name="name">Heldpesk Ticket Child Wizard View</field>
+            <field name="model">heldpesk.ticket.child.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <h3><p class="oe_black">
+                        This wizard will create child under current ticket.</p>
+                    </h3>
+                    <div class="oe_title">
+                        <div class="oe_title">
+                            <h1>
+                                <field name="custom_subject" readonly="0" placeholder="Helpdesk Support Subject"/>
+                            </h1>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="custom_type_ticket_id"/>
+                            <field name="custom_subject_type_id"/>
+                            <field name="custom_user_id"/>
+                            <field name="custom_department_id"/>
+                        </group>
+                        <group>
+                            <field name="custom_priority"/>
+                            <field name="custom_team_id"/>
+                            <field name="custom_category"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="description" string="Description">
+                            <field name="custom_description" placeholder="Add an internal note..." />
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button string="Submit" type="object" class="btn btn-sm btn-primary" name="create_child_ticket"/>
+                        <button string="Cancel" special="cancel" class="btn btn-sm btn-default"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+ 
+        <record id="heldpesk_ticket_child_wizard_view_action" model="ir.actions.act_window">
+            <field name="name">Create Child Ticket</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">heldpesk.ticket.child.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="heldpesk_ticket_child_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

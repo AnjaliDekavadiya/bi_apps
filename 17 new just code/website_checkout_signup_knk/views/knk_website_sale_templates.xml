@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="address_inh" inherit_id='website_sale.address' name="Address Management">
+        <xpath expr="//form//div[hasclass('row')]" position="inside">
+            <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2c' and request.website.is_checkout_signup">
+                <t t-if="mode == ('new', 'billing')">
+                    <div class="col-lg-12">
+                        <div class="checkbox form-check form-switch">
+                            <label>
+                                <input type="checkbox" id='is_create_user' class="form-check-input mr8" name='is_create_user' value="1" checked='checked' /> Do you want to create user?
+                            </label>
+                        </div>
+                    </div>
+                    <div class="w-100" />
+                    <div t-attf-class="mb-3 #{error.get('password') and 'o_has_error' or ''} col-lg-6 password_row" id="div_email">
+                        <label class="col-form-label" for="password">Password</label>
+                        <input type="password" name="password" t-attf-class="form-control #{error.get('password') and 'is-invalid' or ''}" t-att-value="'password' in checkout and checkout['password']" />
+                    </div>
+                    <div t-attf-class="mb-3 #{error.get('confirm_password') and 'o_has_error' or ''} col-lg-6 password_row" id="div_phone">
+                        <label class="col-form-label" for="confirm_password">Confirm Password</label>
+                        <input type="password" name="confirm_password" t-attf-class="form-control #{error.get('confirm_password') and 'is-invalid' or ''}" t-att-value="'confirm_password' in checkout and checkout['confirm_password']" />
+                    </div>
+                    <div class="w-100" />
+                </t>
+            </t>
+        </xpath>
+        <xpath expr="//input[@name='field_required']" position="replace">
+            <t t-if="mode == ('new', 'billing')">
+                <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2c' and request.website.is_checkout_signup">
+                    <input type="hidden" name="field_required" t-att-value="'phone,name,password,confirm_password'" />
+                </t>
+                <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2b' or (request.env['res.users']._get_signup_invitation_scope() == 'b2c' and not request.website.is_checkout_signup)">
+                    <input type="hidden" name="field_required" t-att-value="'phone,name'" />
+                </t>
+            </t>
+            <t t-else="">
+                <input type="hidden" name="field_required" t-att-value="'phone,name'" />
+            </t>
+        </xpath>
+    </template>
+</odoo>

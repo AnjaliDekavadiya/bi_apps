@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data noupdate="1">
+        <function model="ir.default"
+            name="set" eval="('res.config.settings', 'enable_sms_notify_reminder', True)"/>
+        <function model="ir.default"
+            name="set" eval="('res.config.settings', 'enable_sms_notify_on_creation', True)"/>
+        <function model="ir.default"
+            name="set" eval="('res.config.settings', 'enable_sms_notify_on_status_upd', True)"/>
+        <function model="ir.default"
+            name="set" eval="('res.config.settings', 'sms_notify_reminder', False)"/>
+        <function model="ir.default"
+            name="set" eval="('res.config.settings', 'sms_notify_on_creation', False)"/>
+        <function model="ir.default"
+            name="set" eval="('res.config.settings', 'sms_notify_on_status_upd', False)"/>
+    </data>
+</odoo>

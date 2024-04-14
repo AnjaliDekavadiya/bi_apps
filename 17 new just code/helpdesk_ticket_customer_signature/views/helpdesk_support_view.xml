@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="helpdesk_ticket_customer_signature_view" model="ir.ui.view">
+            <field name="name">Helpdesk Ticket Customer Signature View</field>
+            <field name="model">helpdesk.support</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_support_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='customer_rating']/group/group" position="after">
+                     <group>
+                        <field name="signature" widget='image' class="oe_avatar" />
+                        <field name="signature_date" 
+                            invisible="not signature"/>
+                            <!-- attrs="{'invisible': [('signature', '=', False)]}"/> -->
+                    </group>
+               </xpath>
+                <xpath expr="//notebook/page[@name='customer_rating']/group" position="before">
+                    <!-- <div class="text-right"> -->
+                    <div class="float-end">
+                        <button name="send_signature_request" string="Send Signature Request"  
+                        type="object" class="oe_highlight" 
+                        invisible="signature" groups="website_helpdesk_support_ticket.group_helpdesk_user"/>
+                        <!-- attrs="{'invisible': [('signature', '!=', False)]}" -->
+                    </div>
+                </xpath>
+           </field>
+        </record>
+    </data>
+</odoo>

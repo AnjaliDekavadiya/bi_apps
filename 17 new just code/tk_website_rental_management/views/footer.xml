@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+    Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+-->
+<odoo>
+    <data>
+        <template id="theme_tk_footer" inherit_id="website.layout" name="TechKhedut Footer" active="True">
+            <xpath expr="//footer" position="replace">
+                <t t-set="web_footer" t-value="False" />
+                    <div t-if="web_footer">
+                        <div id="footer" />
+                    </div>
+                <footer class="main-footer fl-wrap">
+                        <t t-set="rental_config" t-value="request.env.ref('tk_website_rental_management.property_theme_config_rec')" />
+                        <div class="footer-header fl-wrap grad ient-dark" t-if="rental_config.mailling_list_id">
+                            <div class="p-container container">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div  class="subscribe-header">
+                                            <h3>Subscribe For a <span>Newsletter</span></h3>
+                                            <p>Want to be notified about new properties ?  Just subscribe it.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="subscribe-widget">
+                                            <div class="subcribe-form s_newsletter_subscribe_form js_subscribe" t-att-data-list-id="rental_config.mailling_list_id.id">
+                                                <div id="subscribe">
+                                                    <input class="enteremail fl-wrap js_subscribe_value" type="email" name="email" id="subscribe-email" placeholder="Enter Your Email" spellcheck="false"/>
+                                                    <button id="subscribe-button" class="subscribe-button js_subscribe_btn o_submit"><i class="fal fa-envelope"></i></button>
+                                                    <button id="subscribe-button" class="subscribe-button js_subscribed_btn d-none o_submit"></button>
+                                                    <label for="subscribe-email" class="subscribe-message"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-inner fl-wrap">
+                            <div class="p-container container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="footer-widget fl-wrap">
+                                            <div class="footer-logo">
+                                                <t t-call="website.placeholder_header_brand">
+                                                    <t t-set="_link_class" t-valuef="me-4"/>
+                                                </t>
+                                            </div>
+                                            <div class="footer-contacts-widget fl-wrap">
+                                                <p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida.   </p>
+                                                <ul  class="footer-contacts fl-wrap no-list-style">
+                                                    <li class="mr8"><span><i class="fal fa-envelope"></i> Mail :</span><a t-attf-href="mailto:#{res_company.email}" target="_blank"><t t-esc="res_company.email" /></a></li>
+                                                    <li><span><i class="fal fa-phone"></i> Phone :</span><a t-attf-href="tel://#{res_company.phone}"><t t-esc="res_company.phone" /></a></li>
+                                                </ul>
+                                                <div class="footer-social">
+                                                    <span>Find  us on: </span>
+                                                    <ul class="no-list-style">
+                                                        <li><a t-att-href="website.social_facebook" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                                        <li><a t-att-href="website.social_twitter" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                                        <li><a t-att-href="website.social_instagram" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                                        <li><a t-att-href="website.social_youtube" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                                        <li><a t-att-href="website.social_linkedin" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="footer-widget fl-wrap">
+                                            <h3>Our Latest News</h3>
+                                            <div class="footer-widget-posts fl-wrap">
+                                                <ul class="no-list-style">
+                                                    <t t-set="blogs" t-value="request.env['blog.post'].sudo().search([('is_published', '=', True)], order='id desc', limit=3)" />
+                                                    <t t-foreach="blogs" t-as="blg" >
+                                                        <li class="clearfix">
+                                                            <t t-set="cover" t-value="json.loads(blg.cover_properties)"/>
+                                                            <t t-set="image" t-value="cover.get('background-image')"/>
+                                                            <a t-attf-href="/blog/#{slug(blg.blog_id)}/#{slug(blg)}"  class="widget-posts-img"><img t-att-src="image[5:-2]" class="respimg" t-att-alt="blg.name" /></a>
+                                                            <div class="widget-posts-descr">
+                                                                <a t-attf-href="/blog/#{slug(blg.blog_id)}/#{slug(blg)}" t-att-title="blg.name"><t t-esc="blg.name"/></a>
+                                                                <span class="widget-posts-date"><i class="fal fa-calendar"></i> <span t-field="blg.post_date" t-options="{'format': 'd'}" /> <span t-field="blg.create_date" t-options="{'format': 'MMM'}" /></span>
+                                                            </div>
+                                                        </li>
+                                                    </t>
+                                                </ul>
+                                                <a href="/blog" class="footer-link">Read all <i class="fal fa-long-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer-bg" data-ran="4"></div>
+                            <div class="footer-wave">
+                                <svg viewbox="0 0 100 25">
+                                    <path fill="#fff" d="M0 30 V12 Q30 17 55 12 T100 11 V30z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="sub-footer  fl-wrap">
+                        <div class="p-container container">
+                            <div class="copyright"> &#169; <t t-esc="website.name" />. All rights reserved.</div>
+                            <div class="lang-wrap">
+                                <t t-set="active_foot_lang" t-value="list(filter(lambda lg : lg[0] == lang, languages))[0]"/>
+                                <div class="show-lang"><span><i class="fal fa-globe-europe"></i><strong t-esc="active_foot_lang[1].upper()" /></span><i class="fa fa-caret-down arrlan"></i></div>
+                                <ul class="lang-tooltip lang-action no-list-style js_language_selector">
+                                    <t t-foreach="languages" t-as="lg">
+                                        <li>
+                                            <a t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"
+                                               t-attf-class="js_change_lang #{active_foot_lang == lg and 'current-lan'}"
+                                               t-att-data-url_code="lg[1]">
+                                                <span t-if="not no_text" t-esc="lg[2].split('/').pop()"/>
+                                            </a>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                            <div class="subfooter-nav">
+                                <ul class="no-list-style">
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Terms of use</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="/blog">Blog</a></li>
+                                    <li><a href="/contactus">Contacts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <a class="to-top"><i class="fas fa-caret-up"></i></a>
+            </xpath>
+        </template>
+        <template id="techkhedut_footer_switch" inherit_id="website.snippet_options">
+            <xpath expr="//div/we-select[@data-variable='footer-template']" position="inside">
+                <we-button title="theme_tk_footer"
+                    data-customize-website-views="tk_website_rental_management.theme_tk_footer"
+                    data-customize-website-variable="'theme_tk_footer'"
+                    data-img="/tk_website_rental_management/static/src/img/footer-1.png"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

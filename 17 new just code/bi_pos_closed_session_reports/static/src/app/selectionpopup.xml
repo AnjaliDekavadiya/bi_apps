@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="bi_pos_closed_session_reports.SelectionSession">
+        <div class="popup popup-textarea">
+            <div class="modal-header">
+                <h4 class="modal-title"><t t-esc="props.title" /></h4>
+                <!-- when modal fixed <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+            </div>
+
+            <div class="modal-body">
+                <div class="table-data">
+                    Select Session :
+                    <t t-if="env.services.pos.sessions_list.length > 0">
+                        <select name="Select" id="Select" class="user-selection"
+                                style="border: none; background: white; padding: 5px; padding-right: 45px;
+                                            font-size: 15px; font-weight: unset;margin-left: 10px;">
+                            <option value="">Please Choose </option>
+                            <t t-foreach="env.services.pos.sessions_list" t-as="session" t-key="session.id">
+                                <t t-if="session.state == 'closed'">
+                                    <option t-att-value='session.id'>
+                                        <t t-esc="session.display_name"/>
+                                    </option>
+                                </t>
+                            </t>
+                        </select>
+                    </t>
+                </div>
+            </div>
+
+            <footer class="footer footer-flex modal-footer">
+                <div class="button confirm highlight btn btn-lg btn-primary" t-on-click="confirm_session">
+                    <t t-esc="props.confirmText" />
+                </div>
+               
+                <div class="button cancel btn btn-lg btn-secondary" t-on-click="cancel">
+                    <t t-esc="props.cancelText" />
+                </div>
+            </footer>
+        </div>
+    </t>
+
+</templates>

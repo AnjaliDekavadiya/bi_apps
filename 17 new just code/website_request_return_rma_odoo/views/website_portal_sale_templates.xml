@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="display_returns_print_rma" name="Portal My return: Print RMA" inherit_id="website_shop_return_rma.display_returns" priority="28">
+        <xpath expr="//t/table/thead/tr/th[4]" position="after">
+            <th></th>
+        </xpath>
+        <xpath expr="//t/table/t/tr/td[4]" position="after">
+            <td>
+                <!-- <a class="btn btn-sm btn-primary" t-att-href="'/my/returns/printrma/%s?%s' % (ret.id, keep_query())" >
+                  <i class="fa fa-print"></i> Print
+                </a> -->
+                <a t-att-href="ret.get_portal_url()" t-att-title="ret.id" class="btn btn-sm btn-primary" target="_blank">
+                    <i class="fa fa-print"></i> Print
+                </a>
+            </td>
+        </xpath>
+        <xpath expr="//t/table/t/tr/td[6]/a" position="replace">
+            <td>
+                <a class="btn btn-xs btn-primary d-none" t-attf-href="/my/returns/printrma/custom#{ret.id}">Print</a>
+             </td>
+        </xpath>
+    </template>
+    <template id="portal_return_my_form_menu_breadcrumbs_return_order_probc"  inherit_id="portal.portal_breadcrumbs">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'return_details_page' or return_details" t-attf-class="breadcrumb-item #{'active ' if return_details else ''}">
+               <a t-if="return_details" href="/my/returns">Return Order</a>
+            </li>
+             <li t-if="page_name == 'return_details_page' or return_details" t-attf-class="breadcrumb-item #{'active ' if not return_details else ''}">
+                <span t-esc="return_details.number"/>
+            </li>
+
+        </xpath>
+    </template>
+    <template id="display_return_order_form_link_probc" inherit_id="website_shop_return_rma.display_returns">
+        <xpath expr="//t/table/t/tr/td[1]" position="replace">
+            <td>
+                <t t-set="ret_access_token" t-value="ret.get_portal_url()"/>
+                <a t-attf-href="/my/returns/detail/form/#{ret.id}?{{ keep_query(access_token=ret.access_token) }}"><span t-field="ret.number"/></a>
+            </td>
+        </xpath>
+    </template>
+    <template id="display_return_request_order_details_probc">
+         <t t-call="portal.portal_layout">
+            <t t-call="portal.portal_record_layout">
+                <t t-set="card_header">
+                    <div class="row no-gutters">
+                        <div class="col-md">
+                            <h4 class="mb-1 mb-md-0">
+                                Return Order - <span t-field="return_details.number"/>
+                            </h4>
+                        </div>
+                        <div class="col-md text-md-right">
+                            <small class="text-right">Status:</small>
+                            <span t-field="return_details.state" class=" badge badge-pill badge-info" title="Current stage of this task"/>
+                        </div>
+                    </div>
+                </t>
+                <t t-set="card_body">
+                    <h2 class="text-center mt16 mb16">Contact Information</h2>
+                    <div class="row col-md-12">
+                        <div class="col-md-6">
+                            <div>
+                                <strong>Customer:</strong>
+                             <span t-field="return_details.partner_id" 
+                                t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                            </div><br></br>
+                            <div>
+                                <strong>Return Address:</strong>
+                             <span t-field="return_details.address" />
+                            </div>
+                        </div>
+                        <div class="col-md-6" t-if='return_details.order_partner_id'>
+                            <div>
+                                <strong>Order Customer:</strong>
+                             <span t-field="return_details.order_partner_id" 
+                                t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                            </div>
+                        </div>
+                 </div>
+                  <h2 class="text-center mt16 mb16">Sale Information</h2>
+                   <div class="row col-md-12">
+                        <div class="col-md-6">
+                            <div t-if='return_details.saleorder_id.name'>
+                                <strong>Sale Order:</strong>
+                             <span t-field="return_details.saleorder_id.name" 
+                            />
+                            </div><br></br>
+                            <div>
+                                <strong>Salesperson:</strong>
+                                <span t-field="return_details.salesperson_id.name" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="oe_sales_team" t-if='return_details.saleorder_id.name'>
+                                <strong>Sales Team:</strong>
+                             <span t-field="return_details.team_id.name" 
+                                />
+                            </div>
+                        </div>
+                   </div>
+                   <h2 class="text-center mt16 mb16">General Information</h2>
+                   <div class="row col-md-12">
+                        <div class="col-md-6">
+                            <div>
+                                <strong>Create Date:</strong>
+                             <span t-field="return_details.create_date" 
+                            />
+                            </div><br></br>
+                            <div>
+                                <strong>Return Reason:</strong>
+                                <span t-field="return_details.reason_id.name" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <strong>Shipping Reference:</strong>
+                             <span t-field="return_details.shipping_reference" 
+                                />
+                            </div>
+                        </div>
+                   </div>
+                    <h2 class="text-left mt16 mb16">RMA Order Lines</h2>
+                    <t t-if="return_details.return_product_line_ids" t-call="portal.portal_table">
+                        <thead>
+                          <tr class="active">
+                            <th>Return Product</th>
+                            <th>Delivered Quantity</th>
+                            <th>Return Request Quantity</th>
+                            <th>Product Uom</th>
+                            <th>Repair Method</th>
+                          </tr>
+                        </thead>
+                    <t t-foreach="return_details.return_product_line_ids" t-as="product">
+                        <tr>
+                            <td>
+                                <span t-field="product.product_id.name"/>
+                            </td>
+                            <td>
+                                <span t-field="product.quantity"/>
+                            </td>
+                            <td>
+                                <span t-field="product.return_quantity"/>
+                            </td>
+                            <td>
+                                <span t-field="product.uom_id.name"/>
+                            </td>
+                            <td>
+                                <span t-field="product.repair_scrape"/>
+                            </td>
+                        </tr>
+                    </t>
+                  </t>
+                  <h2 class="text-left mt16 mb16">Reason Details</h2>
+                  <div>
+                     <span t-field="return_details.reason" 
+                                />
+                  </div>
+                </t>
+            </t>
+            <div class="mt32" name="msg_comm_hstry">
+                <h4><strong>Message and communication history</strong></h4>
+                <t t-call="portal.message_thread">
+                    <t t-set="object" t-value="return_details"/>
+                    <t t-set="token" t-value="return_details.access_token"/>
+                    <t t-set="pid" t-value="pid"/>
+                    <t t-set="hash" t-value="hash"/>
+                </t>
+            </div>
+    </t>
+</template>
+</odoo>

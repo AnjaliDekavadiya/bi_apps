@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<odoo>
+
+<!--    <menuitem -->
+<!--            id="menu_ticket_faq"-->
+<!--            name="Knowledge Base"-->
+<!--            parent="website_helpdesk_support_ticket.main_helpdesk_support"-->
+<!--            groups="website_helpdesk_support_ticket.group_helpdesk_user"-->
+<!--            sequence="5" />-->
+
+        <menuitem 
+            id="menu_ticket_faq"
+            name="Knowledge Base"
+            parent="website_helpdesk_support_ticket.main_helpdesk_support"
+            groups="website_helpdesk_support_ticket.group_helpdesk_user"
+            sequence="2" />
+        
+        <menuitem 
+            action="helpdesk_ticket_knowledge_base.action_view_ticket_faq_category"
+            id="menu_action_ticket_faq_category"
+            name="Knowledge Base Categories"
+            parent="menu_ticket_faq"
+            sequence="2" /> 
+        
+        <menuitem 
+            action="helpdesk_ticket_knowledge_base.action_view_ticket_faq_tags"
+            id="menu_action_view_ticket_faq_tags"
+            parent="menu_ticket_faq"
+            name="Knowledge Base Tags"
+            sequence="3" /> 
+        
+        <menuitem 
+            action="helpdesk_ticket_knowledge_base.action_view_ticket_faq"
+            id="menu_action_view_ticket_faq"
+            name="Knowledge Bases"
+            parent="menu_ticket_faq"
+            sequence="1" />
+</odoo>

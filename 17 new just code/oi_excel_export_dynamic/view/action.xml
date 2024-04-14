@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="action_oi_excel_export_config" model="ir.actions.act_window">
+		<field name="name">Excel Report</field>
+		<field name="res_model">oi_excel_export.config</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+</odoo>

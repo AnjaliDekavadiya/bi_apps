@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	<template id="report_purchase_inherit" inherit_id="purchase.report_purchasequotation_document">
+        <xpath expr="//table[1]/thead/tr" position="replace">  
+            <tr>
+                <th><strong>Description</strong></th>
+                <t t-if="o.dimension_method == 'l_w_h'">
+                <th>Length </th>
+                <th>Width </th>
+                <th>Height </th>
+                <th>Dim qty</th>
+                <th>Weight Ea.</th>
+                </t>
+                <t t-if="o.dimension_method == 'w_h'">
+                <th>Height (Mt.)</th>
+                <th>width (Mt.)</th>
+                <th>(Mt.)2</th>
+                
+                </t>
+                <th class="text-center"><strong>Expected Date</strong></th>
+                <th class="text-right"><strong>Qty</strong></th>
+                <t t-if="o.dimension_method == 'w_h'">
+                    <th>Net Price</th>
+                </t>
+            </tr>
+            
+        </xpath>
+        <xpath expr="//table[1]/tbody" position="replace">  
+            <t t-foreach="o.order_line" t-as="order_line">
+                <tr t-att-class="'bg-200 font-weight-bold o_line_section' if order_line.display_type == 'line_section' else 'font-italic o_line_note' if order_line.display_type == 'line_note' else ''">
+                    <t t-if="not order_line.display_type">
+                        <td id="product">
+                            <span t-field="order_line.name"/>
+                        </td>
+                        <t t-if="order_line.dimension_method == 'l_w_h' ">
+                        <td><span t-field="order_line.pro_length"/></td>
+                        <td><span t-field="order_line.pro_height"/></td>
+                        <td><span t-field="order_line.pro_width"/></td>
+                        <td><span t-field="order_line.tot_qty"/></td>
+                        <td><span t-field="order_line.custom_weight"/></td>
+                        </t>
+                        <t t-if="order_line.dimension_method == 'w_h' ">
+                        <td><span t-field="order_line.height"/></td>
+                        <td><span t-field="order_line.width"/></td>
+                        <td><span t-field="order_line.square_meter"/></td>
+                        
+                        </t>
+                        <td class="text-center">
+                            <span t-field="order_line.new_date_planned"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="order_line.product_qty"/>
+                            <span t-field="order_line.product_uom.name" groups="uom.group_uom"/>
+                        </td>
+                        <t t-if="order_line.dimension_method == 'w_h'">
+                            <td><span t-field="order_line.net_price_pur"/></td>
+                        </t>
+                    </t>
+                </tr>
+            </t>         
+        </xpath>
+    </template>
+	</data>
+</odoo>

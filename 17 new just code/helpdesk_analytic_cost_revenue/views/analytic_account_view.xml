@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+         <record model="ir.ui.view" id="view_analytic_account_form_inherit_billingtype">
+            <field name="name">account.analytic.account.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name='customer_billing_type'/>
+                    <field name='sale_cost_amount' widget="monetary"  options="{'currency_field': 'currency_id'}"/>
+                    <field name="emplyee_cost_amount" widget="monetary"  options="{'currency_field': 'currency_id'}"/>
+                    <field name="balance_cost_amount" widget="monetary"  options="{'currency_field': 'currency_id'}"/>
+                </xpath>
+                <xpath expr="//page[@id='prepaired_hours']" position="after">
+                    <page string="Helpdesk Tickets">
+                        <field name="helpdesk_support_ids"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_analytic_account_line_form_inherit_billingtype">
+            <field name="name">account.analytic.line.form</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='account_id']" position="after">
+                    <field name='service_support_type_id'/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_analytic_account_line_search_inherit_billingtype">
+            <field name="name">account.analytic.line.search</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="service_support_type_id"/>
+                    <field name="customer_billing_type"/>
+                    <filter name="postpaid" string="Postpaid" domain="[('customer_billing_type','=','postpaid')]"/>
+                    <filter name="prepaid" string="Prepaid" domain="[('customer_billing_type', '=', 'prepaid')]"/>
+                    <filter string="Customer Billing Type" name='customer_billing_type' context="{'group_by':'customer_billing_type'}"/>
+                    <filter string="Service Support Type" name='service_support_type_id' context="{'group_by':'service_support_type_id'}"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_analytic_account_line_form_inherit_from">
+            <field name="name">account.analytic.line.inhert.form</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.timesheet_view_form_user"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='unit_amount']" position="after">
+                    <field name='service_support_type_id'/>
+                    <field name='customer_billing_type'/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

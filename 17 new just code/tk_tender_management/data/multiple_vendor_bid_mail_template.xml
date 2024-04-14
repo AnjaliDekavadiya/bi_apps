@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="multiple_vendor_bid_selection_mail_template" model="mail.template">
+            <field name="name">Tender Management : Send Mail to Selected Bid Vendor</field>
+            <field name="model_id" ref="tk_tender_management.model_tender_bidding"/>
+            <field name="subject">Your Bid for "{{object.tender_id.name}}" Has Been Selected</field>
+            <field name="email_from">{{object.company_id.email}}</field>
+            <field name="partner_to">{{ object.vendor_id.id }}</field>
+            <field name="body_html" type="html">
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            Dear
+                            <br/>
+                            <h4>
+                                <strong>
+                                    <t t-out="object.vendor_id.name"/>
+                                </strong>
+                            </h4>
+                        </td>
+                    </tr>
+                </table>
+                <hr/>
+                <p>
+                    We are pleased to inform you that your bid for the
+                    <strong>
+                        <span t-field="object.tender_id.name"/>
+                    </strong>
+                    has been selected for the purchase
+                    order. We would like to express our appreciation to you and your team for being selected as one of
+                    the candidates for this project.
+                </p>
+                <br/>
+                <h6>
+                    In your bids, the following bids are considered for Purchase order.
+                </h6>
+                <table class="table">
+                    <tr>
+                        <th scope="col">Description</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Unit of Measure</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Your Price / Qty.</th>
+                        <th scope="col">Total Price</th>
+                    </tr>
+                    <t t-foreach="object.bidding_line_ids" t-as="r">
+                        <t t-if="r.selected_bid">
+                            <tr>
+                                <td>
+                                    <span t-field="r.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="r.code"/>
+                                </td>
+                                <td>
+                                    <span t-field="r.uom_id"/>
+                                </td>
+                                <td>
+                                    <span t-field="r.qty"/>
+                                </td>
+                                <td>
+                                    <span t-field="r.price"/>
+                                </td>
+                                <td>
+                                    <span t-field="r.total"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                </table>
+                <p>
+                    We will contact you shortly regarding the purchase order process, and our procurement team will be
+                    available to assist with any clarifications or additional information you may require.
+                </p>
+                <br/>
+                <h6>
+                    Best regards
+                </h6>
+                <h5>
+                    <strong>
+                        <t t-out="object.company_id.name"/>
+                    </strong>
+                </h5>
+                <hr/>
+                <span>
+                    <h6>
+                        <t t-out="object.company_id.name"/>
+                    </h6>
+                    <t t-out="object.company_id.phone"/>
+                    <br/>
+                    <t t-out="object.company_id.email"/>
+                    <br/>
+                    <t t-out="object.company_id.website"/>
+                </span>
+            </field>
+            <field name="auto_delete" eval="False"/>
+        </record>
+    </data>
+</odoo>

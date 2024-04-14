@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+	<record id="approval_end_of_service_hr_manager" model="approval.config" forcecreate="False">
+		<field name="model_id" ref="model_hr_end_of_service" />
+		<field name="state">hr_manager</field>
+		<field name="name">HR Manager Approval</field>
+		<field name="sequence">10</field>
+		<field name="group_ids" eval="[(4, ref('hr.group_hr_manager'))]" />
+		<field name="condition">True</field>
+		<field name="schedule_activity" eval="True" />
+	</record>
+
+</odoo>

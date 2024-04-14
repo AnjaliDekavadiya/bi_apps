@@ -1,0 +1,55 @@
+# -*- coding: utf-8 -*-
+{
+'name': 'Employee Appraisals',
+'summary': 'Evaluations, Periodical Evaluations, Appraisals, Surveys for Employee, '
+           'Employee Rating, 360 Appraisal, 360 Feedback, 360 Evaluation, Employee '
+           'Statistics, 365 Appraisal, 365 Feedback, 365 Evaluation',
+'category': 'Human Resources',
+'description': '''
+        Employee Appraisals.
+         
+    ''',
+'author': 'Openinside',
+'license': 'OPL-1',
+'website': 'https://www.open-inside.com',
+'version': '17.0.2.1.3',
+'price': 100.0,
+'currency': 'USD',
+'installable': True,
+'application': True,
+'depends': ['hr', 'oi_workflow', 'oi_web_selection_tags'],
+'data': ['security/res_groups.xml',
+          'security/ir.model.access.csv',
+          'security/ir_rule.xml',
+          'view/action.xml',
+          'view/appraisal_template.xml',
+          'view/appraisal_question_group.xml',
+          'view/appraisal_evaluation_template.xml',
+          'view/appraisal_generate.xml',
+          'view/appraisal_batch.xml',
+          'view/appraisal_batch_type.xml',
+          'view/appraisal_rate.xml',
+          'view/appraisal_phase.xml',
+          'view/appraisal.xml',
+          'view/appraisal_evaluation.xml',
+          'view/menu.xml',
+          'data/appraisal_rate.xml',
+          'data/ir_sequence.xml',
+          'data/appraisal_batch_type.xml',
+          'data/approval_config.xml'],
+'assets': {'web.assets_backend': ['oi_appraisal/static/src/*/*.js',
+                                   'oi_appraisal/static/src/*/*.scss',
+                                   'oi_appraisal/static/src/*/*.xml']},
+'demo': ['demo/appraisal.question.group.csv',
+          'demo/appraisal.question.csv',
+          'demo/appraisal.evaluation.template.csv',
+          'demo/appraisal.evaluation.template.line.csv',
+          'demo/appraisal.template.csv',
+          'demo/appraisal.template.line.csv',
+          'demo/data.xml'],
+'images': ['static/description/cover.png'],
+'post_init_hook': 'post_init_hook',
+'uninstall_hook': 'uninstall_hook',
+
+'odoo-apps': True
+}

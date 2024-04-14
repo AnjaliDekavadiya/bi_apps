@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="mrp_production_material_cost_form_view_sec" model="ir.ui.view">
+            <field name="name">mrp.production.material.cost.form.view</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+
+                    <field name="total_finished_kg" invisible="1"/>
+                    <field name="change_costing" invisible="1"/>
+
+                </xpath>
+                <xpath expr="////page/field[@name='move_raw_ids']/.." position="after">
+                <page string="Finished Products">
+                    <field name="finished_move_line_ids" context="{'form_view_ref': 'mrp.view_finisehd_move_line'}" readonly="is_locked" invisible="finished_move_line_ids == []">
+                         <tree editable="bottom" create="0" delete="0" decoration-muted="state in ('done', 'cancel')">
+                            <field name="product_id" readonly="1"/>
+                            <field name="company_id" column_invisible="1"/>
+                            <field name="lot_id" groups="stock.group_production_lot" context="{'default_product_id': product_id, 'default_company_id': company_id}" invisible="not lots_visible"/>
+                            <field name="quantity" string="Produced"/>
+                            <field name="lots_visible" column_invisible="1"/>
+                            <field name="state" column_invisible="1"/>
+                        </tree>
+                    </field>
+                    <p invisible="finished_move_line_ids != []">
+                        Use the Produce button or process the work orders to create some finished products.
+                    </p>
+                </page>
+            </xpath>
+            </field>
+        </record>
+
+        <record id="mrp_production_material_cost_form_view_fgcost_cust" model="ir.ui.view">
+            <field name="name">mrp.production.material.cost.form.view</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id"
+                   ref="bi_odoo_process_costing_manufacturing.mrp_production_material_cost_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='mo_costing']" position="inside">
+                    <notebook>
+                        <page string="Actual Costing" name="Actual Costing">
+                            <field name="actual_costing_ids" string="">
+                                <tree string="Actual Costing" editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="lot_id"/>
+                                    <field name="material_costs" widget="monetary" sum="cost"/>
+                                    <field name="labour_costs" widget="monetary" sum="cost"/>
+                                    <field name="overhead_costs" widget="monetary" sum="cost"/>
+                                    <field name="total_cost" widget="monetary" sum="cost"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="product_id"/>
+                                        <field name="lot_id" invisible="1"/>
+                                        <field name="material_costs"/>
+                                    </group>
+                                    <group>
+                                        <field name="labour_costs"/>
+                                        <field name="overhead_costs"/>
+                                    </group>
+                                    <group>
+                                        <field name="total_cost"/>
+                                        <field name="product_unit_cost"/>
+                                    </group>
+                                    <field name="currency_id" invisible="1"/>
+                                </form>
+                            </field>
+
+
+                        </page>
+
+                        <page name="Planned Costing" string="Planned Costing">
+                            <field name="planned_costing_ids" string="">
+                                <tree string="Planned Costing" editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="lot_id" column_invisible="1"/>
+                                    <field name="material_costs" widget="monetary" sum="cost"/>
+                                    <field name="labour_costs" widget="monetary" sum="cost"/>
+                                    <field name="overhead_costs" widget="monetary" sum="cost"/>
+                                    <field name="total_cost" widget="monetary" sum="cost"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="product_id"/>
+                                        <field name="lot_id" invisible="1"/>
+                                        <field name="material_costs"/>
+                                    </group>
+                                    <group>
+                                        <field name="labour_costs"/>
+                                        <field name="overhead_costs"/>
+                                    </group>
+                                    <group>
+                                        <field name="total_cost"/>
+                                        <field name="product_unit_cost"/>
+                                    </group>
+                                    <field name="currency_id" invisible="1"/>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

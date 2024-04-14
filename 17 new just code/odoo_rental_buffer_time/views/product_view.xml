@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_normal_form_view_inherit_custom_buffer_time" model="ir.ui.view">
+        <field name="name">product.product.form.inherit.buffer_time</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="odoo_rental_request_management.product_normal_form_view_inherit_custom_rental_qty"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='custom_rental_qty']/.." position="after">
+                <group>
+                    <field name="custom_buffer_pickup_time" widget="float_time"/>
+                    <field name="custom_buffer_drop_time" widget="float_time"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <record id="request_return_rma_add_pos_refernce" model="ir.ui.view">
+            <field name="name">return.order.form</field>
+            <field name="model">return.order</field>
+            <field name="inherit_id" ref="website_shop_return_rma.product_return_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='saleorder_id']" position="after">
+                    <field name="posorder_id"/>
+                    <field name="is_pos_order"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" name="pos_action_stock_picking_custom" type="object" icon="fa-pencil-square-o" string="POS Pickings">
+                    </button>
+                </xpath>
+                <xpath expr="//button[@name = 'action_view_outgoing_delivery']" position="attributes">
+                   <!--  <attribute name="attrs">{'invisible':[('is_pos_order','!=',False )]}</attribute> -->
+                    <attribute name="invisible">is_pos_order != False</attribute>
+                </xpath>
+                <xpath expr="//page[@name = 'Delivery Orders']" position="attributes">
+                    <!-- <attribute name="attrs">{'invisible':[('is_pos_order','!=',False )]}</attribute> -->
+                    <attribute name="invisible">is_pos_order != False</attribute>
+                </xpath>
+                <xpath expr="//page[@name = 'Return Picking']" position="attributes">
+                    <!-- <attribute name="attrs">{'invisible':[('is_pos_order','!=',False )]}</attribute> -->
+                    <attribute name="invisible">is_pos_order != False</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+		<template id="rfi_report_template_view">
+			<t t-call="web.external_layout">
+				<div class="page">
+					<t t-foreach="docs" t-as="o">
+						<div class="row" style="margin-top:40%;">
+							<h2 style="text-align : center;">
+								<span t-field="o.sequence" /><span> - </span><span t-field="o.name"/><span t-field="o.stage_id.name"/>
+							</h2>
+							<br />
+						</div>
+
+						<table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+							<tr
+								style="padding: 8px;text-align: left;border-top: 1px solid #ddd;height:50%;">
+								<td>
+									<strong>Subject : </strong>
+								</td>
+								<td>
+									<span t-field="o.subject" />
+								</td>
+								
+								<td>
+									<strong>Assigned To : </strong>
+								</td>
+								<td>
+									<span t-field="o.assign_to_id.name" />
+								</td>
+							</tr>
+
+							<tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+								<td>
+									<strong>Company : </strong>
+								</td>
+								<td>
+									<span t-field="o.company_id.name" />
+								</td>
+								
+								<td>
+									<strong>RFi Team : </strong>
+								</td>
+								<td>
+									<span t-field="o.rfi_team_id.team_leader_id.name" />
+								</td>
+							</tr>
+
+							<tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+								<td>
+									<strong>Create Date : </strong>
+								</td>
+								<td>
+									<span t-field="o.create_date" />
+								</td>
+
+								<td>
+									<strong>Closed Date : </strong>
+								</td>
+								<td>
+									<span t-field="o.closed_date" />
+								</td>
+							</tr>
+							<tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+								<td>
+									<strong>Project : </strong>
+								</td>
+								<td>
+									<span t-field="o.project_id.name" />
+								</td>
+
+							     <td>
+									<strong>Job Order : </strong>
+								</td>
+								<td>
+									<span t-field="o.job_order_id.name" />
+								</td> 
+							</tr>
+							<tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+								<td>
+									<strong>Job Cost Sheet : </strong>
+								</td>
+								<td>
+									<span t-field="o.job_cost_sheet_id.name" />
+								</td>
+
+							</tr>
+						</table>
+						
+					</t>
+				</div>
+			</t>
+		</template>
+
+		<template id="rfi_report_temp_id">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="bi_website_project_request_for_information.rfi_report_template_view" />
+				</t>
+			</t>
+		</template>
+
+</odoo>

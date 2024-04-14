@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="support_team_form_view_inherit_logo">
+            <field name="name">support.team.form.inherit.logo</field>
+            <field name="model">support.team</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.support_team_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="before">
+                    <field name="team_logo" widget="image" class="oe_avatar" />
+                </xpath>
+                <xpath expr="//page[last()]" position="after">
+                    <page string="Html Description">
+                        <field name="html_description" nolabel="1"/>
+                    </page>
+                    
+                </xpath>
+                
+            </field>
+        </record>
+
+    </data>
+</odoo>

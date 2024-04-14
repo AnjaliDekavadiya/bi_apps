@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+    <record id="data_options_combo_box_date_format_1" model="report.template.options.combo.box.item">
+        <field name="name">18 Feb 2020</field>
+        <field name="name_technical">01_%d %b %Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+    <record id="data_options_combo_box_date_format_2" model="report.template.options.combo.box.item">
+        <field name="name">18/Feb/2020</field>
+        <field name="name_technical">02_%d/%b/%Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_3" model="report.template.options.combo.box.item">
+        <field name="name">18 February 2020</field>
+        <field name="name_technical">03_%d %B %Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_4" model="report.template.options.combo.box.item">
+        <field name="name">18/02/2020</field>
+        <field name="name_technical">04_%d/%m/%Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_5" model="report.template.options.combo.box.item">
+        <field name="name">18/02/20</field>
+        <field name="name_technical">05_%d/%m/%y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_6" model="report.template.options.combo.box.item">
+        <field name="name">02/18/2020</field>
+        <field name="name_technical">06_%m/%d/%Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_7" model="report.template.options.combo.box.item">
+        <field name="name">18-Feb-2020</field>
+        <field name="name_technical">07_%d-%b-%Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_8" model="report.template.options.combo.box.item">
+        <field name="name">18.Feb. 2020</field>
+        <field name="name_technical">08_%d. %b. %Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_9" model="report.template.options.combo.box.item">
+        <field name="name">Feb 18, 20</field>
+        <field name="name_technical">09_%b %d, %y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_10" model="report.template.options.combo.box.item">
+        <field name="name">February 18, 20</field>
+        <field name="name_technical">10_%B %d, %y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_11" model="report.template.options.combo.box.item">
+        <field name="name">Feb 18, 2020</field>
+        <field name="name_technical">11_%b %d, %Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_12" model="report.template.options.combo.box.item">
+        <field name="name">February 18, 2020</field>
+        <field name="name_technical">12_%B %d, %Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_13" model="report.template.options.combo.box.item">
+        <field name="name">Tuesday, 18 Feb 2020</field>
+        <field name="name_technical">13_%A, %d %b %Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_14" model="report.template.options.combo.box.item">
+        <field name="name">Tuesday, February 18, 2020</field>
+        <field name="name_technical">14_%A, %B %d, %Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_15" model="report.template.options.combo.box.item">
+        <field name="name">Tue, February 18, 2020</field>
+        <field name="name_technical">15_%a, %B %d, %Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_16" model="report.template.options.combo.box.item">
+        <field name="name">Tue, February 18, 20</field>
+        <field name="name_technical">16_%a, %B %d, %y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_17" model="report.template.options.combo.box.item">
+        <field name="name">Tue, Feb 18, 2020</field>
+        <field name="name_technical">17_%a, %b %d, %Y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+    <record id="data_options_combo_box_date_format_18" model="report.template.options.combo.box.item">
+        <field name="name">Tue, Feb 18, 20</field>
+        <field name="name_technical">18_%a, %b %d, %y</field>
+        <field name="key">report_utils__date_format</field>
+    </record>
+
+
+
+</odoo>

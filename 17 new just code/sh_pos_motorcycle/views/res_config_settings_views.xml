@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="sh_pos_auto_part_res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.sh_pos_motorcycle</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <!-- <div id="pos_interface_section" position="after"> -->
+                <block id="pos_interface_section" position="after">
+                    <block title="Auto Parts Settings">
+                        <setting>
+                            <field name="pos_enable_search" />
+                        </setting>
+                        <setting invisible="not pos_enable_search">
+                            <field name="pos_enable_common_search"/>
+                        </setting>
+                        <setting invisible="not pos_enable_search">
+                            <field name="pos_sh_hide_search_bar_for_mobile"/>
+                        </setting>
+                    </block>
+                </block>
+            <!-- </div> -->
+        </field>
+    </record>
+</odoo>

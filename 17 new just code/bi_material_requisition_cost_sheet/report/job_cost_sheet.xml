@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="report_job_cost_sheet_inherit" inherit_id="bi_odoo_job_costing_management.job_cost_sheet_template_view">
+		<xpath expr="//table[2]/thead/tr/th[7]" position="after">
+			<th>Actual Requisition Quantity</th>
+		</xpath>
+		<xpath expr="//table[2]/tbody/t/tr[1]/td[7]" position="after">
+			<td>
+				<span t-field="direct_material.actual_requisition_qty" />
+			</td>	
+		</xpath>
+		<xpath expr="//table[4]/thead/tr/th[7]" position="after">
+			<th>Actual Requisition Quantity</th>
+		</xpath>
+		<xpath expr="//table[4]/tbody/t/tr[1]/td[7]" position="after">
+			<td>
+				<span t-field="overhead.actual_requisition_qty" />
+			</td>	
+		</xpath>
+	</template>
+	</data>
+</odoo>			

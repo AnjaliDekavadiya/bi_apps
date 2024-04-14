@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="whatsapp_message_form" model="ir.ui.view">
+        <field name="name">whatsapp.marketing.form</field>
+        <field name="model">whatsapp.marketing</field>
+        <field name="arch" type="xml">
+            <form string="Whatsapp Message">
+                <header>
+                    <button name="action_send_message" type="object" invisible="state in ('in_queue', 'done')"
+                            class="oe_highlight" string="Send"
+                            confirm="This will send the message to all recipients. Do you still want to proceed ?"/>
+
+                    <button name="action_schedule" type="object" invisible="state in ('in_queue', 'done')" class="btn-secondary"
+                            string="Schedule"/>
+                    <button name="action_cancel" type="object" invisible="state not in ('in_queue')" class="btn-secondary"
+                            string="Cancel"/>
+                    <button name="action_reset_to_draft" type="object" invisible="state in ('draft', 'in_queue')"
+                            class="btn-secondary"
+                            string="Reset To Draft"/>
+                    <field name="state" readonly="1" widget="statusbar"/>
+                </header>
+                <div class="alert alert-info text-center" role="alert" invisible="state != 'in_queue'">
+                    <div invisible="state != 'in_queue'">
+                        <strong>
+                            <span name="next_departure_text">This message is scheduled for</span>
+                            <field name="next_departure" class="oe_inline"/>.
+                        </strong>
+                    </div>
+                </div>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" icon="fa-users">
+                        <button class="oe_stat_button" name="action_create_whatsapp_template" type="object" icon="fa-plus"
+                                help="It will create template in whatsapp template" string="Create Template"
+                                invisible="whatsapp_template_id != 'False'"/>
+                        <button class="oe_stat_button" name="action_view_whatsapp_template" type="object" icon="fa-file"
+                                string="View Template" invisible="whatsapp_template_id != 'False'"/>
+
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="whatsapp_templates_id" required="1" domain="[('approval_state', '=', 'APPROVED')]"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <label for="whatsapp_model_id" string="Recipients"/>
+                        <div name="whatsapp_model_id_container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-3">
+                                    <field name="whatsapp_model_id" widget="selection" readonly="whatsapp_template_id"/>
+                                </div>
+                            </div>
+                            <field name="whatsapp_model_name" invisible="1"/>
+                            <field name="whatsapp_model_real" invisible="1"/>
+                            <field name="whatsapp_domain" widget="domain" options="{'model': 'whatsapp_model_real'}"
+                                   readonly="whatsapp_template_id"/>
+                        </div>
+
+                    </group>
+                    <group>
+                        <group>
+                            <field name="whatsapp_instance_id" required="1" readonly="whatsapp_template_id"/>
+                            <field name="whatsapp_template_id" invisible="1"/>
+                            <field name="whatsapp_provider" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Message Body" name="message_body">
+                            <field name="message_body" readonly="whatsapp_template_id"/>
+                        </page>
+                        <page string="Dynamic Placeholder Generator"
+                              name="dynamic_placeholder_generator"
+                              groups="base.group_no_one">
+                            <group>
+                                <field name="model_object_field" invisible="1"/>
+                                <field name="model_object_field"
+                                       domain="[('model_id','=',whatsapp_model_real),('ttype','!=','one2many'),('ttype','!=','many2many')]"/>
+                                <field name="sub_object" readonly="1"/>
+                                <field name="sub_model_object_field"
+                                       domain="[('model_id','=',sub_object),('ttype','!=','one2many'),('ttype','!=','many2many')]" readonly="not sub_object" required="sub_object"/>
+<!--                                       attrs="{'readonly':[('sub_object','=',False)],'required':[('sub_object','!=',False)]}"/> -->
+
+                                <field name="null_value"/>
+                                <field name="copyvalue"/>
+                            </group>
+                        </page>
+                        <page string="Settings" name="settings">
+                            <group>
+                                <group>
+                                    <field name="user_id" domain="[('share', '=', False)]"/>
+                                    <field name="attachment_id" readonly="whatsapp_template_id" class="oe_inline" />
+                                    <field name="campaign_id" string="Message Campaign"/>
+                                    <field name="source_id"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="whatsapp_message_tree" model="ir.ui.view">
+        <field name="name">whatsapp.marketing.tree</field>
+        <field name="model">whatsapp.marketing</field>
+        <field name="arch" type="xml">
+            <tree string="Whatsapp Message">
+                <field name="whatsapp_templates_id"/>
+                <field name="whatsapp_model_id"/>
+                <field name="user_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_whatsapp_message">
+        <field name="name">Mass Messages</field>
+        <field name="view_mode">tree,form</field>
+        <field name="res_model">whatsapp.marketing</field>
+    </record>
+
+
+    <menuitem id="menu_whatsapp_message"
+              action="action_whatsapp_message"
+              name="Mass Messages" sequence="1"
+              parent="menu_whatsapp_marketing"/>
+
+</odoo>

@@ -1,0 +1,73 @@
+<odoo>
+	<data>
+		<record id="inherit_maintenance_request_form" model="ir.ui.view">
+			<field name="name">inherit.maintenance.request.form</field>
+			<field name="model">maintenance.request</field>
+			<field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='desti_location_id']" position="before">		   
+					<field name="project_id"/>
+					<field name="job_order_id"/>		
+				</xpath>
+			</field>
+		</record>
+
+		<menuitem name="Maintenance"
+			id="main_maintenance"
+			parent = "bi_odoo_job_costing_management.main_menu_job_estimates"
+			sequence = '4'
+			/>
+
+		<menuitem id="main_maintenance_request"
+		  name="Maintenance Request"
+		  parent="main_maintenance"
+		  action="maintenance.hr_equipment_request_action"
+		  sequence="1"/>
+
+		<menuitem id="main_maintenance_equipment"
+		  name="Maintenance Equipment"
+		  parent="main_maintenance"
+		  action="maintenance.hr_equipment_action"
+		  sequence="1"/>
+
+		<record id="inherit_job_order_form" model="ir.ui.view">
+			<field name="name">inherit.job.order.form</field>
+			<field name="model">job.order</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view" />
+			<field name="arch" type="xml">
+				<xpath expr="//div[@name='button_box']" position="inside">
+					<button name="action_view_maintenance_request" type="object" class="oe_stat_button" icon="fa-tasks" invisible="maintenance_req_count == 0">
+						<field name="maintenance_req_count" widget="statinfo"/>
+					</button>
+				</xpath>
+		</field>
+		</record>
+
+		<record id="inherit_project_form" model="ir.ui.view">
+			<field name="name">inherit.project.form</field>
+			<field name="model">project.project</field>
+			<field name="inherit_id" ref="project.edit_project" />
+			<field name="arch" type="xml">
+				<xpath expr="//div[@name='button_box']" position="inside">
+					<button name="action_view_maintenance_request" type="object" class="oe_stat_button" icon="fa-tasks" invisible="maintenance_req_count == 0">
+						<field name="maintenance_req_count" widget="statinfo"/>
+					</button>
+				</xpath>
+		</field>
+		</record>
+
+		<menuitem 
+			id="maintenance_config"
+			parent= "bi_odoo_job_costing_management.sub_menu_configuration"
+			name="Maintenance"
+			/>
+
+		<menuitem 
+			id="maintenance_checklist"
+			parent= "maintenance_config"
+			name="Maintenance Checklists"
+			sequence = '1'
+			action="bi_mro_maintenance_management.maintenance_checklist_action"
+			/>
+	</data>
+</odoo>

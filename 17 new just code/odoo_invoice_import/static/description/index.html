@@ -1,0 +1,231 @@
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+        <h1 class="oe_slogan" style="color:crimson"><b>Import Invoices from Excel in Odoo</b></h1> 
+        <h2 class="oe_slogan" style="color:crimson"><b>Import Customer Invoice, Vendor Bill, Credit Note, Debit Note from Excel</b></h2> 
+        <p style="color:green"><b>This app will allow you to import Invoices / Vendor Bills / Debit-Credit Notes from excel into Odoo.</b></p>
+        <p style="color:crimson"><b>Main Features:</b></p>
+        <li style="color:olive">This module will allow you to import Customer Invoices from excel.</li>
+        <li style="color:olive">This module will allow you to import Vendor Bill from excel.</li>
+        <li style="color:olive">This module will allow you to import Credit Note from excel.</li>
+        <li style="color:olive">This module will allow you to import Debit Note from excel.</li>
+        <li style="color:olive;">Make sure you have xlwt Python libarary installed.</li>
+        <li style="color:olive">Sample Excel is available inside sample folder in module.</li>
+        <li style="color:crimson">For more details please see below screenshots and video.</li>
+        <br/>
+        <p style="color:crimson"><b>Wizard Filter</b></p>
+            <li style="color:olive">
+                Filters:
+                <ul>
+                    Type
+                    <ul>
+                        <li>Customer Invoice ==> If Selecting Customer Invoice Option you will be Importing Customer Invoices.</li>
+                        <li>Vendor Bill ==> If Selecting Vendor Bill  Option you will be Importing Vendor Bill.</li>
+                        <li>Credit Note ==> If Selecting Credit Note  Option you will be Importing Credit Note.</li>
+                        <li>Debit Note ==> If Selecting Debit Note  Option you will be Importing Debit Note.</li>
+                    </ul>
+                </ul>
+                <ul>
+                    Invoice Stage Option
+                    <ul>
+                        <li>Draft Invoice ==> If Selecting Import Draft Invoice with Invoice Stage Option Importing Invoices in Draft State.</li>
+                        <li>Validate Invoice ==> If Selecting Validate Invoice Automatically with with Invoice Stage Option Importing and Validating Invoices automatically.</li>
+                    </ul>
+                </ul>
+                <ul>
+                    Import Product By
+                    <ul>
+                        <li>Name ==> If Selecting Import Product By Name than Search Product with Name.</li>
+                        <li>Code ==> If Selecting Import Product By Code than Search Product with Code.</li>
+                        <li>Barcode ==> If Selecting Import Product By Barcode than Search Product with Barcode.</li>
+                    </ul>    
+                </ul>
+                <!--<ul>
+                    Account Option
+                    <ul>
+                        <li>Use Account from Configuration Product/Property ==> If Selecting Account Option Use Account from 
+                        Configuration Product/Property than take Income Account on Product or Product Category.</li>
+                        <li>Account From Excel ==> If Selecting Account Option Account From Excel than Search with Account on Excel.</li>
+                    </ul>
+                </ul>-->
+            </li>
+        <p style="color:crimson;"><b>Following fields can be Import From Excel Column.</b></p>
+            <ul style="color:olive">
+                <li><b style="color:green;">INVOICE_ID : </b><b style="color:orange;">Invoice Id</b></li>
+                <li><b style="color:green;">PARTNER : </b><b style="color:orange;">Partner/Customer/Vendor Name</b></li>
+                <li><b style="color:green;">INVOICE DATE :</b> <b style="color:orange;">Date of Invoice or Bill</b></li>
+                <li><b style="color:green;">PRODUCT : </b><b style="color:orange;">Product Name or Code or Barcode</b></li>
+                <li><b style="color:green;">DESCRIPTION : </b><b style="color:orange;">Description of Product</b></li>
+                <li><b style="color:green;">QUANTITY : </b><b style="color:orange;">Quantity</b></li>
+                <li><b style="color:green;">UNIT PRICE : </b><b style="color:orange;">Price Unit of Product</b></li>
+                <li><b style="color:green;">DISCOUNT :</b> <b style="color:orange;">Discount</b></li>
+                <li><b style="color:green;">TAX : </b><b style="color:orange;">Multiple Tax are Seperated by Comma</b></li>
+                <li><b style="color:green;">ANALYTIC ACCOUNT : </b><b style="color:orange;">Analytic Account</b></li>
+                <li><b style="color:green;">ANALYTIC TAGS : </b><b style="color:orange;">Multiple Analytic Tags are Seperated by Comma.</b></li>
+               <!-- <li><b style="color:green;">PRODUCT ACCOUNT CODE : </b><b style="color:orange;">Product Account Code</b></li>-->
+                <li><b style="color:green;">NOTES : </b><b style="color:orange;">Comment</b></li>
+            </ul>
+       </p>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="row">
+          <div class="col-12">
+              <center>
+                  <p style="font-size:25px; border-width:0px; border-style:solid;background-color: #4BB0A2;width:450px;color:white; " class="px-sm-4 p-2 pt-4">
+                        <b>Edition Compatibility:</b>
+                  </p><br/>
+                  <span class="btn btn-primary fa fa-check-circle" style="width:auto; font-weight:bold; font-size:21px; padding-top:12px; padding-bottom:12px; padding-left:60px; padding-right:60px; border-radius:28px; color:white; border:none;background-color: purple;">    Enterprise</span>
+                  <span class="btn btn-primary fa fa-check-circle" style="width:auto; font-weight:bold; font-size:21px; padding-top:12px; padding-bottom:12px; padding-left:60px; padding-right:60px; border-radius:28px; color:white; border:none;background-color: purple;">    Odoo.sh</span>
+                  <span class="btn btn-primary fa fa-check-circle" style="width:auto; font-weight:bold; font-size:21px; padding-top:12px; padding-bottom:12px; padding-left:60px; padding-right:60px; border-radius:28px; color:white; border:none;background-color: purple;">    Community</span>
+              </center>
+              <br/>
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Import Invoices Menu</b></h2>
+       <div class="oe_demo oe_screenshot">
+          <!-- <img src="invoice_import_menu.png">-->
+           <img src="1_invoice_import_menu.png">
+       </div>
+       <h2 class="oe_slogan" style="color:crimson"><b>Wizard for Import Invoices from Excel</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="2_invoice_import_wizard.png">
+       </div>
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Customer Invoices</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="3_imported_invoices.png">
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Wizard Option for Import Vendor Bill from Excel</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="4_vendor_bill_importwizard.png">
+       </div>
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Vendor Bills</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="5_imported_vendor_bill.png">
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Wizard Option for Import Credit Note from Excel</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="6_creditnote_importwizard.png">
+       </div>
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Credit Notes</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="7_credit_note.png">
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Wizard Option for Import Debit Note / Refund from Excel</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="8_import_debitnote_wizard.png">
+       </div>
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Debit Notes</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="9_debit_note_or_refund.png">
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Sample Excel File for Import Customer Invoice</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="10_ci_sample.jpg">
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Sample Excel File for Import Vendor Bill</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="11_vb_sample.jpg">
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Sample Excel File for Import Product With Code</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="12_ci_pc_sample.jpg">
+       </div>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Sample Excel File for Import Product With Barcode</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="13_ci_pb_sample.jpg">
+       </div>
+   </div>
+</section>
+<section class="oe_container" >
+    <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan">
+            <strong><font style="color:#2dd280;" class="text-epsilon">Contact / Support<br/></font></strong>
+            <strong><font style="color:crimson" class="text-epsilon">Introducing</font>
+            <font style="color:crimson;" class="text-epsilon">Probuse Consulting Services Pvt. Ltd.</font></strong>
+       </h2>
+       <div class="oe_span6">
+           <div class="mt32 col-md-10">
+           <div class="oe_picture" style="margin: 25px 10%;">
+               <a  target='new' href="http://www.probuse.com/">
+                   <img src="logo.png">
+               </a>
+           </div>
+           <p class="oe_mt32">
+               <font style="color:crimson;">If you need any help or want more additional features, you may contact us through:</font><br/>
+               <font style="color:crimson;">Email: <a href="contact@probuse.com">contact@probuse.com</a> <br/>
+               <font style="color:crimson;">Website: </font><a href="http://www.probuse.com/" target='new'><u>www.probuse.com</u></a> <br/>
+               <font style="color:crimson;">Skype: mustufa_probuse</font><br/>
+           </p>
+           <p>
+                <h2>
+                    <a href="https://www.facebook.com/probusecs" target="new">
+                      <i class="fa fa-facebook-square" style="font-size:38px;"></i>
+                    </a>
+                    <a href="https://twitter.com/mustufa_odoo" target="new">
+                      <i class="fa fa-twitter" style="font-size:38px;"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mustufa-rangwala-odoo-openerp-0a46777/" target="new">
+                      <i class="fa fa-linkedin" style="font-size:38px;"></i>
+                    </a>
+                    <!--<a href="https://www.youtube.com/channel/UCHlyoC4khP44M1cOCJXo2FQ" target="new">
+                      <i class="fa fa-youtube-play" style="font-size:38px;"></i>
+                    </a>-->
+                    <a href="https://plus.google.com/u/0/113284573788891837715/posts" target="new" rel="publisher">
+                      <i class="fa fa-google-plus-square" style="font-size:38px;"></i>
+                    </a>
+              </h2>
+            </p>
+           </div>
+       </div>
+       <div class="mt32 oe_span6">
+          <p style="text-align: justify; ">
+            <font class="text-epsilon" style="color:crimson;">Probuse Consulting Service Pvt Ltd is an Software and Web development specialist which offers complete business application together. We are well experienced to provide a face for your business on the software and Internet level.</font>
+          </p>
+          <p style="text-align: justify;">
+            <font class="text-epsilon" style="color:crimson">Probuse Consulting Service Pvt Ltd is a specialist in Odoo/OpenERP services and could give your business open source hand to drive.</font>
+          </p>
+            <h3 class="o_animate o_anim_bounce_in" style="text-align: left; animation-play-state: paused;">
+                <font style="font-size: 18px;color:#ff8000;" class="text-epsilon"><strong>Our Services</strong></font>
+            </h3>
+            <ul style="list-style-type:square">
+                <a href="http://www.probuse.com/page/odoo-implementation" target="new"><li list-style-type: "*";><p style="text-align: left; color:crimson;">Odoo Implementation</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-support" target="new"><li><p style="text-align: left; color:crimson;">Odoo Support</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-customization" target="new"><li><p style="text-align: left; color:crimson;">Odoo Customization</p></li></a>
+                <a href="http://www.probuse.com/page/odoo-migration" target="new"><li><p style="text-align: left; color:crimson;">Odoo Migration</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-training" target="new"><li><p style="text-align: left; color:crimson;">Odoo Training</p></a></li>
+            </ul>
+           </p>
+       </div>
+   </div>
+</section>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for inspection Sequence -->
+        <record id="car_repair_inspection_sequence" model="ir.sequence">
+            <field name="name"> Car Repair Inspection Sequence</field>
+            <field name="code">car.repair.inspection.seq</field>
+            <field name="prefix">CAR/REPAIR/INSPECTION/</field>
+            <field name="padding">4</field>
+        </record>
+
+    </data>
+</odoo>

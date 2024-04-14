@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="job_cost_work_template_view">
+			<t t-call="web.external_layout">
+				<div class="page">
+					<t t-foreach="docs" t-as="o">
+						<br/>
+						<br/>
+						<div class="row">
+							<h2>
+								<span t-field="o.work_name" />
+							</h2>
+							<br />
+						</div>
+
+						<table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+							<tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;height:50%;">
+								<td>
+									<strong> Name : </strong>
+								</td>
+								<td>
+									<span t-field="o.name" />
+								</td>
+
+								<td>
+									<strong> Date : </strong>
+								</td>
+								<td>
+									<span t-field="o.date" />
+								</td>
+							</tr>
+
+							<tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+								<td>
+									<strong>Project : </strong>
+								</td>
+								<td>
+									<span t-field="o.project_id.name" />
+								</td>
+
+								<td>
+									<strong>Responsible User: </strong>
+								</td>
+								<td>
+									<span t-field="o.user_id.name" />
+								</td>
+							</tr>
+
+							<tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+								<td>
+									<strong>Company Name : </strong>
+								</td>
+								<td>
+									<span t-field="o.company_id.name" />
+								</td>
+							</tr>
+						</table>
+						
+						<h2>Work Packages Line</h2>
+						<br />
+						<table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+							<thead>
+								<tr>
+									<th>Job</th>
+									<th>Planned hours</th>
+									<th>Remaining hours</th>
+									<th>Assign to</th>
+									<th>Start Date</th>
+									<th>End Date</th>
+								</tr>
+							</thead>
+							<tbody class="components_tbody">
+								<t t-foreach="o.work_pack_line_ids" t-as="direct_material">
+									<tr>
+										<td>
+											<span t-field="direct_material.job_order_id" />
+										</td>
+										<td>
+											<span t-field="direct_material.planned_hours" />
+										</td>
+										<td>
+											<span t-field="direct_material.remaining_hours" />
+										</td>
+										<td>
+											<span t-field="direct_material.user_id" />
+										</td>
+										<td>
+											<span t-field="direct_material.start_date" />
+										</td>
+										<td>
+											<span t-field="direct_material.end_date" />
+										</td>
+									</tr>
+								</t>
+							</tbody>
+						</table>
+						<div>
+		                    <span>Customer Signature : </span><br/>
+		                    <span class="col-md-6">Date : </span><br/>
+		                </div>
+		                <br/>
+		                <br/>
+		                <div>
+		                    <span>Authorized Signature : </span><br/>
+		                    <span>Date : </span><br/>
+		                </div>
+					</t>
+				</div>
+			</t>
+		</template>
+
+		<template id="job_work_temp_id">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="bi_job_costing_work_package.job_cost_work_template_view" />
+				</t>
+			</t>
+		</template>
+
+	</data>
+</odoo>

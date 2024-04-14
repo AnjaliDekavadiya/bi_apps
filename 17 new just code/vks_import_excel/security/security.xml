@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    	
+	    <!-- Các rule cho lần import dữ liệu -->
+	    
+	     <record id="vks_import_excel_delete_global_rule" model="ir.rule">
+	        <field name="name">Cấm xóa lần import dữ liệu</field>
+	        <field name="model_id" ref="model_import_data"/>
+	        <field name="domain_force">[(0,'=',1)]</field>
+	        <field eval="1" name="perm_unlink"/>
+	        <field eval="0" name="perm_write"/>
+	        <field eval="0" name="perm_read"/>
+	        <field eval="0" name="perm_create"/>
+	        <field name="global" eval="True"/>
+	    </record>
+        
+        <!-- IrExport Rule -->
+	    
+	    <record model="ir.rule" id="ir_exports_create_uid_rule">
+	        <field name="name">Biểu mẫu export - Người tạo</field>
+	        <field name="model_id" ref="base.model_ir_exports"/>
+	        <field name="domain_force">[('create_uid','=',user.id)]</field>
+	        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+	        <field eval="1" name="perm_unlink"/>
+	        <field eval="1" name="perm_write"/>
+	        <field eval="1" name="perm_read"/>
+	        <field eval="0" name="perm_create"/>
+	    </record>
+	    
+	    <record model="ir.rule" id="ir_exports_group_sytem_rule">
+	        <field name="name">Biểu mẫu export - Nhóm Quản trị/Thiết lập</field>
+	        <field name="model_id" ref="base.model_ir_exports"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4,ref('base.group_system'))]"/>
+	        <field eval="1" name="perm_unlink"/>
+	        <field eval="1" name="perm_write"/>
+	        <field eval="1" name="perm_read"/>
+	        <field eval="0" name="perm_create"/>
+	    </record>
+	    
+	    <record model="ir.rule" id="ir_exports_privacy_none_rule">
+	        <field name="name">Biểu mẫu export - Chế độ bảo mật Công khai</field>
+	        <field name="model_id" ref="base.model_ir_exports"/>
+	        <field name="domain_force">[('privacy','=','none')]</field>
+	        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+	        <field eval="0" name="perm_unlink"/>
+	        <field eval="0" name="perm_write"/>
+	        <field eval="1" name="perm_read"/>
+	        <field eval="0" name="perm_create"/>
+	    </record>
+	    
+	    <record model="ir.rule" id="ir_exports_privacy_followers_rule">
+	        <field name="name">Biểu mẫu export - Chế độ bảo mật Người theo dõi</field>
+	        <field name="model_id" ref="base.model_ir_exports"/>
+	        <field name="domain_force">[('privacy','=','followers'),('message_partner_ids','in',[user.partner_id.id])]</field>
+	        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+	        <field eval="0" name="perm_unlink"/>
+	        <field eval="0" name="perm_write"/>
+	        <field eval="1" name="perm_read"/>
+	        <field eval="0" name="perm_create"/>
+	    </record>
+	    
+	    <record model="ir.rule" id="ir_exports_privacy_groups_rule">
+	        <field name="name">Biểu mẫu export - Chế độ bảo mật Nhóm chỉ định</field>
+	        <field name="model_id" ref="base.model_ir_exports"/>
+	        <field name="domain_force">[('privacy','=','groups'),('privacy_groups','in',[g.id for g in user.groups_id])]</field>
+	        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+	        <field eval="0" name="perm_unlink"/>
+	        <field eval="0" name="perm_write"/>
+	        <field eval="1" name="perm_read"/>
+	        <field eval="0" name="perm_create"/>
+	    </record>
+	    
+    </data>
+</odoo>

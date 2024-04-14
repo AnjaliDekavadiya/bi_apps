@@ -1,0 +1,62 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="contract_drawings_form" model="ir.ui.view">
+			<field name="name">contract.drawings.form.view</field>
+			<field name="model">contract.drawings</field>
+			<field name="arch" type="xml">
+				<form string="Contract_Drawings">
+				<sheet>
+					<group>
+							<field name="drawing_img" widget='image' class="oe_avatar" options='{"preview_image": "image_medium"}' style="width:inherit;"/>
+					</group>
+					<group>
+						<field name="name"/>
+						<field name="description" />					
+					</group>		
+				</sheet>
+				</form>    
+			</field>
+		</record>
+	
+		<record id="contract_drawings_tree" model="ir.ui.view">
+			<field name="name">contract.drawings.tree.view</field>
+			<field name="model">contract.drawings</field>
+			<field name="arch" type="xml">
+				<tree string="Contract_Drawings">
+					<field name="name"/>
+					<field name="description" />
+					<field name="drawing_img" />
+					<button class="btn-primary" name="%(show_image_wizard_action)d" type="action" string="open" />
+				</tree>
+			</field>
+		</record>
+	
+		<record id="contract_drawings_action" model="ir.actions.act_window">
+			<field name="name">Contract_Drawings</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">contract.drawings</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new employee.
+			  </p>
+			</field>
+		</record>
+		
+    	<record id="inherit_job_order" model="ir.ui.view">
+			<field name="name">inherit.sale.button</field>
+			<field name="model">job.order</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//notebook" position="inside">
+					<page name="contract_drawings" string="Contract Drawing"  id="drw" >
+						<field name="contract_drawings_ids"/>
+					</page>
+				</xpath>			
+			</field>
+		</record>
+
+	</data>
+</odoo>

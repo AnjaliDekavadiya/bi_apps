@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='cheque_format_view_form' model='ir.ui.view'>
+        <field name="name">cheque.format.form</field>
+        <field name="model">cheque.format</field>
+        <field name="arch" type="xml">
+            <form string="Chque Format">
+                <sheet>
+                    <div>
+                        <h1 class="mt0">
+                            <field name="name" placeholder="Name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="font_size" />
+                        <field name="font_css" invisible="1" />
+                    </group>
+                    <group>
+                        <group>
+                            <separator string="A/C Pay Text" />
+                            <field name="ac_pay_margin_top" string="Top Margin" />
+                            <field name="ac_pay_margin_left" string="Left Margin" />
+                            <field name="ac_pay_letter_space" string="Letter Spacing" />
+                            <field name="ac_pay_rotate" />
+                            <field name="ac_pay_css" invisible="1" />
+                        </group>
+                        <group>
+                            <separator string="Date" />
+                            <field name="date_margin_top" />
+                            <field name="date_margin_left" />
+                            <field name="date_letter_space" />
+                            <field name="date_css" invisible="1" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <separator string="Beneficiary" />
+                            <field name="ben_margin_top" string="Top Margin" />
+                            <field name="ben_margin_left" string="Left Margin" />
+                            <field name="beneficiary_css" invisible="1" />
+                        </group>
+                        <group>
+                            <separator string="Amount In Digit" />
+                            <field name="amount_digit_top" string="Top Margin" />
+                            <field name="amount_digit_left" string="Left Margin" />
+                            <field name="amount_digit_letter_space" string="Letter Spacing" />
+                            <field name="amount_digit_css" invisible="1" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <separator string="Amount In Word" />
+                            <field name="amount_word_top" string="Top Margin" />
+                            <field name="amount_word_left" string="Left Margin" />
+                            <field name="amount_word_letter_space" string="Letter Spacing" />
+                            <field name="amount_word_css" invisible="1" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='cheque_format_view_tree' model='ir.ui.view'>
+        <field name="name">cheque.format.tree</field>
+        <field name="model">cheque.format</field>
+        <field name="arch" type="xml">
+            <tree string="Chque Format">
+                <field name="name" />
+                <field name="font_size" />
+            </tree>
+        </field>
+    </record>
+    <record id='cheque_format_action' model='ir.actions.act_window'>
+        <field name="name">Cheque Format</field>
+        <field name="res_model">cheque.format</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new cheque printing configuration
+            </p>
+        </field>
+    </record>
+    <menuitem name='Cheque Format' id='root_cheque_format' parent='account.menu_finance_configuration' sequence="10" />
+    <menuitem name='Cheque Format' id='cheque_format_menu' parent='root_cheque_format' action="cheque_format_action" />
+    <record id="view_account_payment_form_inherit" model="ir.ui.view">
+        <field name="name">account.journal.inherit.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='ref']" position="after">
+                    <field name="cheque_format" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

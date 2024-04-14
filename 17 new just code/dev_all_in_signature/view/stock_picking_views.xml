@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_signature_view" model="ir.ui.view">
+         <field name="name">inv.signature.view</field>
+         <field name="model">stock.picking</field>
+         <field name="inherit_id" ref="stock.view_picking_form"/>
+         <field name="arch" type="xml">
+	            <xpath expr="//notebook" position="inside">
+	                <page string="Signature">
+	                    <group>
+	                        <field name="sp_user_id" invisible="1"/>
+	                        <field name="sig_flag"/>
+                            <field name="sp_signature" widget="signature"/>
+                            
+                        </group>
+                    </page>
+                </xpath>
+     	</field>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<!--  Sequence of product warranty -->
+	<record id="sequence_product_warranty" model="ir.sequence">
+		<field name="name">Product Warranty </field>
+		<field name="code">sr.product.warranty</field>
+		<field name="active">True</field>
+		<field name="prefix">PW</field>
+		<field name="padding">5</field>
+	</record>
+
+	<!--  Sequence of claim warranty -->
+	<record id="sequence_claim_warranty" model="ir.sequence">
+		<field name="name">Claim Warranty </field>
+		<field name="code">sr.claim.warranty</field>
+		<field name="active">True</field>
+		<field name="prefix">CW</field>
+		<field name="padding">5</field>
+	</record>
+</odoo>

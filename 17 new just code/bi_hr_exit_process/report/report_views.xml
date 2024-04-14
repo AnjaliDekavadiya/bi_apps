@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="report_employee_exit_print" model="ir.actions.report">
+		<field name="name">Exit Request</field>
+		<field name="model">exit.request</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">bi_hr_exit_process.report_exit_id</field>
+		<field name="report_file">bi_hr_exit_process.report_exit_id</field>
+		<field name="binding_model_id" ref="model_exit_request"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="job_costing_form_view_inherit_fleet_request" model="ir.ui.view">
+            <field name="name">job.costing.form.inherit.fleet.request</field>
+            <field name="model">job.costing</field>
+            <field name="inherit_id" ref="odoo_job_costing_management.job_costing_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='so_number']" position="after">
+                    <field name="fleet_request_id"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

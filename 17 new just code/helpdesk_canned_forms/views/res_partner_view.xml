@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_form_inherit_create_survey" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.create.survey</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="create_partner_survey" type="object" class="oe_stat_button" icon="fa-file-text" string="Survey/Canned"/>
+               </xpath>
+            </field>
+        </record>
+     </data>
+</odoo>

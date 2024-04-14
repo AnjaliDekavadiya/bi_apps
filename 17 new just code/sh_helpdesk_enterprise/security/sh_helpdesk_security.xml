@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="helpdesk_group_whatsapp" model="res.groups">
+        <field name="name">Helpdesk Whatsapp Feature</field>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record> 
+    <record id="group_allow_multi_action" model="res.groups">
+        <field name="name">Mass Ticket Update</field>
+    </record>
+    <record id="sh_helpdesk_enterprise_crm_lead" model="res.groups">
+        <field name="name">CRM Helpdesk Ticket</field>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record>
+    <record id="sh_helpdesk_enterprise_account_move" model="res.groups">
+        <field name="name">Invoice Helpdesk Ticket</field>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record>
+    <record id="sh_helpdesk_enterprise_purchase_order" model="res.groups">
+        <field name="name">Purchase Helpdesk Ticket</field>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record>
+    <record id="sh_helpdesk_enterprise_sale_order" model="res.groups">
+        <field name="name">Sale Helpdesk Ticket</field>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record>
+    <record id="sh_helpdesk_enterprise_project_task" model="res.groups">
+        <field name="name">Task Helpdesk Ticket</field>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record>
+    <record id="sh_helpdesk_enterprise_timesheet" model="res.groups">
+        <field name="name">Helpdesk Ticket Timesheet</field>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record>
+</odoo>

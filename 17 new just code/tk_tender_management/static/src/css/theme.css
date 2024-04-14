@@ -1,0 +1,22 @@
+.form-radio-tender {
+    display:flex;
+    align-items: center;
+    margin: 16px 0;
+}
+.form-required-tender {
+    color:red;
+}
+.image-tender {
+    height:150px;
+    width:150px;
+}
+.tender-type-tag {
+    padding: 5px;
+    border-radius: 10px;
+}
+.tender-td-20{
+    width:20%;
+}.
+tender-td-6{
+    width:6%;
+}

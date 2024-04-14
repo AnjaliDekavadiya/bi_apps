@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="car_repair_inspection_record_form_view">
+            <field name="name">car.repair.inspection.record.form</field>
+            <field name="model">car.repair.inspection.record</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="car_repair_inspection_record_tree_view">
+            <field name="name">car.repair.inspection.record.tree.view</field>
+            <field name="model">car.repair.inspection.record</field>
+            <field name="arch" type="xml">
+                <tree>
+                     <field name="code"/>
+                     <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="car_repair_inspection_record_search_view">
+            <field name="name">car.repair.inspection.record.search</field>
+            <field name="model">car.repair.inspection.record</field>
+            <field name="arch" type="xml">
+                <search>
+                     <field name="code"/>
+                     <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_car_repair_inspection_record" model="ir.actions.act_window">
+            <field name="name">Inspection Values</field>
+            <field name="res_model">car.repair.inspection.record</field>
+            <!-- <field name="view_type">form</field> --> <!-- odoo13 -->
+            <field name="view_mode">tree,form</field>
+            <field name="help">Repair Inspection Record Tree.</field>
+        </record>
+
+        <menuitem name="Inspection Values" 
+        id="sub_menu_car_repair_inspection_record"
+        parent="car_repair_maintenance_service.menu_car_repair_configuration"  
+        action="action_car_repair_inspection_record"/>
+
+    </data>
+</odoo>

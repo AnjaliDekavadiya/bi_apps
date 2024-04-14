@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="view_qbo_map_payment_method_tree" model="ir.ui.view">
+        <field name="model">qbo.map.payment.method</field>
+        <field name="name">Default tree view for qbo.map.payment.method</field>
+        <field name="inherit_id" ref="quickbooks_sync_online.view_qbo_map_model_tree"/>
+        <field name="mode">primary</field>
+        <field type="xml" name="arch">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="default_order">sequence</attribute>
+            </xpath>
+            <xpath expr="//field[@name='qbo_id']" position="before">
+                <field name="sequence" widget="handle"/>
+            </xpath>
+            <xpath expr="//field[@name='qbo_name']" position="after">
+                <field name="journal_id"/>
+                <field name="method_type"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_qbo_map_payment_method_form" model="ir.ui.view">
+        <field name="model">qbo.map.payment.method</field>
+        <field name="name">Default form view for qbo.map.payment.method</field>
+        <field name="inherit_id" ref="quickbooks_sync_online.view_qbo_map_model_form"/>
+        <field name="mode">primary</field>
+        <field type="xml" name="arch">
+            <xpath expr="//field[@name='qbo_name']" position="after">
+                <field name="journal_id" 
+                       domain="[('company_id', '=', company_id), ('type', 'in', ('bank', 'cash'))]"
+                       options="{'no_create': True, 'no_quick_create': True, 'no_create_edit': True}"/>
+                <field name="method_type" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

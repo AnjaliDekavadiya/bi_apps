@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<odoo>
+	<data>
+		
+		<record id="view_order_form_inherit_bi" model="ir.ui.view">
+			<field name="name">view.order.form.inherit.bi</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="dimension_method" class="oe_inline" readonly="state not in ('draft', 'sent')"/>
+                </xpath>
+				<xpath
+					expr="//notebook/page/field[@name='order_line']/form/group/group/label[@for='qty_delivered']"
+					position="before">
+					<field name="dimension_method" column_invisible="1" invisible="1"/>
+					<field name="label"  column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="pro_length" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="pro_width" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="pro_height" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="tot_qty" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="custom_weight" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="length_chk" column_invisible="1" invisible="1"/>
+					<field name="width_chk" column_invisible="1" invisible="1"/>
+					<field name="height_chk" column_invisible="1" invisible="1"/>
+				</xpath>
+
+				<xpath
+					expr="//notebook/page/field[@name='order_line']/tree/field[@name='name']"
+					position="after">
+					<field name="dimension_method" column_invisible="1" invisible="1"/>
+					<field name="label" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="pro_length" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="pro_width" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="pro_height" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="tot_qty" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="custom_weight" column_invisible="parent.dimension_method == 'w_h'" invisible="dimension_method == 'w_h'"/>
+					<field name="length_chk" column_invisible="1" invisible="1"/>
+					<field name="width_chk" column_invisible="1" invisible="1"/>
+					<field name="height_chk" column_invisible="1" invisible="1"/>
+				</xpath>
+
+			</field>
+		</record>
+
+		<record id="sale_order_dimension_extend_form" model="ir.ui.view">
+			<field name="name">sale.order.new.form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="bi_product_dimension.sale_order_extend_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='order_line']/tree/field[@name='width']"
+					position="replace">
+					<field name="width" column_invisible="parent.dimension_method == 'l_w_h'" invisible="dimension_method == 'l_w_h'"/>
+				</xpath>
+				<xpath expr="//field[@name='order_line']/tree/field[@name='height']"
+					position="replace">
+					<field name="height" column_invisible="parent.dimension_method == 'l_w_h'" invisible="dimension_method == 'l_w_h'"/>
+				</xpath>
+				<xpath expr="//field[@name='order_line']/tree/field[@name='m2']"
+					position="replace">
+					<field name="m2" column_invisible="parent.dimension_method == 'l_w_h'" invisible="dimension_method == 'l_w_h'"/>
+				</xpath>
+				<xpath expr="///field[@name='order_line']/tree/field[@name='net_price']"
+					position="replace">
+					<field name="net_price" column_invisible="parent.hide_net_price and parent.dimension_method == 'l_w_h'" invisible="hide_net_price and dimension_method == 'l_w_h'"/>
+				</xpath>
+				<xpath expr="//field[@name='order_line']/form//field[@name='width']"
+					position="replace">
+					<field name="width" column_invisible="parent.dimension_method == 'l_w_h'" invisible="dimension_method == 'l_w_h'"/>
+				</xpath>
+				<xpath expr="//field[@name='order_line']/form//field[@name='height']"
+					position="replace">
+					<field name="height" column_invisible="parent.dimension_method == 'l_w_h'" invisible="dimension_method == 'l_w_h'"/>
+				</xpath>
+				<xpath expr="//field[@name='order_line']/form//field[@name='m2']"
+					position="replace">
+					<field name="m2" column_invisible="parent.dimension_method == 'l_w_h'" invisible="dimension_method == 'l_w_h'"/>
+				</xpath>
+				<xpath expr="//field[@name='order_line']/form//field[@name='net_price']"
+					position="replace">
+					<field name="net_price" column_invisible="parent.hide_net_price and parent.dimension_method == 'l_w_h'" invisible="hide_net_price and dimension_method == 'l_w_h'"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

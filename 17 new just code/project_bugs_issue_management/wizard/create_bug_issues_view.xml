@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="project_bugs_issues_wizard_form_view" model="ir.ui.view">
+            <field name="name">project.bugs.issues.wizard.form</field>
+            <field name="model">project.bugs.issues.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Create Bugs/Issues">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_id" widget="selection"/>
+                            <field name="partner_id"/>
+                            <field name="custom_issues_type_id" widget="selection"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="project_id"/>
+                            <field name="task_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="description" string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page name="custom_environment" string="Environment">
+                            <field name="custom_environment"/>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button name="custom_create_bugs_issues" class="oe_highlight" string="Create Issue" type="object"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_project_bugs_issues_wizard" model="ir.actions.act_window">
+            <field name="name">Create Issue</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.bugs.issues.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="project_bugs_issue_management.model_project_bugs_issues_wizard" />
+            <field name="binding_view_types">list</field>
+        </record>
+
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="setu_cash_forecasst_form_inherit" model="ir.ui.view">
+            <field name="name">setu_cash_forecasst_form</field>
+            <field name="model">setu.cash.forecast.type</field>
+            <field name="inherit_id" ref="setu_cash_flow_forecasting.form_setu_cash_forecast_type"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet[@name='cash_forecast_type']" position="before">
+                    <header>
+                        <button name="create_budget_post" string="Create Budgetary Positions" type="object" class="oe_highlight"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_create_budget_post" model="ir.actions.server">
+            <field name="name">Create Budget Post</field>
+            <field name="state">code</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_setu_cash_forecast_type"/>
+            <field name="binding_model_id" ref="model_setu_cash_forecast_type"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="code">
+                records.create_budget_post()
+            </field>
+        </record>
+    </data>
+</odoo>

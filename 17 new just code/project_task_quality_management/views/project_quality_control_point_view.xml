@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_project_quality_control_point_form" model="ir.ui.view">
+            <field name="name">Project Quality Control Point View</field>
+            <field name="model">project.quality.control.point</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="control_point_no" placeholder="Control Point No..."/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name='title'/>
+                                <field name='team_id'/>
+                            </group>
+                            <group>
+                                <field name='type_id'/>
+                                <field name='responsible_user_id'/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Instruction">
+                                    <field name="instruction" placeholder="Instruction..."/>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes" placeholder="Internal Notes..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+                       
+        <record id="view_project_quality_control_point_tree" model="ir.ui.view">
+                <field name="name">Project Quality Control Point Tree View</field>
+                <field name="model">project.quality.control.point</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name='control_point_no'/>
+                        <field name='title'/>
+                        <field name='type_id'/>
+                        <field name='team_id'/>
+                        <field name='responsible_user_id'/>
+                    </tree>
+                </field>
+        </record>
+
+        <record id="view_project_quality_control_point_search" model="ir.ui.view">
+                <field name="name">Project Quality Control Point Search View</field>
+                <field name="model">project.quality.control.point</field>
+                <field name="arch" type="xml">
+                    <search>
+                        <field name='title'/>
+                        <field name='control_point_no'/>
+                        <field name='team_id'/>
+                        <field name='responsible_user_id'/>
+                        <field name='type_id'/>
+                        <group expand="0" string="Group By">
+                            <filter name="Team" context="{'group_by':'team_id'}"/>
+                            <filter name="Responsible User" context="{'group_by':'responsible_user_id'}"/>
+                            <filter name="Type" context="{'group_by':'type_id'}"/>
+                        </group>
+                    </search>
+                </field>
+        </record>
+        
+        <record id="view_project_quality_control_point_kanban" model="ir.ui.view">
+            <field name="name">Project Quality Control Point Kanban View</field>
+            <field name="model">project.quality.control.point</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="control_point_no"/>
+                    <field name="type_id"/>
+                    <field name="team_id"/>
+                    <field name="responsible_user_id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div><strong><t t-esc="record.control_point_no.value"/></strong></div>
+                                <div><strong>Type :</strong> <t t-esc="record.type_id.value"/></div>
+                                <div><strong>Team :</strong> <t t-esc="record.team_id.value"/></div>
+                                <div><strong>Responsible User :</strong> <t t-esc="record.responsible_user_id.value"/></div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_project_quality_control_point">
+            <field name="name">Control Points</field>
+            <field name="res_model">project.quality.control.point</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+        
+    </data>
+</odoo>

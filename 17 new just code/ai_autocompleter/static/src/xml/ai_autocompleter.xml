@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<div t-name="ai_autocompleter.ai_autocompleter_template">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 col-lg-5col-sm-5 pl-0">
+					<label for="question">Ask:</label>
+					<textarea id="question" class="form-control"/>
+					<br/>
+					<br/>
+				</div>
+                <div class="col-md-2 col-lg-2col-sm-2">
+					<label>Tone:</label>
+					<div>
+						<input type="radio" id="tone_casual" name="tone"
+                                       value="Use a casual tone"/>
+						<label for="tone_casual">Casual</label>
+					</div>
+					<div>
+						<input type="radio" id="tone_creative" name="tone"
+                                       value="use a creative tone "/>
+						<label for="tone_creative">Creative</label>
+					</div>
+					<div>
+						<input type="radio" id="tone_professional" name="tone"
+                                       value="use a professional tone"/>
+						<label for="tone_professional">Professional</label>
+					</div>
+				</div>
+				<div class="col-md-2 col-lg-2col-sm-2">
+					<label>Options:</label>
+					<div>
+						<input type="radio" id="mail_formal" name="option"
+                                       value="Show me an example of a formal email"/>
+						<label for="mail_formal">Formal email</label>
+					</div>
+					<div>
+						<input type="radio" id="mail_informal" name="option"
+                                       value="Show me an example of an informal email"/>
+						<label for="mail_informal">Informal email</label>
+					</div>
+					<div>
+						<input type="radio" id="descripcion_producto" name="option"
+                                       value="Show me an example of a Product description"/>
+						<label for="descripcion_producto">Product description</label>
+					</div>
+				</div>
+				<div class="col-md-2 col-lg-2 col-sm-2">
+					<label>Length:</label>
+					<form>
+						<input type="radio" id="short" name="text-length" value="short"/>
+						<label for="short">Short Text</label>
+						<br/>
+						<input type="radio" id="medium" name="text-length" value="medium"/>
+						<label for="medium">Medium Text</label>
+						<br/>
+						<input type="radio" id="long" name="text-length" value="long"/>
+						<label for="long">Long Text</label>
+						<br/>
+					</form>
+				</div>
+				<div class="col-md-12 col-lg-12 col-sm-12 pl-0">
+					<label for="answer">Answer:</label>
+					<textarea id="result" class="form-control" style="height: 300px;"/>
+					<br/>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div t-name="ai_autocompleter.ai_autotranslate_template">
+    <div class="container">
+        <div class="row">
+            <!-- ... Other input fields ... -->
+            <div class="col-md-5 col-lg-5col-sm-5 pl-0">
+                <label for="question">Text:</label>
+                <textarea id="question" class="form-control"/>
+                <br/>
+                <br/>
+            </div>
+            <div class="col-md-5 col-lg-5 col-sm-5">
+                <label for="lang">Select Language:</label>
+               <select id="lang" class="form-control">
+				</select>
+            </div>
+            <div class="col-md-12 col-lg-12 col-sm-12 pl-0">
+                <label for="answer">Translation:</label>
+                <textarea id="result" class="form-control" style="height: 300px;"/>
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+	<div t-name="ai_autocompleter.ai_grammar_correction_template">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-lg-5col-sm-5 pl-0">
+                <label for="question">Text:</label>
+                <textarea id="question" class="form-control"/>
+                <br/>
+                <br/>
+            </div>
+            <div class="col-md-12 col-lg-12 col-sm-12 pl-0">
+                <label for="answer">Grammar Corrections:</label>
+                <textarea id="result" class="form-control" style="height: 300px;"/>
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</templates>

@@ -1,0 +1,157 @@
+# -*- coding: utf-8 -*-
+
+# Part of Probuse Consulting Service Pvt Ltd.
+#See LICENSE file for full copyright and licensing details.
+
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
+
+
+class TicketMergeWizard(models.TransientModel):
+    _name = "ticket.merge.wizard"
+
+    merge_ticket_line_ids = fields.One2many(
+        'merge.ticket.line',
+        'primary_ticket_merge_id',
+        string="Merge Ticket Line",
+        readonly=True,
+    )
+    merge_new_ticket_line_ids = fields.One2many(
+        'merge.ticket.line',
+        'ticket_merge_id',
+        string="Merge Ticket Line",
+    )
+    support_ticket_ids = fields.Many2many(
+        'helpdesk.support',
+        string="Merge Tickets",
+    )
+    support_ticket_id = fields.Many2one(
+        'helpdesk.support',
+        string="Set as Primary Ticket",
+    )
+    responsible_user_id = fields.Many2one(
+        'res.users',
+        string='Responsible User',
+        required=True,
+    )
+    team_id = fields.Many2one(
+        'support.team',
+        string='Support Team',
+        required=True,
+    )
+    create_new_ticket = fields.Boolean(
+        string='Create New Ticket?'
+    )
+    ticket_subject = fields.Char(
+        string='Subject'
+    )
+    primary_id = fields.Many2one(
+        'helpdesk.support',
+        string="Primary Ticket",
+    )
+    merge_ids = fields.Many2many(
+        'helpdesk.support',
+        string="Merge Ticket",
+    )
+    is_sure = fields.Boolean(
+        string="Are You Sure ?",
+    )
+    merge_reason = fields.Char(
+        string="Merge Reason",
+        required=True,
+    )
+
+    @api.model
+    def default_get(self, fields):
+        res = super(TicketMergeWizard, self).default_get(fields)
+        tecket_obj = self.env['helpdesk.support']
+        ticket_ids = tecket_obj.search(
+            [('id', 'in', self._context.get('active_ids'))]
+        )
+        ticket_line = self.env['merge.ticket.line']
+        if all([x.partner_id == ticket_ids[0].partner_id
+                for x in ticket_ids]) or\
+           all([x.email == ticket_ids[0].email for x in ticket_ids]) or\
+           all([x.phone == ticket_ids[0].phone for x in ticket_ids]):
+            if 'merge_ticket_line_ids' in fields:
+                for ticket in ticket_ids:
+                    vals = {
+                        'ticket_id': ticket.id,
+                        'subject': ticket.subject,
+                    }
+                    ticket_line += ticket_line.create(vals)
+                res.update({
+                    'merge_ticket_line_ids': [(6, 0, ticket_line.ids)],
+                    'merge_ids': [(6, 0, ticket_ids.ids)],
+                })
+        else:
+            raise ValidationError(_("Must be Same Partner or Email or Phone"))
+        return res
+
+    @api.multi
+    def action_merge_ticket(self):
+        context = dict(self._context or {})
+        active_ids = context.get('active_ids', [])
+        desc = ''
+        helpdesk_support_obj = self.env['helpdesk.support']
+        primary_ticket = self.primary_id
+        if self.primary_id:
+            if self.is_sure:
+                primary_ticket.write({'is_secondry': True})
+                for line in self.merge_ids:
+                    if line == self.primary_id:
+                        pass
+                    else:
+                        merge_ticket = line
+                        desc += '\n' + merge_ticket.description or ''
+                        merge_ticket.write({
+                        'primary_ticket_id': primary_ticket.id,
+                        'is_secondry': True, 
+                        'active': False,
+                         })
+                primary_ticket.write({
+                'description': self.primary_id.description + desc,
+                'merge_reason': self.merge_reason,
+                 })
+                res = self.env.ref('website_helpdesk_support_ticket.action_helpdesk_support')
+                res = res.read()[0]
+                res['domain'] = str([('id', '=', primary_ticket.id)])
+                return res
+            else:
+                raise ValidationError(_("Please select check box to confirm merge."))
+        if self.create_new_ticket:
+            add_desc = ''
+            for line in self.merge_ids:
+                add_desc += '\n' + line.description or ''
+            new_ticket_vals = {
+                'subject': self.ticket_subject,
+                'user_id': self.responsible_user_id.id,
+                'team_id': self.team_id.id,
+                'team_leader_id': self.team_id.leader_id.id,
+                'merge_reason': self.merge_reason,
+                'description': add_desc,
+            }
+            new_ticket = helpdesk_support_obj.create(new_ticket_vals)
+
+
+class MergeTicketLine(models.TransientModel):
+    _name = "merge.ticket.line"
+
+    ticket_id = fields.Many2one(
+        'helpdesk.support',
+        string="Support Ticket",
+        readonly=True,
+    )
+    subject = fields.Text(
+        string='Subject',
+    )
+    ticket_merge_id = fields.Many2one(
+        'ticket.merge.wizard',
+        string="Merge",
+    )
+    primary_ticket_merge_id = fields.Many2one(
+        'ticket.merge.wizard',
+        string="Merge",
+    )
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

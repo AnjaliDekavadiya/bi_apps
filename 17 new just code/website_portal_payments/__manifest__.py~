@@ -1,0 +1,60 @@
+# -*- coding: utf-8 -*-
+
+# Part of Probuse Consulting Service Pvt Ltd. See LICENSE file for full copyright and licensing details.
+
+{
+    'name': "Website Customer/Supplier Portal Show Payments",
+    'price': 49.0,
+    'currency': 'EUR',
+    'license': 'Other proprietary',
+    'summary': """Allow customer/supplier to login in My Account and view Payments and Print Receipts.""",
+    'description': """
+Website Customer/Supplier Portal Show Payments
+This module show Payment Receipt on My Account.
+Allow customer/supplier to login in My Account and view Payments and Print Receipts.
+Print Payment Receipts
+Payment Receipt on Portal
+customer portal payment
+customer portal receipts
+customer view portal
+supplier portal payment
+supplier payment receipt
+portal customer 
+portal supplier
+portal
+my account page
+my account login
+my account portal page
+my account customer payment
+your invoices and payments
+your invoices
+your payments
+your receipts
+customer receipts
+customer print receipts
+view portal payment accounting
+account payment on portal
+account payment on customer portal
+payment on portal
+    """,
+    'author': "Probuse Consulting Service Pvt. Ltd.",
+    'website': "http://www.probuse.com",
+    'support': 'contact@probuse.com',
+    'images': ['static/description/img1.jpg'],
+    'version': '1.0',
+    'category' : 'Website',
+    'depends': ['website_portal_sale', 'account'],
+    #'live_test_url': 'https://youtu.be/BbgraQzeUIY',
+    'data':[
+        'security/ir.model.access.csv',
+        'security/portal_payment_security.xml',
+        'views/payment_report_reg.xml',
+        'views/payment_report_view.xml',
+        'views/website_portal_sale.xml',
+    ],
+    'installable' : True,
+    'application' : False,
+    'auto_install' : False,
+}
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

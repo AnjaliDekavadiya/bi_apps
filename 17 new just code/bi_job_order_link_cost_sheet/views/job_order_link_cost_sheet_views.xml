@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="job_sheet_link_wizard_form_view" model="ir.ui.view">
+        <field name="name">Job Sheet Link wizard</field>
+        <field name="model">job.sheet.link</field>
+        <field name="arch" type="xml">
+            <form string="Job Sheet Link">
+                <p class="oe_grey">
+                </p>
+                <group> 
+                    <group>
+                        <field name="job_link" widget="radio"/>
+                        <field name="name" invisible="job_link == 'update'" required="job_link == 'create'" />
+                        <field name="project_id" readonly="1"/>
+                        <field name="jobcost_sheet_id" invisible="job_link == 'create'" required="job_link == 'create'"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+                <footer>
+                    <button name="job_sheet_link" string="Create/Update" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_job_sheet_link_wizard" model="ir.actions.act_window">
+        <field name="name">Job Sheet Link wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">job.sheet.link</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+	<record id="job_order_cost_link_inherit_form" model="ir.ui.view">
+        <field name="name">job.order.cost.link.inherit.form</field>
+        <field name="model">job.order</field>
+        <field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(action_job_sheet_link_wizard)d" string="Create/Edit Job Sheet" type="action" class="btn-primary"/>
+            </xpath>
+            <field name="planned_hours" position="after" >
+                <field name="jobcost_order_id" invisible="1" />
+            </field>
+            <xpath expr="//page[3]/field/tree/field[@name='product_type']" position="after">
+                <field name="jobcost_material_id" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

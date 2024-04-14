@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="issue_feedback" name="Project Issue Feedback">
+            <t t-call="website.layout">
+                <form action="/project_issue/feedback" method="post" class="form-horizontal mt32">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <group>
+                    <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                        <label class="col-md-3 control-label" for="name">Customer:</label>
+                         <div class="col-md-7">
+                            <label class="control-label" for="name" style="font-weight:normal;"><t t-esc="customer"/></label>
+                        </div>
+                    </div>
+                    <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                        <label class="col-md-3 col-sm-4 control-label" for="name">Project:</label>
+                         <div class="col-md-7 col-sm-8">
+                            <label class="control-label" for="name" style="font-weight:normal;"><t t-esc="project"/></label>
+                        </div>
+                    </div>
+                    <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                        <label class="col-md-3 col-sm-4 control-label" for="name">Issue:</label>
+                         <div class="col-md-7 col-sm-8">
+                            <label class="control-label" for="name" style="font-weight:normal;"><t t-esc="issue"/></label>
+                        </div>
+                    </div>
+                    <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                        <label class="col-md-3 col-sm-4 control-label" for="name">Request Issue:</label>
+                         <div class="col-md-7 col-sm-8">
+                            <label class="control-label" for="name" style="font-weight:normal;"><t t-esc="message"/></label>
+                        </div>
+                    </div>
+                    <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                        <label class="col-md-3 col-sm-4 control-label" for="name" widget="priority">Your Feedback:</label>
+                        <div class="stars">
+                            <input type="radio" name="star" class="star-1" id="star-1" value = "poor" />
+                            <label class="star-1" for="star-1" style="font-weight:normal;">Poor</label>
+                            <input type="radio" name="star" class="star-2" id="star-2" value = "average" />
+                            <label class="star-2" for="star-2" style="font-weight:normal;">Average</label>
+                            <input type="radio" name="star" class="star-3" id="star-3" value = "good" />
+                            <label class="star-3" for="star-3" style="font-weight:normal;">Good</label>
+                            <input type="radio" name="star" class="star-4" id="star-4" value = "very good" />
+                            <label class="star-4" for="star-4" style="font-weight:normal;">Very Good</label>
+                            <input type="radio" name="star" class="star-5" id="star-5" value = "excellent" />
+                            <label class="star-5" for="star-5" style="font-weight:normal;">Excellent</label>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                        <label class="col-md-3 col-sm-4 control-label" for="name">Your Comment:</label>
+                        <div class="col-md-7 col-sm-8">
+                            <textarea class="form-control" name="comment" required="True" t-attf-value="#{}" placeholder="Your Comment....."/>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control hidden" name="partner_id" required="True" t-attf-value="#{user_id.partner_id}"/>
+                    <input type="text"  class="form-control hidden" name="issue_id"  t-att-value="issue_id and issue_id or False"/>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                    </group>
+                 </form>
+            </t>
+        </template>
+    
+</odoo>

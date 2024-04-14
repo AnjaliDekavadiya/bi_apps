@@ -1,0 +1,298 @@
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+           <h2 class="oe_slogan" style="color:olive;"><b>Upsell on Subscription / Contract / Recurring</h2>
+           <h3 class="oe_slogan" style="color:green;"><b>Only for Odoo Community Edition.</h3>
+           <p class="oe_mt32" style="color:olive;">
+            This module allow your sales team to do Upsell on Subscription / Recurring Contract.<br/>
+           </p>
+           <p style="color:CRIMSON;">
+                <b>Main Features:</b>
+           </p>
+           <p style="color:olive;">
+                <ul>
+                    <li style="color:olive;">Allow you to upsell on your contract.</li> 
+                    <li style="color:olive;">So, You can directly update contract or you can create quotations.</li>
+                    <li style="color:olive;">You can View Update Contract History on Contract.</li>
+                    <li style="color:olive;">View Sales Order on Contract.</li>
+                    <li style="color:olive;">Apply Access Rights.</li>
+                    <li style="color:olive;">For more details see video and below screenshots.</li>
+                    <li style="color:olive;">Only for odoo community edition.</li>
+                    <li style="color:olive;">Optation  1
+                        <ul>
+                            <li style="color:olive;">Setup for update the existing contract. When Update Current Contract Button is clicked, Update Current Contract.</li>
+                        </ul>
+                    </li>
+                    <li style="color:olive;">Optation  2
+                        <ul>
+                            <li style="color:olive;">Setup for New Contract Line. When Update Current Contract Button is clicked, create new contract line.</li>
+                        </ul>
+                    </li>
+                    <li style="color:olive;">Optation  3
+                        <ul>
+                            <li style="color:olive;">Setup for Create Quotation. When Create Quotation button is clicked, create new quotation with selected upsell line.</li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+           </p>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Sale Order</b></h2>
+       <p style="color:green;">When confirmed sale order, contract will be created.</p>
+       
+       <div class="oe_demo oe_screenshot">
+           <img src="sale_order_with_confirm_button.png">
+       </div>
+       <p>
+        <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Contracts Menu</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="Contracts menu.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Upsell Button & Show Sales Order on Contract</b></h2>
+       <p style="color:green;">When stage is running, Upsell button is visible.</p>
+       <div class="oe_demo oe_screenshot">
+           <img src="analytic_account_with_upsell.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:olive;"><b>Optation  1</h2>
+        <h2 class="oe_slogan"><b style="color:CRIMSON;">Update on Existing Contract</b></h2>
+        <p style="color:green;">Setup for update the existing contract. When Update Current Contract Button is clicked, Update Current Contract.<p>
+        <div class="oe_demo oe_screenshot">
+            <img src="update_contract_wizard.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Updated Current Contract</b></h2>
+       <p style="color:green;">When above wizard is running, update current contract quantity 5 to 8.</p>
+       <div class="oe_demo oe_screenshot">
+           <img src="SO061   Colleen Diaz   Azure Interior   Odoo.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Contract Upsell History</b></h2>
+        <p style="color:green;">Contract Upsell History tab for view update on existing contract.<p>
+       <div class="oe_demo oe_screenshot">
+           <img src="contract_update_history1.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:olive;"><b>Optation 2</h2>
+        <h2 class="oe_slogan"><b style="color:CRIMSON;">Setup for New Contract Line</b></h2>
+        <p style="color:green;">When Update Current Contract Button is clicked, create new contract line.<p>
+        
+        <div class="oe_demo oe_screenshot">
+           <img src="upsell_setup.png">
+        </div>
+        <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+        </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Updated Current Contract</b></h2>
+       <p style="color:green;">When above wizard is running, add new contract line.</p>
+       <div class="oe_demo oe_screenshot">
+           <img src="upsell_new_entry.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Contract Upsell History</b></h2>
+       <p style="color:green;">Contract Upsell History tab for view update on existing contract & new contract line.<p>
+       <div class="oe_demo oe_screenshot">
+           <img src="history_for_upsell.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:olive;"><b>Optation 3</h2>
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Setup for Create Quotation</b></h2>
+       <p style="color:green;">When Create Quotation button is clicked, create new quotation with selected upsell line.<p>
+       <div class="oe_demo oe_screenshot">
+           <img src="quotation_on_contract.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Quotation - Tree View</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="Quotations   Odoo.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Quotation - Form View</b></h2>
+       <p style="color:green;">View reason for upsell on sale order.<p>
+       <div class="oe_demo oe_screenshot">
+           <img src="SO062   Odoo.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan"><b style="color:CRIMSON;">Analytic Account on Quotation</b></h2>
+        <p style="color:green;">View reason for upsell on sale order.<p>
+        <div class="oe_demo oe_screenshot">
+           <img src="sale_order_with_analytic_account.png">
+        </div>
+        <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+        </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Updated Current Contract Through Sale Order</b></h2>
+       <p style="color:green;">When quotation is confirmed, update contract quantity 8 to 10.</p>
+       <div class="oe_demo oe_screenshot">
+           <img src="update_quantuty_on_contract_thriugh_sale.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan"><b style="color:CRIMSON;">Allow for Contact/Warranty Product</b></h2>
+       <p style="color:green;">Allow for subscription product.</p>
+       <div class="oe_demo oe_screenshot">
+           <img src="Router Charges   Odoo.png">
+       </div>
+       <p>
+            <hr style="border-top:1px solid #5f656d;height:1px;margin:16px 0;"></hr>
+       </p>
+   </div>
+</section>
+
+<section class="oe_container" >
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">
+            <strong><font style="color:#2dd280;" class="text-epsilon">Contact / Support<br/></font></strong>
+            <strong><font style="color:crimson" class="text-epsilon">Introducing</font>
+            <font style="color:crimson;" class="text-epsilon">Probuse Consulting Services Pvt. Ltd.</font></strong>
+          </h2>
+       <div class="oe_span6">
+           <div class="mt32 col-md-10">
+           <div class="oe_picture" style="margin: 25px 10%;">
+               <a  target='new' href="http://www.probuse.com/">
+                   <img src="logo.png">
+               </a>
+           </div>
+           <p class="oe_mt32">
+               <font style="color:crimson;">If you need any help or want more additional features, you may contact us through:</font><br/>
+               <font style="color:crimson;">Email: <a href="contact@probuse.com">contact@probuse.com</a> <br/>
+               <font style="color:crimson;">Website: </font><a href="http://www.probuse.com/" target='new'><u>www.probuse.com</u></a> <br/>
+               <font style="color:crimson;">Skype: mustufa_probuse</font><br/>
+           </p>
+           <p>
+                <h2>
+                    <a href="https://www.facebook.com/probusecs" target="new">
+                      <i class="fa fa-facebook-square" style="font-size:38px;"></i>
+                    </a>
+                    <a href="https://twitter.com/mustufa_odoo" target="new">
+                      <i class="fa fa-twitter" style="font-size:38px;"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mustufa-rangwala-odoo-openerp-0a46777/" target="new">
+                      <i class="fa fa-linkedin" style="font-size:38px;"></i>
+                    </a>
+                    <!--<a href="https://www.youtube.com/channel/UCHlyoC4khP44M1cOCJXo2FQ" target="new">
+                      <i class="fa fa-youtube-play" style="font-size:38px;"></i>
+                    </a>-->
+                    <a href="https://plus.google.com/u/0/113284573788891837715/posts" target="new" rel="publisher">
+                      <i class="fa fa-google-plus-square" style="font-size:38px;"></i>
+                    </a>
+              </h2>
+            </p>
+           </div>
+       </div>
+    <div class="mt32 col-md-5">
+           <p style="text-align: justify; ">
+            <font class="text-epsilon" style="color:crimson;">Probuse Consulting Service Pvt Ltd is an Software and Web development specialist which offers complete business application together. We are well experienced to provide a face for your business on the software and Internet level.</font>
+          </p>
+          <p style="text-align: justify;">
+            <font class="text-epsilon" style="color:crimson">Probuse Consulting Service Pvt Ltd is a specialist in Odoo/OpenERP services and could give your business open source hand to drive.</font>
+          </p>
+            <h3 class="o_animate o_anim_bounce_in" style="text-align: left; animation-play-state: paused;">
+                <font style="font-size: 18px;color:#ff8000;" class="text-epsilon"><strong>Our Services</strong></font>
+            </h3>
+            <ul style="list-style-type:square">
+                <a href="http://www.probuse.com/page/odoo-implementation" target="new"><li list-style-type: "*";><p style="text-align: left; color:crimson;">Odoo Implementation</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-support" target="new"><li><p style="text-align: left; color:crimson;">Odoo Support</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-customization" target="new"><li><p style="text-align: left; color:crimson;">Odoo Customization</p></li></a>
+                <a href="http://www.probuse.com/page/odoo-migration" target="new"><li><p style="text-align: left; color:crimson;">Odoo Migration</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-training" target="new"><li><p style="text-align: left; color:crimson;">Odoo Training</p></a></li>
+            </ul>
+           </p>
+       </div>
+   </div>
+</section>

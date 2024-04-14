@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record model ="ir.ui.view" id="import_crm_id">
+           <field name="name">lead.importform</field>
+           <field name="model">lead.import</field>
+           <field name="arch" type="xml">
+               <form string="This wizard will Import Leads data from .xls or .xlsx file.">
+                   <group string="This wizard will Import Leads data from .xls or .xlsx file.">
+                        <group>
+	                        <field name="files" filename="filename"/>
+	                        <field name="filename" invisible="0"/>
+                        </group>
+                        <group/>
+                    </group>
+                   <footer>
+                        <button string="Import" groups="sales_team.group_sale_salesman" name="import_lead" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+       <record model="ir.actions.act_window" id="import_crm_action">
+           <field name="name">IMPORT LEADS FILE</field>
+           <field name="res_model">lead.import</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+       </record>
+       
+    </data>
+</odoo>

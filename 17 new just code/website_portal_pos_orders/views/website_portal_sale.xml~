@@ -1,0 +1,66 @@
+<odoo>
+
+    <template id="portal_pos_orders" inherit_id="portal.portal_my_home" name="Website Portal Sale">
+      <xpath expr="//ul[hasclass('o_portal_docs')]" position="inside">
+            <li t-if="pos_count" class="list-group-item">
+                <span class="badge" t-esc="pos_count"/>
+                <a href="/my/pos_orders">POS Order</a>
+            </li>
+        </xpath>
+    </template>
+    
+    <template id="portal_my_pos_orders" name="My POS Orders">
+      <t t-call="portal.portal_layout">
+        <h3 class="page-header">Your Point of Sale Orders</h3>
+        <t t-if="not orders">
+            <p>There are currently no point of sale orders for your account.</p>
+        </t>
+        <t t-if="orders">
+            <table class="table table-hover o_my_status_table">
+                <thead>
+                  <tr class="active">
+                    <th>Order No</th>
+                    <th>Order Date</th>
+                    <th>Salesperson</th>
+                    <th>Taxes</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Print</th>
+                  </tr>
+                </thead>
+                <t t-foreach="orders" t-as="order">
+                    <tr>
+                        <td>
+                            <span t-field="order.name"/>
+                        </td>
+                        <td>
+                            <span t-field="order.date_order"/>
+                        </td>
+                        <td>
+                            <span t-field="order.user_id"/>
+                        </td>
+                        <td>
+                            <span t-field="order.amount_tax" t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                        </td>
+                        <td>
+                            <span t-field="order.amount_total" t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                        </td>
+                        <td>
+                            <span t-field="order.state"/>
+                        </td>
+                        <td>
+                            <span t-esc="order"/><a class="btn btn-sm btn-primary" t-att-href="'/pos_orders/printpos/%s?%s' % (order.id, keep_query())" >
+                                      <i class="fa fa-print"></i> Print Receipt
+                            </a>
+                        </td>
+                    </tr>
+                </t>
+            </table>
+            <div t-if="pager" class="o_portal_pager text-center">
+                <t t-call="website.pager"/>
+            </div>
+        </t>
+      </t>
+    </template>
+    
+</odoo>

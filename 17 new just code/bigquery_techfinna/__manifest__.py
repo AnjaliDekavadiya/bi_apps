@@ -1,0 +1,30 @@
+{
+    'name': 'Google BigQuery Connector',
+    'version': '1.0',
+    'summary': 'google bigquery, big query, AI Dashboard, Google AI, AI analytics, Looker studio, data studio, dashboard ai, dashboard with ai, connecter, ai connector, connector ai, data hub, data lake, machine learning, ML, artificial intelligence, AI reports, powerbi connector, odoo to powerbi connector , odoo powerbi connection, odoo power bi connection. Odoo ERP.  Odoo Dashboard, odoo 17, odoo17, CRM Dashboards, Inventory Dashboard, Sales Dashboard, Account Dashboard, Invoice Dashboard, Revamp Dashboard, Best Dashboard, Odoo Best Dashboard, Odoo Apps Dashboard, Best Ninja Dashboard, Analytic Dashboard, Pre-Configured Dashboard, Create Dashboard, google connector, odoo connector, connecter,Beautiful Dashboard, Customized Robust Dashboard, Predefined Dashboard, Multiple Dashboards, Advance Dashboard, Beautiful Powerful Dashboards, Chart Graphs Table View, All In One Dynamic Dashboard, Accounting Stock Dashboard, Pie Chart Dashboard, Modern Dashboard, Dashboard Studio, Dashboard Builder, Dashboard Designer, Odoo Studio',
+    'author': 'TechFinna',
+    'website': 'https://www.techfinna.com',
+    'maintainer': 'Techfinna',
+    'category': 'Connector',
+    'support': "info@techfinna.com",
+    'live_test_url': 'https://techfinna.com/guides/how-to-connect-google-bigquery-with-odoo',
+    'license': 'LGPL-3',
+    'price': 100,
+    # 'module_type': 'official',
+    'currency': 'USD',
+    'depends': ['base'],
+    'images': ['static/description/banner.gif'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/res_config_settings_view.xml',
+        'data/ir_cron_data.xml',
+        'views/bigquery_connector_menu.xml',
+        'views/bigquery_export_wizard_view.xml',
+    ],
+
+    'external_dependencies': {
+        'python': ['google-cloud-bigquery', 'pandas', 'pyarrow'],
+    },
+    'application': True,
+    'installable': True,
+}

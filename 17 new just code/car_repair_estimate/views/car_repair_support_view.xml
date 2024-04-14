@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="car_repair_support_form_inherited" model="ir.ui.view">
+        <field name="name">car.repair.support.form.inherit</field>
+        <field name="model">car.repair.support</field>
+        <field name="inherit_id" ref="car_repair_maintenance_service.car_repair_support_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//header/button[@name='create_work_order']" position="after">
+                <button name="%(action_car_repair_support_wizard)d" string="Create Estimate" type="action" class="oe_highlight" context="{'default_partner_id':partner_id, 'default_custom_car_repair_id': active_id, 'default_source': name}"/>
+            </xpath>
+            <xpath expr="//sheet//div/button[@name='show_work_order_task']" position="after">
+                <button class="oe_stat_button" type="object"
+                        name="view_estimates" icon="fa-calculator" invisible="car_estimate_count == 0">
+                    <field string="Estimates" name="car_estimate_count" widget="statinfo"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem name="Estimates" id="menu_car_estimates_main" parent="car_repair_maintenance_service.main_car_repair_support_main" sequence="3" action="odoo_sale_estimates.action_estimate"/>
+    
+</odoo>

@@ -1,0 +1,277 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oi_hr_salary_schedule
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0-20191026\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-27 11:12+0000\n"
+"PO-Revision-Date: 2019-10-27 14:13+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ar_SA\n"
+"X-Generator: Poedit 2.2.3\n"
+
+#. module: oi_hr_salary_schedule
+#: code:addons/oi_hr_salary_schedule/models/hr_salary_schedule.py:0
+#, python-format
+msgid "%s (copy)"
+msgstr "%s (نسخة)"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__active
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.view_hr_salary_schedule_search
+msgid "Active"
+msgstr "نشط"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.actions.act_window,name:oi_hr_salary_schedule.act_hr_salary_amount
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount__amount
+#: model:oi_excel_export.line,name:oi_hr_salary_schedule.excel_export_salary_schedule_line3
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__amount_count
+msgid "Amount Count"
+msgstr "عدد المبالغ"
+
+#. module: oi_hr_salary_schedule
+#: code:addons/oi_hr_salary_schedule/models/hr_salary_amount.py:0
+#, python-format
+msgid "Amount must be positive"
+msgstr "يجب ان يكون المبلغ موجبا"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__amount_ids
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.view_hr_salary_schedule_form
+msgid "Amounts"
+msgstr "المبالغ"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__code
+msgid "Code"
+msgstr "الكود"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.constraint,message:oi_hr_salary_schedule.constraint_hr_salary_schedule_code_unqiue
+msgid "Code must be unique!"
+msgstr "يجب ان يكون الرمز مميز!"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount__create_uid
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__create_uid
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__create_uid
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount__create_date
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__create_date
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__create_date
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__description
+msgid "Description"
+msgstr "الوصف"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount__display_name
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__display_name
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__display_name
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model,name:oi_hr_salary_schedule.model_hr_contract
+msgid "Employee Contract"
+msgstr "عقد الموظف"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__end_step_id
+msgid "End Step"
+msgstr "الدرجة النهائية"
+
+#. module: oi_hr_salary_schedule
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.view_hr_salary_schedule_form
+msgid "Generate Amounts"
+msgstr "إنشاء المبالغ"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_contract__grade_id
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount__grade_id
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__grade_ids
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.view_hr_salary_amount_search
+#: model:oi_excel_export.line,name:oi_hr_salary_schedule.excel_export_salary_schedule_line1
+msgid "Grade"
+msgstr "المرتبة"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__grade_count
+msgid "Grade Count"
+msgstr "عدد الرتب"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.constraint,message:oi_hr_salary_schedule.constraint_hr_salary_amount_uk
+msgid "Grade/Step must be unique!"
+msgstr "المرتبة/الدرجة يجب أن تكون مميزا!"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.actions.act_window,name:oi_hr_salary_schedule.act_hr_salary_grade
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_job__grade_ids
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__grade_ids
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.view_hr_salary_schedule_form
+msgid "Grades"
+msgstr "الرتب"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount__id
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__id
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__id
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: oi_hr_salary_schedule
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.view_hr_salary_schedule_search
+msgid "Inactive"
+msgstr "غير نشط"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__increment
+msgid "Increment"
+msgstr "الزيادة السنوية"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__index
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__index
+msgid "Index"
+msgstr "مؤشر"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model,name:oi_hr_salary_schedule.model_hr_job
+msgid "Job Position"
+msgstr "المنصب الوظيفي"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__job_ids
+msgid "Job Positions"
+msgstr "المناصب الوظيفية"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount____last_update
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade____last_update
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule____last_update
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount__write_uid
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__write_uid
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__write_uid
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount__write_date
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__write_date
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__write_date
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__name
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__name
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.constraint,message:oi_hr_salary_schedule.constraint_hr_salary_grade_name_unqiue
+#: model:ir.model.constraint,message:oi_hr_salary_schedule.constraint_hr_salary_schedule_name_unqiue
+#: model:ir.model.constraint,message:oi_hr_salary_schedule.constraint_hr_salary_step_name_unqiue
+msgid "Name must be unique!"
+msgstr "يجب ان يكون الاسم مميزا!"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_contract__salary
+msgid "Salary"
+msgstr "الراتب"
+
+#. module: oi_hr_salary_schedule
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.view_hr_salary_amount_pivot
+msgid "Salary Amounts"
+msgstr "مبلغ الراتب"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model,name:oi_hr_salary_schedule.model_hr_salary_grade
+msgid "Salary Grade"
+msgstr "مرتبة الراتب"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.actions.act_window,name:oi_hr_salary_schedule.act_hr_salary_schedule
+#: model:ir.model,name:oi_hr_salary_schedule.model_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_contract__schedule_id
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_job__schedule_id
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount__schedule_id
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__schedule_id
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__schedule_id
+#: model:ir.ui.menu,name:oi_hr_salary_schedule.menu_hr_salary_schedule
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.hr_contract_view_form
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.view_hr_job_form
+#: model:res.groups,name:oi_hr_salary_schedule.group_salary_schedule
+msgid "Salary Schedule"
+msgstr "جدول الرواتب"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model,name:oi_hr_salary_schedule.model_hr_salary_amount
+msgid "Salary Schedule Amount"
+msgstr "مبلغ جدول الرواتب"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model,name:oi_hr_salary_schedule.model_hr_salary_step
+msgid "Salary Step"
+msgstr "درجة الراتب"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__sequence
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_step__sequence
+msgid "Sequence"
+msgstr "المسلسل"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__start_salary
+msgid "Start Salary"
+msgstr "بداية الراتب"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_grade__start_step_id
+msgid "Start Step"
+msgstr "الدرجة الأولى"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_contract__step_id
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_amount__step_id
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.view_hr_salary_amount_search
+#: model:oi_excel_export.line,name:oi_hr_salary_schedule.excel_export_salary_schedule_line2
+msgid "Step"
+msgstr "خطوة"
+
+#. module: oi_hr_salary_schedule
+#: model:ir.model.fields,field_description:oi_hr_salary_schedule.field_hr_salary_schedule__step_ids
+#: model_terms:ir.ui.view,arch_db:oi_hr_salary_schedule.view_hr_salary_schedule_form
+msgid "Steps"
+msgstr "الدرجات"

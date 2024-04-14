@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id='fleet_passengers_view_form' model='ir.ui.view'>
+    <field name="name">fleet.passengers.form</field>
+    <field name="model">fleet.passengers</field>
+    <field name="arch" type="xml">
+      <form string="Passengers" class="o_fleet_form">
+        <sheet>
+          <group col="2">
+            <group>
+              <field name="active" widget="boolean_button" options='{"terminology": "active"}'
+                required="1" />
+              <field name="partner_id" required="1" />
+              <field name="vehicle_id" required="1" />
+            </group>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id='fleet_passengers_view_tree' model='ir.ui.view'>
+    <field name="name">fleet.passengers.tree</field>
+    <field name="model">fleet.passengers</field>
+    <field name="arch" type="xml">
+      <tree string="Passengers">
+        <field name="partner_id" />
+        <field name="vehicle_id" />
+        <field name="active" />
+      </tree>
+    </field>
+  </record>
+
+  <record id='fleet_passengers_view_kanban' model='ir.ui.view'>
+    <field name="name">fleet.passengers.kanban</field>
+    <field name="model">fleet.passengers</field>
+    <field name="arch" type="xml">
+      <kanban default_group_by="vehicle_id" create="0" group_create="0">
+        <field name="partner_id" />
+        <field name="vehicle_id" />
+        <field name="active" />
+        <templates>
+          <t t-name="kanban-box">
+            <div class="oe_kanban_global_click">
+              <div class="oe_kanban_details">
+                <div class="o_kanban_record_top">
+                  <div class="o_kanban_record_headings">
+                    <strong class="o_kanban_record_title">
+                      <div>
+                        <strong>
+                          <span t-esc="record.partner_id.value" />
+                        </strong>
+                      </div>
+                    </strong>
+                  </div>
+                </div>
+                <div class="o_kanban_record_bottom">
+                  <div class="oe_kanban_bottom_left">
+                    <t t-if="record.vehicle_id.raw_value">
+                      <field name="vehicle_id" />
+                    </t>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
+  <record id="fleet_passengers_view_search" model="ir.ui.view">
+    <field name="name">fleet.passengers.search</field>
+    <field name="model">fleet.passengers</field>
+    <field name="arch" type="xml">
+      <search string="Passengers">
+        <field name="partner_id" />
+        <field name="vehicle_id" />
+        <filter string="Inactive" name="inactive" domain="[('active','=',False)]" help="Inactive" />
+      </search>
+    </field>
+  </record>
+
+  <record id='fleet_passengers_action' model='ir.actions.act_window'>
+    <field name="name">Passengers</field>
+    <field name="res_model">fleet.passengers</field>
+    <field name="view_mode">tree,form,kanban,pivot,activity</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Ready to manage your fleet passengers more efficiently ?
+      </p>
+      <p>
+        Let's create your first passenger.
+      </p>
+    </field>
+  </record>
+
+  <menuitem
+    name="Attendances"
+    parent="fleet.menu_root"
+    id="fleet_attendances_root_menu"
+    groups="fleet.fleet_group_user"
+    sequence="2" />
+
+  <menuitem
+    name="Passengers"
+    action="fleet_passengers_action"
+    parent="fleet_attendances_root_menu"
+    id="fleet_passengers_menu"
+    groups="fleet.fleet_group_user"
+    sequence="1" />
+</odoo>

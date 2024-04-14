@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="assets_backend" name="china_map_assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="application/javascript" src="/mana_geo_map/static/lib/china.js" />
+                <script type="application/javascript" src="/mana_geo_map/static/js/mana_geo_map.js" />
+            </xpath>
+        </template>
+
+    </data>
+</odoo>
+

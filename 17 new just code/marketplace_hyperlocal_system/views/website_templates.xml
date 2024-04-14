@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<odoo>
+
+    <template id="layout" inherit_id="website.layout" name="Web layout">
+        <xpath expr="//script" position="after">
+            <!-- APIKEY -->
+            <t t-set="google_api_key" t-value="request.website.sudo().get_google_map_api_key()"/>
+            <script t-attf-src="https://maps.googleapis.com/maps/api/js?key=#{google_api_key}&amp;libraries=places"/>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        </xpath>
+    </template>
+
+    <template id="wk_layout_map_show" inherit_id="website.layout" name="Hyperlocal">
+          <xpath expr="//header" position="before">
+            <div id="hyperlocalsection">
+            <t t-set="enable_hyperlocal" t-value="website.sudo().enable_hyperlocal" />
+            <div href="#hyperlocalmodal" id="address-for-shop" data-bs-toggle="modal" t-if="enable_hyperlocal">
+                <i t-att-lang="en_US" class="material-icons my_location" style="display:none;">my_location</i>
+                <t t-set='deflocation' t-value="request.session.get('deflocation')"/>
+                <t t-if="deflocation">
+                    <div id="selected-location" style="display:none;"><t t-out="deflocation"/></div>
+                </t>
+                <t t-if="not deflocation">
+                    <t t-set='def_address' t-value="website.sudo().def_address"/>
+                    <div id="selected-location" style="display:none;"><t t-out="def_address"/></div>
+                </t>
+            </div>
+            <t t-set="enable_hyperlocal" t-value="website.sudo().enable_hyperlocal" />
+            <t t-if="enable_hyperlocal">
+                <t t-call="marketplace_hyperlocal_system.h_warning"/>
+                <t t-call="marketplace_hyperlocal_system.h_location"/>
+            </t>
+          </div>
+        </xpath>
+    </template>
+    <!-- <template id="wk_layout_map_show_location" inherit_id="website.navbar" name="Hyperlocal Navbar">
+        <xpath expr="//nav" position="before">
+            <t t-set="enable_hyperlocal" t-value="website.sudo().enable_hyperlocal" />
+            <t t-if="enable_hyperlocal">
+                <t t-call="marketplace_hyperlocal_system.h_warning"/>
+                <t t-call="marketplace_hyperlocal_system.h_location"/>
+            </t>
+        </xpath>
+    </template> -->
+
+    <template id="h_location" name="Hyperlocal">
+        <t t-set="website_sale_order" t-value="website.sale_get_order()" />
+        <div id="hyperlocalmodal" class="modal fade">
+            <div class="modal-dialog">
+                <div id="wk_content" class="modal-content">
+                    <div id="wk_header" class="modal-header">
+                        <h4 id="wk_location" class="modal-title">Select Location</h4>
+                        <button id="wk_close" type="button" class="close btn" data-bs-dismiss="modal" aria-hidden="true">×</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <form id="form_goto_shop">
+                            <div class="form-group">
+                                <t t-set='deflocation' t-value="request.session.get('deflocation')"/>
+                                <t t-if="deflocation">
+                                    <input id="pac-input" autocomplete="off" class="controls" type="text" t-att-value="deflocation" placeholder="Search Box" required="required"/>
+                                </t>
+                                <t t-if="not deflocation">
+                                    <t t-set='def_address' t-value="website.sudo().def_address"/>
+                                    <input id="pac-input" class="controls" type="text" t-att-value="def_address" placeholder="Search Box" required="required"/>
+                                </t>
+                            </div>
+                            <div class="wk_error_msg alert text-danger d-none"></div>
+
+                            <div class="mt-3 clearfix oe_login_buttons">
+
+                            <t t-if="not website_sale_order or not website_sale_order.cart_quantity">
+                                <button id="wk_shop_btn" type="button" class="btn pull-left wk_shop_btn_trigger"
+                                    >GO TO SHOP</button>
+                            </t>
+                            <t t-else="">
+                                <button id="wk_shop_btn" type="button" class="btn pull-left odr_shop_btn_trigger" data-bs-toggle="modal"
+                                     data-bs-target="#locationWarning">GO TO SHOP</button>
+                            </t>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="h_warning" name="Hyperlocal Warning">
+        <div class="modal fade" id="locationWarning" tabindex="-1" role="dialog" aria-labelledby="locationWarningTitle" aria-hidden="true">
+            <div class="modal-dialog" id="wk_modal_lg" role="document">
+                <div id="wk_modal_content" class="modal-content">
+                    <div class="modal-body">
+                        <b>Warning: </b>On changing your location, some products from your cart may be removed.
+                        <div id="wk_div_warning">
+                                <button type="button" id="wk_btn_warning" class="btn">OK</button>
+                            <button type="button" id="wk_btn_warning_close" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="seller_auto_auto_country_select" inherit_id="odoo_marketplace.mp_seller_signup">
+        <xpath expr="//t[@t-foreach='countries']/option" position="replace">
+          <t t-set="location" t-value="request.session.get('defcountry')"/>
+          <option t-att-value="c.id" t-att-selected="c.code == location">
+              <t t-out="c.name"/>
+          </option>
+        </xpath>
+    </template>
+    <template id="seller_auto_auto_country_select_2" inherit_id="odoo_marketplace.convert_user_into_seller">
+        <xpath expr="//t[@t-foreach='countries']/option" position="replace">
+          <t t-set="location" t-value="request.session.get('defcountry')"/>
+          <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1) or c.code == location">
+              <t t-out="c.name"/>
+          </option>
+        </xpath>
+    </template>
+    
+</odoo>

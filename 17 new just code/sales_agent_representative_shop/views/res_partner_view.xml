@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_commission_user_sales_agent" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.sales.agent</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="sales_commission_external_user.view_partner_form_inherit_commission_user"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_commission_user_ids']" position="before">
+                <group>
+                    <group>
+                        <field name="is_web_sales_agent"/>
+                        <field name="add_sales_person_to_so"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

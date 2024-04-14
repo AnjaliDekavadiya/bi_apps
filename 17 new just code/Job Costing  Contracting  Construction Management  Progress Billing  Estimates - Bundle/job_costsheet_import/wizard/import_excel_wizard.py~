@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record model ="ir.ui.view" id="import_invoice_wizard_id">
+           <field name="name">import.invoice.wizard</field>
+           <field name="model">invoice.import.wizard</field>
+           <field name="arch" type="xml">
+               <form string="Invoice Import Wizard">
+                   <separator string="This wizard will import invoices form selected excel file. Make sure you have selected .xls/xlsx file..."/>
+                   <group>
+                       <div>
+                            <field  name="files" class="oe_inline" filename="datas_fname" required="True"/>
+                            <field name="datas_fname" class="oe_inline" invisible="0" readonly="1"/>
+                       </div>
+                   </group>
+                   <footer>
+                        <button string="Import" name="import_file" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+       <record model="ir.actions.act_window" id="invoice_import_action">
+           <field name="name">Import Invoices</field>
+           <field name="res_model">invoice.import.wizard</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+       </record>
+       
+       <act_window id="action_import_invoice_file"
+           multi="True"
+           key2="client_action_multi" name="invoice_desig"
+           res_model="timesheet.import.wizard" src_model="account.analytic.line"
+           view_mode="form" target="new" view_type="form" />
+           
+           <menuitem id="menu_import_invoice" name = "Import" parent=" account.menu_finance" groups="hr_recruitment.group_hr_recruitment_user"/>
+           <menuitem id="menu_import_invoices" name="Import Invoices" parent="menu_import_invoice" action="invoice_import_action"/>
+           
+    </data>
+</odoo>

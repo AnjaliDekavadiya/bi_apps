@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_quality_reason_form" model="ir.ui.view">
+            <field name="name">Project Quality Reason View</field>
+            <field name="model">project.quality.reason</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name='name'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+                       
+        <record id="view_quality_reason_tree" model="ir.ui.view">
+                <field name="name">Project Quality Reason Tree View</field>
+                <field name="model">project.quality.reason</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name='name'/>
+                    </tree>
+                </field>
+        </record>
+
+        <record id="view_quality_reason_search" model="ir.ui.view">
+                <field name="name">Project Quality Reason Search View</field>
+                <field name="model">project.quality.reason</field>
+                <field name="arch" type="xml">
+                    <search>
+                        <field name='name'/>
+                    </search>
+                </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_quality_reason">
+            <field name="name">Quality Reasons</field>
+            <field name="res_model">project.quality.reason</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+    </data>
+</odoo>

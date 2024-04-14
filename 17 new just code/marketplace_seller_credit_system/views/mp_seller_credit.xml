@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- seller view for loyalty history  -->
+        <record id="seller_wk_loyaltyredeemhistory_form_view" model="ir.ui.view">
+            <field name="name">seller Loyalty Redeem History</field>
+            <field name="model">website.loyalty.history</field>
+            <field name="arch" type="xml">
+                <form edit="false" create="false" delete="false" string="Credit Redeem History">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id" />
+                                <field name="loyalty_id" string="Credit Program"/>
+                                <field name="redeem_policy" string="Credit Policy"/>
+                                <field name="date" />
+                            </group>
+                            <group>
+                                <field name="loyalty_process" />
+                                <field name="points_processed" />
+                                <field name="process_reference" />
+                                <field name="sale_order_ref" />
+                                <field name="redeem_amount" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- seller tree view for loyalty history  -->
+        <record id="seller_wk_loyaltyredeemhistory_tree_view" model="ir.ui.view">
+            <field name="name">seller.wk.website.loyalty.history.tree</field>
+            <field name="model">website.loyalty.history</field>
+            <field name="arch" type="xml">
+                <tree edit="false" create="false" delete="false">
+                    <field name="partner_id"/>
+                    <field name="redeem_policy" string="Policy"/>
+                    <field name="loyalty_id" string="Credit Program"/>
+                    <field name="date"/>
+                    <field name="loyalty_process"/>
+                    <field name="points_processed"/>
+                    <field name="process_reference"/>
+                    <field name="sale_order_ref"/>
+                    <field name="redeem_amount"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="seller_act_website_loyalty_management_history_open" model="ir.actions.act_window">
+            <field name="name">Redeem History</field>
+            <field name="res_model">website.loyalty.history</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('loyalty_id','=',active_id)]</field>
+            <field name="view_id" ref="seller_wk_loyaltyredeemhistory_tree_view"/>
+        </record>
+
+        <!-- seller view for loyalty management  -->
+        <record id="seller_website_loyalty_management_form_view" model="ir.ui.view">
+            <field name="name">seller Website Loyalty Management</field>
+            <field name="model">website.loyalty.management</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button class="oe_stat_button" icon="fa-filter" name="%(seller_act_website_loyalty_management_history_open)d" string="Credit History" type="action"/>
+                        <button name="set_to_pending" type="object" string="Request To Approve" invisible="status in ('pending','approved','reject')" class="btn-primary"/>
+						<button name="set_to_approved" type="object" string="Approve" invisible="status in ('draft','approved','reject',False)" groups="odoo_marketplace.marketplace_officer_group" class="btn-primary"/>
+						<button name="set_to_rejected" type="object" string="Reject" invisible="status in ('draft','reject', False)" groups="odoo_marketplace.marketplace_officer_group"/>
+						<button name="set_to_draft" type="object" invisible="status in ('pending','draft', False)" string="Send To Draft" groups="odoo_marketplace.marketplace_seller_group"/>
+						<field name="status" widget="statusbar" statusbar_visible="draft,pending,approved,reject"/>
+                    </header>
+                    <sheet>
+                        <div class="o-form-buttonbox oe_button_box text-end" invisible="status != 'approved'" style="float:right;">
+                            <button name="website_publish_button" type="object" class="btn oe_stat_button mb-0 py-0" icon="fa-globe">
+                                <field name="website_published" widget="website_publish_button"/>
+                            </button>
+                        </div>
+                        <center>
+                            <separator string="Credit Program Information"/>
+                        </center>
+                        <field name="image_1920" widget="image" options="{'preview_image': 'image_1920'}"/>
+                        <group>
+                            <group>
+                                <field name="name" readonly="status == 'approved'"/>
+                                <field name="mp_seller_id" invisible='1' readonly="status == 'approved'" required="1"/>
+                                <field name="mp_seller_id" groups="odoo_marketplace.marketplace_officer_group" readonly="status == 'approved'" required="1"/>
+                                <field name="min_purchase" readonly="status == 'approved'"/>
+                                <field name="loyalty_redeem_stage" string="Credits On" readonly="status == 'approved'"/>
+                            </group>
+                            <group>
+                                <field name="active" readonly="status == 'approved'"/>
+                                <field name="product_id" string="Product" domain="[('product_tmpl_id.marketplace_seller_id','=',mp_seller_id)]" readonly="status == 'approved'"/>
+                                <field name="website_id"  readonly="status == 'approved'" required="1" />
+                                <field name="loyalty_product_description" string="Credit Description" readonly="status == 'approved'" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="Point Calculation" string="Point Calculation">
+                                <group >
+                                    <separator string="Credit Base" readonly="status == 'approved'" />
+                                    <field name="credit_base" readonly="status == 'approved'" required="1" nolabel="1" colspan="2"/>
+                                </group>
+                            </page>
+                            <page name="Redemption Calculation " string="Redemption Calculation">
+                                <group>
+                                    <separator string="Redemption Rules"/>
+                                    <field context="{'tree_view_ref':'seller_reward_redem_rule_tree_view','form_view_ref':'seller_reward_redem_rule_form_view'}" name="redeem_rule_list" colspan="2" nolabel="1" readonly="status == 'approved'"/>
+                                </group>
+                                <separator string="Redemption Evaluation"/>
+                                <group>
+                                    <group>
+                                        <br/>
+                                        <br/>
+                                        <field name="max_redeem_amount" readonly="status == 'approved'"/>
+                                        <br/>
+                                        <br/>
+                                        <field name="redeem_policy" string="Credit Policy" readonly="status == 'approved'"/>
+                                    </group>
+                                    <div class="text-muted">
+                                        <h3>NOTES</h3>
+                                        <p>
+                                            <strong>Maximum Redeem amount per Sale Order </strong>is the  Maximum amount of money that a user can Redeem at Once .</p>
+                                        <p>
+                                            <strong>Redeem Policy </strong>is defined the how redeem points deduction.
+
+
+                                            <ul>
+                                                <li>
+                                                    <ul class="list-inline">
+                                                        <li>One Time Redeem</li>
+                                                        <li>The user will have to lost all it's points for a single redemption.</li></ul>
+                                                </li>
+                                                <li>
+                                                    <ul class="list-inline">
+                                                        <li>Partial Redeem</li>
+                                                        <li>The user will will lost only the appropriated number of points for a redemption.</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- seller tree view for loyalty management  -->
+        <record id="seller_website_loyalty_management_tree_view" model="ir.ui.view">
+            <field name="name">seller Website Loyalty Management</field>
+            <field name="model">website.loyalty.management</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="active" invisible="1"/>
+                    <field name="name"/>
+                    <field name="mp_seller_id" string="Seller"/>
+                    <field name="min_purchase"/>
+                    <field name="max_redeem_amount" string="Max Redeem Amount"/>
+                    <field name="loyalty_redeem_stage" string="Credits On"/>
+                    <field name="redeem_policy" string="Policy"/>
+                    <field name="loyalty_product_description" string="Description"/>
+                    <field name="status" invisible="1" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- seller view for loyalty Rule  -->
+        <record id="seller_reward_redem_rule_form_view" model="ir.ui.view">
+            <field name="name">Seller Reward redeem Rule</field>
+            <field name="model">reward.redeem.rule</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="active"/>
+                            <field name="name"/>
+                        </group>
+                        <div>
+                            <h3>Rule:Points Between
+
+                                <field class="oe_inline" name="point_start"/>
+                                and
+
+                                <field class="oe_inline" name="point_end"/>
+                                :1 reward points =
+
+                                <field class="oe_inline" name="reward" nolabel="1"/>
+                                unit of amount !</h3>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- seller tree view for loyalty Rule  -->
+        <record id="seller_reward_redem_rule_tree_view" model="ir.ui.view">
+            <field name="name">Seller Reward Redeem Rule</field>
+            <field name="model">reward.redeem.rule</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="active"/>
+                    <field name="name"/>
+                    <field name="point_start"/>
+                    <field name="point_end"/>
+                    <field name="reward"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="seller_credit_base_form_view" model="ir.ui.view">
+            <field name="name">Seller Credit Base</field>
+            <field name="model">credit.base</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="credit_base"/>
+                            <field name="product_id" string="Product" invisible="credit_base != 'product_specific'" />
+                        </group>
+                        <div>
+                            <h4>Customer will be awarded &#160;
+
+                                    <field class="oe_inline" name="points"/>
+                                    <span style="color:green"> &#160; points </span><br/>
+                                    <span class="oe_inline">for purchase of every  &#160; </span>
+                                    <field class="oe_inline" name="on_purchase"/>
+                                    unit of amount ! </h4>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="seller_credit_base_tree_view" model="ir.ui.view">
+            <field name="name">Seller Credit Base</field>
+            <field name="model">credit.base</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="credit_base"/>
+                </tree>
+            </field>
+        </record>
+
+        
+
+        
+
+        <record id="inherit_loyalty_res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.loyalty.inherit.marketplace</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="odoo_marketplace.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='config_payment_terms']//div[hasclass('row')]" position="inside">
+                    <div class="col-12 col-lg-6 o_setting_box" title="loyalty commission">
+                        <div class="o_setting_left_pane">
+                            <div class="text-muted">
+                                <field name="mp_loyalty_commission" class="oe_inline" help="Loyalty commission"/>
+                            </div>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="mp_loyalty_commission" string="On Loyalty Commission"/>
+                            <div class="text-muted">
+                                Get Commission on Seller Loyalty.
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="seller_loyalty_search_view" model="ir.ui.view">
+            <field name="name">seller.loyalty.search</field>
+            <field name="model">website.loyalty.management</field>
+            <field name="priority" eval="100" />
+            <field name="arch" type="xml">
+                <search string="Search loyalty">
+                    <field name="name" string="Loyalty" />
+                    <field name="mp_seller_id" string="seller" />
+                    <separator/>
+                    <filter name="PurchaseType" string="Purchase Type" domain="[('loyalty_base', '=', 'purchase')]" />
+                    <filter name="ProductType" string="Product Type" domain="[('loyalty_base', '=', 'product_price')]" />
+                    <group string="Group by">
+                        <filter name="Type" string="Type"  context="{'group_by': 'loyalty_base'}" />
+                        <filter name="Seller" string="seller"  context="{'group_by': 'mp_seller_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="seller_loyalty_history_search_view" model="ir.ui.view">
+            <field name="name">seller.loyalty.history.search</field>
+            <field name="model">website.loyalty.history</field>
+            <field name="priority" eval="100" />
+            <field name="arch" type="xml">
+                <search string="Search loyalty">
+                    <field name="mp_seller_id" string="Seller" />
+                    <field name="partner_id" string="Customer" />
+                    <field name="loyalty_id" string="Loyalty" />
+                    <field name="redeem_policy" string="Policy" />
+                    <separator/>
+                    <group string="Group by">
+                        <filter name="Customer" string="Customer"  context="{'group_by': 'partner_id'}" />
+                        <filter name="Seller" string="seller"  context="{'group_by': 'mp_seller_id'}" />
+                        <filter name="Loyalty" string="Loyalty"  context="{'group_by': 'loyalty_id'}" />
+                        <filter name="Policy" string="Policy"  context="{'group_by': 'redeem_policy'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+         <record id="action_seller_loyalty_management" model="ir.actions.act_window">
+            <field name="name">Credit Management </field>
+            <field name="res_model">website.loyalty.management</field>
+			<field name="domain">[('mp_seller_id','in',['get_marketplace_seller_id()'])]</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="seller_website_loyalty_management_tree_view"/>
+            <field name="search_view_id" ref="seller_loyalty_search_view"/>
+            <field
+                name="view_ids"
+                eval="[(5, 0, 0),
+                    (0, 0, {'sequence': 1, 'view_mode': 'tree', 'view_id': ref('seller_website_loyalty_management_tree_view')}),
+                    (0, 0, {'sequence': 2, 'view_mode': 'form', 'view_id': ref('seller_website_loyalty_management_form_view')}),
+                ]"/>
+        </record>
+        <record id="action_seller_loyalty_history" model="ir.actions.act_window">
+            <field name="name">Redeem History</field>
+            <field name="res_model">website.loyalty.history</field>
+			<field name="domain">[('mp_seller_id','in',['get_marketplace_seller_id()'])]</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="seller_wk_loyaltyredeemhistory_tree_view"/>
+            <field name="search_view_id" ref="seller_loyalty_history_search_view"/>
+            <field name="context">{'search_default_group_by_order':1}</field>
+            <field
+                name="view_ids"
+                eval="[(5, 0, 0),
+                    (0, 0, {'sequence': 1, 'view_mode': 'tree', 'view_id': ref('seller_wk_loyaltyredeemhistory_tree_view')}),
+                    (0, 0, {'sequence': 2, 'view_mode': 'form', 'view_id': ref('seller_wk_loyaltyredeemhistory_form_view')}),
+                ]"/>
+        </record>
+
+
+        <menuitem id="menu_mp_loyalty_management_root"
+          name="Credit Management"
+          parent="odoo_marketplace.wk_seller_dashboard"
+          sequence="7" />
+        <menuitem action="action_seller_loyalty_management"
+          id="menu_website_loyalty_management_submenu"
+          name="Credit Rules" parent="menu_mp_loyalty_management_root"
+          sequence="1" />
+        <menuitem action="action_seller_loyalty_history"
+          id="menu_WkLoyaltyBenefitsHistory_menu"
+          name="Credit History"
+          parent="menu_mp_loyalty_management_root"
+          sequence="3" />
+    </data>
+</odoo>

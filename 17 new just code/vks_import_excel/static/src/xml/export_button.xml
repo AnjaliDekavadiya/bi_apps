@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="vks_import_excel.ExportDataDialog" t-inherit="web.ExportDataDialog" t-inherit-mode="extension" owl="1">
+        <xpath expr="//button[@class='btn btn-primary o_select_button']" position="after">
+            <button class="btn btn-primary o_select_button" t-on-click.stop="on_click_view_export_data">Export data to Excel for viewing</button>
+            <button class="btn btn-primary o_select_button" t-on-click.stop="on_click_edit_export_data">Export data to Excel for editing</button>
+        </xpath>
+    </t>
+
+</templates>

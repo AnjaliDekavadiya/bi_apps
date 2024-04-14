@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.hospitalization</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="acs_hms.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='hospitalization']" position="before">
+                <block title="Chart Image" name="chart_image_setting_container">
+                    <setting help="Set the default Chart images." id="acs_default_chart_image_setting">
+                        <field name="acs_default_chart_image" filename="acs_default_chart_image_name" class="o_light_label" string="Default Chart Image"/>
+                        <field name="acs_default_chart_image_name" invisible="1"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

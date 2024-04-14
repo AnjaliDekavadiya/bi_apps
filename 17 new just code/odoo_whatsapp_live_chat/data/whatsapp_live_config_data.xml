@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<odoo>
+    <data noupdate="1">
+        <record id="whatsapp_live_chat_setting_1" model="whatsapp.settings">
+            <field name="name">Default Setting</field>
+            <field name="is_active">True</field>
+            <field name="website_id" ref="website.default_website" />
+            <field name="heading_title">Whatsapp chatbot Support</field>
+            <field name="description">If any query please ask to support team</field>
+            <field name="time">True</field>
+            <field name="member_type">True</field>
+        </record>
+    </data>
+</odoo>

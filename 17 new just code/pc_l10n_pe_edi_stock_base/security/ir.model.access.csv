@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_type_operation_sunat,type_operation_sunat,model_type_operation_sunat,base.group_user,1,1,1,1
+access_sunat_catalog_tmpl,sunat_catalog_tmpl,model_sunat_catalog_tmpl,base.group_user,1,1,1,1

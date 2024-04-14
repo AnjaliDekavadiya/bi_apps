@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="custom_project_bug_issues_menu"
+        name="All Issues"
+        parent="project.menu_main_pm"
+        action="project_bugs_issue_management.custom_action_view_issues_bug"
+        sequence="2"/>
+
+    <menuitem id="custom_bugs_issues_types_menu"
+        name="Issue Types"
+        parent="project.menu_project_config"
+        action="project_bugs_issue_management.action_custom_bugs_issues_type"
+        sequence="11"/>
+</odoo>

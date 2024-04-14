@@ -1,0 +1,52 @@
+# -*- coding: utf-8 -*-
+#########################################################################################
+#
+#    OpenERP, Open Source Management Solution
+#    Copyright (C) 2014-TODAY Probuse Consulting Service Pvt. Ltd. (<http://probuse.com>).
+
+#    This program is free software: you can modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version. You can not redistribute or sale
+#    without permission of Probuse Consulting Service Pvt. Ltd. (<http://probuse.com>).
+
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#    
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#########################################################################################
+
+{
+    'name' : 'Sale Purchase Image And Sequence',
+    'version': '1.0',
+    'category': 'Sales Management',
+    'license': 'Other proprietary',
+    'price': 10.0,
+    'currency': 'EUR',
+    'author': 'Probuse Consulting Service Pvt. Ltd.',
+    'website': 'https://www.probuse.com',
+    'description': ''' 
+This module allows to add image and sequence number on sale order line and purchase order line and also on sale report and purchase report.
+This module allow user to print product image and serial number on following reports: 
+* Sales order report image
+* Purchase order report image    
+
+Report image serial number and sequence image. 
+product image
+  ''',
+    'depends':['sale', 'purchase'],
+    'data' : [
+              'views/sale_view.xml',
+              'views/purchase_view.xml',
+              'report/report_saleorder.xml',
+              'report/report_purchasequotation.xml'
+              ],
+    'installable':True,
+    'auto_install':False
+}
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

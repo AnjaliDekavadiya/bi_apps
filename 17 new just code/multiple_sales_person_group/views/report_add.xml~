@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+    
+        <template id="sale_user_group_report" inherit_id = "sale.report_saleorder_document">
+            <xpath expr="//div[3][@class='col-xs-3']" position="after">
+                <div t-if="doc.sale_user_group_id" class="col-xs-3">
+                    <strong>Sales Group:</strong>
+                    <p t-field="doc.sale_user_group_id"/>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="account_user_group_report" inherit_id = "account.report_invoice_document">
+            <xpath expr="//div/div[4][@class='col-xs-2']" position="after">
+                 <div t-if="o.sale_user_group_id" class="col-xs-3">
+                    <strong>Sales Group:</strong>
+                    <p t-field="o.sale_user_group_id"/>
+                </div>
+            </xpath>
+        </template>
+        
+    </data>
+</odoo>

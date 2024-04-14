@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="job_costing_volumn_trend_report_pivot_view" model="ir.ui.view">
+            <field name="name">report.job.costing.ticket.trend.pivot</field>
+            <field name="model">report.job.cost.volumn.trend</field>
+            <field name="arch" type="xml">
+                <pivot string="Job Costing Volumn Trends">
+                    <field name="date" type="row"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="view_job_costing_volumn_trend_report_graph_view" model="ir.ui.view">
+            <field name="name">report.job.costing.ticket.trend.graph</field>
+            <field name="model">report.job.cost.volumn.trend</field>
+            <field name="arch" type="xml">
+                <graph string="Job Costing Volumn Trends" type="bar">
+                    <field name="direct_id" type="row"/>
+                    <field name="job_type" type="col"/>                 
+                 </graph>
+             </field>
+        </record>
+
+        <record id="job_costing_volumn_trend_report_tree_view" model="ir.ui.view">
+        <field name="name">report.job.costing.ticket.trend.pivot</field>
+        <field name="model">report.job.cost.volumn.trend</field>
+        <field name="arch" type="xml">
+            <tree string="Job Costing Volumn Trends">
+                <field name="date"/>
+            </tree>
+        </field>
+        </record>
+
+<!-- 
+        <record id="job_costing_volumn_trend_report_search_view" model="ir.ui.view">
+            <field name="name">report.job.costing.ticket.trend.search</field>
+            <field name="model">report.job.cost.line.trend</field>
+            <field name="arch" type="xml">
+                <search string="Job Costing Volumn Trends">
+                    <field name="name"/>
+                    <field name="partner_id" filter_domain="[('partner_id', 'child_of', self)]"/>
+                    <separator/>
+                    <group expand="1" string="Group By">
+                        <filter string="Project" name="project" context="{'group_by':'project_id'}"/>
+                        <separator/>
+                    </group>
+                </search>
+            </field>
+        </record>
+  -->
+  
+       <record id="job_costing_volumn_trend_report_action_view" model="ir.actions.act_window">
+            <field name="name">Job Costing Volumn Trends</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">report.job.cost.volumn.trend</field>
+<!--            <field name="view_type">form</field> odoo13-->
+            <field name="view_mode">pivot,graph</field>
+            <field name="search_view_id" ref="job_costing_volumn_trend_report_tree_view"/>
+        </record>
+
+</odoo>

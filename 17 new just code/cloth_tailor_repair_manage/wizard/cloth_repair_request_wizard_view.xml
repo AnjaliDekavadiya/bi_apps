@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_cloth_repair_request_wizard_form" model="ir.ui.view">
+            <field name="name">cloth.repair.request.wizard.form</field>
+            <field name="model">cloth.repair.request.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Create Cloth Repair Request">
+                    <group>
+                        <group>
+                            <field name="probc_request_type" widget="radio"/>
+                            <field name="probc_repair_product_id" invisible="probc_request_type in 'task'" required="probc_request_type in 'task_and_request'"/>
+                            <label for="probc_quantity" string="Product Quantity" invisible="probc_request_type in 'task'" required="probc_request_type in 'task_and_request'"/>
+                            <div class="o_row" invisible="probc_request_type in 'task'" >
+                                <field name="probc_quantity" required="probc_request_type in ('request','task_and_request')"/>
+                                <field name="probc_uom_id" options="{'no_open':True,'no_create':True}" groups="uom.group_uom" required="probc_request_type in ('request','task_and_request')"/>
+                            </div>
+                            <field name="probc_project_id" invisible="probc_request_type in 'request'" />
+                        </group>
+                        <group>
+                            <field name="probc_invoice_method" invisible="probc_request_type in 'task'" required="probc_request_type in 'task_and_request'"/>
+                            <field name="probc_location_id" invisible="probc_request_type in 'task'" required="probc_request_type in 'task_and_request'"/>
+                            <field name="probc_company_id" invisible="probc_request_type in 'task'" required="probc_request_type in 'task_and_request'"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="create_repair_request" class="oe_highlight" string="Create" type="object"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_cloth_repair_request_wizard" model="ir.actions.act_window">
+            <field name="name">Create Cloth Repair Request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cloth.repair.request.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="cloth_tailor_management_odoo.model_cloth_request_details" />
+            <field name="binding_view_types">list</field>
+        </record>
+
+</odoo>

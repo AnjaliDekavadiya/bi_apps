@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_account_analytic_account_form_inherit_view_upsell" model="ir.ui.view">
+            <field name="name">View Account Analytic Account Form Inherit View</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//form/button[@name='lock_analytic_account']" position="after">
+                        <button string="Upsell"
+                            name = "%(subscription_contract_upsell.subscription_contract_upsell_action)d" 
+                            type = "action"
+                            invisible="stage != 'inprogress'"
+                            groups="sales_team.group_sale_salesman"
+                            class="btn-primary"/>
+                    </xpath>
+                    
+                    <xpath expr="//notebook/page[@id='other_information']" position="before">
+                        <page name="my_info" string="Contract Upsell History">
+                            <field name="upsell_history_id" nolabel='1' readonly='0'>
+                                <tree editable="top">
+                                    <field name="upsell_contract_type" />
+                                    <field name="contract_line_id"/>
+                                    <field name="sale_order_id"/>
+                                    <field name="create_uid"/>
+                                    <field name="create_date" />
+                                    <field name="reason_contract"/>
+                                    <field name="old_product_qty" />
+                                    <field name="update_product_qty"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </xpath>
+                    
+                    <xpath expr="//sheet/div[@name='button_box']" position="inside">
+                        <button class="oe_stat_button" 
+                            icon="fa-book" 
+                            type="object" 
+                            name="open_upsell_quotations" 
+                            string="Sales Order"
+                            groups="sales_team.group_sale_salesman"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>

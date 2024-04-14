@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Sequences for purchase.order -->
+        <record id="seq_crm_claim" model="ir.sequence">
+            <field name="name">Service Ticket Sequence</field>
+            <field name="code">crm.claim</field>
+            <field name="prefix">Ticket-%(y)s-</field>
+            <field name="padding">4</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field name="company_id" eval="1"/>
+        </record>
+        
+        <record id="seq_crm_claim_do" model="ir.sequence">
+            <field name="name">Service Center Delivery Orders Sequence</field>
+            <field name="code">crm.claim.do</field>
+            <field name="prefix">Service Center Delivery Order # %(y)s-</field>
+            <field name="padding">4</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field name="company_id" eval="1"/>
+        </record>
+    </data>
+</odoo>

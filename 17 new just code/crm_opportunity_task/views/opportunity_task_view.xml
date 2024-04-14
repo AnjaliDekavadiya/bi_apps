@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="crm_case_form_view_oppor_task" model="ir.ui.view">
+            <field name="name">crm.lead.oppor.inherited</field>
+            <field name="model">crm.lead</field>
+            <!-- <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/> -->
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_set_won_rainbowman']" position="before">
+                    <button name="%(crm_opportunity_task.action_crm_lead_task_wizard)d" string="Create Task" type="action" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//field[@name='day_close']" position="after">
+                    <field name="custom_task_ids" widget="many2many_tags"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <!-- <div class="oe_button_box" name="button_box"> -->
+                        <!-- <button name="action_view_task" type="object" class="oe_stat_button" icon="fa-tasks" attrs="{'invisible': ['|',('task_count', '==', 0)]}">
+                            <div class="o_stat_info">
+                                <field string="Tasks" name="task_count" widget="statinfo"/>
+                            </div>
+                        </button> odoo13-->
+                        <button name="action_view_task" type="object" class="oe_stat_button" icon="fa-tasks" invisible="task_count == 0">
+                            <div class="o_stat_info">
+                                <field string="Tasks" name="task_count" widget="statinfo"/>
+                            </div>
+                        </button>
+                    <!-- </div> -->
+                </xpath>
+            </field>
+        </record>
+
+       <!--  <record id="crm_lead_form_view_task" model="ir.ui.view">
+            <field name="name">crm.lead.form.lead.inherited</field>
+            <field name="model">crm.lead</field> -->
+            <!-- <field name="inherit_id" ref="crm.crm_case_form_view_leads"/> -->
+            <!-- <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_set_lost']" position="after"> -->
+                    <!-- <button name="%(crm_opportunity_task.action_crm_lead_task_wizard)d" string="Create Task" type="action" class="oe_highlight"/> -->
+                    <!-- <button name="%(crm_opportunity_task.action_crm_lead_task_wizard)d" string="Create Task" type="action" class="oe_highlight" attrs="{'invisible': [('type', '=', 'opportunity')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='referred']" position="after">
+                    <field name="custom_task_ids" widget="many2many_tags"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside"> -->
+                    <!-- <div class="oe_button_box" name="button_box"> -->
+                    <!-- <button name="action_view_task" type="object" class="oe_stat_button" icon="fa-tasks" attrs="{'invisible': [('task_count', '==', 0)]}">
+                        <field string="Tasks" name="task_count" widget="statinfo"/>
+                    </button> -->
+                   <!--  <button name="action_view_task" type="object" class="oe_stat_button" icon="fa-tasks" attrs="{'invisible': ['|',('task_count', '==', 0), ('type', '=', 'opportunity')]}">
+                        <div class="o_stat_info">
+                            <field string="Tasks" name="task_count" widget="statinfo"/>
+                        </div>
+                    </button> -->
+                <!-- </div> -->
+           <!--      </xpath>
+            </field>
+        </record> -->
+        
+    </data>
+</odoo>

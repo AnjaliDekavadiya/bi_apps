@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data noupdate="1">
+   
+        <record id="email_template_construction_ticket" model="mail.template">
+           <field name="name">Project Issues - Send by Email</field>
+           <field name="email_from">${object.company_id.email}</field>
+           <field name="subject">${object.name} - ${object.subject} (Closed)</field>
+           <field name="email_to">${object.partner_id.email}</field>
+           <field name="model_id" ref="construction_contracting_issue_tracking.model_construction_ticket"/>
+           <field name="auto_delete" eval="True"/>
+           <field name="report_template" ref="construction_contracting_issue_tracking.print_construction_request"/>
+           <field name="report_name">Construction Report</field>
+            <field name="body_html"><![CDATA[
+            
+<p>Dear ${object.partner_id.name},
+
+% set access_action = object.get_custom_access_action()
+% set custom_access_url = object.get_custom_access_action()
+% set is_online = access_action and access_action['type'] == 'ir.actions.act_url'
+
+<p>We have closed your issue for now, if you want to reopen please do not hesitate contact us.
+
+<p><a style="padding: 8px 30px 8px 30px;border-radius: 6px;border: 1px solid #CCCCCC;background:#008080;margin-left: 2px;text-decoration: none;color:#FFFFFF;" href="${access_url}">Please give your feedback</a>
+<p>Thanks for your participation!     
+<p>Thank you for choosing ${object.company_id.name or 'us'}!</p>
+           <br/>
+           <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tr><td valign="middle" align="left">
+                    ${object.company_id.name}
+                </td></tr>
+                <tr><td valign="middle" align="left" style="opacity: 0.7;">
+                    ${object.company_id.phone}
+                    % if object.company_id.email
+                        | <a href="'mailto:%s' % ${object.company_id.email}" style="text-decoration:none; color: #454748;">${object.company_id.email}</a>
+                    % endif
+                    % if object.company_id.website
+                        | <a href="'%s' % ${object.company_id.website}" style="text-decoration:none; color: #454748;">
+                        ${object.company_id.website}
+                    </a>
+                    % endif
+                </td></tr>
+            </table>
+        </td>
+    </tr>
+</tbody>
+</table>
+</td></tr>
+<!-- POWERED BY -->
+<tr><td align="center" style="min-width: 590px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: #F1F1F1; color: #454748; padding: 8px; border-collapse:separate;">
+      <tr><td style="text-align: center; font-size: 13px;">
+        Powered by <a target="_blank" href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" style="color: #875A7B;">Odoo</a>
+      </td></tr>
+    </table>
+</td></tr>
+            ]]></field>
+        </record>
+        
+    </data>
+</odoo>

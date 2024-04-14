@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_repmt_reason_cust_sale_manager,repmt.custom.salemanager,replacement_order_sales.model_replacement_reason_custom,sales_team.group_sale_manager,1,1,1,1
+access_repmt_reason_cust_salesman,repmt_reason_custsalesman,replacement_order_sales.model_replacement_reason_custom,sales_team.group_sale_salesman,1,0,0,0
+access_repmt_reason_cust_user,repmt_reason_cust_user,replacement_order_sales.model_replacement_reason_custom,base.group_user,1,0,0,0

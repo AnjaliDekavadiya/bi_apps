@@ -1,0 +1,42 @@
+<openerp>
+	<data>
+
+        <record model="ir.ui.view" id="hr_timesheet_report_form_view">
+            <field name="name">HR Timesheet Report Form View</field>
+            <field name="model">hr.timesheet.status.report.wizard</field>
+                <field name="arch" type="xml">
+                    <form string="Hr Timesheet Status Report">
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="start_date"/>
+                                </group>
+                                <group>
+                                    <field name="end_date"/>
+                                </group>
+                            </group>
+                            <notebook colspan="4">
+                                 <page string="Employee">
+                                     <field name="employee_ids" />
+                                 </page>
+                             </notebook>
+                            <footer>
+                                <button name="print_hr_timesheet_status_report" type="object" string="Print" class="btn-primary"/>
+                                or
+                                <button string="_Cancel" class="btn-default" special="cancel" />
+                            </footer>
+                        </sheet>
+                    </form>
+                </field>
+        </record>
+
+        <act_window id="hr_timesheet_status_report_wizard"
+                    name="Timesheet Status Report"
+                    res_model="hr.timesheet.status.report.wizard"
+                    view_mode="form"
+                    target="new"/>
+
+        <menuitem id="hr_timesheet_status_report_menu" name="Timesheet Status Report"
+        parent="hr_timesheet.menu_timesheets_reports" action="hr_timesheet_status_report.hr_timesheet_status_report_wizard"/>
+   </data>
+</openerp>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem name="Hide Menu"
+              id="bi_construction_maintenance_equipment.main_maintenance"
+              active="0"/>
+</odoo>

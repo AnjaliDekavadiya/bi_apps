@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_move_extend_form" model="ir.ui.view">
+            <field name="name">account.move.extend.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <field name="ref" position="after">
+                    <field name="progress_billing_title"/>
+                    <field name="analytic_id"/>
+                </field>
+                <xpath expr="//page[@id='invoice_tab']" position="inside">
+                    <group string="Process Billing Information">
+                        <group>
+                            <field name="total_progress_billing"/>
+                            <field name="previous_invoiced" string="Previous Invoiced" invisible="move_type not in ('out_invoice', 'out_refund', 'out_receipt')"/>
+                            <field name="previous_invoiced" string="Previous Billed" invisible="move_type not in ('in_invoice', 'in_refund', 'in_receipt')"/>
+
+                            <field name="invoice_to_date" string="Invoice To Date" invisible="move_type not in ('out_invoice', 'out_refund', 'out_receipt')"/>
+                            <field name="invoice_to_date" string="Bill To Date" invisible="move_type not in ('in_invoice', 'in_refund', 'in_receipt')"/>
+
+                            <field name="remaining_progress"/>
+                        </group>
+                        <group>
+                            <field name="previous_invoice_due" string="Previously Invoice Due" invisible="move_type not in ('out_invoice', 'out_refund', 'out_receipt')"/>
+                            <field name="previous_invoice_due" string="Previously Billed Due" invisible="move_type not in ('in_invoice', 'in_refund', 'in_receipt')"/>
+
+                            <field name="current_invoice" string="Currently Invoiced" invisible="move_type not in ('out_invoice', 'out_refund', 'out_receipt')"/>
+                            <field name="current_invoice" string="Currently Bill" invisible="move_type not in ('in_invoice', 'in_refund', 'in_receipt')"/>
+
+                            <field name="total_due"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

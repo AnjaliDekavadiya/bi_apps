@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_report_cloth_request_document" inherit_id="cloth_tailor_management_odoo.report_cloth_request_document">
+        <xpath expr="//td[@name='fabric_color']" position="after">
+            <td>
+                <strong>Team: </strong>
+            </td>
+            <td name="tailor_team_id">
+                <span t-field="doc.tailor_team_id"/>
+            </td>
+        </xpath>
+        <xpath expr="//table[hasclass('request_header_table')]//tr[last()]" position="after">
+            <tr>
+                <td>
+                    <strong>Team Leader: </strong>
+                </td>
+                <td name="tailor_team_leader_id">
+                    <span t-field="doc.tailor_team_leader_id"/>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+</odoo>

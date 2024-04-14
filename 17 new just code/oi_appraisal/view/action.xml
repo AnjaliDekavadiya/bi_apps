@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="act_appraisal_template" model="ir.actions.act_window">
+		<field name="name">Appraisal Templates</field>
+		<field name="res_model">appraisal.template</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'from_appraisal_template' : True}</field>
+	</record>
+
+	<record id="act_appraisal_phase" model="ir.actions.act_window">
+		<field name="name">Appraisal Phase</field>
+		<field name="res_model">appraisal.phase</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="act_appraisal_rate" model="ir.actions.act_window">
+		<field name="name">Appraisal Rate</field>
+		<field name="res_model">appraisal.rate</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="act_appraisal_evaluation_template" model="ir.actions.act_window">
+		<field name="name">Evaluation Templates</field>
+		<field name="res_model">appraisal.evaluation.template</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="act_appraisal_question_group" model="ir.actions.act_window">
+		<field name="name">Question Group</field>
+		<field name="res_model">appraisal.question.group</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="act_appraisal_generate" model="ir.actions.act_window">
+		<field name="name">Generate Appraisal</field>
+		<field name="res_model">appraisal.generate</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+	</record>
+	
+	<record id="act_appraisal" model="ir.actions.act_window">
+		<field name="name">Employee Appraisal</field>
+		<field name="res_model">appraisal</field>
+		<field name="view_mode">tree,kanban,form</field>
+	</record>
+
+	<record id="act_appraisal_batch" model="ir.actions.act_window">
+		<field name="name">Appraisal Batch</field>
+		<field name="res_model">appraisal.batch</field>
+		<field name="view_mode">tree,form</field>
+	</record>	
+
+	<record id="act_appraisal_batch_type" model="ir.actions.act_window">
+		<field name="name">Batch Type</field>
+		<field name="res_model">appraisal.batch.type</field>
+		<field name="view_mode">tree,form</field>
+	</record>	
+	
+	<record id="act_server_create_evaluation" model="ir.actions.server">
+		<field name="name">Create evaluation</field>
+		<field name="model_id" ref="model_appraisal" />
+		<field name="binding_model_id" ref="model_appraisal" />
+		<field name="state">code</field>
+		<field name="code">action=records._create_evaluation()</field>
+	</record>	
+
+	<record id="act_appraisal_evaluation" model="ir.actions.act_window">
+		<field name="name">Evaluation</field>
+		<field name="res_model">appraisal.evaluation</field>
+		<field name="view_mode">tree,form</field>
+	</record>	
+
+	<record id="act_server_appraisal_calc_result" model="ir.actions.server">
+		<field name="name">Recompute Result</field>
+		<field name="model_id" ref="model_appraisal" />
+		<field name="binding_model_id" ref="model_appraisal" />
+		<field name="state">code</field>
+		<field name="code">action=records._calc_result()</field>
+		<field name="groups_id" eval="[(4, ref('group_appraisal_officer'))]" />
+	</record>	
+
+</odoo>

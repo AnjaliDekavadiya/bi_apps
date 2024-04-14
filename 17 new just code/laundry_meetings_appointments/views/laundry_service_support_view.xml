@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="laundry_service_request_form_view_inherit_meeitng" model="ir.ui.view">
+            <field name="name">laundry.business.service.custom.inherit.meetings</field>
+            <field name="model">laundry.business.service.custom</field>
+            <field name="inherit_id" ref="laundry_iron_business.laundry_service_request_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/header" position="inside">
+                    <button name="%(create_meeting_custom_action)d" type="action" string="Create Appointment" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button class="oe_stat_button" type="object"
+                            name="show_laundry_meetings" string="Appointments" icon="fa-pencil-square" />
+
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="collection_user_id"/>
+                    <field name="delivery_user_id"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

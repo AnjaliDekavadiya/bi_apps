@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_saleorder_document_inherit_branch" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@name='expiration_date']" position="after">
+                <div name="company_branch_id" t-if="doc.company_branch_id" class="col-auto mw-100 mb-2">
+                    <strong>Branch:</strong>
+                    <p class="m-0" t-field="doc.company_branch_id"/>
+                </div>
+            </xpath>
+<!--            <xpath expr="//t/div/t[2]/table/thead/tr/th[1]" position="after">-->
+<!--                <t t-if="doc.company_branch_id">-->
+<!--                    <th>Branch</th>-->
+<!--                </t>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//t/div/t[2]/table/tbody/t/t[2]/tr/td[1]" position="after">-->
+<!--                <t t-if="doc.company_branch_id">-->
+<!--                    <td>-->
+<!--                        <span t-field="l.company_branch_id"/>-->
+<!--                    </td>-->
+<!--                </t>-->
+<!--            </xpath>-->
+        </template>
+
+        <record id="view_sales_report_filter_inherit_company_branch" model="ir.ui.view">
+            <field name="name">sale.report.filter.company.branch</field>
+            <field name="model">sale.report</field>
+            <field name="inherit_id" ref="sale.view_order_product_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search//field[@name='team_id']" position="after">
+                     <field name="company_branch_id" 
+                     groups="odoo_multi_branch.group_multi_branches"/>
+                </xpath>
+                <xpath expr="//group" position="inside">
+                     <filter name="company_branch_id" string="Branch" 
+                     context="{'group_by':'company_branch_id'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+

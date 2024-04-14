@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="car_repair_inherited_view_stock" model="ir.ui.view">
+        <field name="name">car.repair.inherited.view</field>
+        <field name="model">car.repair.support</field>
+        <field name="inherit_id" ref="car_repair_maintenance_service.car_repair_support_form_view"/>
+        <field name="arch" type="xml">
+           <xpath expr="//div[@name='button_box']" position="inside">
+                 <button class="oe_stat_button" type="object" name="show_move_lines" string="Stock Moves" icon="fa-arrows-v"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                 <button class="oe_stat_button" type="object" name="show_picking_repair_show" string="Stock Pickings" icon="fa-building-o"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

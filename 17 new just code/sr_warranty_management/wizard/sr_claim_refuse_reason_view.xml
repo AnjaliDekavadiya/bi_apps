@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Claim refuse reason form view -->
+    <record id="sr_claim_refuse_reason_view" model="ir.ui.view">
+        <field name="name">sr.claim.refuse.reason.view</field>
+        <field name="model">sr.claim.refuse.reason</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Claim Refuse Reason">
+                            <field name="reason" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="update_refuse_reason" string="Submit" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- claim refuse reason action -->
+    <record id="sr_claim_refuse_reason_action" model="ir.actions.act_window">
+        <field name="name">Claim Refuse Reason</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sr.claim.refuse.reason</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sr_claim_refuse_reason_view" />
+        <field name="target">new</field>
+    </record>
+</odoo>

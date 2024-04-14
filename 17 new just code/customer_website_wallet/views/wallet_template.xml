@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<!--        <template id="assets_frontend" inherit_id="website.assets_frontend" name="Custom CSS-JS"> V15-->
+<!--            <xpath expr="." position="inside">-->
+<!--            </xpath>-->
+<!--        </template>-->
+
+        <template id="portal_my_wallet" name="Portal My wallets: project entries" inherit_id="portal.portal_my_home" priority="30">
+<!--            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">-->
+<!--                <a class="list-group-item list-group-item-action d-flex align-items-center justify-content-between" href="/my/wallets" title="Wallets">Wallets-->
+<!--                <span class="badge badge-secondary badge-pill" t-esc="wallets_count"/>   -->
+<!--                </a>-->
+<!--            </xpath>-->
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="title">Wallets</t>
+                    <t t-set="url" t-value="'/my/wallets'"/>
+<!--                    <t t-set="count" t-value="wallets_count"/>-->
+                    <t t-set="placeholder_count" t-value="'wallets_count'"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="portal_my_home_menu_Wallets" name="Portal layout : Wallets menu entries" inherit_id="portal.portal_breadcrumbs" priority="20">
+<!--            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">-->
+<!--                <li t-if="page_name == 'wallets'">-->
+<!--                    <span>Wallets</span>-->
+<!--                </li>-->
+<!--            </xpath>-->
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <li t-if="page_name == 'wallets'" t-attf-class="breadcrumb-item #{'active ' if not repair else ''}">
+                    <span>Wallets</span>
+                </li>
+            </xpath>
+        </template>
+
+<!--        <template id="display_wallets" name="Display notes">-->
+        <template id="display_wallets" name="Display Wallate Transactions">
+            <t t-call="portal.portal_layout"> 
+                
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Your Wallet Transactions</t>
+                </t>
+                    <h3 class="page-header">
+<!--                        <b>Your Wallet Transactions</b>-->
+<!--                        <div class='panel panel-default pull-right'>-->
+                        <div class='panel panel-default float-end'>
+                            <t t-if="request.env.user">
+                                <div class="panel-body" style="font-size:20px; background: #3aadaa;">
+                                    <img height="50" width="50" src="/customer_website_wallet/static/src/img/Wallet.png"/>
+                                    Wallet Balance
+                                    <strong t-field="request.env.user.partner_id.wallet_balance"
+                                          t-options='{"widget": "monetary", "display_currency": request.env.user.company_id.currency_id}'/>
+                                </div>
+                            </t>
+                        </div>
+                        <!--t t-call="portal.portal_searchbar"/-->
+                    </h3>
+                    <a t-att-href="'/shop/category/%s' % slug(category_id)" class="btn btn-primary pull-left mb32 mr8">
+                        <!--span class="hidden-xs">Add Wallet Money</span>-->
+                        <span class="visible-xs-inline">Add Wallet Money</span>
+                        <span class="fa fa-long-arrow-right" />
+                    </a>
+
+                    <t t-call="portal.portal_table">
+<!--                    <table id="note_table" class="table table-hover" width="100%">-->
+                        <thead>
+                            <tr class="active">
+                                <th>Number</th>
+                                <th>Transaction Type</th>
+                                <th>Transaction Date</th>
+                                <th class="text-right">Transaction Amount</th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="wallets" t-as="wallet">
+                            <t t-if="wallet.balance_type == 'credit'">
+                                <tr>
+                                    <td>
+                                        <span t-field="wallet.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="wallet.balance_type"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="wallet.date"/>
+                                    </td>
+                                    <td class="text-right">
+                                         <strong t-field="wallet.amount"
+                                          t-options='{"widget": "monetary", "display_currency": request.env.user.company_id.currency_id}'/>
+                                       <!--  <span t-field="wallet.amount" t-field-options='{"widget": "monetary", "display_currency": "wallet.currency_id"}'/> -->
+                                       <!-- <span t-field="wallet.amount"/> -->
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="wallet.balance_type == 'debit'">
+                                <tr>
+                                    <td>
+                                        <span t-field="wallet.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="wallet.balance_type"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="wallet.date"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <!-- <span t-field="wallet.amount" t-field-options='{"widget": "monetary", "display_currency": "wallet.currency_id"}'/> -->
+                                         <strong t-field="wallet.amount"
+                                          t-options='{"widget": "monetary", "display_currency": request.env.user.company_id.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </t>
+                    <div t-if="pager" class="o_portal_pager text-center">
+                        <t t-call="portal.pager"/>
+                    </div>
+            </t>
+        </template>
+
+        <template id="website_sale_wallate_payment" name="Website Wallate Payment" inherit_id="website_sale.payment">
+<!--            <xpath expr="//div[@id='payment_method']" position="after">-->
+            <xpath expr="//div[@id='payment_method']/.." position="inside"><!--V15-->
+                <div>
+                    <div class="pull-right mt16 mr8">
+                        <!-- <t t-if="website_sale_order.partner_id.wallet_balance &gt; website_sale_order.amount_total">
+                            <a class="btn btn-info" data-toggle="modal" data-target=".modal_website_wallet">
+                                <i class="fa fa-minus-circle"> Use Wallet Amount</i>
+                            </a>
+                            <b>
+                                Or
+                            </b>
+                        </t>  -->
+                        <div class="modal fade modal_website_wallet" role="form" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form class="modal-content" id="website_wallet_bool">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                                    <h4 class="modal-title">Your Wallet</h4>
+                                </div>
+                                <div class="modal-body website_wallet" id="sign-dialog" >
+                                    <div class="mb32">
+                                        <b>Your Current Wallet Balance is </b> <span class="text-right" style="font-size: 18px; color: #337AB7; font-weight: 700;"
+                                            t-field="website_sale_order.partner_id.wallet_balance"
+                                            t-field-options='{"widget": "monetary", "display_currency": "order.pricelist_id.currency_id"}'/>
+                                    </div>
+                                    <div class="checkbox" style="margin-left:19px">
+                                        <input type="checkbox" name="website_wallet_bool" />
+                                        <label style="font-size: 18px; cursor:auto; color: #337AB7; padding-left: 0px;">Are you sure for using wallet amount?</label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button t-attf-class="btn btn-primary interested_partner_assign_confirm">Confirm</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- <template id="low_balance" name="Low Balance">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure"/>
+                    <div class="container">
+                        <h1>Sorry!</h1>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="alert alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                                    <h2>
+                                        You have low wallet balance.
+                                        <br/>
+                                    </h2>
+                                </div>
+                                <p>
+                                    <a class="btn btn-primary pull-left mb32" onclick="history.go(-2);" ><span class="hidden-xs">Go Back</span><span class="fa fa-long-arrow-left"/></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </template> -->
+
+        <template id="low_balance" name="Low Balance">
+                <t t-call="website.layout">
+                  <div id="wrap">
+                    <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_1"/>
+                    <div class="container mt-4">
+                        <div class="row">
+                            <div class="col-lg-7 col-xl-6 mr-lg-auto oe_structure">
+                                <section class="pt40 s_text_block pb40 o_colored_level o_cc o_cc1" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container">
+                                        <h5>Dear <span t-field="request.env.user.partner_id.name"/>,</h5><br/>
+                                        <h5>You have low wallet balance. 
+                                        </h5>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_2"/>
+                  </div>
+                </t>
+        </template>
+
+        <!-- Add Wallet on Payment Page -->
+        <template id="website_wallet_on_payment_page" inherit_id="website_sale.payment" active="True" customize_show="True" name="Show Website Wallet">
+            <xpath expr="//div[@id='payment_method']" position="before">
+                <div t-if="website_sale_order and website_sale_order.website_order_line" class="col-lg-12">
+                    <div class="website-wallet">
+                        <div class="mb32"><b>Your Current Wallet Balance is </b> <span class="text-right" style="font-size: 18px; color: #337AB7; font-weight: 700;"
+                                        t-field="website_sale_order.partner_id.wallet_balance"
+                                        t-field-options='{"widget": "monetary", "display_currency": "order.pricelist_id.currency_id"}'/></div>
+                    </div>
+                </div>
+            </xpath>    
+        </template>
+
+    </data>
+</odoo>

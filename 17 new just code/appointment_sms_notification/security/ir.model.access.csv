@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wk_sms_temlate_appoint_user,sms.report.appoint.user,sms_notification.model_wk_sms_template,wk_appointment.appointment_officer_group,1,1,1,0
+access_wk_sms_temlate_appoint_manager,sms.report.appoint.manager,sms_notification.model_wk_sms_template,wk_appointment.appointment_manager_group,1,1,1,0
+access_sms_report_appoint_user,sms.report.appoint.user,sms_notification.model_sms_report,wk_appointment.appointment_officer_group,1,1,1,0
+access_sms_report_appoint_manager,sms.report.appoint.manager,sms_notification.model_sms_report,wk_appointment.appointment_manager_group,1,1,1,0

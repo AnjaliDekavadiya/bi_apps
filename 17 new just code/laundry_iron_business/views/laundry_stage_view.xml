@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="laundry_stage_form_view">
+            <field name="name">Laundry Stage form</field>
+            <field name="model">laundry.stage.custom</field>
+            <field name="arch" type="xml">
+                <form> 
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="stage_type"/>
+                            </group>
+                            <group>
+                                <field name="sequence"/>
+                            </group>
+                         </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="laundry_stage_tree_view">
+            <field name="name">Laundry Stage tree</field>
+            <field name="model">laundry.stage.custom</field>
+            <field name="arch" type="xml">
+                <tree>
+                     <field name="name"/>
+                     <field name="sequence"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_laundry_stages" model="ir.actions.act_window">
+            <field name="name">Laundry Stages</field>
+            <field name="res_model">laundry.stage.custom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem name="Laundry Stages" id="menu_item_laundry_stages" parent="menu_laundry_service_configuration" action="action_laundry_stages"/>
+    </data>
+</odoo>

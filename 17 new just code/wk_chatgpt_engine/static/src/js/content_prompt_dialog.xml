@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="wk_chatgpt_engine.ContentPromptDialog">
+        <Dialog size="'lg'" title="'GENERATE CONTENT USING AI'" contentClass="'generate_content_main'">
+
+                <div class="generate_content_div">
+                    <div class="row">
+                        <div class="col-6 form-outline w-50 mb-4">
+                            <label for="content_text_area" class="form-label content_label">Generate content based on:</label>
+                            <textarea type="text" id="promptInput" value="" t-ref="promptInput"
+                                name="promptInput"
+                                class="form-control bg-view px-3 border-0"
+                                autocomplete="off"
+                                t-model="state.prompt" rows="4" required="required" placeholder="Add the content you wish to generate.." style=" height: 150px; min-height: 150px;"></textarea>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4 offset-4">
+                                    <h5 class="mb-3 text-body">Tone</h5>
+                                    <div  t-ref="promptTone" id="promptTone"></div>
+                                </div>
+                                <div class="col-3">
+                                    <h5 class="mb-3 text-body">Length</h5>
+                                        <input type="number" id="promptLength" t-ref="promptLength" class="border-0 border-bottom text-body" name="content_length" min="1" max="1000"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 form-outline">
+                            <hr></hr>
+                            <textarea type="text" id="promptContent" value="" t-ref="promptContent"
+                            name="promptContent"
+                            class="form-control bg-view px-3 border-0 d-none"
+                            autocomplete="off"
+                            t-model="state.prompt" rows="9" required="required"  ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+            <t t-set-slot="footer">
+                <button type="button" class="btn btn-primary me-1" data-hotkey="s" t-on-click="insertMessage">SAVE</button>
+                <button type="button" class="btn btn-secondary me-1" data-hotkey="p" t-on-click="previewPrompt">PREVIEW</button>
+                <button class="btn btn-secondary" t-on-click="_cancel">DISCARD</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

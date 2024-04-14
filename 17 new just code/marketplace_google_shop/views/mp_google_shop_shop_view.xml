@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="mp_google_shop_form_view">
+      <field name="name">MP Google Shop Form</field>
+      <field name="model">google.shop</field>
+      <field name="type">form</field>
+      <field name="mode">primary</field>
+      <field name="inherit_id" ref="google_shop.google_shop_form"/>
+      <field name="arch" type="xml">
+            
+          <xpath expr="//form//field[@name='oauth_id']" position="attributes">
+              <attribute name="domain">[('marketplace_seller_id','=',marketplace_seller_id)]</attribute>
+              <attribute name="context">{'form_view_ref':'marketplace_google_shop.mp_google_shop_account_form'}</attribute>
+          </xpath>
+          <xpath expr="//form//field[@name='product_selection_type']" position="after">
+              <field name="marketplace_seller_id" groups="!odoo_marketplace.marketplace_officer_group" invisible="1"/>
+              <field name="marketplace_seller_id" options="{'no_create': True}" domain="[('seller', '=', True), ('state', '=', 'approved')]" context="{'form_view_ref': 'odoo_marketplace.wk_seller_form_view'}" groups="odoo_marketplace.marketplace_officer_group" required="1"/>
+          </xpath>
+          <xpath expr="//form//field[@name='product_ids_rel']" position="attributes">
+              <attribute name="domain">[('marketplace_seller_id','=',marketplace_seller_id),('status', '=', 'approved'),('website_published', '=', True)]</attribute>
+              <attribute name="context">{'tree_view_ref': 'odoo_marketplace.mp_product_product_tree_view'}</attribute>
+          </xpath>
+    </field>
+    </record>
+
+    <record model="ir.ui.view" id="mp_google_shop_tree_view">
+    <field name="name">MP Google Shop Tree</field>
+    <field name="model">google.shop</field>
+    <field name="type">tree</field>
+    <field name="mode">primary</field>
+      <field name="inherit_id" ref="google_shop.google_shop_tree"/>
+    <field name="arch" type="xml">
+      <field name='oauth_id' position="before">
+                <field name="marketplace_seller_id" groups="odoo_marketplace.marketplace_officer_group"/>
+            </field>
+    </field>
+    </record>
+    <!-- <record id="inherit_shop_fields_to_editable_by_officer" model="ir.ui.view">
+			<field name="name">Writeable Google Shop Feelds</field>
+			<field name="model">google.shop</field>
+			<field name="inherit_id" ref="marketplace_google_shop.mp_google_shop_form_view"/>
+			<field name="groups_id" eval="[(6, 0, [ref('odoo_marketplace.marketplace_officer_group') ])]"/>
+			<field name="arch" type="xml">
+        <field name="website_id" position="attributes">
+					<attribute name="attrs">{'readonly': [('shop_status', 'in', ['validate','done'])]}</attribute>
+				</field>
+        <field name="product_pricelist_id" position="attributes">
+					<attribute name="attrs">{'readonly': [('shop_status', 'in', ['validate','done'])]}</attribute>
+				</field>
+			</field>
+		</record> -->
+
+    <record model="ir.actions.act_window" id="mp_google_shop_shop_action">
+      <field name="name">Marketplace Google Shop</field>
+      <field name="res_model">google.shop</field>
+      <field name="context">{'mp_seller_google_shop': True }</field>
+      <field name="domain">[('marketplace_seller_id','in',['get_marketplace_seller_id()'])]</field>
+      <field name="view_mode">tree,form</field>
+      <field
+				name="view_ids"
+				eval="[(5, 0, 0),
+					(0, 0, {'sequence': 1, 'view_mode': 'tree', 'view_id': ref('marketplace_google_shop.mp_google_shop_tree_view')}),
+					(0, 0, {'sequence': 2, 'view_mode': 'form', 'view_id': ref('marketplace_google_shop.mp_google_shop_form_view')})
+				]"/>
+    </record>
+  </data>
+</odoo>

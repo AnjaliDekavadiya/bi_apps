@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_chat_recipients,access_chat_recipients,model_chat_recipients,base.group_user,1,1,1,1
+access_facebook_messenger,access_facebook_messenger,model_facebook_messenger,base.group_user,1,1,1,1

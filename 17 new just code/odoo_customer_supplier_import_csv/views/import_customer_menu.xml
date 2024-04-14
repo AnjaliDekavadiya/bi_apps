@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="customer_import" name="Imports" parent="sale.sale_menu_root" sequence="31" groups="sales_team.group_sale_salesman_all_leads"/>
+        <menuitem id="customer_import_xls" name="Import Customers / Suppliers" parent="customer_import" action="import_customer_supplier"/>
+    </data>
+</odoo>

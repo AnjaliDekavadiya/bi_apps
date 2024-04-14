@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+        <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+        <record id="website_loyalty_management_sale_order_form_view" model="ir.ui.view">
+            <field name="name">wk.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="wk_loyalty_program_id"/>
+                </xpath>
+                <xpath expr="//group[@name='sale_total']" position="before">
+                    <group class="oe_left">
+                        <field name="wk_extra_loyalty_points"/>
+                        <field name="wk_website_loyalty_points"/>
+                        <field name="wk_loyalty_state" />
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="wk_loyaltyredeemhistory_tree_view" model="ir.ui.view">
+            <field name="name">wk.website.loyalty.history.tree</field>
+            <field name="model">website.loyalty.history</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="partner_id"/>
+                    <field name="redeem_policy"/>
+                    <field name="loyalty_id"/>
+                    <field name="date"/>
+                    <field name="loyalty_process"/>
+                    <field name="points_processed"/>
+                    <field name="process_reference"/>
+                    <field name="sale_order_ref"/>
+                    <field name="redeem_amount"/>
+                </tree>
+            </field>
+        </record>
+        <record id="id_loyalty_history_search" model="ir.ui.view">
+            <field name="name">wk.website.loyalty.history</field>
+            <field name="model">website.loyalty.history</field>
+            <field name="arch" type="xml">
+                <search string="Loyalty History Search list">
+                    <field name="loyalty_process" operator="child_of"/>
+                    <field name="sale_order_ref"/>
+                    <group string="Group BY">
+                        <filter context="{'group_by':'loyalty_process'}" name="group_redeem_history_process_filter" string="Process"/>
+                        <filter context="{'group_by':'sale_order_ref'}" name="group_redeem_history_sale_order_ref" string="Sale Order"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="act_res_partner_redeem_history_open" model="ir.actions.act_window">
+            <field name="name">Redeem History</field>
+            <field name="res_model">website.loyalty.history</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('partner_id','=',active_id)]</field>
+            <field name="context">{'search_default_group_redeem_history_process_filter':1}</field>
+            <field name="search_view_id" ref="id_loyalty_history_search"/>
+            <field name="view_id" ref="wk_loyaltyredeemhistory_tree_view"/>
+        </record>
+        <record id="website_loyalty_management_res_partner_form_view" model="ir.ui.view">
+            <field name="name">res partner form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']/group" position="inside">
+                    <group>
+                        <field name="wk_website_loyalty_points"/>
+                    </group>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" icon="fa-filter" name="%(act_res_partner_redeem_history_open)d" string="Loyalty History" type="action"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="website_loyalty_management_res_users_form_view" model="ir.ui.view">
+            <field name="name">res.users.loyalty.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='messaging']" position="after">
+                    <group string="Loyalty Benefits" name="loyalty">
+                        <field name="wk_website_loyalty_points"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="website_loyalty_management_tree_view" model="ir.ui.view">
+            <field name="name">Website Loyalty Management</field>
+            <field name="model">website.loyalty.management</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="active"/>
+                    <field name="name"/>
+                    <field name="loyalty_redeem_stage"/>
+                    <field name="redeem_policy"/>
+                    <field name="min_purchase"/>
+                    <field name="max_redeem_amount"/>
+                    <field name="purchase"/>
+                    <field name="points"/>
+                </tree>
+            </field>
+        </record>
+        <record id="reward_redem_rule_tree_view" model="ir.ui.view">
+            <field name="name">Reward Redeem Rule</field>
+            <field name="model">reward.redeem.rule</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="active"/>
+                    <field name="name"/>
+                    <field name="point_start"/>
+                    <field name="point_end"/>
+                    <field name="reward"/>
+                </tree>
+            </field>
+        </record>
+        <record id="act_website_loyalty_management_history_open" model="ir.actions.act_window">
+            <field name="name">Redeem History</field>
+            <field name="res_model">website.loyalty.history</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('loyalty_id','=',active_id)]</field>
+            <field name="view_id" ref="wk_loyaltyredeemhistory_tree_view"/>
+        </record>
+
+        <record id="website_loyalty_management_form_view" model="ir.ui.view">
+            <field name="name">Website Loyalty Management</field>
+            <field name="model">website.loyalty.management</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button class="oe_stat_button" icon="fa-filter" name="%(act_website_loyalty_management_history_open)d" string="Loyalty History" type="action"/>
+                    </header>
+                    <sheet>
+                        <center>
+                            <separator string="Loyalty Program Information"/>
+                        </center>
+                        <field class="float-end" name="image_1920" widget="image" options="{'preview_image': 'image_1920'}"/>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="active"/>
+                            <field name="product_id"/>
+                            <field name="loyalty_product_description"/>
+                        </group>
+                        <notebook>
+                            <page name="Point Calculation" string="Point Calculation">
+                                <group>
+                                    <group>
+                                        <field name="loyalty_base"/>
+                                        <field name="min_purchase"/>
+                                        <field name="signup_points"/>
+                                        <field name="loyalty_redeem_stage"/>
+                                    </group>
+                                    <div class="card border-muted p-1">
+                                        <div class="card-header bg-transparent border-muted">NOTES</div>
+                                        <div class="card-body text-muted">
+                                            <p>
+                                                <strong>Minimum Purchase</strong>:is Sale Order amount criteria which the customer have to satisfied to gain the loyalty points.</p>
+                                            <p>
+                                                <strong>Sign Up Points</strong>:is the awarded points to customer  on singnup.</p>
+                                            <p>
+                                                <strong>Benefits Awarded</strong>: is Order Stage at which the gain loyalty points will transferred to customer accounts.</p>
+                                        </div>
+                                    </div>
+                                </group>
+                                <h4 invisible="loyalty_base != 'purchase'">Customer will be awarded &#160;
+
+                                    <field class="oe_inline" name="points"/>
+                                    <span style="color:green"> &#160; points </span>
+                                    <br/>
+                                    <span class="oe_inline">for purchase of every  &#160; </span>
+                                    <field class="oe_inline" name="purchase"/>
+                                    unit of amount ! </h4>
+                            </page>
+                            <page name="Redemption Calculation " string="Redemption Calculation">
+                                <separator string="Redemption Rules"/>
+                                <div>
+                                    <field context="{'tree_view_ref':'reward_redem_rule_tree_view'}" name="redeem_rule_list" nolabel="1"/>
+                                </div>
+                                <separator string="Redemption Evaluation"/>
+                                <group>
+                                    <group>
+                                        <br/>
+                                        <br/>
+                                        <field name="max_redeem_amount"/>
+                                        <br/>
+                                        <br/>
+                                        <field name="redeem_policy"/>
+                                    </group>
+
+                                    <div class="card border-muted mb-3">
+                                        <div class="card-header bg-transparent border-muted">NOTES</div>
+                                        <div class="card-body text-muted">
+                                            <p>
+                                                <strong>Maximum Redeem amount per Sale Order </strong>is the  Maximum amount of money that a user can Redeem at Once .</p>
+                                            <p>
+                                                <strong>Redeem Policy </strong>is defined the how redeem points deduction.
+                                                <ul>
+                                                    <li>
+                                                        <ul class="list-inline">
+                                                            <li>One Time Redeem</li>
+                                                            <li>The user will have to lost all it's points for a single redemption.</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <ul class="list-inline">
+                                                            <li>Partial Redeem</li>
+                                                            <li>The user will will lost only the appropriated number of points for a redemption.</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="reward_redem_rule_form_view" model="ir.ui.view">
+            <field name="name">Reward redeem Rule</field>
+            <field name="model">reward.redeem.rule</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="active"/>
+                            <field name="name"/>
+                        </group>
+                        <div>
+                            <h3 class="d-inline"><b>Rule:</b> </h3><p class="d-inline m-4">Points Between
+                                <span class="point_field"> <field class="oe_inline ms-1" name="point_start"/></span>
+                            
+                                and
+                                <span class="point_field"><field class="oe_inline ms-1" name="point_end"/></span>
+                                
+                                <span class="m-1"><b>:</b></span> 1 Reward points =
+                                <span class="point_field"><field class="oe_inline ms-1" name="reward" nolabel="1"/></span>
+                                
+                                unit of amount !</p>
+                        </div>
+
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="wk_loyaltyredeemhistory_form_view" model="ir.ui.view">
+            <field name="name">Loyalty Redeem History</field>
+            <field name="model">website.loyalty.history</field>
+            <!-- <field name="type">form</field> -->
+            <field name="arch" type="xml">
+                <form edit="false" string="Loyalty Redeem History">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id" />
+                                <field name="cust_email" />
+                                <field name="loyalty_id" />
+                                <field name="redeem_policy" />
+                                <field name="date" />
+                            </group>
+                            <group>
+                                <!-- <field name = "sale_order_line_id" readonly = "1"/>-->
+                                <field name="loyalty_process" />
+                                <field name="points_processed" />
+                                <field name="process_reference" />
+                                <field name="sale_order_ref" />
+                                <field name="redeem_amount" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_website_loyalty_management" model="ir.actions.act_window">
+            <field name="name">Loyalty Management </field>
+            <field name="res_model">website.loyalty.management</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="website_loyalty_management_tree_view"/>
+        </record>
+        <record id="action_WkLoyaltyRedeemHistory" model="ir.actions.act_window">
+            <field name="name">Redeem History</field>
+            <field name="res_model">website.loyalty.history</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="wk_loyaltyredeemhistory_tree_view"/>
+            <field name="search_view_id" ref="id_loyalty_history_search"/>
+            <field name="context">{'search_default_group_by_order':1}</field>
+        </record>
+
+        <menuitem id="menu_website_loyalty_management_root" name="Loyalty Management" parent="website.menu_website_configuration" sequence="51" />
+        <menuitem action="action_website_loyalty_management" id="menu_website_loyalty_management_submenu" name="Loyalty Rules" parent="menu_website_loyalty_management_root" sequence="1" />
+        <menuitem action="action_WkLoyaltyRedeemHistory" id="menu_WkLoyaltyBenefitsHistory_menu" name="Loyalty Benefits History" parent="menu_website_loyalty_management_root" sequence="3" />
+    </data>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="job_costing_form_view_inherit_cloth_request" model="ir.ui.view">
+            <field name="name">job.costing.form.inherit.machine.repair</field>
+            <field name="model">job.costing</field>
+            <field name="inherit_id" ref="odoo_job_costing_management.job_costing_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='so_number']" position="after">
+                    <field name="cloth_request_id"/>
+                </xpath>
+                <xpath expr="//page[@name='job_cost_material_page']//tree//field[@name='cost_price']" position="after">
+                    <field name="cloth_job_cost_line" column_invisible='1'/>
+                </xpath>
+                <xpath expr="//page[@name='job_cost_labour_page']//tree//field[@name='cost_price']" position="after">
+                    <field name="cloth_job_cost_line" column_invisible='1'/>
+                </xpath>
+                <xpath expr="//page[@name='job_cost_overhead_page']//tree//field[@name='cost_price']" position="after">
+                    <field name="cloth_job_cost_line" column_invisible='1'/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

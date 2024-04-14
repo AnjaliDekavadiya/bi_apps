@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="0">
+        <template id="wallet_form">
+            <form t-att-action="api_url" method="post">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <input type="hidden" name="reference" t-att-value="reference"/>
+                <input type="hidden" name="wallet_amount" t-att-value="wallet_amount"/>
+                <input type="hidden" name="wallet_currency" t-att-value="wallet_currency"/>
+                <input type="hidden" name="wallet_reference" t-att-value="wallet_reference"/>
+                <!-- URLs -->
+                <input type="hidden" name="wallet_return" t-att-value="wallet_return"/>
+                <input type="hidden" name="wallet_returncancel" t-att-value="wallet_returncancel"/>
+                <input type="hidden" name="wallet_returnerror" t-att-value="wallet_returnerror"/>
+                <input type="hidden" name="wallet_returnreject" t-att-value="wallet_returnreject"/>
+            </form>
+        </template>
+<!--        <template id="wallet_form">-->
+<!--            <input type="hidden" name="data_set" t-att-data-action-url="tx_url" data-remove-me=""/>-->
+<!--            <t t-if="return_url">-->
+<!--                <input type='hidden' name='return_url' t-att-value='return_url'/>-->
+<!--            </t>-->
+<!--            <input type='hidden' name='reference' t-att-value='reference'/>-->
+<!--            <input type='hidden' name='amount' t-att-value='amount'/>-->
+<!--            <input type='hidden' name='currency' t-att-value='currency.name'/>-->
+<!--        </template>-->
+    </data>
+
+</odoo>

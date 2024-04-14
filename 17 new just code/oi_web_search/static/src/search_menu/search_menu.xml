@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="oi_web_search.SearchMenu" owl="1">
+        <Dropdown togglerClass="'o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100'" menuClass="'o_search_menu'">
+            <t t-set-slot="toggler">
+                <i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..." />
+            </t>
+			<t t-set-slot="default">
+				<Record t-props="recordProps" t-slot-scope="slot">
+					<t t-foreach="searchItems" t-as="item" t-key="item_index">
+						<div class="dropdown-item-text " style="max-width:300px">
+							<label t-att-for="item.fieldName" class="o_search_label">
+								<span class="o_search_label_string" t-esc="item.description" />    		
+								<sup t-if="isDebugMode" class="text-info p-1"  data-tooltip-template="oi_web_search.FieldTooltip" t-att-data-tooltip-info="makeTooltip(item)" data-tooltip-touch-tap-to-show="true">?</sup>
+							</label>			    				            
+							<t t-if="item.range">
+								<t t-set="className" t-value="item.fieldProps.type=='datetime' ? 'col-sm-10' : 'col-auto range_field'" />
+								<div class="o_search_menu_range row">
+									<div t-att-class="className">
+										<Field record="slot.record" t-props="item.fieldProps" />
+									</div>
+									<div class="col-auto range_field_sep text-center">
+										<span title="Between">-</span>
+									</div>
+									<div t-att-class="className">
+										<Field record="slot.record" t-props="item.fieldProps2" />
+									</div>
+								</div>                            
+							</t>
+							<t t-else="">
+								<Field record="slot.record" t-props="item.fieldProps" />
+							</t>
+							
+						</div>
+					</t>            
+					<DropdownItem class="'dropdown-item-text dropdown-item-nofocus'">
+						<button class="btn btn-primary o_apply_search" type="button" t-on-click="() => this._onApplyButtonClick()">Apply</button>
+						<button class="btn btn-secondary o_search_advance ms-1" type="button" t-on-click.prevent="() => this._onAdvanceButtonClick()">Advance</button>
+					</DropdownItem>	               
+				</Record>
+			</t>
+        </Dropdown>
+    </t>
+
+    <t t-name="oi_web_search.FieldTooltip" t-inherit="web.FieldTooltip" t-inherit-mode="primary" owl="1">
+        <xpath expr="//ul[@role='tooltip']" position="inside">
+             <li t-if="field.operator" data-item="operator">
+                 <span class="o-tooltip--technical--title">Operator:</span>
+                 <t t-esc="field.operator"/>
+             </li>                    
+             <li t-if="field.filterDomain" data-item="filterDomain">
+                 <span class="o-tooltip--technical--title">Filter Domain:</span>
+                 <t t-esc="field.filterDomain"/>
+             </li>            
+        </xpath>
+    </t>	
+
+</templates>

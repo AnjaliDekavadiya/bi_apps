@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="font_assets">
+        <t t-raw="request.env['res.company'].get_template_report_font_assets()"/>
+    </template>
+
+    <!--Search-->
+    <record id="view_search_reporting_template" model="ir.ui.view">
+        <field name="name">report.template.search</field>
+        <field name="model">report.template</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name" filter_domain="[('name', 'ilike', self)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!--Tree-->
+    <record id="view_tree_reporting_template" model="ir.ui.view">
+        <field name="name">report.template.view.tree</field>
+        <field name="model">report.template</field>
+        <field name="arch" type="xml">
+            <tree create="0" delete="1">
+                <field name="name_display"/>
+                <field name="name" invisible="1"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--Form-->
+    <record id="view_form_reporting_template" model="ir.ui.view">
+        <field name="name">report.template.view.form</field>
+        <field name="model">report.template</field>
+        <field name="arch" type="xml">
+            <form create="0" delete="1">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button icon="fa-print" name="open_paperformat" invisible="paperformat_id == False" type="object" class="oe_stat_button">
+                            <div class="o_form_field o_stat_info"><span class="o_stat_text">Paperformat</span></div>
+                        </button>
+                        <button icon="fa-globe" name="update_multi_lang_config" invisible="multi_language == True" type="object" class="oe_stat_button" confirm="This will add new features in the configurations." context="{'toggle':True}">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value"><i class="fa fa-toggle-off"/></span>
+                                <span class="o_stat_text">Multi Language</span>
+                            </div>
+                        </button>
+                        <button icon="fa-globe" name="update_multi_lang_config" invisible="multi_language == False" type="object" class="oe_stat_button" confirm="This will discard your multi-language configuration. Do you want to proceed?" context="{'toggle':True}">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value"><i class="fa fa-toggle-on"/></span>
+                                <span class="o_stat_text">Multi Language</span>
+                            </div>
+                        </button>
+                        <button icon="fa-refresh" name="reset_template" type="object" class="oe_stat_button" confirm="Reset will discard your changes. Do you want to proceed?" context="{'report_name':name}">
+                            <div class="o_form_field o_stat_info"><span class="o_stat_text">Reset</span></div>
+                        </button>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="name" invisible="1"/>
+                            <field name="name_display" readonly="1"/>
+                            <field name="multi_company_applicable" invisible="1"/>
+                            <field name="company_id" readonly="1" invisible="multi_company_applicable != True"/>
+                            <field name="paperformat_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="multi_language" invisible="1"/>
+                            <field name="second_lang_id" options="{'no_create':True,'no_open':True}" invisible="multi_language == False"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="General">
+                            <field name="line_ids" string="Sections">
+                                <kanban class="o_kanban_mobile" create="0" delete="0" default_order="sequence, id">
+                                    <field name="id"/>
+                                    <field name="name"/>
+                                    <field name="sequence"/>
+                                    <field name="name_technical"/>
+                                    <field name="preview_img"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div t-attf-class="oe_kanban_global_click" style="background:#485c7a">
+                                                <div class="row mb4">
+                                                    <strong class="col-9">
+                                                        <span t-esc="record.name.value" style="background:white; padding:4px; border-radius:4px; color:#485c7a;"/>
+                                                    </strong>
+                                                    <strong class="col-3">
+                                                        <img t-att-src="'/report_utils/static/img/config-preview/'+record.preview_img.value" style="width:50px;" alt="img"/>
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                                <form create="0" delete="0">
+                                    <h4><field name="name" readonly="1"/></h4>
+                                    <field name="name_technical" invisible="1"/>
+                                    <field name="data_field_names" invisible="1"/>
+                                    <field name="type" invisible="1"/>
+                                    <field name="model_id" invisible="1"/>
+                                    <field name="multi_lang_enabled" invisible="1"/>
+                                    <field name="sequence" invisible="1"/>
+
+                                    <field name="field_ids" invisible="type not in ['fields', 'address', 'lines']" nolabel="1">
+                                        <tree>
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="model_id" invisible="1"/>
+                                            <field name="field_id" options="{'no_create':True,'no_open':True}" required="1"/>
+                                            <field name="field_type"/>
+                                            <field name="label"/>
+                                        </tree>
+                                        <form>
+                                            <field name="report_line_type" invisible="1"/>
+                                            <field name="model_id" invisible="1"/>
+                                            <field name="field_relation" invisible="1"/>
+                                            <group>
+                                                <group>
+                                                    <field name="sequence"/>
+                                                    <field name="field_id" options="{'no_create':True,'no_open':True}" required="1"/>
+                                                    <field name="field_type"/>
+                                                </group>
+                                                <group>
+                                                    <field name="label"/>
+                                                    <field name="label_lang2" invisible="parent.multi_lang_enabled != True"/>
+                                                    <field name="field_display_field_id" invisible="field_type not in ['many2one']" options="{'no_create':True,'no_open':True}"/>
+                                                    <field name="start_with" invisible="report_line_type not in ['address']" options="{'no_create':True,'no_open':True}"/>
+                                                    <field name="null_value_display" invisible="report_line_type not in ['fields']"/>
+                                                    <field name="visibility_condition" invisible="report_line_type not in ['fields']"/>
+                                                    <field name="alignment" invisible="report_line_type not in ['lines']" options="{'no_create':True,'no_open':True}"/>
+                                                    <field name="width" placeholder="30%" invisible="report_line_type not in ['lines']" options="{'no_create':True,'no_open':True}"/>
+                                                    <field name="null_hide_column" invisible="report_line_type not in ['lines']" options="{'no_create':True,'no_open':True}"/>
+                                                    <field name="thousands_separator" invisible="field_type not in ['integer', 'float', 'monetary']"/>
+                                                    <field name="remove_decimal_zeros" invisible="field_type not in ['integer', 'float', 'monetary']"/>
+                                                    <field name="currency_field_expression" invisible="field_type not in ['monetary']"/>
+                                                    <field name="precision" invisible="field_type not in ['integer', 'float', 'monetary']"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+
+                                    <field name="option_field_ids" invisible="type != 'options'" nolabel="1">
+                                        <tree create="0" delete="0" default_order="sequence,id">
+                                            <field name="sequence" column_invisible="1"/>
+                                            <field name="name" readonly="1"/>
+                                            <field name="value_display" readonly="1"/>
+                                        </tree>
+                                        <form create="0" delete="0">
+                                            <field name="field_type" invisible="1"/>
+                                            <field name="name_technical" invisible="1"/>
+                                            <field name="value_display" invisible="1"/>
+                                            <field name="options" invisible="1"/>
+                                            <field name="field_required" invisible="1"/>
+                                            <field name="value_range_ids" invisible="1" widget="many2many_tags"/>
+                                            <field name="sequence" invisible="1"/>
+                                            <group>
+                                                <group>
+                                                    <field name="name" readonly="1"/>
+                                                    <field name="value_char" string="Value" invisible="field_type != 'char'"/>
+                                                    <field name="value_color" string="Value" invisible="field_type != 'color'" widget="color"/>
+                                                    <field name="value_boolean" string="Value" invisible="field_type != 'boolean'"/>
+                                                    <field name="value_image" string="Value" invisible="field_type != 'image'" widget="image"/>
+                                                    <field name="value_binary" string="Value" invisible="field_type != 'binary'"/>
+                                                    <field name="value_integer" string="Value" invisible="field_type != 'integer'"/>
+                                                    <field name="value_text" string="Value" invisible="field_type != 'text'"/>
+                                                    <field name="value_timezone" string="Value" invisible="field_type != 'timezone'"/>
+                                                    <field name="key_combo_box" invisible="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="value_combo_box" string="Value" invisible="field_type != 'combo_box'" widget="selection"/>
+                                                    <field name="value_range" string="Value" invisible="field_type != 'range'" widget="selection"/>
+                                                </group>
+                                                <field name="value_html" string="Value" invisible="field_type != 'html'"/>
+                                            </group>
+                                        </form>
+                                    </field>
+
+                                    <field name="row_ids" invisible="type != 'row'">
+                                        <tree editable="bottom">
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="type_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+                                            <field name="align_id" options="{'no_create': True, 'no_open': True}"/>
+                                            <field name="width"/>
+                                            <field name="padding_left"/>
+                                            <field name="padding_right"/>
+                                        </tree>
+                                    </field>
+
+                                    <field name="signature_box_ids"  invisible="type != 'signature_boxes'">
+                                        <tree editable="bottom">
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="heading"/>
+                                            <field name="heading_lang2" column_invisible="parent.multi_lang_enabled != True"/>
+                                        </tree>
+                                    </field>
+
+                                    <field name="translate_term_ids" nolabel="1" invisible="type != 'translate_terms'">
+                                        <tree editable="bottom">
+                                            <field name="translate_from" placeholder="Saudi Arabia"/>
+                                            <field name="translate_to" placeholder="المملكة العربية السعودية"/>
+                                        </tree>
+                                        <form>
+                                            <field name="translate_from"/>
+                                            <field name="translate_to"/>
+                                        </form>
+                                    </field>
+                                    <field name="note" readonly="1"/>
+
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                    <br/>
+                    <field name="show_similar_apps" invisible="1"/>
+                    <div invisible="show_similar_apps != True" style="border: 1px solid #dddddd; padding: 4px; display: inline-block; overflow: auto;">
+                        <table>
+                            <tr>
+                                <td colspan="4">
+                                    <separator string="Similar Apps"/>
+                                </td>
+                                <td style="text-align:right;">
+                                    <button name="close_similar_apps" type="object" string="X"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa fa-th"/>
+                                </td>
+                                <td>Customized Invoice Designs</td>
+                                <td style="width:20px"/>
+                                <td>
+                                    <i class="fa fa-link"/>
+                                </td>
+                                <td>
+                                    <a href="https://apps.odoo.com/apps/modules/16.0/report_template_invoice"
+                                       target="_blank">https://apps.odoo.com/apps/modules/16.0/report_template_invoice
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa fa-th"/>
+                                </td>
+                                <td>Customized Quotation Designs</td>
+                                <td/>
+                                <td>
+                                    <i class="fa fa-link"/>
+                                </td>
+                                <td>
+                                    <a href="https://apps.odoo.com/apps/modules/16.0/report_template_quotation"
+                                       target="_blank">https://apps.odoo.com/apps/modules/16.0/report_template_quotation
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa fa-th"/>
+                                </td>
+                                <td>Customized Payment Designs</td>
+                                <td/>
+                                <td>
+                                    <i class="fa fa-link"/>
+                                </td>
+                                <td>
+                                    <a href="https://apps.odoo.com/apps/modules/16.0/report_template_payment"
+                                       target="_blank">https://apps.odoo.com/apps/modules/16.0/report_template_payment
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa fa-th"/>
+                                </td>
+                                <td>Customized Delivery Note Designs</td>
+                                <td/>
+                                <td>
+                                    <i class="fa fa-link"/>
+                                </td>
+                                <td>
+                                    <a href="https://apps.odoo.com/apps/modules/16.0/report_template_delivery_slip"
+                                       target="_blank">
+                                        https://apps.odoo.com/apps/modules/16.0/report_template_delivery_slip
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa fa-th"/>
+                                </td>
+                                <td>Customized Purchase Order Designs</td>
+                                <td/>
+                                <td>
+                                    <i class="fa fa-link"/>
+                                </td>
+                                <td>
+                                    <a href="https://apps.odoo.com/apps/modules/16.0/report_template_purchase_order"
+                                       target="_blank">
+                                        https://apps.odoo.com/apps/modules/16.0/report_template_purchase_order
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                    </div>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Action-->
+    <record id="action_view_reporting_template" model="ir.actions.act_window">
+        <field name="name">Custom Templates</field>
+        <field name="res_model">report.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <!--Menu-->
+    <menuitem name="Custom Templates" id="menu_view_reporting_template" parent="base.reporting_menuitem" action="action_view_reporting_template" sequence="10"/>
+
+    <!-- Console-->
+    <record id="view_form_report_template_console" model="ir.ui.view">
+        <field name="name">report.template.console.form</field>
+        <field name="model">report.template.console</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="parameters" placeholder="Write Parameters here ..."/>
+                <footer>
+                    <button name="button_action_apply" string="Run" type="object" class="btn-danger" icon="fa-play"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+
+
+
+</odoo>

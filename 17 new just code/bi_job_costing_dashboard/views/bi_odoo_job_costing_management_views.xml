@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="action_job_order_button_form" model="ir.actions.act_window">
+		<field name="name">New Job</field>
+		<field name="res_model">job.order</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_mode">form</field>
+		<field name="context">{
+				'default_project_id': active_id,
+				'search_default_project_id': [active_id],
+				'default_user_id': uid,
+		}
+		</field>
+	</record>
+
+	<record id="action_job_cost_sheet_button_form" model="ir.actions.act_window">
+		<field name="name">New Job sheet</field>
+		<field name="res_model">job.cost.sheet</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_mode">form</field>
+		<field name="context">{
+				'default_project_id': active_id,
+				'search_default_project_id': [active_id],
+				'default_user_id': uid,
+		}
+		</field>
+	</record>
+
+	<record id="action_job_order_tree_button" model="ir.actions.act_window">
+		<field name="name">Job Orders</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">job.order</field>
+		<field name="view_id" ref="bi_odoo_job_costing_management.job_order_tree_view"/>
+		<field name="domain">[('project_id', '!=', False)]</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{
+				'default_project_id': active_id,
+				'search_default_project_id': [active_id],
+				'show_address': 1,
+			}
+		</field>
+		<field name="search_view_id" ref="job_order_dashboard_search"/>
+		<field name="help" type="html">
+		  <p class="oe_view_nocontent_create">
+			Create a Job, the first step of a new job order.
+		  </p><p>
+		  </p>
+		</field>
+	</record>
+
+	<record id="action_job_cost_sheet_tree_button" model="ir.actions.act_window">
+		<field name="name">Job Sheets</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">job.cost.sheet</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="bi_odoo_job_costing_management.job_cost_sheet_tree_view"/>
+		<field name="domain">[('project_id', '!=', False)]</field>
+		<field name="context">{
+				'default_project_id': active_id,
+				'search_default_project_id': [active_id],
+				'show_address': 1,
+			}
+		</field>
+		<field name="search_view_id" ref="job_cost_sheet_dashboard_search"/>
+		<field name="help" type="html">
+		  <p class="oe_view_nocontent_create">
+			Create a Cost Sheet, the first step of a new Cost Sheet.
+		  </p><p>
+		  </p>
+		</field>
+	</record>
+</odoo>

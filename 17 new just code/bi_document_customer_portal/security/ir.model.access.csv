@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_directory_document,directory_document_access_permission,bi_document.model_directorie_document,,1,1,1,1
+access_directory_document_model,directory_document_access_permission_model,base.model_ir_model,,1,1,1,1

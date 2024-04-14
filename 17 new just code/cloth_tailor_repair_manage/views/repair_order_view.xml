@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_repair_order_inherit_repair" model="ir.ui.view">
+            <field name="name">repair.form.inherit.task</field>
+            <field name="model">repair.order</field>
+            <field name="inherit_id" ref="repair.view_repair_order_form"/>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//notebook//page[@name='extra_info']//field[@name='move_id']" position="after"> -->
+                <xpath expr="//notebook//page[@name='repair_notes']" position="after">
+                    <page name="repair_task" string="Repair Tasks">
+                        <group>
+                            <field name="probc_task_id"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

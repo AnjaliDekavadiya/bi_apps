@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="view_meeting_page_additional_info" model="ir.ui.view">
+            <field name="name">view.meeting.page.additional</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='page_invitations']" position="after">
+                    <page string="Meeting Additional Info" name="meeting_info">
+                        <group>
+                            <field name="presenter_id"/>
+                            <field name="facilitator_id"/>
+                            <field name="note_taker_id"/>
+                            <field name="time_keeper_id"/>
+                        </group>
+                        <group>
+                            <field name="agenda_items"/>
+                            <field name="action_items"/>
+                            <field name="conclusion"/> 
+                        </group>
+                    </page>
+                </xpath>
+
+                <xpath expr="//notebook/page[@name='page_invitations']" position="after">
+                    <page name="agenda_line" string="Agenda of Meeting">
+                    <field name="agenda_line" nolabel="1" colspan="4" widget="one2many" mode="tree">                        
+                    <tree string="Agenda of The Meeting" editable="bottom">
+                            <field name="name_agenda" />
+                            <field name="description"/>
+                        </tree>
+                        <form string="Agenda of The Meeting" version="7.0">
+                            <field name="name_agenda" /> 
+                            <field name="description"/>
+                        </form>
+                    </field>
+                    </page>
+                </xpath>
+                
+                <xpath expr="//notebook/page[@name='agenda_line']" position="after">
+                    <page name="calendar_lines" string="Minutes of Meeting">
+                    <field name="calendar_lines" nolabel="1" colspan="4">
+                        <tree string="Minutes of Meeting" editable="bottom" >
+                            <field name="agendas"/>
+                            <field name="descriptions"/>
+                            <field name="action"/>
+                            <field name="responsible" widget="many2many_tags"/>
+                        </tree>
+                        <form string="Minutes of Meeting" version="7.0">
+                            <field name="agendas" />
+                            <field name="descriptions"/>
+                            <field name="action"/>
+                            <field name="responsible" widget="many2many_tags"/>
+                        </form>
+                    </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

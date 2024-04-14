@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_budget_post_from_inherit" model="ir.ui.view">
+            <field name="name">view budget post form inherit</field>
+            <field name="model">account.budget.post</field>
+            <field name="inherit_id" ref="account_budget.view_budget_post_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="inside">
+                    <field name="cash_forecast_type"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

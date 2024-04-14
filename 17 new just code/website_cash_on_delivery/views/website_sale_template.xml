@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="my_product-cod" name="my product cash on delivery: project menu entry" inherit_id="website_sale.product">
+        <xpath expr="//div[hasclass('js_main_product')]" position="after">
+            <hr/>
+            <div class="o_not_editable">
+                <div id="website_cash_on_delivery_status_message">
+                </div>
+                <!-- <t t-if="product.product_variant_id.not_allow_cod">
+                    <p class="alert alert-danger">Cash On Delivery Not Available!</p>
+                </t>
+                <t t-if="not product.product_variant_id.not_allow_cod">
+                    <p class="alert alert-success">Cash On Delivery Available!</p>
+                </t> -->
+              <!--  <t t-if="not user_id.partner_id.is_cod_applicable">
+                    <p class="alert alert-danger">Customer Not Available For Cash On Delivery!</p>
+                </t> -->
+            </div>
+        </xpath>
+    </template>
+
+    <template id="my_payment" name="my payment: project menu entry" inherit_id="website_sale.payment">
+        <!-- xpath expr="//h2" position="before"> -->
+        <!-- <xpath expr="//div[@id='wrap']/div[hasclass('oe_website_sale')]/div[hasclass('row')]" position="before"> -->
+        <xpath expr="//div[@t-if='errors']" position="before">
+            <t t-if="not website_sale_order.is_cod">
+                <div class="alert alert-info"><strong>Your Order is Not Available On Cash On Delivery!</strong></div>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

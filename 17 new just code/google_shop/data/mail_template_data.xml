@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data noupdate="1">
+        <!--Email template -->
+        <record id="google_shop_mail_template" model="mail.template">
+            <field name="name">Reauthorize refresh token</field>
+            <field name="subject">Regarding Refresh Token Expire alert</field>
+            <field name="email_from">{{object.sudo().create_uid.email_formatted}}</field>
+            <field name="email_to">{{object.email}}</field>
+            <field name="model_id" ref="google_shop.model_oauth2_detail"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        <strong>Hi Admin,</strong>
+                        <br/>
+                        <p>
+        Your Google Shop's refresh token has been expired, Please Reauthorize to it...
+                        </p>
+                        <br/>
+                        <p style="margin: 10px 0px 10px 0px; text-align: center;">
+                            <a t-att-href="object.account_token_page_url" style="background-color:#875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;">Go to Account</a>
+                        </p>
+                        <br/>
+                    </p>
+                        Do not hesitate to contact us if you have any questions.
+                    <br/>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

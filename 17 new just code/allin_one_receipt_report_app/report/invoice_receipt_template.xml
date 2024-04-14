@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="receipt_invoice">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="account.report_invoice_with_payments" t-lang="o.partner_id.lang"/>
+        </t>
+    </template>
+    <template id="receipt_invoice_without_pay">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="account.report_invoice" t-lang="o.partner_id.lang"/>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="facebook_config_form_view" model="ir.ui.view">
+            <field name="name">facebook.config.form.view</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="pragtech_conversations_dashboard.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//app[@name='pragtech_conversations_dashboard']" position="inside">
+                    <!-- <h2>
+                        Facebook Messenger Integration
+                    </h2> -->
+                    <block title="Facebook Messenger Integration" name="facebook_integration">
+                        <setting id="facebook_control_setting" title="Whatsapp Api" string="Facebook Messenger Integration">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+<!--                                    <group>-->
+<!--                                        <field name="facebook_app_id" class="oe_inline"/>-->
+<!--                                    </group>-->
+<!--                                    <group>-->
+<!--                                        <field name="facebook_page_id" class="oe_inline"/>-->
+<!--                                    </group>-->
+<!--                                    <group>-->
+<!--                                        <field name="facebook_app_secret" password="True" class="oe_inline"/>-->
+<!--                                    </group>-->
+                                    <group>
+                                        <field name="facebook_page_access" password="True" class="oe_inline"/>
+                                    </group>
+                                    <group>
+                                        <field name="facebook_verify_token" class="oe_inline"/>
+                                    </group>
+                                    <group>
+<!--                                        <field name="module_facebook_webhook_verify" class="oe_inline"/>-->
+                                    </group>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

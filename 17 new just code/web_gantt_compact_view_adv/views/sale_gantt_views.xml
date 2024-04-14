@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_quotations_with_onboarding_gantt" model="ir.ui.view">
+        <field name="name">sale.order.view.gantt</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <ganttview
+                date_start = "date_order" 
+                date_stop = "validity_date"                 
+                color ="color"
+                round_dnd_dates = "false"
+                default_group_by = "partner_id"
+                default_scale = "month"
+                task_type = "task_type"
+                show_links = "true"
+                progress = "progress"
+                deadline = "validity_date"
+                link_model = "sale.order.link"
+                priority = 'task_priority'
+            />   
+        </field>
+    </record>
+
+    <record id="view_order_form_gantt_inherit_1" model="ir.ui.view">
+        <field name="name">Gantt Task inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field eval="0" name="priority"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='show_update_pricelist']" position="before">
+                <field name="validity_date"/>
+                <field name="task_priority"/>
+                <field name="task_type"/>
+                <field name="progress"/>
+                <field name="color" widget="color_picker"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_form_gantt_inherit_2" model="ir.ui.view">
+        <field name="name">Gantt Task inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field eval="0" name="priority"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='order_lines']" position="after">
+                <page name="link_sale_order" string="Link Order">
+                    <field name="sale_link_ids" widget="one2many" context="{'show_attribute': False}">
+                        <tree string="Link Type" editable="bottom">
+                            <field name="target_id"/>
+                            <field name="link_type"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity,ganttview</field>
+    </record>
+
+</odoo>

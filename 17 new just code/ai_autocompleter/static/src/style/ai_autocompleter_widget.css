@@ -1,0 +1,37 @@
+.ai-autocompleter {
+    position: relative;
+    display: inline-block;
+}
+
+.ai-autocompleter-icon {
+    cursor: pointer;
+}
+
+.ai-autocompleter-popup {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    display: none;
+}
+
+.ai-autocompleter-popup label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.ai-autocompleter-popup textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.ai-autocompleter-popup button {
+    float: right;
+}

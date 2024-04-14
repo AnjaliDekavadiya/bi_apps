@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_saleorder_document_inehrit_feature" inherit_id="sale.report_saleorder_document">
+            <!-- <xpath expr="//t/div/t[2]/table/thead/tr/th[1]" position="before"> -->
+            <xpath expr="//t/div/table/thead/tr/th[1]" position="before">
+                <t t-if="doc.print_line_number">
+                    <th>No.</th>
+                </t>
+                <t t-if="doc.print_product_image">
+                    <th>Image</th>
+                </t>
+            </xpath>
+            
+             <!-- <xpath expr="//tbody[@class='sale_tbody']//tr//td[1]" position="before"> -->
+             <xpath expr="//tbody[hasclass('sale_tbody')]//tr//td[1]" position="before">
+                <t t-if="doc.print_line_number">
+                    <td><span t-esc="line.line_no"/></td>
+                </t>
+                <t t-if="doc.print_product_image">
+                    <td>
+                        <!-- <span t-field="line.product_id.image_medium" t-field-options='{"widget": "image"}'/> -->
+                        <!-- <img t-att-src="image_data_uri(line.product_id.image)" style="max-height:1cm; max-width:4cm;"/> -->
+
+                        <!-- <img t-if="line.product_id.image_1024" t-att-src="image_data_uri(line.product_id.image_medium)" style="max-height:1cm; max-width:4cm;"/> -->
+                        <img t-if="line.product_id.image_1920" t-att-src="image_data_uri(line.product_id.image_1920)" style="max-height:1cm; max-width:4cm;"/>
+                     </td>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

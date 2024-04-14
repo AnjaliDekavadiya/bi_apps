@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="stock_move_inherited_car_repair" model="ir.ui.view">
+            <field name="name">stock.move.inherited.view</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_uom']" position="after">
+                    <field name="car_repair_request_id"/>
+                    <field name="car_repaircustom_task_id"/>
+                </xpath>
+                <!-- <xpath expr="//field[@name='move_ids_without_package']/form/group/field[@name='product_uom']" position="after">
+                    <field name="car_repair_request_id"/>
+                    <field name="car_repaircustom_task_id"/>
+                </xpath> -->
+            </field>
+        </record>
+        
+        <record id="stock_move_inherited_view_car_repair" model="ir.ui.view">
+            <field name="name">stock.move.inherited.view.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='procure_method']" position="after">
+                    <field name="car_repair_request_id" readonly="state == 'done'"/>
+                    <field name="car_repaircustom_task_id" readonly="state == 'done'"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="stock_move_tree_inherited_view_car_repair" model="ir.ui.view">
+            <field name="name">stock.move.tree.inherited.view.form</field>
+            <field name="model">stock.move</field>
+            <!--<field name="inherit_id" ref="stock.view_move_picking_form"/>-->
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//field[@name='date_expected']" position="after"> -->
+                <xpath expr="//field[@name='date']" position="after">
+                    <field name="car_repair_request_id" readonly="state == 'done'"/>
+                    <field name="car_repaircustom_task_id" readonly="state == 'done'"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_stock_car_repair_search_view" model="ir.ui.view">
+            <field name="name">stock.machine.repair.search.view</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_search" />
+            <field name="arch" type="xml">
+                <xpath expr="//search/group" position="after">
+                    <filter name="grp_repair_request_id" string="Car Repair Request" context="{'group_by': 'car_repair_request_id'}"/>
+                    <filter name="grp_custom_task_id" string="Job Order" context="{'group_by': 'car_repaircustom_task_id'}"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="action_stock_move_car_repair" model="ir.actions.act_window">
+            <field name="name">Stock Move</field>
+            <field name="res_model">stock.move</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_id" ref="stock.view_move_tree"/>
+            <field name="search_view_id" ref="stock.view_move_search"/>
+            <field name="domain">[('car_repair_request_id','!=',False)]</field>
+            <field name="context">{'search_default_grp_repair_request_id': 1}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_car_repair_tree_view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="stock.view_move_tree"/>
+            <field name="act_window_id" ref="action_stock_move_car_repair"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_car_repair_form_view">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="stock.view_move_form"/>
+        <field name="act_window_id" ref="action_stock_move_car_repair"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_repair_request_pivot_view">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">pivot</field>
+            <field name="view_id" ref="stock.view_move_pivot"/>
+            <field name="act_window_id" ref="action_stock_move_car_repair"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_car_repair_graph_view">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="stock.view_move_graph"/>
+            <field name="act_window_id" ref="action_stock_move_car_repair"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_car_repair_kanban_view">
+            <field name="sequence" eval="4"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="stock.view_move_kandan"/>
+            <field name="act_window_id" ref="action_stock_move_car_repair"/>
+        </record>
+        
+        <record id="action_stock_move_Job_order_repair" model="ir.actions.act_window">
+            <field name="name">Job Order</field>
+            <field name="res_model">stock.move</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_id" ref="stock.view_move_tree"/>
+            <field name="search_view_id" ref="stock.view_move_search"/>
+            <field name="domain">[('car_repaircustom_task_id','!=',False)]</field>
+            <field name="context">{'search_default_grp_custom_task_id':1}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_job_order_tree_view_carrepiar">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="stock.view_move_tree"/>
+            <field name="act_window_id" ref="action_stock_move_Job_order_repair"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_car_repair_job_order_form_view">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="stock.view_move_form"/>
+        <field name="act_window_id" ref="action_stock_move_Job_order_repair"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_carrepair_job_order_pivot_view">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">pivot</field>
+            <field name="view_id" ref="stock.view_move_pivot"/>
+            <field name="act_window_id" ref="action_stock_move_Job_order_repair"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_carrepair_job_order_graph_view">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="stock.view_move_graph"/>
+            <field name="act_window_id" ref="action_stock_move_Job_order_repair"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_carrepair_job_order_kanban_view">
+            <field name="sequence" eval="4"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="stock.view_move_kandan"/>
+            <field name="act_window_id" ref="action_stock_move_Job_order_repair"/>
+        </record>
+    
+        <menuitem name="Stock Reporting" id="menu_carstock_reporting" 
+                  parent="car_repair_maintenance_service.main_car_repair_support_main"                         
+                  groups="car_repair_maintenance_service.group_car_repair_manager" sequence="2" />
+                  
+        <menuitem name="Stock Moves By Car Repair Request" id="menu_machine_repair_request_submenu"       
+                  parent="car_repair_stock_inventory.menu_carstock_reporting" action="action_stock_move_car_repair"   
+                  groups="car_repair_maintenance_service.group_car_repair_manager"/>
+                  
+        <menuitem name="Stock Moves By Job Order" id="menu_joborder_submenu_car"    
+                  parent="car_repair_stock_inventory.menu_carstock_reporting" action="action_stock_move_Job_order_repair"     
+                  groups="car_repair_maintenance_service.group_car_repair_manager"/>
+        
+    </data>
+</odoo>

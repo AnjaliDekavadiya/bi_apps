@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <record model="ir.actions.act_window" id="requisition_product_open_quants"> <!-- product_view + python -->
+            <field name="name">Stock On Hand</field>
+            <field name="context">{'search_default_internal_loc': 1, 'search_default_productgroup':1}</field>
+            <field name="res_model">stock.quant</field>
+        </record>
+        
+        <menuitem id="menu_rout_requisition_product" name="Products" parent="material_purchase_requisitions.menu_purchase_requisition" groups="material_purchase_requisitions.group_purchase_requisition_user"/>
+        <menuitem id="menu_rout_requisition_product_tmpl" name="Products" parent="menu_rout_requisition_product" action="sale.product_template_action" groups="material_purchase_requisitions.group_purchase_requisition_user"/>
+        <menuitem id="menu_rout_requisition_product_variant" name="Product Variants" parent="menu_rout_requisition_product" action="product.product_normal_action_sell" groups="material_purchase_requisitions.group_purchase_requisition_user"/>
+        <menuitem id="menu_rout_requisition_product_Quont" name="Stock On Hand" parent="menu_rout_requisition_product" action="requisition_product_open_quants" groups="material_purchase_requisitions.group_purchase_requisition_user"/>
+        
+    </data>
+</odoo>

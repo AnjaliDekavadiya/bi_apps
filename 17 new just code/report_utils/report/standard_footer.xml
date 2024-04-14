@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+<!--    <template id="document_footer_standard">-->
+<!--        <t t-set="is_footer" t-value="True"/>-->
+<!--        <t t-call="report_utils.document_header_standard"/>-->
+
+
+
+<!--        <t t-if="data['show_footer']">-->
+<!--            <div class="footer" t-if="data['footer_img']">-->
+<!--                <center><img t-attf-src="data:image/png;base64,{{data['footer_img']}}" style="height:122px;width:auto"/></center>-->
+<!--            </div>-->
+<!--            <div t-if="not data['footer_img']" class="footer" t-attf-style="#{data['footer_style']};min-height:200px">-->
+
+<!--&lt;!&ndash;                <style>&ndash;&gt;-->
+<!--&lt;!&ndash;                    table{border-style: none;border: 2px solid transparent;}&ndash;&gt;-->
+<!--&lt;!&ndash;                    td {border-style: none;}&ndash;&gt;-->
+<!--&lt;!&ndash;                </style>&ndash;&gt;-->
+
+<!--                <table t-attf-style="width:100%;border-top:1px solid #{data['show_footer_border_line'] and data['parameters'].color1 or 'transparent'};color:#{data['parameters'].color1};#{data['standard_font']}">-->
+<!--                    <tr>-->
+<!--                        <t t-foreach="data['footer_layout']" t-as="col">-->
+<!--                            ssss-->
+<!--                            -->
+<!--&lt;!&ndash;                            <t t-if="col['type'] == 'address'"><t t-call="report_utils.document1_header_standard_address"/></t>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <t t-if="col['type'] == 'logo'"><t t-call="report_utils.document1_header_standard_logo"/></t>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <t t-if="col['type'] == 'heading'"><t t-call="report_utils.document1_header_standard_reference"/></t>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <t t-if="col['type'] == 'address_second_lang'">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <t t-call="report_utils.document1_header_standard_address">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <t t-set="apply_second_lang" t-value="1"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </t>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </t>&ndash;&gt;-->
+<!--                        </t>-->
+
+<!--                        &lt;!&ndash;                        <td t-attf-style="width:#{data['footer_layout']['col1']};padding-left:5px;">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            <t t-foreach="template.get_fields_ids_data(o.company_id, 'section_footer')['content'][0]" t-as="line">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <t t-if="line['value']">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                    <span t-if="line['separator']" t-raw="line['separator']"/>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                    <span style="font-weight:bold" t-if="line['label']" t-esc="line['label']"/>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                    <span style="font-weight:bold" t-if="line['label']">:</span>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                    <span style="visibility:hidden;">x</span>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                    <span t-if="line['value']" t-esc="line['value']"/>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                </t>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            </t>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        </td>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        <td t-attf-style="width:#{data['footer_layout']['col2']};text-align:center;font-style:italic;padding-left:20px;padding-right:20px;">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            <span t-if="data['show_company_tagline_footer']" t-field="o.company_id.report_header"/>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        </td>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        <td t-attf-style="width:#{data['footer_layout']['col3']};text-align:right">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            <div t-if="report_type == 'pdf'">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <span t-raw="template.get_page_number_section()"/>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        </td>&ndash;&gt;-->
+<!--                    </tr>-->
+<!--                </table>-->
+
+<!--                <div t-if="data['show_print_time']" t-attf-style="color:#{data['parameters'].color1};#{standard_font};text-align:center">-->
+<!--                    <span t-esc="template.get_current_time(timezone=data['report_timezone'])"/>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </t>-->
+<!--    </template>-->
+
+
+<!--    <template id="document_footer_standard">-->
+<!--        <t t-call="report_utils.font_assets"/>-->
+
+
+<!--&lt;!&ndash;        <t t-set="parameters" t-value="template.get_parameters()"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <t t-set="font" t-value="template.get_font()"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <t t-set="standard_font" t-value="template.get_standard_font_style()"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <t t-set="footer_layout" t-value="template.get_header_footer_layout('footer_layout', default='auto@fields,auto@tagline,auto@page_no')"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <t t-set="show_footer" t-value="template.get_option_data('show_footer')"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <t t-set="footer_style" t-value="o.get_footer_style(parameters)"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <t t-set="show_footer" t-value="data['show_footer']"/>&ndash;&gt;-->
+
+<!--        <t t-if="data['show_footer']">-->
+<!--&lt;!&ndash;            <t t-set="footer_img" t-value="template.get_option_data('footer_image')"/>&ndash;&gt;-->
+<!--            <div class="footer" t-if="data['footer_img']">-->
+<!--                <center><img t-attf-src="data:image/png;base64,{{data['footer_img']}}" style="height:122px;width:auto"/></center>-->
+<!--            </div>-->
+<!--            <div t-if="not data['footer_img']" class="footer" t-attf-style="#{data['footer_style']};min-height:200px">-->
+<!--                <t t-call="report_utils.font_assets"/>-->
+
+<!--&lt;!&ndash;                <t t-set="show_company_tagline_footer" t-value="template.get_option_data('show_company_tagline_footer')"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <t t-set="show_print_time" t-value="template.get_option_data('show_print_time')"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <t t-set="report_timezone" t-value="template.get_option_data('report_timezone')"/>&ndash;&gt;-->
+
+<!--                <style>-->
+<!--                    table{border-style: none;border: 2px solid transparent;}-->
+<!--                    td {border-style: none;}-->
+<!--                </style>-->
+
+<!--                <table t-attf-style="width:100%;border-top:1px solid #{data['show_footer_border_line'] and data['parameters'].color1 or 'transparent'};color:#{data['parameters'].color1};#{data['standard_font']}">-->
+<!--                    <tr>-->
+<!--                        <td t-attf-style="width:#{data['footer_layout']['col1']};padding-left:5px;">-->
+<!--                            <t t-foreach="template.get_fields_ids_data(o.company_id, 'section_footer')['content'][0]" t-as="line">-->
+<!--                                <t t-if="line['value']">-->
+<!--                                    <span t-if="line['separator']" t-raw="line['separator']"/>-->
+<!--                                    <span style="font-weight:bold" t-if="line['label']" t-esc="line['label']"/>-->
+<!--                                    <span style="font-weight:bold" t-if="line['label']">:</span>-->
+<!--                                    <span style="visibility:hidden;">x</span>-->
+<!--                                    <span t-if="line['value']" t-esc="line['value']"/>-->
+<!--                                </t>-->
+<!--                            </t>-->
+<!--                        </td>-->
+<!--                        <td t-attf-style="width:#{data['footer_layout']['col2']};text-align:center;font-style:italic;padding-left:20px;padding-right:20px;">-->
+<!--                            <span t-if="data['show_company_tagline_footer']" t-field="o.company_id.report_header"/>-->
+<!--                        </td>-->
+<!--                        <td t-attf-style="width:#{data['footer_layout']['col3']};text-align:right">-->
+<!--                            <div t-if="report_type == 'pdf'">-->
+<!--                                <span t-raw="template.get_page_number_section()"/>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+
+<!--                <div t-if="data['show_print_time']" t-attf-style="color:#{data['parameters'].color1};#{standard_font};text-align:center">-->
+<!--                    <span t-esc="template.get_current_time(timezone=data['report_timezone'])"/>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </t>-->
+<!--    </template>-->
+
+</odoo>

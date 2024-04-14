@@ -1,0 +1,121 @@
+# -*- coding: utf-8 -*-
+
+from datetime import datetime
+from odoo import api, fields, models, _
+
+class MeetingMinutes(models.Model):
+    _name = 'meeting.minutes'
+    _description = "Meeting"
+    #_order = 'id desc'
+    #_inherit = ['mail.thread', 'ir.needaction_mixin']
+
+    name = fields.Char(
+        string='Number',
+        default='New',
+        readonly=1,
+    )
+    employee_id = fields.Many2one(
+        'hr.employee',
+        string='Employee',
+        default=lambda self: self.env.user,
+        required=True,
+    )
+    department_id=fields.Many2one(
+        'hr.department', 
+        string='Department',
+    )
+    job_id = fields.Many2one(
+        'hr.job',
+         string='Job Title',
+     )
+    created_by = fields.Many2one(
+        'res.users',
+        string='Created By',
+        default=lambda self: self.env.user,
+        readonly=True, copy=False,
+    )
+    created_date = fields.Date(
+        string='Created Date', 
+        default=fields.Date.today(),
+        readonly=True,
+    )
+    user_id=fields.Many2one(
+        'res.users',
+        related='employee_id.user_id',
+        string='User',
+    )
+    note = fields.Text(
+        string='Note',
+    )
+    offence_id = fields.Many2one(
+        'notice.offence',
+        string = 'Type of Offence',
+        required=True,
+    )
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('confirm', 'Confirmed'),
+        ('done', 'Done')],
+        default='draft',
+        track_visibility='onchange',
+        copy=False,
+    )
+    company_id = fields.Many2one(
+        'res.company', 
+        default=lambda self: self.env.user.company_id,
+        string='Company', readonly=True,
+    )
+    identity_id = fields.Char(
+        string='Identification No ',
+        related='employee_id.identification_id',
+        readonly=True,
+    )
+    manager_id = fields.Many2one(
+        'hr.employee',
+        string='Manager',
+        related='employee_id.parent_id',
+        readonly=True,
+    )
+    warning = fields.Selection(
+        selection = [
+        ('first_warning', 'First Warning'),
+        ('second_warning', 'Second Warning'),
+        ('final_warning', 'Final Warning'),],
+        string = 'Type of Warning',
+    )
+    decision_infraction = fields.Text(
+        string='Decision of Infraction',
+    )
+    action_improvement = fields.Text(
+        string='Action Improvement Plan',
+    )
+    consequense_future = fields.Text(
+        string='Consequense of Future Infraction',
+    )
+    
+    @api.multi
+    def get_confirm(self):
+        for rec in self:
+            self.name = self.env['ir.sequence'].next_by_code('employee.notice')
+            rec.state = 'confirm'
+            
+    @api.multi
+    def get_done(self):
+        for rec in self:
+            rec.state = 'done' 
+            
+    @api.multi
+    def exit_cancel(self):
+        self.state = 'cancel'
+        
+    @api.onchange('employee_id')
+    def _onchange_employee_id(self):
+        for rec in self:
+            rec.department_id = rec.employee_id.department_id
+            rec.job_id = rec.employee_id.job_id
+    
+    @api.multi
+    def action_cancel(self):
+        self.state = 'draft'
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

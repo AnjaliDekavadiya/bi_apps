@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>		
+		<record id="job_work_report_id" model="ir.actions.report">
+			<field name="name">Work Packages</field>
+			<field name="model">work.packages</field>
+			<field name="report_type">qweb-pdf</field>
+			<field name="report_name">bi_job_costing_work_package.job_work_temp_id</field>
+			<field name="report_file">bi_job_costing_work_package.job_work_temp_id</field>
+			<field name="binding_model_id" ref="model_work_packages"/>
+			<field name="binding_type">report</field>
+		</record>
+	</data>
+</odoo>

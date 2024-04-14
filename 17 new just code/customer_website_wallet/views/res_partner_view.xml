@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- res_partner form -->
+        <record model="ir.ui.view" id="website_wallet_button_res_partner">
+            <field name="name">website.wallet.button.res.partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']/group">
+                    <group string="Wallet Balance" name="wallet_balance">
+                        <field name="wallet_balance"/>
+                    </group>
+                </xpath>
+                <xpath expr = "//page[last()]" position="after">
+                    <page name="wallet transaction" string="Wallet Transaction">
+                        <field name="wallet_ids">
+                            <tree editable='bottom'>
+                                <field name="name"/>
+                                <field name="customer_id"/>
+                                <field name="date"/>
+                                <field name="balance_type"/>
+                                <field name="amount"/>
+                                <field name="currency_id"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,19 @@
+.fc-view-container {
+    overflow-x: scroll !important;
+}
+
+.fc-timeline-event {
+    font-size: 10.2pt !important;
+    margin-top: 2px !important;
+}
+.fc-timeline-event .fc-bg {
+    opacity: 0.0 !important;
+}
+.fc-timeline-event.o_timeline_custom_hover,
+.fc-timeline-event.o_timeline_custom_highlight {
+    color: black !important;
+}
+.fc-timeline-event.o_timeline_custom_hover .fc-bg,
+.fc-timeline-event.o_timeline_custom_highlight .fc-bg {
+    opacity: 0.3 !important;
+}

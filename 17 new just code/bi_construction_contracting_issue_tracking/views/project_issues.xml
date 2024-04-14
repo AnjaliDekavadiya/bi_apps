@@ -1,0 +1,186 @@
+<odoo>
+
+		 <record id="seq_issue_req" model="ir.sequence">
+			<field name="name">Issue Request</field>
+			<field name="code">issue.req.seq</field>
+			<field name="prefix">ISSUE-000</field>
+			<field name="padding">2</field>
+		</record>
+
+		<record id="inherit_view_project_issue_form" model="ir.ui.view">
+			<field name="name">inherit.view.project.issue.form</field>
+			<field name="model">project.issue</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.bi_project_issue_form_view" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='stage_id']" position="replace">
+                    <field name="status" widget="statusbar" statusbar_visible="to_do,in_progress,done"/>
+                </xpath>
+				<button name="%(bi_odoo_job_costing_management.action_create_task_wizard)d" position='replace'>
+                	<button name="%(bi_odoo_job_costing_management.action_create_task_wizard)d"
+                                string="Create Task"
+                                type="action"
+                                class="oe_highlight"
+                               invisible="status == 'done'" />
+                </button>
+				<xpath expr="//div[@name='button_box']" position="inside">
+					<button class="oe_stat_button" name="attachment_on_issue_req_button" type="object" icon="fa-cloud-upload" invisible="attachment_count == 0">
+						<field name="attachment_count" widget="statinfo" string="Attachment"/>
+					</button>
+					<button class="oe_stat_button" name="invoice_button" type="object" icon="fa-pencil-square-o" invisible="invoice_count == 0">
+						<field name="invoice_count" widget="statinfo" string="Invoice"/>
+					</button>
+				</xpath>
+				<xpath expr="//field[@name='kanban_state']" position="after">
+					<h1><field name="sequence" readonly="status != 'to_do'" /></h1>
+				</xpath>
+				<xpath expr="//group/group[1]" position="replace">
+					<group>
+						<field name="partner_id" readonly="status != 'to_do'"/>
+						<field name="email_from" readonly="status != 'to_do'"/>
+						<field name="phone" readonly="status != 'to_do'"/>
+					</group>
+				</xpath>
+				<xpath expr="//field[@name='user_id']" position="replace">
+                    <field name="user_id" readonly="status != 'to_do'"/>
+				</xpath>
+				<xpath expr="//field[@name='priority']" position="replace">
+                    <field name="priority" groups="base.group_user" widget="priority" readonly="status != 'to_do'"/>
+				</xpath>
+				<xpath expr="//field[@name='tag_ids']" position="replace">
+                    <field name="tag_ids" widget="many2many_tags" readonly="status != 'to_do'"/>
+				</xpath>
+				<xpath expr="//field[@name='tag_ids']" position="after">
+					<field name="company_id" readonly="status != 'to_do'"/>
+				</xpath>
+				<xpath expr="//header" position="inside">
+					<button name="create_invoice" string="Create Invoice" type="object" class="oe_highlight" invisible="status != 'done'"/>
+					<button name="set_close" string="Send Email" type="object" class="oe_highlight" invisible="status !=  'done'"/>
+
+				</xpath>
+
+				<xpath expr="//group[@name='group1']/group[1]/field[@name='project_id']" position="replace">
+                    <field name="project_id" readonly="status != 'to_do'"/>
+				</xpath>
+
+				<xpath expr="//group[@name='group1']/group[2]/field[@name='date_create']" position="replace">
+                    <field name="date_create" readonly="status != 'to_do'"/>
+				</xpath>
+
+				<xpath expr="//separator[2]" position="after">
+					<group name="group2">
+						<group col="4" colspan="3">
+							<field name="type_of_issue_id" readonly="status != 'to_do'"/>
+							<field name="type_of_issue_subject_id" readonly="status != 'to_do'"/>
+							<field name="construction_team_id" readonly="status != 'to_do'"/>
+							<field name="team_leader_id" readonly="status != 'to_do'"/>
+						</group>
+						<group col="4" colspan="3">
+							<field name="job_cost_sheet_id" domain="[('project_id','=',project_id)]" readonly="status != 'to_do'"/>
+							<field name="job_order_id" domain="[('project_id','=',project_id)]" readonly="status != 'to_do'"/>
+							<field name="analytic_id" readonly="status != 'to_do'"/>
+							<field name="department_id" readonly="status != 'to_do'"/>
+							<field name="category_id" readonly="status != 'to_do'"/>
+							<field name="is_closed"/>
+						</group>
+						<group colspan="4">
+							<field name="apply_timesheet_invoice" readonly="status != 'to_do'"/>
+							<field name="select_cost" invisible="apply_timesheet_invoice == False" widget="radio" />
+							<field name="enter_manual_cost" invisible="apply_timesheet_invoice == False or select_cost !=  'manual_cost'" required="True" />
+						</group>
+					</group>
+				</xpath>
+
+				
+				<xpath expr="//page[@name='extra_info']" position="after">
+					<page name='add_invoice_line' string="Add Invoice Line">
+						<field name="invoice_line_ids">
+							<tree editable="bottom">
+								<field name="product_id" string="Product"/>
+								<field name="name" string="Description"/>
+								<field name="quantity" string="Quantity"/>
+								<field name="price_unit" string="Unit Price"/>
+								<field name="uom_id" string="Unit of Measure"/>
+								<field name="analytic_account_id" string="Analytic Account"/>
+								<field name="is_created" string="Is Invoice Create"/>
+							</tree>
+						</field>     
+					</page>
+				</xpath>
+
+				<xpath expr="//field[@name='timesheet_ids']" position="replace">
+				<field name="timesheet_ids" context="{'default_project_id': project_id,'default_job_cost_sheet_id':job_cost_sheet_id}">	
+					<tree editable="bottom">
+						<field name="date"/>
+						<field name="employee_id" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+						<field name="name"/>
+						<field name="support_id" column_invisible="1"/>
+						<field name = "project_id" />
+						<field name="job_cost_sheet_id" />
+						<field name="unit_amount" string="Hours" widget="float_time"/>	
+					</tree>
+				</field>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="inherit_view_customer_form" model="ir.ui.view">
+			<field name="name">inherit.view.customer.form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//div[@name='button_box']" position="inside">
+					<button class="oe_stat_button" name="project_issue_req_button" type="object" icon="fa-tasks" invisible="proj_issue_count ==  0">
+						<field name="proj_issue_count" widget="statinfo" string="Project Issues"/>
+					</button>
+				</xpath>	
+				<xpath expr="//page[@name='sales_purchases']" position="after">
+					<page name='project_issues' string="Project Issues">
+						<field name="project_issue_ids">
+							<tree>
+								<field name="sequence" string="Number"/>
+								<field name="name" string="Subject"/>
+								<field name="type_of_issue_id" string="Type of Issue"/>
+								<field name="user_id" string="Assign To"/>
+								<field name="partner_id" string="Customer"/>
+								<field name="email_from" string="Email"/>
+								<field name="phone" string="Phone"/>
+								<field name="category_id" string="Category"/>
+								<field name="priority" string="Priority"/>
+								<field name="company_id" string="Company"/>
+							</tree>
+						</field>     
+					</page>
+				</xpath>	
+			</field>
+		</record>
+
+		<record id="inherit_view_timesheet_form" model="ir.ui.view">
+			<field name="name">inherit.view.timesheet.form</field>
+			<field name="model">account.analytic.line</field>
+			<field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='company_id']" position="after">
+					<field name="project_id"/>
+					<field name="job_cost_sheet_id"/>
+					<field name="proj_issue_id"/>
+					<field name="time_in"/>
+					<field name="time_out"/>
+				</xpath>
+			</field>
+		</record>
+		
+		<record id="inherit_view_timesheet_tree" model="ir.ui.view">
+			<field name="name">inherit.view.timesheet.tree</field>
+			<field name="model">account.analytic.line</field>
+			<field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='company_id']" position="after">
+					<field name="job_cost_sheet_id"/>
+					<field name="proj_issue_id"/>
+					<field name="time_in"/>
+					<field name="time_out"/>
+				</xpath>
+			</field>
+		</record>
+
+</odoo>

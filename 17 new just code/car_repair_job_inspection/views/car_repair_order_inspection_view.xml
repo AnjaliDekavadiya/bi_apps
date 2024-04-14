@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="car_repair_order_inspection_form_view">
+            <field name="name">Car Repair Order Inspection Form View</field>
+            <field name="model">car.repair.order.inspection</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="set_to_draft" string="Set to Draft" type="object" class="oe_highlight" invisible="state not in ['d_complet', 'e_cancel']"/>
+                        <button name="set_to_confirm" string="Confirm" type="object" class="oe_highlight" invisible="state != 'a_draft'"
+                        groups="car_repair_job_inspection.group_car_inspection_user"/>
+                        <button name="set_to_processed" string="Process" type="object" class="oe_highlight" invisible="state != 'b_confirm'"
+                        groups="car_repair_job_inspection.group_car_inspection_manager"/>
+                        <button name="set_to_done" string="Complete" type="object" class="oe_highlight" invisible="state != 'c_process'"
+                         groups="car_repair_job_inspection.group_car_inspection_manager"/>
+                        <button name="set_to_cancel" string="Cancel" type="object" invisible="state not in ['a_draft','b_confirm']"/>
+                        <field name="state" widget="statusbar" statusbar_visible="a_draft,b_confirm,c_process,d_complet" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/><br/>
+                                <field name="subject" placeholder="Inspection subject..." readonly="state == 'd_complet'"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="project_id" readonly="state == 'd_complet'"/>
+                                <field name="analytic_account_id" readonly="state == 'd_complet'"/>
+                                <field name="task_id" domain="[('project_id', '=', project_id)]" readonly="state == 'd_complet'"/>
+                                <field name="car_repair_id" 
+                                domain="[('project_id', '=', project_id),('analytic_account_id', '=', analytic_account_id)]"
+                                readonly="state == 'd_complet'"/>
+                            </group>
+                            <group>
+                                <field name="create_date" readonly="state == 'd_complet'"/>
+                                <field name="inspection_location" readonly="state == 'd_complet'"/>
+                                <field name="inspector_id" readonly="state == 'd_complet'"/>
+                                <field name="subcontractor_id" readonly="state == 'd_complet'"/>
+                                <field name="reference" readonly="state == 'd_complet'"/>
+                            </group>
+                            
+                            <group>
+                                <field name="inspection_type_id" readonly="state == 'd_complet'"/>
+                                <field name="inspection_start" readonly="state == 'd_complet'"/>
+                                <field name="user_id" readonly="state == 'd_complet'"/>
+                            </group>
+                            <group>
+                                <field name="inspection_result" readonly="state == 'd_complet'"/>
+                                <field name="inspection_end" readonly="state == 'd_complet'"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="inspection_line" string="Inspection Lines">
+                                <!-- <group> -->
+                                    <field name="inspection_line" nolabel="1" readonly="state == 'd_complet'">
+                                        <tree editable='bottom'>
+                                            <field name="inspection_record"/>
+                                            <field name="inspection_result"/>
+                                            <field name="description"/>
+                                        </tree>
+                                    </field>
+                                <!-- </group> -->
+                            </page>
+                            <page name="other_info" string="Other Info">
+                                <group>
+                                    <group>
+                                        <field name="confirm_by_id"/>
+                                        <field name="process_by_id"/>
+                                        <field name="done_by_id"/>
+                                        <field name="cancel_by_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="confirm_date"/>
+                                        <field name="process_date"/>
+                                        <field name="done_date"/>
+                                        <field name="cancel_date"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="internalnote" string="Internal Note">
+                                    <field name="internal_note" nolable="1" readonly="state == 'd_complet'"/>
+                            </page>
+                            <page name="result description" string="Result Description">
+                                    <field name="result_description" nolable="1" readonly="state == 'd_complet'"/>
+                            </page>
+                            <page name="image" string="Inspection Photos">
+                                <group>
+                                    <group>
+                                        <field name="image1" widget="image" class="oe_avatar" readonly="state == 'd_complet'"/>
+                                    </group>
+                                    <group>
+                                        <field name="image2" widget="image" class="oe_avatar" readonly="state == 'd_complet'"/>
+                                    </group>
+                                    <group>
+                                        <field name="image3" widget="image" class="oe_avatar" readonly="state == 'd_complet'"/>
+                                        <field name="image5" widget="image"  class="oe_avatar" readonly="state == 'd_complet'"/>
+                                    </group>
+                                    <group>
+                                        <field name="image4" widget="image" class="oe_avatar" readonly="state == 'd_complet'"/>
+                                        <field name="reference_drawing" widget="image" class="oe_avatar" readonly="state == 'd_complet'"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="car_repair_order_inspection_tree_view">
+            <field name="name">car.repair.order.inspection.tree.view</field>
+            <field name="model">car.repair.order.inspection</field>
+            <field name="arch" type="xml">
+                <tree>
+                     <field name="name"/>
+                     <field name="subject"/>
+                     <field name="project_id"/>
+                     <field name="task_id"/>
+                     <field name="user_id"/>
+                     <field name="create_date"/>
+                     <field name="inspection_result"/>
+                     <field name="inspection_type_id"/>
+                     <field name="company_id" groups="base.group_multi_company"/>
+                     <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id='car_repair_order_inspection_kanban_view' model='ir.ui.view'>
+            <field name="name">car.repair.order.inspection.kanban.view</field>
+            <field name="model">car.repair.order.inspection</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state" class="o_kanban_small_column">
+                     <field name="name"/>
+                     <field name="subject"/>
+                     <field name="project_id"/>
+                     <field name="task_id"/>
+                     <field name="user_id"/>
+                     <field name="create_date"/>
+                     <field name="inspection_result"/>
+                     <field name="inspection_type_id"/>
+                     <field name="company_id" groups="base.group_multi_company"/>
+                     <field name="state"/>
+                     <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                
+                                <div class="o_dropdown_kanban dropdown">
+                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit</a></t>
+                                        <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_content">
+                                    <div class="o_kanban_record_title">
+                                        <strong><field name="name"/></strong>
+                                    </div>
+                                    <div>
+                                        <field name="project_id"/>
+                                    </div>
+                                    <div>
+                                        <field name="create_date"/>
+                                    </div>
+                                    <div>
+                                        <field name="inspection_type_id"/>
+                                    </div>
+                                    <div>
+                                        <img t-att-src="kanban_image('res.users', 'image_128', record.user_id.raw_value)" t-att-title="record.user_id.value" t-att-alt="record.user_id.value" class="oe_kanban_avatar o_image_24_cover mr4 pull-right" options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        
+        <record id="car_repair_order_inspection_pivot_view" model="ir.ui.view">
+            <field name="name">car.repair.order.inspection.pivot.view</field>
+            <field name="model">car.repair.order.inspection</field>
+            <field name="arch" type="xml">
+                <pivot string="Car Repair Inspections">
+                    <field name="name" type="row"/>
+                    <field name="state" type="col"/>
+                </pivot>
+            </field>
+        </record>
+        
+        <record id="car_repair_order_inspection_graph_view" model="ir.ui.view">
+            <field name="name">car.repair.order.inspection.graph.view</field>
+            <field name="model">car.repair.order.inspection</field>
+            <field name="arch" type="xml">
+                <graph string="Car Repair Inspections">
+                    <field name="name"/>
+                    <field name="state"/>
+                </graph>
+            </field>
+        </record>
+         <record id="car_repair_order_inspection_calendar_view" model="ir.ui.view">
+            <field name="name">car.repair.order.inspection.calendar.view</field>
+            <field name="model">car.repair.order.inspection</field>
+            <field name="arch" type="xml">
+                <calendar string="Car Repair Inspections" date_start="inspection_start" color="user_id">
+                    <field name="subject"/>
+                    <field name="inspection_result"/>
+                    <field name="subcontractor_id"/>
+                    <field name="state"/>
+                    <field name="user_id"  avatar_field="image_128"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="car_repair_order_inspection_search_view">
+            <field name="name">car.repair.order.inspection.search</field>
+            <field name="model">car.repair.order.inspection</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="project_id"/>
+                     <field name="task_id"/>
+                     <field name="car_repair_id"/>
+                     <field name="user_id"/>
+                     <field name="company_id" groups="base.group_multi_company"/>
+                     <field name="subcontractor_id"/>
+                     <field name="inspection_start"/>
+                     <field name="inspection_end"/>
+                     <field name="inspection_type_id"/>
+                     <field name="inspection_result"/>
+                     <group expand="0" string="Group By">
+                        <filter string="Project" name="project" context="{'group_by':'project_id'}"/>
+                        <filter string="Job Order" name="job_order" context="{'group_by':'task_id'}"/>
+                        <filter string="Car Repair" name="car_repair" context="{'group_by':'car_repair_id'}"/>
+                        <filter string="Responsible User" name="reponsible_user" context="{'group_by':'user_id'}"/>
+                        <filter string="Subcontractor" name="subcontractor" context="{'group_by':'subcontractor_id'}"/>
+                        <filter string="Create Date" name="create_date" context="{'group_by':'create_date'}"/>
+                        <filter string="Inspection Start Date" name="inspection_start_date" context="{'group_by':'inspection_start'}"/>
+                        <filter string="Inspection End Date" name="inspection_date_end" context="{'group_by':'inspection_end'}"/>
+                        <filter string="Inspection Type" name="inspection_type" context="{'group_by':'inspection_type_id'}"/>
+                        <filter string="Inspection Result" name="inspection_result" context="{'group_by':'inspection_result'}"/>
+                        <filter string="State" name="state" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_car_repair_order_inspection" model="ir.actions.act_window">
+            <field name="name">Car Repair Inspections</field>
+            <field name="res_model">car.repair.order.inspection</field>
+            <!-- <field name="view_type">form</field> --> <!-- odoo13 -->
+            <field name="view_mode">kanban,tree,calendar,form,pivot,graph</field>
+            <field name="help">Repair Inspection Tree.</field>
+        </record>
+
+        <menuitem name="Inspections" id="sub_main_car_repair_menu_job_inspection" 
+        parent="car_repair_maintenance_service.main_car_repair_support_main" sequence="1"/>
+        <menuitem name="Car Repair Inspections" id="sub_menu_car_repair_job_inspection" 
+        parent="sub_main_car_repair_menu_job_inspection" action="action_car_repair_order_inspection"/>
+
+    </data>
+</odoo>

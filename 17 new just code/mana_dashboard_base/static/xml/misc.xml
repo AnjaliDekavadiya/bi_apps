@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="mana_dashboard_base.template_preview">
+        <img width="120" class="template_preview" t-attf-src="/web/image/{{props.record.resModel}}/{{props.record.resId}}/{{props.name}}" />
+    </t>
+
+</templates>

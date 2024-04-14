@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_task_link_user,access.project.task.link.user,model_project_task_link,base.group_user,1,1,1,1
+access_mrp_production_link_user,access.mrp.production.link.user,model_mrp_production_link,base.group_user,1,1,1,1
+access_mrp_workorder_link_user,access.mrp.workorder.link.user,model_mrp_workorder_link,base.group_user,1,1,1,1
+access_sale_order_link_user,access.sale.order.link.user,model_sale_order_link,base.group_user,1,1,1,1
+access_hr_leave_allocation_link_user,access.hr.leave.allocation.link.user,model_hr_leave_allocation_link,base.group_user,1,1,1,1
+access_hr_leave_link_user,access.hr.leave.link.user,model_hr_leave_link,base.group_user,1,1,1,1

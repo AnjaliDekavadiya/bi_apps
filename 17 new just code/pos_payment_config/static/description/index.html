@@ -1,0 +1,296 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color:#875A7B;">Point Of Sale Payment Configuration</h2>
+            <h3 class="oe_slogan">Smart Cash configuration</h3>
+        </div>
+        <div class="oe_row_img oe_centered">
+          <img class="oe_demo oe_picture oe_screenshot" src="smart_cash_screenshot.jpg?1"/>
+        </div>
+    </div>
+</section>
+<!--
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <p class="oe_mt32">
+        <div class="alert alert-info" style="padding:8px;font-weight: 300; font-size: 20px;">
+          <i class="fa fa-hand-o-right"></i><b>Main features: </b>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 mt32">
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fa fa-check-square-o text-primary"></i>
+                            Define a new payment method called smartcash
+                        </li>
+                        <li>
+                            <i class="fa fa-check-square-o text-primary"></i>
+                            Using the SmartCash payment method allows you to connect to the different smart drawers on the market
+                        </li>
+                        <li>
+                            <i class="fa fa-check-square-o text-primary"></i>
+                            To connect to the drawer, this module connects to the gateway.
+                        </li>
+                        <li>
+                            <i class="fa fa-check-square-o text-primary"></i>
+                            It works asynchronously. So you can use other payment methods while paying in the drawer is done.
+                        </li>
+                        <li>
+                            <i class="fa fa-check-square-o text-primary"></i>
+                            You can cancel the payment from the POS of Odoo.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <h3 class="oe_slogan">How it works</h3>
+        <div class="oe_span12 text-center">
+          <p class="oe_mt32">
+            <font size="3px">When installing the module, the payment method called <em>SMARTCASH</em> will be created automatically.</font>
+          </p>
+        </div>
+        <div class="oe_row_img oe_centered">
+          <img class="oe_demo oe_picture oe_screenshot" src="smart_cash1.png?1"/>
+        </div>
+        <div class="oe_span12 text-center">
+          <p class="oe_mt32">
+            <font size="3px">This payment method must be configured manually in the POS where you want to use .</font>
+          </p>
+        </div>
+        <div class="oe_row_img oe_centered">
+          <img class="oe_demo oe_picture oe_screenshot" src="smart_cash2.png?1"/>
+        </div>
+        <div class="oe_row_img oe_centered">
+          <img class="oe_demo oe_picture oe_screenshot" src="smart_cash3.png?1"/>
+        </div>
+        <div class="oe_span12 text-center">
+          <p class="oe_mt32">
+            <font size="3px">The module establishes the connection between Odoo and the gateway, which is the link between Odoo and the drawer. The check allows you to go directly to the ticket once paid. The installation of the gateway license and configuration is included in the module price, and it will be configurated by our technical team.</font>
+          </p>
+        </div>
+        <div class="oe_span12 text-center">
+          <p class="oe_mt32">
+            <font size="3px">Once the gateway is configured, SMARTCASH can be used as a payment method to charge its customers.</font>
+          </p>
+        </div>
+        <div class="oe_row_img oe_centered">
+          <img class="oe_demo oe_picture oe_screenshot" src="smart_cash4.png?1"/>
+        </div>
+        <div class="oe_span12 text-center">
+          <p class="oe_mt32">
+            <font size="3px">Pressing the SMARTCASH payment method passes control to the gateway and therefore to the drawer asynchronously, so that we send the message and we can continue working with the POS.</font>
+          </p>
+        </div>
+        <div class="oe_row_img oe_centered">
+          <img class="oe_demo oe_picture oe_screenshot" src="smart_cash_pago.png?1"/>
+        </div>
+        <div class="oe_span12 text-center">
+          <p class="oe_mt32">
+            <font size="3px">You can cancel the payment in any moment you want from Odoo POS.</font>
+          </p>
+        </div>
+        <div class="oe_row_img oe_centered">
+          <img class="oe_demo oe_picture oe_screenshot" src="smart_cash5.png?1"/>
+        </div>
+        <div class="oe_span12 text-center">
+          <p class="oe_mt32">
+            <font size="3px">You can retry the payment after cancelling it.</font>
+          </p>
+        </div>
+        <div class="oe_row_img oe_centered">
+          <img class="oe_demo oe_picture oe_screenshot" src="smart_cash6.png?1"/>
+        </div>
+        <div class="oe_span12 text-center">
+          <p class="oe_mt32">
+            <font size="3px">At the time the payment is made in the drawer, we will be notified immediately that the payment is made and we can validate it.</font>
+          </p>
+        </div>
+        <div class="oe_row_img oe_centered">
+          <img class="oe_demo oe_picture oe_screenshot" src="smart_cash7.png?1"/>
+        </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <h3 class="oe_slogan">Configuration</h3>
+                                <p class="oe_mt32">
+        <div class="alert alert-info" style="padding:8px;font-weight: 300; font-size: 20px;">
+          <i class="fa fa-hand-o-right"></i><b>In order to connect to the gateway, POS Smart Cash needs two "System Parameters" to connect to this computer:</b>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 mt32">
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fa fa-check-square-o text-primary"></i>
+                            pos_smart_cash.ip : Ip direction of the machine with the gateway installed.
+                        </li>
+                        <li>
+                            <i class="fa fa-check-square-o text-primary"></i>
+                            pos_smart_cash.port : Port hearing in the machine with the gateway installed.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </p>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <h2 class="oe_slogan" style="color:#875A7B;">Compatible smart drawers</h2>
+    <h3 class="oe_slogan">These are all machines compatible with our solution</h3>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <p class="oe_mt32">
+        <div class="alert alert-info" style="padding:8px;font-weight: 300; font-size: 20px;">
+
+          <i class="fa fa-hand-o-right"></i><b>STRONGPOINT / CASHGUARD</b>
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Coin recycler S8
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Note recycler S3 / S4 / S5
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Note recycler P3
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              CashGuard Unico
+            </li>
+          </ul>
+
+          <i class="fa fa-hand-o-right"></i><b>GLORY / CASH INFINITY</b>
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler CI-10
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler CI-5
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler CI-50
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Note recycler CI-50B
+            </li>
+          </ul>
+          <i class="fa fa-hand-o-right"></i><b>AZKOYEN / CASHLOGY</b>
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler POS 1500
+            </li>
+          </ul>
+          <i class="fa fa-hand-o-right"></i><b>SAIMA SYSTEM / PAYDESK</b>
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler and electronic payment Paydesk
+            </li>
+          </ul>
+          <i class="fa fa-hand-o-right"></i><b>CPI / PAYPOD</b>
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler Paypod Integrada
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler Paypod Superpuesta
+            </li>
+          </ul>
+          <i class="fa fa-hand-o-right"></i><b>DITRON / SAFEMONEY</b>
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler SafeMoney Compact
+            </li>
+          </ul>
+          <i class="fa fa-hand-o-right"></i><b>GUNNEBO / SAFEPAY</b>
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Coin recycler CR2
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Coin recycler CR3
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Note recycler NR2
+            </li>
+          </ul>
+          <i class="fa fa-hand-o-right"></i><b>CashDro</b>
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler CashDro 2
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler CashDro 3
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler CashDro 5
+            </li>
+          </ul>
+          <i class="fa fa-hand-o-right"></i><b>VNE - AUTOMATIC CASH</b>
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler Basic
+            </li>
+            <li>
+              <i class="fa fa-check-square-o text-primary"></i>
+              Cash recycler Advanced
+            </li>
+          </ul>
+
+        </div>
+      </p>
+    </div>
+  </div>
+</section>
+-->
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <h2 class="oe_slogan" style="color:#875A7B;">Free Support</h2>
+    <h3 class="oe_slogan">You will get free support and assistance in case of any issues</h3>
+  </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+      <div class="oe_span12">
+        <h2>Need our service?</h2>
+        <p class="oe_mt32">Contact us by <a href="mailto:info@smarthoreca.es">email</a> or fill out <a href="https://tienda.smarthoreca.es/page/contactus " target="_blank">request form</a></p>
+        <ul>
+          <li><a href="mailto:soporte@smarthoreca.es">soporte@smarthoreca.es <i class="fa fa-envelope-o"></i></a></li>
+          <li><a href="https://tienda.smarthoreca.es/page/contactus " target="_blank">https://tienda.smarthoreca.es/page/contactus <i class="fa fa-list-alt"></i></a></li>
+        </ul>
+      </div>
+    </div>
+</section>

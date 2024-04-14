@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_office365_mails_view_users_form" model="ir.ui.view">
+        <field name="name">office365.mails.res.user.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="ks_office365_base.ks_office365_view_users_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <field name="ks_has_office_group" invisible="1"/>
+                <page string="Office 365 Mails" invisible = "not ks_has_office_group or not ks_auth_token or not ks_is_login_user">
+                    <div class="ks_invisible_fields">
+                        <field name="ks_import_office365_mail" force_save="1" invisible="1"/>
+                        <field name="ks_export_office365_mail" force_save="1" invisible="1"/>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <span style="font-size: 13px; font-weight: bold;">
+                                        <u>Import mails from Outlook</u>
+                                    </span>
+                                </div>
+                                <div class="col-6 border-left-line">
+                                    <label for="ks_option_inbox" string="Inbox"/>
+                                </div>
+                                <div class="col-6 ">
+                                    <field name="ks_option_inbox" string="Inbox"/>
+                                </div>
+                                <div class="col-6 border-left-line" style="position:relative; top:7px;">
+                                    <label for="ks_option_sentitems" string="Sent Items"/>
+                                </div>
+                                <div class="col-6 " style="position:relative; top:7px;">
+                                    <field name="ks_option_sentitems" string="Sent Items"/>
+                                </div>
+                                <div class="col-6 border-left-line" style="position:relative; top:12px;">
+                                    <label for="ks_option_archive" string="Archive"/>
+                                </div>
+                                <div class="col-6 " style="position:relative; top:12px;">
+                                    <field name="ks_option_archive" string="Archive"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-md-0 mt-3">
+                            <div class="row">
+                                <div class="col-6 border-left-line">
+                                    <label for="ks_sync_days_before" string="Sync mails from last (In Days)"/>
+                                </div>
+                                <div class="col-6">
+                                    <field name="ks_sync_days_before" widget="integer" style="width: 30%;" nolabel="1"/>
+                                    <field name="ks_sync_using_days" nolabel="1"/>
+                                </div>
+                                <div class="col-6 border-left-line mt-3">
+                                    <label for="ks_sync_using_category" string="Mail Category"/>
+                                </div>
+                                <div class="col-6" style="padding:5px;">
+                                    <field name="ks_sync_using_category" widget="many2many_tags"/>
+                                </div>
+                                <div class="col-6 border-left-line mt-3">
+                                    <label for="ks_sync_without_attachment" style="width: 253px;margin-top: 6px;"/>
+                                </div>
+                                <div class="col-6" style="padding:12px;">
+                                    <field name="ks_sync_without_attachment" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--                    <group name="ks_button">-->
+                    <div class="col-6" style="text-align: center; margin-top: 10px; position:relative; left:-261px; top:20px;">
+                        <button string="Import Mails from Office 365" name="ks_get_mails" class="btn btn-success"
+                                type="object" invisible ='not ks_import_office365_mail'/>
+                    </div>
+<!--                    </group>-->
+
+
+                    <!--                <field name="ks_has_office_group" invisible="1"/>-->
+                    <!--                <page string="Office 365 Mails"-->
+                    <!--                      attrs="{'invisible': ['|','|',('ks_has_office_group', '=', False),('ks_auth_token', '=', False),('ks_is_login_user', '=', False)]}">-->
+                    <!--                    <div class="ks_invisible_fields">-->
+                    <!--                        <field name="ks_import_office365_mail" force_save="1" invisible="1"/>-->
+                    <!--                        <field name="ks_export_office365_mail" force_save="1" invisible="1"/>-->
+                    <!--                    </div>-->
+                    <!--                    <group>-->
+                    <!--                        <group>-->
+                    <!--                            <span style="font-size: 12px; font-weight: bold;">-->
+                    <!--                                <u>Import mails from Outlook</u>-->
+                    <!--                            </span>-->
+                    <!--                            <field name="ks_option_inbox" string="Inbox"/>-->
+                    <!--                            <field name="ks_option_sentitems" string="Sent Items"/>-->
+                    <!--                            <field name="ks_option_archive" string="Archive"/>-->
+                    <!--                        </group>-->
+                    <!--                        <group>-->
+                    <!--                            <label for="ks_sync_days_before" string="Sync mails from last (In Days)"/>-->
+                    <!--                            <field name="ks_sync_days_before" widget="integer" style="width: 30%;" nolabel="1"/>-->
+                    <!--                            <field name="ks_sync_using_days" nolabel="1"-->
+                    <!--                                   style="position: relative; top:-44px; left: 25em;"/>-->
+                    <!--                            <field name="ks_sync_using_category" widget="many2many_tags"-->
+                    <!--                                   style="position:relative; top:-40px; left:280px;"/>-->
+                    <!--                            <label for="ks_sync_without_attachment" style="margin-top: 6px;"/>-->
+                    <!--                            <field name="ks_sync_without_attachment" nolabel="1"/>-->
+                    <!--                        </group>-->
+                    <!--                        <group name="ks_button">-->
+                    <!--                            <button string="Import Mails from Office 365" name="ks_get_mails" class="btn btn-success"-->
+                    <!--                                    type="object" attrs="{'invisible': [('ks_import_office365_mail', '=', False)]}"/>-->
+                    <!--                        </group>-->
+                    <!--                    </group>-->
+                    <!--                </page>-->
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="office365_settings_mail_scope" model="ir.ui.view">
+        <field name="name">office365.setting.mail.form.view</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="ks_office365_base.ks_office_scope_page"/>
+        <field name="arch" type="xml">
+            <div class="row" position="inside">
+                <div class="col-3">
+                    <group string="Mails">
+                        <field name="ks_is_manager_mail" invisible="1"/>
+                        <field name="ks_import_office365_mail"
+                               readonly = 'not ks_is_manager_mail or ks_auth_token'/>
+                        <!--                    <field name="ks_export_office365_mail" attrs="{'readonly': [('ks_auth_token', '!=', '')]}"/>-->
+                    </group>
+                </div>
+            </div>
+        </field>
+    </record>
+
+</odoo>

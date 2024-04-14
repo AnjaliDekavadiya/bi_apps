@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+       <record id="view_orderproduct_search_custom_satgeid" model="ir.ui.view">
+            <field name="name">sale.report.inherit.filter.stage</field>
+            <field name="model">sale.report</field>
+            <field name="inherit_id" ref="sale.view_order_product_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="custom_stage_id"/>
+                </xpath>
+                <xpath expr="//search/group/filter[@name='User']" position="after">
+                    <filter string="Stage" name="Stage" context="{'group_by':'custom_stage_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

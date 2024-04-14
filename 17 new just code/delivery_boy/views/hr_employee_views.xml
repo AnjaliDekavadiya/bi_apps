@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+    <data>
+        <record id='hr_employee_inherit_view_form' model='ir.ui.view'>
+            <field name='name'>hr.employee.inherit.view.form</field>
+            <field name='model'>hr.employee</field>
+            <field name='inherit_id' ref='hr.view_employee_form' />
+
+            <field name='arch' type='xml'>
+              <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="toggle_is_delivery_boy" type="object" class="oe_stat_button" icon="fa-male">
+                        <field string="delivery boy" name="is_delivery_boy" invisible="1"/>
+                        <span  invisible="is_delivery_boy == True" class="o_field_widget">Inactive</span>
+                        <span invisible="is_delivery_boy == False" style="color:green" class="o_field_widget" >Delivery Boy</span>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

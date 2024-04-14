@@ -1,0 +1,44 @@
+<odoo>
+		<record id="issue_stages_form" model="ir.ui.view">
+			<field name="name">view.issue.stages.form</field>
+			<field name="model">issue.stages</field>
+			<field name="arch" type="xml">
+				<form string="Issue Stages">
+					<sheet>
+						<group>
+							<field name="name" />
+							<field name="sequence"/>
+							<field name="fold" />
+							<field name="construction_team_id"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		
+		<record id="issue_stages_tree" model="ir.ui.view">
+			<field name="name">view.issue.stages.tree</field>
+			<field name="model">issue.stages</field>
+			<field name="arch" type="xml">
+					<tree string="Issue Stages">
+							<field name="name"/>
+							<field name="sequence"/>
+							<field name="construction_team_id"/>
+					</tree>
+			</field>
+		</record>
+
+		<record id="issue_stages_action" model="ir.actions.act_window">
+			<field name="name">Issue Stages </field>
+			<field name="res_model">issue.stages</field>
+			<field name="binding_view_types">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new employee.
+			  </p>
+			</field>
+		</record>
+</odoo>

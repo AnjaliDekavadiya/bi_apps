@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.actions.report" id="action_report_sale_tmpl_barcode">
+            <field name="name">Sale Barcode</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">SaleBarcode</field>
+            <field name="template_id" ref="report_extend_bf_barcode.sale_tmpl_barcode"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_barcode_product_code_128">
+            <field name="name">Barcode product code 128</field>
+            <field name="model">product.product</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">BarcodeProductCode128</field>
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_code_128"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_barcode_product_EAN13">
+            <field name="name">Barcode product EAN13</field>
+            <field name="model">product.product</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">BarcodeProductEAN13</field>
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_EAN13"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_barcode_product_qr">
+            <field name="name">Barcode product QR</field>
+            <field name="model">product.product</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">BarcodeProductQR</field>
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_qr"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_barcode_product_code_128_2">
+            <field name="name">Barcode product code 128 - 02</field>
+            <field name="model">product.product</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">BarcodeProductCode12802</field>
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_code_128_2"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_barcode_product_code_128_3">
+            <field name="name">Barcode product code 128 - 03</field>
+            <field name="model">product.product</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">BarcodeProductCode12803</field>
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_code_128_3"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_barcode_product_EAN13_2">
+            <field name="name">Barcode product EAN13 - 02</field>
+            <field name="model">product.product</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">BarcodeProductEAN1302</field>
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_EAN13_2"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_barcode_product_qr_2">
+            <field name="name">Barcode product QR - 02</field>
+            <field name="model">product.product</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">BarcodeProductQR02</field>
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_qr_2"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_barcode_product_EAN13_col_2">
+            <field name="name">Barcode product EAN13 - 02 Columns</field>
+            <field name="model">product.product</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">BarcodeProductEAN13Col02</field>
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_EAN13_col_2"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_barcode_product_EAN13_col_3">
+            <field name="name">Barcode product EAN13 - 03 Columns</field>
+            <field name="model">product.product</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">BarcodeProductEAN13Col03</field>
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_EAN13_col_3"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_stock_picking_shipping_label_template">
+            <field name="name">Barcode stock picking code 128</field>
+            <field name="model">stock.picking</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">BarcodeStockPickingCode128</field>
+            <field name="template_id" ref="report_extend_bf_barcode.stock_picking_shipping_label_template"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+    </data>
+</odoo>

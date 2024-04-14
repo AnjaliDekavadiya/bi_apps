@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View Section -->
+    <record id="msegat_sms_gateway_account_tree_view"
+            model="ir.ui.view">
+        <field name="name">msegat.sms.gateway.account.tree</field>
+        <field name="model">msegat.sms.gateway.account</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="username"/>
+                <field name="api_key" password="True"/>
+                <field name="is_default_sms_account"/>
+                <field name="state" decoration-success="state == 'confirmed'"
+                       widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View Section -->
+    <record id="msegat_sms_gateway_account_form_view"
+            model="ir.ui.view">
+        <field name="name">msegat.sms.gateway.account.form</field>
+        <field name="model">msegat.sms.gateway.account</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button class="btn-primary"
+                            name="test_msegat_sms_connection" type="object"
+                            string="Test Connection"
+                            invisible="state != 'new'"/>
+                    <button class="btn-primary"
+                            name="test_and_confirm_msegat_sms_account" type="object"
+                            string="Confirm Account"
+                            invisible="state != 'new'"/>
+                    <button name="reset_to_new" string="Reset To New"
+                            type="object"
+                            invisible="state != 'confirmed'"/>
+                    <button class="btn-primary"
+                            name="test_msegat_send_sms_connection" type="object"
+                            string="Send Test SMS"
+                            invisible="state != 'confirmed'"/>
+                    <!-- <button name="get_msegat_account_balance" class="btn-primary" string="Get
+                        Account Details" type="object" attrs="{'invisible': [('state', '!=', 'confirmed')]}"
+                        /> -->
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_sms_send_records"
+                                style="width:16%" type="object" class="oe_stat_button"
+                                icon="fa-send"
+                                invisible="sms_records_count == 0">
+                            <field name="sms_records_count" widget="statinfo"
+                                   string="SMS Records"/>
+                        </button>
+                        <button name="action_open_sms_account_logs_records"
+                                style="width:16%" type="object" class="oe_stat_button"
+                                icon="fa-tasks"
+                                invisible="account_sms_logs_count == 0">
+                            <field name="account_sms_logs_count" widget="statinfo"
+                                   string="SMS Logs"/>
+                        </button>
+                    </div>
+
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="Account Name"/>
+                        <h1 class="d-flex flex-row justify-content-between">
+                            <field name="name" default_focus="1" class="text-truncate"
+                                   placeholder="e.g Msegat"
+                                   readonly="state != 'new'"/>
+                        </h1>
+                    </div>
+
+                    <group name="group_sms_account_settings">
+                        <group>
+                            <field name="username" readonly="state != 'new'"/>
+                            <field name="api_key" password="True" readonly="state != 'new'"/>
+                            <label for="msegat_sender_id"/>
+                            <div name="">
+                                <field name="msegat_sender_id"
+                                       options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
+                                       readonly="state != 'new'"/>
+                                <button type="object" class="fa fa-arrow-right oe_link"
+                                        name="fetch_msegat_account_sender_ids_or_tags_name"
+                                        string="Fetch Sender ID/TAG Name"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="test_connection_mobile_number"
+                                   placeholder="+91xxxxxxxxxx"
+                                   readonly="state != 'new'"/>
+                            <field name="is_default_sms_account"/>
+                            <div class="alert alert-warning" role="alert"
+                                 style="width: 600% !important">
+                                <b>Note:</b>
+                                If you have Marked True Is Default SMS account then system
+                                automatically
+                                pick this account and send SMS to Customer while
+                                Confirming Order and While Validating Delivery.
+                                <br/>
+                                Else, System will pick first SMS account(If you has configured
+                                multiple) then sent SMS to
+                                Customer while Confirming Order and
+                                Validating delivery.
+                            </div>
+                        </group>
+                        <group string="Msegat Information">
+                            <label for="msegat_current_balance"/>
+                            <div name="account_balance">
+                                <field name="msegat_current_balance" readonly='1'/>
+                                <button type="object" class="fa fa-arrow-right oe_link"
+                                        name="get_msegat_account_balance" string="Fetch Balance"
+                                        invisible="state != 'confirmed'"/>
+                            </div>
+                        </group>
+                    </group>
+
+                    <group string="Advanced Features">
+                        <group>
+                            <field name="is_confirm_so_to_send_sms" readonly="state != 'new'"/>
+                            <field name="sms_so_confirm_template_id"
+                                   options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
+                                   readonly="state != 'new'"
+                                   required="is_confirm_so_to_send_sms"
+                                   invisible="not is_confirm_so_to_send_sms"/>
+                        </group>
+                        <group>
+                            <field name="is_validate_do_to_send_sms"
+                                   readonly="state != 'new'"/>
+                            <field name="sms_do_validate_template_id"
+                                   options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
+                                   readonly="state != 'new'"
+                                   required="is_validate_do_to_send_sms"
+                                   invisible="not is_validate_do_to_send_sms"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action View Section -->
+    <record id="msegat_sms_gateway_account_action"
+            model="ir.actions.act_window">
+        <field name="name">Msegat SMS Account</field>
+        <field name="res_model">msegat.sms.gateway.account</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="msegat_sms_gateway_account_tree_view"/>
+        <field name="help" type="html">
+            <div>
+                <br/>
+                <p>
+                    <b>There is no any Msegat SMS Account configured yet.</b>
+                </p>
+
+            </div>
+        </field>
+    </record>
+
+    <!-- Top Parent Menu -->
+    <!-- Main Channel Engine Menu -->
+    <menuitem id="msegat_sms_gateway_main_app_menu"
+              name="Msegat SMS Gateway" sequence="20"
+              web_icon="msegat_sms_gateway_gsc,static/description/icon.png"/>
+
+    <!-- Parent/Top Menu Section -->
+    <menuitem id="msegat_sms_gateway_config_menu"
+              name="Configuration" parent="msegat_sms_gateway_main_app_menu"
+              sequence="6"
+              groups="msegat_sms_gateway_gsc.group_msegat_sms_gateway_gsc_manager"/>
+
+    <!-- Child Menu Section -->
+    <menuitem id="msegat_sms_gateway_account_menu"
+              name="Msegat Accounts" parent="msegat_sms_gateway_config_menu"
+              sequence="2" action="msegat_sms_gateway_account_action"/>
+</odoo>

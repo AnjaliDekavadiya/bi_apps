@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+   <data>
+
+        <record id="project_profit_loss_wizard_form_view_custom" model="ir.ui.view">
+           <field name="name">project.profit.loss.wizard.form.view.custom</field>
+           <field name="model">project.profit.loss.wizard</field>
+           <field name="arch" type="xml">
+               <form string="Project Profit Loss Wizard">
+                <p>This wizard will print Profit and Loss report for selected Analytic Accounts / Project.</p>
+                    <group>
+                        <group>
+                            <field name="custom_start_date"/>
+                        </group>
+                        <group>
+                            <field name="custom_end_date"/>
+                        </group>
+                   </group>
+                   <notebook colspan="4">
+                       <page string="Analytic Accounts">
+                                <field name="custom_analytic_account_ids" required="True"/>
+                       </page>
+                   </notebook>
+                   <footer>
+                        <button string="Print Now" name="get_project_profit_loss_report" type="object" class="oe_highlight"/> or 
+                       <button string="Cancel" class="btn-default" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+
+       <record id="project_profit_loss_report_action_custom" model="ir.actions.act_window">
+            <field name="name">Analytic Account / Project (Profit and Loss)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.profit.loss.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+                  
+        <menuitem name="Analytic Profit and Loss" id="menu_project_profit_loss_report_custom" 
+                  parent="account.account_reports_management_menu"
+                  action="project_profit_loss_report_action_custom"  sequence="19"/> 
+
+   </data>
+</odoo>

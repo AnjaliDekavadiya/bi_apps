@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record id="subscription_contract_upsell_wizard_view" model="ir.ui.view">
+            <field name="name">Subscription Contract Upsell Wizard View</field>
+            <field name="model">contract.upsell</field>
+            <field name="arch" type="xml">
+                <form>
+                     <b><h3><p class="oe_black" name = 'change'>
+                        This wizard allow you to upsell on your contract. You can directly update contract or you can create quotations.
+                    </p></h3></b>
+                    <group string='Reason for Upsell'>
+                        <field name="reason" nolabel='1'/>
+                    </group>
+                        
+                    <notebook>
+                        <page name="contract_upsell_page" string="Upsell lines">
+                            <field name="contract_upsell_line_ids" nolabel='1'>
+                                <tree editable="top">
+                                    <field name="product_id" domain="[('subscription_product','=',True)]"/>
+                                    <field name="product_qty" />
+                                    <field name="product_uom"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+            
+                    <footer>
+                        <button string="Update Current Contract" type="object" class="btn btn-sm btn-primary" name="add_new_contract"/>
+                        <button string="Create Quotation" type="object" class="btn btn-sm btn-primary" name="add_new_quotation"/>
+                        <button string="Cancel" special="cancel" class="btn btn-sm btn-default"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+ 
+        <record id="subscription_contract_upsell_action" model="ir.actions.act_window">
+            <field name="name">Upsell on Contract</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">contract.upsell</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="subscription_contract_upsell_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

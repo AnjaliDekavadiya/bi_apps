@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+
+<odoo>
+
+    <record id="wk_seller_form_view_mp_whatsapp_live_chat" model="ir.ui.view">
+        <field name="name">seller.whatsapp.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="odoo_marketplace.wk_seller_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <field name="allow_whatsapp_support" invisible="1" />
+                <button icon="fa-whatsapp text-success" groups="odoo_marketplace.marketplace_manager_group"  class="oe_stat_button mp_whatsapp_allow"  type="object" name="mp_whatsapp_support_toggle" invisible="allow_whatsapp_support == True" >
+                       
+                   
+                    <span style="color:black" class="ml4 h4">Deactivated</span>                      
+                </button>
+                <button icon="fa-whatsapp text-success"  groups="odoo_marketplace.marketplace_manager_group"   class="oe_stat_button mp_whatsapp_allow" invisible="allow_whatsapp_support == False" type="object" name="mp_whatsapp_support_toggle" >
+                    <span style="color:black" class="ml4 h4">Activated</span>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='title']" position="after">
+                
+                <label invisible="allow_whatsapp_support == False" for="whatsapp_support_member" string="Available for whatsapp support"/>
+                <div class="text-muted" invisible="allow_whatsapp_support == False">                 
+                    <field  groups="odoo_marketplace.marketplace_manager_group,odoo_marketplace.marketplace_seller_group" name="whatsapp_support_member" />
+                    ⇒ Enable this for WhatsApp Support Member
+                </div>
+            </xpath>
+            <xpath expr="//notebook/page[last()]" position="after">
+                <page groups="odoo_marketplace.marketplace_manager_group,odoo_marketplace.marketplace_seller_group"  string="Whatsapp Settings" invisible="whatsapp_support_member == False">
+                    <group string="Whatsapp" col="2">
+                        <label for="status" string="Status" invisible="whatsapp_support_member == False"/>
+                        <div invisible="whatsapp_support_member == False">
+                            <field name="status" class="text-info oe_inline" readonly="1" invisible="whatsapp_support_member == False"/>
+                            <button name="active_status" string="Click to Active" type="object" class="oe_link pt-0" invisible="status == 'active'"/>
+                            <button name="inactive_status" string="Click to Inactive" type="object" class="oe_link pt-0" invisible="status == 'inactive'"/>
+                        </div>
+                    </group>
+                    <group string="Member Details" >
+                        <group>
+                        <field name="member_type" options="{'no_create': True,'no_edit': True,'no_open':True}" string="Member Type" placeholder="Select Member Type" required="whatsapp_support_member == True"/>
+                        <field name="time_from" widget='float_time'/>
+                        <field name="whatsapp_message" placeholder="Enter message here..." required="whatsapp_support_member == True"/>
+                        </group>
+                        <group>
+                            <field name="mobile" placeholder="+91-9999999999" string="Whatsapp Contact" required="whatsapp_support_member == True"/>
+                            <field name="time_to" widget='float_time'/>
+                        </group>
+                     </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

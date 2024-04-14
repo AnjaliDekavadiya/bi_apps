@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="inherit_view_material_purchase_requisition_form" model="ir.ui.view">
+            <field name="name">material.purchase.requisition.inherit</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="inherit_id" ref="material_purchase_requisitions.material_purchase_requisition_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='reject_employee_id']" position="after">
+                    <field name="custom_car_repair_id"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="car_action_material_purchase_requisition">
+            <field name="name">Material Requisition Requests</field>
+            <field name="res_model">material.purchase.requisition</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+    </data>
+</odoo>

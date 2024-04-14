@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_crm_goals_filter" model="ir.ui.view">
+        <field name="name">crm.goals.list.select</field>
+        <field name="model">crm.goals</field>
+        <!-- <field name="priority" eval="15"/> -->
+        <field name="arch" type="xml">
+            <search string="Search CRM Goals">
+                <group expand="0" string="Group By">
+                    <filter string="User" name="salesperson" domain="[]" context="{'group_by': 'crm_user_id'}"/>
+                    <filter name="customer" string="Goal Definition" domain="[]" context="{'group_by': 'crm_goal_def_id'}"/>
+                </group>
+           </search>
+        </field>
+    </record>
+
+
+    <record id="crm_goals_tree_view" model="ir.ui.view">
+        <field name="name">crm.goals.view</field>
+        <field name="model">crm.goals</field>
+        <field name="arch" type="xml">
+            <tree string="CRMGoals" create="false" edit="false">
+                <field name="crm_goal_def_id" invisible="1"/>
+                <field name="crm_user_id" invisible="1"/>
+                <field name="start_date"/>
+                <field name="end_date"/>   
+                <field name="curr_value"/>
+                <field name="to_reach"/>
+                <field name="complete" widget="progressbar"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="crm_goals_action_view" model="ir.actions.act_window">
+            <field name="name">CRM Goals</field>
+            <field name="res_model">crm.goals</field>
+            <field name="context">{'search_default_salesperson': 1,'search_default_customer':1}</field>
+            <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem id="crm_goals_menuitem_id" parent="crm_challenge_menuitem_id" name="Goals" sequence="3" action="crm_goals_action_view" />
+
+</odoo>

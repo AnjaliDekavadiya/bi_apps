@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_model_amazon_report_type_category,access.model.amazon.report.type.category,amazon_connector_base.model_amazon_report_type_category,,1,1,1,1
+access_model_amazon_report_type_field,access.model.amazon.report.type.field,model_amazon_report_type_field,,1,1,1,1
+access_model_amazon_report_type,access.model.amazon.report.type,amazon_connector_base.model_amazon_report_type,,1,1,1,1
+access_model_amazon_report_log,access.model.amazon.report.log,amazon_connector_base.model_amazon_report_log,,1,1,1,1
+access_model_report_choose_marketplace_wizard,access.model.report.choose.marketplace.wizard,model_report_choose_marketplace_wizard,,1,1,1,1
+

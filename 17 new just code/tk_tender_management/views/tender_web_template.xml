@@ -1,0 +1,1242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--Vendor Registration Form-->
+        <template id="vendor_signup" name="Register">
+            <t t-call="website.layout">
+                <div class="container py-4">
+                    <t t-if="not already_login">
+                        <t t-if="err">
+                            <div class="alert alert-danger text-center" role="alert">
+                                Email address is already use!
+                            </div>
+                        </t>
+                        <t t-if="err_msg">
+                            <div class="alert alert-danger text-center" role="alert">
+                                <span t-esc="err_msg"/>
+                            </div>
+                        </t>
+                        <div class="card">
+                            <h5 class="card-header text-center font-weight-bold">
+                                Vendor Registration Form
+                            </h5>
+                            <div class="card-body">
+                                <form class="row g-3" action="/vendor-sign-up" method="POST" enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="col-md-9">
+                                        <div class="col-lg-12 col-sm-12 form-radio-tender" t-if="not company_type">
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label fw-bold">
+                                                    <input type="radio" value="person" class="form-check-input me-10" name="company_type"/>
+                                                    Individual
+                                                </label>
+                                            </div>
+                                            <br/>
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label fw-bold">
+                                                    <input type="radio" value="company" class="form-check-input me-10" name="company_type"/>
+                                                    Company
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-sm-12 form-radio-tender" t-else="">
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label fw-bold">
+                                                    <t t-if="company_type == 'person'">
+                                                        <input type="radio" value="person" checked="checked" class="form-check-input me-10" name="company_type"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <input type="radio" value="person" class="form-check-input me-10" name="company_type"/>
+                                                    </t>
+                                                    Individual
+                                                </label>
+                                            </div>
+                                            <br/>
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label fw-bold">
+                                                    <t t-if="company_type == 'company'">
+                                                        <input type="radio" value="company" checked="checked" class="form-check-input me-10" name="company_type"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <input type="radio" value="company" class="form-check-input me-10" name="company_type"/>
+                                                    </t>
+                                                    Company
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group input-group-lg">
+                                            <span class="input-group-text" id="name">Name
+                                                <span class="form-required-tender">
+                                                    *
+                                                </span>
+                                            </span>
+                                            <input type="text" class="form-control" id="name" t-att-value="name" placeholder="Name" required="required" name="name"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 text-end">
+                                        <div class="col-lg-12 col-sm-12 vendor_type">
+                                            <div>
+                                                <img src="/tk_tender_management/static/src/img/default_user.png" id="preview" class="img-thumbnail image-tender"/>
+                                                <br/>
+                                                <i class="fa fa-link"></i>
+                                            </div>
+                                            <input type="file" name="vendor_image" class="file d-none" accept="image/*"/>
+                                            <div class="input-group my-3 d-none">
+                                                <div class="input-group-prepend">
+                                                    <button type="button" class="browse btn btn-primary">Browse...
+                                                    </button>
+                                                </div>
+                                                <input type="text" class="form-control" placeholder="Upload File" id="file"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h6>
+                                            Address
+                                        </h6>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="street">Street</span>
+                                                    <input type="text" class="form-control" id="street" t-att-value="street" placeholder="Street" name="street"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="street2">Street2</span>
+                                                    <input type="text" class="form-control" id="street2" placeholder="Street2" t-att-value="street2" name="street2"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="city">City</span>
+                                                    <input type="text" class="form-control" id="city" placeholder="City" name="city" t-att-value="city"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="zip">Zip</span>
+                                                    <input type="text" class="form-control" id="zip" placeholder="Zip" name="zip_code" t-att-value="zip_code"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text">Country</span>
+                                                            <select class="form-control" id="country_id" t-if="not country_id" name="country_id" t-att-value="country_id" placeholder="Select Country">
+                                                                <option selected="selected" value="0">Select
+                                                                    Country
+                                                                </option>
+                                                                <t t-foreach="country" t-as="c">
+                                                                    <option t-esc="c.name" t-att-value="c.id"/>
+                                                                </t>
+                                                            </select>
+                                                            <select class="form-control" id="country_id" t-else="" name="country_id" placeholder="Select Country">
+
+                                                                <t t-foreach="country" t-as="c">
+                                                                    <t t-if="str(c.id) == country_id">
+                                                                        <option t-esc="c.name" selected="selected" t-att-value="c.id"/>
+                                                                    </t>
+                                                                    <t t-else="">
+                                                                        <option t-esc="c.name" t-att-value="c.id"/>
+                                                                    </t>
+                                                                </t>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text">State</span>
+                                                            <select class="form-control" id="state_id" name="state_id" t-if="not state_id" t-att-value="state_id" placeholder="Select state">
+                                                            </select>
+                                                            <select class="form-control" id="state_id" name="state_id" t-if="state_id" placeholder="Select state">
+                                                                <t t-foreach="state" t-as="c">
+                                                                    <t t-if="str(c.id) == state_id">
+                                                                        <option t-esc="c.name" selected="selected" t-att-value="c.id"/>
+                                                                    </t>
+                                                                    <t t-else="">
+                                                                        <option t-esc="c.name" t-att-value="c.id"/>
+                                                                    </t>
+                                                                </t>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h6>
+                                            Contact
+                                        </h6>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="phone">Phone
+                                                        <span class="form-required-tender">
+                                                            *
+                                                        </span>
+                                                    </span>
+                                                    <input type="text" class="form-control" id="phone" t-att-value="phone" placeholder="Phone" required="required" name="phone"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="mobile">Mobile</span>
+                                                    <input type="text" class="form-control" id="mobile" t-att-value="mobile" placeholder="Mobile" name="mobile"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <t t-if="err">
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text" id="email">Email
+                                                            <span class="form-required-tender">
+                                                                *
+                                                            </span>
+                                                        </span>
+                                                        <input type="email" class="form-control" id="email" placeholder="Email" required="required" name="email"/>
+                                                    </div>
+                                                </t>
+                                                <t t-else="">
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text" id="email">Email
+                                                            <span class="form-required-tender">
+                                                                *
+                                                            </span>
+                                                        </span>
+                                                        <input type="email" class="form-control" id="email" t-att-value="email" placeholder="Email" required="required" name="email"/>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="website">Website</span>
+                                                    <input type="text" class="form-control" id="website" t-att-value="vendor_website" placeholder="Website" name="vendor_website"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text">Note</span>
+                                            <textarea class="form-control" aria-label="With textarea" id="comment" name="comment" t-att-value="comment"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="tender_type_id">Tender Categories
+                                                <span class="form-required-tender">
+                                                    *
+                                                </span>
+                                            </span>
+                                            <select class="form-control" id="tender_category_ids" required="required" name="tender_category_ids" t-att-value="tender_category_ids" multiple="multiple">
+                                                <t t-foreach="tender_category" t-as="s">
+                                                    <option t-att-value="s.id">
+                                                        <t t-esc="s.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary" type="submit">Register</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-if="already_login">
+                        <div class="alert alert-success text-center" role="alert">
+                            <div>
+                                You have already registered !
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </template>
+        <!--Registration ThankYou-->
+        <template id="vendor_signup_thank_you" name="Thank You">
+            <t t-call="website.layout">
+                <div class="container py-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="jumbotron text-center">
+                                <h1 class="display-3">Thank You!</h1>
+                                <p class="lead">
+                                    <strong>Please check your email</strong>
+                                    for further instructions on how to complete your account setup.
+                                </p>
+                                <hr/>
+                                <p>
+                                    Having trouble?
+                                    <a href="/contactus">Contact us</a>
+                                </p>
+                                <p class="lead">
+                                    <a class="btn btn-primary btn-sm" href="/" role="button">Continue
+                                        to homepage
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </t>
+        </template>
+        <!--Tender Details-->
+        <template id="tender_details" name="Tenders">
+            <t t-call="website.layout">
+                <div class="container py-4">
+                    <t t-if="not tender">
+                        <div class="card text-white bg-primary mb-3">
+                            <div class="card-header">No Tender Available.</div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    We couldn't find a matching tender category based on your tender category selection.
+                                </p>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <t t-foreach="tender" t-as="t">
+                            <div class="card border-primary mb-3">
+                                <div class="card-header">
+                                    <span t-field="t.type"/>
+                                </div>
+                                <div class="card-body text-primary">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h5 class="card-title">
+                                                <span t-field="t.name"/>
+                                            </h5>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <span class="bg-primary text-white tender-type-tag" t-field="t.tender_type_id"/>
+                                        </div>
+                                        <div class="col-6 text-dark">
+                                            Tender Start :
+                                            <span t-field="t.start_date" class="text-primary"/>
+                                        </div>
+                                        <div class="col-6 text-dark">
+                                            Tender End :
+                                            <span t-field="t.end_date" class="text-primary"/>
+                                        </div>
+                                        <div class="col-6 text-dark">
+                                            Bid Start :
+                                            <span t-field="t.bid_start_date" class="text-primary"/>
+                                        </div>
+                                        <div class="col-6 text-dark">
+                                            Bid End :
+                                            <span t-field="t.bid_end_date" class="text-primary"/>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <a t-attf-href="/tender/details/{{ slug(t) }}" class="btn btn-primary">Show Details
+                                    </a>
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </template>
+        <!--Tender Information-->
+        <template id="tender_information" name="Tenders Details">
+            <t t-call="website.layout">
+                <div class="container py-4">
+                    <div class="card">
+                        <h5 class="card-header bg-primary text-white">
+                            <span t-field="tender.name" class="text-left"/>
+                        </h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <t t-if="not applied and tender.stage=='bid_submission' and bid_range">
+                                    <div class="col-4">
+                                        <a t-attf-href="/tender/details/bid/{{ slug(tender) }}" class="btn btn-outline-primary">
+                                            Apply for Bid
+                                        </a>
+                                    </div>
+                                </t>
+                                <t t-if="applied">
+                                    <div class="alert alert-success text-center" role="alert">
+                                        You have already applied a bid for this tender.
+                                        <a href="/tender/bid" class="alert-link">Click Here
+                                        </a>
+                                        to view bid.
+                                    </div>
+                                </t>
+                                <t t-if="not bid_range">
+                                    <div class="alert alert-warning text-center" role="alert">
+                                        You cannot place a bid because the bid period has already ended.
+                                    </div>
+                                </t>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-6">
+                                    Tender Category :
+                                    <strong>
+                                        <span t-field="tender.tender_type_id"/>
+                                    </strong>
+                                </div>
+                                <div class="col-6">
+                                    Type :
+                                    <strong>
+                                        <span t-field="tender.type"/>
+                                    </strong>
+                                </div>
+                            </div>
+                            <hr/>
+                            <t t-if="tender.is_site_specific">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <table class="table table-sm table-borderless table-hover">
+                                            <tr>
+                                                <td class="tender-td-20">
+                                                    Tender Start
+                                                </td>
+                                                <td class="tender-td-6">:</td>
+                                                <td>
+                                                    <strong>
+                                                        <span t-field="tender.start_date" class="font-weight-bolder"/>
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tender-td-20">Tender End :</td>
+                                                <td class="tender-td-6">:</td>
+                                                <td>
+                                                    <strong>
+                                                        <span t-field="tender.end_date" class="font-weight-bolder"/>
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tender-td-20">Bid Start :</td>
+                                                <td class="tender-td-6">:</td>
+                                                <td>
+                                                    <strong>
+                                                        <span t-field="tender.bid_start_date" class="font-weight-bolder"/>
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tender-td-20">Bid End :</td>
+                                                <td class="tender-td-6">:</td>
+                                                <td>
+                                                    <strong>
+                                                        <span t-field="tender.bid_end_date" class="font-weight-bolder"/>
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong>
+                                            Location :
+                                        </strong>
+                                        <br/>
+                                        <span t-esc="tender.street"/>
+                                        <br/>
+                                        <span t-esc="tender.street2"/>
+                                        <br/>
+                                        <span t-esc="tender.city"/>
+                                        <span t-esc="tender.zip"/>
+                                        <br/>
+                                        <span t-esc="tender.state_id.name"/>
+,
+                                        <span t-esc="tender.country_id.name"/>
+                                    </div>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div class="row">
+                                    <div class="col-6">
+                                        Tender Start :
+                                        <strong>
+                                            <span t-field="tender.start_date" class="font-weight-bolder"/>
+                                        </strong>
+                                    </div>
+                                    <div class="col-6">
+                                        Tender End :
+                                        <strong>
+                                            <span t-field="tender.end_date" class="font-weight-bolder"/>
+                                        </strong>
+                                    </div>
+                                    <div class="col-6">
+                                        Bid Start :
+                                        <strong>
+                                            <span t-field="tender.bid_start_date" class="font-weight-bolder"/>
+                                        </strong>
+                                    </div>
+                                    <div class="col-6">
+                                        Bid End :
+                                        <strong>
+                                            <span t-field="tender.bid_end_date" class="font-weight-bolder"/>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </t>
+                            <hr/>
+                            <h6 class="card-header bg-primary text-white text-center rounded">
+                                Product
+                            </h6>
+                            <table class="table table-sm table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Code</th>
+                                        <th scope="col" class="text-end">Qty.</th>
+                                        <th scope="col">Unit Of Measure</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="tender.tender_order_line" t-as="l">
+                                        <tr>
+                                            <t t-if="l.display_type=='line_section'">
+                                                <td scope="row" class="table-active" colspan="4">
+                                                    <span t-field="l.name"/>
+                                                </td>
+                                            </t>
+                                            <t t-elif="l.display_type=='line_note'">
+                                                <td class="font-italic text-muted" colspan="4">
+                                                    <span t-field="l.name"/>
+                                                </td>
+                                            </t>
+                                            <t t-else="">
+                                                <th scope="row">
+                                                    <span t-field="l.name"/>
+                                                </th>
+                                                <td>
+                                                    <span t-field="l.code"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-field="l.qty"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="l.uom_id"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <h6 class="card-header bg-primary text-white text-center rounded">
+                                Documents
+                            </h6>
+                            <table class="table table-sm table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Document</th>
+                                        <th scope="col">Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="tender.tender_document_ids" t-as="l">
+                                        <tr>
+                                            <th scope="row" class="w-30">
+                                                <span t-field="l.document_type_id"/>
+                                            </th>
+                                            <td class="tender-td-20">
+                                                <a t-attf-href="/web/content?model=tender.document.line&amp;id=#{l.id}&amp;field=document&amp;filename_field=file_name" target="_blank">
+                                                    <span class="svg-icon svg-icon-muted svg-icon-2hx">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path opacity="0.3" d="M19 15C20.7 15 22 13.7 22 12C22 10.3 20.7 9 19 9C18.9 9 18.9 9 18.8 9C18.9 8.7 19 8.3 19 8C19 6.3 17.7 5 16 5C15.4 5 14.8 5.2 14.3 5.5C13.4 4 11.8 3 10 3C7.2 3 5 5.2 5 8C5 8.3 5 8.7 5.1 9H5C3.3 9 2 10.3 2 12C2 13.7 3.3 15 5 15H19Z" fill="currentColor"/>
+                                                            <path d="M13 17.4V12C13 11.4 12.6 11 12 11C11.4 11 11 11.4 11 12V17.4H13Z" fill="currentColor"/>
+                                                            <path opacity="0.3" d="M8 17.4H16L12.7 20.7C12.3 21.1 11.7 21.1 11.3 20.7L8 17.4Z" fill="currentColor"/>
+                                                        </svg>
+                                                    </span>
+                                                    <span t-field="l.file_name"/>
+                                                </a>
+                                            </td>
+                                            <td class="w-50">
+                                                <span t-field="l.note"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <h6 class="card-header bg-primary text-white text-center rounded">
+                                Description
+                            </h6>
+                            <p>
+                                <span t-field="tender.desc"/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <!--Tender Bid My Portal Tree-->
+        <template id="tender_user_bid_info" name="My Bid">
+            <t t-call="portal.portal_layout">
+                <t t-if="not bids">
+                    <p>There are currently no bids for your account.</p>
+                </t>
+                <t t-if="bids" t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Bid Ref #</th>
+                            <th>Tender</th>
+                            <th>Date</th>
+                            <th class="text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="bids" t-as="b">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/tender/bid/information/{{ slug(b) }}">
+                                        <span t-field="b.name"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span t-field="b.tender_id"/>
+                                </td>
+                                <td>
+                                    <span t-field="b.date"/>
+                                </td>
+                                <td class="text-center">
+                                    <t t-if="b.stage in ['bid','pre_qualification']">
+                                        <span class="badge rounded-pill text-bg-info">
+                                            <span t-field="b.stage"/>
+                                        </span>
+                                    </t>
+                                    <t t-if="b.stage=='lost'">
+                                        <span class="badge rounded-pill text-bg-danger">
+                                            <span t-field="b.stage"/>
+                                        </span>
+                                    </t>
+                                    <t t-if="b.stage=='won'">
+                                        <span class="badge rounded-pill text-bg-success">
+                                            <span t-field="b.stage"/>
+                                        </span>
+                                    </t>
+                                    <t t-if="b.stage=='bid_close'">
+                                        <span class="badge rounded-pill text-bg-warning">
+                                            <span t-field="b.stage"/>
+                                        </span>
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
+            </t>
+        </template>
+        <!--Tender Bid My Portal Form-->
+        <template id="tender_user_bid_details" name="Bid">
+            <t t-call="website.layout">
+                <div class="container py-4">
+                    <t t-if="bid.type=='multiple_vendor' and bid.allow_edit=='request_approve'">
+                        <div class="card text-bg-warning mb-3">
+                            <div class="card-header">Note</div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    This tender follows a 'product-wise tender' approach
+                                    meaning that if you enter a zero price for a product/Item, it will
+                                    not be considered as a valid bid. and not taken into consideration
+                                    during
+                                    the selection process"
+                                </p>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-if="bid.edit_request">
+                        <div class="alert alert-info text-center" role="alert">
+                            Bid edit request submitted. Awaiting approval.
+                        </div>
+                    </t>
+                    <div class="card">
+                        <div class="card-header row">
+                            <div class="col-6">
+                                <h6 class="mb-0">
+                                    Bid Ref .
+                                    <span t-field="bid.name"/>
+                                </h6>
+                            </div>
+                            <div class="col-6 text-end">
+                                <t t-if="bid.stage in ['bid','pre_qualification']">
+                                    <span class="badge rounded-pill text-bg-info">
+                                        <span t-field="bid.stage"/>
+                                    </span>
+                                </t>
+                                <t t-if="bid.stage=='lost'">
+                                    <span class="badge rounded-pill text-bg-danger">
+                                        <span t-field="bid.stage"/>
+                                    </span>
+                                </t>
+                                <t t-if="bid.stage=='won'">
+                                    <span class="badge rounded-pill text-bg-success">
+                                        <span t-field="bid.stage"/>
+                                    </span>
+                                </t>
+                                <t t-if="bid.stage=='bid_close'">
+                                    <span class="badge rounded-pill text-bg-warning">
+                                        <span t-field="bid.stage"/>
+                                    </span>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h4 class="card-title">
+                                        <a t-attf-href="/tender/details/{{ slug(bid.tender_id) }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                            <span t-field="bid.tender_id.name"/>
+                                        </a>
+                                    </h4>
+                                    <span t-field="bid.date"/>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <t t-if="bid.stage=='bid' and bid.type=='single_vendor' and bid.rank > 0">
+                                        <t t-if="bid.allow_edit in ['draft','edit_request']">
+                                            <button type="button" class="btn btn-outline-dark">
+                                                <h3 class="m-0">
+                                                    <span class="badge text-bg-dark" t-field="bid.rank"/>
+                                                </h3>
+                                                Your Rank
+                                            </button>
+                                        </t>
+                                    </t>
+                                </div>
+                            </div>
+                            <!-- Upload Document-->
+                            <t t-if="bid.stage=='pre_qualification'">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#documentToggle">
+                                    Upload Document
+                                </button>
+                                <div class="modal fade" id="documentToggle" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Upload Document</h5>
+                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">x</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="row g-3" action="/tender/bid/information/upload-document" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                    <input type="hidden" name="bid_id" t-att-value="bid.id"/>
+                                                    <div class="input-group mb-3">
+                                                        <label class="input-group-text" for="document_type_id">Document
+                                                            Type
+                                                        </label>
+                                                        <select class="form-select" id="document_type_id" name="document_type_id" required="required">
+                                                            <t t-foreach="document" t-as="d">
+                                                                <option t-esc="d.name" t-att-value="d.id"/>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input class="form-control" type="file" id="document" accept=".png, .jpeg, .pdf, .doc, .docx, .xls, .xlsx" name="document" required="required"/>
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Note</span>
+                                                        <textarea class="form-control" name="note" aria-label="With textarea"/>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                            Close
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">Upload</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <!--Export Template-->
+                            <t t-if="bid.qualify_status=='qualified'">
+                                <t t-if="bid.stage=='bid'">
+                                    <hr/>
+                                    <a t-attf-href="/tender/bid/information/export-template/{{ slug(bid) }}" class="btn btn-primary">
+                                        Export Product Template
+                                    </a>
+                                    <t t-if="bid.allow_edit=='draft' and not bid.edit_request">
+                                        <a t-attf-href="/tender/bid/information/request-edit-bid/{{ slug(bid) }}" class="btn btn-primary">
+                                            Request for Edit
+                                        </a>
+                                    </t>
+                                    <t t-if="bid.allow_edit=='request_approve'">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadTemplate">
+                                            Upload Template
+                                        </button>
+                                        <div class="modal fade" id="uploadTemplate" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Upload Template</h5>
+                                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">x</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="row g-3" action="/tender/bid/information/upload-template" method="POST" enctype="multipart/form-data">
+                                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                            <input type="hidden" name="bid_id" t-att-value="bid.id"/>
+                                                            <div class="mb-3">
+                                                                <input class="form-control" type="file" id="document" accept=".xls, .xlsx" name="document" required="required"/>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                                    Close
+                                                                </button>
+                                                                <button type="submit" class="btn btn-primary">Upload
+                                                                    Product
+                                                                    Template
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </t>
+                            </t>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-6">
+                                    Tender Category :
+                                    <strong>
+                                        <span t-field="bid.tender_id.tender_type_id"/>
+                                    </strong>
+                                </div>
+                                <div class="col-6">
+                                    Type :
+                                    <strong>
+                                        <span t-field="bid.tender_id.type"/>
+                                    </strong>
+                                </div>
+                            </div>
+                            <hr/>
+                            <t t-if="bid.tender_id.is_site_specific">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <table class="table table-sm table-borderless table-hover">
+                                            <tr>
+                                                <td class="tender-td-20">
+                                                    Tender Start
+                                                </td>
+                                                <td class="tender-td-6">:</td>
+                                                <td>
+                                                    <strong>
+                                                        <span t-field="bid.tender_id.start_date" class="font-weight-bolder"/>
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tender-td-20">Tender End :</td>
+                                                <td class="tender-td-6">:</td>
+                                                <td>
+                                                    <strong>
+                                                        <span t-field="bid.tender_id.end_date" class="font-weight-bolder"/>
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tender-td-20">Bid Start :</td>
+                                                <td class="tender-td-6">:</td>
+                                                <td>
+                                                    <strong>
+                                                        <span t-field="bid.tender_id.bid_start_date" class="font-weight-bolder"/>
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tender-td-20">Bid End :</td>
+                                                <td class="tender-td-6">:</td>
+                                                <td>
+                                                    <strong>
+                                                        <span t-field="bid.tender_id.bid_end_date" class="font-weight-bolder"/>
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong>
+                                            Location :
+                                        </strong>
+                                        <br/>
+                                        <span t-esc="bid.tender_id.street"/>
+                                        <br/>
+                                        <span t-esc="bid.tender_id.street2"/>
+                                        <br/>
+                                        <span t-esc="bid.tender_id.city"/>
+                                        <span t-esc="bid.tender_id.zip"/>
+                                        <br/>
+                                        <span t-esc="bid.tender_id.state_id.name"/>
+,
+                                        <span t-esc="bid.tender_id.country_id.name"/>
+                                    </div>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div class="row">
+                                    <div class="col-6">
+                                        Tender Start :
+                                        <strong>
+                                            <span t-field="bid.tender_id.start_date" class="font-weight-bolder"/>
+                                        </strong>
+                                    </div>
+                                    <div class="col-6">
+                                        Tender End :
+                                        <strong>
+                                            <span t-field="bid.tender_id.end_date" class="font-weight-bolder"/>
+                                        </strong>
+                                    </div>
+                                    <div class="col-6">
+                                        Bid Start :
+                                        <strong>
+                                            <span t-field="bid.tender_id.bid_start_date" class="font-weight-bolder"/>
+                                        </strong>
+                                    </div>
+                                    <div class="col-6">
+                                        Bid End :
+                                        <strong>
+                                            <span t-field="bid.tender_id.bid_end_date" class="font-weight-bolder"/>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </t>
+                            <!--Documents-->
+                            <t t-if="bid.qualify_status not in ['disqualified']">
+                                <t t-if="bid.bid_document_ids">
+                                    <hr/>
+                                    <h6 class="card-header bg-primary text-white text-center rounded">
+                                        Uploaded Documents
+                                    </h6>
+                                    <table class="table table-sm table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Type</th>
+                                                <th scope="col">Document</th>
+                                                <th scope="col">Note</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="bid.bid_document_ids" t-as="l">
+                                                <tr>
+                                                    <th scope="row" class="tender-td-20">
+                                                        <span t-field="l.date"/>
+                                                    </th>
+                                                    <th scope="row" class="tender-td-20">
+                                                        <span t-field="l.document_type_id"/>
+                                                    </th>
+                                                    <td class="tender-td-20">
+                                                        <a t-attf-href="/web/content?model=bid.document.line&amp;id=#{l.id}&amp;field=document&amp;filename_field=file_name" target="_blank">
+                                                            <span class="svg-icon svg-icon-muted svg-icon-2hx">
+                                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                    <path opacity="0.3" d="M19 15C20.7 15 22 13.7 22 12C22 10.3 20.7 9 19 9C18.9 9 18.9 9 18.8 9C18.9 8.7 19 8.3 19 8C19 6.3 17.7 5 16 5C15.4 5 14.8 5.2 14.3 5.5C13.4 4 11.8 3 10 3C7.2 3 5 5.2 5 8C5 8.3 5 8.7 5.1 9H5C3.3 9 2 10.3 2 12C2 13.7 3.3 15 5 15H19Z" fill="currentColor"/>
+                                                                    <path d="M13 17.4V12C13 11.4 12.6 11 12 11C11.4 11 11 11.4 11 12V17.4H13Z" fill="currentColor"/>
+                                                                    <path opacity="0.3" d="M8 17.4H16L12.7 20.7C12.3 21.1 11.7 21.1 11.3 20.7L8 17.4Z" fill="currentColor"/>
+                                                                </svg>
+                                                            </span>
+                                                            <span t-field="l.file_name"/>
+                                                        </a>
+                                                    </td>
+                                                    <td class="w-30">
+                                                        <span t-field="l.note"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="bid.stage=='pre_qualification'">
+                                                            <form action="/tender/bid/information/delete-document" method="POST" enctype="multipart/form-data">
+                                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                                <input type="hidden" name="bid_id" t-att-value="bid.id"/>
+                                                                <input type="hidden" name="document_id" t-att-value="l.id"/>
+                                                                <button type="submit" class="btn btn-link">
+                                                                    <i class="fa fa-trash" aria-hidden="true" aria-label="Delete Document" title="Delete Document"/>
+                                                                </button>
+                                                            </form>
+                                                        </t>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </t>
+                            </t>
+                            <t t-if="bid.qualify_status=='qualified'">
+                                <!--Bid Details-->
+                                <t t-if="bid.stage=='bid'">
+                                    <t t-if="bid.allow_edit=='request_approve'">
+                                        <h6 class="card-header bg-primary text-white text-center rounded">
+                                            Bid Details
+                                        </h6>
+                                        <form action="/bid/information/apply-bid" method="POST" enctype="multipart/form-data">
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <table class="table table-sm table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Description</th>
+                                                        <th scope="col">Code</th>
+                                                        <th scope="col" class="text-end">Qty.</th>
+                                                        <th scope="col">Unit Of Measure</th>
+                                                        <th scope="col" class="text-end">Your Price(<span t-field="bid.currency_id.symbol"/>
+) / Qty.
+                                                        </th>
+                                                        <th scope="col" class="text-end">Total Price</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-foreach="bid_line" t-as="l">
+                                                        <tr>
+                                                            <t t-if="l.display_type=='line_section'">
+                                                                <td scope="row" class="table-active" colspan="6">
+                                                                    <span t-field="l.name"/>
+                                                                </td>
+                                                            </t>
+                                                            <t t-elif="l.display_type=='line_note'">
+                                                                <td class="font-italic text-muted" colspan="6">
+                                                                    <span t-field="l.name"/>
+                                                                </td>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <th scope="row">
+                                                                    <span t-field="l.name"/>
+                                                                </th>
+                                                                <td>
+                                                                    <span t-field="l.code"/>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <span t-field="l.qty"/>
+                                                                </td>
+                                                                <td>
+                                                                    <span t-field="l.uom_id"/>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <input type="text" class="form-control text-end" id="l.id" t-att-value="l.price" placeholder="Price" t-att-name="l.id"/>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <span t-field="l.total"/>
+                                                                </td>
+                                                            </t>
+                                                        </tr>
+                                                    </t>
+                                                    <tr>
+                                                        <td colspan="4">
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <strong>Total Amount :</strong>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <strong>
+                                                                <span t-field="bid.total_amount"/>
+                                                            </strong>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <button type="submit" class="btn btn-outline-primary">Submit Bid</button>
+                                        </form>
+                                    </t>
+                                    <t t-if="bid.allow_edit in ['draft','edit_request']">
+                                        <h6 class="card-header bg-primary text-white text-center rounded">
+                                            Bid Details
+                                        </h6>
+                                        <table class="table table-sm table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Code</th>
+                                                    <th scope="col" class="text-end">Qty.</th>
+                                                    <th scope="col">Unit Of Measure</th>
+                                                    <th scope="col" class="text-end">Your Price / Qty.</th>
+                                                    <th scope="col" class="text-end">Total Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="bid_line" t-as="l">
+                                                    <tr>
+                                                        <t t-if="l.display_type=='line_section'">
+                                                            <td scope="row" class="table-active" colspan="6">
+                                                                <span t-field="l.name"/>
+                                                            </td>
+                                                        </t>
+                                                        <t t-elif="l.display_type=='line_note'">
+                                                            <td class="font-italic text-muted" colspan="6">
+                                                                <span t-field="l.name"/>
+                                                            </td>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <th scope="row">
+                                                                <span t-field="l.name"/>
+                                                            </th>
+                                                            <td>
+                                                                <span t-field="l.code"/>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <span t-field="l.qty"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-field="l.uom_id"/>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <span t-field="l.price"/>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <span t-field="l.total"/>
+                                                            </td>
+                                                        </t>
+                                                    </tr>
+                                                </t>
+                                                <tr>
+                                                    <td colspan="4">
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <strong>Total Amount :</strong>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <strong>
+                                                            <span t-field="bid.total_amount"/>
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </t>
+                                </t>
+                                <t t-if="bid.stage in ['bid_close','won','lost']">
+                                    <h6 class="card-header bg-primary text-white text-center rounded">
+                                        Bid Details
+                                    </h6>
+                                    <table class="table table-sm table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Code</th>
+                                                <th scope="col" class="text-end">Qty.</th>
+                                                <th scope="col">Unit Of Measure</th>
+                                                <th scope="col" class="text-end">Your Price / Qty.</th>
+                                                <th scope="col" class="text-end">Total Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="bid_line" t-as="l">
+                                                <tr>
+                                                    <t t-if="l.display_type=='line_section'">
+                                                        <td scope="row" class="table-active" colspan="6">
+                                                            <span t-field="l.name"/>
+                                                        </td>
+                                                    </t>
+                                                    <t t-elif="l.display_type=='line_note'">
+                                                        <td class="font-italic text-muted" colspan="6">
+                                                            <span t-field="l.name"/>
+                                                        </td>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <th scope="row">
+                                                            <span t-field="l.name"/>
+                                                        </th>
+                                                        <td>
+                                                            <span t-field="l.code"/>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <span t-field="l.qty"/>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="l.uom_id"/>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <span t-field="l.price"/>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <span t-field="l.total"/>
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                            </t>
+                                            <tr>
+                                                <td colspan="4">
+                                                </td>
+                                                <td class="text-end">
+                                                    <strong>Total Amount :</strong>
+                                                </td>
+                                                <td class="text-end">
+                                                    <strong>
+                                                        <span t-field="bid.total_amount"/>
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </t>
+                            </t>
+                            <t t-if="bid.qualify_status=='disqualified' and bid.stage not in ['bid_close']">
+                                <hr/>
+                                <div class="card border-danger mb-3">
+                                    <div class="card-header">We are unable to proceed with your submission</div>
+                                    <div class="card-body text-danger">
+                                        <h5 class="card-title">Reason</h5>
+                                        <p class="card-text">
+                                            <span t-field="bid.dis_qualified_reason"/>
+                                        </p>
+                                        <t t-if="bid.allow_resubmit">
+                                            But we believe that providing you with the chance to make the necessary
+                                            revisions will allow you to present a stronger bid.
+                                        </t>
+                                        <t t-if="bid.allow_resubmit">
+                                            <br/>
+                                            <br/>
+                                            <a t-attf-href="/tender/bid/information/resubmit-document/{{ slug(bid) }}" class="btn btn-outline-success">Resubmit Documents
+                                            </a>
+                                        </t>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    <div id="bid_details_content" class="col-12 col-lg">
+                        <div id="bid_apply_communication" class="mt-4">
+                            <h2>History</h2>
+                            <t t-call="portal.message_thread">
+                                <t t-set="object" t-value="bid"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <!--Inherit Template-->
+        <template id="portal_show_tender_category" inherit_id="portal.side_content">
+            <xpath expr="//div[hasclass('o_my_contact')]" position="after">
+                <div class="o_portal_my_security mt-3">
+                    <h4>Tender Category</h4>
+                    <hr class="mt-1 mb-1"/>
+                    <ul>
+                        <t t-foreach="user_id.tender_category_ids" t-as="t">
+                            <li>
+                                <span t-field="t.name"/>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+            </xpath>
+        </template>
+        <!--Portal -->
+        <template id="portal_my_tender_bid" inherit_id="portal.portal_my_home" name="My Portal">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="title">Tender Bid</t>
+                    <t t-set="url" t-value="'/tender/bid/'"/>
+                    <t t-set="placeholder_count" t-value="'bid_count'"/>
+                    <t t-set="text">View your Tender Bid</t>
+                    <t t-set="config_card" t-value="True"/>
+                    <t t-set="icon" t-value="'/tk_tender_management/static/src/img/bid.png'"/>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

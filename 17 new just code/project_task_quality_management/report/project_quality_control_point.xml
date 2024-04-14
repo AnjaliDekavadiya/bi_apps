@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <!-- <report
+            id="report_project_quality_control_point"
+            string="Quantity Control Point"
+            model="project.quality.control.point"
+            report_type="qweb-pdf"
+            name="project_task_quality_management.template_report_project_quality_control_point"
+            file="project_task_quality_management.template_report_project_quality_control_point"
+        /> --> <!-- odoo13 -->
+        <record id="report_project_quality_control_point" model="ir.actions.report">
+            <field name="name">Quantity Control Point</field>
+            <field name="model">project.quality.control.point</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">project_task_quality_management.template_report_project_quality_control_point</field>
+            <field name="report_file">project_task_quality_management.template_report_project_quality_control_point</field>
+            <field name="binding_model_id" ref="project_task_quality_management.model_project_quality_control_point"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="template_report_project_quality_control_point">
+            <t t-foreach="docs" t-as="doc">
+             <t t-call="web.html_container">
+              <t t-call="web.internal_layout">
+                <div class="page">
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td style="text-align: center;" colspan="4">
+                                    <strong><h3>Control Point</h3></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;" colspan="4">
+                                    <strong><h3><span t-field="doc.control_point_no"/></h3></strong>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                     <strong>Title:</strong>
+                                </td>
+                                <td>
+                                     <span t-field="doc.title"/>
+                                </td>
+                                <td>
+                                    <strong>Type: </strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.type_id.name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                     <strong>Team:</strong>
+                                </td>
+                                <td>
+                                     <span t-field="doc.team_id.name"/>
+                                </td>
+                                <td>
+                                    <strong>Responsible User: </strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.responsible_user_id.name"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Instruction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <td><span t-field="doc.instruction"/></td>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th t-if='doc.notes'>Internal Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <td><span t-field="doc.notes"/></td>
+                        </tbody>
+                   </table>
+               </table>
+               <table class="table-sm" border='0'>
+                    <tr style="border-top:hidden;">
+                        <td style="width:20%;">
+                            <span><b>Signature:<span style="color:white;">....</span>___________________________</b></span>
+                        </td>
+                        <td style="width:20%;">
+                            <span><b>Date:<span style="color:white;">....</span>___________________________</b></span>
+                        </td>
+                    </tr>
+               </table>
+             </div>
+            </div>
+           </t>
+           </t>
+        </t>
+        </template>
+    </data>
+</odoo>

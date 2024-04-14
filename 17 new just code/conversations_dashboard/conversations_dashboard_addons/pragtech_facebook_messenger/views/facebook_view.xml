@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="facebook_tree_view" model="ir.ui.view">
+        <field name="name">facebook.tree.view</field>
+        <field name="model">facebook.messenger</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sender_id"/>
+                <field name="recipient_id"/>
+                <field name="message"/>
+                <field name="time_received"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_messenger" model="ir.actions.act_window">
+        <field name="name">Facebook Messenger</field>
+        <field name="res_model">facebook.messenger</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="facebook_messenger_view_form" model="ir.ui.view">
+        <field name="name">facebook.messenger.view.form</field>
+        <field name="model">facebook.messenger</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <!-- <field name="alias_user_id"/> -->
+                            <!-- <field name="username"/> -->
+                            <field name="sender_id"/>
+                            <field name="time_received"/>
+                            <!-- <field name="message_is_follower"/> -->
+                            <field name="attachment_id" invisible="1"/>
+                            <field name="attachment_data" filename="message"/>
+                        </group>
+                        <group>
+                            <!-- <field name="chat_id"/> -->
+                            <field name="active"/>
+                            <field name="recipient_id" required="1"/>
+                            <field name="message"/>
+                        </group>
+                    </group>
+                    <!-- <group>
+                        <group> -->
+                            <!-- <field name="message_follower_ids"/>
+                            <field name="message_partner_ids"/> -->
+                        <!-- </group>
+                    </group> -->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <menuitem id="facebook_root_menu" name="Facebook Messenger" sequence="0"/>
+    <menuitem id="facebook_main" name="Facebook Interface" action="action_messenger" sequence="1" parent="facebook_root_menu"/>
+    <menuitem id="config_menu" name="Configuration" sequence="2" parent="facebook_root_menu"/>
+</odoo>

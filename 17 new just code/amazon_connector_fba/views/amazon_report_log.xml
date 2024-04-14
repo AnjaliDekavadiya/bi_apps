@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="amazon_report_log_form" model="ir.ui.view">
+        <field name="name">amazon.report.log.form.inherit</field>
+        <field name="model">amazon.report.log</field>
+        <field name="inherit_id" ref="amazon_connector_base.amazon_report_log_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_sale_orders" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="not sale_count">
+                    <field name="sale_count" widget="statinfo" string="Sale Orders"/>
+                </button>
+                <button name="action_view_sync_logs" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="not sync_log_count">
+                    <field name="sync_log_count" widget="statinfo" string="Synchronization Logs"/>
+                </button>
+            </xpath>
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="FBA Live Stock Moves" invisible="not fba_stock_move_ids">
+                    <field name="fba_stock_move_ids" nolabel="1">
+                        <tree>
+                            <field name="product_id"/>
+                            <field name="location_id" options="{'no_create': True}" string="From"/>
+                            <field name="location_dest_id" options="{'no_create': True}" string="To"/>
+                            <field name="product_uom_qty" string="Quantity" sum="Total Quantity"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="FBA Return Tickets" invisible="not ticket_ids">
+                    <field name="ticket_ids" nolabel="1" readonly="1" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem id="menu_amazon_report_log"
+        name="Amazon Reports"
+        action="amazon_connector_base.amazon_report_log_action"
+        parent="amazon_connector_base.amazon_connector_menu_report"
+        sequence="20" />
+
+</odoo>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="amazon_offer_view_form" model="ir.ui.view">
+        <field name="name">amazon.offer.form.inherit</field>
+        <field name="model">amazon.offer</field>
+        <field name="arch" type="xml">
+            <form string="Amazon Product">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="account_id" invisible="1"/>
+                            <field name="active_marketplace_ids" invisible="1"/>
+                            <field name="marketplace_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                            <field name="product_id"/>
+                        </group>
+                        <group>
+                            <field name="sku"/>
+                            <field name="is_afn"/>
+                            <field name="is_mfn"/>
+                            <field name="amazon_created_date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="amazon_offer_view_tree" model="ir.ui.view">
+        <field name="name">amazon.offer.tree.inherit</field>
+        <field name="model">amazon.offer</field>
+        <field name="inherit_id" ref="sale_amazon.amazon_offer_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="string">Amazon Products</attribute>
+                <attribute name="editable"></attribute>
+                <attribute name="multi_edit">1</attribute>
+            </xpath>
+            <field name="sku" position="after">
+                <field name="is_afn" />
+                <field name="is_mfn" />
+                <field name="amazon_created_date"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="amazon_offer_view_tree_customize" model="ir.ui.view">
+        <field name="name">amazon.offer.tree.customize</field>
+        <field name="model">amazon.offer</field>
+        <field name="arch" type="xml">
+            <tree string="Amazon Offers" multi_edit="1" editable="top">
+                <field name="active_marketplace_ids" invisible="1"/>
+                <field name="marketplace_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                <field name="product_id"/>
+                <field name="asin"/>
+                <field name="sku"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="amazon_offer_view_search" model="ir.ui.view">
+        <field name="name">amazon.offer.search.inherit</field>
+        <field name="model">amazon.offer</field>
+        <field name="inherit_id" ref="sale_amazon.amazon_offer_view_search"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <separator/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="group_marketplace" string="Marketplace" context="{'group_by': 'marketplace_id'}"/>
+                    <filter name="group_product" string="Product" domain="[]" context="{'group_by' : 'product_id'}"/>
+                </group>
+            </field>
+        </field>
+    </record>
+
+    <record id="amazon_offer_action" model="ir.actions.act_window">
+        <field name="name">Amazon Products</field>
+        <field name="res_model">amazon.offer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_amazon_offer"
+        name="Amazon Products"
+        action="amazon_offer_action"
+        parent="amazon_connector_base.amazon_connector_menu_pim"
+        sequence="25"/>
+
+</odoo>

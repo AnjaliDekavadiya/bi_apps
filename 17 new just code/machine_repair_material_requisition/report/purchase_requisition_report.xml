@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="purchase_requisition_inherit_machine_repair_id" inherit_id="material_purchase_requisitions.purchase_requisition">
+        <!-- <xpath expr="//table[@class='table table-responsive']//tr[last()]" position="after"> -->
+        <xpath expr="//table[hasclass('table-responsive')]//tr[last()]" position="after">
+            <tr style="border: 2px solid black;">
+               <td><strong>Machine Repair Request</strong></td><td> <span t-field="doc.machine_repair_id.name"/></td>
+               <td></td><td></td>
+           </tr>
+        </xpath>
+    </template>
+</odoo>

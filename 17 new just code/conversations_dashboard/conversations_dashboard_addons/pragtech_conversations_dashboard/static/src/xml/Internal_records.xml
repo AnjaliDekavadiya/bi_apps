@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="whatsapp.Internal">
+        <div class="container-fluid-dashboard m-2" style="padding-left: 4px; overflow-y: scroll; height: 100%;">
+            <!-- <div t-if="products" class="d-flex align-items-center"> -->
+                <script>
+                    function allowDrop (ev) {
+                        ev.preventDefault();
+                    }
+                    function dragStart (ev) {
+                        console.log(ev);
+                        console.log(ev.target.firstElementChild.firstChild.src);
+                        console.log(ev.target.firstElementChild.innerHTML);
+                        ev.dataTransfer.setData("text",  ev.target.innerText);
+                        ev.dataTransfer.setData("image",  ev.target.firstElementChild.firstChild.src);
+                        ev.dataTransfer.effectAllowed = "copy";
+                    }
+                    function dragStartImg (ev) {
+                        console.log(ev);
+                        console.log(ev.target.src);
+                        console.log(ev.target.innerHTML);
+                        ev.dataTransfer.setData("text",  ev.target.id);
+                        ev.dataTransfer.effectAllowed = "copy";
+                    }
+                </script>
+                <style>
+                    .searchclear {
+                        position: absolute;
+                        right: 10px;
+                        top: 5px;
+                        height: 14px;
+                        margin: auto;
+                        font-size: 14px;
+                        cursor: pointer;
+                        color: #ccc;
+                    }
+                    .answerstack {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        grid-gap: 20px;
+                    }
+                    .o_field_many2one_avatar {
+                        display: flex;
+                    }
+                    .o_field_many2one_avatar {
+                        img.o_m2o_avatar {
+                            margin-right: 0;
+                        }
+                    }
+                    .oe_kanban_avatar, .o_field_many2one_avatar > .o_m2o_avatar {
+                        width: 20px;
+                        height: 20px;
+                        margin-left: 6px;
+                    }
+                </style>
+                <div class="o_notebook d-flex w-100 horizontal flex-column">
+                    <div class="o_notebook_headers">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li t-if="products" class="nav-item flex-nowrap cursor-pointer">
+                                <a data-bs-toggle="tab" disable_anchor="true" class="nav-link active" id="nav_tabs_link_1661215776203_43" href="#nav_tabs_content_1661215776203_43" role="tab" aria-controls="nav_tabs_content_1661215776203_43" aria-selected="false"><i class="fa fa-shopping-basket"></i> Products</a>
+                            </li>
+                            <li class="nav-item flex-nowrap cursor-pointer">
+                                <a data-bs-toggle="tab" disable_anchor="true" class="nav-link" id="nav_tabs_link_1661215776203_42" href="#nav_tabs_content_1661215776203_42" role="tab" aria-controls="nav_tabs_content_1661215776203_42" aria-selected="false"><i class="fa fa-exchange"></i> Purchases</a>
+                            </li>
+                            <li class="nav-item flex-nowrap cursor-pointer">
+                                <a data-bs-toggle="tab" disable_anchor="true" class="nav-link" id="nav_tabs_link_1661215776203_41" href="#nav_tabs_content_1661215776203_41" role="tab" aria-selected="false"><i class="fa fa-book"></i> Invoicing</a>
+                            </li>
+                            <li class="nav-item flex-nowrap cursor-pointer">
+                                <a data-bs-toggle="tab" disable_anchor="true" class="nav-link" id="nav_tabs_link_1661215776203_40" href="#nav_tabs_content_1661215776203_40" role="tab" aria-selected="false"><i class="fa fa-fw o_button_icon fa-usd"></i> Sales</a>
+                            </li>
+                            <li class="nav-item flex-nowrap cursor-pointer">
+                                <a data-bs-toggle="tab" disable_anchor="true" class="nav-link" id="nav_tabs_link_1661215776203_39" href="#nav_tabs_content_1661215776203_39" role="tab" aria-selected="true"><i class="fa fa-address-book"></i> Contacts</a>
+                            </li>
+                            <li class="nav-item flex-nowrap cursor-pointer">
+                                <a data-bs-toggle="tab" disable_anchor="true" class="nav-link" id="nav_tabs_link_1661215776203_38" href="#nav_tabs_content_1661215776203_38" role="tab" aria-selected="false"><i class="fa fa-bar-chart"></i> Report</a>
+                            </li>
+                            <!--<li class="nav-item flex-nowrap cursor-pointer">
+                                <a data-bs-toggle="tab" disable_anchor="true" class="nav-link" id="nav_tabs_link_1661215776203_37" href="#nav_tabs_content_1661215776203_37" role="tab" aria-selected="false"><i class="fa fa-bar-chart"></i> Default Answers</a>
+                            </li> -->
+                        </ul>
+                        <div class="hr"/>
+                    </div>
+                    <div class="o_notebook_content tab-content" id="inner_content">
+                        <div class="tab-pane fade active show" id="nav_tabs_content_1661215776203_43" role="tabpanel" aria-labelledby="nav_tabs_link_1661215776203_43">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block" style="background-image: none;" data-name="Text">
+                                    <div class="s_allow_columns product-container">
+                                        <button class="btn btn-primary my-2 mr-4 mt-2" style="margin-right: 9px;margin-left: 10px;" type="button" t-on-click="create_products" id="create_products">Create</button>
+                                        <div class="btn-group ml-4">
+                                            <input class="form-control mr-sm-2" type="text" t-ref="product_textarea" placeholder="Search products.." id="search-input-product"
+                                                aria-label="Search"/>
+                                            <!-- </input> -->
+                                            <span id="product_searchclear" t-on-click="clear_product_search" class="searchclear">
+                                                <i class='fa fa-times'/>
+                                            </span>
+                                        </div>
+                                        <button class="btn btn-outline-primary my-2 my-sm-0" style="margin-left: 2px;" t-on-click="search_products" type="button" id="product-search-button">Search</button>
+                                        <span class="o_pager_counter mr-2" style="margin-left: 5pc;">
+                                            <span class="o_pager_value" id="o_product_pager_value">1-20</span>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" id="o_product_pager_limit"><t t-esc="products.length"/></span>
+                                        </span>
+                                        <span aria-atomic="true" class="btn-group">
+                                            <button type="button" id="previous_button" disabled="true" accesskey="p" aria-label="Previous page" title="Previous page" tabindex="-1" class="fa fa-chevron-left btn btn-secondary o_pager_previous rounded-left"></button>
+                                            <button type="button" id="next_button" accesskey="n" aria-label="Next page" title="Next page" tabindex="-1" class="fa fa-chevron-right btn btn-secondary o_pager_next rounded-right"></button>
+                                        </span>
+                                        <div t-if="products" t-ref="product_records" id="productstack" class="o_kanban_renderer o_renderer o_kanban_ungrouped" style="display: flex; flex-wrap: wrap;">
+                                            <t t-foreach="products" t-as="product" t-key="product.id">
+                                                <div t-attf-id="article_{{product.id}}" role="article" class="o_kanban_record flex-grow-1 flex-md-shrink-1 flex-shrink-0" tabindex="0" style="max-width: 255px; min-width: 250px; min-height: 100px; max-height: 130px; /*display: inline-block;/">
+                                                    <div class='oe_kanban_global_click product_record' t-on-click="edit_product" t-attf-id='kanbandrag{{product.id}}' style="max-width: 255px;min-width: 250px;min-height: 95px;max-height: 125px;">
+                                                        <div class='o_kanban_image mr-1'>
+                                                            <img t-attf-src='/web/image/product.template/{{product.id}}/image_128' alt="Product" class="o_image_64_contain" draggable="true" ondragstart="dragStartImg(event)"/>
+                                                        </div>
+                                                        <div class="oe_kanban_details" draggable="true" ondragstart="dragStart(event)">
+                                                            <div class="o_kanban_record_top mb-0">
+                                                                <div class="o_kanban_record_headings">
+                                                                    <strong class="o_kanban_record_title"><t t-esc="product.name"/></strong>
+                                                                </div>
+                                                            </div>
+                                                            <t t-if="product.default_code">
+                                                                <t t-esc="product.default_code"/>
+                                                            </t>
+                                                            <t t-if="product.product_variant_count > 1">
+                                                                <strong><t t-esc="product.product_variant_count"/> Variants</strong>
+                                                            </t>
+                                                            <div name="product_lst_price" class="product_lst_price mt-1">
+                                                                <t t-esc="product.list_price"/><t t-if="product.currency_id"><t t-esc="product.currency_symbol"/></t>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+                                        <!-- <Views /> -->
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav_tabs_content_1661215776203_42" role="tabpanel" aria-labelledby="nav_tabs_link_1661215776203_42">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block" style="background-image: none;" data-name="Text">
+                                    <div class="s_allow_columns">
+                                        <button class="btn btn-primary my-2 mr-4 mt-2" style="margin-right: 5px;" t-on-click="create_purchases" type="button" id="create_purchases">Create</button>
+                                        <div class="btn-group ml-4">
+                                            <input class="form-control mr-sm-2" type="text" t-ref="purchase_textarea" placeholder="Search" id="search-input-purchase"
+                                                aria-label="Search"/>
+                                            <span id="purchase_searchclear" t-on-click="clear_purchase_search" class="searchclear">
+                                                <i class='fa fa-times'/>
+                                            </span>
+                                        </div>
+                                        <button class="btn btn-outline-primary my-2 my-sm-0" type="button" t-on-click="search_purchases" id="purchase-search-button">Search</button>
+                                        <span class="o_pager_counter mr-2" style="margin-left: 8pc;">
+                                            <span class="o_pager_value" id="o_purchase_pager_value">1-20</span>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" id="o_purchase_pager_limit"><t t-esc="purchases.length"/></span>
+                                        </span>
+                                        <span aria-atomic="true" class="btn-group">
+                                            <button type="button" id="purchase_previous_button" disabled="true" accesskey="p" aria-label="Previous page" title="Previous page" tabindex="-1" class="fa fa-chevron-left btn btn-secondary o_pager_previous rounded-left"></button>
+                                            <button type="button" id="purchase_next_button" accesskey="n" aria-label="Next page" title="Next page" tabindex="-1" class="fa fa-chevron-right btn btn-secondary o_pager_next rounded-right"></button>
+                                        </span>
+                                        <div id="purchase-stack" class="o_list_renderer o_renderer table-responsive o_purchase_order o_list_optional_columns">
+                                            <div class="table-responsive">
+                                                <table class="o_list_table table table-sm table-hover table-striped o_list_table_ungrouped purchase-container" style="table-layout: fixed;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="o_list_record_selector" style="width: 40px;">
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox" id="checkbox-15" class="custom-control-input"/>
+                                                                    <label for="checkbox-15" class="custom-control-label">​</label>
+                                                                </div>
+                                                            </th>
+                                                            <th data-name="name" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 91px;">
+                                                                Reference
+                                                                <span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="create_date" class="o_date_cell o_column_sortable" tabindex="-1" data-original-title="" title="" style="min-width: 92px; width: 119px;">
+                                                                Creation Date
+                                                                <span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="partner_id" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 90px;">
+                                                                Vendor<span class="o_resize"></span>
+                                                            </th>
+                                                            <!-- <th data-name="user_id" class="o_many2one_avatar_user_cell o_column_sortable" tabindex="-1" data-original-title="" title="" style="width: 120px;">
+                                                                Purchase representative<span class="o_resize"></span>
+                                                            </th> -->
+                                                            <!-- <th data-name="activity_ids" class="o_list_activity_cell" tabindex="-1" data-original-title="" title="" style="width: 316px;">
+                                                                Next Activity<span class="o_resize"></span>
+                                                            </th> -->
+                                                            <th data-name="amount_total" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 80px;">
+                                                                Total<span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="state" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 95px;">
+                                                                Status<span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="state" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 60px;">
+                                                                Report<span class="o_resize"></span>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="ui-sortable" id="purchasebody" t-ref="purchase_records">
+                                                    <t t-if="purchases.length > 0">
+                                                        <t t-foreach="purchases" t-as="purchase" t-key="purchase.id">
+                                                            <tr class="o_data_row purchase_record text-info" t-on-click="edit_purchase" t-attf-id="purchase_order_{{purchase.id}}" draggable="true" ondragstart="dragStartpurchase(event)">
+                                                                <td class="o_list_record_selector">
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" t-attf-id="checkbox-{{purchase.id}}" class="custom-control-input"/>
+                                                                        <label t-attf-for="checkbox-{{purchase.id}}" class="custom-control-label">​</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="o_data_cell o_field_cell o_list_char o_readonly_modifier o_required_modifier font-weight-bold" tabindex="-1" t-attf-title="{{purchase.name}}" name="name">
+                                                                    <t t-esc="purchase.name"/>
+                                                                </td>
+                                                                <td class="o_data_cell o_field_cell o_date_cell o_readonly_modifier" tabindex="-1">
+                                                                    <span class="o_field_date o_field_widget o_quick_editable o_readonly_modifier" name="date_order"><t t-esc="purchase.date_order"/></span>
+                                                                </td>
+                                                                <td class="o_data_cell o_field_cell o_list_many2one o_readonly_modifier o_required_modifier" tabindex="-1" t-attf-title="{{purchase.partner_id[1]}}" name="partner_id">
+                                                                    <t t-esc="purchase.partner_id[1]"/>
+                                                                </td>
+                                                                <!-- <td class="o_data_cell o_field_cell o_list_many2one o_many2one_avatar_user_cell" tabindex="-1">
+                                                                    <div class="o_clickable_m2x_avatar o_field_many2one_avatar o_field_widget o_quick_editable" name="user_id">
+                                                                        <div class="o_m2o_avatar">
+                                                                            <img t-attf-src="/web/image/res.users/{{purchase.user_id[0]}}/avatar_128" t-attf-alt="{{purchase.user_id[1]}}"/>
+                                                                            <span><t t-esc="purchase.user_id[1]"/></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td> -->
+                                                                <td class="o_data_cell o_field_cell o_list_number o_monetary_cell o_readonly_modifier" tabindex="-1">
+                                                                    <span class="o_field_monetary o_field_number o_field_widget o_quick_editable text-bf o_readonly_modifier" name="amount_total">
+                                                                        <t t-esc="purchase.amount_total"/><t t-esc="purchase.currency_symbol"/>
+                                                                    </span>
+                                                                </td>
+                                                                <td class="o_data_cell o_field_cell o_badge_cell o_readonly_modifier" tabindex="-1">
+                                                                    <span class="badge badge-pill o_field_badge o_field_widget o_readonly_modifier bg-success-light" name="state"><t t-esc="purchase.state"/></span>
+                                                                </td>
+                                                                <td class="o_data_cell o_field_cell o_badge_cell o_readonly_modifier" tabindex="-1">
+                                                                    <div aria-label="Preview" tabindex="0" data-mimetype="application/pdf" class="o_AttachmentCard_image o-attachment-viewable" 
+                                                                    draggable="true" ondragstart="dragStartPDF(event)" style="background-image: url(/web/static/img/mimetypes/pdf.svg); max-height: 19px; max-width: 14px; margin: 0px;">
+                                                                        <a t-attf-href="/report/pdf/purchase.report_purchaseorder/{{purchase.id}}"></a>
+                                                                    </div>
+                                                                    <button class="btn btn-primary my-2 mr-4 mt-2 fa fa-paper-plane-o" type="button" t-on-click="send_purchase_report" id="send_purchase_report" t-attf-name="{{purchase.name}}" t-attf-index="{{purchase.id}}"></button>
+                                                                </td>
+                                                            </tr>
+                                                        </t>
+                                                    </t>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- <PurchaseViews /> -->
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav_tabs_content_1661215776203_41" role="tabpanel" aria-labelledby="nav_tabs_link_1661215776203_41">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block" style="background-image: none;" data-name="Text">
+                                    <div class="s_allow_columns">
+                                        <button class="btn btn-primary my-2 mr-4 mt-2" style="margin-right: 5px;" t-on-click="create_invoice" type="button" id="create_invoices">Create</button>
+                                        <div class="btn-group ml-4">
+                                            <input class="form-control mr-sm-2" type="text" t-ref="invoice_textarea" placeholder="Search" id="search-input-invoice"
+                                                aria-label="Search"/>
+                                            <span id="invoice_searchclear" t-on-click="clear_invoice_search" class="searchclear">
+                                                <i class='fa fa-times'/>
+                                            </span>
+                                        </div>
+                                        <button class="btn btn-outline-primary my-2 my-sm-0" type="button" t-on-click="search_invoices" id="invoice-search-button">Search</button>
+                                        <span class="o_pager_counter mr-2" style="margin-left: 8pc;">
+                                            <span class="o_pager_value" id="o_invoice_pager_value">1-20</span>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" id="o_invoice_pager_limit"><t t-esc="invoices.length"/></span>
+                                        </span>
+                                        <span aria-atomic="true" class="btn-group">
+                                            <button type="button" id="invoice_previous_button" disabled="true" accesskey="p" aria-label="Previous page" title="Previous page" tabindex="-1" class="fa fa-chevron-left btn btn-secondary o_pager_previous rounded-left"></button>
+                                            <button type="button" id="invoice_next_button" accesskey="n" aria-label="Next page" title="Next page" tabindex="-1" class="fa fa-chevron-right btn btn-secondary o_pager_next rounded-right"></button>
+                                        </span>
+                                        <div class="o_list_view o_sale_order o_list_optional_columns">
+                                            <div class="table-responsive">
+                                                <table class="o_list_table table table-sm table-hover table-striped o_list_table_ungrouped invoice-container" style="table-layout: fixed;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="o_list_record_selector" style="width: 40px;">
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox" id="checkbox-15" class="custom-control-input"/>
+                                                                    <label for="checkbox-15" class="custom-control-label">​</label>
+                                                                </div>
+                                                            </th>
+                                                            <th data-name="name" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 125px;">
+                                                                Number
+                                                                <span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="invoice_date" class="o_date_cell o_column_sortable" tabindex="-1" data-original-title="" title="" style="min-width: 92px; width: 119px;">
+                                                                Invoice Date
+                                                                <span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="partner_id" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 90px;">
+                                                                Customer<span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="invoice_payment_term_id" class="o_many2one_avatar_user_cell o_column_sortable" tabindex="-1" data-original-title="" title="" style="width: 120px;">
+                                                                Due Date<span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="amount_total_in_currency_signed" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 80px;">
+                                                                Total<span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="state" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 95px;">
+                                                                Status<span class="o_resize"></span>
+                                                            </th>
+                                                            <!-- <th data-name="activity_ids" class="o_list_activity_cell" tabindex="-1" data-original-title="" title="" style="width: 316px;">
+                                                                Next Activity<span class="o_resize"></span>
+                                                            </th> -->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="ui-sortable" t-ref="invoice_records" id="invoicebody">
+                                                        <t t-if="invoices.length > 0">
+                                                            <t t-foreach="invoices" t-as="invoice" t-key="invoice.id">
+                                                                <tr class="o_data_row invoice_record text-info" t-on-click="edit_invoice" style="cursor: pointer;" t-attf-id="account_move_{{invoice.id}}" draggable="true" ondragstart="dragStartpurchase(event)">
+                                                                    <td class="o_list_record_selector">
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox" t-attf-id="checkbox-{{invoice.id}}" class="custom-control-input"/>
+                                                                            <label t-attf-for="checkbox-{{invoice.id}}" class="custom-control-label">​</label>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_list_char o_readonly_modifier o_required_modifier font-weight-bold" tabindex="-1" t-attf-title="{{invoice.name}}" name="name">
+                                                                        <t t-esc="invoice.name"/>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_date_cell o_readonly_modifier" tabindex="-1">
+                                                                        <span class="o_field_date o_field_widget o_quick_editable o_readonly_modifier" name="invoice_date"><t t-esc="invoice.invoice_date"/></span>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_list_many2one o_readonly_modifier o_required_modifier" tabindex="-1" t-attf-title="{{invoice.partner_id[1]}}" name="partner_id">
+                                                                        <t t-esc="invoice.partner_id[1]"/>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_date_cell o_readonly_modifier" tabindex="-1">
+                                                                        <span class="o_field_date o_field_widget o_quick_editable o_readonly_modifier" name="invoice_date_due"><t t-esc="invoice.invoice_date_due"/></span>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_list_number o_monetary_cell o_readonly_modifier" tabindex="-1">
+                                                                        <span class="o_field_monetary o_field_number o_field_widget o_quick_editable text-bf o_readonly_modifier" name="amount_total">
+                                                                            <t t-esc="invoice.amount_total"/><t t-esc="invoice.currency_symbol"/>
+                                                                        </span>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_badge_cell o_readonly_modifier" tabindex="-1">
+                                                                        <span class="badge badge-pill o_field_badge o_field_widget o_readonly_modifier bg-success-light" name="state"><t t-esc="invoice.state"/></span>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_badge_cell o_readonly_modifier" tabindex="-1">
+                                                                        <div aria-label="Preview" tabindex="0" data-mimetype="application/pdf" class="o_AttachmentCard_image o-attachment-viewable" 
+                                                                        draggable="true" ondragstart="dragStartPDF(event)" style="background-image: url(/web/static/img/mimetypes/pdf.svg); max-height: 19px; max-width: 14px; margin: 0px;">
+                                                                            <a t-attf-href="/report/pdf/account.report_invoice/{{invoice.id}}"></a>
+                                                                        </div>
+                                                                        <button class="btn btn-primary my-2 mr-4 mt-2 fa fa-paper-plane-o" t-on-click="send_invoice_report" type="button" id="send_invoice_report" t-attf-name="{{invoice.name}}" t-attf-index="{{invoice.id}}"></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </t>
+                                                        </t>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav_tabs_content_1661215776203_40" role="tabpanel" aria-labelledby="nav_tabs_link_1661215776203_40">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block" style="background-image: none;" data-name="Text">
+                                    <div class="s_allow_columns">
+                                        <button class="btn btn-primary my-2 mr-4 mt-2" style="margin-right: 5px;" type="button" t-on-click="create_sale" id="create_sale">Create</button>
+                                        <div class="btn-group ml-4">
+                                            <input class="form-control mr-sm-2" type="text" t-ref="sale_textarea" placeholder="Search" id="search-input-sale"
+                                                aria-label="Search"/>
+                                            <span id="sale_searchclear" t-on-click="clear_sale_search" class="searchclear">
+                                                <i class='fa fa-times'/>
+                                            </span>
+                                        </div>
+                                        <button class="btn btn-outline-primary my-2 my-sm-0" type="button" t-on-click="search_sales" id="sale-search-button">Search</button>
+                                        <span class="o_pager_counter mr-2" style="margin-left: 6pc;">
+                                            <span class="o_pager_value" id="o_sale_pager_value">1-20</span>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" id="o_sale_pager_limit">--</span>
+                                        </span>
+                                        <span aria-atomic="true" class="btn-group">
+                                            <button type="button" id="sale_previous_button" disabled="true" accesskey="p" aria-label="Previous page" title="Previous page" tabindex="-1" class="fa fa-chevron-left btn btn-secondary o_pager_previous rounded-left"></button>
+                                            <button type="button" id="sale_next_button" accesskey="n" aria-label="Next page" title="Next page" tabindex="-1" class="fa fa-chevron-right btn btn-secondary o_pager_next rounded-right"></button>
+                                        </span>
+                                        <div class="o_list_renderer o_renderer table-responsive o_sale_order o_list_optional_columns">
+                                            <div class="table-responsive">
+                                                <table class="o_list_table table table-sm table-hover table-striped o_list_table_ungrouped sale-container" style="table-layout: fixed;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="o_list_record_selector" style="width: 40px;">
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox" id="checkbox-15" class="custom-control-input"/>
+                                                                    <label for="checkbox-15" class="custom-control-label">​</label>
+                                                                </div>
+                                                            </th>
+                                                            <th data-name="name" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 93px;">
+                                                                Number
+                                                                <span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="create_date" class="o_date_cell o_column_sortable" tabindex="-1" data-original-title="" title="" style="min-width: 92px; width: 119px;">
+                                                                Creation Date
+                                                                <span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="partner_id" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 90px;">
+                                                                Customer<span class="o_resize"></span>
+                                                            </th>
+                                                            <!-- <th data-name="user_id" class="o_many2one_avatar_user_cell o_column_sortable" tabindex="-1" data-original-title="" title="" style="width: 120px;">
+                                                                Salesperson<span class="o_resize"></span>
+                                                            </th> -->
+                                                            <th data-name="amount_total" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 80px;">
+                                                                Total<span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="state" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 70px;">
+                                                                Status<span class="o_resize"></span>
+                                                            </th>
+                                                            <th data-name="state" tabindex="-1" class="o_column_sortable" data-original-title="" title="" style="width: 60px;">
+                                                                Report<span class="o_resize"></span>
+                                                            </th>
+                                                            
+                                                            <!-- <th data-name="activity_ids" class="o_list_activity_cell" tabindex="-1" data-original-title="" title="" style="width: 316px;">
+                                                                Next Activity<span class="o_resize"></span>
+                                                            </th> -->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="ui-sortable" t-ref="sale_records" id="salesbody">
+                                                        <t t-if="sales.length > 0">
+                                                            <t t-foreach="sales" t-as="sale" t-key="sale.id">
+                                                                <tr class="o_data_row sale_record" t-on-click="edit_sale" t-attf-id="sale_order_{{sale.id}}" draggable="true" ondragstart="dragStartSale(event)">
+                                                                    <td class="o_list_record_selector">
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox" t-attf-id="checkbox-sale-{{sale.id}}" class="custom-control-input"/>
+                                                                            <label t-attf-for="checkbox-sale-{{sale.id}}" class="custom-control-label">​</label>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_list_char o_readonly_modifier o_required_modifier font-weight-bold" tabindex="-1" t-attf-title="{{sale.name}}" name="name">
+                                                                        <t t-esc="sale.name"/>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_date_cell o_readonly_modifier" tabindex="-1">
+                                                                        <span class="o_field_date o_field_widget o_quick_editable o_readonly_modifier" name="create_date"><t t-esc="sale.create_date"/></span>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_list_many2one o_readonly_modifier o_required_modifier" tabindex="-1" t-attf-title="{{sale.partner_id[1]}}" name="partner_id">
+                                                                        <t t-esc="sale.partner_id[1]"/>
+                                                                    </td>
+                                                                    <!-- <td class="o_data_cell o_field_cell o_list_many2one o_many2one_avatar_user_cell" tabindex="-1">
+                                                                        <div class="o_clickable_m2x_avatar o_field_many2one_avatar o_field_widget o_quick_editable" name="user_id">
+                                                                            <div class="o_m2o_avatar">
+                                                                                <img t-attf-src="/web/image/res.users/{{sale.user_id[0]}}/avatar_128" t-attf-alt="{{sale.user_id[1]}}"/>
+                                                                                <span><t t-esc="sale.user_id[1]"/></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td> -->
+                                                                    <td class="o_data_cell o_field_cell o_list_number o_monetary_cell o_readonly_modifier" tabindex="-1">
+                                                                        <span class="o_field_monetary o_field_number o_field_widget o_quick_editable text-bf o_readonly_modifier" name="amount_total">
+                                                                        <t t-esc="sale.amount_total"/><t t-esc="sale.currency_symbol"/>
+                                                                        </span>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_badge_cell o_readonly_modifier" tabindex="-1">
+                                                                        <span class="badge badge-pill o_field_badge o_field_widget o_readonly_modifier bg-success-light" name="state"><t t-esc="sale.state"/></span>
+                                                                    </td>
+                                                                    <td class="o_data_cell o_field_cell o_badge_cell o_readonly_modifier" tabindex="-1">
+                                                                        <div aria-label="Preview" tabindex="0" data-mimetype="application/pdf" class="o_AttachmentCard_image o-attachment-viewable" 
+                                                                        draggable="true" ondragstart="dragStartPDF(event)" style="background-image: url(/web/static/img/mimetypes/pdf.svg); max-height: 19px; max-width: 14px; margin: 0px;">
+                                                                            <a t-attf-href="/report/pdf/sale.report_saleorder/{{sale.id}}"></a>
+                                                                        </div>
+                                                                        <button class="btn btn-primary my-2 mr-4 mt-2 fa fa-paper-plane-o" type="button" id="send_report" t-on-click="send_sale_report" t-attf-name="{{sale.name}}" t-attf-index="{{sale.id}}"></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </t>
+                                                        </t>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- <SalesViews /> -->
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav_tabs_content_1661215776203_39" role="tabpanel" aria-labelledby="nav_tabs_link_1661215776203_39">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block" style="background-image: none;" data-name="Text">
+                                    <div class="s_allow_columns contact-container">
+                                        <button class="btn btn-primary my-2 mr-4 mt-2" style="margin-right: 5px;" type="button" t-on-click="create_contact" id="create_contacts">Create</button>
+                                        <div class="btn-group ml-4">
+                                            <input class="form-control mr-sm-2" type="text" t-ref="contact_textarea" placeholder="Search" id="search-input-contact"
+                                                aria-label="Search"/>
+                                            <span id="contact_searchclear" t-on-click="clear_contact_search" class="searchclear">
+                                                <i class='fa fa-times'/>
+                                            </span>
+                                        </div>
+                                        <button class="btn btn-outline-primary my-2 my-sm-0" type="button" t-on-click="search_contacts" id="contact-search-button">Search</button>
+                                        <span class="o_pager_counter mr-2" style="margin-left: 8pc;">
+                                            <span class="o_pager_value" id="o_contact_pager_value">1-20</span>
+                                            <span> / </span>
+                                            <span class="o_pager_limit" id="o_contact_pager_limit"><t t-esc="contacts.length"/></span>
+                                        </span>
+                                        <span aria-atomic="true" class="btn-group">
+                                            <button type="button" id="contact_previous_button" disabled="true" accesskey="p" aria-label="Previous page" title="Previous page" tabindex="-1" class="fa fa-chevron-left btn btn-secondary o_pager_previous rounded-left"></button>
+                                            <button type="button" id="contact_next_button" accesskey="n" aria-label="Next page" title="Next page" tabindex="-1" class="fa fa-chevron-right btn btn-secondary o_pager_next rounded-right"></button>
+                                        </span>
+                                        <div id="contactstack" t-ref="contact_records" class="o_kanban_renderer o_renderer o_kanban_ungrouped o_res_partner_kanban" style="display: contents;">
+                                            <t t-if="contacts.length > 0">
+                                                <t t-foreach="contacts" t-as="contact" t-key="contact.id">
+                                                    <div t-attf-id="article_{{contact.id}}" role="article" class="o_kanban_record flex-grow-1 flex-md-shrink-1 flex-shrink-0" tabindex="0" style="max-width: 265px; min-width: 260px; min-height: 138px; max-height: 140px; margin-left: auto; display: inline-block;">
+                                                        <div t-attf-id="res_partner_{{contact.id}}" t-on-click="edit_contact" class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban contact_record" style="max-width: 265px; min-width: 260px; min-height: 138px; max-height: 140px;">
+                                                            <t t-if="!contact.is_company">
+                                                                <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('/web/image/res.partner/{{contact.id}}/avatar_128')" draggable="true" ondragstart="dragStartImg(event)">
+                                                                    <img class="o_kanban_image_inner_pic" t-attf-alt="{{contact.parent_id}}" t-attf-src="/web/image/res.partner/{{contact.id}}/avatar_128" draggable="true" ondragstart="dragStartImg(event)"/>
+                                                                </div>
+                                                                <div class="o_kanban_image d-md-none">
+                                                                    <img class="o_kanban_image_inner_pic" t-if="contact.parent_id" t-attf-alt="{{contact.parent_id}}" t-attf-src="/web/image/res.partner/{{contact.id}}/avatar_128" draggable="true" ondragstart="dragStartImg(event)"/>
+                                                                </div>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <img class="o_kanban_image_fill_left o_kanban_image_full" style="max-height: 130px; min-height: 125px; max-width: 100px;" t-attf-src="/web/image/res.partner/{{contact.id}}/avatar_128" role="img" draggable="true" ondragstart="dragStartImg(event)"/>
+                                                            </t>
+                                                            <div class="oe_kanban_details d-flex flex-column" draggable="true" ondragstart="dragStart(event)">
+                                                                <strong class="o_kanban_record_title oe_partner_heading">
+                                                                    <t t-esc="contact.display_name"/>
+                                                                </strong>
+                                                                <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                                                <ul>
+                                                                    <li t-if="contact.parent_id"><t t-esc="contact.parent_name"/></li>
+                                                                    <li t-if="!contact.parent_id and contact.function"><t t-esc="contact.function"/></li>
+                                                                    <li t-if="contact.parent_id and contact.function"><t t-esc="contact.function"/> at <t t-esc="contact.parent_name"/></li>
+                                                                    <li t-if="contact.city and contact.country_id"><t t-esc="contact.city"/>, <t t-esc="contact.country_id[1]"/></li>
+                                                                    <li t-if="!contact.city and contact.country_id"><t t-esc="contact.country_id[1]"/></li>
+                                                                    <li t-if="contact.email" class="o_text_overflow"><t t-esc="contact.email"/></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </t>
+                                        </div>
+                                        <!-- <ContactViews /> -->
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav_tabs_content_1661215776203_38" role="tabpanel" aria-labelledby="nav_tabs_link_1661215776203_38">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block" style="background-image: none;" data-name="Text">                       
+                                    <div class="grid-stack" t-ref="reportGrid" id="grid-stack">
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav_tabs_content_1661215776203_37" role="tabpanel" aria-labelledby="nav_tabs_link_1661215776203_37">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block" style="background-image: none;" data-name="Text">                       
+                                    <div class="answerstack" id="answerstack">
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <p>products</p> -->
+            <!-- </div> -->
+        </div>
+    </t>
+</templates>

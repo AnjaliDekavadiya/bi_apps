@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="create_helpdesk_support_wizard_form_view">
+            <field name="model">create.helpdesk.support.wizard</field>
+            <field name="name">create.helpdesk.support.wizard</field>
+                <field name="arch" type="xml">
+                    <form string="Create Helpdesk Ticket">
+                        <!-- <span class="o_form_label">This wizard will create helpdesk ticket for this lead/opportunity.</span> -->
+                        <p><b>This wizard will create helpdesk ticket for this lead/opportunity.</b></p>
+                        <group>
+                            <group>
+                                <field name="team_id"/>
+                                <field name="category"/>
+                                <field name="subject_type_id"/>
+                                <field name="project_id" />
+                            </group>
+                            <group>
+                                <field name="user_id"/>
+                                <field name="priority"/>
+                                <field name="type_ticket_id"/>
+                                <field name="department_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="description" string="Description">
+                            <field name="custom_description" placeholder="Add an internal note..." />
+                            </page>
+                        </notebook>
+                        <footer>
+                            <button name="create_helpdesk_ticket" string="Create and View Ticket" type="object"
+                            context="{'open_ticket': True}" class="btn-primary"/>
+                            <button name="create_helpdesk_ticket" type="object" string="Create" class="btn-primary"/>
+                            or
+                            <button string="_Cancel" class="btn-default" special="cancel" />
+                        </footer>
+                    </form>
+                </field>
+        </record>
+
+<!--odoo13        <act_window id="action_create_helpdesk_support_wizard"-->
+<!--                    name="Create Support Ticket"-->
+<!--                    res_model="create.helpdesk.support.wizard"-->
+<!--                    view_mode="form"-->
+<!--                    target="new"-->
+<!--                    key2="client_action_multi"/>-->
+                    
+        <record id="action_create_helpdesk_support_wizard" model="ir.actions.act_window">
+            <field name="name">Create Support Ticket</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">create.helpdesk.support.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="create_helpdesk_support_wizard_form_view"/>
+            <field name="target">new</field>
+        </record>
+        
+    </data>
+</odoo>

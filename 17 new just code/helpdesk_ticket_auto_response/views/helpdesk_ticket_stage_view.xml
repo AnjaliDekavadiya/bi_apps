@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+    
+        <record model="ir.ui.view" id="helpdesk_team_stage_response_form">
+            <field name="name">Helpdesk Stage Auto Response form</field>
+            <field name="model">helpdesk.stage.config</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_team_stage_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group" position="after">
+                    <group name="auto_response_group" string="Auto Response">
+                        <field name="is_auto_response"/>
+                        <field name="custom_tempalte_id" 
+                        invisible="not is_auto_response" required="is_auto_response" domain="[('model', '=', 'helpdesk.support')]"/>
+                        <!-- <field name="custom_tempalte_id" 
+                        attrs="{'invisible':[('is_auto_response','=',False)], 'required':[('is_auto_response','=',True)]}" 
+                        domain="[('model', '=', 'helpdesk.support')]"/> -->
+                        <!-- <field name="to_customer" attrs="{'invisible':[('is_auto_response','=',False)]}"/> -->
+                        <!-- <field name="document_follower" attrs="{'invisible':[('is_auto_response','=',False)]}"/> -->
+                        <!-- <field name="internal_users" attrs="{'invisible':[('is_auto_response','=',False)]}"/> -->
+                        <!-- <field name="internal_user_ids" widget="many2many_tags" 
+                        attrs="{'invisible':['|',('internal_users', '=', False),('is_auto_response', '=', False)], 'required':[('is_auto_response', '!=', False),('internal_users', '=', True)]}"/> -->
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extending the form view ('view_partner_form') for the 'res.partner' model:-->
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">
+            res.partner.view.form.inherit.customer.followup.community
+        </field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                <page string="Follow Ups">
+                    <div invisible="invoice_ids"
+                         class="alert alert-warning o_account_reports_followup-no-action"
+                         id='no-action' role="alert">
+                        <p>
+                            <strong>
+                                <field name="name"/>
+                            </strong>
+                            has no due amount.
+                        </p>
+                    </div>
+                    <div invisible="not invoice_ids">
+                        <div class="oe_inline" style="height:auto">
+                            <div style="width: auto; float: right;height:75px">
+                                <group>
+                                    <button style="margin-right: 5px;width:60px;"
+                                            string="SEND MAIL" name="action_send_invoice_mail"
+                                            class="btn-primary btn-sm"
+                                            type="object">
+                                    </button>
+                                    <button style=" margin-right: 5px;"
+                                            name="action_print_followup_letter"
+                                            class="btn-primary btn-sm"
+                                            string="PRINT LETTER"
+                                            type="object">
+                                    </button>
+                                </group>
+                            </div>
+                            <div style="width: 35%;">
+                                <group>
+                                    <field name="customer_followup_done_ids"
+                                           readonly="0"
+                                           invisible="customer_followup_done_ids == False"/>
+                                </group>
+                            </div>
+                            <div invisible="customer_followup_to_do_ids == False">
+                                <p>Next Action:
+                                    <field name="customer_followup_to_do_ids"
+                                           nolabel="1"/>on:
+                                    <field name="next_followup_action_date"
+                                           nolabel="1"/>
+                                </p>
+                            </div>
+                        </div>
+                        <field name="invoice_ids" context="{
+                            'tree_view_ref': 'account.invoice_tree_with_onboarding',
+                            'form_view_ref': 'account.invoice_form'
+                            }" mode="tree,form"/>
+                    </div>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

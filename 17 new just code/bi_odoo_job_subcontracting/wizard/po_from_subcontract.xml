@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<record id="view_po_from_subcontract" model="ir.ui.view">
+			<field name="name">Purchase Order Subcontractor</field>
+			<field name="model">subcontract.purchase.order</field>
+			<field name="arch" type="xml">
+				<form string="Subcontractor Purchase Order">
+					<group string='Create Purchase Order for Subcontractor'/>
+					<group>
+						<group>
+							<field name="user_id"/>
+							
+						</group>
+					</group>
+					<footer>
+		                <button name="create_po_from_subc" string="Create" type="object" class="btn-primary"/>
+		                <button string="Cancel" class="btn-default" special="cancel"/>
+		            </footer>
+				</form>
+			</field>
+		</record>
+		
+		<record id="action_view_po_subcontracting" model="ir.actions.act_window">
+            <field name="name">Subcontractor Purchase Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">subcontract.purchase.order</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        
+    </data>
+</odoo>

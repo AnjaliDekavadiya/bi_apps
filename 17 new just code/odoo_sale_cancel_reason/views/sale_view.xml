@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form_inherit_cancel_reason_custom" model="ir.ui.view">
+        <field name="name">sale.order.form.view.inherit.socancel.custom</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//page[@name='other_information']" position="inside">
+                 <group string="Cancel Details" >
+                     <field name="so_cancel_reason_custom_id" />
+                     <field name="sale_cancel_custom_reason" />
+                     <field name="so_cancel_by_custom_id" />
+                     <field name="so_cancel_custom_date" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="bulk_sale_order_confirm_form_view" model="ir.ui.view">
+            <field name="name">Bulk Sale Orders Confirm form</field>
+            <field name="model">bulk.sale.order.confirm</field>
+            <field name="arch" type="xml">
+                <form string="Bulk Sale Orders Confirm">
+                    <div class="app_settings_block" data-string="General Settings" string="General Settings" data-key="general_settings">
+                            <div class="row o_settings_container">
+                                <!-- Boolean Field -->
+                                <div class="col-12 col-lg-6 o_setting_box" >
+                                    <div class="o_setting_left_pane">
+                                        <field name="is_confirm_sale"/>
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label string="Are you sure you want to confirm selected sale orders?" for="is_confirm_sale"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <footer>
+                        <button name="confirm_sale_order" class="btn-primary" string="Confirm Now" type="object"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_bulk_sale_order_confirm" model="ir.actions.act_window">
+            <field name="name">Bulk Sale Orders Confirm</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bulk.sale.order.confirm</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="sale.model_sale_order" />
+        </record>
+    </data>
+</odoo>

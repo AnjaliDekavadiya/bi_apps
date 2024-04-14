@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--Email template -->
+        <record id="email_template_transmittal_submittal_doc" model="mail.template">
+            <field name="name">Documents - Send by Email</field>
+            <!-- <field name="email_from">${(object.user_id.email and '&quot;%s&quot; &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field> -->
+            <field name="email_from">{{(object.user_id.email and '&quot;%s&quot; &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '') }}</field>
+
+            <!-- <field name="subject">${object.number} - ${object.name}</field> -->
+            <field name="subject">{{object.number}} - {{object.name}}</field>
+            <!-- <field name="partner_to">${object.sender_company_id.id}</field> -->
+            <field name="partner_to">{{object.sender_company_id.id}}</field>
+            <field name="model_id" ref="transmittals_communication_document.model_transmittal_document"/>
+            <field name="auto_delete" eval="True"/>
+            <!-- <field name="report_template" ref="action_report_transmittal_doc"/> -->
+            <field name="report_template_ids" eval="[(4, ref('transmittals_communication_document.action_report_transmittal_doc'))]"/>
+            <!-- <field name="lang">${object.sender_company_id.lang}</field> -->
+            <field name="lang">{{object.sender_company_id.lang}}</field>
+            <field name="body_html"><![CDATA[
+              <p>Dear <t t-out="object.receiver_company_id.name"/>, <br/>
+             
+            <p>We have sent you the listed documents in this email.</p>
+            <p>You can reply to this email if you have any questions.</p>
+            <p>Thank you,</p>
+            
+            <tr>
+        <td align="center" style="min-width: 590px; padding: 0 8px 0 8px; font-size:11px;">
+            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;"/>
+            <b><t t-out="object.company_id.name" /></b><br/>
+            <div style="color: #999999;">
+                <t t-out="object.company_id.phone" />
+                <t t-if="object.company_id.email">
+                |
+                    <a t-att-href="'mailto:%s' % object.company_id.email" style="text-decoration:none; color: #999999;">
+                        <t t-out="object.company_id.email" />
+                    </a>
+                </t>
+                <t t-if="object.company_id.website">
+                |
+                    <a href="'%s' % object.company_id.website" style="text-decoration:none; color: #999999;">
+                        <t t-out="object.company_id.website" />
+                    </a>
+                </t>
+            </div>
+        </td>
+    </tr>
+</tbody>
+</table>
+</td></tr>
+<!-- POWERED BY -->
+<tr><td align="center" style="min-width: 590px;">
+        Powered by <a target="_blank" href="https://www.odoo.com?utm_source=db&amp;utm_medium=email" style="color: #875A7B;">Odoo</a>
+</td></tr>
+            ]]>
+            </field>
+        </record>
+
+    </data>
+</odoo>

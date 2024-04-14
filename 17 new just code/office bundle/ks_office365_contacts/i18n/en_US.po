@@ -1,0 +1,296 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ks_office365_contacts
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-19 13:04+0000\n"
+"PO-Revision-Date: 2021-03-19 13:04+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ks_office365_contacts
+#: model_terms:ir.ui.view,arch_db:ks_office365_contacts.ks_office365_contacts_view_users_form
+msgid ""
+"<span style=\"font-size: 14px; font-weight: bold;\">Sync contacts from last "
+"(in days)</span>"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model_terms:ir.ui.view,arch_db:ks_office365_contacts.ks_office365_contacts_view_users_form
+msgid ""
+"<span style=\"font-size: 14px; font-weight: bold;\">Sync using field</span>"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_partner__type
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__type
+msgid "Address Type"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields.selection,name:ks_office365_contacts.selection__res_partner__type__business
+msgid "Business Address"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model,name:ks_office365_contacts.model_res_partner
+#: model_terms:ir.ui.view,arch_db:ks_office365_contacts.ks_office365_contact_filter
+msgid "Contact"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_contact_filter_domain
+msgid "Contact Filter Domain"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#, python-format
+msgid "Contact deleted from Odoo Contacts"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#, python-format
+msgid "Contact deleted from outlook Contacts"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#, python-format
+msgid ""
+"Contact not deleted from outlook Contacts \n"
+"Reason: %s"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#, python-format
+msgid "Contact without name cannot be created"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model_terms:ir.ui.view,arch_db:ks_office365_contacts.office365_settings_contact_scope
+msgid "Contacts"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model,name:ks_office365_contacts.model_res_country
+msgid "Country"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_country__code
+msgid "Country Code"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#, python-format
+msgid "Days can only be in numbers less than 999 and greater than or equal 0."
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_country__display_name
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_partner__display_name
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: ks_office365_contacts
+#. openerp-web
+#: code:addons/ks_office365_contacts/static/src/js/ks_contact_message.js:0
+#, python-format
+msgid "Error"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_export_office365_contact
+msgid "Export Contact"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#, python-format
+msgid "Generate Authentication Token"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_country__id
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_partner__id
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__id
+msgid "ID"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_import_office365_contact
+msgid "Import Contact"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,help:ks_office365_contacts.field_res_partner__type
+#: model:ir.model.fields,help:ks_office365_contacts.field_res_users__type
+msgid ""
+"Invoice & Delivery addresses are used in sales orders. Private addresses are"
+" only visible by authorized users."
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_is_manager_contacts
+msgid "Is Manager"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_contact_sync_using_days
+msgid "Ks Contact Sync Using Days"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_country____last_update
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_partner____last_update
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_sync_using_mobile
+msgid "Mobile:"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_sync_using_name
+msgid "Name:"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model_terms:ir.ui.view,arch_db:ks_office365_contacts.ks_office365_contacts_view_users_form
+msgid "Office 365 Contacts"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_partner__ks_office_contact_id
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_office_contact_id
+msgid "Office Contact Id"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#, python-format
+msgid "Please select one of the field to sync contacts."
+msgstr ""
+
+#. module: ks_office365_contacts
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#, python-format
+msgid "Process Is Already Running."
+msgstr ""
+
+#. module: ks_office365_contacts
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#, python-format
+msgid ""
+"Record not be deleted from ODOO Contacts \n"
+"Reason: %s"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.actions.server,name:ks_office365_contacts.ir_cron_sync_export_contact_ir_actions_server
+#: model:ir.cron,cron_name:ks_office365_contacts.ir_cron_sync_export_contact
+#: model:ir.cron,name:ks_office365_contacts.ir_cron_sync_export_contact
+msgid "Run Office 365 Contact Export Cron"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.actions.server,name:ks_office365_contacts.ir_cron_sync_import_contact_ir_actions_server
+#: model:ir.cron,cron_name:ks_office365_contacts.ir_cron_sync_import_contact
+#: model:ir.cron,name:ks_office365_contacts.ir_cron_sync_import_contact
+msgid "Run Office 365 Contact Import Cron"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_sync_using_email
+msgid "Sender's Email:"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#: code:addons/ks_office365_contacts/models/ks_contacts.py:0
+#, python-format
+msgid ""
+"Some error occurred! \n"
+"Please check logs for more information."
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model_terms:ir.ui.view,arch_db:ks_office365_contacts.ks_office365_contacts_view_users_form
+msgid "Sync Odoo Contacts to Office 365"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model_terms:ir.ui.view,arch_db:ks_office365_contacts.ks_office365_contacts_view_users_form
+msgid "Sync Office 365 Contacts to Odoo"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_contact_sync_days_before
+msgid "Sync contacts from last"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_sync_deleted_contact
+msgid "Sync deleted contact"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,help:ks_office365_contacts.field_res_country__code
+msgid ""
+"The ISO country code in two chars. \n"
+"You can use this field for quick search."
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,help:ks_office365_contacts.field_res_users__ks_contact_filter_domain
+msgid ""
+"This filter domain is only applicable while syncing from Odoo to office 365."
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,help:ks_office365_contacts.field_res_users__ks_contact_sync_days_before
+msgid ""
+"This will allow you to sync only those contacts that are created or updated "
+"in the given days. Here 0 days means Today."
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_partner__ks_user_id
+#: model:ir.model.fields,field_description:ks_office365_contacts.field_res_users__ks_user_id
+msgid "User Id"
+msgstr ""
+
+#. module: ks_office365_contacts
+#: model:ir.model,name:ks_office365_contacts.model_res_users
+msgid "Users"
+msgstr ""
+
+#. module: ks_office365_contacts
+#. openerp-web
+#: code:addons/ks_office365_contacts/static/src/js/ks_contact_message.js:0
+#, python-format
+msgid "Warning"
+msgstr ""

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="mass_confirm_picking_view" model="ir.ui.view">
+            <field name="name">mass.confirm.picking</field>
+            <field name="model">mass.confirm.picking</field>
+            <field name="arch" type="xml">
+                <form string="Mass Validate Picking">
+                    <div class="col-12">
+                        <field name="message" />
+                    </div>
+                    <group>
+                    	<group>
+                    		<field name="picking_validate_process"/>
+                    		<field name="backorder" invisible="picking_validate_process != 'partial'"/>
+                    	</group>
+                    </group>
+                    <footer>
+                        <button name="action_confirm_picking" string="Confirm" type="object" class="btn-primary" />
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="mass_confirm_picking_action" model="ir.actions.act_window">
+            <field name="name">Mass Validate Picking</field>
+            <field name="res_model">mass.confirm.picking</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mass_confirm_picking_view" />
+            <field name="target">new</field>
+        </record>
+        
+        <record id="mass_confirm_picking_multi_action" model="ir.actions.act_window">
+            <field name="name">Mass Validate Picking</field>
+            <field name="res_model">mass.confirm.picking</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="stock.model_stock_picking" />
+            <field name="binding_view_types">list</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

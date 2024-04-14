@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <record id="view_dx_saas_modules_tree" model="ir.ui.view">
+            <field name="name">view.dx.saas.modules.tree</field>
+            <field name="model">dx.saas.modules</field>
+            <field name="arch" type="xml">
+                <tree string="Module" default_order="technical_name desc">
+                    <field name="technical_name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_dx_saas_modules_form" model="ir.ui.view">
+            <field name="name">view.dx.saas.modules.form</field>
+            <field name="model">dx.saas.modules</field>
+            <field name="arch" type="xml">
+                <form string="Module">
+                    <sheet>
+                        <group>
+                            <field name="technical_name" placeholder="Type all for allowing all  modules" />
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="action_dx_saas_modules" model="ir.actions.act_window">
+            <field name="name">Module</field>
+            <field name="res_model">dx.saas.modules</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

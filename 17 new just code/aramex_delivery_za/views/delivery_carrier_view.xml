@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_carrier_form" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.view</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='destination']" position='before'>
+                <page string="Configuration" name="aramex_configurations"
+                      invisible="delivery_type != 'aramex_ts'">
+                    <group>
+                        <group>
+                            <field name="am_service_group" required="delivery_type == 'aramex_ts'"/>
+                            <field name="am_dom_service_type" required="delivery_type == 'aramex_ts' and am_service_group == 'DOM'" invisible="am_service_group != 'DOM'"/>
+                            <field name="am_intl_service_type" required="delivery_type == 'aramex_ts' and am_service_group == 'EXP'" invisible="am_service_group != 'EXP'"/>
+                            <field name="am_payment_type" required="delivery_type == 'aramex_ts'"/>
+                        </group>
+                        <group>
+                            <field name="am_require_insurance"/>
+                            <field name="am_waybill_template" required="delivery_type == 'aramex_ts'"/>
+                            <field name="am_product_packaging_id" domain="[('package_carrier_type', '=', 'aramex_ts')]" context="{'default_package_carrier_type' : 'aramex_ts'}"
+                                   invisible="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

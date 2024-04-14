@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- followup of job costing views -->
+
+
+		<record id="job_costing_extend_form" model="ir.ui.view">
+			<field name="name">job.costing.extend.form</field>
+			<field name="model">job.cost.sheet</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.job_cost_sheet_form_view" />
+			<field name="arch" type="xml">
+				<field name="job_order_id" position="after">
+					<field name="billable_method"/>
+				</field>
+				<xpath expr="//field[@name='material_job_cost_line_ids']/tree/field[@name='actual_purchase_qty']" position="after">
+                    <field name="actual_vendor_bill_qty"/>
+               </xpath>
+	
+				<xpath expr="//field[@name='overhead_job_cost_line_ids']/tree/field[@name='actual_purchase_qty']" position="after">
+					<field name="actual_vendor_bill_qty"/>
+				</xpath>
+				<div name="button_box" position="inside">
+					<button class="oe_stat_button" name="action_view_invoice_1"
+								type="object" icon="fa-bars" invisible="stage in ['draft','confirm'] or invoice_count == 0">
+						<field name="invoice_count" widget="statinfo" string="Invoices" />
+					</button>
+				</div>
+			</field>
+		</record>
+		
+		<record id="account_invoice_extend_process_form" model="ir.ui.view">
+			<field name="name">account.invoice.extend.process.form</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form" />
+			<field name="arch" type="xml">
+				<field name="invoice_date_due" position="before">
+					<field name="job_cost_id" invisible="1"/>
+				</field>
+			</field>
+		</record>
+	</data>
+</odoo>

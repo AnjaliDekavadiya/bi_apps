@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record forcecreate="True" id="account_move_qbo_state_property" model="ir.property">
+            <field name="name">qbo_state</field>
+            <field name="type">selection</field>
+            <field name="fields_id" search="[('model','=','account.move'),('name','=','qbo_state')]"/>
+            <field name="value">todo</field>
+        </record>
+
+        <record forcecreate="True" id="res_partner_qbo_state_property" model="ir.property">
+            <field name="name">qbo_state</field>
+            <field name="type">selection</field>
+            <field name="fields_id" search="[('model','=','res.partner'),('name','=','qbo_state')]"/>
+            <field name="value">todo</field>
+        </record>
+
+        <record forcecreate="True" id="product_product_qbo_state_property" model="ir.property">
+            <field name="name">qbo_state</field>
+            <field name="type">selection</field>
+            <field name="fields_id" search="[('model','=','product.product'),('name','=','qbo_state')]"/>
+            <field name="value">todo</field>
+        </record>
+
+    </data>
+</odoo>
+
+

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+
+    <!-- Type Categories -->
+    <record id="amazon_report_type_categ_fba" model="amazon.report.type.category">
+        <field name="name">Fulfillment by Amazon (FBA) reports</field>
+    </record>
+    <record id="amazon_report_type_categ_fba_sales" model="amazon.report.type.category">
+        <field name="name">FBA Sales Reports</field>
+        <field name="parent_id" ref="amazon_connector_fba.amazon_report_type_categ_fba" />
+    </record>
+    <record id="amazon_report_type_categ_fba_concessions" model="amazon.report.type.category">
+        <field name="name">FBA Concessions Reports</field>
+        <field name="parent_id" ref="amazon_connector_fba.amazon_report_type_categ_fba" />
+    </record>
+    <record id="amazon_report_type_categ_fba_inventory" model="amazon.report.type.category">
+        <field name="name">FBA Inventory Reports</field>
+        <field name="parent_id" ref="amazon_connector_fba.amazon_report_type_categ_fba" />
+    </record>
+
+    <record id="amazon_report_type_categ_invoice" model="amazon.report.type.category">
+        <field name="name">Invoice data reports</field>
+    </record>
+
+    <record id="amazon_report_type_categ_returns" model="amazon.report.type.category">
+        <field name="name">Returns reports</field>
+    </record>
+
+    <record id="amazon_report_type_categ_settlement" model="amazon.report.type.category">
+        <field name="name">Settlement reports</field>
+    </record>
+
+    <!-- REPORT TYPES -->
+
+    <!-- FBA Sales Reports -->
+    <record id="amazon_report_type_fba_shipments" model="amazon.report.type">
+        <field name="name">FBA Amazon Fulfilled Shipments Report</field>
+        <field name="technical_name">GET_AMAZON_FULFILLED_SHIPMENTS_DATA_GENERAL</field>
+        <field name="category_id" ref="amazon_connector_fba.amazon_report_type_categ_fba_sales" />
+    </record>
+
+    <!-- Invoice data reports -->
+    <record id="amazon_report_type_vat_invoice_data" model="amazon.report.type">
+        <field name="name">Flat File VAT Invoice Data Report (VIDR)</field>
+        <field name="technical_name">GET_FLAT_FILE_VAT_INVOICE_DATA_REPORT</field>
+        <field name="category_id" ref="amazon_connector_fba.amazon_report_type_categ_invoice" />
+    </record>
+
+    <!-- FBA Concessions Reports -->
+    <record id="amazon_report_type_fba_returns" model="amazon.report.type">
+        <field name="name">FBA Returns Report</field>
+        <field name="technical_name">GET_FBA_FULFILLMENT_CUSTOMER_RETURNS_DATA</field>
+        <field name="category_id" ref="amazon_connector_fba.amazon_report_type_categ_fba_concessions" />
+    </record>
+
+    <!-- Returns reports -->
+    <record id="amazon_report_type_returns_return_date" model="amazon.report.type">
+        <field name="name">Flat File Returns Report by Return Date</field>
+        <field name="technical_name">GET_FLAT_FILE_RETURNS_DATA_BY_RETURN_DATE</field>
+        <field name="category_id" ref="amazon_connector_fba.amazon_report_type_categ_returns" />
+    </record>
+
+    <!-- FBA Inventory Reports -->
+    <record id="amazon_report_type_fba_manage_inventory" model="amazon.report.type">
+        <field name="name">FBA Manage Inventory</field>
+        <field name="technical_name">GET_FBA_MYI_UNSUPPRESSED_INVENTORY_DATA</field>
+        <field name="category_id" ref="amazon_connector_fba.amazon_report_type_categ_fba_inventory" />
+    </record>
+
+    <!-- Settlement reports -->
+    <record id="amazon_report_type_settlement_report_v2" model="amazon.report.type">
+        <field name="name">Flat File V2 Settlement Report</field>
+        <field name="technical_name">GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2</field>
+        <field name="category_id" ref="amazon_connector_fba.amazon_report_type_categ_settlement" />
+    </record>
+
+</odoo>

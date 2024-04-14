@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_car_repair_support_wizard" model="ir.ui.view">
+            <field name="name">car.repair.support.wizard.form</field>
+            <field name="model">car.repair.support.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <separator string="This wizard will create Sales Estimate for this car repair request."/>
+                    <footer>
+                        <button string="Create Estimate" name="create_estimate" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_car_repair_support_wizard" model="ir.actions.act_window">
+            <field name="name">Car Repair Estimate</field>
+            <field name="res_model">car.repair.support.wizard</field>
+            <!-- <field name="view_type">form</field> --> <!-- odoo13 -->
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_car_repair_support_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

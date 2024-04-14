@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_opportunity_task_rights,access.crm.opportunity.task.rights,model_crm_lead_task_wizard,sales_team.group_sale_salesman,1,1,1,0
+access_crm_opportunity_task_project_rights,access.crm.opportunity.task.project.rights,model_crm_lead_task_wizard,project.group_project_user,1,1,1,0

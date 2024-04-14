@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sale Order Report -->
+    <template id="sh_so_status_sale_order_report" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']" position="after">
+            <div class="row mt40 mb40" id="so_status">
+                <div class="col-auto">
+                    <strong>Delivery Status : </strong>
+                    <t t-if="doc.sh_fully_delivered"><span style="background: #198754;;color: #212121;border-radius: 4px;padding: 4px 6px;font-size: 13px;font-weight: bold;">Fully Delivered</span></t>
+                    <t t-elif="doc.sh_partially_delivered"><span style="background: #ffc107;color: #212121;border-radius: 4px;padding: 4px 6px;font-size: 13px;font-weight: bold;">Partially Delivered</span></t>
+                    <t t-else=""><span tyle="background: #f8f9fa;color: #212121;border-radius: 4px;padding: 4px 6px;font-size: 13px;font-weight: bold;">Not Defined</span></t>
+                </div>
+                <div class="col-auto">
+                    <strong>Payment Status : </strong>
+                    <t t-if="doc.sh_fully_paid"><span style="background: #198754;;color: #212121;border-radius: 4px;padding: 4px 6px;font-size: 13px;font-weight: bold;">Fully Paid</span></t>
+                    <t t-elif="doc.sh_partially_paid"><span style="background: #ffc107;color: #212121;border-radius: 4px;padding: 4px 6px;font-size: 13px;font-weight: bold;">Partially Paid</span></t>
+                    <t t-else=""><span tyle="background: #f8f9fa;color: #212121;border-radius: 4px;padding: 4px 6px;font-size: 13px;font-weight: bold;">Not Defined</span></t>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

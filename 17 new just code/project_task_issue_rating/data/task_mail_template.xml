@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data noupdate="1">
+   
+        <record id="email_template_task_review_custom" model="mail.template">
+           <field name="name">Task Rating Request - Send by Email</field>
+           <field name="email_from">{{object.company_id.email}}</field>
+           <field name="subject">Task {{object.name}} [Review Request]</field>
+           <field name="email_to">{{object.project_id.partner_id.email}}</field>
+           <field name="model_id" ref="project.model_project_task"/>
+           <field name="auto_delete" eval="True"/>
+           <field name="body_html"><![CDATA[
+            <p>Dear <t t-out="object.project_id.user_id.partner_id.name"/>,
+
+            <t t-set="access_url" t-value="object.get_mail_access_url()"/>
+            
+            <p><t t-out="user.name"/> requested your review for Task (<t t-out="object.name"/>).
+            <p>Please go to the link below to provide a review.</br></br>
+            <p><a style="padding: 8px 30px 8px 30px;border-radius: 6px;border: 1px solid #CCCCCC;background-color:#000080;margin-left: 2px;text-decoration: none;color:#FFFFFF;" t-att-href='access_url'">Do Review</a></br></br>
+            <p>Thank You,
+            <br/>
+            <t t-out="object.company_id.name or ''"/>
+               <p></p>
+            ]]>
+           </field>
+        </record>
+        
+    </data>
+</odoo>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="bi_plaid_transactions_wizard" model="ir.ui.view">
+        <field name="name">bi.plaid.transactions.wizard</field>
+        <field name="model">bi.plaid.transactions</field>
+        <field name="priority" eval="12"/>
+        <field name="arch" type="xml">
+            <form string="Plaid Transaction Wizard">
+                <div class="row mt16 o_settings_container" name="plaid_transaction_container">
+                    <div class="col-12 col-lg-6 o_setting_box" id="plaid_bank_id">
+                        <label string="Plaid Bank" for="plaid_bank_id" class="o_light_label"/>
+                        <field name="plaid_bank_id" class="oe_inline"  required="1"/>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="bank_journal_id" invisible="plaid_bank_id==False">
+                        <label string="Bank Journal" for="bank_journal_id" class="o_light_label"/>
+                        <field name="bank_journal_id" class="oe_inline"  required="1"/>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="plaid_account_ids" invisible="plaid_bank_id==False">
+                        <label string="Plaid Accounts" for="plaid_account_ids" class="o_light_label"/>
+                        <field name="plaid_account_ids" class="oe_inline" required="1"  widget="many2many_tags"/>
+                    </div>
+                </div>
+                <div class="row mt16 o_settings_container" name="plaid_transaction_container">
+                    <div class="col-12 col-lg-12 o_setting_box" id="plaid_transaction_date_range" invisible="plaid_bank_id==False">
+                        <label string="Date " for="transaction_start_date" class="o_light_label"/>
+                        <field name="transaction_start_date" class="oe_inline" required="1"/>
+                        <label string=" To " for="transaction_end_date" class="o_light_label"/>
+                        <field name="transaction_end_date" class="oe_inline" required="1"/>
+                    </div>
+                </div>
+                <footer>
+                    <button name="get_transactions" string="Get Transactions" type="object" class="btn-primary btn" />
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="action_bi_plaid_transaction_wizard" model="ir.actions.act_window">
+        <field name="name">Plaid Transaction Wizard</field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name="res_model">bi.plaid.transactions</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="bi_plaid_transactions_wizard"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="plaid_transactions_menu" sequence="2" name="Get PLaid Transactions" groups="account.group_account_manager" action="action_bi_plaid_transaction_wizard" parent="plaid_integration_menu"/>
+</odoo>

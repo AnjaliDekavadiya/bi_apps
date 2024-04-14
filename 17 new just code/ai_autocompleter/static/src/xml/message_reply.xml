@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--templates xml:space="preserve">
+    <t
+        name="ai_autocompleter.AIMessageReplyButton"
+        owl="1"
+        t-inherit="mail.Message"
+        t-inherit-mode="extension"
+    >
+        <xpath expr="//div[hasclass('o_Message_header')]" position="inside">
+            <t
+                t-if="messageView.messageListViewItemOwner and messageView.message.originThread and messageView.message.originThread === messageView.messageListViewItemOwner.messageListViewOwner.threadViewOwner.thread"
+            >
+                <span
+                    role="button"
+                    tabindex="0"
+                    t-on-click="messageView.onClickAIMessageReply"
+                    style="margin-left: 0.5rem !important;"
+                    title="Reply with AI"
+                >
+                    <i t-attf-class="fa fa-simplybuilt"/>
+                </span>
+            </t>
+        </xpath>
+    </t>
+</templates-->

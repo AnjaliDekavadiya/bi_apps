@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="view_fleet_vehicle_form" model="ir.ui.view">
+            <field name="name">Fleet Vehicle Wizard</field>
+            <field name="model">fleet.vehicle.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Create Fleet Vehicle">
+                    <separator string="This wizard will create fleet vehicle..."/>
+                    <group>
+                        <group>
+                            <field name="fleet_vehicle_model_id"/>
+                            <field name='partner_id'/>
+                        </group>
+                        <group>
+                            <field name="license_plate"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="create_fleet_vehicle"  type="object"  string="Create Vehicle" 
+                        default_focus="1" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_fleet_vehicle" model="ir.actions.act_window">
+            <field name="name">Create Fleet Vehicle</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fleet.vehicle.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_fleet_vehicle_form"/>
+            <field name="target">new</field>
+        </record>
+    
+    </data>
+</odoo>

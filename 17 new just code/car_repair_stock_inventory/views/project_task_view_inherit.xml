@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_task_inherited_moves_pickings" model="ir.ui.view">
+        <field name="name">project.task.inherited.view</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                 <button class="oe_stat_button" type="object" name="show_task_show" string="Stock Moves" icon="fa-arrows-v"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                 <button class="oe_stat_button" type="object" name="show_picking_show" string="Stock Pickings" icon="fa-building-o"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_line_inherit_last_price" model="ir.ui.view">
+        <field name="name">purchase.order.line.inherit.last.price</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="before"> -->
+            <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="before">
+                <field name="custom_last_unit_price"/>
+                <!-- <field name="custom_date_order" invisible="1"/> -->
+                <field name="custom_date_order" column_invisible="True"/>
+            </xpath>
+            <!-- <xpath expr="/form/sheet/notebook/page[1]/field[1]/form/sheet/group/group[1]/field[@name='price_unit']" position="before"> -->
+            <xpath expr="//notebook/page/field/form/group/group/div" position="after">
+                <field name="custom_last_unit_price"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

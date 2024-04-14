@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_crm_lead_task_wizard" model="ir.ui.view">
+            <field name="name">crm.lead.task.wizard.form</field>
+            <field name="model">crm.lead.task.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Crm Lead Task">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="project_id"/>
+                            <field name="user_id"/>
+                            <field name="partner_id"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="date_assign"/>
+                            <field name="date_deadline"/>
+                            <field name="company_id" widget="selection"/>
+                            <field name="description"/>
+                            <field name="stage_id" widget="selection"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Create Task" name="create_task" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_crm_lead_task_wizard" model="ir.actions.act_window">
+            <field name="name">Create Task from CRM Opportunity/Lead</field>
+            <field name="res_model">crm.lead.task.wizard</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_crm_lead_task_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

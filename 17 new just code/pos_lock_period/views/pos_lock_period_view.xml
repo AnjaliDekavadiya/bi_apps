@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="custom_pos_lock_period_form_view">
+            <field name="name">custom.pos.lock.period.form</field>
+            <field name="model">custom.pos.lock.period</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Approve" name="action_approve_period" class="btn-primary" type="object" invisible="state != 'draft'"/>
+                        <button string="Activate" name="action_activate_period" class="btn-primary" type="object" invisible="state != 'approve'"/>
+                        <button string="Disable" name="action_disable_period" class="btn-primary" type="object" invisible="state != 'activate'"/>
+                        <button string="Reset to Draft" name="action_reset_to_draft" class="btn-primary" type="object" invisible="state not in ('disable','cancel')"/>
+                        <button string="Cancel" name="action_cancel_period" type="object"  invisible="state not in ('draft','approve')"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approve,activate,disable"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" placeholder="Name" readonly="state != 'draft'"/></h1>
+                            <h2>
+                                <field name="pos_config_id" widget="selection" readonly="state != 'draft'" placeholder="POS Config"/>
+                            </h2>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="active" invisible="1"/>
+                                <field name="period_type" readonly="state != 'draft'"/>
+                                <field name="close_start_time" widget="float_time" readonly="state != 'draft'" invisible="period_type != 'time'" required="period_type == 'time'"/>
+                                <field name="close_start_date"  readonly="state != 'draft'" invisible="period_type != 'date'" required="period_type == 'date'"/>
+                                <field name="close_start_datetime" readonly="state != 'draft'" invisible="period_type != 'datetime'" required="period_type == 'datetime'"/>
+                                <field name="close_day"  readonly="state != 'draft'" invisible="period_type != 'days'" required="period_type == 'days'"/>
+                                <field name="tz" widget="timezone_mismatch" options="{'tz_offset_field': 'tz_offset'}" readonly="state != 'draft'" />
+                            </group>
+                            <group>
+                                <field name="company_id" widget="selection" groups="base.group_multi_company" readonly="state != 'draft'"/>
+                                <field name="close_end_time" widget="float_time" readonly="state != 'draft'" invisible="period_type != 'time'" required="period_type == 'time'"/>
+                                <field name="close_end_date"  readonly="state != 'draft'" invisible="period_type != 'date'" required="period_type == 'date'"/>
+                                <field name="close_end_datetime"  readonly="state != 'draft'" invisible="period_type != 'datetime'" required="period_type == 'datetime'"/>
+                                <field name="allowed_user_ids" widget="many2many_tags" readonly="state != 'draft'"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="other_info" string="Other Info">
+                                <group>
+                                    <group>
+                                        <field name="created_by_id"  invisible="created_by_id == False"/>
+                                        <field name="approved_by_id"  invisible="approved_by_id == False"/>
+                                        <field name="activate_by_id"  invisible="activate_by_id == False"/>
+                                        <field name="disable_by_id"  invisible="disable_by_id == False"/>
+                                    </group>
+                                    <group>
+                                        <field name="created_date" invisible="created_date == False"/>
+                                        <field name="approve_date" invisible="approve_date == False"/>
+                                        <field name="activate_date"  invisible="activate_date == False"/>
+                                        <field name="disable_date" invisible="disable_date == False"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="o_attachment_preview"/>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="custom_pos_lock_period_tree_view">
+            <field name="name">custom.pos.lock.period.tree</field>
+            <field name="model">custom.pos.lock.period</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="active" invisible="1"/>
+                    <field name="name"/>
+                    <field name="pos_config_id"/>
+                    <field name="period_type"/>
+                    <field name="close_start_time"/>
+                    <field name="close_end_time"/>
+                    <field name="close_start_date"/>
+                    <field name="close_end_date"/>
+                    <field name="close_start_datetime"/>
+                    <field name="close_end_datetime"/>
+                    <field name="close_day"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="custom_pos_lock_period_search_view">
+            <field name="name">custom.pos.lock.period.search</field>
+            <field name="model">custom.pos.lock.period</field>
+            <field name="arch" type="xml">
+                <search>
+                     <field name="name"/>
+                     <field name="pos_config_id"/>
+                     <field name="period_type"/>
+                     <field name="state"/>
+                     <group expand="0" string="Group By">
+                         <filter name="custom_name_pos_lock" string="Name" context="{'group_by':'name'}"/>
+                        <filter name="custom_pos_config_id" string="POS Config" context="{'group_by':'pos_config_id'}"/>
+                        <filter name="custom_period_type" string="Period Type" context="{'group_by':'period_type'}"/>
+                        <filter name="custom_state" string="State" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_custom_pos_lock_period_custom" model="ir.actions.act_window">
+            <field name="name">Lock Point of Sale</field>
+            <field name="res_model">custom.pos.lock.period</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

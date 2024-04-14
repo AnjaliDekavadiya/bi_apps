@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+    Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+-->
+<odoo>
+    <data>
+        <template id="property_details" name="Property Details">
+            <t t-call="website.layout">
+                <t t-set="page_title" t-value="prop.name"/>
+                <t t-set="logged_user" t-value="request.env.user.id != request.env.ref('base.public_user').id" />
+                <!-- wrapper-->
+                <div id="wrapper">
+                    <!-- content-->
+                    <div class="content">
+                        <section class="p-section listing-hero-section hidden-section" data-scrollax-parent="true">
+                        <div class="bg-parallax-wrap">
+                            <div class="bg par-elem" t-att-data-bg="image_data_uri(prop.image) if prop.image else '/tk_website_rental_management/static/src/images/property-placeholder.jpg'" data-scrollax="properties: { translateY: '30%' }"></div>
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="p-container container">
+                            <div class="list-single-header-item fl-wrap">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <h1><t t-esc="prop.name" /> <span class="verified-badge tpm6"><i class="fal fa-check"></i></span></h1>
+                                        <div class="geodir-category-location fl-wrap">
+                                            <a t-attf-href="https://maps.google.com/maps?q=loc:#{prop.latitude},#{prop.longitude}" target="_blank"><i class="fas fa-map-marker-alt"></i> <t t-if="prop.street"><t t-esc="prop.street" />, </t> <t t-if="prop.street2"><t t-esc="prop.street2" />, </t> <t t-if="prop.city_id"><t t-esc="prop.city_id.name" />,</t> <t t-if="prop.state_id"><t t-esc="prop.state_id.name" />,</t> <t t-esc="prop.country_id.code" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                       <div class="listing-rating-count-wrap">
+                                            <div class="review-score"><t t-if="prop.sale_lease == 'for_sale'">Sale</t><t t-else="">Rent</t></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-single-header_bottom fl-wrap">
+                                <t t-if="prop.type == 'residential'">
+                                    <t t-if="prop.residence_type == 'apartment'">
+                                        <a class="listing-item-category-wrap">
+                                            <div class="listing-item-category purp-bg"><i class="fal fa-building"></i></div>
+                                            <span>Apartment</span>
+                                        </a>
+                                    </t>
+                                    <t t-if="prop.residence_type == 'bungalow'">
+                                        <a class="listing-item-category-wrap">
+                                            <div class="listing-item-category yg-bg"><i class="fal fa-home"></i></div>
+                                            <span>Bungalow</span>
+                                        </a>
+                                    </t>
+                                    <t t-if="prop.residence_type == 'vila'">
+                                        <a class="listing-item-category-wrap">
+                                            <div class="listing-item-category blue-bg"><i class="fal fa-home"></i></div>
+                                            <span>Villa</span>
+                                        </a>
+                                    </t>
+                                    <t t-if="prop.residence_type == 'raw_house'">
+                                        <a class="listing-item-category-wrap">
+                                            <div class="listing-item-category blue-bg"><i class="fal fa-home"></i></div>
+                                            <span>Raw House</span>
+                                        </a>
+                                    </t>
+                                    <t t-if="prop.residence_type == 'duplex'">
+                                        <a class="listing-item-category-wrap">
+                                            <div class="listing-item-category red-bg"><i class="fal fa-home"></i></div>
+                                            <span>Duplex</span>
+                                        </a>
+                                    </t>
+                                    <t t-if="prop.residence_type == 'single_studio'">
+                                        <a class="listing-item-category-wrap">
+                                            <div class="listing-item-category red-bg"><i class="fal fa-home"></i></div>
+                                            <span>Single Studio</span>
+                                        </a>
+                                    </t>
+                                </t>
+                                <t t-if="prop.type == 'land'">
+                                    <a class="listing-item-category-wrap">
+                                        <div class="listing-item-category green-bg"><i class="fal fa-map"></i></div>
+                                        <span>Land</span>
+                                    </a>
+                                </t>
+                                <t t-if="prop.type == 'commercial'">
+                                    <a class="listing-item-category-wrap">
+                                        <div class="listing-item-category coral-bg"><i class="fal fa-dumpster"></i></div>
+                                        <span>Commercial</span>
+                                    </a>
+                                </t>
+                                <t t-if="prop.type == 'industrial'">
+                                    <a class="listing-item-category-wrap">
+                                        <div class="listing-item-category yellow-bg"><i class="fal fa-industry"></i></div>
+                                        <span>Industrial</span>
+                                    </a>
+                                </t>
+                                <t t-if="theme_config and theme_config.display_landlord">
+                                    <div class="list-single-author"> <a href="#"><span class="author_avatar"> <img t-att-src="image_data_uri(prop.landlord_id.sudo().image_1920) if prop.landlord_id.sudo().image_1920 else '/tk_website_rental_management/static/src/images/user.png'" alt="prop.landlord_id.sudo().name"  />  </span><t t-esc="prop.landlord_id.sudo().name"  /></a></div>
+                                </t>
+                                <div class="list-single-author">
+                                    <strong class="text-white">
+                                        <t t-if="prop.sale_lease == 'for_sale'">
+                                            <t t-esc="prop.price" t-options='{"widget": "monetary", "display_currency": prop.currency_id}' />
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="prop.price" t-options='{"widget": "monetary", "display_currency": prop.currency_id}' /> <t t-if="prop.rent_unit">/ <t t-esc="prop.rent_unit" /></t>
+                                        </t>
+                                    </strong>
+                                </div>
+                                <div class="list-single-stats">
+                                    <ul class="no-list-style">
+                                       <li t-if="book_count > 0"><span class="bookmark-counter"><i class="fas fa-heart"></i> Bookmarks -  <t t-esc="book_count" /> </span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                        <!-- scroll-nav-wrapper-->
+                        <t t-set="user_flag" t-value="True if request.env.user.has_group('base.group_user') else False" />
+                        <div class="fl-wrap">
+                            <div class="p-container container">
+                                <nav class="scroll-nav scroll-init">
+                                    <ul class="no-list-style">
+                                        <li><a class="act-scrlink" href="#sec1"><i class="fal fa-images"></i> Gallery</a></li>
+                                        <li><a href="#sec2"><i class="fal fa-info"></i>Details</a></li>
+                                        <li t-if="prop.web_gym or prop.web_wifi or prop.web_pool or prop.web_parking or prop.web_air_condition or prop.web_semi_furnish or prop.web_full_furnish or prop.web_security or prop.web_laundry or prop.web_equip_kitchen or prop.web_alarm or prop.web_window_cover or prop.website_amenity_ids">
+                                            <a href="#sec3"><i class="fal fa-bars"></i>Features</a>
+                                        </li>
+                                        <li t-if="prop.connectivity_ids"><a href="#sec4"><i class="fal fa-globe"></i>Near by Connectivity</a></li>
+                                        <li t-if="prop.video_url"><a href="#sec5"><i class="fal fa-video"></i>Property Detail Video</a></li>
+                                        <li t-if="prop.three_sixty_view_link"><a href="#sec6"><i class="fal fa-image"></i>360° Virtual Tour</a></li>
+                                        <li t-if="prop.floreplan_ids"><a href="#sec7"><i class="fal fa-map"></i>Plans</a></li>
+                                        <li t-if="prop.latitude and prop.longitude"><a href="#sec8"><i class="fal fa-location"></i>Location</a></li>
+                                    </ul>
+                                </nav>
+                                <div class="scroll-nav-wrapper-opt">
+                                    <a href="#" t-attf-class="scroll-nav-wrapper-opt-btn js_add_wishlist #{' liked' if prop.id in book_properties else ''}" t-att-data-access="prop.access_token" t-if="logged_user"> <i class="fas fa-heart mr0"></i></a>
+                                    <div class="show-more-snopt"><i class="fal fa-ellipsis-h"></i></div>
+                                    <div class="show-more-snopt-tooltip">
+                                        <a href="#"> <i class="fas fa-flag-alt"></i> Report </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- scroll-nav-wrapper end-->
+                        <section class="p-section gray-bg no-top-padding">
+                            <div class="p-container container">
+                                <div class="breadcrumbs inline-breadcrumbs fl-wrap">
+                                    <a href="/">Home</a><a href="/properties-list">Listings</a><span t-esc="prop.name" />
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <!-- list-single-main-wrapper-col -->
+                                    <div class="col-md-8">
+                                        <!-- list-single-main-wrapper -->
+                                        <div class="list-single-main-wrapper fl-wrap">
+                                            <div class="list-single-main-media fl-wrap" id="sec1">
+                                                <div class="single-slider-wrap">
+                                                    <div class="single-slider fl-wrap">
+                                                        <div class="swiper-container">
+                                                            <div class="swiper-wrapper lightgallery">
+                                                                <div class="swiper-slide hov_zoom"><img t-att-src="image_data_uri(prop.image) if prop.image else '/tk_website_rental_management/static/src/images/property-placeholder.jpg'" t-att-alt="prop.name" /><a t-att-href="image_data_uri(prop.image) if prop.image else '/tk_website_rental_management/static/src/images/property-placeholder.jpg'" class="box-media-zoom popup-image"><i class="fal fa-search"></i></a></div>
+                                                                <t t-foreach="prop.property_images_ids" t-as="img">
+                                                                    <div class="swiper-slide hov_zoom"><img t-att-src="image_data_uri(img.image)" t-att-alt="img.title" /><a t-att-href="image_data_uri(img.image)" class="box-media-zoom popup-image"><i class="fal fa-search"></i></a></div>
+                                                                </t>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-carousel_pagination">
+                                                        <div class="listing-carousel_pagination-wrap">
+                                                            <div class="ss-slider-pagination"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ss-slider-cont ss-slider-cont-prev color2-bg"><i class="fal fa-long-arrow-left"></i></div>
+                                                    <div class="ss-slider-cont ss-slider-cont-next color2-bg"><i class="fal fa-long-arrow-right"></i></div>
+                                                </div>
+                                            </div>
+                                            <!-- list-single-main-item end -->
+                                            <div class="list-single-facts fl-wrap" t-if="prop.type == 'residential'">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <!-- inline-facts  -->
+                                                        <div class="inline-facts-wrap gradient-bg ">
+                                                            <div class="inline-facts">
+                                                                <i class="fal fa-users"></i>
+                                                                <div class="milestone-counter">
+                                                                    <div class="stats animaper">
+                                                                        <div class="num" data-content="0" t-att-data-num="prop.accommodation"><t t-esc="prop.accommodation" /></div>
+                                                                    </div>
+                                                                </div>
+                                                                <h6>Accommodation</h6>
+                                                            </div>
+                                                            <div class="stat-wave">
+                                                                <svg viewbox="0 0 100 25">
+                                                                    <path fill="#fff" d="M0 30 V12 Q30 17 55 12 T100 11 V30z" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <!-- inline-facts end -->
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <!-- inline-facts -->
+                                                        <div class="inline-facts-wrap gradient-bg ">
+                                                            <div class="inline-facts">
+                                                                <i class="fal fa-bed"></i>
+                                                                <div class="milestone-counter">
+                                                                    <div class="stats animaper">
+                                                                        <div class="num" data-content="0" t-att-data-num="prop.bed">0</div>
+                                                                    </div>
+                                                                </div>
+                                                                <h6>Bedrooms</h6>
+                                                            </div>
+                                                            <div class="stat-wave">
+                                                                <svg viewbox="0 0 100 25">
+                                                                    <path fill="#fff" d="M0 30 V12 Q30 17 55 2 T100 11 V30z" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <!-- inline-facts end -->
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <!-- inline-facts  -->
+                                                        <div class="inline-facts-wrap gradient-bg">
+                                                            <div class="inline-facts">
+                                                                <i class="fal fa-bath"></i>
+                                                                <div class="milestone-counter">
+                                                                    <div class="stats animaper">
+                                                                        <div class="num" data-content="0" t-att-data-num="prop.bathroom">0</div>
+                                                                    </div>
+                                                                </div>
+                                                                <h6>Bathrooms</h6>
+                                                            </div>
+                                                            <div class="stat-wave">
+                                                                <svg viewbox="0 0 100 25">
+                                                                    <path fill="#fff" d="M0 30 V12 Q30 12 55 5 T100 11 V30z" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <!-- inline-facts end -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- list-single-main-item -->
+                                            <div class="list-single-main-item fl-wrap block_box" id="sec2">
+                                                <div class="list-single-main-item-title">
+                                                    <h3>About this listing</h3>
+                                                </div>
+                                                <div class="list-single-main-item_content fl-wrap" t-if="prop.website_description">
+<!--                                                    <div t-field="prop.website_description" widget="html" />-->
+                                                    <p t-esc="prop.website_description"/>
+                                                </div>
+                                                <div class="list-single-main-item_content fl-wrap" t-else="">
+                                                    <p>Praesent eros turpis, commodo vel justo at, pulvinar mollis eros. Mauris aliquet eu quam id ornare. Morbi ac quam enim. Cras vitae nulla condimentum, semper dolor non, faucibus dolor. Vivamus adipiscing eros quis orci fringilla, sed pretium lectus viverra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec nec velit non odio aliquam suscipit. Sed non neque faucibus, condimentum lectus at, accumsan enim.   </p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
+                                                </div>
+
+                                                <div class="list-single-main-item_content fl-wrap">
+                                                    <div class="list-single-main-item-title p0">
+                                                        <h3>Details</h3>
+                                                    </div>
+
+                                                    <div class="listing-features fl-wrap row" >
+                                                        <div class="col-md-4 text-left ptb7">
+                                                            <i class="fa fa-bars"></i>
+                                                            <span class="list-title">Type: </span>
+                                                            <span class="list-details">
+                                                                <t t-esc="prop.property_subtype_id.name"/>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-4 text-left ptb7">
+                                                            <i class="fa fa-info"></i>
+                                                            <span class="list-title">Property Name: </span>
+                                                            <span class="list-details"><t t-esc="prop.name" /></span>
+                                                        </div>
+                                                        <div class="col-md-4 text-left ptb7" t-if="prop.property_seq">
+                                                            <i class="fa fa-info"></i>
+                                                            <span class="list-title">Property ID: </span>
+                                                            <span class="list-details"><t t-esc="prop.property_seq" /></span>
+                                                        </div>
+                                                        <div class="col-md-4 text-left ptb7"  >
+                                                            <i class="fal fa-map"></i>
+                                                            <span class="list-title">Total Area: </span>
+                                                            <span class="list-details"><t t-esc="prop.total_area" />
+                                                                <t t-if="prop.measure_unit == 'sq_ft'">FT²</t>
+                                                                <t t-if="prop.measure_unit == 'sq_m'">M²</t>
+                                                                <t t-if="prop.measure_unit == 'sq_yd'">YD²</t>
+                                                                <t t-if="prop.measure_unit == 'cu_ft'">FT³</t>
+                                                                <t t-if="prop.measure_unit == 'cu_m'">M³</t>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-4 text-left ptb7">
+                                                            <i class="fal fa-map"></i>
+                                                            <span class="list-title">Usable Area: </span>
+                                                            <span class="list-details"><t t-esc="prop.usable_area" />
+                                                                <t t-if="prop.measure_unit == 'sq_ft'">FT²</t>
+                                                                <t t-if="prop.measure_unit == 'sq_m'">M²</t>
+                                                                <t t-if="prop.measure_unit == 'sq_yd'">YD²</t>
+                                                                <t t-if="prop.measure_unit == 'cu_ft'">FT³</t>
+                                                                <t t-if="prop.measure_unit == 'cu_m'">M³</t>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-4 text-left ptb7" t-if="prop.type != 'land'">
+                                                            <i class="fa fa-building"></i>
+                                                            <span class="list-title">Floors: </span>
+                                                            <span class="list-details"><t t-esc="prop.total_floor" /></span>
+                                                        </div>
+                                                        <div class="col-md-4 text-left ptb7" t-if="prop.type == 'residential'">
+                                                            <i class="fa fa-bed"></i>
+                                                            <span class="list-title">Bed Rooms: </span>
+                                                            <span class="list-details"><t t-esc="prop.bed" /></span>
+                                                        </div>
+                                                        <div class="col-md-4 text-left ptb7" t-if="prop.type in ('residential', 'commercial')">
+                                                            <i class="fa fa-bath"></i>
+                                                            <span class="list-title">Bathrooms: </span>
+                                                            <span class="list-details"><t t-esc="prop.bathroom" /></span>
+                                                        </div>
+                                                        <div class="col-md-4 text-left ptb7" t-if="prop.type != 'land'">
+                                                            <i class="fas fa-parking"></i>
+                                                            <span class="list-title">Parking: </span>
+                                                            <span class="list-details"> <t t-esc="prop.parking" /></span>
+                                                        </div>
+                                                        <div class="col-md-4 text-left ptb7" t-if="prop.type != 'land'">
+                                                            <i class="fa fa-compass"></i>
+                                                            <span class="list-title">Facing: </span>
+                                                            <span class="list-details">
+                                                                <t t-if="prop.facing == 'N'">North (N)</t>
+                                                                <t t-if="prop.facing == 'E'">East (E)</t>
+                                                                <t t-if="prop.facing == 'W'">West (W)</t>
+                                                                <t t-if="prop.facing == 'S'">South (S)</t>
+                                                                <t t-if="prop.facing == 'NE'">North-East (NE)</t>
+                                                                <t t-if="prop.facing == 'SE'">South-East (SE)</t>
+                                                                <t t-if="prop.facing == 'SW'">South-West (SW)</t>
+                                                                <t t-if="prop.facing == 'SE'">South-East (SE)</t>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- list-single-main-item -->
+                                            <div class="list-single-main-item fl-wrap block_box" id="sec3"
+                                                 t-if="prop.web_gym or prop.web_wifi or prop.web_pool or prop.web_parking or prop.web_air_condition or prop.web_semi_furnish or prop.web_full_furnish or prop.web_security or prop.web_laundry or prop.web_equip_kitchen or prop.web_alarm or prop.web_window_cover or prop.website_amenity_ids">
+                                                <div class="list-single-main-item-title">
+                                                    <h3>Listing Features</h3>
+                                                </div>
+                                                <div class="list-single-main-item_content fl-wrap">
+                                                    <div class="listing-features fl-wrap">
+                                                        <ul class="no-list-style">
+                                                            <li t-if="prop.web_gym"><a href="#"><i class="fal fa-dumbbell"></i>Gym</a></li>
+                                                            <li t-if="prop.web_wifi"><a href="#"><i class="fal fa-wifi"></i> Free Wi Fi</a></li>
+                                                            <li t-if="prop.web_pool"><a href="#"><i class="fal fa-swimmer"></i> Swimming Pool</a></li>
+                                                            <li t-if="prop.web_parking"><a href="#"><i class="fas fa-parking"></i> Free Parking</a></li>
+                                                            <li t-if="prop.web_air_condition"><a href="#"><i class="fa fa-cloud"></i> Air Conditioned</a></li>
+                                                            <li t-if="prop.web_semi_furnish"><a href="#"><i class="fal fa-couch"></i> Semi Furnished</a></li>
+                                                            <li t-if="prop.web_full_furnish"><a href="#"><i class="fas fa-loveseat"></i> Full Furnished</a></li>
+                                                            <li t-if="prop.web_security"><a href="#"><i class="fal fa-cctv"></i> Security</a></li>
+                                                            <li t-if="prop.web_laundry"><a href="#"><i class="fal fa-washer"></i> Laundry Room</a></li>
+                                                            <li t-if="prop.web_equip_kitchen"><a href="#"><i class="fal fa-utensils"></i> Equipped Kitchen</a></li>
+                                                            <li t-if="prop.web_alarm"><a href="#"><i class="fal fa-alarm-exclamation"></i> Safety Alarm</a></li>
+                                                            <li t-if="prop.web_window_cover"><a href="#"><i class="fal fa-window"></i> Window Covering</a></li>
+                                                            <t t-foreach="prop.website_amenity_ids" t-as="dm" t-if="prop.website_amenity_ids">
+                                                                <li class="tolt" data-microtip-position="top" t-att-data-tooltip="dm.title"><i t-attf-class="fal #{dm.fa_class}"></i><t t-esc="dm.title"/></li></t>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="list-single-main-item fl-wrap block_box" id="sec4" t-if="prop.connectivity_ids">
+                                                <div class="list-single-main-item-title">
+                                                    <h3>Near by Connectivity</h3>
+                                                </div>
+                                                <div class="list-single-main-item_content fl-wrap">
+                                                    <div class="listing-features fl-wrap row">
+                                                        <t t-foreach="prop.connectivity_ids" t-as="con">
+                                                            <div class="col-md-2">
+                                                                <img class="img-fluid con-img" t-att-src="image_data_uri(con.connectivity_id.image)" t-att-alt="con.connectivity_id.name" />
+                                                                <hr class="mb4 mt4" />
+                                                                <strong class="connectivity" t-esc="con.connectivity_id.name" /><br/>
+                                                                <strong class="con-distance" t-esc="con.name" /> <br/>
+                                                                <strong class="con-distance" t-esc="con.distance" />
+                                                            </div>
+                                                        </t>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="list-single-main-item fl-wrap block_box" id="sec5" t-if="prop.video_url">
+                                                <div class="list-single-main-item-title">
+                                                    <h3>Property Detail Video</h3>
+                                                </div>
+                                                <div class="list-single-main-item_content fl-wrap">
+                                                    <div class="p-section parallax-section" data-scrollax-parent="true">
+                                                        <div class="bg par-elem "  t-att-data-bg="image_data_uri(prop.video_background_image) if prop.video_background_image else '/tk_website_rental_management/static/src/images/bg/03.jpg'" data-scrollax="properties: { translateY: '30%' }"></div>
+                                                        <!--container-->
+                                                        <div class="p-container container">
+                                                            <a t-att-href="prop.video_url" class="promo-link big_prom image-popup"><i class="fal fa-play"></i><span>Property Video</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="list-single-main-item fl-wrap block_box" id="sec6" t-if="prop.three_sixty_view_link">
+                                                <div class="list-single-main-item-title">
+                                                    <h3>360° Virtual Tour</h3>
+                                                </div>
+                                                <div class="list-single-main-item_content fl-wrap">
+                                                    <iframe class="ifream_width" t-att-src="prop.three_sixty_view_link" allowfullscreen="" ></iframe>
+                                                </div>
+                                            </div>
+                                            <div class="accordion mar-top" t-if="prop.floreplan_ids" id="sec7">
+                                                <t t-foreach="prop.floreplan_ids" t-as="pln">
+                                                    <a class="toggle act-accordion" href="#">Floor Plans - <t t-esc="pln.title" /> <span></span></a>
+                                                    <div class="accordion-inner">
+                                                        <img class="img-fluid" t-att-src="image_data_uri(pln.image)" t-att-alt="pln.title" />
+                                                    </div>
+                                                </t>
+                                            </div>
+                                            <div class="list-single-main-item fl-wrap block_box" id="sec8" t-if="prop.latitude and prop.longitude">
+                                                <div class="list-single-main-item-title">
+                                                    <h3>Location</h3>
+                                                </div>
+                                                <div class="list-single-main-item_content fl-wrap">
+                                                    <div class="map-container">
+                                                        <div id="singleMap" t-att-data-latitude="prop.latitude" t-att-data-longitude="prop.longitude" data-mapTitle="Our Location"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="box-widget-item fl-wrap block_box">
+                                            <div class="box-widget-item-header">
+                                                <h3> Price Range </h3>
+                                            </div>
+                                            <div class="box-widget">
+                                                <div class="box-widget-content">
+                                                    <div class="claim-price-wdget fl-wrap">
+                                                        <div class="claim-price-wdget-content fl-wrap">
+                                                            <div class="pricerange fl-wrap"><span class="title">Price : </span>
+                                                                <t t-if="prop.sale_lease == 'for_sale'">
+                                                                    <t t-esc="prop.price" t-options='{"widget": "monetary", "display_currency": prop.currency_id}' />
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <t t-esc="prop.price" t-options='{"widget": "monetary", "display_currency": prop.currency_id}' /> <t t-if="prop.rent_unit">/ <t t-esc="prop.rent_unit" /></t>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-widget-item fl-wrap block_box" t-if="prop.broker_id.sudo() and prop.visible_broker_on_property">
+                                            <div class="box-widget-item-header">
+                                                <h3> Broker Details </h3>
+                                            </div>
+                                            <div class="box-widget">
+                                                <div class="box-widget-content">
+                                                    <div class="d-flex fl-wrap">
+                                                        <div class="wh-95 fl-wrap" t-if="prop.broker_id.sudo().image_1920">
+                                                            <img class="object-cover rounded-circle h-100 w-100" t-att-src="image_data_uri(prop.broker_id.sudo().image_1920)" t-att-alt="prop.name"/>
+                                                        </div>
+                                                        <div>
+                                                            <div class="broker_details fl-wrap">
+                                                                <strong t-esc="prop.broker_id.sudo().name" />
+                                                            </div>
+                                                            <div class="broker_details fl-wrap" t-if="prop.broker_id.sudo().email">
+                                                                <span class="title"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                                                <t t-esc="prop.broker_id.sudo().email" />
+                                                            </div>
+                                                            <div class="broker_details fl-wrap" t-if="prop.broker_id.sudo().phone or prop.broker_id.sudo().mobile">
+                                                                <span class="title"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                                                <t t-esc="prop.broker_id.sudo().phone" t-if="prop.broker_id.sudo().phone" />
+                                                                <t t-esc="prop.broker_id.sudo().mobile" t-else="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-widget-item fl-wrap block_box">
+                                            <div class="box-widget-item-header">
+                                                <h3>Enquiry of Property</h3>
+                                            </div>
+                                            <div class="box-widget">
+                                                <div class="box-widget-content">
+                                                    <div class="alert alert-danger" role="alert" t-if="error_msg" t-esc="error_msg" />
+                                                    <div class="alert alert-success" role="alert" t-if="enquiry_made">
+                                                      Enquiry already submitted.
+                                                    </div>
+                                                    <form method="POST" class="add-comment custom-form" t-if="logged_user and not enquiry_made">
+                                                        <fieldset>
+                                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                            <input type="hidden" name="property" t-att-value="prop.access_token" required="required"/>
+                                                            <label><i class="fal fa-user"></i></label>
+                                                            <input type="text" name="name" placeholder="Your Name *" t-att-value="request.env.user.partner_id.name"/>
+                                                            <div class="clearfix"></div>
+                                                            <label><i class="fal fa-envelope"></i>  </label>
+                                                            <input type="email" name="email" placeholder="Email Address *" t-att-value="request.env.user.partner_id.email" required="required"/>
+                                                            <div class="clearfix"></div>
+                                                            <label><i class="fal fa-phone"></i>  </label>
+                                                            <input type="text" name="mobile" placeholder="Phone *" t-att-value="request.env.user.partner_id.mobile" required="required"/>
+                                                            <textarea cols="40" rows="3" name="additional_details" placeholder="Additional Information:"></textarea>
+                                                        </fieldset>
+                                                        <button type="submit" class="btn color2-bg float-btn">Send Enquiry</button>
+                                                    </form>
+                                                    <div class="add-comment text-center" t-if="not logged_user">
+                                                        <br/>
+                                                        <a t-attf-href="/web/signup?redirect=#{request.httprequest.url}" class="btn color2-bg">Signup</a>
+                                                        <br />
+                                                        or
+                                                        <br />
+                                                        <a t-attf-href="/web/login?redirect=#{request.httprequest.url}" class="btn color2-bg">Login</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-widget-item fl-wrap block_box" t-if="prop.similar_properties">
+                                            <div class="box-widget-item-header">
+                                                <h3>Similar listings :</h3>
+                                            </div>
+                                            <div class="box-widget  fl-wrap">
+                                                <div class="box-widget-content">
+                                                    <div class="widget-posts  fl-wrap">
+                                                        <ul class="no-list-style">
+                                                            <t t-foreach="prop.similar_properties" t-as="ll">
+                                                                <li>
+                                                                    <div class="widget-posts-img"><a t-attf-href="/property-details/#{slug(ll)}"><img t-att-src="image_data_uri(ll.image) if ll.image else '/tk_website_rental_management/static/src/images/property-placeholder.jpg'" alt="ll.landlord_id.name" /></a>
+                                                                    </div>
+                                                                    <div class="widget-posts-descr">
+                                                                        <h4><a t-attf-href="/property-details/#{slug(ll)}"><t t-esc="ll.name" /></a></h4>
+                                                                        <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i> <t t-if="ll.street"><t t-esc="ll.street" />, </t> <t t-if="ll.city_id"><t t-esc="ll.city_id.name" />,</t> <t t-if="ll.state_id and ll.state_id.code"> <t t-esc="ll.state_id.code" />, </t> <t t-esc="ll.country_id.code" /></a></div>
+                                                                    </div>
+                                                                </li>
+                                                            </t>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-widget-item fl-wrap block_box" t-if="prop.tag_ids">
+                                            <div class="box-widget-item-header">
+                                                <h3>Tags</h3>
+                                            </div>
+                                            <div class="box-widget fl-wrap">
+                                                <div class="box-widget-content">
+                                                    <div class="list-single-tags tags-stylwrap">
+                                                        <t t-foreach="prop.tag_ids" t-as="tag">
+                                                             <a href="#" t-esc="tag.title" />
+                                                        </t>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="limit-box fl-wrap"></div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

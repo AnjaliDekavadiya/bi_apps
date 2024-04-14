@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record model="ir.ui.view" id="repair_type_car_form_view_custom_inherit_fleet_type">
+            <field name="name">repair_type_car_form_view_inherit</field>
+            <field name="model">car.repair.type</field>
+            <field name='inherit_id' ref='car_repair_maintenance_service.repair_type_car_form_view'/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="sheet" position='inside'>
+                        <notebook>
+                            <page string="Vehicle Service Types"
+                            name="fleet_service_types">
+                                <field name="fleet_service_type_ids"/>
+                            </page>
+                        </notebook>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    
+    </data>
+</odoo>

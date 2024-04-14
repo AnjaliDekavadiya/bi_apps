@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_invoice_report_search_inherit_event_custom" model="ir.ui.view">
+            <field name="name">account.invoice.report.search</field>
+            <field name="model">account.invoice.report</field>
+            <field name="inherit_id" ref="account.view_account_invoice_report_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="inside">
+                    <filter string="Event" name="event_custom_id" context="{'group_by':'event_custom_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

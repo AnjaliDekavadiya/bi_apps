@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.blood</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="acs_hms.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='hospitalization']" position="after">
+                <block title="Blood Bank" name="blood_bank_setting_container">
+                    <setting help="Location to take consumed Blood." id="acs_blood_stock_location_id_setting">
+                        <field name="acs_blood_stock_location_id" class="o_light_label" string="Stock Location"/>
+                    </setting>
+
+                    <setting help="Location to manage consumed Blood." id="acs_blood_usage_location_id_setting">
+                        <field name="acs_blood_usage_location_id" class="o_light_label" string="Stock Usage Location"/>
+                    </setting>
+
+                    <setting help="Allow user to Invoice for Blood Requisition" id="acs_blood_requisition_invoicing_setting">
+                        <field name="acs_blood_requisition_invoicing" class="o_light_label" string="Blood Requisition Invoicing"/>
+                        <span invisible="not acs_blood_requisition_invoicing"> Invoice Service for Blood Requisition</span>
+                        <field invisible="not acs_blood_requisition_invoicing" name="acs_blood_requisition_product_id"/>
+                    </setting>
+
+                    <setting help="Allow user to Invoice for Blood Issuance" id="acs_blood_issuance_invoicing_setting">
+                        <field name="acs_blood_issuance_invoicing" class="o_light_label" string="Blood Issuance Invoicing"/>
+                        <span invisible="not acs_blood_issuance_invoicing"> Invoice Service for Blood Issuance </span>
+                        <field invisible="not acs_blood_issuance_invoicing" name="acs_blood_issuance_product_id" required="acs_blood_issuance_invoicing" class="o_light_label"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

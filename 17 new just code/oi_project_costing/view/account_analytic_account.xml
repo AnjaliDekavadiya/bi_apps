@@ -1,0 +1,50 @@
+<odoo>
+
+	<record id="view_analytic_project_costing" model="ir.ui.view">
+		<field name="name">analytic.analytic.account.project.costing</field>
+		<field name="model">account.analytic.account</field>
+		<field name="priority">100</field>
+		<field name="arch" type="xml">
+			<form string="Project Costing" create="false" delete="false">
+				<sheet string="Project Costing">
+					<group>
+						<group>
+							<field name="plan_amount"/>
+							<field name="actual_amount"/>
+						</group>
+						<group>
+						
+						</group>
+					</group>
+					<notebook>
+						<page name="summary" string="Summary" invisible="not project_section_costing_ids">
+							<field name="project_section_costing_ids" nolabel="1" readonly="1">
+								<tree>
+									<field name="currency_id" column_invisible="1"/>
+									<field name="category_id"/>
+									<field name="name"/>
+									<field name="plan_amount" sum="Total"/>
+									<field name="actual_amount" sum="Total"/>									
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+		
+	<record id="view_account_analytic_account_form" model="ir.ui.view">
+		<field name="name">analytic.analytic.account.form</field>
+		<field name="model">account.analytic.account</field>
+		<field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+		<field name="arch" type="xml">
+			<div name="button_box">
+				<button type="object" name="action_project_costing" class="oe_stat_button" icon="fa-usd">
+					<field name="plan_amount" widget="statinfo" string="Costing"/>
+				</button>
+			</div>
+		</field>
+	</record>
+		
+</odoo>

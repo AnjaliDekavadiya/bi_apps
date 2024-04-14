@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="create_service_form_view">
+            <field name="name">create.service</field>
+            <field name="model">create.service</field>
+                <field name="arch" type="xml">
+                    <form string="Create Service">
+                       <group>
+                            <group>
+                                <field name="cost_subtype_id"/>
+                                <field name="service_id"/>
+                                
+                            </group>
+                            <group>
+                                <label for="odometer"/>
+                                <div class="o_row">
+                                    <field name="odometer"/>
+                                    <field name="odometer_unit"/>
+                                </div>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Service SubType">
+                                <field name="custom_cost_subtype_id"/>
+                            </page>
+                        </notebook>
+                    <footer>
+                        <button name="action_create_service" type="object" string="Create Service" class="btn-primary"/>
+                        or
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                    </form>
+                </field>
+        </record>
+        
+        <record id="action_create_service_add" model="ir.actions.act_window">
+            <field name="name">Create Service</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">create.service</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="create_service_form_view"/>
+            <field name="target">new</field>
+        </record>
+        
+   </data>
+</odoo>

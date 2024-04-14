@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="website_otp_form_view" model="ir.ui.view">
+            <field name="name">website.otp.form.view</field>
+            <field name="model">website.otp</field>
+            <field name="arch" type="xml">
+                <form create="0" delete="0" string="Otp view">
+                    <sheet>
+                        <group string="Otp Configuration">
+                            <group>
+                                <field name="signin_auth"/>
+                                <field name="signup_auth"/>
+                            </group>
+                            <group>
+                                <field name="otp_auth_limit"/>
+                                <field name="otp_auth_type"/>
+                            </group>
+                            <group>
+                                <field name="email"/>
+                                <div class="text-muted">
+                                    send otp from particular email.
+                                </div>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <record id="actions_website_otp_view" model="ir.actions.act_window">
+            <field name="name">Website Otp Configuration</field>
+            <field name="res_model">website.otp</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="menu_website_otp_configuration" parent="website.menu_website_global_configuration"
+            sequence="10" name="Otp Authentication"
+            action="actions_website_otp_view"/>
+
+    </data>
+</odoo>

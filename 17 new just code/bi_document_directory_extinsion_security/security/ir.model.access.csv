@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_directory_document,directory_document_access_permission,bi_document.model_directorie_document,,1,1,1,1
+access_document_managemenet_directory,document_managemenet_directory_access_permission,model_document_managemenet_directory,,1,1,1,1
+access_document_managemenet_document,document_managemenet_document_access_permission,model_document_managemenet_document,,1,1,1,1

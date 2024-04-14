@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="facebook_config_form_view" model="ir.ui.view">
+            <field name="name">facebook.config.form.view</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="pragtech_conversations_dashboard.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//app[@name='pragtech_conversations_dashboard']" position="inside">
+                    <!-- <h2>
+                        Instagram Messenger Integration
+                    </h2> -->
+                    <block title="Instagram Messenger Integration" name="instagram_integration">
+                    <!-- <div class="row mt16 o_settings_container" name="instagram_integration"> -->
+                        <setting id="instagram_control_setting" title="Instagram Api" string="Instagram Integration">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <group>
+                                        <field name="instagram_page_access" password="True" class="oe_inline"/>
+                                    </group>
+                                    <group>
+                                        <field name="instagram_verify_token" class="oe_inline"/>
+                                    </group>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

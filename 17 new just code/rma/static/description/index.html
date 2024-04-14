@@ -1,0 +1,782 @@
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500i,600,700&display=swap" rel="stylesheet">
+
+<div class="container">
+    <div class="oe_styling_v8">
+        <section class="oe_container" id="wk_header">
+            <div class="mt32 mb32">
+                <h2 class="text-center"
+                    style="font-family:'Open Sans', sans-serif; font-size:36px; font-weight: 700; color:#000000 ">
+                    Return Merchandise Authorization (RMA)
+                </h2>
+                <h5 class="mt8 mb8 text-center"
+                    style="font-weight:500; font-family:'Open Sans', sans-serif; font-size:18px; color:#555555">
+                    <i>Easy Returns and exchange with Odoo RMA</i>
+                </h5>
+            </div>
+            <div class="row mt16 mb16 py-2 m-1"
+                style="font-weight:500; font-size:18px; color:#484848; font-family:'Montserrat', sans-serif">
+                <div class="container col-md-6  border-right"
+                    style="font-weight:500; line-height:24px; font-size:16px; color:#484848; font-family:'Montserrat', sans-serif; vertical-align:middle; display:grid">
+                    <p class="mb4 mt4 mr8">
+                        Return Merchandise Authorization simplifies the return process in Odoo. The Odoo app facilitates
+                        your customers to return and exchange the products they have brought earlier from the store.
+                        Specify the return policies and add them to the form. Also, it generates a unique RMA code for
+                        each return.
+                    </p>
+                </div>
+                <div class="container col-md-6 ">
+                    <h4 class="ml-md-3">Information</h4>
+                    <div class="mt-2 ml-md-3" style="display:flex">
+                        <span class="ml-1 mr-2 my-auto"><img src="icon-user-guide.png" alt="user-guide"></span>
+                        <div style="font-weight:600; font-size:14px; line-height:10px" class="mt-2">
+                            User Guide
+                        </div>
+                    </div>
+                    <div class="ml-md-3" style="display:flex">
+                        <span
+                            style="font-size:15px; margin-top:0.2rem">https://webkul.com/blog/odoo-return-merchandise-authorization/</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="oe_container lead mb-4">
+            <div class="mt16 mb16 m-1 shadow-sm border pt-3 p-2"
+                style="background-color:#FFFFFF; border-radius:2px; font-family:'Open Sans',sans-; margin-top: 1rem !important; ">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-1" style="margin-left: 8px;">
+                        <img src="icon-1.png">
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-10 mt-2">
+                        <h3
+                            style="font-family:'Open Sans', sans-serif; color:#333333; line-height:38px; font-size:18px; font-weight:600;margin-top: 1%;">
+                            Purpose of RMA in Odoo
+                        </h3>
+                    </div>
+                </div>
+                <div style="font-family:'Open Sans',sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 27px;
+                color: #555555;">
+                    <div>
+                        <div class="col col-12 p-2"
+                            style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+                            Because returns are unavoidable and can not be averted.
+                        </div>
+                        <div class="col col-12 p-2"
+                            style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+                            Odoo Return Merchandise Authorization (RMA) is the tool that streamlines the operation of
+                            processing returns and exchanges in your Odoo store. It assigns a unique RMA to every
+                            returned product for tracking, testing, and authorizing appropriate action to serve the
+                            customer better. When the returned product makes its way through different departments such
+                            as defect testing, quality check, issuing return refund or exchange, the unique RMA number
+                            helps to maintain the products&#39; individuality.
+                        </div>
+                        <div class="col col-12 p-2"
+                            style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+                            Odoo RMA speeds up the process of managing returns and exchanges but organizes your whole
+                            reverse logistics department to eliminate delays, mismanagement, and errors. The module
+                            further prevents mishandling, misplacement, and error in processing the product for return
+                            or exchange. It helps streamline the entire process.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="oe_container lead mb-4">
+            <div class="mt16 mb16 m-1 shadow-sm border pt-3 p-2"
+                style="background-color:#FFFFFF; border-radius:2px; font-family:'Open Sans',sans-; margin-top: 1rem !important; ">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-1" style="margin-left: 8px;">
+                        <img src="icon-2.png">
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-10 mt-2">
+                        <h3
+                            style="font-family:'Open Sans', sans-serif; color:#333333; line-height:38px; font-size:18px; font-weight:600;margin-top: 1%;">
+                            How does the Return Merchandise Authorization work?
+                        </h3>
+                    </div>
+                </div>
+                <div style="font-family:'Open Sans',sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 27px;
+                color: #555555;">
+                    <div>
+                        <div class="col col-12 p-2"
+                            style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+                            The Odoo user and customer can generate the RMA (Return Merchandise Authorization) request
+                            for a product from the Odoo website or by the Odoo user from the backend. Also, it helps set
+                            the appropriate RMA stage (New, Submitted, etc.).
+                        </div>
+                        <div class="col col-12 p-2"
+                            style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+                            The Odoo app assigns an RMA number to each product, which helps track and update the status
+                            of the product. It aids users to pick up from where the last department left to take the
+                            product to the next inspection.
+                        </div>
+                        <div class="col col-12 p-2"
+                            style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+                            Create several RMA stages as per your requirements. Once the product is processed, the
+                            exchange, return, and refund will be issued, and the RMA will be closed.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="oe_container lead mb-4">
+            <div class="mt16 mb16 m-1 shadow-sm border pt-3 p-2"
+                style="background-color:#FFFFFF; border-radius:2px; font-family:'Open Sans',sans-; margin-top: 1rem !important; ">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-1" style="margin-left: 8px;">
+                        <img src="icon-3.png">
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-10 mt-2">
+                        <h3
+                            style="font-family:'Open Sans', sans-serif; color:#333333; line-height:38px; font-size:18px; font-weight:600;margin-top: 1%;">
+                            RMA Section in Customer Website Portal
+                        </h3>
+                    </div>
+                </div>
+                <div style="font-family:'Open Sans',sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 27px;
+                color: #555555;">
+                    <div>
+                        <div class="col col-12 p-2"
+                            style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+                            The Odoo app allows customers to create an RMA request for their purchased products through
+                            their website account. Customers can view the current status of their RMA request directly
+                            from their website account.
+                        </div>
+                        <div class="col col-12 p-2"
+                            style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+                            The Odoo app also facilitates Odoo users and customers to communicate queries, requirements,
+                            or updates. It further bridges the communication gap between the two parties.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="oe_container lead mb-4 ml96 mr96">
+            <div class="pb-3 text-center" style="color:#333333; font-family:'Open Sans', sans-serif">
+                <span style="font-size:29px; font-weight:700">
+                    Highlighted-features
+                </span>
+                <p style="color: #555555;"> Below is the detailed list of Feature for Return Merchandise Authorization
+                    (RMA)</p>
+            </div>
+            <div class="row ml64 mr64 justify-content-center"
+                style="font-family:'Open Sans', sans-serif; font-weight:normal; font-size:16px; line-height:28px">
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="p-2 h-100 d-flex">
+                        <div>
+                            <img class="float-left mr-2" src="feature-icon-1.png">
+                        </div>
+                        <div class="font-weight-bold d-flex align-items-center" style="padding-left: 1rem;">
+                            <span><strong>Manage returns, exchanges, and repairs
+                                </strong>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="p-2 h-100 d-flex">
+                        <img class="float-left mr-2" src="feature-icon-2.png">
+                        <div class="font-weight-bold d-flex align-items-center" style="padding-left: 1rem;">
+                            <span>Create an RMA request from the website
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="p-2 h-100 d-flex">
+                        <img class="float-left mr-2" src="feature-icon-3.png">
+                        <div class="font-weight-bold d-flex align-items-center" style="padding-left: 1rem;">
+                            <span>Set and update RMA request status in Odoo
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="p-2 h-100 d-flex">
+                        <img class="float-left mr-2" src="feature-icon-4.png">
+                        <div class="font-weight-bold d-flex align-items-center" style="padding-left: 1rem;">
+                            <span>Monitor the progress of RMA in Odoo
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="p-2 h-100 d-flex">
+                        <img class="float-left mr-2" src="feature-icon-5.png">
+                        <div class="font-weight-bold d-flex align-items-center" style="padding-left: 1rem;">
+                            <span>Smart button to view RMA history
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="p-2 h-100 d-flex">
+                        <img class="float-left mr-2" src="feature-icon-6.png">
+                        <div class="font-weight-bold d-flex align-items-center" style="padding-left: 1rem;">
+                            <span>Enable display of RMA states for customers
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="p-2 h-100 d-flex">
+                        <img class="float-left mr-2" src="feature-icon-7.png">
+                        <div class="font-weight-bold d-flex align-items-center" style="padding-left: 1rem;">
+                            <span>Handle RMA returns for partially shipped orders
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="p-2 h-100 d-flex">
+                        <img class="float-left mr-2" src="feature-icon-8.png">
+                        <div class="font-weight-bold d-flex align-items-center" style="padding-left: 1rem;">
+                            <span>Manage RMA with serial number
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="card-header shadow-sm p-0"
+    style="font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:28px; color:#333333;  ">
+    <ul class="nav nav-tabs justify-content-center pt-1" role="tablist" style="background-color:#EBF3F5">
+        <li class="nav-item border border-bottom-0 border-dark"
+            style="background-color:#EBF3F5; color:#333333; border-radius:5px 5px 0px 0px; color:blue !important;">
+            <span href="#website" class="nav-link" role="tab" aria-selected="false" data-bs-toggle="tab">
+                Website
+            </span>
+        </li>
+        <li class="nav-item border border-bottom-0 border-dark"
+            style="background-color:#EBF3F5; color:#333333; border-radius:5px 5px 0px 0px; color:blue !important; margin-left: 7px;">
+            <span href="#backend" class="nav-link" role="tab" aria-selected="false" data-bs-toggle="tab">
+                Backend
+            </span>
+        </li>
+        <li class="nav-item mr-1 border border-bottom-0 border-dark"
+            style="background-color:#EBF3F5; color:#333333; border-radius:5px 5px 0px 0px; color:blue !important; margin-left: 7px;">
+            <span href="#features" class="nav-link active" role="tab" aria-selected="true" data-bs-toggle="tab">
+                Detailed Features
+            </span>
+        </li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="oe_styling_v8">
+        <div class="card-body tab-content p-0" style="font-weight:400">
+            <div class="tab-pane show fade slow" id="backend" role="tabpanel">
+                <div class="container shadow-sm">
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                    <div
+                                        style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                        RMA requests along with their status in the Odoo backend
+                                    </div>
+                                </div>
+                                <div class="panel-body p-3">
+                                    <a href="Return-Merchandise-Authroization-7.png" target="_blank">
+                                        <img style="width:100%" class="img-responsive border"
+                                            src="Return-Merchandise-Authroization-7.png" alt="Not found" />
+                                    </a>
+                                </div>
+                            </div>
+                    </section>
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div
+                                    style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                    RMA request details along with Odoo chatter messages
+                                </div>
+                            </div>
+                            <div class="panel-body p-3">
+                                <a href="Return-Merchandise-Authroization-8.png" target="_blank">
+                                    <img style="width:100%" class="img-responsive border"
+                                        src="Return-Merchandise-Authroization-8.png" alt="Not found" />
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div
+                                    style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                    Created RMA stages
+                                </div>
+                            </div>
+                            <div class="panel-body p-3">
+                                <a href="Return-Merchandise-Authroization-2.png" target="_blank">
+                                    <img style="width:100%" class="img-responsive border"
+                                        src="Return-Merchandise-Authroization-2.png" alt="Not found" />
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div
+                                    style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                    Created RMA Reasons
+                                </div>
+                            </div>
+                            <div class="panel-body p-3">
+                                <a href="Return-Merchandise-Authroization-1.png" target="_blank">
+                                    <img style="width:100%" class="img-responsive border"
+                                        src="Return-Merchandise-Authroization-1.png" alt="Not found" />
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                    <div
+                                        style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                        RMA Configuration in the backend
+                                    </div>
+                                </div>
+                                <div class="panel-body p-3">
+                                    <a href="Return-Merchandise-Authroization-6.png" target="_blank">
+                                        <img style="width:100%" class="img-responsive border"
+                                            src="Return-Merchandise-Authroization-6.png" alt="Not found" />
+                                    </a>
+                                </div>
+                            </div>
+                    </section>
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                    <div
+                                        style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                        Smart burton in customer profile to check all RMA request
+                                    </div>
+                                </div>
+                                <div class="panel-body p-3">
+                                    <a href="Return-Merchandise-Authroization-11.png" target="_blank">
+                                        <img style="width:100%" class="img-responsive border"
+                                            src="Return-Merchandise-Authroization-11.png" alt="Not found" />
+                                    </a>
+                                </div>
+                            </div>
+                    </section>
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                    <div
+                                        style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                        RMA Tracking with lot/serial number
+                                    </div>
+                                </div>
+                                <div class="panel-body p-3">
+                                    <a href="Return-Merchandise-Authroization-10.png" target="_blank">
+                                        <img style="width:100%" class="img-responsive border"
+                                            src="Return-Merchandise-Authroization-10.png" alt="Not found" />
+                                    </a>
+                                </div>
+                            </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="tab-pane show fade slow" id="website" role="tabpanel">
+                <div class="container shadow-sm">
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                    <div
+                                        style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                        Creating RMA requests from the Website by filling out the form
+
+                                    </div>
+                                </div>
+                                <div class="panel-body p-3">
+                                    <a href="Return-Merchandise-Authroization-4.png" target="_blank">
+                                        <img style="width:100%" class="img-responsive border"
+                                            src="Return-Merchandise-Authroization-4.png" alt="Not found" />
+                                    </a>
+                                </div>
+                            </div>
+                    </section>
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div
+                                    style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                    Viewing the RMA Request status from the customer profile
+                                </div>
+                            </div>
+                            <div class="panel-body p-3">
+                                <a href="Return-Merchandise-Authroization-3.png" target="_blank">
+                                    <img style="width:100%" class="img-responsive border"
+                                        src="Return-Merchandise-Authroization-3.png" alt="Not found" />
+                                </a>
+                                <a href="Return-Merchandise-Authroization-12.png" target="_blank">
+                                    <img style="width:100%" class="img-responsive border"
+                                        src="Return-Merchandise-Authroization-12.png" alt="Not found" />
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div
+                                    style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                    RMA requests details and uploading Images for verification
+                                </div>
+                            </div>
+                            <div class="panel-body p-3">
+                                <a href="Return-Merchandise-Authroization-9.png" target="_blank">
+                                    <img style="width:100%" class="img-responsive border"
+                                        src="Return-Merchandise-Authroization-9.png" alt="Not found" />
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="oe_container my-4">
+                        <div class="panel panel-primary">
+
+                            <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                                <div
+                                    style="margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                                    Odoo Chatter for communicating with Odoo user
+                                </div>
+                            </div>
+                            <div class="panel-body p-3">
+
+                                <a href="Return-Merchandise-Authroization-5.png" target="_blank">
+                                    <img style="width:100%" class="img-responsive border"
+                                        src="Return-Merchandise-Authroization-5.png" alt="Not found" />
+                                </a>
+
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="tab-pane show active fade slow" id="features" role="tabpanel">
+                <section class="mt32 mb32">
+                    <div class="pt-4"
+                        style="color:#333333; font-family:'Open Sans', sans-serif; padding-bottom: 0!important;">
+                        <span style="font-size:20px; font-weight:600">
+                            Detailed Features List
+                        </span>
+                        <p style="color: #555555;">Below is the detailed list of feature for Return Merchandise
+                            Authorization (RMA)
+                        </p>
+                    </div>
+                    <div class="row ml64 mr64" style="font-family:'Open Sans',sans-serif;">
+                        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px;">
+                            <div class="shadow p-4 h-100" style="box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);">
+                                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px"
+                                    class="ml-1">
+                                    Introduced RMA menu in Odoo
+                                </h4>
+                                <ul style='color: #555555;'>
+                                    <li class="align-items-baseline">
+                                        <span class="">Added a separate space to manage returns and exchanges in Odoo.
+                                        </span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">The RMA menu is added to keep things organized in Odoo.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px;">
+                            <div class="shadow p-4 h-100" style=" box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);">
+                                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px"
+                                    class="ml-1">
+                                    Works on Odoo Website and Backend </h4>
+                                <ul style='color: #555555;'>
+                                    <li class="align-items-baseline">
+                                        <span class="">Customers can generate RMA requests from their website
+                                            accounts.</span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">Or they can connect Odoo users to create an RMA request from the
+                                            backend.
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px;">
+                            <div class="shadow p-4 h-100" style=" box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);">
+                                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px"
+                                    class="ml-1">
+                                    Simple RMA Form </h4>
+                                <ul style='color: #555555;'>
+                                    <li class="align-items-baseline">
+                                        <span class="">Easily understandable Odoo RMA form is designed for customer
+                                            convenience.</span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">The RMA stages are visible on the RMA form for the customers.
+                                        </span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">It assigns a unique RMA to each RMA request.
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px;">
+                            <div class="shadow p-4 h-100" style=" box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);">
+                                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px"
+                                    class="ml-1">
+                                    Specify Odoo Return Merchandise Authorization Stages </h4>
+                                <ul style='color: #555555;'>
+                                    <li class="align-items-baseline">
+                                        <span class="">Designate the process of Odoo RMA process with stages.</span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">Create representative stages for different product inspections
+                                            for your RMA process.
+                                        </span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">Create individual stages for returns and exchanges, respectively.
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px;">
+                            <div class="shadow p-4 h-100" style=" box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);">
+                                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px"
+                                    class="ml-1">
+                                    Define RMA Reasons </h4>
+                                <ul style='color: #555555;'>
+                                    <li class="align-items-baseline">
+                                        <span class="">Create various RMA reasons for customers to choose from.</span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">The RMA form requires an RMA reason, which customers can choose
+                                            from the listed ones.
+                                        </span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">Add appropriate reasons for a better understanding of
+                                            customer&#39;s issues.
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px;">
+                            <div class="shadow p-4 h-100" style=" box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);">
+                                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px"
+                                    class="ml-1">
+                                    Facilitate Customer and Odoo user Contact </h4>
+                                <ul style='color: #555555;'>
+                                    <li class="align-items-baseline">
+                                        <span class="">Customers and Odoo users can chat with each other through the
+                                            Odoo chatter.</span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">Chatter helps both parties exchange queries and updates to
+                                            fast-track the process.
+                                        </span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">Also, the chatter facility curtails any delay due to
+                                            communications.
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px;">
+                            <div class="shadow p-4 h-100" style=" box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);">
+                                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px"
+                                    class="ml-1">
+                                    RMA Options in Customer&#39;s Website Account </h4>
+                                <ul style='color: #555555;'>
+                                    <li class="align-items-baseline">
+                                        <span class="">Customers&#39; website account allows creating RMA
+                                            requests.</span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">They can create and view the status of their Odoo RMA requests.
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px;">
+                            <div class="shadow p-4 h-100" style=" box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);">
+                                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px"
+                                    class="ml-1">
+                                    Specify your Return and Exchange Policy </h4>
+                                <ul style='color: #555555;'>
+                                    <li class="align-items-baseline">
+                                        <span class="">Odoo users can add return and exchange policies to the RMA
+                                            form.</span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">The policies are displayed to customers while creating the RMA
+                                            request.
+                                        </span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">Similarly, they are displayed on the RMA form.
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px;">
+                            <div class="shadow p-4 h-100" style=" box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);">
+                                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px"
+                                    class="ml-1">
+                                    Managing RMA in Odoo </h4>
+                                <ul style='color: #555555;'>
+                                    <li class="align-items-baseline">
+                                        <span class="">Added a smart button for customers to view their every RMA
+                                            request.</span>
+                                    </li>
+
+                                    <li class="align-items-baseline mt-2">
+                                        <span class="">You can now manage returns along with the serial number.
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px;">
+                            <div class="shadow p-4 h-100" style=" box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);">
+                                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px"
+                                    class="ml-1">
+                                    Partial Order Return in Odoo </h4>
+                                <ul style='color: #555555;'>
+                                    <li class="align-items-baseline">
+                                        <span class="">The Odoo app allows managing the RMA return for partially shipped
+                                            orders.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="pt32" id="webkul_support" style="font-family:'Open Sans', sans-serif">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-center text-dark" style="font-weight: 700;">Support</h2>
+                        <p class="mb-2 text-center" style="font-size:16px; color:#333; font-weight:400">Get
+                            Get Immediate support for any of your query
+                        </p>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <p class="text-center px-5"
+                            style="font-size:14px; color:#555; font-weight:normal; padding-bottom:14px;">
+                            You will get 90 days free support for any doubt, queries, and bug fixing (excluding data
+                            recovery) or any type of issue related to this module.
+                        </p>
+                    </div>
+                    <div class="mx-auto col-lg-9 mb-4 oe_screenshot">
+                        <div class="row align-items-center justify-content-center mx-0 p-3 border border-sm">
+                            <div class="col-sm-2 text-center pr-0">
+                                <img src="mail.png" alt="mail" class="img img-fluid">
+                            </div>
+                            <div class="col-xl-7 col-sm-10">
+                                <p class="my-2" style="color:#555; font-weight:bold">WRITE TO US AT</p>
+                                <b class="text-primary" style="font-size:18px">support@webkul.com</b>
+                                <p class="my-2" style="font-size:14px; color:#777; font-weight:normal">For any help and
+                                    doubt or issue regarding this module. Drop a mail to our technical team..</p>
+                            </div>
+                            <div class=" col-xl-3 offset-xl-0 float-xl-right col-sm-10 offset-sm-2 float-left mt16">
+                                <a href="mailto:support@webkul.com"
+                                    style="padding:10px 22px; background-color:#2335D7; font-size:14px; color:#fff"><i
+                                        class="fa fa-pencil-square-o" style="color:white; margin-right:4px"></i>Write To
+                                    US</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mx-auto col-lg-9 oe_screenshot mb-4">
+                        <div class="row align-items-center justify-content-center mx-0 p-3 border border-sm">
+                            <div class="col-sm-2 text-center pr-0">
+                                <img src="support-icon.png" alt="support-icon" class="img img-fluid">
+                            </div>
+                            <div class="col-sm-10">
+                                <p class="my-2" style="font-weight:bold; color:#555">RAISE A TICKET AT
+                                </p>
+                                <b class="text-primary text-break"
+                                    style="font-size:18px; word-break: break-all;">https://webkul.uvdesk.com/en/customer/create-ticket/</b>
+                                <p class="my-2" style="font-weight:normal; font-size:14px; color:#777">For support or to
+                                    request customizations, Create A Support Ticket by copying the link and opening it
+                                    in a new tab
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

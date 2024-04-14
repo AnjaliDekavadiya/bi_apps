@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="custom_issues_type_task" model="custom.issues.type">
+            <field name="name">Task</field>
+        </record>
+        <record id="custom_issues_type_sub_task" model="custom.issues.type">
+            <field name="name">Sub-task</field>
+        </record>
+        <record id="custom_issues_type_story" model="custom.issues.type">
+            <field name="name">Story</field>
+        </record>
+        <record id="custom_issues_type_bug" model="custom.issues.type">
+            <field name="name">Bug</field>
+        </record>
+        <record id="custom_issues_type_epic" model="custom.issues.type">
+            <field name="name">Epic</field>
+        </record>
+        <record id="custom_issues_type_incident" model="custom.issues.type">
+            <field name="name">Incident</field>
+        </record>
+        <record id="custom_issues_type_service_request" model="custom.issues.type">
+            <field name="name">Service Request</field>
+        </record>
+        <record id="custom_issues_type_change" model="custom.issues.type">
+            <field name="name">Change</field>
+        </record>
+        <record id="custom_issues_type_problem" model="custom.issues.type">
+            <field name="name">Problem</field>
+        </record>
+
+    </data>
+</odoo>

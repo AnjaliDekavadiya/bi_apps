@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="sh_stock_move_lot_auto_serial_number_form" model="ir.ui.view">
+        <field name="name">sh.stock.move.view.form.inherit</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_stock_move_operations" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="_barcode_scanned" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

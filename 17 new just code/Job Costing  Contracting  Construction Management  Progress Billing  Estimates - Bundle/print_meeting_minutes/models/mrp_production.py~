@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+
+from odoo import fields, models, api
+
+class MrpProduction(models.Model):
+    _inherit = 'mrp.production'
+    
+    project_id = fields.Many2one(
+        'project.project',
+        string='Project',
+    )
+    analytic_account_id = fields.Many2one(
+        'account.analytic.account',
+        related='project_id.analytic_account_id',
+        string='Analytic Account',
+        readonly=True,
+    )
+    
+    @api.multi
+    def view_task(self):
+        for rec in self:
+            print 'tassssssssssssssssssssssssssssssss',rec
+            saler = self.env['project.task']
+            res = self.env.ref('project.action_view_task')
+            res = res.read()[0]
+            res['domain'] = str([('mrp_id','=',rec.id)])
+        return res
+    
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

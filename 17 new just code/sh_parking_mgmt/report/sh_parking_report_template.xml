@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="sh_external_layout_standard">
+        <h1>test</h1>
+
+        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+
+            <t t-out="0"/>
+        </div>
+
+    </template>
+<template id="sh_external_layout">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <t t-set="company" t-value="request.env.company"/>
+        <t  t-call="sh_parking_mgmt.sh_external_layout_standard"><t t-out="0"/></t>
+
+    </template>
+
+
+
+
+<template id="sh_parking_report_template">
+    <t t-call="web.html_container">
+    <t t-call="sh_parking_mgmt.sh_external_layout">
+    <div class="page">
+        <div class=""  style="width:400pt; height:400pt;border: 1pt solid black; border-collapse:separate; border-radius:8pt; margin:0px auto;text-align:center;vertical-align:middle;">
+        <t t-foreach="vals" t-as="v">
+            <div>
+                <h1>Welcome</h1>
+                <h2><t t-esc="v.get('company_id')"/></h2>
+                <h2>Parking Ticket</h2>
+            </div>
+            <div>-----------------------------------------------------</div>
+            <div class="">
+                <h4 class="">Check-In Time: <span t-field="record.sh_check_in_time" widget="datetime"/></h4>
+                <h4 class="">Expected Check-out Time: <span t-field="record.sh_expected_check_out_time" widget="datetime"/></h4>
+                <h4 class="">Placed : <t t-esc="v.get('location')"/> / <t t-esc="v.get('sh_slot_id')"/> /  <t t-esc="v.get('sh_subslot_id')"/></h4>
+                 <h4 class="">Payment : <t t-esc="v.get('sh_amount')" t-options="{'widget': 'monetary', 'display_currency': record.currency_id}"/>
+                </h4>
+            </div>
+            <div>-----------------------------------------------------</div>
+            <div style="text-align:center;align-item:center;margin-left:30%;" > <img style="width:200px;height:200px;display:block;" t-att-src="image_data_uri(v.get('parking_qr'))"/></div>
+            <div class="">
+                <h4 class=""><t t-esc="v.get('website')"/></h4>
+            </div>
+       
+        </t>
+        </div>
+        </div>
+        </t>
+    </t>
+    
+
+</template>
+<record id="action_report_sh_parking" model="ir.actions.report">
+    <field name="name">Parking / Report</field>
+    <field name="model">report.sh_parking_mgmt.sh_parking_report_template</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">sh_parking_mgmt.sh_parking_report_template</field>
+    <field name="report_file">sh_parking_mgmt.sh_parking_report_template</field>
+    <field name="print_report_name">"Booking_Report"</field>
+</record>
+
+
+</odoo>

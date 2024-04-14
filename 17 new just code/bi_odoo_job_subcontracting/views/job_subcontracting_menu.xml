@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+    
+       <menuitem id="menu_subcontractor"
+          name="Sub Contractors"
+          parent="bi_odoo_job_costing_management.main_menu_job_estimates"
+          action=""
+          sequence="10"/>
+          
+          
+      <menuitem id="menu_sub_subcontractor"
+          name="Sub Contractors"
+          parent="menu_subcontractor"
+          action=""
+          sequence="20"/>
+          
+      <menuitem id="menu_sub_subcontractor_job"
+          name="Sub Contractors Job"
+          parent="menu_subcontractor"
+          action="bi_odoo_job_subcontracting.action_job_subcontracts"
+          sequence="30"/>
+    </data>
+</odoo>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+
+<!--	purchase order -->
+
+	 <template id="order_template_dev_purchase_signature" inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//div[@id='total']" position="after">
+            <t t-if="o.po_signature">
+                <div style="margin-top:35px;">
+                    <table width="100%">
+                        <tr>
+                            <td width="33%"></td>
+                            <td width="34%"></td>
+                            <td width="33%" class="text-right" style="text-align: right;">
+                                <h5>Signature</h5>
+                                <img t-att-src="image_data_uri(o.po_signature)"
+                                     style="max-height: 8rem; max-width: 10rem;"/>
+                                <p t-field="o.po_user_id"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+
+<!--	account invoice-->
+
+    <template id="report_all_in_invoice" inherit_id="account.report_invoice_document">	 
+		<xpath expr="//div[@name='comment']" position="after">
+		<div class="pull-right" >
+		    <p t-if="o.sig_flag">
+		            <div class="row" name="total">
+                        <div class="col-xs-6">
+				            <table>
+					            <tr >
+					                <td style="width:50px;">
+										<img t-att-src="image_data_uri(o.so_signature)"
+                                     	style="max-height: 8rem; max-width: 10rem;"/>(<span t-field="o.user_id"/>)
+                               		 	
+						            </td>
+						            <td style="width:50px;">
+						            </td>
+					            </tr>
+				            </table>
+			            </div>
+		            </div>
+			    </p>
+	        </div>
+		</xpath>
+	</template>
+	
+<!--	picking repot-->
+	
+	<template id="report_all_in_picking" inherit_id="stock.report_delivery_document">	 
+		<xpath expr="//table[@class='table table-sm mt48']" position="after">
+		<div class="pull-right">
+		    <p t-if="o.sig_flag">
+		            <div class="row" name="total">
+                        <div class="col-xs-6">
+				            <table>
+					            <tr >
+					                <td style="width:50px;"> 
+										 <h5>Signature</h5>
+										<img t-att-src="image_data_uri(o.sp_signature)"
+                                     	style="max-height: 8rem; max-width: 10rem;"/>(<span t-field="o.sp_user_id"/>)
+						                
+						            </td>
+						            <td style="width:50px;">
+						            </td>
+					            </tr>
+				            </table>
+			            </div>
+		            </div>
+			    </p>
+	        </div>
+		</xpath>
+	</template>
+	
+</odoo>

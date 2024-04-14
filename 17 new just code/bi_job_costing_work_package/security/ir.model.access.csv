@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bi_job_costing_work_package_work_pack,bi_job_costing_work_package_work_pack,bi_job_costing_work_package.model_work_packages,base.group_user,1,1,1,1
+bi_job_costing_work_package_work_pack_line,bi_job_costing_work_package_work_pack_line,bi_job_costing_work_package.model_work_packages_line,base.group_user,1,1,1,1

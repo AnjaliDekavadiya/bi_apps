@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="print_cheque_document">
+        <t t-call="web.basic_layout" style="position: relative;">
+            <div class="header" t-attf-style="#{o.cheque_format.font_css}">
+                <div t-attf-style="position: absolute; #{o.cheque_format.ac_pay_css}">
+                    <span style="border-top: 1px solid black;border-bottom: 1px solid black;">A/C Pay</span>
+                </div>
+            </div>
+            <div class="row" t-attf-style="#{o.cheque_format.font_css}">
+                <div t-attf-style="#{o.cheque_format.date_css};position: absolute;">
+                    <span t-esc="o.date" />
+                </div>
+            </div>
+            <div class="row" t-attf-style="#{o.cheque_format.font_css}">
+                <div t-attf-style="#{o.cheque_format.beneficiary_css};position: absolute;">
+                    <span t-esc="o.partner_id.name" />
+                </div>
+            </div>
+            <div class="row" t-attf-style="#{o.cheque_format.font_css}">
+                <t t-set="currency" t-value="o.company_id.currency_id" />
+                <div t-attf-style="#{o.cheque_format.amount_word_css};position: absolute;">
+                    <span t-esc="currency.amount_to_text(o.amount)" />
+                </div>
+            </div>
+            <div class="row" t-attf-style="#{o.cheque_format.font_css}">
+                <div t-attf-style="#{o.cheque_format.amount_digit_css};position: absolute;">
+                    <t t-esc="o.amount" t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="report_print_cheque">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="cheque_format.print_cheque_document" t-lang="o.partner_id.lang" />
+            </t>
+        </t>
+    </template>
+    <record id="paperformat_print_cheque" model="report.paperformat">
+        <field name="name">Check Layout</field>
+        <field name="default" eval="False" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">32</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+    <record id="action_report_print_cheque" model="ir.actions.report">
+        <field name="name">Print Cheque</field>
+        <field name="model">account.payment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">cheque_format.report_print_cheque</field>
+        <field name="report_file">cheque_format.report_print_cheque</field>
+        <field name="paperformat_id" ref="cheque_format.paperformat_print_cheque" />
+        <field name="binding_model_id" ref="model_account_payment" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

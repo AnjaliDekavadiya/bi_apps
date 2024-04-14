@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+user_access_channel_connection,access_channel_connection,model_hubspot_custom_field,,1,1,1,1
+user_access_activity_mapping,access_access_activity_mapping,model_hubspot_activity_mapping,,1,1,1,1

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Adds a new field ('send_email') to the tree view
+         ('view_account_followup_followup_line_tree') of follow-up lines,
+         inherited from 'base_accounting_kit.view_account_followup_followup_line_tree'. -->
+    <record id="view_account_followup_followup_line_tree" model="ir.ui.view">
+        <field name="name">
+            followup.line.view.tree.inherit.customer.followup.community
+        </field>
+        <field name="model">followup.line</field>
+        <field name="inherit_id"
+               ref="base_accounting_kit.view_account_followup_followup_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="send_email"/>
+            </xpath>
+        </field>
+    </record>
+    <!--Modifies the form view ('base_accounting_kit.view_account_followup_followup_line_form')
+        for follow-up steps. It includes the 'send_email' field and additional
+        fields related to email sending based on the 'after_before' condition.
+        The view allows customization of follow-up steps with email content for
+        both 'after' and 'before' scenarios.-->
+    <record id="base_accounting_kit.view_account_followup_followup_line_form"
+            model="ir.ui.view">
+        <field name="name">followup.line.view.form</field>
+        <field name="model">followup.line</field>
+        <field name="arch" type="xml">
+            <form string="Follow-up Steps">
+                <label for="name" class="oe_edit_only"/>
+                <h1>
+                    <field name="name"/>
+                </h1>
+                <div class="oe_inline">
+                    <field name="after_before" style="width: 81px;"/>
+                    <field name="delay" class="oe_inline"
+                           style="margin-left: 10px;width:  55px !important;margin-right: 10px;"/>
+                    <field name="days_hours" style="width: 81px;"/>
+                    overdue, do the following actions:
+                </div>
+                <group>
+                    <field name="send_email"/>
+                </group>
+                <group string="Send Email" invisible="send_email == False">
+                    <field name="description_after" nolabel="1" colspan="2"
+                           invisible="after_before != 'after'"/>
+                    <field name="description_before" nolabel="1"
+                           colspan="2"
+                           invisible="after_before != 'before'"/>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

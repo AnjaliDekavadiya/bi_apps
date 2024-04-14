@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="bid_selection_form_view" model="ir.ui.view">
+            <field name="name">bid.selection.form.view</field>
+            <field name="model">bid.selection</field>
+            <field name="arch" type="xml">
+                <form>
+
+                    <group>
+                        <group>
+                            <label for="bid_selection"/>
+                            <div>
+                                <field name="bid_selection" widget="radio" options="{'horizontal':True}" required="1"/>
+                                <div class="font-italic text-muted">
+                                    Qualified: Displays only qualified bids.
+                                    <br/>
+                                    Authenticate Bid: Shows only authenticated bids.
+                                    <br/>
+                                    Both: Displays authenticated bids + qualified bids + disqualified bids.
+                                </div>
+                            </div>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="bid_id" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Select Bid" type="object" class="btn btn-outline-success"
+                                name="action_select_tender_bid"/>
+                        <button string="Cancel" special="cancel" class="btn btn-outline-danger"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="bid_selection_action" model="ir.actions.act_window">
+            <field name="name">Bid Selection</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bid.selection</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

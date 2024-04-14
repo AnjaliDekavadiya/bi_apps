@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_payment_form" model="ir.ui.view">
+        <field name="name">account.payment.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/." position="inside">
+                <notebook invisible="payment_type == 'transfer'">
+                    <page name="quickbooks_online" string="QuickBooks Online">
+                        <group>
+                            <field name="qbo_state" readonly="1"/>
+                            <field name="job_transaction_count" readonly="1"/>
+                            <field name="qbo_transaction_date" widget="datetime" readonly="1"/>
+                            <field name="qbo_transaction_info" readonly="1"/>
+                            <field name="qbo_payment_ids">
+                                <tree>
+                                    <field name="qbo_id"/>
+                                    <field name="qbo_name"/>
+                                    <field name="invoice_id"/>
+                                    <field name="txn_amount"/>
+                                    <field name="is_imported"/>
+                                    <field name="is_exported"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_payment_qbo_info_form" model="ir.ui.view">
+        <field name="name">account.payment.qbo.info.form</field>
+        <field name="model">account.payment</field>
+        <field name="arch" type="xml">
+            <form string="Payment QBO info" create="0" edit="0" delete="0">
+                <header>
+                    <button type='object' name='open_current_object' string="Open Full Form"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                    </group>
+                    <hr/>
+                    <group>
+                        <field name="qbo_state" readonly="1"/>
+                        <field name="qbo_transaction_date" widget="datetime" readonly="1"/>
+                        <field name="qbo_transaction_info" readonly="1"/>
+                        <field name="qbo_payment_ids">
+                            <tree>
+                                <field name="qbo_id"/>
+                                <field name="qbo_name"/>
+                                <field name="invoice_id"/>
+                                <field name="txn_amount"/>
+                                <field name="is_imported"/>
+                                <field name="is_exported"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_qbo_todo_account_payment" model="ir.ui.view">
+        <field name="name">account.payment.qbo.todo.tree</field>
+        <field name="model">account.payment</field>
+        <field name="priority" eval="33"/>
+        <field name="arch" type="xml">
+            <tree string="Payments ToDo List" create="0" edit="0" delete="0"
+                  decoration-info="qbo_state == 'pending'"
+                  decoration-warning="qbo_state == 'rejected'"
+                  decoration-danger="qbo_state == 'failed'">
+                <field name="name"/>
+                <field name="qbo_state"/>
+                <field name="qbo_transaction_date" widget="datetime"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

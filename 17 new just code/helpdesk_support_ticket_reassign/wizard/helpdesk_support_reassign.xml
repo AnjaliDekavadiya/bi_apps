@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+   <data>
+        <record model="ir.ui.view" id="helpdesk_support_reassign_form_view">
+           <field name="name">helpdesk.support.reassign.wizard.form</field>
+           <field name="model">helpdesk.support.reassign.wizard</field>
+           <field name="arch" type="xml">
+               <form string="Helpdesk Support Ticekt Reassign">
+                <p>This will assing ticket to selected user or team.</p>
+                    <group>
+                        <group>
+                            <field name="assign_to" widget="radio"/>
+                        </group>
+                        <group>
+                            <field name="team_id" 
+                                invisible="assign_to not in 'team'" required="assign_to in 'team'"/>
+
+                                <!-- attrs="{'invisible':[('assign_to','!=','team')],
+                                                          'required': [('assign_to','=','team')]}"/> --> 
+                            <field name="user_id" 
+                                invisible="assign_to not in 'user'" required="assign_to in 'user'"/>
+
+                                <!-- attrs="{'invisible':[('assign_to','!=','user')], 
+                                                           'required': [('assign_to','=','user')]}"/> -->
+                        </group>
+                   </group>
+                   <footer>
+                       <button string="Assign" name="action_reassign_support_ticket" type="object" class="oe_highlight"/> <!-- or  -->
+                       <button string="Cancel" name ="cancel" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+      <record id="helpdesk_support_reassign_action" model="ir.actions.act_window">
+            <field name="name">Helpdesk Support Ticket Reassign</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">helpdesk.support.reassign.wizard</field>
+            <!-- <field name="view_type">form</field> --> <!-- odoo13 -->
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+   </data>
+</odoo>

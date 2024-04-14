@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="act_hr_salary_schedule" model="ir.actions.act_window">
+		<field name="name">Salary Schedule</field>
+		<field name="res_model">hr.salary.schedule</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+	
+	<record id="act_hr_salary_grade" model="ir.actions.act_window">
+		<field name="name">Grades</field>
+		<field name="res_model">hr.salary.grade</field>
+		<field name="view_mode">tree,form</field>
+	</record>	
+	
+	<record id="act_hr_salary_amount" model="ir.actions.act_window">
+		<field name="name">Amount</field>
+		<field name="res_model">hr.salary.amount</field>
+		<field name="view_mode">tree,pivot</field>
+	</record>	
+
+</odoo>

@@ -1,0 +1,72 @@
+# -*- coding: utf-8 -*-
+
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError
+from odoo.tools import float_compare
+from odoo.addons import decimal_precision as dp
+
+
+class MrpWorkorder(models.Model):
+    _inherit = 'mrp.workorder'
+   
+    is_task_created = fields.Boolean(
+        string='Is Task Created',
+        default=False,
+    )
+    task_id = fields.Many2one(
+        'project.task',
+        string='Project Task',
+        readonly=True,
+    )
+    project_id=fields.Many2one(
+        related='production_id.project_id', # many2one 'production_id' associated with mrp.production
+        string='Project',
+        readonly=True,
+    )
+    analytic_account_id = fields.Many2one(
+        related='production_id.analytic_account_id',
+        string='Analytic Account',
+        readonly=True,
+    )
+    worksheet = fields.Binary(
+        'Worksheet', related='operation_id.worksheet', readonly=True)
+    user_id = fields.Many2one(
+        'res.users', "User",
+        related='production_id.user_id', readonly=True)
+        #default=lambda self: self.env.uid)   
+        
+    @api.multi
+    def button_start(self):
+        result = super(MrpWorkorder, self).button_start()
+        for rec in self:
+            task_vals = {
+            'project_id' : rec.project_id.id,
+            'name' : rec.product_id.name,
+            'date_assign' : datetime.now(),
+            'workorder_id' : rec.id,
+            }
+            task_id= self.env['project.task'].create(task_vals)
+            
+            vals = {
+            'task_id' : task_id.id,
+            'is_task_created' : True,
+            }
+            rec.write(vals)
+            res = self.env.ref('project.action_view_task')
+            res = res.read()[0]
+            res['domain'] = str([('id','=',task_id.id)])
+        return res
+        
+    @api.multi
+    def show_task(self):
+        for rec in self:
+            saler = self.env['project.task']
+            res = self.env.ref('project.action_view_task')
+            res = res.read()[0]
+            res['domain'] = str([('id','=',rec.task_id.id)])
+        return res
+    
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

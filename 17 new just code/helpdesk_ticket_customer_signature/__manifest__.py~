@@ -1,0 +1,109 @@
+# -*- coding: utf-8 -*-
+# Part of Probuse Consulting Service Pvt. Ltd. See LICENSE file for full copyright and licensing details.
+{
+    'name': "Signature of Customer on Helpdesk Ticket",
+    'version': '1.1.0',
+    'category': 'Project',
+    'price': 9.0,
+    'currency': 'EUR',
+    'license': 'Other proprietary',
+    'summary': """This module allow your customer to signature on helpdesk ticket on portal.""",
+    'description':  """
+Odoo Helpdesk Ticket Customer Signature
+Website Helpdesk Support Ticket
+helpdesk
+customer signature
+digital signature
+signature
+helpdesk signature
+support signature
+client signature
+client agreement
+sign
+document signature
+document sign
+helpdesk support
+customer helpdesk
+customer Helpdesk support
+Helpdesk support request
+Helpdesk support ticket
+ticket
+Helpdesk customer query
+Helpdesk customer help
+Customer Maintaince request
+Customer service request
+Website Helpdesk ticket
+website request customer
+customer support
+support request
+support ticket
+ticket
+customer query
+customer help
+customer maintaince request
+customer service request
+website support ticket
+website request customer
+customer support
+support request
+support ticket
+ticket
+customer query
+customer help
+customer maintaince request
+customer service request
+website support ticket
+website request customer
+support timesheet
+support time
+support hr timesheet
+employee timesheet
+Website Helpdesk Support Ticket
+
+​project issue
+issue project
+project helpdesk
+project case
+project claim
+claim order
+project issue management
+issue project management
+project issuer
+customer issue
+customer feedback
+customer case
+customer project issue
+odoo 11 project issue
+project issue 11 odoo
+project issue odoo 11
+project task
+support
+project support
+support manager
+issue manager
+issue operator​
+
+
+                    
+                    """,
+    'author': "Probuse Consulting Service Pvt. Ltd.",
+    'website': "http://www.probuse.com",
+    'support': 'contact@probuse.com',
+    'live_test_url': 'https://youtu.be/Zg43aD-i3IE',
+    'images':   [
+                    'static/description/img1.jpg'
+                ],
+     'depends':  [
+                    'helpdesk_agent_technician_portal',
+                ],
+    'data': [
+                    'data/send_thankyou_mail.xml',
+                    'data/send_signature_request_email.xml',
+                    'views/helpdesk_support_view.xml',
+                    'views/helpdesk_ticket_customer_signature_view.xml',
+                    'views/helpdesk_ticket_customer_signature_view_technician.xml',
+            ],
+   'installable' : True,
+   'application' : False,
+}
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

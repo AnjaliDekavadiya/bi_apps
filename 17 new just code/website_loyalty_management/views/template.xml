@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+    <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+
+    <template id="portal_my_home_menu_loyalty" name="Portal layout : loyalty menu entries" inherit_id="portal.portal_breadcrumbs" priority="20">
+      <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+        <li t-if="page_name == 'loyalty'" class="breadcrumb-item active">
+              Loyalty Points
+        </li>
+      </xpath>
+    </template>
+
+    <template id="sale_order_portal_content_for_loyalty_inherit" name="Sale order loyalty points Portal" inherit_id="account.document_tax_totals">
+      <xpath expr="//tr[hasclass('border-black', 'o_total')]" position="before">
+        <t t-if="'wk_extra_loyalty_points' in tax_totals">
+          <tr>
+            <td>
+              <strong>Extra Loyalty Points</strong>
+            </td>
+            <td class="text-end text-primary">
+              <span t-esc="tax_totals['wk_extra_loyalty_points']"/>
+            </td>
+          </tr>
+        </t>
+        <t t-if="'wk_website_loyalty_points' in tax_totals">
+          <tr>
+            <td>
+              <strong>Loyalty Points</strong>
+            </td>
+            <td class="text-end text-primary">
+              <span t-esc="tax_totals['wk_website_loyalty_points']"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Loyalty State</strong>
+            </td>
+            <td class="text-end text-primary">
+              <span t-esc="tax_totals['loyalty_state'].capitalize()"/>
+            </td>
+          </tr>
+        </t>
+      </xpath>
+    </template>
+
+    <template id="my_loyalty" name="My Loyalty">
+      <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+        <t t-call="portal.portal_searchbar">
+          <t t-set="title">Loyalty Points</t>
+        </t>
+        <h3 class="page-header">My Points</h3>
+        <div id="your-loyalty-points-tab-content" class="tab-content mb-4">
+          <div class="tab-pane active " id="loyalty_points">
+            <h4>
+              <p class='text-primary'>
+                <b>
+                  <i class="fa fa-calendar-check-o"/>
+                You have <t t-esc="env.user.wk_website_loyalty_points"/>
+                Loyalty Points.</b>
+              </p>
+            </h4>
+          </div>
+        </div>
+
+        <t t-if="histories" t-call="portal.portal_table">
+          <thead>
+            <tr class="active">
+              <th>Sale Order No</th>
+              <th class="text-center">Points Process</th>
+              <th class="text-right">Redeemed Date</th>
+              <th class="text-right">Discount Offered</th>
+              <th class="text-right">Points</th>
+            </tr>
+          </thead>
+          <t t-foreach="histories" t-as="history">
+            <tr>
+              <td>
+                <a t-if="history.sale_order_ref" t-att-href="history.sale_order_ref.get_portal_url()">
+                  <t t-esc="history.sale_order_ref.name"/>
+                </a>
+              </td>
+              <td class="text-center">
+                <span t-if="history.loyalty_process == 'addition'" t-esc="'Points Added'"/>
+                <span t-if="history.loyalty_process == 'deduction'" t-esc="'Points Deducted'"/>
+              </td>
+              <td class="text-right">
+                <span t-field="history.date"/>
+              </td>
+              <td class="text-right">
+                <t t-esc="history.redeem_amount" />
+              </td>
+              <td class="text-right">
+                <span t-field="history.points_processed"/>
+              </td>
+            </tr>
+          </t>
+        </t>
+
+      </t>
+    </template>
+
+    <template id="portal_my_home_loyalty" name="Portal My Home :Loyalty" inherit_id="portal.portal_my_home" priority="20">
+      <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+        <t t-call="portal.portal_docs_entry">
+          <t t-set="icon" t-value="'/website_loyalty_management/static/src/img/loyalty.svg'"/>
+                <t t-set="text">See your loyality points here</t>
+                <t t-set="title">Loyalty Points</t>
+                <t t-set="url" t-value="'/my/loyalty'"/>
+              <t t-set="placeholder_count" t-value="'points_count'"/>
+        </t>
+      </xpath>
+    </template>
+
+
+    <template id="confirmation" inherit_id="website_sale.confirmation">
+      <xpath expr="//div[@id='oe_structure_website_sale_confirmation_1']" position="after">
+        <t t-if="wk_website_loyalty_points">
+          <h3 class="text-left">
+            <strong>Loyalty information:</strong>
+          </h3>
+          <hr/>
+          <p>You will get <t t-esc='round(website.format_loyalty_points(wk_website_loyalty_points),2)'/>
+  points from this sale order.</p>
+        </t>
+      </xpath>
+    </template>
+
+    <template active="True" customize_show="True" id="inherited_website_sale_cart_website_loyalty_management" inherit_id="website_sale.checkout_layout" name="Loyalty Product">
+      <xpath expr="//div[@id='o_cart_summary']//div[hasclass('o_total_card')]" position="inside">
+        <t t-set="loyalty_obj" t-value="website.get_active_loyalty_obj(sale_order=website_sale_order)"/>
+        <t t-if="loyalty_obj and website_sale_order.order_line">
+          <div class="row">
+            <div>
+              <div class="ps-3 pt-3">
+                <div class='row mb20'>
+                  <h3 class='mb8'>Loyalty Benefits</h3>
+
+                </div>
+                <div class='row' >
+                  <ul class="list-unstyled mb16">
+                    <t t-set="partner" t-value="env.user.partner_id"/>
+                    <t t-set="wk_website_loyalty_points" t-value="website.format_loyalty_points(partner.wk_website_loyalty_points)"/>
+                    <t t-if="request.uid and website_sale_order">
+                      <t t-if="len(loyalty_obj)!=0">
+                        <li>☑ You have
+                          <span class="_o_custom_text_color">
+                            <b>
+                              <t t-esc="round(wk_website_loyalty_points,2)"/>
+                            </b>
+                          </span>points in your account
+
+                          <t t-set="redeem_rule_id" t-value="loyalty_obj._get_redeem_rule_id(partner)"/>
+                          <t t-if="redeem_rule_id and redeem_rule_id.reward">
+                  worth
+                            <t t-esc="round((partner.wk_website_loyalty_points * redeem_rule_id.reward),2)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                          </t>.
+                        </li>
+                        <li t-if="loyalty_obj.redeem_policy">☑ Active
+                          <b>
+                            <a data-bs-target="#redeem_policy_modal" data-bs-toggle="modal" href="#">
+                              <span class="_o_custom_text_color">Redemption Policy </span>
+                            </a>:-
+                          </b>
+                          <br/>
+
+
+                          <span t-if="loyalty_obj.redeem_policy=='partial_redeem'">Partial Redemption</span>
+                          <span t-if="loyalty_obj.redeem_policy!='partial_redeem'">One Time Redemption</span>.
+                        </li>
+                      </t>
+                      <li>☑ You will get
+                        <b><span class="_o_custom_text_color" id="sale_order_can_make_points">
+                          <t t-esc="round(website.format_loyalty_points(website.sale_get_order().wk_website_loyalty_points),2)"/>
+                        </span></b>
+                        points from this sale order.</li>
+                    </t>
+                    <t t-if="not partner and website_sale_order">
+                      <li>☑
+                        <t t-esc="wk_website_loyalty_points"/>
+              Your point balance has been updated.</li>
+                      <li>☑ You will get
+                        <span id="sale_order_can_make_points">
+                          <t t-esc="round(website.format_loyalty_points(website.sale_get_order().wk_website_loyalty_points),2)"/>
+                        </span>points from this sale order.</li>
+                    </t>
+                  </ul>
+                  <center>
+                    <a class="btn btn-primary _o_loyality_confimation" href="#" id="loyality_confimation" type="button">Redeem Reward</a>
+                  </center>
+                  <t t-if="len(loyalty_obj)!=0">
+                    <center class="mt5">
+                      <a class="l_rules text-right" data-bs-target="#redeem_rule_modal" data-bs-toggle="modal" href="#">
+                        <span class="_o_custom_text_color">Loyalty Rules!</span>
+                      </a>
+                    </center>
+                  </t>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="redeem_rule_modal" role="dialog">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content redeem_content_modal">
+                  <div class="modal-header">
+                    <h3 class="mb-0">Loyalty Redemption Rule !</h3>
+                    <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="modal-body">
+                    <ul class="modal_redeem_rule">
+                      <t t-if="len(loyalty_obj)!=0">
+                        <li>Applies only to orders  amount of
+                          <t t-esc="(loyalty_obj.min_purchase)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                      or More.</li>
+                      <t t-if="loyalty_obj.loyalty_base == 'purchase'">
+                        <li>For every
+                          <t t-esc="(loyalty_obj.purchase)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                      amount purchase,
+                            you will be awarded
+                          <t t-esc="loyalty_obj.points"/>
+                      points.</li>
+
+                      </t>
+                      
+                        <li>Maximum redeemable  Amounts
+                          <t t-esc="(loyalty_obj.max_redeem_amount)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                    .</li>
+                        <li>Loyalty points are awarded at
+
+                          <span t-if="loyalty_obj.loyalty_redeem_stage=='draft'">order completion</span>
+                          <span t-if="loyalty_obj.loyalty_redeem_stage!='draft'">order confirmation</span>.
+                        </li>
+                      </t>
+                    </ul>
+                    <button class="_o_btn_redeem btn mt-3" data-bs-dismiss="modal" type="button">OK</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal -->
+
+            <div class="modal fade" id="redeem_policy_modal" role="dialog">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content redeem_content_modal">
+                  <div class="modal-header myBackgroundModal">
+                    <center>
+                      <h3 class="mb-0">What is
+                        <span t-if="loyalty_obj.redeem_policy=='partial_redeem'">Partial Redemption</span>
+                        <span t-if="loyalty_obj.redeem_policy!='partial_redeem'">One Time Redemption</span>
+                    ?
+                      </h3>
+                    </center>
+                    <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="modal-body p-3 text-info ">
+                    <div class="row ">
+                      <div class="col-md-12 _o_one_redeem_policy_info " t-if="loyalty_obj.redeem_policy=='one_time_redeem'">
+                        <ul>
+                          <div class="d-flex m-2">
+                            <div>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi mt-1 text-danger bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                              </svg>
+                            </div>
+                            <div class="ps-2 pt-1">The one time redemption policy allows you to redeem all your previously gained loyalty points at once.</div>
+                          </div>
+                          <div class="d-flex m-2">
+                            <div>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi mt-1 text-danger bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                              </svg>
+                            </div>
+                            <div class="ps-2 pt-1">After redemption your point balance will be zero.</div>
+                          </div>
+                        </ul>
+                        <hr class="my-3"/>
+                        <ul>
+                          <h2 class="one_time_redeem_example" t-if="website_sale_order">One time Redemption Rule</h2>
+                        </ul>
+                      </div>
+                      <div class="col-md-12 one_time_redeem_example_div" t-if="website_sale_order">
+                        <button class="close  _o_one_time_redeem_policy_example_div_close" type="button">
+                          <i class="fa fa-angle-left fa-2x text-danger"/>
+                        </button>
+                        <div class="container ">
+                          <div class="row content text-center">
+                            <div class="col-lg-10 col-lg-offset-1">
+                              <div class="col-sm-4 text-center">
+                                <t t-set="wk_loyaty" t-value="loyalty_obj._get_loyalty_amount(website_sale_order.amount_total)"/>
+                                <div class="plan">
+                                  <p class="icon bronze">Now
+                                  </p>
+                                  <p class="bronze-text">Redeem Now</p>
+                                  <p class="bronze-text price">
+                                    <t t-esc="(wk_loyaty['reward_amount'])" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  </p>
+                                  <p>Points
+                                    <t t-esc="website.format_loyalty_points(partner.wk_website_loyalty_points)"/>
+                                  </p>
+                                  <p class="bronze-text">
+                                    <b>Max Redeem amount
+                                      <br/>
+                                      <t t-esc="(loyalty_obj.max_redeem_amount)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                    </b>
+                                  </p>
+                                  <p>Now Total Purchase
+                                    <br/>
+                                    <t t-esc="(website_sale_order.amount_total)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  </p>
+                                  <p class="text-warning">
+                                    <b>Remain Points 0 </b>
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="col-sm-4 text-center">
+                                <div class="plan featured _o_welsite_loyalty_or">
+                                  <p class="icon silver">OR
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="col-sm-4 text-center">
+                                <t t-set="wk_loyaty" t-value="loyalty_obj._get_loyalty_amount(loyalty_obj.max_redeem_amount+1)"/>
+                                <div class="plan">
+                                  <p class="icon gold">Later
+                                  </p>
+                                  <p class="gold-text">Redeem it Later</p>
+                                  <p class="gold-text price">
+                                    <t t-esc="(wk_loyaty['reward_amount'])" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  </p>
+                                  <p class="gold-text">
+                                    <b>Points
+                                      <t t-esc="partner.wk_website_loyalty_points"/>
+                                    </b>
+                                  </p>
+                                  <p>Max Redeem amount
+                                    <br/>
+                                    <t t-esc="(loyalty_obj.max_redeem_amount)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  </p>
+                                  <p>Later Total Purchase
+                                    <br/>
+                                    <t t-esc="(loyalty_obj.max_redeem_amount+1)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  </p>
+                                  <p class="text-success">
+                                    <b>Remain Points 0 </b>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 _o_partial_redeem_policy_info" t-if="loyalty_obj.redeem_policy=='partial_redeem'">
+
+                        <ul>
+                          <div class="d-flex m-2">
+                            <div>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi text-danger bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path>
+                              </svg>
+                            </div>
+                            <div class="ms-1">The partial redemption policy allows you to redeem your points multiple times with the appropriate deduction of points  *.</div>
+                          </div>
+                          <div class="d-flex m-2">
+                            <div>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi text-danger bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path>
+                              </svg>
+                            </div>
+                            <div class="ms-1">The remaining points will be preserved in your account.</div>
+                          </div>
+                        </ul>
+                        <hr class="my-3"/>
+                        <ul>
+                          <h2 class="one_time_redeem_example" t-if="website_sale_order">Partial Redeem Examples</h2>
+                        </ul>
+                      </div>
+                      <div class="col-md-12 partial_redeem_example_div" t-if="website_sale_order">
+                        <button class="close  _o_partial_redeem_example_div_close" type="button">
+                          <i class="fa fa-angle-left fa-2x text-danger"/>
+                        </button>
+                        <div class="container">
+                          <div class="row content">
+                            <div class="col-lg-10 col-lg-offset-1">
+                              <div class="col-sm-4 text-center">
+                                <t t-set="wk_loyaty" t-value="loyalty_obj._get_loyalty_amount(website_sale_order.amount_total)"/>
+                                <div class="plan">
+                                  <p class="icon bronze">Now
+                                  </p>
+                                  <p class="bronze-text">Redeem Now</p>
+                                  <p class="bronze-text price">
+                                    <t t-esc="(wk_loyaty['reward_amount'])" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  </p>
+                                  <p>Points
+                                    <t t-esc="website.format_loyalty_points(partner.wk_website_loyalty_points)"/>
+                                  </p>
+                                  <p class="bronze-text">
+                                    <b>Max Redeem amount
+
+                                      <br/>
+                                      <t t-esc="(loyalty_obj.max_redeem_amount)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                    </b>
+                                  </p>
+                                  <p>Now Total Purchase
+                                    <br/>
+                                    <t t-esc="(website_sale_order.amount_total)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  </p>
+                                  <p class="text-warning">
+                                    <b>Remain Points
+
+                                      <br/>
+                                      <t t-esc="wk_loyaty['remain_points']"/>
+                                    </b>
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="col-sm-4 text-center">
+                                <div class="plan featured _o_welsite_loyalty_or">
+                                  <p class="icon silver">OR
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="col-sm-4 text-center">
+                                <t t-set="wk_loyaty" t-value="loyalty_obj._get_loyalty_amount(loyalty_obj.max_redeem_amount+1)"/>
+                                <div class="plan">
+                                  <p class="icon gold">Later
+                                  </p>
+                                  <p class="gold-text">Redeem it Later</p>
+                                  <p class="gold-text price">
+                                    <t t-esc="(wk_loyaty['reward_amount'])" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  </p>
+                                  <p class="gold-text">
+                                    <b>Points
+                                      <t t-esc="website.format_loyalty_points(partner.wk_website_loyalty_points)"/>
+                                    </b>
+                                  </p>
+                                  <p>Max Redeem amount
+
+                                    <br/>
+                                    <t t-esc="(loyalty_obj.max_redeem_amount)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  </p>
+                                  <p>Later Total Purchase
+                                    <t t-esc="(website_sale_order.amount_total+1)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  </p>
+                                  <p class="text-success">
+                                    <b>Remain Points
+
+                                      <br/>
+                                      <t t-esc="(wk_loyaty['remain_points'])"/>
+                                    </b>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row  text-danger ">
+                        <div class="col-md-9" style="color:#363d47">
+                          <ul>
+                            <h5>
+                              <b>*NOTES:</b>The value of points depends on three things: </h5>
+                            <ul>
+                              <div class="d-flex m-2">
+                                <div>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi text-danger bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                                  </svg>
+                                </div>
+                                <div class="ms-1">The number of points in your account.</div>
+                              </div>
+                              <div class="d-flex m-2">
+                                <div>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi text-danger bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                                  </svg>
+                                </div>
+                                <div class="ms-1">The maximum redemption limit.</div>
+                              </div>
+                              <div class="d-flex m-2">
+                                <div>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi text-danger bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                                  </svg>
+                                </div>
+                                <div class="ms-1">The total amount of the sale order.</div>
+                              </div>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h5>
+                          <b>The final redemption reward amount will be subject to the above mention constraints.</b>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer  text-danger ">
+                    <button class="btn btn-danger" data-bs-dismiss="modal" type="button">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
+        </t>
+      </xpath>
+    </template>
+    <template id="message" name="message">
+      <div class="_o_redeem_message">
+        <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+        <t t-set="wk_website_loyalty_points" t-value="website.format_loyalty_points(env.user.partner_id.wk_website_loyalty_points)"/>
+        <t t-set="loyalty_obj" t-value="website.get_active_loyalty_obj(sale_order=website_sale_order)"/>
+        <div class="alert alert-danger" t-if="not allowed_redeem">
+          <b>
+            <p t-if="redeem_once">You are allowed to redeem only  once per sale order, which you have  already redeemed.</p>
+            <p t-if="no_point">Sorry ,You have 0 Points you can't redeem right now !
+            </p>
+            <p t-if="no_order">Your cart is empty  !
+            </p>
+            <p t-if="no_loyality_feature">Sorry, Loyalty feature is not available right now, Please try later.
+            </p>
+            <p t-if="min_purchase">Your purchase amount (
+              <t t-esc="(website_sale_order.amount_total)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+              ) is less than the minimum purchase amount (
+              <t t-esc="(loyalty_obj.min_purchase)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+              ) for redeeming the loyalty points.</p>
+            <p t-if="no_redeem_rule">Sorry ,Currently no  redeem policy  is available, Please try later.
+            </p>
+            <p t-if="no_redeem_rule_match">Your loyalty point
+              <t t-esc="wk_website_loyalty_points"/>
+              not lie in the point range of any redeem policy, Please try later.</p>
+            <!--   <p t-if="min_point">Sorry currently no  redeem policy  is available for <t t-esc='wk_website_loyalty_points'/>, Please try later ! !
+                      </p>-->
+            <p t-if="no_reward_rule">Sorry ,Currently no  reward policy  is available, Please try later.
+            </p>
+          </b>
+        </div>
+        <div class="alert alert-success" t-if="allowed_redeem">
+          <p t-if="allowed_redeem=='partial_redeem'">As per
+            <b>partial redemption policy   </b>
+            <t t-esc="reduced_point"/>
+            points worth of
+            <t t-esc="(reduced_amount)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+            amounts will be reduced from your account.</p>
+          <p t-if="allowed_redeem=='one_time_redeem'">
+            <t t-if="percent_benefit&lt;100">As Per
+              <b>one time redemption policy </b>
+              you will enjoy only
+              <t t-esc="percent_benefit"/>
+              % benefits on this redemption of
+              <t t-esc="(reduced_amount)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+            .                     </t>
+            <t t-if="percent_benefit==100">
+              <b>Congratulations !</b>
+              <br/>
+You are redeeming 100%  of your reward points worth
+              <t t-esc="(reduced_amount)" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+            .</t>
+          </p>
+        </div>
+      </div>
+    </template>
+    <template id="website_loyalty_management.message_template" name="message_template">
+      <div class="modal fade" id="modal_confimation" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content redeem_content_modal">
+            <div class="loyalty-banefit-bar" />
+            <div class="modal-header">
+              <h3 class="mb-0">Loyalty Benefits!</h3>
+              <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="modal-body ">
+              <p class="modal_redeem_rule_sub_label">Thanks for showing interest in our Loyalty Program.</p>
+              <t t-if="not login">
+                <div class="_o_link_login_loyalty_maangement">
+                  <p class="alert alert-info _o_redeem_message_login">To access this feature you will have to
+                    <a class="_o_link_login_website_loyalty_maangement_wk" href="/web/login?redirect=%2Fshop%2Fcart">login </a>
+                    first !</p>
+                </div>
+              </t>
+              <t t-if="login">
+                <t t-call="website_loyalty_management.message"/>
+              </t>
+              <div class="d-flex w-100 justify-content-between align-items-center flex-wrap">
+                <a class="_o_btn_redeem_now mt-2 btn" data-no-instant="" href="/loyality/get_reward/" t-if="allowed_redeem">I want to Redeem Now !</a>
+                <a class="btn _o_btn_redeem_later mt-2" data-bs-dismiss="modal" href="#" t-if="allowed_redeem">I will Redeem it Later !</a>
+              </div>
+            </div>
+            <div class="modal-footer _o_modal_confimation_footer" t-if="not login">
+              <p>Don't Have An Account Yet?
+                <a class="_o_link_signup_website_loyalty_maangement_wk" href="/web/signup?redirect=%2Fshop%2Fcart">Sign Up</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="cart_lines" inherit_id="website_sale.cart_line_product_link">
+      <xpath expr="//a" position="attributes">
+        <attribute name="t-att-href">line.product_id.website_url if not line.is_virtual else False</attribute>
+      </xpath>
+    </template>
+  </data>
+</odoo>

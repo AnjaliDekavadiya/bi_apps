@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="work_packages_form_view" model="ir.ui.view">
+			<field name="name">work.packages.form.view</field>
+			<field name="model">work.packages</field>
+			<field name="arch" type="xml">
+				<form string="Work Packages">
+					<header>
+						<button name="approve_work_package" type="object" string="Confirm" invisible="state in ['confirm','sent','cancel']" class="oe_stat_button"/>
+						<button name="action_work_sent" type="object" string="Sent by Email" invisible="state in ['sent' ,'cancel','draft']" class="oe_stat_button"/>
+						<button type="object" name="action_work_cancel" string="Cancel" invisible="state in ['sent','cancel']" class="oe_stat_button"/>
+						<button name="action_rest" type="object" string="Reset to draft" invisible="state in ['confirm','draft','cancel']" class="oe_stat_button"/>
+						<field name="state" widget="statusbar"/>
+					</header>
+					
+					<sheet>
+						<div class="oe_title">
+							<h1 class="o_row">
+								<field name="work_name" />
+							</h1>
+						</div>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="project_id"/>
+								<field name="partner_id"/>
+							</group>
+							<group>
+								<field name="date"/>
+								<field name="user_id"/>
+								<field name="company_id"/>
+							</group>
+						</group>
+						<notebook>
+							<page string = "Work Packages Lines">
+								<field name = "work_pack_line_ids" widget="one2many_list">
+									<tree string = "Work Packages Lines" editable="bottom">
+										<field name="job_order_id"/>
+										<field name="user_id"/>
+										<field name="start_date"/>
+										<field name="end_date"/>
+										<field name = "planned_hours"/>
+										<field name ="remaining_hours"/>
+									</tree>
+								</field>
+							</page>
+							<page string="Internal note">
+							<field name="internal_note"/>
+						</page>
+						</notebook>
+
+					</sheet>
+					<div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+				</form>
+			</field>
+		</record>
+
+		<record id="workpackage_search_view" model="ir.ui.view">
+			<field name="name">work.package.search.view</field>
+			<field name="model">work.packages</field>
+			<field name="arch" type="xml">
+				<search string="packages">
+				 	<group expand="0" string="Group By">
+				        <filter string="Customer" name="partner_id" help="By sticky note Category" context="{'group_by':'partner_id'}"/>
+				        <filter string="project" name="project_id" help="By sticky note Category" context="{'group_by':'project_id'}"/>
+				        <filter string="company" name="company_id" help="By sticky note Category" context="{'group_by':'company_id'}"/>
+				        <filter string="resposible user" name="user_id" help="By sticky note Category" context="{'group_by':'user_id'}"/>
+				    </group>
+				</search>
+			</field>
+		</record>
+
+		<record id="workpackage_tree_view" model="ir.ui.view">
+			<field name="name">work.package.tree.view</field>
+			<field name="model">work.packages</field>
+			<field name="arch" type="xml">
+				<tree string="Work Packages">
+					<field name="work_name"/>
+					<field name="name"/>
+					<field name="project_id"/>
+					<field name="partner_id"/>
+					<field name="date"/>
+					<field name="user_id"/>
+					<field name="company_id"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_work_packages" model="ir.actions.act_window">
+			<field name="name">Work Packages</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">work.packages</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="workpackage_search_view"/>
+		</record>
+
+		<record id="seq_work_packages" model="ir.sequence">
+            <field name="name">work packages sequence</field>
+            <field name="code">work.packages</field>
+            <field name="prefix">JOB/PACKAGE/</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_work_packages_line" model="ir.sequence">
+            <field name="name">work packages line sequence</field>
+            <field name="code">job.order</field>
+            <field name="prefix">JOB/</field>
+            <field name="padding">5</field>
+        </record>
+
+        <menuitem name="Work Packages"
+        	id="sub_menu_work_packages"
+			parent="bi_odoo_job_costing_management.sub_menu_job_orders"
+			action="action_work_packages"
+			sequence='20' />
+
+
+		<record id="inherited_project_form_view" model="ir.ui.view">
+			<field name="name">inherited.project.form.view</field>
+			<field name="model">project.project</field>
+			<field name="inherit_id" ref="project.edit_project"/>
+			<field name="arch" type="xml">
+				<xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+					<button class="oe_stat_button" name="pack_button" type="object" icon="fa-bars" invisible="packages_count == 0">
+							<field name="packages_count" widget="statinfo" string="Packages"/>
+					</button>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="inherited_job_order_work_view" model="ir.ui.view">
+			<field name="name">inherited.job.order.work.form.view</field>
+			<field name="model">job.order</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+					<button class="oe_stat_button" name="pack_button" type="object" icon="fa-bars" invisible="packages_count == 0">
+							<field name="packages_count" widget="statinfo" string="Packages"/>
+					</button>
+				</xpath>
+				<xpath expr="//field[@name='project_id']" position="after">
+					<field name="work_packs_id" string = "Job ID"/>
+					<field name="remaining_hours" invisible ='1' />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

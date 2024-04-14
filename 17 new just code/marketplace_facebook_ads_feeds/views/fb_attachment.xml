@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fb_attachment_mapping_form_mp_facebook_ads_feeds" model="ir.ui.view">
+        <field name="name">fb.attachment.mapping.view.form.mp.inherit</field>
+        <field name="model">fb.attachment.mapping</field>
+        <field name="inherit_id" ref="facebook_ads_feeds.fb_attachment_mapping_form"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="fb_shop" position="attributes">
+                <attribute name="context">{'tree_view_ref':'marketplace_facebook_ads_feeds.facebook_shop_tree_marketplace_facebook_ads_feeds','form_view_ref':'marketplace_facebook_ads_feeds.facebook_shop_form_marketplace_facebook_ads_feeds'}</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="view_meeting_minutes_proj_form" model="ir.ui.view">
+            <field name="name">view.meeting.minutes.proj.form</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='partner_ids']" position="after">
+                        <group>
+                            <field name="project_id"/>
+                            <field name="analytic_account_id"/>
+                            <field name="job_order_id"/>
+                            <field name="job_cost_sheet_id"/>
+                            <field name="job_cost_sheet_line_id" widget="many2many_tags" domain="['|','|',('material_job_cost_sheet_id','=',job_cost_sheet_id),('labour_job_cost_sheet_id','=',job_cost_sheet_id),('overhead_job_cost_sheet_id','=',job_cost_sheet_id)]"/>
+                        </group>
+               </xpath>
+               <xpath expr="//notebook/page[@name='page_invitations']" position="before">
+                    <page string="Timesheets">
+                        <field name="timesheet_ids" widget="one2many_list">
+                            <tree editable="bottom">
+                                <field name="date"/>
+                                <field name="description"/>
+                                <field name="project_id"/>
+                                <field name="task"/>
+                                <field name="quantity"/>
+                                <field name="start_time"/>
+                                <field name="end_time"/>
+                                <field name="job_cost_center_id"/>
+                                <field name="job_cost_line_id"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                </xpath>
+            </field>
+        </record>
+         <record id="view_job_meeting_button" model="ir.ui.view">
+            <field name="name">view.job.meeting.button</field>
+            <field name="model">job.cost.sheet</field>
+            <field name="inherit_id" ref="bi_odoo_job_costing_management.job_cost_sheet_form_view"/>
+            <field name="arch" type="xml">
+                <div class="oe_button_box" name="button_box" position="inside">
+                    <button class="oe_stat_button" name="job_calendar_button"
+                            type="object" icon="fa-bars"> 
+                        <field name="job_meeting_count" widget="statinfo" string="JobCostMeeting" />
+                    </button>
+                </div>
+              
+            </field>
+        </record>
+
+        <record id="bi_view_project_project_form" model="ir.ui.view">
+            <field name="name">inherit.view.project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project" />
+            <field name="arch" type="xml">
+               <div class="oe_button_box" name="button_box" position="inside">
+                    <button class="oe_stat_button" name="job_meeting_button"
+                            type="object" icon="fa-bars"> 
+                        <field name="job_meeting_proj_count" widget="statinfo" string="JobCostMeeting" />
+                    </button>
+                </div>
+            </field>
+        </record>
+
+        <record id="bi_view_job_order_form" model="ir.ui.view">
+            <field name="name">inherit.view.job.order.form</field>
+            <field name="model">job.order</field>
+            <field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view" />
+            <field name="arch" type="xml">
+               <div class="oe_button_box" name="button_box" position="inside">
+                    <button class="oe_stat_button" name="job_order_meeting_button"
+                            type="object" icon="fa-bars"> 
+                        <field name="job_meeting_job_count" widget="statinfo" string="JobCostMeeting" />
+                    </button>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

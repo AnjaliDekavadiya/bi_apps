@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_order_form">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <button name="payment_action_void" position="before">
+                <button name="preview_report_invoice" string="Preview report" type="object" data-hotkey="p"/>
+            </button>
+        </field>
+    </record>
+
+    <record id="preview_report_sale_order_server_action" model="ir.actions.server">
+        <field name="name">Preview report</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">action = records.preview_report_invoice()</field>
+    </record>
+</odoo>

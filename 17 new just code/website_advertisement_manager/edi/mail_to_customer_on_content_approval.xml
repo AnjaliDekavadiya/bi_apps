@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+
+<odoo>
+    <data noupdate="1">
+        <!--Mail to customer for ad content status state changed-->
+        <record id="content_approval_template_to_customer" model="mail.template">
+            <field name="name">Mail to Customer On Content Approval</field>
+            <field name="email_from">{{ object.company_id.partner_id.email }}</field>
+            <field name="subject">Ad Block Content Status Updated</field>
+            <field name="email_to">{{ object.order_partner_id.email }}</field>
+            <field name="model_id" ref="sale.model_sale_order_line"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">{{ object.order_partner_id.lang }}</field>
+            <field name="body_html" type="html">
+              <p>Hello <t t-out="object.order_partner_id.name or ''"/>,</p>
+              <p> &amp;nbsp; </p>
+              <p>Your ad block content has been <t t-out="object.ad_content_status or ''"/>.</p>
+              <p> &amp;nbsp; </p>
+              <p>Thank you,</p>
+              <p style="color:#eeeeee;">
+                  <t t-if="object.company_id.partner_id.user_ids and object.company_id.partner_id.user_ids[0].signature">
+                      <t t-out="object.company_id.partner_id.user_ids[0].signature or ''"/>
+                  </t>
+              </p>
+            </field>
+        </record>
+    </data>
+</odoo>

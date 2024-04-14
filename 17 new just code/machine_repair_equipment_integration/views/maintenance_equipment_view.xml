@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="maintenance_equipment_inherit_machine_repair_support" model="ir.ui.view">
+            <field name="name">maintenance.equipment.inherit</field>
+            <field name="model">maintenance.equipment</field>
+            <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='location']" position="after">
+                    <field name="custom_partner_id"/>
+                </xpath>
+                <!-- <xpath expr="//div[@class='oe_button_box']" position="inside"> -->
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <!--<div class="oe_button_box" name="button_box">-->
+                        <!-- <button name="action_machine_repair" type="object" class="oe_stat_button" icon="fa-pencil-square-o" attrs="{'invisible': [('custom_repair_count', '=', 0)]}">
+                            <field string="Machine Repair" name="custom_repair_count" widget="statinfo"/> -->
+                            <button name="action_machine_repair" type="object" class="oe_stat_button" icon="fa-pencil-square-o"  invisible ="custom_repair_count == 0">
+                            <field string="Machine Repair" name="custom_repair_count" widget="statinfo"/>
+                        </button>
+<!--                    </div>-->
+                </xpath>
+                
+            </field>
+        </record>
+        
+    </data>
+</odoo>

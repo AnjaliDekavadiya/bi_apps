@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<odoo>
+     <record id="website_portal_dashboard_res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">portal.dashnoard.res.config.settings.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app notApp="0" string="Website Dashboard" data-string="Website" name="website_portal_management" logo="bi_website_portal_dashboard/static/description/icon.png">
+                    <block title="Website Dashboard" name="website_portal_setting_container">
+                    <div class="app_settings_block" data-string="Website Dashboard" string="Website Dashboard" data-key="bi_website_portal_dashboard" groups="website.group_website_designer">
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_sale_chart"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_sale_chart"/>
+                                    <div class="text-muted">
+                                        Show sale anaylsis chart in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_purchase_chart"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_purchase_chart"/>
+                                    <div class="text-muted">
+                                        Show purchase anaylsis chart in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_invoice_chart"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_invoice_chart"/>
+                                    <div class="text-muted">
+                                        Show invoice anaylsis chart in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_bill_chart"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_bill_chart"/>
+                                    <div class="text-muted">
+                                        Show bill anaylsis chart in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_project_table"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_project_table"/>
+                                    <div class="text-muted">
+                                        Show projects and tasks in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="no_records"/>
+                                    <div class="text-muted">
+                                        No. of latest records you want to show in table, like 5 or 10.
+                                    </div>
+                                    <field name="no_records"/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_quotaion_table"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_quotaion_table"/>
+                                    <div class="text-muted">
+                                        Show latest quotations in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_so_table"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_so_table"/>
+                                    <div class="text-muted">
+                                        Show latest sale orders in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_rfq_table"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_rfq_table"/>
+                                    <div class="text-muted">
+                                        Show latest RFQs in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_po_table"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_po_table"/>
+                                    <div class="text-muted">
+                                        Show latest purchase orders in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_invoice_table"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_invoice_table"/>
+                                    <div class="text-muted">
+                                        Show latest invoices in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_bill_table"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_bill_table"/>
+                                    <div class="text-muted">
+                                        Show latest bills in website dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

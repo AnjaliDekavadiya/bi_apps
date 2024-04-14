@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="customer_picking_top_menu"
+        name="Pickings"
+        parent="cloth_tailor_management_odoo.tailor_management_menu_root"
+        groups="cloth_tailor_management_odoo.custom_group_tailor_user"
+        sequence="2"/>
+
+       <menuitem id="cloth_incoming_picking_sub_menu"
+        name="Incoming Pickings"
+        parent="cloth_tailor_picking_manage.customer_picking_top_menu"
+        action="cloth_tailor_picking_manage.custom_action_incoming_stock_picking"
+        groups="cloth_tailor_management_odoo.custom_group_tailor_user"
+        sequence="1"/>
+
+    <menuitem id="cloth_outgoing_picking_sub_menu"
+        name="Delivery Pickings"
+        parent="cloth_tailor_picking_manage.customer_picking_top_menu"
+        action="cloth_tailor_picking_manage.custom_action_outgoing_stock_picking"
+        groups="cloth_tailor_management_odoo.custom_group_tailor_user"
+        sequence="2"/>
+</odoo>

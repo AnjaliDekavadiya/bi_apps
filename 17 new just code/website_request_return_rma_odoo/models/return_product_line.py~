@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+
+from odoo import models, fields
+
+class ReturnProductLine(models.Model):
+    _name = 'return.product.line'
+
+    return_order_id = fields.Many2one(
+        'return.order',
+        string='Return Order',
+    )
+    product_id = fields.Many2one(
+        'product.product',
+        string="Return Product",
+    )
+    quantity = fields.Float(
+        string='Delivered Quantity',
+    )
+    return_quantity = fields.Float(
+        string='Return Quantity',
+    )
+    uom_id = fields.Many2one(
+        'product.uom',
+        string='Product Uom'
+    )
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_mrp_bom_line_manager,custom.mrp.bom.line.manager,model_custom_mrp_bom_line,cloth_tailor_management_odoo.custom_group_tailor_manager,1,1,1,1
+access_custom_mrp_bom_line_user,custom.mrp.bom.line.user,model_custom_mrp_bom_line,cloth_tailor_management_odoo.custom_group_tailor_user,1,1,1,1
+access_custom_mrp_bom_line_mrp_user,custom.mrp.bom.line.mrp_user,model_custom_mrp_bom_line,mrp.group_mrp_user,1,1,1,1

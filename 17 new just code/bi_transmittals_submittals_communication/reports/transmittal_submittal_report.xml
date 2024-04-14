@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <record id="action_transmittal_submittal_report" model="ir.actions.report">
+            <field name="name">Transmittal/Submittal</field>
+            <field name="model">transmittal.submittal</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_transmittals_submittals_communication.report_transmittal_submittal</field>
+            <field name="report_file">bi_transmittals_submittals_communication.report_transmittal_submittal</field>
+            <field name="binding_model_id" ref="model_transmittal_submittal"/>
+            <field name="binding_type">report</field>
+        </record>
+	</data>
+</odoo>

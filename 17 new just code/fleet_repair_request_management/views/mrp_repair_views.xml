@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_repair_order_form_inherit_fleetrepair">
+            <field name="name">repair.order</field>
+            <field name="model">repair.order</field>
+            <field name="inherit_id" ref="repair.view_repair_order_form"/>
+            <field name="arch" type="xml">
+                <!-- <field name="guarantee_limit" position="after"> -->
+                <field name="tag_ids" position="before">
+                    <field name="custom_vehicle_id"/>
+                    <field name="custom_fleet_repair_id"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

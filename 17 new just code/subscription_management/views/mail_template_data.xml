@@ -1,0 +1,97 @@
+<odoo>
+    <data>
+        <!-- mail template send portion -->
+        <record id="subscription_management_mail_template" model="mail.template">
+            <field name="name">Subscription Detail</field>
+            <field name="subject">Regarding Product subscription</field>
+            <field name="email_from">{{object.sudo().create_uid.email_formatted}}</field>
+            <field name="email_to">{{object.customer_name.email}}</field>
+            <field name="model_id" ref="subscription_management.model_subscription_subscription"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+     Hello <strong>
+                        <t t-out="object.customer_name.name"/>
+                    </strong>,
+                    <br/>
+                    <br/>
+        Your subscription <strong>
+                    <t t-out="object.name"/>
+                </strong> has been activated...
+            <br/>
+         Expiry date for subscription is <strong>
+            <t t-out="object.end_date"/>
+        </strong>.
+        <br/>
+        <br/>
+        Do not hesitate to contact us if you have any questions.
+    </p>
+    <br/>
+    <strong>
+        <t t-out="object.sudo().create_uid.company_id.name"/>
+    </strong>
+    <br/>
+    <strong>
+        <t t-out="object.sudo().create_uid.company_id.phone"/>
+    </strong>
+    <br/>
+    <strong>
+        <t t-out="object.sudo().create_uid.company_id.email"/>
+    </strong>
+    <br/>
+    <strong>
+        <t t-out="object.sudo().create_uid.company_id.website"/>
+    </strong>
+</div>
+</field>
+</record>
+<record id="subscription_management_alert_mail_template" model="mail.template">
+<field name="name">Subscription Alert Mail</field>
+<field name="subject">Regarding Product subscription Expiring date</field>
+<field name="email_from">{{object.sudo().create_uid.email_formatted}}</field>
+<field name="email_to">{{object.customer_name.email}}</field>
+<field name="model_id" ref="subscription_management.model_subscription_subscription"/>
+<field name="auto_delete" eval="False"/>
+<field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+     Hello <strong>
+        <t t-out="object.customer_name.name"/>
+    </strong>,
+    <br/>
+    <br/>
+        Your subscription <strong>
+    <t t-out="object.name"/>
+</strong> will be expire in <strong>
+<t t-out="object.renewal_days"/>
+</strong> Days.
+<br/>
+         Expiry date for subscription is <strong>
+<t t-out="object.end_date"/>
+</strong>. Please renew it as soon as possible.
+<br/>
+<br/>
+        Do not hesitate to contact us if you have any questions.
+</p>
+<br/>
+<strong>
+<t t-out="object.sudo().create_uid.company_id.name"/>
+</strong>
+<br/>
+<strong>
+<t t-out="object.sudo().create_uid.company_id.phone"/>
+</strong>
+<br/>
+<strong>
+<t t-out="object.sudo().create_uid.company_id.email"/>
+</strong>
+<br/>
+<strong>
+<t t-out="object.sudo().create_uid.company_id.website"/>
+</strong>
+</div>
+</field>
+</record>
+</data>
+</odoo>

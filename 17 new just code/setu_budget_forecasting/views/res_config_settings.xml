@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form_Budget_forecast" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.budget.forecast</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="25"/>
+            <field name="inherit_id" ref="setu_cash_flow_forecasting.res_config_settings_cash_forecast_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='budget_forecast_setting_container']" position="after">
+                    <!--                    <div class="app_settings_block" data-string="Budget Forecast" string="Budget Forecast"-->
+                    <!--                         data-key="setu_budget_forecasting" groups="base.group_erp_manager">-->
+                    <h2>Budget Forecast</h2>
+
+                    <div class="row mt16 o_settings_container" name="budget_forecast_setting_container"
+                         invisible="not module_setu_budget_forecasting">
+                        <div class="col-12 col-lg-12 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="auto_confirm_budget"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="auto_confirm_budget"/>
+                                <div class="text-muted">
+                                    Automatically Confirm Budget When create budget from Cash Forecast
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-12 o_setting_box"
+                             invisible="not auto_confirm_budget">
+                            <div class="o_setting_left_pane">
+                                <field name="auto_validate_budget"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="auto_validate_budget"/>
+                                <div class="text-muted">
+                                    Automatically Validate Budget When create budget from Cash Forecast
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-12 o_setting_box"
+                             invisible="not auto_validate_budget or not auto_confirm_budget">
+                            <div class="o_setting_left_pane">
+                                <field name="auto_done_budget"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="auto_done_budget"/>
+                                <div class="text-muted">
+                                    Automatically Done Budget When create budget from Cash Forecast
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--                    </div>-->
+                </xpath>
+            </field>
+        </record>
+
+        <!-- <record id="action_budget_forecast_configuration" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'setu_budget_forecasting'}</field>
+        </record>
+
+        <menuitem id="setu_budget_forecasting_settings"
+                  name="Settings"
+                  parent="setu_cash_flow_forecasting.menu_sub_setu_cash_forecast_configuration"
+                  action="setu_budget_forecasting.action_budget_forecast_configuration" groups="base.group_system" sequence="1"/> -->
+
+    </data>
+</odoo>

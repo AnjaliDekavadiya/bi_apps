@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="group_hms_aesthetic" model="res.groups">
+        <field name="name">Aesthetic User</field>
+        <field name="category_id" ref="acs_hms_base.module_category_hms_speciality"/>
+        <field name="implied_ids" eval="[(4, ref('acs_hms.group_hms_receptionist'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <data noupdate="1">
+
+        <record id="hms_acs_aesthetic_wish_portal_rule" model="ir.rule">
+            <field name="name">Portal Patient's Own Aesthetic Wish</field>
+            <field name="model_id" ref="acs_hms_aesthetic.model_acs_aesthetic_patient_wish"/>
+            <field name="domain_force">[('patient_id.partner_id','=',user.commercial_partner_id.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

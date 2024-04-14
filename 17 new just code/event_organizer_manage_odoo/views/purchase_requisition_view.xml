@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="mpr_form_view_inherit_event_custom" model="ir.ui.view">
+            <field name="name">material.purchase.requisition.form.inherit.event</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="inherit_id" ref="material_purchase_requisitions.material_purchase_requisition_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='analytic_account_id']" position="after">
+                   <!--  <field name="event_custom_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/> -->
+                    <field name="event_custom_id" readonly="state != 'draft'"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="mpr_search_view_inherit_event_custom" model="ir.ui.view">
+            <field name="name">material.purchase.requisition.filter.inherit.event</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="inherit_id" ref="material_purchase_requisitions.material_purchase_requisition_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="inside">
+                     <filter string="Event" name="event_custom_id" context="{'group_by':'event_custom_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

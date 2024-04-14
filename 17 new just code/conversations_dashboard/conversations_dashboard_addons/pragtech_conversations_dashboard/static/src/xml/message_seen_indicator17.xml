@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="whatsapp.MessageSeenIndicator">
+        <span class="o-mail-MessageSeenIndicator position-relative d-flex opacity-50" t-att-class="{ 'o-all-seen text-primary': true }" t-attf-class="{{ props.className }}">
+            <i class="fa fa-check ps-1"/>
+            <t t-if="messageSeen">
+                <i t-if="messageSeen" class="o-second fa fa-check position-absolute"/>
+            </t>
+        </span>
+    </t>
+</templates>

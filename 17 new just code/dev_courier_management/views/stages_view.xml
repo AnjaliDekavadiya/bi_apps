@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+
+    <record id="view_dev_courier_stages_form" model="ir.ui.view">
+        <field name="name">view.dev.courier.stages.form</field>
+        <field name="model">dev.courier.stages</field>
+        <field name="arch" type="xml">
+            <form string="Stages">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" required='1'/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="fold"/>
+                            <field name="allow_create_invoice"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_dev_courier_stages_tree" model="ir.ui.view">
+        <field name="name">view.dev.courier.stages.tree</field>
+        <field name="model">dev.courier.stages</field>
+        <field name="arch" type="xml">
+            <tree string="Stages">
+                <field name="sequence" widget="handle"/>
+                <field name="name" required='1'/>
+                <field name="fold"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_dev_courier_stages" model="ir.actions.act_window">
+        <field name="name">Stages</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dev.courier.stages</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Stages" id="menu_courier_stages" parent='menu_courier_configration' 
+              action="action_dev_courier_stages" sequence='1'/>   
+</odoo>

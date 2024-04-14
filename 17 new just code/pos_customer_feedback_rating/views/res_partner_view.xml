@@ -1,0 +1,16 @@
+ <odoo>
+    <data>
+
+        <record id="custom_view_partner_form_is_send_feedback" model="ir.ui.view">
+            <field name="name">res.partner.form.is_send_feedback</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after" >
+                    <field name="custom_send_feedback_mail"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

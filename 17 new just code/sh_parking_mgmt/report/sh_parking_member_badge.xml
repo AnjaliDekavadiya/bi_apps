@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   
+
+    <template id="print_member_badge">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <t t-foreach="docs" t-as="member">
+                    <div class="col-md-6">
+                        <div class="row pb-5 pt-5" style="width:300pt; border: 1pt solid black; border-collapse:separate; border-radius:8pt; display:flex; justify-content:space-between; flex-direction:row; align-items:center;">
+                        <div class="col-6" style="align-self:bottom; display:flex; align-items:center;">
+                            <div class="sh-box" style="display:flex; align-items:center; padding:30px 0px;">
+                                <img t-if="member.partner_id.image_1920" t-att-src="image_data_uri(member.partner_id.image_1920)" style="vertical-align:bottom; width:150px; " alt="Company Logo"/>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6" style="align-self:bottom;">
+                            <div style="font-size:15pt; margin-bottom:0pt;margin-top:0pt;" align="center"><t t-esc="member.partner_id.name"/></div>
+                            <div align="center"  t-if="member.phone" t-field="member.phone" style="font-size:10pt;margin-bottom:5pt;"></div>
+                            <div align="center" t-if="member.email" t-field="member.email" style="font-size:10pt;margin-bottom:5pt;"></div>
+                            <div t-if="member.barcode" t-field="member.barcode" t-options="{'widget': 'barcode', 'width': 600, 'height': 120, 'img_style': 'max-height:50pt;max-width:100%;', 'img_align': 'center'}"/>
+                        </div>
+                        </div>
+
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+
+     <record id="sh_member_print_badge" model="ir.actions.report">
+        <field name="name">Print Badge</field>
+        <field name="model">sh.parking.membership</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sh_parking_mgmt.print_member_badge</field>
+        <field name="report_file">sh_parking_mgmt.print_member_badge</field>
+        <field name="print_report_name">'Print Badge - %s' % (object.partner_id.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_sh_parking_membership"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

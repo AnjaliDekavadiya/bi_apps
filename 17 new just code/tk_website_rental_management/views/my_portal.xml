@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+    Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+-->
+<odoo>
+    <data>
+        <template id="portal_my_enquiry" inherit_id="portal.portal_my_home" name="My Portal">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="title">Property Enquiries</t>
+                    <t t-set="url" t-value="'/property/enquiries'"/>
+                    <t t-set="placeholder_count" t-value="'enquiry_count'"/>
+                </t>
+            </xpath>
+        </template>
+        <template id="portal_my_home_menu_enquiry" name="Portal layout : enquiry menu entries" inherit_id="portal.portal_breadcrumbs" priority="30">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <li t-if="page_name == 'enquiry'" t-attf-class="breadcrumb-item #{'active ' if not enquiry else ''}">
+                    <a t-if="enquiry" href="/property/enquiries">Property Enquiries</a>
+                    <t t-else="">Property Enquiries</t>
+                </li>
+                <li t-if="enquiry" class="breadcrumb-item active">
+                  <t t-esc="enquiry.property_id.name"/>
+                </li>
+            </xpath>
+        </template>
+        <template id="enquiry_list" name="Property Enquiries">
+            <t t-call="portal.portal_layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Property Enquiry</t>
+                </t>
+                <t t-if="not enqs">
+                    <p>Currently, there is not any Enquiry in your account..</p>
+                </t>
+                <t t-else="" t-call="portal.portal_table">
+                    <thead style="background-color: #7C7BAD;color: white;">
+                        <tr class="p-3 mb-2 bg-info text-white text-left">
+                            <th style="width:100%;" class="text-left">Property List</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="enqs" t-as="en">
+                            <tr>
+                                <td class="text-left">
+                                    <a t-attf-href="/property/enquiry/details/{{ slug(en) }}">
+                                        <t t-esc="en.property_id.name"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
+            </t>
+        </template>
+        <template id="enquiry_details" name="Property Enquiry Details">
+            <t t-call="portal.portal_layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Property Enquiry</t>
+                </t>
+                <div class="container bg-white">
+                    <div class="col-md-12 text-center mt64 mb64">
+                        <h3>Your Enquiry
+                            <span t-field="enquiry.property_id.name"/>
+                            has been submitted.
+                        </h3>
+                        <p>
+                            We will contact you soon.
+                            Thank you for your patience.
+                        </p>
+                        <br />
+                        <strong>If you have any questions then please write them down.</strong>
+                    </div>
+                </div>
+                <!-- Page Content -->
+                <div id="enquiry_content" class="col-12 col-lg">
+                    <!-- chatter -->
+                    <div id="enquiry_communication" class="mt-4">
+                        <h2>History</h2>
+                        <t t-call="portal.message_thread">
+                            <t t-set="object" t-value="enquiry"/>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

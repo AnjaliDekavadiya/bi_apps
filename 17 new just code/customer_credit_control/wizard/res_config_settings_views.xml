@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_cc_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.cc</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app/block[@name='catalog_setting_container']" position="before">
+                <block groups="sales_team.group_sale_manager, account.group_account_manager"  title="Customer Credit Control" name="customer_credit_control">
+                    <div class="row mt16 o_settings_container" groups="sales_team.group_sale_manager, account.group_account_manager">
+                        <div class="col-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="enable_universal_credit_control"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="enable_universal_credit_control"/>
+                                <p>This Credit Control Setting applies to all Customers, Who doesn't have Credit Control configured.</p>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box" invisible="enable_universal_credit_control != True">
+                            <div class="o_setting_left_pane">
+                                <field name="force_universal_credit_control"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="force_universal_credit_control"/>
+                                <p>Force apply these credit control settings over settings done in partner form.</p>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="enable_warning"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="enable_warning"/>
+                                <p>Enable / Disable Warning emails alongside their cofigurations.</p>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <field name="email_from"/>
+                                <label for="email_from"/>
+                                <p>This user's email will be used to send warning email. For Universal and Partner Form, both Settings.</p>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box" invisible="enable_universal_credit_control != True">
+                            <div class="o_setting_left_pane">
+                                <field name="is_amount_credit_limit"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="is_amount_credit_limit"/>
+                                <p>Add Credit Control to Limit Amount of how much credit sales can be done to a Customer.</p>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box" invisible="enable_universal_credit_control != True">
+                            <div class="o_setting_left_pane">
+                                <field name="is_days_credit_limit"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="is_days_credit_limit"/>
+                                <p>Add Credit Control to Limit No. of Days how long a Customer can keep the amount due.</p>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box" invisible="enable_universal_credit_control != True">
+                            <div class="o_setting_right_pane">
+                                <field name="credit_limit_amount" readonly="is_amount_credit_limit != True" required="is_amount_credit_limit == True"/>
+                                <label for="credit_limit_amount"/>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box" invisible="enable_universal_credit_control != True">
+                            <div class="o_setting_right_pane">
+                                <field name="credit_limit_days" readonly="is_days_credit_limit != True" required="is_days_credit_limit == True"/>
+                                <label for="credit_limit_days"/>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box" invisible="enable_universal_credit_control != True">
+                            <div class="o_setting_right_pane">
+                                <field name="amount_tolerance" readonly="is_amount_credit_limit != True" required="is_amount_credit_limit == True"/>
+                                <label for="amount_tolerance"/>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box" invisible="enable_universal_credit_control != True">
+                            <div class="o_setting_right_pane">
+                                <field name="days_tolerance" readonly="is_days_credit_limit != True" required="is_days_credit_limit == True"/>
+                                <label for="days_tolerance"/>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box" invisible="enable_warning != True or is_days_credit_limit != True">
+                            <div class="o_setting_right_pane">
+                                <field name="warning_amount" required="enable_warning == True and is_days_credit_limit == True"/>
+                                <label for="warning_amount"/>
+                            </div>
+                        </div>
+                        <div class="col-6 o_setting_box" invisible="enable_warning != True or is_days_credit_limit != True">
+                            <div class="o_setting_right_pane">
+                                <field name="warning_days" required="enable_warning == True and is_days_credit_limit == True"/>
+                                <label for="warning_days"/>
+                            </div>
+                        </div>
+
+                    </div>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- <report
+            id="report_vehicle_inspection_view"
+            model="inspection.request"
+            string="Inspection Request"
+            report_type="qweb-pdf"
+            name="fleet_safety_inspection.vachile_inspectin_report_templete"
+            file="fleet_safety_inspection.vachile_inspectin_report_templete"
+        /> -->
+
+        <record id="report_vehicle_inspection_view" model="ir.actions.report">
+          <field name="name">Inspection Request</field>
+          <field name="model">inspection.request</field>
+          <field name="report_type">qweb-pdf</field>
+          <field name="report_name">fleet_safety_inspection.vachile_inspectin_report_templete</field>
+          <field name="report_file">fleet_safety_inspection.vachile_inspectin_report_templete</field>
+          <field name="binding_model_id" ref="model_inspection_request"/>
+          <field name="binding_type">report</field>
+        </record>
+        
+        <template id="vachile_inspectin_report_templete">
+             <t t-call="web.html_container">
+               <t t-foreach="docs" t-as="doc">
+                  <t t-call="web.internal_layout">
+                         <div class="page">
+                            <div class="float-right">
+                                <t t-if="doc.image">
+                                  <img t-att-src="image_data_uri(doc.image)" style="max-height:5cm; max-width:5cm;" alt="Logo"/>
+                                </t>
+                            </div>
+                          <div>
+                            <table class="table">
+                              <thead>
+                                 <tr>
+                                   <td style="text-align: center;" colspan="4">
+                                       <strong><h5><span t-field="doc.name"/></h5></strong>
+                                   </td>
+                                </tr>
+                              </thead>
+                               <tbody>
+                                     <tr>
+                                        <td>
+                                            <strong>Vehicle:</strong>
+                                        </td>
+                                        <td>
+                                          <span t-field="doc.vehicle_id"/>
+                                        </td>
+                                        <td>
+                                          <strong>Create Date:</strong>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.create_date"/>
+                                        </td>
+                                     </tr>
+                                     <tr>
+                                        <td>
+                                            <strong>Model:</strong>
+                                        </td>
+                                        <td>
+                                          <span t-field="doc.model_id"/>
+                                        </td>
+                                        <td>
+                                            <strong>Inspection Date:</strong>
+                                        </td>
+                                        <td>
+                                          <span t-field="doc.next_date"/>
+                                        </td>
+                                        <td>
+                                        </td>
+                                     </tr>
+                                     <tr>
+                                        <td>
+                                            <strong>License Plate:</strong>
+                                        </td>
+                                        <td>
+                                          <span t-field="doc.custom_license_plate"/>
+                                        </td>
+                                        <td>
+                                            <strong>Inspection Supervisor:</strong>
+                                        </td>
+                                        <td>
+                                          <span t-field="doc.user_id"/>
+                                        </td>
+                                        <td>
+                                        </td>
+                                     </tr>
+                                     <tr>
+                                        <td>
+                                            <strong>State:</strong>
+                                        </td>
+                                        <td>
+                                          <span t-field="doc.state"/>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                     </tr>
+                                </tbody>
+                          </table>
+                        </div>
+                         <h4>Images</h4>
+                        <table>
+                           <t t-if="doc.image1">
+                              <img t-att-src="image_data_uri(doc.image1)" style="max-height:6cm; max-width:5cm;" alt="Logo" class="img-thumbnail"/>
+                           </t>
+                           <t t-if="doc.image2">
+                              <img t-att-src="image_data_uri(doc.image2)" style="max-height:5cm; max-width:5cm;" alt="Logo" class="img-thumbnail"/>
+                           </t>
+                           <t t-if="doc.image3">
+                              <img t-att-src="image_data_uri(doc.image3)" style="max-height:5cm; max-width:5cm;" alt="Logo" class="img-thumbnail" />
+                           </t>
+                       </table>
+                        <table>
+                          <t t-if="doc.image4">
+                              <img t-att-src="image_data_uri(doc.image4)" style="max-height:5cm; max-width:5cm;" class="img-thumbnail" alt="Logo"/>
+                          </t>
+                          <t t-if="doc.image5">
+                            <img t-att-src="image_data_uri(doc.image5)" style="max-height:5cm; max-width:5cm;"  class="img-thumbnail" alt="Logo" />
+                          </t>
+                       </table>
+                        <div class="mt32 mb32">
+                                 <div class="col-xs-6 text-left">
+                                    <strong>Supervisor Manager Signature:____________________</strong>
+                                    <strong>Date:____________________</strong>
+                                 </div>
+                        </div>
+                      </div>
+                    </t>
+                  </t>
+               </t>
+        </template>
+  </data>
+</odoo>

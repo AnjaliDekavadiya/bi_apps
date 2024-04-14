@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_sh_parking_payment_report" model="ir.actions.report">
+            <field name="name">Parking Payment</field>
+            <field name="model">sh.parking.booking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sh_parking_mgmt.sh_parking_report_template</field>
+            <field name="report_file">sh_parking_mgmt.sh_parking_report_template</field>
+            <field name="print_report_name"></field>
+        </record>
+       
+    </data>
+</odoo>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+
+		<template id="meeting_minute_template_view">
+			<t t-call="web.external_layout">
+				<div class="page">
+                    <br/>
+					<t t-foreach="docs" t-as="o">
+                        <h2 style="text-align : center;font-style:normal;">
+                            <span t-field="o.name"/>-Meeting Minutes
+                        </h2><br/>
+                        <table style="border-collapse: collapse;width: 100%;border: 3px solid #000;" class="table table-condensed">
+                            <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                                <td><strong >Meeting Date: </strong> </td>
+                                <td><span t-field="o.start"/></td>
+
+                                <td><strong >Meeting Location: </strong> </td>
+                                <td><span t-field="o.location" /></td>
+                            </tr>
+                        </table>
+
+						
+				<table style="border-collapse: collapse;width: 100%;border: 3px solid #000;" class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><strong >Presenter: </strong> </td>
+                        <td><span t-field="o.presenter_id"/></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;"> 
+                        <td><strong >Meeting Called By: </strong> </td>
+                        <td><span t-field="o.facilitator_id" /></td>
+                        <td><strong >Facilitator: </strong> </td>
+                        <td><span t-field="o.facilitator_id" /></td>
+                    </tr>
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;"> 
+                        <td><strong >Note Taker: </strong> </td>
+                        <td><span t-field="o.note_taker_id" /></td>
+                        <td><strong >Timekeeper: </strong> </td>
+                        <td><span t-field="o.time_keeper_id" /></td>
+                    </tr>
+                    
+                </table>
+
+                <table style="border-collapse: collapse;width: 100%;border: 3px solid #000;" class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><strong >Meeting Attendees</strong> </td>
+                    </tr>
+                    <t t-foreach="o.partner_ids" t-as="partner">
+                        <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;height:50%;">
+
+                            <td><span t-field="partner.name"/></td>
+                        </tr>
+                    </t>
+
+                </table>
+
+                <table style="border-collapse: collapse;width: 100%;border: 3px solid #000;" class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><strong >Agenda Topic</strong> </td>
+                    </tr>
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><span t-field="o.agenda_items"/></td>
+                    </tr>
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><strong >Discussion</strong> </td>
+                    </tr>
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><span t-field="o.description"/></td>
+                    </tr>
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><strong >Action Items</strong> </td>
+                    </tr>
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><span t-field="o.action_items"/></td>
+                    </tr>
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><strong >Conclusion</strong> </td>
+                    </tr>
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><span t-field="o.conclusion"/></td>
+                    </tr>
+                </table>
+                <p style="page-break-before:always;"></p>
+					</t>
+				</div>
+
+                <t t-if="o.agenda_line">
+                <h2 style="text-align : center;font-style:normal;">
+                   Agenda Of The Meeting
+                </h2>
+                <table style="border-collapse: collapse;width: 100%;border: 3px solid #000;" class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                        <td><strong >Name of Agenda</strong> </td>
+                        <td><strong >Description Of Agenda</strong> </td>
+                    </tr>
+                    <t t-foreach="o.agenda_line" t-as="doc">
+                        <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;height:50%;">
+                            <td><span t-field="doc.name_agenda"/></td>
+                            <td><span t-field="doc.description"/></td>
+                        </tr>
+                    </t>
+                </table>
+                </t>
+                <t t-else="">
+                    <p> </p>
+                </t>
+                
+                <t t-if="o.calendar_lines">
+                    <h2 style="text-align : center;font-style:normal;">
+                      Minutes of Meeting
+                    </h2>
+                    <table style="border-collapse: collapse;width: 100%;border: 3px solid #000;" class="table table-condensed">
+                        <tr style="padding: 8px;text-align: left;border: 3px solid #000;height:50%;">
+                            <td><strong >Agenda</strong> </td>
+                            <td><strong >Description</strong> </td>
+                            <td><strong >Action By</strong> </td>
+                            <td><strong >Responsible</strong> </td>
+                        </tr>
+                        <t t-foreach="o.calendar_lines" t-as="doc">
+                            <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;height:50%;">
+                                <td><span t-field="doc.agendas"/></td>
+                                <td><span t-field="doc.descriptions"/></td>
+                                <td><span t-field="doc.action"/></td>
+                                <td><span t-field="doc.responsible"/></td>
+                            </tr>
+                        </t>
+                    </table>
+                </t>
+                <t t-else="">
+                    <p> </p>
+                </t>
+
+			</t>
+		</template>
+
+		<template id="meeting_minute_temp_id">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="bi_meeting_minutes.meeting_minute_template_view" />
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
+		

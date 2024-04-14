@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="helpdesk_support_form_travel_view" model="ir.ui.view">
+            <field name="name">helpdesk.support.travel.button.form</field>
+            <field name="model">helpdesk.support</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_support_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/div[@name='button_box']" position="inside">
+                     <!-- <div class="oe_button_box" name="button_box"> -->
+                           <button name="action_view_travel_request"
+                               type="object"
+                               class="oe_stat_button"
+                               icon="fa-files-o"
+                               string="Travel Requests"/>
+                     <!-- </div> -->
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_employee_travel_managment" model="ir.ui.view">
+            <field name="name">employee.travel.request.helpdesk.form</field>
+            <field name="model">employee.travel.request</field>
+            <field name="inherit_id" ref="employee_travel_managment.travel_request_form" />
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='approve_id']" position="after">
+                    <field name="helpdesk_support_id"/>
+                </xpath>
+            </field>
+        </record>
+</odoo>

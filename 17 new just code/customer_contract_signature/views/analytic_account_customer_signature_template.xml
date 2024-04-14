@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="display_contract_inherit_signature_view" inherit_id="subscription_contract_customer_portal.custom_display_contract">
+            <!-- <xpath expr="//div[@class='panel-body']" position="after"> -->
+            <xpath expr="//div[hasclass('panel-body')]" position="after"> <!-- odoo13 -->
+            <div role="dialog" class="modal fade" id="modalaccept">
+                <div class="modal-dialog">
+                    <form id="accept" method="POST" t-att-data-order-id="contract_id.id" class="js_accept_json modal-content          js_website_submit_form">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <header class="modal-header">
+                            Customer Signature - (<p t-field="contract_id.name"></p>)
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&amp;times;</button>
+                            </header>
+                        <main class="modal-body" id="sign-dialog">
+                        <div class="form-group">
+                            <label for="tcket">Your Contract</label>
+                            <input type="text" class="form-control"  t-att-value="contract_id.name" readonly='True'/>
+                        </div>
+                            <t t-call="portal.signature_form">
+                                <t t-set="call_url" t-value="contract_id._get_signature_url() if contract_id else ''"/>
+                                <t t-set="default_name" t-value="contract_id.partner_id.name"/>
+                            </t>
+<!--                            <t t-call="portal.portal_signature">-->
+<!--                                <t t-set="object" t-value="contract_id"/>-->
+<!--                                <t t-set="partner_name" t-value="contract_id.partner_id.name"/>-->
+<!--                                <t t-set="callUrl" t-value="'/my/contract/#{slug(contract_id.id)}/accept'"/> OLD-->
+<!--                                <t t-set="callUrl" t-value="'/my/contract/accept'"/>-->
+<!--                                <t t-set="accessToken" t-value="request.csrf_token()"/>-->
+<!--                            </t>-->
+                        </main>
+                    </form>
+                </div>
+            </div>
+            <section id="signature" name="Signature">
+                <div class="row mt-4" name="signature">
+                    <div t-attf-class="#{'col-3' if report_type != 'html' else 'col-sm-7 col-md-4'} ml-auto text-center">
+                        <h5>Customer Signature</h5>
+                        <img t-if="contract_id.custom_signature" t-att-src="image_data_uri(contract_id.custom_signature)" style="max-height: 6rem; max-width: 100%;"/>
+                        <h3 t-if="not contract_id.custom_signature"  style="color:red;">No Signature Found</h3>
+                        <p t-field="contract_id.partner_id.name"/>
+                        <p t-if="contract_id.custom_signature" t-field="contract_id.custom_signature_date"/>
+                        <a  t-if="not contract_id.custom_signature"  class="btn btn-primary btn-block mb8" data-bs-toggle="modal" data-bs-target="#modalaccept"><b>Accept Signature</b>
+                        </a><br/><br/><br/>
+                    </div>
+                </div>
+            </section>
+            </xpath>
+        </template>
+    </data>
+</odoo>

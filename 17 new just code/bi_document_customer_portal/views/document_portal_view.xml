@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+		<record id="view_attachment_inherit_add_portal_view" model="ir.ui.view">
+            <field name="name">view.attachment.inherit.portal.view</field>
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="base.view_attachment_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='datas']" position="after">
+           			<field name="user_id" widget="many2many_tags" readonly="0"/>
+			   </xpath>
+        	</field>
+		</record>
+
+</odoo>

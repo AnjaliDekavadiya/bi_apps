@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="email_template_export_products" model="mail.template">
+                <field name="name">3PL : Export Products</field>
+                <field name="model_id" ref="stock.model_stock_warehouse"/>
+                <field name="email_from">"{{ (object.company_id.email_formatted) }}"</field>
+                <field name="email_to">{{ ctx['email_to'] }}</field>
+                <field name="subject">3PL : Export Products Process</field>
+                <field name="lang">{{ object.partner_id.lang }}</field>
+                <field name="auto_delete" eval="True"/>
+                <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+    Hello,
+        <br/>
+        This email has been sent to you to inform that product export operation has been performed by with following details:
+    <br/>
+    <strong>Process</strong>     : Export Products<br/>
+    <strong>Date</strong>        : <t t-out="ctx['process_time']"></t><br/>
+    <strong>User</strong>        : <t t-out="ctx['user_name']"></t><br/>
+    <strong>Process Log</strong> : <t t-out="ctx['process_log']"></t><br/>
+    <br/>
+    Regards
+    </p>
+</div>
+                </field>
+        </record>
+
+        <record id="email_template_export_sales" model="mail.template">
+                <field name="name">3PL : Export Sales</field>
+                <field name="model_id" ref="stock.model_stock_warehouse"/>
+                <field name="email_from">"{{ (object.company_id.email_formatted) }}"</field>
+                <field name="email_to">{{ ctx['email_to'] }}</field>
+                <field name="subject">3PL : Export Sales Process</field>
+                <field name="lang">{{ object.partner_id.lang }}</field>
+                <field name="auto_delete" eval="True"/>
+                <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+    Hello,
+        <br/>
+        This email has been sent to you to inform that sales picking export operation has been performed by with following details:
+    <br/>
+    <strong>Process</strong>     : Export Sales<br/>
+    <strong>Date</strong>        : <t t-out="ctx['process_time']"></t><br/>
+    <strong>User</strong>        : <t t-out="ctx['user_name']"></t><br/>
+    <strong>Process Log</strong> : <t t-out="ctx['process_log']"></t><br/>
+    <br/>
+    Regards
+    </p>
+</div>
+                </field>
+        </record>
+
+        <record id="email_template_import_sales" model="mail.template">
+                <field name="name">3PL : Import Sales</field>
+                <field name="model_id" ref="stock.model_stock_warehouse"/>
+                <field name="email_from">"{{ (object.company_id.email_formatted) }}"</field>
+                <field name="email_to">{{ ctx['email_to'] }}</field>
+                <field name="subject">3PL : Import Sales Process</field>
+                <field name="lang">{{ object.partner_id.lang }}</field>
+                <field name="auto_delete" eval="True"/>
+                <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+    Hello,
+        <br/>
+        This email has been sent to you to inform that Sales Transfer Import operation has been performed by with following details:
+    <br/>
+    <strong>Process</strong>     : Import Sales<br/>
+    <strong>Date</strong>        : <t t-out="ctx['process_time']"></t><br/>
+    <strong>User</strong>        : <t t-out="ctx['user_name']"></t><br/>
+    <strong>Process Log</strong> : <t t-out="ctx['process_log']"></t><br/>
+    <br/>
+    Regards
+    </p>
+</div>
+                </field>
+        </record>
+
+        <record id="email_template_export_sales_return" model="mail.template">
+                <field name="name">3PL : Export Sales Return</field>
+                <field name="model_id" ref="stock.model_stock_warehouse"/>
+                <field name="email_from">"{{ (object.company_id.email_formatted) }}"</field>
+                <field name="email_to">{{ ctx['email_to'] }}</field>
+                <field name="subject">3PL : Export Sales Return Process</field>
+                <field name="lang">{{ object.partner_id.lang }}</field>
+                <field name="auto_delete" eval="True"/>
+                <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+    Hello,
+        <br/>
+        This email has been sent to you to inform that Sales Return Export operation has been performed by with following details:
+    <br/>
+    <strong>Process</strong>     : Export Sales Return<br/>
+    <strong>Date</strong>        : <t t-out="ctx['process_time']"></t><br/>
+    <strong>User</strong>        : <t t-out="ctx['user_name']"></t><br/>
+    <strong>Process Log</strong> : <t t-out="ctx['process_log']"></t><br/>
+    <br/>
+    Regards
+    </p>
+</div>
+                </field>
+        </record>
+
+        <record id="email_template_import_sales_return" model="mail.template">
+                <field name="name">3PL : Import Sales Return</field>
+                <field name="model_id" ref="stock.model_stock_warehouse"/>
+                <field name="email_from">"{{ (object.company_id.email_formatted) }}"</field>
+                <field name="email_to">{{ ctx['email_to'] }}</field>
+                <field name="subject">3PL : Import Sales Return Process</field>
+                <field name="lang">{{ object.partner_id.lang }}</field>
+                <field name="auto_delete" eval="True"/>
+                <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+    Hello,
+        <br/>
+        This email has been sent to you to inform that Sales Return Import operation has been performed by with following details:
+    <br/>
+    <strong>Process</strong>     : Import Sales Return<br/>
+    <strong>Date</strong>        : <t t-out="ctx['process_time']"></t><br/>
+    <strong>User</strong>        : <t t-out="ctx['user_name']"></t><br/>
+    <strong>Process Log</strong> : <t t-out="ctx['process_log']"></t><br/>
+    <br/>
+    Regards
+    </p>
+</div>
+                </field>
+        </record>
+
+        <record id="email_template_export_purchase" model="mail.template">
+                <field name="name">3PL : Export Purchase</field>
+                <field name="model_id" ref="stock.model_stock_warehouse"/>
+                <field name="email_from">"{{ (object.company_id.email_formatted) }}"</field>
+                <field name="email_to">{{ ctx['email_to'] }}</field>
+                <field name="subject">3PL : Export Purchase Process</field>
+                <field name="lang">{{ object.partner_id.lang }}</field>
+                <field name="auto_delete" eval="True"/>
+                <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+    Hello,
+        <br/>
+        This email has been sent to you to inform that Purchase Export operation has been performed by with following details:
+    <br/>
+    <strong>Process</strong>     : Export Purchase<br/>
+    <strong>Date</strong>        : <t t-out="ctx['process_time']"></t><br/>
+    <strong>User</strong>        : <t t-out="ctx['user_name']"></t><br/>
+    <strong>Process Log</strong> : <t t-out="ctx['process_log']"></t><br/>
+    <br/>
+    Regards
+    </p>
+</div>
+                </field>
+        </record>
+
+        <record id="email_template_import_purchase" model="mail.template">
+                <field name="name">3PL : Import Purchase</field>
+                <field name="model_id" ref="stock.model_stock_warehouse"/>
+                <field name="email_from">"{{ (object.company_id.email_formatted) }}"</field>
+                <field name="email_to">{{ ctx['email_to'] }}</field>
+                <field name="subject">3PL : Import Purchase Process</field>
+                <field name="lang">{{ object.partner_id.lang }}</field>
+                <field name="auto_delete" eval="True"/>
+                <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+    Hello,
+        <br/>
+        This email has been sent to you to inform that Purchase Import operation has been performed by with following details:
+    <br/>
+    <strong>Process</strong>     : Import Purchase<br/>
+    <strong>Date</strong>        : <t t-out="ctx['process_time']"></t><br/>
+    <strong>User</strong>        : <t t-out="ctx['user_name']"></t><br/>
+    <strong>Process Log</strong> : <t t-out="ctx['process_log']"></t><br/>
+    <br/>
+    Regards
+    </p>
+</div>
+                </field>
+        </record>
+
+        <record id="email_template_import_stock" model="mail.template">
+                <field name="name">3PL : Import Stock</field>
+                <field name="model_id" ref="stock.model_stock_warehouse"/>
+                <field name="email_from">"{{ (object.company_id.email_formatted) }}"</field>
+                <field name="email_to">{{ ctx['email_to'] }}</field>
+                <field name="subject">3PL : Import Stock Process</field>
+                <field name="lang">{{ object.partner_id.lang }}</field>
+                <field name="auto_delete" eval="True"/>
+                <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+    Hello,
+        <br/>
+        This email has been sent to you to inform that Stock Import operation has been performed by with following details:
+    <br/>
+    <strong>Process</strong>     : Import Stock<br/>
+    <strong>Date</strong>        : <t t-out="ctx['process_time']"></t><br/>
+    <strong>User</strong>        : <t t-out="ctx['user_name']"></t><br/>
+    <strong>Process Log</strong> : <t t-out="ctx['process_log']"></t><br/>
+    <br/>
+    Regards
+    </p>
+</div>
+                </field>
+        </record>
+    </data>
+</odoo>

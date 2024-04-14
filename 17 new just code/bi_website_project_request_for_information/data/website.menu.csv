@@ -1,0 +1,3 @@
+"id","name","url","parent_id/id"
+"bi_rfi_info_main","RFI","/rfi/info","website.main_menu"
+"bi_create_rfi","Create RFI","/create/information","bi_website_project_request_for_information.bi_rfi_info_main"

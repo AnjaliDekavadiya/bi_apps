@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<odoo>
+   <data>
+        <record model="ir.ui.view" id="probc_create_pos_return_form_view_rma">
+           <field name="name">probc.create.pos.return.form_view</field>
+           <field name="model">pos.create.rma.helpdesk.wizard</field>
+            <field name="arch" type="xml">
+               <form string="Create Return Order (RMA)">
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="pos_order_id"/>
+                            <field name="reason_id"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="company_id"/>
+                        </group>
+                   </group>
+                   <notebook>
+                        <page name="description" string="Reason Details">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                   <footer>
+                       <button string="Create RMA" name="create_helpdesk_rma_order_custom" type="object" class="btn-primary"/> or 
+                       <button string="Cancel" class="btn-secondary" special="cancel"/>
+                   </footer>
+               </form>
+             </field>
+       </record>
+       
+       <record id="probc_create_order_action_rma_pos" model="ir.actions.act_window">
+            <field name="name">Create Return Order (RMA)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.create.rma.helpdesk.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+       
+   </data>
+</odoo>

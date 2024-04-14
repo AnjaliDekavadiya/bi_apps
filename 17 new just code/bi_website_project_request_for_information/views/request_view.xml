@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="request_information_form_view" model="ir.ui.view">
+		<field name="name">request.information.form.view</field>
+		<field name="model">request.information</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+				    <button name="set_to_close" string="Set To Close" type="object"
+						class="btn-primary" invisible="is_closed == True"/>
+					<field name="stage_id" widget="statusbar" options="{'clickable': '1'}" readonly="is_closed == True"/>
+				</header>
+				
+				<sheet string="Request For Information">
+				    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                        </button>
+                        
+                        <button class="oe_stat_button" name="attachment_on_rfi_button"
+							type="object" icon="fa-cloud-upload"
+							invisible="attachment_count == 0">
+							<field name="attachment_count" widget="statinfo" string="Attachment" />
+						</button>
+						
+						<button class="oe_stat_button" name="survey_on_rfi_button"
+							type="object" icon="fa-address-book"
+							invisible="survey_count == 0">
+							<field name="survey_count" widget="statinfo" string="Survey" />
+						</button>
+                    </div>
+					<group>
+						<div class="oe_title oe_left">
+							<h1>
+								<field name="sequence" />
+							</h1>
+						</div>
+						<h1>
+							<field name="name" readonly="is_closed == True"/>
+						</h1>
+					</group>
+					<group>
+						<group>
+							<field name="request_type" readonly="is_closed == True"/>
+							<field name="assign_to_id" readonly="is_closed == True" />
+							<field name="company_id" readonly="is_closed == True" />
+						</group>
+						<group>
+							<field name="partner_id" readonly="is_closed == True" />
+							<field name="phone" widget="phone" readonly="is_closed == True"/>
+							<field name="email" readonly="is_closed == True" />
+						</group>
+					</group>
+					<separator/>
+					<group>
+						<group>
+							<field name="rfi_team_id" readonly="is_closed == True"/>
+							<field name="project_id" readonly="is_closed == True" />
+							<field name="job_order_id" readonly="is_closed == True"/>
+							<field name="job_cost_sheet_id" readonly="is_closed == True"/>
+						</group>
+						<group>
+							<field name="team_leader_id" readonly="is_closed == True"/>
+							<field name="analytic_account_id" readonly="is_closed == True"/>
+							<field name="priority" widget="priority" readonly="is_closed == True"/>
+							<field name="rfi_category_id" readonly="is_closed == True"/>
+						</group>
+					</group>
+					<separator/>
+					<group>
+						<group>
+							<field name="create_date" readonly="is_closed == True"/>
+							<field name="is_closed" />
+						</group>
+						<group>
+							<field name="closed_date" readonly="is_closed == True"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Description">
+							<field name="description" placeholder="Add an internal note..."/>
+						</page>
+						<page string="Timesheets">
+							<field name="timesheet_ids">
+							    <tree string="Timesheet" editable="bottom">
+									<field name="date" />
+									<field name="partner_id" string="User" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" />
+									<field name="project_id" />
+									<field name="task_id" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+									<field name="job_cost_sheet_id"  />
+									<field name="name" />
+									<field name="unit_amount" widget="float_time" string="Hours" />
+								</tree>
+							</field>
+						</page>
+						<page string="Customer/Supplier Ratings">
+							<group>
+								<field name="customer_rating" widget="priority" />
+								<field name="comment" />
+							</group>
+						</page>
+						<page string="RFI Survey">
+							<field name="rfi_survey_ids">
+								<tree string="RFI Survey" editable="bottom">
+									<field name="title" />
+									<field name="state" string= "Stages"/>
+									<field name="answer_count" string="Registered"/>
+									<field name="answer_done_count" string="Attempts"/>
+									<field name="success_count" string="Success"/>
+								</tree>
+							</field>
+						</page>
+						<page string="RFI Answer">
+							<field name="rfi_answer"/>
+						</page>
+					</notebook>`
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" />
+					<field name="message_ids" widget="mail_thread" />
+				</div>
+			</form>
+		</field>
+	</record>
+	
+	<record id="request_information_tree_view" model="ir.ui.view">
+		<field name="name">request.information.tree.view</field>
+		<field name="model">request.information</field>
+		<field name="arch" type="xml">
+			<tree string="Request For Information">
+				<field name="name" />
+				<field name="request_type" />
+				<field name="partner_id" />
+				<field name="job_order_id" />
+				<field name="rfi_team_id" />
+				<field name="priority" string="Priority" />
+				<field name="stage_id" widget="selection"/>
+			</tree>
+		</field>
+	</record>
+	
+	<record id="action_request_information" model="ir.actions.act_window">
+		<field name="name">Request For Information</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">request.information</field>
+		<field name="binding_view_types">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+	
+    <record id="rfi_type_form_view" model="ir.ui.view">
+            <field name="name">rfi.type.form.view</field>
+            <field name="model">rfi.type</field>
+            <field name="arch" type="xml">
+                <form string="RFI Type">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                </form>    
+            </field>
+    	</record>
+    
+    	<record id="rfi_type_tree_view" model="ir.ui.view">
+            <field name="name">rfi.type.tree.view</field>
+            <field name="model">rfi.type</field>
+            <field name="arch" type="xml">
+                <tree string="RFI Type">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+    
+        <record id="action_rfi_type" model="ir.actions.act_window">
+            <field name="name">RFI Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rfi.type</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    
+    <record id="bi_inherit_crm_team_rfi" model="ir.ui.view">
+		<field name="name">bi.inherit.crm.team.rfi</field>
+		<field name="model">crm.team</field>
+		<field name="inherit_id" ref="sales_team.crm_team_view_form" />
+		<field name="arch" type="xml">
+			<field name="user_id" position="after">
+				<field name="rfi_team_id" />
+			</field>
+		</field>
+	</record>
+	
+	<record id="bi_inherit_survey_rfi" model="ir.ui.view">
+		<field name="name">bi.inherit.survey.rfi</field>
+		<field name="model">survey.survey</field>
+		<field name="inherit_id" ref="survey.survey_survey_view_form" />
+		<field name="arch" type="xml">
+			<field name="title" position="after">
+                <group>
+                    <field name="rfi_id"/>
+                </group>
+            </field>
+		</field>
+	</record>
+	
+    <record id="rfi_team_form_view" model="ir.ui.view">
+		<field name="name">rfi.team.form.view</field>
+		<field name="model">rfi.team</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet string="RFI Teams">
+					<group>
+						<group>
+							<field name="team_id" />
+							<field name="is_team"/>
+						</group>
+						<group>
+							<field name="team_leader_id" />
+						</group>
+					</group>
+					<notebook>
+						<page string="Team Members">
+							<field name="team_member_ids" />
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="rfi_team_tree_view" model="ir.ui.view">
+		<field name="name">rfi.team.tree.view</field>
+		<field name="model">rfi.team</field>
+		<field name="arch" type="xml">
+			<tree string="RFI Teams">
+				<field name="team_id" />
+				<field name="is_team"/>
+				<field name="team_leader_id" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_rfi_team" model="ir.actions.act_window">
+		<field name="name">RFI Teams</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">rfi.team</field>
+		<field name="binding_view_types">form</field>
+		<field name="view_mode">tree,form</field>
+	</record> 
+	
+	<record id="rfi_stage_form_view" model="ir.ui.view">
+		<field name="name">rfi.stage.form.view</field>
+		<field name="model">rfi.stage</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet string="RFI Stage">
+					<group>
+						<group>
+							<field name="name" />
+							<field name="sequence" />
+							<field name="fold" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="rfi_stage_tree_view" model="ir.ui.view">
+		<field name="name">rfi.stage.tree.view</field>
+		<field name="model">rfi.stage</field>
+		<field name="arch" type="xml">
+			<tree string="RFI Stage">
+				<field name="name" />
+				<field name="sequence" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_rfi_stage" model="ir.actions.act_window">
+		<field name="name">RFI Stages</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">rfi.stage</field>
+		<field name="binding_view_types">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+    <record id="rfi_category_form_view" model="ir.ui.view">
+            <field name="name">rfi.category.form.view</field>
+            <field name="model">rfi.category</field>
+            <field name="arch" type="xml">
+                <form string="RFI Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                </form>    
+            </field>
+    	</record>
+    
+    	<record id="rfi_category_tree_view" model="ir.ui.view">
+            <field name="name">rfi.category.tree.view</field>
+            <field name="model">rfi.category</field>
+            <field name="arch" type="xml">
+                <tree string="RFI Category">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+    
+        <record id="action_rfi_category" model="ir.actions.act_window">
+            <field name="name">RFI Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rfi.category</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    <record id="email_template_rfi_information" model="mail.template">
+		<field name="name">Website RFI Information</field>
+		<field name="subject">{{object.subject}}</field>
+		<field name="email_to">${object.email}</field>
+		<field name="model_id" ref="bi_website_project_request_for_information.model_request_information" />
+		<field name="auto_delete" eval="True" />
+		<field name="body_html"><![CDATA[
+                    <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                    	<p> Dear <t t-out="object.partner_id.name"></t></p>
+                        <p> We received your Information.</p>
+
+                        <p> Subject : <t t-out="object.name"> </t> </p>
+                        <p> Description : <t t-out="object.description"> </t> </p>
+                    </div>
+                        ]]>
+		</field>
+	</record>
+	        	               
+	<menuitem id="menu_req_for_information" name="Request For Information" parent="bi_odoo_job_costing_management.main_menu_job_estimates" sequence = '2'/>
+	<menuitem id="menu_sub_req_for_information" name="Request for informations" parent="menu_req_for_information" action="action_request_information" />
+
+    <menuitem id="menu_rfi_configuration" name="RFI Configuration" parent="bi_odoo_job_costing_management.sub_menu_configuration" sequence = '3'/>
+
+
+    <menuitem id="menu_sub_rfi_type" name="RFI Type" parent="menu_rfi_configuration" action="action_rfi_type" sequence = '2'/>
+    <menuitem id="menu_sub_rfi_team" name="RFI Teams" parent="menu_rfi_configuration" action="action_rfi_team" sequence = '3'/>
+    <menuitem id="menu_sub_rfi_stage" name="RFI Stages" parent="menu_rfi_configuration" action="action_rfi_stage" sequence = '4'/>
+    <menuitem id="menu_sub_rfi_category" name="RFI Category" parent="menu_rfi_configuration" action="action_rfi_category" sequence = '5'/>
+        		
+	<record id="seq_request_information" model="ir.sequence">
+		<field name="name">Request Information</field>
+		<field name="code">request.information</field>
+		<field name="prefix">RFI/00</field>
+		<field name="padding">2</field>
+	</record>
+	
+
+</odoo>        

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="header_issue_request_menu" name="Header Job Work Order Link">
+        <li class="nav-item dropdown">
+            <a href="#" role="button" class="btn dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                Job Workorder
+            </a>
+            <ul class="dropdown-menu js_usermenu" role="menu" style="padding: 14px 5px;">
+                    <li>
+                        <a class="dropdown-item" href="/create/workorder">
+                             Create WorkOrder
+                        </a>
+                    </li>
+                </ul>
+        </li>
+    </template>
+    <!-- Add Support menu in all header styles-->
+    <template id="support_menu_template_header_default" inherit_id="website.template_header_default">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_job_workorder.header_issue_request_menu"></t>
+        </xpath>
+    </template>
+
+
+
+    <template id="support_menu_template_header_hamburger" inherit_id="website.template_header_hamburger">
+        <xpath expr="//t[@t-call='portal.placeholder_user_sign_in']" position="after">
+            <t t-call="bi_website_job_workorder.header_issue_request_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_vertical" inherit_id="website.template_header_vertical">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_job_workorder.header_issue_request_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_sidebar" inherit_id="website.template_header_sidebar">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_job_workorder.header_issue_request_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_boxed" inherit_id="website.template_header_boxed">
+        <xpath expr="//t[@t-call='portal.placeholder_user_sign_in']" position="before">
+            <t t-call="bi_website_job_workorder.header_issue_request_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="create_job_workorder" name="Create Job Workorder">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">Job Workorder</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <form action="/create/workorder/thanks" method="POST"
+                    class="form-horizontal mt32 container" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                    <div class="form-group row form-field o_website_form_required_custom" style="padding: 1%;">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="subject">Subject</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="text" class="form-control o_website_form_input" name="subject" t-attf-value="#{subject or ''}" required="True"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row form-field o_website_form_required_custom" style="padding: 1%;">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="name">Name</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="text" class="form-control o_website_form_input" name="name" t-attf-value="#{name or ''}" required="True"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row form-field o_website_form_required_custom" style="padding: 1%;">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="email">Email</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="text" class="form-control o_website_form_input" name="email" t-attf-value="#{email or ''}" required="True"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row form-field o_website_form_required_custom" style="padding: 1%;">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="phone">Phone</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="text" class="form-control o_website_form_input" name="phone" t-attf-value="#{phone or ''}"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row form-field o_website_form_required_custom" style="padding: 1%;">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="project">Project</label>
+                        <div class="col-lg-7 col-md-8">
+                            <t t-set="website_project" t-value="website.get_project_details_for_job_order()" />
+                            <select name="website_project" class="form-control">
+                                <option value="">Project</option>
+                                <t t-foreach="website_project or []" t-as="project">
+                                    <option t-att-value="project.id">
+                                        <t t-esc="project.name" />
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row form-field o_website_form_required_custom" style="padding: 1%;">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="priority">Priority</label>
+                        <div class="col-lg-7 col-md-8">
+                            <select name="priority" class="form-control">
+                                <option value="">Select one</option>
+                                <option value="0">Low</option>
+                                <option value="1">Normal</option>
+                                <option value="2">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row form-field o_website_form_required_custom" style="padding: 1%;">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="description">Description</label>
+                        <div class="col-lg-7 col-md-8">
+                            <textarea type="text" style="min-height: 120px" class="form-control o_website_form_input" name="description" t-attf-value="#{description or ''}"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row form-field o_website_form_required_custom" style="padding: 1%;">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="file">Attach Files</label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="file" value="Choose images" name="upload" multiple="multiple" accept="image/*"/>
+                        </div>
+                    </div>
+                    
+                
+                    <div class="form-group row form-field o_website_form_required_custom" style="padding: 1%;">
+                        <div class="col-lg-7 col-md-8">
+                            <button class="oe_unremovable btn btn-primary btn_cta">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="workorder_thank_you" name="Job WorkOrder Thank You">
+        <t t-call="website.layout">
+
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">Thank You</h1>
+                                <h3 class="text-muted text-center">We have received your Job Order request.</h3>
+                                <h3 class="text-muted text-center">Your Job Order is successfully created.</h3>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="order_view_list" name="My Job Order">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="card col-md-12">
+
+                    <h3 class="page-header text-center">
+                        Your Job Order
+                    </h3>
+                    <br/>
+                    <div class="card-body">
+                        <t t-set="website_job_order" t-value="website.get_job_order_details()" />
+                        <div class="table-responsive">
+                            <table class="table table-hover o_portal_my_doc_table">
+                                <thead>
+                                    <tr class="active">
+                                        <th>Subject</th>
+                                        <th>Date</th>
+                                        <th>Priority</th>
+                                        <th>Customer</th>
+                                    </tr>
+                                </thead>
+                                <t t-foreach="website_job_order" t-as="order">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a t-attf-href="/order/view/detail/#{order.id}">
+                                                    <t t-esc="order.name" />
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <span t-esc="order.start_date" />
+                                            </td>
+                                            <td>
+                                                <span t-esc="order.priority" />
+                                            </td>
+                                            <td>
+                                                <span t-esc="order.customer_name" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </t>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="o_portal_pager text-center">
+
+                    </div>
+
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="job_order_view" name="Job Order View">
+        <t t-call="website.layout">
+
+            <div class="container-fluid">
+                <t t-foreach="job_order_data_list" t-as="items">
+                    <div class="container oe_structure">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <ol class="breadcrumb mt8">
+                                    <li>
+                                        <a href="/my/home">
+                                            <i class="fa fa-home" /> / 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a t-attf-href="/order/view">  My Job Order /</a>
+                                    </li>
+                                    <li>
+                                        Job Order :
+                                        <span t-field="items.name" />
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container card">
+                        <div class="card-heading">
+                            <br/>
+                            <div class="row col-md-12">
+                                <div class="col-md-6">
+                                    <h4><span t-field="items.name" /></h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <a target="_blank" t-att-href="'/my/job/orders/pdf/%s?%s' % (items.id, keep_query())" class="btn btn-primary pull-right mt4 mr8" title="Download">Print Receipt
+                                        <i class="fa fa-download fa-2x" aria-hidden="true"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb8" t-if="items.user_id">
+                                        <strong>Website Customer : </strong>
+                                        <span t-field="items.customer_id.name" />
+                                    </div>
+
+                                    <div class="mb8">
+                                        <strong>Website Customer Email : </strong>
+                                        <span t-field="items.customer_email" />
+                                    </div>
+
+                                    <div class="mb8">
+                                        <strong>Website Customer Phone : </strong>
+                                        <span t-field="items.customer_phone" />
+                                    </div>
+
+                                    <div class="mb8">
+                                        <strong>Priority : </strong>
+                                        <span t-field="items.priority" />
+                                    </div>
+
+                                    <div class="mb8">
+                                        <strong>Create Date : </strong>
+                                        <span t-field="items.start_date" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <span t-field="items.description" />
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+    <template id="portal_my_home_your_job_order" name="Portal My Home: Customer Loan"
+		inherit_id="portal.portal_my_home" priority="40">
+		<xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+			<div class="o_portal_index_card col-md-6 order-2">
+				<a class="d-flex justify-content-start gap-2 gap-md-3 align-items-center py-3 pe-2 px-md-3 h-100 rounded text-decoration-none text-reset text-bg-light" t-if="subcontract_count" href="/your/job_order">
+					<div class="o_portal_icon align-self-start">
+	                    <img data-oe-model="ir.ui.view" data-oe-id="549" data-oe-field="arch" data-oe-xpath="/t[1]/div[1]/a[1]/div[1]/img[1]" src="/bi_website_job_workorder/static/description/your_order.png" loading="lazy" style="height: 65px;"/>
+	                </div>
+	                <div>
+	                	<h5 class="mt-0 mb-1 d-flex gap-2">
+	                		<span>Your Job Order</span>
+	                	</h5>
+
+	                </div>
+				</a>
+			</div>
+		</xpath>
+	</template>
+
+    <template id="portal_my_home_menu_order" name="Portal layout : Job menu entries"
+        inherit_id="portal.portal_breadcrumbs" priority="30">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'order'" class="breadcrumb-item active">
+                <a t-if="order" t-attf-href="/your/job_order?{{ keep_query() }}">Order</a>
+                <t t-else="">Order</t>
+            </li>
+            <li t-if="order">
+                <t t-esc="order.name" />
+            </li>
+        </xpath>
+    </template>
+    
+</odoo>

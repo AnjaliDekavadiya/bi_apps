@@ -1,0 +1,17 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--    <data>-->
+
+<!--        <template id="display_ticket_technician_inherit_capture_photo" name="Helpdesk Technician Image Capture" inherit_id="helpdesk_agent_technician_portal.display_ticket_technician">-->
+<!--            <xpath expr="//div[@id='description']" position="after">-->
+<!--                    <t t-call="base_capture_photo.snap_image_tmpl">-->
+<!--                        <t t-set="object" t-value="agent_ticket"/>-->
+<!--                    </t>-->
+<!--                    <t t-call="base_capture_photo.capture_attachments_template">-->
+<!--                        <t t-set="attchment_ids" t-value="agent_ticket.capture_attachment_ids"/>-->
+<!--                    </t>-->
+<!--            </xpath>-->
+<!--        </template>-->
+
+<!--    </data>-->
+<!--</odoo>-->

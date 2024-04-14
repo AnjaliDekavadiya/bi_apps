@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="special_account_view" model="ir.ui.view">
+            <field name="name">loan.settings.view.form</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//div[hasclass('settings')]" position="inside">
+                      <div class="app_settings_block" data-string="Loans" string="Loans"
+                           data-key="jt_loan_management">
+                          <h2>Bad Debt Accounts for Loans</h2>
+                          <div class="row mt16 o_settings_container">
+                              <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label for="write_off_account_id" string="Write-Off Account"/>
+                                        <div class="text-muted">
+                                           Account used to write-off the unpaid amount from the invoices, which need to
+                                            be cancelled when loan was Cancelled / Closed.
+                                        </div>
+                                        <div class="text-muted">
+                                            <field name="write_off_account_id"/>
+                                        </div>
+                                    </div>
+                              </div>
+                          </div>
+                          <h2>Loans Accounts and Products</h2>
+                          <div class="row mt16 o_settings_container">
+                               <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label string="Principal Product" for="principal_prod_id"/>
+                                        <div class="text-muted">
+                                           Product used to invoice as principal of the loans.
+                                        </div>
+                                        <div class="text-muted">
+                                            <field name="principal_prod_id" domain="[('type', '!=', 'property')]"/>
+                                        </div>
+                                    </div>
+                               </div>
+                               <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label string="Interest Product" for="interest_prod_id"/>
+                                        <div class="text-muted">
+                                           Product used to invoice as the interest of the loans.
+                                        </div>
+                                        <div class="text-muted">
+                                            <field name="interest_prod_id" domain="[('type', '!=', 'property')]"/>
+                                        </div>
+                                    </div>
+                              </div>
+                              <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label string="Processing Fee Product" for="processing_fee_prod_id"/>
+                                        <div class="text-muted">
+                                           Product used to invoice as processing fee from the loans.
+                                        </div>
+                                        <div class="text-muted">
+                                            <field name="processing_fee_prod_id" domain="[('type', '!=', 'property')]"/>
+                                        </div>
+                                    </div>
+                              </div>
+                              <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label string="Account Receivable" for="acc_rec_id"/>
+                                        <div class="text-muted">
+                                           Account Receivable used in loan invoices.
+                                        </div>
+                                        <div class="text-muted">
+                                            <field name="acc_rec_id"/>
+                                        </div>
+                                    </div>
+                              </div>
+                               <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label string="Loan Income Account" for="income_acc_id"/>
+                                        <div class="text-muted">
+                                           Income Account used in loan invoice items.
+                                        </div>
+                                        <div class="text-muted">
+                                            <field name="income_acc_id"/>
+                                        </div>
+                                    </div>
+                              </div>
+                              <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label string="Loan Journal" for="loan_jou_id"/>
+                                        <div class="text-muted">
+                                           Journal used in loan invoice.
+                                        </div>
+                                        <div class="text-muted">
+                                            <field name="loan_jou_id"/>
+                                        </div>
+                                    </div>
+                              </div>
+                              <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label string="Disbursement Account" for="disbursement_acc_id"/>
+                                        <div class="text-muted">
+                                           Disbursement Account used in loan amount entry.
+                                        </div>
+                                        <div class="text-muted">
+                                            <field name="disbursement_acc_id"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label string="Disbursement Journal" for="disbursement_journal_id"/>
+                                        <div class="text-muted">
+                                           Disbursement Journal used in loan amount entry.
+                                        </div>
+                                        <div class="text-muted">
+                                            <field name="disbursement_journal_id" required='1' domain="[('type','=','general')]"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label string="Auto Invoice Create Date" for="inv_create_date"/>
+                                        <div class="text-muted">
+                                           Installment Invoice Create Date before how much days from installment due date.
+                                        </div>
+                                        <div class="text-muted">
+                                            <field name="inv_create_date"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2>Penalty on Due Invoices</h2>
+                                <div class="row mt16 o_settings_container" id="due_inv_penalty">
+                                    <div class="col-12 col-lg-6 o_setting_box">
+                                        <div>
+                                            <div class="o_setting_left_pane"/>
+                                            <div class="o_setting_right_pane">
+                                                <div class="content-group">
+                                                    <div class="row mt16 ml4">
+                                                        <label string='Charge Penalty Or Interest :'
+                                                            for="penalty_option"/>
+                                                        <field name="penalty_option"/>
+                                                    </div>
+                                                    <div class="row mt16 ml4"
+                                                        attrs="{'invisible': [('penalty_option','!=', 'penalty')],
+                                                            'required':[('penalty_option', '!=', False)]}">
+                                                       <label string="Charge penalty with :"
+                                                           for="charge_option" /> 
+                                                         <field name="charge_option"
+                                                            class="col-xs-6"/> 
+                                                    </div>
+                                                    <div class="row mt16 ml4"
+                                                        attrs="{'invisible': [('charge_option','!=', 'fixed'),
+                                                            ('charge_option','!=', 'percentage')],
+                                                            'required':[('charge_option', '!=', False)]}">
+                                                        <label string="Enter Interest par Anum. (%)"
+                                                            for="charge"
+                                                            class="o_light_label col-xs-6"
+                                                            style="font-weight: bold;margin: 0 0 0 0 !important;"
+                                                            attrs="{'invisible': [('penalty_option','!=','interest')]}"/>
+                                                        <label string="Fixed amount"
+                                                            for="charge"
+                                                            class="o_light_label col-xs-6"
+                                                            style="font-weight: bold;margin: 0 0 0 0 !important;"
+                                                            attrs="{'invisible': [('charge_option','!=','fixed')]}"/>
+                                                        <label string="In Percentage (%) "
+                                                            for="charge"
+                                                            class="o_light_label col-xs-6"
+                                                            style="font-weight: bold;margin: 0 0 0 0 !important;"
+                                                            attrs="{'invisible': ['|',('penalty_option','!=','penalty'),
+                                                            ('charge_option','!=','percentage')]}"/>
+                                                         <field name="charge"
+                                                            class="oe_inline col-xs-6"/>
+                                                    </div>
+                                                    <div class="row mt16 ml4"
+                                                        attrs="{'invisible': [('penalty_option','!=', 'penalty'),
+                                                            ('penalty_option','!=', 'interest')]}">
+                                                       <label string="Allow # of days after due "
+                                                           for="of_days" 
+                                                           class="col-xs-6 o_light_label"
+                                                           style="font-weight: bold;margin: 0 0 0 0 !important;"/> 
+                                                         <field name="of_days" class="col-xs-6"/> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </xpath>
+           </field>
+        </record>
+
+        <record id="action_loan_configuration" model="ir.actions.act_window">
+             <field name="name">Settings</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="res_model">res.config.settings</field>
+             <field name="view_mode">form</field>
+             <field name="target">inline</field>
+             <field name="context">{'module' : 'jt_loan_management'}</field>
+        </record>
+
+        <menuitem id="account_config"
+            name="Configurations"
+            parent="jt_loan_management.menu_loans"
+            sequence="6"
+        />
+
+         <menuitem id="account_setting"
+            name="Settings"
+            parent="account_config"
+            sequence="6"
+            action="action_loan_configuration"
+        />
+
+    </data>
+</odoo>

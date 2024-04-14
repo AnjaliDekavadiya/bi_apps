@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <openerp> -->
+<odoo>
+    <data>
+        
+        <record id="product_template_form_view_inherit_website" model="ir.ui.view">
+            <field name="name">product.template.common.form.inherit.website</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='sale']" position="after">
+                    <group string='Website Additional Notes'>
+                            <field name="custom_website_policies" colspan="4" nolabel="1"/>
+                    </group>
+                </xpath>
+                <xpath expr="//group[@name='sale']" position="after">
+                    <group string='Website Product Warranty'>
+                            <field name="custom_show_product_warranty"/> 
+                            <label for="custom_show_product_warranty" string="Dead Line Time Period" invisible="custom_show_product_warranty == False" required="custom_show_product_warranty == True"/>
+                            <div nvisible="custom_show_product_warranty == False" required="custom_show_product_warranty == True">
+                                <field name="custom_product_warranty" class="oe_inline"/>
+                                <field name="custom_warranty_type" class="oe_inline"/>
+                            </div>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+<!-- </openerp> -->
+</odoo>

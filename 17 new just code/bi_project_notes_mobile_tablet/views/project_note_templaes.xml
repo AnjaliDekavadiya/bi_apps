@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_home_note" name="Portal My Home : note entries" inherit_id="portal.portal_my_home"
+              priority="30">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Note</t>
+                <t t-set="url" t-value="'/my/note'"/>
+                />
+            </t>
+        </xpath>
+    </template>
+
+
+    <template id="portal_tasks_list_note" inherit_id="project.portal_tasks_list"
+              name="Portal: My Tasks with Timesheets">
+        <xpath expr="//t[@t-call='portal.portal_table']//tr[1]" position="before">
+            <div class="row col-sm-1">
+                <a class="col-xs-12 text-center" style="padding-left: 1150px;" href="/my/add_new_note">
+                    <button class="btn btn-primary mb32" style="width:150px;">Add Task</button>
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="portal_my_task_inherit" inherit_id="project.portal_my_task">
+        <xpath expr="//div[@id='task_chat']" position="before">
+            <div t-if="not task.project_id">
+                <div class="form-group  col-lg-12">
+
+                    <a t-attf-href="/edit_note/#{task.id}">
+                        <button type="submit" class="btn btn-default btn-primary mb32 a-submit">
+                            Edit
+                        </button>
+                    </a>
+                    <a t-attf-href="/delete_note/#{task.id}">
+                        <button type="submit" class="btn btn-default btn-danger mb32 a-submit">
+                            Delete
+                        </button>
+                    </a>
+                    <a href="/my/home">
+                        <button type="submit" class="btn btn-default btn-primary mb32 a-submit">
+                            Back
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="portal_my_note_detail_view" name="My RMA Orders">
+        <t t-call="website.layout">
+            <div class="container">
+                <t t-foreach="note_data_list" t-as="items">
+                    <div class="oe_structure">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <ol class="breadcrumb mt8">
+                                    <li class="breadcrumb-item active">
+                                        <a href="/my/home">
+                                            <i class="fa fa-home"/>
+                                        </a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        <a href="/my/note">My Note</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Note :
+                                        <span t-field="items.name"/>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </div>
+
+            <div class="container">
+                <div class="panel panel-default">
+
+                    <t t-if="note_data_list">
+                        <t t-foreach="note_data_list" t-as="note">
+                            <div class="panel-heading">
+                                <h3 class="text-center">Notes -
+                                    <span t-field="note.name"/>
+                                </h3>
+                                <hr/>
+                            </div>
+                        </t>
+                    </t>
+                    <t t-if="note_data_list">
+                        <t t-foreach="note_data_list" t-as="note">
+                            <div class="row">
+                                <div class="col-md-12 oe_cart">
+                                    <div class="col-md-9">
+                                        <div class="form-group col-lg-6">
+                                            <strong>
+                                                <label class="control-label" for="project">Project:</label>
+                                            </strong>
+                                            <span t-field="note.construction_proj_id"/>
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <strong>
+                                                <label class="control-label" for="project">Task:</label>
+                                            </strong>
+                                            <span t-field="note.task_id"/>
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <strong>
+                                                <label class="control-label" for="project">Note :</label>
+                                            </strong>
+                                            <span t-field="note.memo" widget="html"/>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group  col-lg-12">
+                                            <a t-attf-href="/edit_note/#{note.id}">
+                                                <button type="submit" class="btn btn-default btn-primary mb32 a-submit">
+                                                    Edit
+                                                </button>
+                                            </a>
+                                            <a t-attf-href="/delete_note/#{note.id}">
+                                                <button type="submit" class="btn btn-default btn-danger mb32 a-submit">
+                                                    Delete
+                                                </button>
+                                            </a>
+                                            <a href="/my/note">
+                                                <button type="submit" class="btn btn-default btn-primary mb32 a-submit">
+                                                    Back
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+                </div>
+            </div>
+
+        </t>
+    </template>
+
+    <template id="bi_new_note_form" name="Add New Note Form">
+        <t t-call="website_forum.layout">
+            <div id="note_body">
+                <div id="wrap" class="container">
+                    <br/>
+                    <h1 class="text-center">
+                        New To-do
+                    </h1>
+                    <hr/>
+                    <form action="/my/new_note_submit" method="post" id="new_timesheet_form">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="row o_note_details">
+                            <div class="oe_cart">
+                                <div class="timesheet_center">
+                                    <div class="row">
+
+                                        <div t-if="error_message" class="alert alert-danger">
+                                            <t t-foreach="error_message" t-as="err">
+                                                <t t-esc="err"/>
+                                                <br/>
+                                            </t>
+                                        </div>
+
+                                        <div t-attf-class="form-group #{error and 'project' in error and 'has-error' or ''} col-lg-6">
+
+                                            <label class="control-label" for="project">Title</label>
+                                            <input type="text" name="post_name" required="required" pattern=".*\S.*"
+                                                   t-att-value="post_name"
+                                                   class="form-control"
+                                                   placeholder="Write a clear, explicit and concise title"
+                                                   title="Title must not be empty"/>
+
+                                        </div>
+                                        <div style='padding-top: 4px;'
+                                             t-attf-class="form-group #{error and 'task' in error and 'has-error' or ''} col-lg-6">
+                                            <label class="select-label" for="task">Add Tags</label>
+                                            <br/>
+                                            <select style="width:300px" name="tasks"
+                                                    class="form-control advanced-select" Multiple="">
+                                                <t name="tasks" t-foreach="website.get_task_tag_ids()" t-as="tag">
+                                                    <option t-att-value="tag.ids">
+                                                        <t t-esc="tag.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-12">
+                                            <label class="control-label" for="note">Note</label>
+                                            <br/>
+                                            <form method="post" role="form"
+                                                  class="tag_text js_website_submit_form js_wforum_submit_form o_wforum_readable mt-lg-3">
+                                                <textarea name="content" required="required" id="content"
+                                                          class="form-control o_wysiwyg_loader"></textarea>
+                                            </form>
+                                        </div>
+                                        <script>
+
+                                        </script>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="form-group col-lg-12 text-left">
+                                            <button type="submit" class="btn btn-default btn-primary mb32 a-submit">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="note_added" name="Note Add successfully">
+
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure"/>
+                <div class="container">
+                    <h1 class="text-center">Thank you!</h1>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success">
+                                Your Note Added Successfully.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group  col-lg-12">
+                        <a href="/my/home">
+                            <button type="submit" class="btn btn-default btn-primary mb32 a-submit">
+                                <i class="fa fa-arrow-left"/>back
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+
+    </template>
+
+    <template id="bi_portal_edit_note" name="Edit Timesheets">
+        <t t-call="website_forum.layout">
+            <div id="wrap" class="container">
+                <h1 class="text-center">
+                    Edit To-do
+                </h1>
+                <hr/>
+                <form action="/my/save_edit_note" method="post" id="edit_timesheet_form" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="row o_note_details">
+                        <div class="oe_cart">
+                            <div class="timesheet_center">
+                                <div class="row">
+
+                                    <div t-if="error_message" class="alert alert-danger">
+                                        <t t-foreach="error_message" t-as="err">
+                                            <t t-esc="err"/>
+                                            <br/>
+                                        </t>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error and 'project' in error and 'has-error' or ''} col-lg-6">
+
+                                        <label class="control-label" for="project">Title</label>
+                                        <input type="text" name="post_name" required="required" pattern=".*\S.*"
+                                               t-att-value="note.name"
+                                               class="form-control"
+                                               placeholder="Write a clear, explicit and concise title"
+                                               title="Title must not be empty"/>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-12">
+                                        <label class="control-label" for="note">Note</label>
+                                        <br/>
+                                        <form method="post" role="form"
+                                              class="tag_text js_website_submit_form js_wforum_submit_form o_wforum_readable mt-lg-3">
+                                            <textarea name="content" required="required" id="content"
+                                                      class="form-control o_wysiwyg_loader">
+                                                <t t-esc="note.description"/>
+                                            </textarea>
+                                        </form>
+                                    </div>
+                                    <script>
+
+                                    </script>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="form-group col-lg-12 text-left">
+                                        <button type="submit" class="btn btn-default btn-success mb32 a-submit"
+                                                style="width:245px;">
+                                            Update
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <a t-attf-href="/delete_note/#{note.id}" t-attf-class="col-sm-1">
+                        <button type="submit" class="btn btn-default btn-danger mb32 a-submit" style="width: 110px;">
+                            Delete
+                        </button>
+                    </a>
+                    <a href="/my/home" t-attf-class="col-sm-1">
+                        <button type="submit" class="btn btn-default btn-primary mb32 a-submit"
+                                style="width: 110px;margin-left: 20px;">Back
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </t>
+    </template>
+
+        <template id="note_updated" name="Note Add successfully">
+
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure"/>
+                    <div class="container">
+                        <h1 class="text-center">Thank you!</h1>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-success">
+                                    Your Note Updated Successfully.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group  col-lg-12">
+                            <a href="/my/home">
+                                <button type="submit" class="btn btn-default btn-primary mb32 a-submit">
+                                    <i class="fa fa-arrow-left"/>back
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+
+        </template>
+</odoo>

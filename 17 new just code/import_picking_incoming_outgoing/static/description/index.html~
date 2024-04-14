@@ -1,0 +1,269 @@
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+           <h2 class="oe_slogan" style="color:CRIMSON;"><b>Import Picking / Transfers (Delivery Orders/ Incoming Shipments/ Internal Transfer) from Excel</h2>
+           <p class="oe_mt32" style="color:CRIMSON;">
+           <p style="color:crimson;">This app allow you to import Incoming , Outgoing and Internal Transfer Picking from from excel file. Allow you to Import Delivery Orders Incoming Shipments and Internal Tranfer Pickings from Excel
+           </p>
+           <p style="color:CRIMSON;">Make sure you have xlrd Python library installed.</p>
+           <b style="color:CRIMSON;">Main Features:</b><br>
+           <p style="color:olive;">
+                <ul>
+                    <li style="color:olive;">Allow you to import Delivery Orders from excel.</li>
+                    <li style="color:olive;">Allow you to import Incoming Shipments from excel.</li>
+                    <li style="color:olive;">Allow you to import Internal Transfer from excel.</li>
+                    <li style="color:olive;">Allow you to Import use Product Name based on your choise and selected on wizard.</li>
+                    <li style="color:olive;">Allow you to Import use Product Code based on your choise and selected on wizard.</li>
+                    <li style="color:olive;">Allow you to Import use Product Barcode based on your choise and selected on wizard.</li>
+                    <li style="color:olive;">Sample Excel Files are available inside sample folder inside app.</li>
+                    <li style="color:olive;">For more details see video and below screenshots.</li>
+                </ul>
+            </p>
+        </p>
+   </div>
+</section>
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Inventory : Operations /Import Transfer Pickings
+</b></b></h2>
+       <div class="oe_demo oe_scr>
+eenshot">
+           <img src="menu.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Sample Excel File - Incoming Shipments </b></h2>
+       <h4  align="center" style="color:CRIMSON"><b>(Also available inside Module/Sample Folder)</b></h4><br/>
+       <div class="oe_demo oe_screenshot">
+           <img src="sample_incoming_using_code.jpg" height='300px' >
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Wizard to Select Excel - Import Incoming Shipments Using Product Code</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="1_incoming.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Incoming Shipments in List View</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="2_incoming.png">
+           
+       </div>
+   </div>
+</section> 
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Incoming Shipments in Form View</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="3_incoming.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Incoming Shipments - Detailed Operations</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="4_incoming.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Sample Excel File - Delivery Orders</b></h2>
+       <h4  align="center" style="color:CRIMSON"><b>(Also available inside Module/Sample Folder)</b></h4><br/>
+       <div class="oe_demo oe_screenshot">
+           <img src="sample_outgoing_using_code.jpg" height='300px'>
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Wizard to Select Excel - Import Delivery Orders Using Product Code</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="5_delivery.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Delivery Orders in List View</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="6_delivery_.png">
+           
+       </div>
+   </div>
+</section> 
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Delivery Orders in Form View</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="7.delivery.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Delivery Orders - Detailed Operations</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="8_delivery.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Sample Excel File - Internal Transfer </b></h2>
+       <h4  align="center" style="color:CRIMSON"><b>(Also available inside Module/Sample Folder)</b></h4><br/>
+       <div class="oe_demo oe_screenshot">
+           <img src="sample_internal_using_code.jpg" height='300px'>
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Wizard to Select Excel - Import Internal Transfer Picking Using Product Code</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="9_internal.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Internal Transfer Picking in List View</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="10_internal.png">
+           
+       </div>
+   </div>
+</section> 
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Internal Transfer Picking in Form View</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="11_internal.png">
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Imported Internal Transfer Picking - Detailed Operations</b></h2>
+       <div class="oe_demo oe_screenshot">
+           <img src="12_internal.png">
+       </div>
+   </div>
+</section>
+
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Sample Excel File - Incoming Shipments </b></h2>
+       <h4  align="center" style="color:CRIMSON"><b>Import Incoming Shipments Using Product Name</b></h4><br/>
+       <div class="oe_demo oe_screenshot">
+           <img src="sample_incoming_name.jpg" height='300px'>
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Sample Excel File - Delivery Orders </b></h2>
+       <h4  align="center" style="color:CRIMSON"><b>Import Delivery Orders Using Product Barcode</b></h4><br/>
+       <div class="oe_demo oe_screenshot">
+           <img src="sample_outgoing_barcode.jpg" height='300px'>
+       </div>
+   </div>
+</section>
+
+<section class="oe_container">
+   <div class="oe_row oe_spaced">
+       <h2 class="oe_slogan" style="color:crimson"><b>Sample Excel File - Internal Transfer </b></h2>
+       <h4  align="center" style="color:CRIMSON"><b>Import Internal Transfer Picking Using Product Code</b></h4><br/>
+       <div class="oe_demo oe_screenshot">
+           <img src="sample_internal_code.jpg">
+       </div>
+   </div>
+</section>
+
+
+
+<section class="oe_container" >
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">
+            <strong><font style="color:#2dd280;" class="text-epsilon">Contact / Support<br/></font></strong>
+            <strong><font style="color:crimson" class="text-epsilon">Introducing</font>
+            <font style="color:crimson;" class="text-epsilon">Probuse Consulting Services Pvt. Ltd.</font></strong>
+          </h2>
+       <div class="oe_span6">
+           <div class="mt32 col-md-10">
+           <div class="oe_picture" style="margin: 25px 10%;">
+               <a  target='new' href="http://www.probuse.com/">
+                   <img src="logo.png">
+               </a>
+           </div>
+           <p class="oe_mt32">
+               <font style="color:crimson;">If you need any help or want more additional features, you may contact us through:</font><br/>
+               <font style="color:crimson;">Email: <a href="contact@probuse.com">contact@probuse.com</a> <br/>
+               <font style="color:crimson;">Website: </font><a href="http://www.probuse.com/" target='new'><u>www.probuse.com</u></a> <br/>
+               <font style="color:crimson;">Skype: mustufa_probuse</font><br/>
+           </p>
+           <p>
+                <h2>
+                    <a href="https://www.facebook.com/probusecs" target="new">
+                      <i class="fa fa-facebook-square" style="font-size:38px;"></i>
+                    </a>
+                    <a href="https://twitter.com/mustufa_odoo" target="new">
+                      <i class="fa fa-twitter" style="font-size:38px;"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mustufa-rangwala-odoo-openerp-0a46777/" target="new">
+                      <i class="fa fa-linkedin" style="font-size:38px;"></i>
+                    </a>
+                    <!--<a href="https://www.youtube.com/channel/UCHlyoC4khP44M1cOCJXo2FQ" target="new">
+                      <i class="fa fa-youtube-play" style="font-size:38px;"></i>
+                    </a>-->
+                    <a href="https://plus.google.com/u/0/113284573788891837715/posts" target="new" rel="publisher">
+                      <i class="fa fa-google-plus-square" style="font-size:38px;"></i>
+                    </a>
+              </h2>
+            </p>
+           </div>
+       </div>
+    <div class="mt32 oe_span6">
+           <p style="text-align: justify; ">
+            <font class="text-epsilon" style="color:crimson;">Probuse Consulting Service Pvt Ltd is an Software and Web development specialist which offers complete business application together. We are well experienced to provide a face for your business on the software and Internet level.</font>
+          </p>
+          <p style="text-align: justify;">
+            <font class="text-epsilon" style="color:crimson">Probuse Consulting Service Pvt Ltd is a specialist in Odoo/OpenERP services and could give your business open source hand to drive.</font>
+          </p>
+            <h3 class="o_animate o_anim_bounce_in" style="text-align: left; animation-play-state: paused;">
+                <font style="font-size: 18px;color:#ff8000;" class="text-epsilon"><strong>Our Services</strong></font>
+            </h3>
+            <ul style="list-style-type:square">
+                <a href="http://www.probuse.com/page/odoo-implementation" target="new"><li list-style-type: "*";><p style="text-align: left; color:crimson;">Odoo Implementation</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-support" target="new"><li><p style="text-align: left; color:crimson;">Odoo Support</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-customization" target="new"><li><p style="text-align: left; color:crimson;">Odoo Customization</p></li></a>
+                <a href="http://www.probuse.com/page/odoo-migration" target="new"><li><p style="text-align: left; color:crimson;">Odoo Migration</p></a></li>
+                <a href="http://www.probuse.com/page/odoo-training" target="new"><li><p style="text-align: left; color:crimson;">Odoo Training</p></a></li>
+            </ul>
+           </p>
+       </div>
+   </div>
+</section>

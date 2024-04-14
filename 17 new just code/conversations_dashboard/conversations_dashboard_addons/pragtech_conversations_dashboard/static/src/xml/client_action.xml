@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="whatsapp.ClientAction">
+        <Whatsapp/>
+        <!-- <div class="vr" style="float: left;height: 100%;width: 2px;color: #71639e;"/>
+        <InternalRecords value="products"/> -->
+    </t>
+
+</templates>

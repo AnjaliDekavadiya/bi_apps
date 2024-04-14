@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+     <menuitem id="restriction_menu" action="helpdesk_domain_restriction_view" name="Domain Restriction" parent="website_helpdesk_support_ticket.menu_helpdesk_configuration"/>
+     <menuitem id="domain_menu" action="helpdesk_domain_view" name="Domains to Restrict" parent="website_helpdesk_support_ticket.menu_helpdesk_configuration"/>
+    
+</odoo>
+
+

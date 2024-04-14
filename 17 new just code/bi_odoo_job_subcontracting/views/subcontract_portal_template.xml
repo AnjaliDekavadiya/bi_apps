@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+	<template id="portal_my_home_customer_loan" name="Portal My Home: Customer Loan"
+		inherit_id="portal.portal_my_home" priority="40">
+		<xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+			<div class="o_portal_index_card col-md-6 order-2">
+				<a class="d-flex justify-content-start gap-2 gap-md-3 align-items-center py-3 pe-2 px-md-3 h-100 rounded text-decoration-none text-reset text-bg-light" t-if="subcontract_count" href="/my/subcontractor-job-order">
+					<div class="o_portal_icon align-self-start">
+	                    <img data-oe-model="ir.ui.view" data-oe-id="549" data-oe-field="arch" data-oe-xpath="/t[1]/div[1]/a[1]/div[1]/img[1]" src="/bi_odoo_job_subcontracting/static/description/icon.png" loading="lazy" style="height: 65px;"/>
+	                </div>
+	                <div>
+	                	<h5 class="mt-0 mb-1 d-flex gap-2">
+	                		<span>Subcontractor Job Order</span>
+	                	</h5>
+
+	                </div>
+				</a>
+			</div>
+		</xpath>
+	</template>
+
+
+
+    <template id="portal_my_subcontractor_orders" name="My Subcontractor Job Order">
+		<t t-call="portal.portal_layout">
+      		<t t-set="breadcrumbs_searchbar" t-value="True"/>
+      		<t t-call="portal.portal_searchbar">
+            	<t t-set="title">Subcontractor Job Order</t>
+        	</t>
+        	<t t-if="not subcontracts">
+            	<p>There are currently no subcontract job order for your account.</p>
+        	</t>
+        	<t t-if="subcontracts" t-call="portal.portal_table">
+            	<thead>
+            		<tr class="active">
+            	      <th>SubContractor Job Order Name</th>
+            	      <th>Sub Contractor</th>
+            	      <th>Project</th>
+            	      <th>Start Date</th>
+            	      <th>End Date</th>
+            	    </tr>
+            	</thead>
+            	<t t-foreach="subcontracts" t-as="subcontract">
+                	<tr>
+                	    <td>
+                	        <t t-esc="subcontract.name"/>
+                	    </td>
+                	    <td><span t-field="subcontract.subcontractor_id.name"/></td>
+                	    <td><span t-field="subcontract.project_id.name"/></td>
+                	    <td>
+                	        <span t-field="subcontract.create_date"/>
+                	    </td>
+                	    <td><span t-field="subcontract.close_date"/></td>
+	                </tr>
+    	        </t>
+    	  	</t>
+    	</t>
+    </template>
+
+
+
+</odoo>

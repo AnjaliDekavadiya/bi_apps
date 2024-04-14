@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard View -->
+    <record id="wizard_report_choose_marketplace_view" model="ir.ui.view">
+        <field name="name">wizard.report.choose.marketplace.view</field>
+        <field name="model">report.choose.marketplace.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Choose Marketplaces to create Crons">
+                <sheet>
+                    <group>
+                        <field name="marketplace_ids" widget="many2many_tags" />
+                        <field name="processing_type" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Generate" type="object" name="report_generate_cron" class="oe_highlight" />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_report_choose_marketplace" model="ir.actions.act_window">
+        <field name="name">Choose Marketplaces to create Crons</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">report.choose.marketplace.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

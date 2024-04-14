@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="inherit_issue_request_request_view" name="Project Issue Request View" inherit_id="bi_construction_contracting_issue_tracking.issue_request_request_view">
+	<xpath expr="//div[@id='container']" position="replace">
+		<div class="container" id="container">
+				<t t-foreach="issue_data_list" t-as="items">
+					<div class="oe_structure">
+						<div class="row">
+							<div class="col-sm-4">
+								<ol class="breadcrumb mt8">
+									<li>
+										<a href="/my/home">
+											<i class="fa fa-home" />
+										</a>
+									</li>
+									<li>
+										<a t-attf-href="/my/issue_request">My Project Issue Request</a>
+									</li>
+									<li>
+										<span t-field="items.sequence" />
+									</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+					<div class="container" id="container_2">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-md-12">
+										<h4>
+											<span t-field="items.sequence" />
+											-
+											<span t-field="items.name"/>
+										</h4>
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="mb8">
+											<strong>Assigned To : </strong>
+											<span t-field="items.user_id" />
+										</div>
+
+										<div class="mb8">
+											<strong>Email : </strong>
+											<span t-field="items.email_from" />
+										</div>
+
+										<div class="mb8">
+											<strong>Customer : </strong>
+											<span t-field="items.partner_id" />
+										</div>
+
+										<div class="mb8">
+											<strong>Phone : </strong>
+											<span t-field="items.phone" />
+										</div>
+
+										<div class="mb8">
+											<strong>Issue Team : </strong>
+											<span t-field="items.construction_team_id" />
+										</div>
+
+										<div class="mb8">
+											<strong>Team Leader: </strong>
+											<span t-field="items.team_leader_id" />
+										</div>
+
+										<div class="mb8">
+											<strong>Department : </strong>
+											<span t-field="items.department_id" />
+										</div>
+									</div>
+									<div class="col-md-6">
+
+										<div class="mb8">
+											<strong>Analytic Account : </strong>
+											<span t-field="items.analytic_id" />
+										</div>
+
+
+										<div class="mb8">
+											<strong>Project : </strong>
+											<span t-field="items.project_id" />
+										</div>
+
+										<div class="mb8">
+											<strong>Priority : </strong>
+											<span t-field="items.priority" />
+										</div>
+
+										<div class="mb8">
+											<strong>Create Date : </strong>
+											<span t-field="items.date_create" />
+										</div>
+
+										<div class="mb8">
+											<strong>Close Date : </strong>
+											<span t-field="items.date_closed" />
+										</div>
+
+										<div class="mb8" t-if="items.is_closed == True">
+											<strong>Is Closed ? : </strong>
+											<span>Yes</span>
+										</div>
+										
+										<div class="mb8" t-if="items.is_closed == False">
+											<strong>Is Closed ? : </strong>
+											<span>No</span>
+										</div>
+
+										<div class="mb8">
+											<strong>Total Hour Spend : </strong>
+											<span t-field="items.working_hours_open" />
+										</div>
+									</div>
+								</div>
+								<br />
+								<span t-field="items.description" />
+							</div>
+						</div>
+
+
+						<div id="rating" t-if="items.stage_id == 'closed'" class="row mt32">
+							<form t-attf-action="/issue/comment/#{items.id}" method="POST">
+								<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+								<input name="issue_id" t-att-value="items.id" type="hidden"/>
+								<div class="col-md-12">
+									<button style="margin-top:20px;" class="btn btn-primary btn-lg">Customer Rating</button>
+								</div>
+							</form>
+						</div>
+						<div class="row mt32">
+							<div class="col-md-12">
+								<h4>
+									<strong>Message and communication history</strong>
+								</h4>
+							</div>
+							<div class="col-md-10 col-md-offset-1 mt16">
+								<t t-call="portal.message_thread">
+									<t t-set="object" t-value="items" />
+								</t>
+							</div>
+						</div>
+					</div>
+				</t>
+			</div>
+		
+	</xpath>
+</template>
+</odoo>
+
+

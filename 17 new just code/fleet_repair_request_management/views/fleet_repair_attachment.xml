@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   
+   <!--  <template id="website_fleet_repair_attachment" inherit_id="fleet_repair_request_management.display_fleet_repairs">
+        <xpath expr="//div[@class='panel panel-default']" position="after">
+            <div data-role="header" data-theme="b">
+                <p align="left" style="color:#483D8B"><strong>Send Message and Attachments</strong></p>
+            </div>
+           <form  method="post" enctype="multipart/form-data" >
+               <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/><br/>
+               <textarea name="repair_comment" value="" line="3" type="text" placeholder="Add a comment..."/>
+               <input type="file" class="oe_inline"   multiple="multiple" name="attachment"/><span><input type="submit" value="Send Now" class="btn btn-info" name="send"/></span>
+            </form>
+       </xpath>
+    </template> -->
+   
+</odoo>
+
+

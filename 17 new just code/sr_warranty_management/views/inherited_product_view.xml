@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- Inherited product template form view -->
+	<record id="view_product_form_extends_add_fields" model="ir.ui.view">
+		<field name="name">view.product.form.extends.add.fields</field>
+		<field name="model">product.product</field>
+		<field name="inherit_id" ref="product.product_normal_form_view" />
+		<field name="arch" type="xml">
+			<xpath expr="//div[@name='options']" position="inside">
+				<span class="d-inline-block">
+					<field name="is_warranty"/>
+					<label for="is_warranty"/>
+				</span>
+			</xpath>
+			<xpath expr="//notebook" position="inside">
+				<page string="Warranty Informations" name="warranty_informations" invisible="is_warranty == False">
+					<group>
+						<group string="Warranty Period">
+							<label for="period"/>
+							<div>
+								<field name="period" class="oe_inline" style="vertical-align:baseline" force_save="True"/>
+								<field name="duration" class="oe_inline" style="vertical-align:baseline" force_save="True"/>
+							</div>
+						</group>
+						<group string="Renew Informations">
+							<field name="is_allow_renew"/>
+							<field name="renew_cost" invisible="is_allow_renew == False" force_save="True"/>
+						</group>
+					</group>
+				</page>
+				<page string="Warranty" name="warranty" invisible="is_warranty == False">
+					<field name="warranty_ids">
+						<tree editable="bottom">
+							<field name="name" />
+							<field name="partner_id"/>
+							<field name="product_id"/>
+							<field name="serial_number"/>
+							<field name="start_date"/>
+							<field name="end_date"/>
+							<field name="sale_order_id" />
+							<field name="sale_order_line_id" />
+						</tree>
+					</field>
+				</page>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Product variants extend action -->
+	<record id="product_extend_action" model="ir.actions.act_window">
+		<field name="name">Product Variants</field>
+		<!-- <field name="type">ir.actions.act_window</field> -->
+		<field name="res_model">product.product</field>
+		<field name="context">{'default_is_warranty' : True}</field>
+		<field name="domain">[('is_warranty', '=', True)]</field>
+		<!-- <field name="view_id" ref="product.product_normal_action"/> -->
+		<field name="view_id" eval="False"/>
+	</record>
+
+	<!-- Product variants extend menu -->
+	<menuitem id="warranty_product_variants_menu" name="Product Variants" action="product_extend_action" parent="sr_warranty_management.sr_warranty_submenu" sequence="3"/>
+
+</odoo>

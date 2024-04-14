@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record model ="ir.ui.view" id="job_costsheet_import_wizard_from_view">
+           <field name="name">job.cost.sheet.import.wiz</field>
+           <field name="model">job.cost.sheet.import</field>
+           <field name="arch" type="xml">
+               <form string="Job Cost Sheet Import Wizard">
+                   <separator string="This wizard will import Job Cost Sheet from selected excel file. Make sure you have selected .xls/xlsx file..."/>
+                    <group>
+                        <group>
+                            <field  name="files" class="oe_inline" filename="datas_fname" required="True"/>
+                            <field name="datas_fname" class="oe_inline" invisible="1" readonly="1"/>
+                        </group>
+                    </group>
+                   <!-- <group>
+                       <div>
+                            <label for="datas_fname"/>
+                            <field name="files" class="oe_inline" filename="datas_fname" required="True"/>
+                            <field name="datas_fname" class="oe_inline" invisible="0" readonly="1"/>
+                       </div>
+                   </group> -->
+                   <footer>
+                        <button string="Import" name="import_job_costsheet_file" type="object" class="oe_highlight"/>
+                        <!-- or -->
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+       <record model="ir.actions.act_window" id="action_jobcost_sheet_import_wizard">
+           <field name="name">Import Job Cost Sheet</field>
+           <field name="res_model">job.cost.sheet.import</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+       </record>
+       
+       <menuitem name="Import Job Cost Sheet" id="menu_import_job_cost_sheet"   
+                 parent="odoo_job_costing_management.menu_job_cost_managmt"
+                 action="action_jobcost_sheet_import_wizard"/>
+    </data>
+</odoo>

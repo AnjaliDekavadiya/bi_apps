@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+
+        <template id="attribute_templates" name="Attributes">
+            <t t-foreach="attribute_line_ids" t-as="line"> 
+                <div class="">
+                    <span><t t-esc="line.attribute_id.name"></t></span>
+                    : <t t-esc="','.join(line.value_ids.mapped('name'))"></t>
+                </div>
+            </t>
+        </template>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Template Without Payment -->
+    <template id="account.report_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.invoice_user_id.sudo().lang if o.move_type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
+                <t t-set="template" t-value="o.sudo().get_customer_invoice_template_id()"/>
+                <t t-if="not template or template.get_design_id().name_technical == 'default'">
+                    <t t-if="o._get_name_invoice_report() == 'account.report_invoice_document'" t-call="account.report_invoice_document" t-lang="lang"/>
+                </t>
+                <t t-else="">
+                    <t t-call="report_template_invoice.report_template_document1" t-lang="lang"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="account.report_invoice_with_payments">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="template" t-value="o.sudo().get_customer_invoice_template_id()"/>
+                <t t-set="lang" t-value="o.invoice_user_id.sudo().lang if o.move_type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
+                <t t-if="not template or template.get_design_id().name_technical == 'default'">
+
+                    <t t-set="print_with_payments" t-value="True"/>
+                    <t t-if="o._get_name_invoice_report() == 'account.report_invoice_document'" t-call="account.report_invoice_document" t-lang="lang"/>
+                </t>
+                <t t-else="">
+                    <t t-call="report_template_invoice.report_template_document1_with_payments" t-lang="lang"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_cloth_request_stage_inherit_repair" model="ir.ui.view">
+            <field name="name">cloth.request.stage.form.inherit.repair</field>
+            <field name="model">cloth.request.stage</field>
+            <field name="inherit_id" ref="cloth_tailor_management_odoo.cloth_request_stage_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fold']" position="after">
+                    <field name="probc_is_repair_stage"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

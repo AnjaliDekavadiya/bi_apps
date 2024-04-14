@@ -1,0 +1,201 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <template id="contract_drawing_image" name="contract_drawing_image">
+            <t t-call="website.layout">
+                <div class="container-fluid">
+                    <div class="row oe_product_image">
+                        <span></span>
+                        <table class="table text-center">
+                            <tr>
+                                <td>
+                                    <span t-field="img.drawing_img"
+                                          t-options="{'widget': 'image','resize':'750x750',}"
+                                          class="img img-responsive"/>
+                                    <span></span>
+                                </td>
+
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="purchase.portal_my_home_menu_purchase" name="Portal layout : purchase menu entries"
+                  inherit_id="portal.portal_breadcrumbs" priority="25">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <li t-if="page_name == 'rfq' or purchase_order and purchase_order.state == 'sent'"
+                    t-attf-class="breadcrumb-item #{'active ' if not order else ''}">
+                    <a t-if="purchase_order" t-attf-href="/my/rfq?{{ keep_query() }}">Requests for Quotation</a>
+                    <t t-else="">Requests for Quotation</t>
+                </li>
+                <li t-if="page_name == 'purchase' or purchase_order and purchase_order.state != 'sent'"
+                    t-attf-class="breadcrumb-item #{'active ' if not order else ''}">
+                    <a t-if="purchase_order" t-attf-href="/my/purchase?{{ keep_query() }}">Purchase Orders</a>
+                    <t t-else="">Purchase Orders</t>
+                </li>
+                <li t-if="purchase_order" class="breadcrumb-item active">
+                    <t t-esc="purchase_order.name"/>
+                </li>
+            </xpath>
+        </template>
+
+        <template id="portal_my_home_menu_job_order" name="Portal layout : job order entries"
+                  inherit_id="portal.portal_my_home" priority="40">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <div class="o_portal_index_card col-md-6 order-2">
+                    <a class="d-flex justify-content-start gap-2 gap-md-3 align-items-center py-3 pe-2 px-md-3 h-100 rounded text-decoration-none text-reset text-bg-light"
+                       t-if="job_order_count" href="/your/job_order">
+                        <div class="o_portal_icon align-self-start">
+                            <img data-oe-model="ir.ui.view" data-oe-id="549" data-oe-field="arch"
+                                 data-oe-xpath="/t[1]/div[1]/a[1]/div[1]/img[1]"
+                                 src="/bi_job_drawing_image_contracting/static/description/icon.png"
+                                 loading="lazy" style="height: 65px;"/>
+                        </div>
+                        <div>
+                            <h5 class="mt-0 mb-1 d-flex gap-2">
+                                <span>Job Order</span>
+                            </h5>
+                        </div>
+                    </a>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="portal_job_order_list" name="Job Order Details List">
+            <t t-call="portal.portal_layout">
+                <h3>
+                    Job orders List
+                </h3>
+                <t t-if="not job">
+                    <p>There are currently no Job Order.</p>
+                </t>
+                <div t-if="job" class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-hover o_portal_my_doc_table">
+                            <thead>
+                                <tr class="active">
+                                    <th>Job Orders</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="job" t-as="job_id">
+                                <tr>
+                                    <td>
+                                        <a t-attf-href="/job/view/detail/#{job_id.id}">
+                                            <t t-esc="job_id.name"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                    <div t-if="pager" class="o_portal_pager text-center">
+                        <t t-call="website.pager"/>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="job_order_request_view" name="Job Order Request View">
+            <t t-call="portal.portal_layout">
+                <h3>
+                    Task List
+                </h3>
+                <t t-if="not job_data_list">
+                    <p>There are currently no Task .</p>
+                </t>
+                <div t-if="job_data_list" class="panel panel-default">
+                    <div class="table-responsive">
+                        <t t-foreach="job_data_list" t-as="job_id">
+                            <table class="table table-hover o_portal_my_doc_table">
+                                <thead>
+                                    <tr class="active">
+                                        <th>Task for project :
+                                            <span t-field="job_data_list.project_id.name"/>
+                                        </th>
+                                        <th>Stage</th>
+                                    </tr>
+                                </thead>
+                                <t t-foreach="job_id.project_id.task_ids" t-as="task_id">
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="job" id="job_order_id" t-att-value="job_id.id"/>
+                                            <a t-attf-href="/my/task/#{task_id.id}/#{job_id.id}?{{ keep_query() }}">
+                                                <t t-esc="task_id.name"/>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <t class="label label-info" t-esc="task_id.stage_id.name"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                        </t>
+                    </div>
+                    <div t-if="pager" class="o_portal_pager text-center">
+                        <t t-call="website.pager"/>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="drawing_job_order_inherit" name="Drawings job order" inherit_id="project.portal_my_task">
+            <xpath expr="//div[hasclass('col-md-6')]" position="before">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"
+                             style=" height: 50px; padding: 10px 1px;background-color:#17a2b8;border-radius:5px;">
+                            <ul class="nav">
+                                <li class="active">
+                                    <a href="#tabprimary" style="color:white;padding:10px 15px;" data-toggle="tab">
+                                        Drawings
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabprimary">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover o_portal_my_doc_table">
+                                            <thead>
+                                                <tr class="active">
+                                                    <th>Drawing Name</th>
+                                                    <th>Drawing Description</th>
+                                                </tr>
+                                            </thead>
+                                            <t t-foreach="job_order.contract_drawings_ids" t-as="line">
+                                                <tr>
+                                                    <td>
+                                                        <t t-esc="line.name"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="line.description"/>
+                                                    </td>
+                                                    <td>
+                                                        <a t-attf-href="website/open/contract_drawing/#{line.id} "
+                                                           class=" btn-primary">
+                                                            <button id="open" type="button" class=" btn-primary">Open
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
+
+

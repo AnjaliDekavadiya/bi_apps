@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Portal for Inspection and Inspection lines -->
+        <record id="custom_repair_inspection_rule_portal" model="ir.rule">
+            <field name="name">Portal Personal Repair Inspections</field>
+            <field name="model_id" ref="machine_repair_job_inspection.model_repair_order_inspection"/>
+            <field name="domain_force">[('custom_inspector_ids','child_of',[user.commercial_partner_id.id])]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        </record>
+
+        <record id="custom_repair_inspection_lines_rule_portal" model="ir.rule">
+            <field name="name">Portal Repair Inspections Lines</field>
+            <field name="model_id" ref="machine_repair_job_inspection.model_repair_order_inspection_line"/>
+            <field name="domain_force">[('repair_inspection_id.custom_inspector_ids','child_of',[user.commercial_partner_id.id])]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        </record>
+
+    </data>
+</odoo>

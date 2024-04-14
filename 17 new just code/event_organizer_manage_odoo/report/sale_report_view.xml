@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_order_product_search_inherit_event_custom" model="ir.ui.view">
+            <field name="name">sale.report.search.inherit.event</field>
+            <field name="model">sale.report</field>
+            <field name="inherit_id" ref="sale.view_order_product_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[2]" position="inside">
+                    <filter string="Event" name="event_custom_id" context="{'group_by':'event_custom_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,question_type,rating_type_id,sequence
+question_group_1,Work attitude,rating,Standard,1
+question_group_2,Professional knowledge,rating,Standard,2
+question_group_3,Ability to work,rating,Standard,3
+question_group_4,Working achievement,rating,Standard,4
+question_group_5,Comments & Recommendations,questions,,7
+question_group_6,Objectives,rating_objectives,Standard,5

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>    
+    
+    <record model="ir.ui.view" id="customer_360_dashboard">
+        <field name="name">ResPartner </field>
+        <field name="model">res.partner</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" create="false">
+                <field name="name"/>
+                <field name="id"/>
+                <field name="image_128"/>
+                <field name="street"/>
+                <field name="email"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click oe_kanban_color_11">
+                            <div class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title mb16">
+                                    <div class="oe_kanban_details">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="o_kanban_image">
+                                                    <img t-att-src="kanban_image('res.partner', 'image_128', record.id.raw_value)" alt="partner" class="o_image_64_contain"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <font size="4">
+                                                    <b><field name="name"/></b><br/>
+                                                </font>
+                                                <font>
+                                                    <field name="name"/><br/>
+                                                    <field name="street"/><br/>
+                                                    <field name="email" class="o_text_overflow" />
+                                                </font>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_content mt0">
+                                <div class="row">
+                                    <div class="col-6 o_kanban_primary_left d-grid gap-2 col-6 mx-auto">
+                                        <button type="object" name="action_meetings" class="btn btn-sm  mb-2" t-att-style="'height:30px; width:130px;font-size: 12px;background-color: #e6e6ff'">
+                                            <span>
+                                                <i class="fa fa-calendar"></i> Meetings (<field name="custom_meeting_count"/>)
+                                            </span>
+                                        </button>
+                                        <button type="object" name="action_sale" class="btn btn-sm mb-2" t-att-style="'height:30px; width:130px;font-size: 12px; background-color: #e6f0ff'">
+                                            <span>
+                                                <i class="fa fa-usd"></i> Sales (<field name="custom_sale_count"/>)
+                                            </span>
+                                        </button>
+                                        <button type="object" name="action_task" class="btn btn-sm mb-2" t-att-style="'height:30px; width:130px;font-size: 12px; background-color: #b3ecff'">
+                                            <span>
+                                                <i class="fa fa-tasks"></i> Tasks (<field name="custom_task_count"/>)
+                                            </span>
+                                        </button>
+                                        <button type="object" name="action_analytic" class="btn btn-sm mb-2" t-att-style="'height:30px; width:130px;font-size: 12px;background-color: #80bfff'">
+                                            <span>
+                                                <i class="fa fa-book"></i> Analytics (<field name="custom_analytic_count"/>)
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="col-6 o_kanban_primary_right d-grid gap-2 col-6 mx-auto">
+                                        <button type="object" name="action_opportunities" class="btn btn-sm mb-2" t-att-style="'height:30px; width:130px;font-size: 12px; background-color: #ccccff'">
+                                            <span>
+                                                <i class="fa fa-star"></i> Opportunities (<field name="custom_opportunities_count"/>)
+                                            </span>
+                                        </button>
+                                        <button type="object" name="action_invoice" class="btn btn-sm mb-2" t-att-style="'height:30px; width:130px;font-size: 12px;background-color: #f5e6ff'">
+                                            <span>
+                                                <i class="fa fa-pencil-square-o"></i> Invoices (<field name="custom_invoice_count"/>)
+                                            </span>
+                                        </button>
+                                        <button type="object" name="action_project" class="btn btn-sm mb-2" t-att-style="'height:30px;font-size: 12px; width:130px; background-color: #f2ffcc'">
+                                            <span>
+                                                <i class="fa fa-puzzle-piece"></i> Projects (<field name="custom_project_count"/>)
+                                            </span>
+                                        </button>
+                                        <button type="object" name="action_payment" class="btn btn-sm mb-2" t-att-style="'height:30px; width:130px;font-size: 12px; background-color: #b3d1ff'">
+                                            <span>
+                                                <i class="fa fa-money"></i> Payments (<field name="custom_payment_count"/>)
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+
+
+                <!-- <t t-name="kanban-box">
+                    <div t-attf-class="oe_kanban_color_11 oe_kanban_card oe_kanban_global_click">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div calss="col-6">
+                                            <div class="o_kanban_image">
+                                                <img t-att-src="kanban_image('res.partner', 'image_128', record.id.raw_value)" alt="partner" class="o_image_64_contain"/>
+                                            </div>
+                                        </div>
+                                        <br/><br/>
+                                            <div class="col-6">
+                                                <font size="1">
+                                                    <field name="name"/><br/>
+                                                    <field name="street"/><br/>
+                                                    <field name="email" class="o_text_overflow" />
+                                                </font>
+                                                
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <button type="object" name="action_meetings" class="btn fa fa-calendar" style="height:30px; width:130px;font-size: 12px;background-color: #e6e6ff">  
+                                                    <field name="custom_meeting_count" widget="statinfo" string="Meetings"/>
+
+                                                </button>
+                                                <br/><br/>
+                                                <button type="object" name="action_sale" class="btn fa fa-fw o_button_icon fa-usd" style="height:30px; width:130px;font-size: 12px; background-color: #e6f0ff">
+                                                    <field name="custom_sale_count" widget="statinfo" string="Sales"/>
+                                                </button>
+                                            </div>
+                                            <br/><br/><br/>
+                                            <div class="col-6">
+                                                <button type="object" name="action_opportunities" class="btn fa fa-star" style="height:30px; width:130px;font-size: 12px; background-color: #ccccff">
+                                                    
+                                                    <field name="custom_opportunities_count" widget="statinfo" string="Opportunities"/>
+
+                                                </button>
+                                                <br/><br/>
+                                                <button type="object" name="action_invoice" class="btn fa fa-fw o_button_icon fa-pencil-square-o" style="height:30px; width:130px;font-size: 12px;background-color: #f5e6ff">
+                                                    
+                                                    <field name="custom_invoice_count" widget="statinfo" string="Invoices"/>
+
+                                                </button>
+                                            </div>
+                                    </div>
+                                    <br/>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <button type="object" name="action_task" class="btn fa fa-tasks" style="height:30px; width:130px;font-size: 12px; background-color: #b3ecff">
+                                                    
+                                                    <field name="custom_task_count" widget="statinfo" string="Tasks"/>
+                                                </button>
+                                                <br/><br/>
+                                                <button type="object" name="action_analytic" class="btn fa fa-fw o_button_icon fa-book" style="height:30px; width:130px;font-size: 12px;background-color: #80bfff">
+                                                    
+                                                    <field name="custom_analytic_count" widget="statinfo" string="Analytics"/>
+
+                                                </button>
+                                            </div>
+                                            <br/><br/><br/>
+                                            <div class="col-6">
+                                                <button type="object" name="action_project" class="btn fa fa-fw o_button_icon fa-puzzle-piece" style="height:30px;font-size: 12px; width:130px; background-color: #f2ffcc">
+                                                    
+                                                    <field name="custom_project_count" widget="statinfo" string="Projects"/>
+
+                                                </button>
+                                                <br/><br/>
+                                                <button type="object" name="action_payment" class="btn fa fa-money" style="height:30px; width:130px;font-size: 12px; background-color: #b3d1ff">
+                                                    
+                                                    <field name="custom_payment_count" widget="statinfo" string="Payments"/>
+
+                                                </button>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </t> -->
+            </templates>
+        </kanban>
+      </field>
+    </record>
+
+    
+    <record model="ir.actions.act_window" id="customer_dashboard_action_window">
+      <field name="name">Customer Dashboard</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">kanban</field>
+      <field name="context">{"search_default_customer":1}</field>
+    </record>
+
+    <record id="customer_dashboard_action_window_kanban_custom" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="customer_360_dashboard"/>
+        <field name="act_window_id" ref="customer_dashboard_action_window"/>
+    </record>
+
+
+    <menuitem name="Dashboard" id="customer_dashboard_dashboard" parent="sale.sale_menu_root" action="customer_dashboard_action_window" sequence="4" groups="sales_team.group_sale_manager"/>
+
+    <menuitem name="Customer 360 Dashboard" id="customer_dashboard_sub" parent="customer_dashboard_dashboard" action="customer_dashboard_action_window" groups="sales_team.group_sale_manager"/>
+  </data>
+</odoo>

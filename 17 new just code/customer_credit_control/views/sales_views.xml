@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sale_order_form_credit_control" model="ir.ui.view">
+        <field name="name">sale.order.credit.control.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='other_information']" position="before">
+                <page string="Warning Mail" name="warning_mail">
+                    <field name="warning_mail_ids"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

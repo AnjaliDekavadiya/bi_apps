@@ -1,0 +1,592 @@
+
+<div class="container">
+    <div class="oe_styling_v8">
+        <section class="oe_container ml-4" id="wk_header">
+  <div class="mt32 mb32">
+  <h2 class="text-center" style="font-family:'Open Sans', sans-serif; font-size:36px; color:#000000">
+    <strong> Odoo Website Shopping Assistant ( Odoo Chatbot ) using OpenAI
+    </strong>
+  </h2>
+  <h5 class="mt8 mb8 text-center" style="font-weight:500; font-family:'Open Sans', sans-serif; font-size:18px; color:#555555">
+    <i>
+      Enhance user experience in Odoo!
+    </i>
+  </h5>
+  </div>
+  <div class="row mt16 mb16 py-2 m-1" style="font-weight:500; font-family:'Open Sans', sans-serif; font-size:18px; color:#555555">
+  <div class=" col-md-6  border-right" style="font-family:'Open Sans', sans-serif; font-weight:500; line-height:24px; font-size:16px; color:#555555; vertical-align:middle; display:grid">
+    <p style="height:fit-content" class="mb4 mt4 mr8">
+      Odoo Website Shopping Assistant ( Odoo Chatbot ) using OpenAI enhances the Odoo experience with the ChatGPT chatbot. The chatbot is based on the GPT-3.5-turbo language model. The model understands natural human language and provides responses trained specifically using Odoo ERP data. Moreover, it delivers more contextually relevant replies.
+    </p>
+  </div>
+  <div class=" col-md-6 border-left">
+    <h4 class="ml-md-3"><strong>Information</strong></h4>
+    <div class="mt-2 ml-md-3" style="display:flex">
+        <span class="ml-1 mr-2 my-auto"><img src="icon-user-guide.png" alt="user-guide"></span>
+        <div style="font-weight:600; font-size:14px; line-height:10px" class="mt-2">User Guide
+        </div>
+    </div>
+    <div class="ml-md-3" style="display:flex">
+        <span style="font-size:16px; margin-top:0.2rem">https://webkul.com/blog/odoo-website-shopping-assistant-odoo-chatbot-using-openai/</span>
+    </div>
+  </div>
+  </div>
+  </section>
+  <section class="oe_container lead mb-4">
+  <div class="mt16 mb16 m-1 shadow-sm border pt-3 p-2" style="background-color:#FFFFFF; border-radius:2px; font-family:'Open Sans',sans-serif">
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-1">
+        <img src="images/icon-1.png">
+    </div>
+    <div class="col-12 col-md-12 col-lg-10 mt-3">
+        <h3 style="font-family:'Open Sans', sans-serif; color:#333333; line-height:38px; font-size:18px; font-weight:600">
+          Why Do You Need a Chatbot Like ChatGPT?
+        </h3>
+    </div>
+  </div>
+  <div>
+    <div class="col col-12 p-2" style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+      Support executives' availability is subject to time. They can&#39;t be available round-the-clock to assist customers. However, a chatbot can aid them at any time. Also, the GPT-3.5-turbo-powered language model is more user-friendly and responds to more human-friendly language.
+      </div>
+    <div class="col col-12 p-2" style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+      Also, the updated LLM (Large Language Model) understands the natural human language. And it provides long-form answers with specific details related to the searched topic.
+      </div>
+    <div class="col col-12 p-2" style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+      This module trains the chatbot to answer every question related to the Odoo database. It can search and tell any specific product details like warranty, price, color, and much more.
+      </div>
+  </div>
+  </div>
+  </section>
+  <section class="oe_container d-flex justify-content-center">
+    <div class="border-left border-info" style="width:98%; margin-top:20px">
+       
+        <div class="shadow-sm" style="border:1px solid #E0E0E0">
+          <h2 class="" style="font-size: 20px;  font-style: normal;  font-weight: 600;  line-height: 30px; letter-spacing: 0px;margin-left: 10px;">
+             Prerequisites
+             </h2>
+            <div style="padding:1%">
+                <p style="font-family:'Open Sans', sans-serif; font-weight:400; font-size:14px; line-height:12px; color:#000000">Required dependencies:</p>
+            </div>
+            <div>
+                <ul style="font-family:'Open Sans', sans-serif; font-weight:400; font-size:16px; line-height:26px; color:#747474">
+                    <li>Python version of 3.8.1 or above is required to install the dependencies.</li>
+                    <li>Module uses the Postgres vector database. To know more about it follow the doc - https://python.langchain.com/docs/integrations/vectorstores/pgvector</li>
+                    <li>Need to create vector extension before installing the module. To install pgvector extension follow the doc - https://github.com/pgvector/pgvector#installation</li>
+                </ul>
+                <p style="padding-left: 10px; font-weight:600; margin-top:16px; font-family:Montserrat; font-size:16px; color:#555555; line-height:22px">Note: The module has been thoroughly tested on the Ubuntu operating system.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <section class="oe_container lead mb-4">
+    <div class="mt16 mb16 m-1 shadow-sm border " style="background-color:#FFFFFF; border-radius:2px; font-family:'Open Sans',sans-serif">
+      <div class="row p-3">
+        <div class="p-3">
+          <div class="d-flex align-items-center">
+                  <img class="mr-2" src="images/icon-2.png" alt="Icon">
+                  <span style="margin-left:11px; font-family:'Open Sans', 'Helvetica', Sans; font-weight:600; font-size:18px; line-height:30px; color:#333333">
+                    Benefits of a Trained Chatbot Using OpenAI
+                  </span>  
+          </div>
+          <ul style="font-family:'Open Sans', 'Helvetica', Sans; font-weight:normal; font-size:16px; line-height:23px; color:#646464">
+            <li class="pb-2">Effective communication via natural language understanding.</li>
+            <li class="pb-2">It delivers round-the-clock customer support and faster response.
+            </li>
+            <li class="pb-2">It is scalable and cost-efficient and can handle multiple conversations.
+            </li>
+            <li class="pb-2">The module is accurate and provides consistent responses based on trained data.
+            </li>
+            <li>Enhances efficiency to handle complex or sensitive inquiries.
+            </li>
+          </ul>
+        </div>  
+    </div>
+  </div>
+  </section>
+  <section class="oe_container lead mb-4">
+    <div class="mt16 mb16 m-1 shadow-sm border pt-3 p-2" style="background-color:#FFFFFF; border-radius:2px; font-family:'Open Sans',sans-serif">
+    <div class="row">
+      <div class="col-12 col-md-12 col-lg-1">
+          <img src="images/icon-3.png">
+      </div>
+      <div class="col-12 col-md-12 col-lg-10 mt-3">
+          <h3 style="font-family:'Open Sans', sans-serif; color:#333333; line-height:38px; font-size:18px; font-weight:600">
+            How Does Odoo Website Shopping Assistant ( Odoo Chatbot ) using OpenAI Help You?
+          </h3>
+      </div>
+    </div>
+    <div>
+      <div class="col col-12 p-2" style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+        The Odoo app can improve sales by engaging customers in real-time, providing 24x7 support, offering every detail, various other details, and recommendations according to the trained model. It can answer queries, provide information, and more.        </div>
+      <div class="col col-12 p-2" style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+        It helps you provide relevant information to the customer at the right time so they can make the purchase decision instantly. Also, when customers&#39; specific needs are met they make favorable decisions related to their queries.
+      </div>
+      <div class="col col-12 p-2" style="color:#555555; font-family:'Open Sans',sans-serif; font-weight:400; font-size:16px">
+        By default the module supports GPT-3.5. However, if you have access to GPT-4 then it is designed to support it as well. You can even upload custom data before training the bot. Configure the chatbot prompt from the Odoo website from the live chat &#39;Bot Options&#39; configuration. Generate labels and metadata for the fields.
+      </div>
+    </div>
+    </div>
+    </section>
+
+    <section class="oe_container mb-4">
+      <div class="mt16 mb16 m-1 shadow-sm border pt-3 p-3" style="background-color:#FFFFFF; border-radius:2px; font-family:'Open Sans',sans-serif">
+        <div class="w-auto">
+          <img class="border" style="background-color:white; border-radius:20px; width:100%" src="chat-bot-video.gif">
+        </div>
+      </div>
+    </section>
+    <section class="oe_container mb-4">
+      <div class="container p-0">
+            <h3 style="font-family:Montserrat; font-style:normal; font-weight:600; font-size:26px; line-height:38px; text-align:center" class="mb-3">How To Train Your Bot</h3>
+      </div>
+    </section>
+
+    <section class="oe_container mb-4">
+      <div class="mt16 mb16 m-1 shadow-sm border pt-3 p-3" style="background-color:#FFFFFF; border-radius:2px; font-family:'Open Sans',sans-serif">
+        <div class="w-auto">
+          <img class="border" style="background-color:white; border-radius:20px; width:100%" src="train-chatbot-video.gif">
+        </div>
+      </div>
+    </section>
+  
+  <section>
+    <div class="container">
+      <div class="row p-3 justify-content-center">
+        <div class="sm p-3 ">
+          <h3 class="d-flex align-items-start justify-content-center">
+              <span style="font-family:'Open Sans', 'Helvetica', Sans; font-weight:600; font-size:25px; line-height:30px; color:#333333">Highlighted-features</span>
+          </h3> 
+          <p class="d-flex align-items-start justify-content-center" style="font-family:'Open Sans', 'Helvetica', Sans; font-weight:normal; font-size:16px; line-height:23px; color:#646464">Below is the detailed list of Feature for Odoo Website Shopping Assistant ( Odoo Chatbot ) using OpenAI</p>
+        </div>
+      </div>
+      <div class="d-flex row mb-4">
+            <div class="col-md-4 col-lg-4 col-sm-12" style="border:none">
+              <div class="card-body justify-content-start">
+                  <div class="d-flex align-items-start ">
+                    <img class="mr-2" src="images/feature-icon-1.png" alt="Icon"> 
+                      <span style="font-family:'Open Sans', 'Helvetica', Sans; font-size:16px; line-height:23px; color:#333333; font-weight:600;padding-left:10px; padding-top:15px;">Train chatbot by uploading data to vector DB
+                    </span>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12" style="border:none">
+                <div class="card-body justify-content-start w-40">
+                    <div class="d-flex align-items-start">
+                      <img class="mr-2" src="images/feature-icon-2.png" alt="Icon"> 
+                        <span style="font-family:'Open Sans', 'Helvetica', Sans; font-size:16px; line-height:23px; color:#333333; font-weight:600;padding-left:10px; padding-top:15px;">Shows Chatbot (ChatGPT) with Odoo
+                      </span>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4 col-sm-12" style="border:none">
+                <div class="card-body justify-content-start">
+                    <div class="d-flex align-items-start">
+                      <img class="mr-2" src="images/feature-icon-3.png" alt="Icon"> 
+                        <span style="font-family:'Open Sans', 'Helvetica', Sans; font-size:16px; line-height:23px; color:#333333; font-weight:600;padding-left:10px; padding-top:15px;">Leverage NLP and conversational AI
+                    </span>
+                    </div>
+                </div>
+              </div>
+            <div class="col-md-4 col-lg-4 col-sm-12" style="border:none">
+              <div class="card-body justify-content-start">
+                  <div class="d-flex align-items-start">
+                    <img class="mr-2" src="images/feature-icon-4.png" alt="Icon"> 
+                      <span style="font-family:'Open Sans', 'Helvetica', Sans; font-size:16px; line-height:23px; color:#333333; font-weight:600;padding-left:10px; padding-top:15px;">Uses GPT3.5-turbo for relevant responses
+                    </span>
+                  </div>
+              </div>
+            </div>
+
+          <div class="col-md-4 col-lg-4 col-sm-12" style="border:none">
+            <div class="card-body justify-content-start">
+                <div class="d-flex align-items-start">
+                  <img class="mr-2" src="images/feature-icon-5.png" alt="Icon"> 
+                    <span style="font-family:'Open Sans', 'Helvetica', Sans; font-size:16px; line-height:23px; color:#333333; font-weight:600;padding-left:10px; padding-top:15px;">Seamless integration with LangChain framework
+                </span>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-4 col-sm-12" style="border:none">
+            <div class="card-body justify-content-start">
+                <div class="d-flex align-items-start">
+                  <img class="mr-2" src="images/feature-icon-6.png" alt="Icon"> 
+                    <span style="font-family:'Open Sans', 'Helvetica', Sans; font-size:16px; line-height:23px; color:#333333; font-weight:600;padding-left:10px; padding-top:15px;">Customizable appearance of the chatbot window
+                </span>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-4 col-sm-12" style="border:none">
+            <div class="card-body justify-content-start">
+                <div class="d-flex align-items-start">
+                  <img class="mr-2" src="images/feature-icon-7.png" alt="Icon"> 
+                    <span style="font-family:'Open Sans', 'Helvetica', Sans; font-size:16px; line-height:23px; color:#333333; font-weight:600;padding-left:10px; padding-top:15px;">Upload a .txt file of custom data before training
+                </span>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-4 col-sm-12" style="border:none">
+            <div class="card-body justify-content-start">
+                <div class="d-flex align-items-start">
+                  <img class="mr-2" src="images/feature-icon-8.png" alt="Icon"> 
+                    <span style="font-family:'Open Sans', 'Helvetica', Sans; font-size:16px; line-height:23px; color:#333333; font-weight:600;padding-left:10px; padding-top:15px;">Enable the chat prompt from the backend
+                </span>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-4 col-sm-12" style="border:none">
+            <div class="card-body justify-content-start">
+                <div class="d-flex align-items-start">
+                  <img class="mr-2" src="images/feature-icon-9.png" alt="Icon"> 
+                    <span style="font-family:'Open Sans', 'Helvetica', Sans; font-size:16px; line-height:23px; color:#333333; font-weight:600;padding-left:10px; padding-top:15px;">Add Common data fields for all metadata
+                </span>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-4 col-sm-12" style="border:none">
+            <div class="card-body justify-content-start">
+                <div class="d-flex align-items-start">
+                  <img class="mr-2" src="images/feature-icon-10.png" alt="Icon"> 
+                    <span style="font-family:'Open Sans', 'Helvetica', Sans; font-size:16px; line-height:23px; color:#333333; font-weight:600;padding-left:10px; padding-top:15px;">Train data according to specific or all records
+                </span>
+                </div>
+            </div>
+          </div>
+
+        </div> 
+      </div>
+  </section>
+  <div class="card-header shadow-sm p-0" style="font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:28px; color:#333333;  ">
+  <ul class="nav nav-tabs justify-content-center pt-1" role="tablist" style="background-color:#EBF3F5;">
+    <li class="nav-item border border-bottom-0 border-dark" style="background-color:#EBF3F5; color:#333333; border-radius:5px 5px 0px 0px; ">
+        <span href="#ss" class="nav-link" role="tab" aria-selected="false" data-bs-toggle="tab">
+            Screenshots
+        </span>
+    </li>
+    <li class="nav-item mr-1 border border-bottom-0 border-dark" style="background-color:#EBF3F5; color:#333333; border-radius:5px 5px 0px 0px;  margin-left: 7px;">
+      <span href="#features" class="nav-link active"  role="tab" aria-selected="true" data-bs-toggle="tab">
+          Detailed Features
+      </span>
+  </li>
+  </ul>
+  </div>
+  <div class="card-body tab-content p-0" style="font-weight:400">
+  <div class="tab-pane show active fade slow" id="features" role="tabpanel">
+    <section class="mt32 mb32">
+        <div class="p-4 mb-2 ml32 mr32" style="color:#333333; font-family:'Open Sans', sans-serif">
+            <span style="font-size:20px; font-weight:600">
+                Detailed Features List
+            </span>
+        </div>
+        <div class="row pt-2 ml64 mr64" style="font-family:'Open Sans',sans-serif">
+            <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px">
+                <div class="shadow p-4 h-100">
+                    <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px">
+                      Train the Chatbot to Answer Customers
+                    </h4>
+                    <ul style='padding-inline-start:5px !important;'>
+                          <li class="d-flex align-items-baseline pb-2">
+                            <i class="fa fa-check mr8" style="color: #500fda"></i>
+                            <span>Train the chatbot by uploading the Odoo data to the vector database.</span>
+                          </li>
+  
+                          <li class="d-flex align-items-baseline">
+                          <i class="fa fa-check mr8" style="color: #500fda"></i>
+                          <span>It leverages conversational AI and NLP (Natural Language Processing).</span>
+                          </li>                 
+                    </ul>
+                </div>
+            </div>
+            <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px">
+                <div class="shadow p-4 h-100">
+                    <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px">
+                      Create Chatbot from the Odoo Backend
+                    </h4>
+                    <ul style='padding-inline-start:5px !important;'>
+
+  
+                      <li class="d-flex align-items-baseline">
+                      <i class="fa fa-check mr8" style="color: #500fda"></i>
+                      <span>Create a new chatbot in the backend and choose the record type.</span>
+                      </li>                 
+                      <li class="d-flex align-items-baseline">
+                      <i class="fa fa-check mr8" style="color: #500fda"></i>
+                      <span>You can add fields while creating the chatbot.</span>
+                      </li>                 
+                    </ul>
+                </div>
+            </div>
+            <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px">
+                <div class="shadow p-4 h-100">
+                    <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px">
+                      Answer Client Queries based on Trained Data
+                    </h4>
+                    <ul style='padding-inline-start:5px !important;'>
+
+  
+                      <li class="d-flex align-items-baseline">
+                      <i class="fa fa-check mr8" style="color: #500fda"></i>
+                      <span>The module allows the chatbot to answer the client&#39;s every query based on the trained data.</span>
+                      </li>                               
+                    </ul>
+                </div>
+            </div>
+            <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px">
+              <div class="shadow p-4 h-100">
+                  <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px">
+                    Language Model Used for the Odoo App
+                  </h4>
+                  <ul style='padding-inline-start:5px !important;'>
+
+
+                    <li class="d-flex align-items-baseline">
+                    <i class="fa fa-check mr8" style="color: #500fda"></i>
+                    <span>The module uses Large Language Model, which understands the natural human language.</span>
+                    </li>                 
+                    <li class="d-flex align-items-baseline">
+                    <i class="fa fa-check mr8" style="color: #500fda"></i>
+                    <span>The Odoo app is based on the GPT-3.5- turbo that delivers more contextual responses.</span>
+                    </li>                 
+                  </ul>
+              </div>
+          </div>
+          <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px">
+            <div class="shadow p-4 h-100">
+                <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px">
+                  Enabling the Chatbot to Solve Customer Query
+                </h4>
+                <ul style='padding-inline-start:5px !important;'>
+
+
+                  <li class="d-flex align-items-baseline">
+                  <i class="fa fa-check mr8" style="color: #500fda"></i>
+                  <span>You can enable the Chatbot option from the Odoo backend from the bot option setting in the channel menu.</span>
+                  </li>                               
+                </ul>
+            </div>
+        </div>
+        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px">
+          <div class="shadow p-4 h-100">
+              <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px">
+                Training Data to the AI-Powered Chatbot
+              </h4>
+              <ul style='padding-inline-start:5px !important;'>
+
+
+                <li class="d-flex align-items-baseline">
+                <i class="fa fa-check mr8" style="color: #500fda"></i>
+                <span>Chatbots can be trained with relevant data according to the products.</span>
+                </li>                 
+                <li class="d-flex align-items-baseline">
+                <i class="fa fa-check mr8" style="color: #500fda"></i>
+                <span>Or you can add custom data according to your need in a .txt file before training the bot.</span>
+                </li>                 
+              </ul>
+          </div>
+      </div>
+        
+        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px">
+          <div class="shadow p-4 h-100">
+              <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px">
+                Selecting Records while Training the Data
+              </h4>
+              <ul style='padding-inline-start:5px !important;'>
+
+
+                <li class="d-flex align-items-baseline">
+                <i class="fa fa-check mr8" style="color: #500fda"></i>
+                <span>Use all records for training the chatbot.</span>
+                </li>                 
+                <li class="d-flex align-items-baseline">
+                <i class="fa fa-check mr8" style="color: #500fda"></i>
+                <span>Or you can use specific records and define them for training the chatbot.</span>
+                </li>                 
+              </ul>
+          </div>
+      </div>
+        <div class="col col-12 col-md-6 mb-4" style="font-weight:normal; font-size:16px">
+          <div class="shadow p-4 h-100">
+              <h4 style="color:#333333; font-family:'Open Sans',sans-serif; font-weight:600; font-size:18px">
+                Choosing the AI Model for training the Chatbot
+              </h4>
+              <ul style='padding-inline-start:5px !important;'>
+
+
+                <li class="d-flex align-items-baseline">
+                <i class="fa fa-check mr8" style="color: #500fda"></i>
+                <span>Use GPT-4 model for training if you have access to it.
+                </span>
+                </li>                 
+                <li class="d-flex align-items-baseline">
+                <i class="fa fa-check mr8" style="color: #500fda"></i>
+                <span>Or the system will use GPT-3.5-turbo for bot training.
+                </span>
+                </li>                 
+              </ul>
+          </div>
+      </div>
+
+
+                       
+        </div>
+    </section>
+  </div>
+  <div class="tab-pane show fade slow" id="ss" role="tabpanel">
+    <div class="container shadow-sm px-4">
+
+        <section class="oe_container my-4">
+          <div class="panel panel-primary">
+              <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                  <div style="background-color:#EBF3F5; margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                    Adding OpenAI APi Key</div>
+              </div>
+              <div class="panel-body p-3">
+                  <img src="screenshots/10.jpeg" style="width:100%" class="img-responsive border">
+              </div>
+          </div>
+        </section>
+
+        <section class="oe_container my-4">
+          <div class="panel panel-primary">
+              <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                  <div style="background-color:#EBF3F5; margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                    Creating an AI chatbot in the backend for all data</div>
+              </div>
+              <div class="panel-body p-3">
+                  <img src="screenshots/1.png" style="width:100%" class="img-responsive border">
+              </div>
+          </div>
+        </section>
+  
+  
+        <section class="oe_container my-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                    <div style="background-color:#EBF3F5; margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                      Creating an AI chatbot in the backend for specific data
+                    </div>
+                </div>
+                <div class="panel-body p-3">
+                    <img src="screenshots/2.png" style="width:100%" class="img-responsive border">
+                </div>
+            </div>
+        </section>
+
+        <section class="oe_container my-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                    <div style="background-color:#EBF3F5; margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                      Generating content for the ai chatbot</div>
+                </div>
+                <div class="panel-body p-3">
+                    <img src="screenshots/3.png" style="width:100%" class="img-responsive border">
+                </div>
+            </div>
+        </section>
+        <section class="oe_container my-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                    <div style="background-color:#EBF3F5; margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                      Generated content based on set AI criteria</div>
+                </div>
+                <div class="panel-body p-3">
+                    <img src="screenshots/4.png" style="width:100%" class="img-responsive border">
+                </div>
+            </div>
+        </section>
+        <section class="oe_container my-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                    <div style="background-color:#EBF3F5; margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                      Training the Bot with the generated data</div>
+                </div>
+                <div class="panel-body p-3">
+                    <img src="screenshots/5.png" style="width:100%" class="img-responsive border">
+                </div>
+            </div>
+        </section>
+        <!-- <section class="oe_container my-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                    <div style="background-color:#EBF3F5; margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                      Trained chatbot data</div>
+                </div>
+                <div class="panel-body p-3">
+                    <img src="screenshots/6.png" style="width:100%" class="img-responsive border">
+                </div>
+            </div>
+        </section> -->
+        <section class="oe_container my-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                    <div style="background-color:#EBF3F5; margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                      Enabling the chatbot on the Odoo website</div>
+                </div>
+                <div class="panel-body p-3">
+                    <img src="screenshots/7.png" style="width:100%" class="img-responsive border">
+                </div>
+            </div>
+        </section>
+        <section class="oe_container my-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="font-size:16px; line-height:20px; color:#555555">
+                    <div style="background-color:#EBF3F5; margin-top:33px; font-family:'Open Sans', sans-serif; font-weight:600; font-size:18px; line-height:22px; text-align:center; color:#333333">
+                      Odoo Chatbot responds according to the trained data</div>
+                </div>
+                <div class="panel-body p-3">
+                    <img src="screenshots/8.jpeg" style="width:100%" class="img-responsive border">
+                </div>
+            </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <section class="pt32" id="webkul_support" style="font-family:'Open Sans', sans-serif">
+  <div class="row">
+  <div class="col-12">
+    <h2 class="text-center text-dark">Support</h2>
+    <p class="mb-2 text-center" style="font-size:16px; color:#333; font-weight:400">Get
+      Get Immediate support for any of your query
+    </p>
+  </div>
+  <div class="col-12 mb-2">
+    <p class="text-center px-5" style="font-size:14px; color:#555; font-weight:normal">
+      You will get 90 days free support for any doubt, queries, and bug fixing (excluding data recovery) or any type of issue related to this module.
+    </p>
+  </div>
+  <div class="mx-auto col-lg-9 mb-4 oe_screenshot">
+    <div class="row align-items-center justify-content-center mx-0 p-3">
+        <div class="col-sm-2 text-center pr-0">
+            <img src="mail.png" alt="mail" class="img img-fluid">
+        </div>
+        <div class="col-xl-7 col-sm-10">
+            <p class="my-2" style="color:#555; font-weight:bold">WRITE TO US AT</p>
+            <b class="text-primary" style="font-size:18px">support@webkul.com</b>
+            <p class="my-2" style="font-size:14px; color:#777; font-weight:normal">For any help and doubt or issue regarding this module. Drop a mail to our technical team..</p>
+        </div>
+        <div class=" col-xl-3 offset-xl-0 float-xl-right col-sm-10 offset-sm-2 float-left mt16">
+            <a href="mailto:support@webkul.com" style="padding:10px 22px; background-color:#2335D7; font-size:14px; color:#fff"><i class="fa fa-pencil-square-o" style="color:white; margin-right:4px"></i>Write To
+                US</a>
+        </div>
+    </div>
+  </div>
+  <div class="mx-auto col-lg-9 oe_screenshot">
+    <div class="row align-items-center justify-content-center mx-0 p-3">
+        <div class="col-sm-2 text-center pr-0">
+            <img src="support-icon.png" alt="support-icon" class="img img-fluid">
+        </div>
+        <div class="col-sm-10">
+            <p class="my-2" style="font-weight:bold; color:#555">RAISE A TICKET AT
+            </p>
+            <b class="text-primary text-break" style="font-size:18px; word-break: break-all;">https://webkul.uvdesk.com/en/customer/create-ticket/</b>
+            <p class="my-2" style="font-weight:normal; font-size:14px; color:#777">For support or to request customizations, Create A Support Ticket by copying the link and opening it in a new tab
+            </p>
+        </div>
+    </div>
+  </div>
+  </div>
+  </section>
+    </div>
+  </div>
+  

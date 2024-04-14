@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_logo_footer_green">
+            <field name="name">Logo Footer Green (pdf)</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseLogoFooterGreen</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_logo_footer_green"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/footer_logo_green.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_logo_footer_red">
+            <field name="name">Logo Footer Red</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseLogoFooterRed</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_logo_footer_red"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/footer_logo_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_logo_footer_orange">
+            <field name="name">Logo Footer Orange</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseLogoFooterOrange</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_logo_footer_orange"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/footer_logo_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_logo_footer_blue">
+            <field name="name">Logo Footer Blue</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseLogoFooterBlue</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_logo_footer_blue"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/footer_logo_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_bubble">
+            <field name="name">Bubble</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseBubble</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_bubble"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/burbuja.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_ElegantGreen">
+            <field name="name">Elegant Green (pdf)</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseElegantGreen</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_ElegantGreen"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/elegant_green.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_ElegantOrange">
+            <field name="name">Elegant Orange</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseElegantOrange</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_ElegantOrange"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/elegant_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_ElegantRed">
+            <field name="name">Elegant Red</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseElegantRed</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_ElegantRed"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/elegant_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_ElegantBlue">
+            <field name="name">Elegant Blue</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseElegantBlue</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_ElegantBlue"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/elegant_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_CleanGray">
+            <field name="name">Clean Gray (pdf)</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseCleanGray</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_CleanGray"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/clean_gray.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_CleanGreen">
+            <field name="name">Clean Green</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseCleanGreen</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_CleanGreen"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/clean_green.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_CleanOrange">
+            <field name="name">Clean Orange</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseCleanOrange</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_CleanOrange"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/clean_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_CleanBlue">
+            <field name="name">Clean Blue</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseCleanBlue</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_CleanBlue"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/clean_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_CleanRed">
+            <field name="name">Clean Red</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseCleanRed</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_CleanRed"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/clean_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_ModernRed">
+            <field name="name">Modern Red (pdf)</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseModernRed</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_ModernRed"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/modern_red.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_ModernOrange">
+            <field name="name">Modern Orange</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseModernOrange</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_ModernOrange"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/modern_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_ModernGreen">
+            <field name="name">Modern Green</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseModernGreen</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_ModernGreen"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/modern_green.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_ModernBlue">
+            <field name="name">Modern Blue</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseModernBlue</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_ModernBlue"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/modern_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_modern_stylish_green">
+            <field name="name">Modern Stylish Green (pdf)</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseModernStylishGreen</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_modern_stylish_green"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/modern_stylish_green.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_modern_stylish_red">
+            <field name="name">Modern Stylish Red</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseModernStylishRed</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_modern_stylish_red"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/modern_stylish_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_modern_stylish_orange">
+            <field name="name">Modern Stylish Orange</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseModernStylishOrange</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_modern_stylish_orange"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/modern_stylish_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_modern_stylish_blue">
+            <field name="name">Modern Stylish Blue</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseModernStylishBlue</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_modern_stylish_blue"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/modern_stylish_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_transparency">
+            <field name="name">Template Transparency</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseTransparency</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_transparency"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/transparency.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_watermark">
+            <field name="name">Template Watermark</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseWatermark</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_watermark"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/watermark.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_magenta">
+            <field name="name">Template Magenta</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseMagenta</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_magenta"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/magenta.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_terms_and_conditions">
+            <field name="name">Template Terms &amp; Conditions</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseTermsAndConditions</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_terms_and_conditions"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/terms_and_conditions.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_static">
+            <field name="name">Template Static</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseStatic</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_static"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/static.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_simple">
+            <field name="name">Template Simple</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseSimple</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_simple"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/simple.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="act_report_purchase_tmpl_offer">
+            <field name="name">My Offer</field>
+            <field name="model">purchase.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">PurchaseOffer</field>
+            <field name="print_report_name">'Purchase - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_purchase.purchase_tmpl_offer"/>
+            <field name="url_theme_screenshot">report_extend_bf_purchase/static/description/offer.png</field>
+        </record>
+
+    </data>
+</odoo>

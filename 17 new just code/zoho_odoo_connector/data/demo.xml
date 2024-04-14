@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+<odoo>
+    <data noupdate='1'>
+        <record id="demo_instance" model="omas" forcecreate="True">
+			<field name="name">Zoho</field>
+			<field name="instance">zoho</field>
+			<field name="client_id">xxx-xxx-xxx</field>
+			<field name="client_secret">xxx-xxx-xxx</field>
+			<field name="user_domain">com</field>
+			<field name="auto_evaluate_feed">True</field>
+            <field name="image" type="base64" file="zoho_odoo_connector/static/description/icon.png"/>
+            <field name="order_state_ids" eval="[
+						(0,0,{'instance_state':'draft','odoo_order_state':'draft','default_order_state':True}),
+                        (0,0,{'instance_state':'open','odoo_order_state':'sale'}),
+                        (0,0,{'instance_state':'invoiced','odoo_order_state':'sale'}),
+                        (0,0,{'instance_state':'overdue','odoo_order_state':'draft'}),
+                        (0,0,{'instance_state':'void','odoo_order_state':'cancelled'}),
+					]" />
+		</record>  
+    </data>
+</odoo>

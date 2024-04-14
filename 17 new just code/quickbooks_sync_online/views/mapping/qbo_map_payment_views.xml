@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="view_qbo_map_payment_tree" model="ir.ui.view">
+        <field name="model">qbo.map.payment</field>
+        <field name="name">Default tree view for qbo.map.payment</field>
+        <field name="inherit_id" ref="quickbooks_sync_online.view_qbo_map_model_tree"/>
+        <field name="mode">primary</field>
+        <field type="xml" name="arch">
+            <xpath expr="//field[@name='qbo_name']" position="after">
+                <field name="invoice_id"/>
+                <field name="payment_id"/>
+                <field name="txn_type"/>
+                <field name="txn_amount"/>
+                <field name="currency_ref"/>
+                <field name="txn_date"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_qbo_map_payment_form" model="ir.ui.view">
+        <field name="model">qbo.map.payment</field>
+        <field name="name">Default form view for qbo.map.payment</field>
+        <field name="type">form</field>
+        <field type="xml" name="arch">
+            <form string="Payment" create="false" edit="false">
+                <group>
+                    <field name="is_imported" invisible="not is_imported"/>
+                    <field name="is_exported" invisible="not is_imported"/>
+                    <field name="qbo_id"/>
+                    <field name="qbo_name"/>
+                    <field name="invoice_id"/>
+                    <field name="txn_id"/>
+                    <field name="update_point"/>
+                    <field name="payment_id"/>
+                    <field name="txn_type"/>
+                    <field name="txn_amount"/>
+                    <field name="currency_ref"/>
+                    <field name="pay_method"/>
+                    <field name="txn_date"/>
+                    <field name="sync_token" readonly="1"/>
+                    <field name="company_id"/>
+                    <field name="qbo_object"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_qbo_map_payment_search" model="ir.ui.view">
+        <field name="model">qbo.map.payment</field>
+        <field name="name">Search into qbo payment tree</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="qbo_name"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,39 @@
+<odoo>
+		<record id="issue_type_form" model="ir.ui.view">
+			<field name="name">view.issue.type.form</field>
+			<field name="model">type.issue</field>
+			<field name="arch" type="xml">
+				<form string="Issue Type">
+					<sheet>
+						<group>
+							<field name="name" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		
+		<record id="issue_type_tree" model="ir.ui.view">
+			<field name="name">view.issue.type.tree</field>
+			<field name="model">type.issue</field>
+			<field name="arch" type="xml">
+					<tree string="Issue Type">
+							<field name="name"/>
+					</tree>
+			</field>
+		</record>
+
+		<record id="issue_type_action" model="ir.actions.act_window">
+			<field name="name">Issue type </field>
+			<field name="res_model">type.issue</field>
+			<field name="binding_view_types">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new employee.
+			  </p>
+			</field>
+		</record>
+</odoo>

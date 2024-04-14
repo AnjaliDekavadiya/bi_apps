@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		<record id="bi_equipment_create_wizrad_form" model="ir.ui.view">
+			<field name="name">bi.equipment.create.wizrad.form</field>
+			<field name="model">make.euipment.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group col="4">
+					    <field name="name" />
+						<field name="model"/>
+                        <field name="equipment_category_id"/>
+			        	<field name="serial_number" />
+                        <field name="notes" />
+					</group>    	
+					<footer>
+						<button string="Create Equipment" name="create_equipment" type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel" class="oe_highlight"/>     
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="bi_action_create_euipment_wizard" model="ir.actions.act_window">
+			<field name="name">Create Equipment</field>
+			<field name="res_model">make.euipment.wizard</field>
+			<field name="target">new</field>
+			<field name="binding_view_types">form</field>
+			<field name="view_mode">form</field>
+		</record>
+
+        <record id="bi_equipment_request_create_wizrad_form" model="ir.ui.view">
+			<field name="name">bi.equipment.request.create.wizrad.form</field>
+			<field name="model">make.euipment.request.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group col="4">
+					    <field name="name"/>
+						<field name="maintainance_euipment_id"/>
+                        <field name="maintainance_team_id"/>
+                        <field name="category_id"/>
+			        	<field name="priority" widget="priority"/>
+                        <field name="schedule_date"/>
+			            <field name="duration"/> 
+                        <field name="maintainance_type_id"/>
+                        <field name="notes"/>	
+					</group>
+                    <footer>
+						<button string="Create Equipment" name="create_equipment" type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel" class="oe_highlight"/>     
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="bi_action_create_euipment_request_wizard" model="ir.actions.act_window">
+			<field name="name">Create Equipment Request </field>
+			<field name="res_model">make.euipment.request.wizard</field>
+			<field name="target">new</field>
+			<field name="binding_view_types">form</field>
+			<field name="view_mode">form</field>
+		</record>
+
+		<record model="ir.ui.view" id="bi_equipment_managment_inherit">
+			<field name="name">bi.equipment.managment.inherit.form</field>
+			<field name="model">job.order</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view" />
+			<field name="arch" type="xml">
+
+            <div name="button_box" position="inside">
+			<button type="object"
+                        name="button_view_euipment"
+                        class="oe_stat_button"
+                        icon="fa-cog"
+                        invisible ="not count_of_equipment" >
+                        <field name="count_of_equipment" widget="statinfo" string="Eqipment"/>
+                    </button>
+
+
+            <button type="object"
+                    name="button_view_equipment_request"
+                    class="oe_stat_button"
+                    icon="fa-cog"
+                    invisible = "not count_of_equipment_request">
+                    <field name="count_of_equipment_request" widget="statinfo" string="Eqipment Request"/>
+
+                </button>  
+
+           </div>
+
+			<xpath expr="//form/sheet/notebook"  position="inside">
+               <page string="Equipment">
+                   <button name="%(bi_action_create_euipment_wizard)d" string="Create Equipment" type="action"  class="btn-primary"/>
+                   <field name="euipment_ids" readonly="1">
+                     <tree >
+                         <field name="name"/>
+                         <field name="owner"/>
+                         <field name="assigned_date"/>
+                         <field name="serial_number"/>
+                         <field name="equipment_category_id"/>
+                     </tree>
+                  </field>
+               </page>
+
+                <page string="Equipment Request">
+                    <field name="equipment_request_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="request_date"/>
+                            <field name="requested_user_id"/>
+                            <field name="category_id"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </page>
+             </xpath>
+		</field>
+		</record>
+
+    <record id="equipment_kanban_view" model="ir.ui.view">
+        <field name="name">equipment.kanban</field>
+        <field name="model">equipment.equipment</field>
+        <field name="arch" type="xml">
+            <kanban class="o_equipment_kanban">
+                <field name="name"/>
+                <field name="model"/>
+                <field name="technician_id"/>
+                <field name="material_request_ids"/>
+                <templates>
+                    <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click">
+                        <div class="oe_kanban_details">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_record_headings">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="name"/>
+                                        <br/>
+                                        <field name="model"/>
+                                        <br/>
+                                        <field name="technician_id"/>
+                                        <br/>  
+                                       Maintainance Request :<span title='Maintainance Request'><t t-esc="record.material_request_ids.raw_value.length"/></span>
+
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+        <record model="ir.ui.view" id="view_matainance_request_kanban11">
+            <field name="name">view.matainance.request.kanban</field>
+            <field name="model">equipment.request</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state" class="o_kanban_small_column o_kanban_project_tasks" on_create="quick_create">
+                    <field name="state" />
+                    <field name="requested_user_id"/>
+                    <field name="resposible_id"/>
+                    <field name="equipment_id"/>
+                     <field name="priority"/>
+                    <templates>
+                       <t t-name="kanban-box">
+		                <div class="oe_kanban_global_click">
+		                    <div class="oe_kanban_details">
+		                        <div class="o_kanban_record_top">
+		                            <div class="o_kanban_record_headings">
+		                                <strong class="o_kanban_record_title">
+		                                    <br/>
+		                                    Requested User  : <field name="requested_user_id"/>
+		                                    <br/>
+		                                    Resposible User : <field name="resposible_id"/>
+		                                    <br/> 
+		                                   <field name="equipment_id"/>
+		                                   <br/> 
+		                                   <field name="priority" widget="priority"/>
+		                                </strong>
+		                            </div>
+		                        </div>
+		                       
+		                    </div>
+		                </div>
+                    </t>
+                    </templates>
+                </kanban>
+            </field>
+         </record>
+
+		<record id="bi_view_equipment_form" model="ir.ui.view">
+            <field name="name">bi_view_equipment_form</field>
+            <field name="model">equipment.equipment</field>
+            <field name="arch" type="xml">
+                <form string="Equipment" >
+                    <sheet string="Equipment">
+						<div class="oe_button_box" name="button_box">
+							<button type="object"
+				                name="button_view_request"
+				                class="oe_stat_button"
+				                icon="fa-cog"
+				                invisible = "not count_of_request" >
+				                <field name="count_of_request" widget="statinfo" string="Eqipment"/>
+		            		</button>
+						</div>
+						<group>
+                           <group>
+                                <h1>
+                                	<field name="name" required="1"/>
+                               </h1> 
+                           </group>
+                           <group>        
+                             <field name="equipment_category_id" />
+                             <field name="owner"/>
+                           </group>
+                         </group>
+     							
+     					 <group col="4">
+		                    <field name="maintainance_team"/>
+		                    <field name="technician_id"/>
+		                    <field name="assigned_date"/>
+		                    <field name="scrap_date"/>
+		                    <field name="used_in_location"/>
+		                    <field name="job_order_id"/>
+		                    <field name="description"/>
+                         </group>   
+                          
+                      <notebook>
+                           <page string="Description">
+                               <field name="notes"/>
+                           </page>
+                           
+                           <page string="Product Information">
+		                       <group col="4">
+				                   <field name="supplier_id"/>
+				                       <field name="model" />
+				                        <field name="serial_number"/>
+				                        <field name="supplier_ref"/>
+				                        <field name="cost"/>
+				                        <field name="warranty"/>
+				                   </group>
+                          </page>
+                          
+                         <page string="Maintainance Request">
+                          	<field name="material_request_ids" readonly="1"/>
+                        </page>
+                      </notebook>
+					</sheet>                    
+                </form>
+            </field>
+        </record>  
+
+ 		<record id="bi_view_equipment_request_form" model="ir.ui.view">
+            <field name="name">bi_view_equipment_request_form</field>
+            <field name="model">equipment.request</field>
+            <field name="arch" type="xml">
+                <form string="Equipment Request" >
+                     <header>
+		                  <button name="to_start" string="Start" type="object"
+                                  invisible = "state != 'draft'" class="btn-primary"/>
+
+		                  <button name="to_pause" string="Pause" type="object"
+                                  invisible = "state != 'start'" class="btn-primary"/>
+
+		                  <button name="to_finish" string="Finish" type="object"
+                                  invisible = "state != 'start'" class="btn-primary"/>
+
+		                  <button name="to_restart" string="Restart" type="object"
+                                  invisible = "state != 'pause'" class="btn-primary"/>
+		                  <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet string="Equipment Request">
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Name" required="1"
+                                       readonly = "state != 'draft'"/>
+                            </h1>
+                        </div>
+                        <group col="4" >
+                                <field name="requested_user_id" readonly = "state != 'draft'"/>
+                                <field name="equipment_id" readonly = "state != 'draft'"/>
+                                <field name="category_id" readonly = "state != 'draft'"/>
+                                <field name="request_date" readonly = "state != 'draft'"/>
+                                <field name="close_date" readonly = "state != 'draft'"/>
+                                <field name="resposible_id" readonly = "state != 'draft'"/>
+                                <field name="schedule_date" readonly = "state != 'draft'"/>
+                                <field name="duration" readonly = "state != 'draft'"/>
+                                <field name="priority" widget="priority" readonly = "state != 'draft'"/>
+                                </group>
+                                <group col="4">
+                                <field name="maintainance_type_id" readonly = "state != 'draft'"/>
+                                <field name="maintainance_team_id" readonly = "state != 'draft'"/>
+                       </group>   
+                       <notebook>
+                           <page string="Description">
+                               <field name="notes"/>
+                           </page>
+                       </notebook>
+                  </sheet>                    
+                </form>
+            </field>
+        </record>  
+
+ 		<record id="bi_view_equipment_tree" model="ir.ui.view">
+            <field name="name">bi_view_equipment_tree</field>
+            <field name="model">equipment.equipment</field>
+            <field name="arch" type="xml">
+            	<tree>
+   					<field name="name"/>
+                    <field name="owner"/>
+                    <field name="assigned_date"/>
+                    <field name="serial_number"/>
+                    <field name="equipment_category_id"/>
+               </tree>
+       		</field>
+		</record>
+
+ 		<record id="bi_view_equipment_request_tree" model="ir.ui.view">
+            <field name="name">bi_view_equipment_request_tree</field>
+            <field name="model">equipment.request</field>
+            <field name="arch" type="xml">
+            	<tree>
+                    <field name="name"/>
+					<field name="request_date"/>
+                    <field name="requested_user_id"/>
+                    <field name="category_id"/>
+                    <field name="state"/>
+           	    </tree>
+           </field>
+		</record>
+
+     	<record model="ir.actions.act_window" id="action_equipment">
+            <field name="name">Equipment</field>
+            <field name="res_model">equipment.equipment</field>
+            <field name="binding_view_types">form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+	
+		<record model="ir.actions.act_window" id="action_equipment_request">
+            <field name="name">Equipment Request</field>
+            <field name="res_model">equipment.request</field>
+            <field name="binding_view_types">form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">kanban,form</field>
+        </record>
+
+		<menuitem name="Maintenance"
+                  parent="bi_odoo_job_costing_management.main_menu_job_estimates"
+                  id="main_menu_maintanance"
+                  sequence="4"/>
+
+        <menuitem name="Maintenance Request"
+                  parent="main_menu_maintanance"
+                  action="action_equipment_request"
+                  id="maintanance_request" />
+
+        <menuitem name="Maintenance Equipment"
+                  parent="main_menu_maintanance"
+                  action="action_equipment"
+                  id="maintanance_equipment"/>
+        
+</odoo>

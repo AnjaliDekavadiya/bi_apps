@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="bi_pos_closed_session_reports.SessionReport">
+        <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="() => this._onClick()">
+           <i class="fa fa-print" aria-hidden="true"/>
+            <span>Print Session Report</span>
+        </button>
+    </t>
+    <t t-name="bi_pos_closed_session_reports.ZReport">
+        <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="() => this.onClick()">
+           <i class="fa fa-print" aria-hidden="true"/>
+            <span>Posted Session Report</span>
+        </button>
+    </t>
+
+</templates>

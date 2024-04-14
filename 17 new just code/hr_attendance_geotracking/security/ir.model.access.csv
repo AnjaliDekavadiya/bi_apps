@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_attendance_admin_geo_coords,hr.attendance.admin.coords,model_hr_attendance_geo_coords,hr_attendance_base.group_hr_attendance_admin_pro,1,1,1,1
+access_hr_attendance_manager_geo_coords,hr.attendance.system.manager.coords,model_hr_attendance_geo_coords,hr_attendance_base.group_hr_attendance_manager_pro,1,1,1,1
+access_hr_attendance_user_geo_coords,hr.attendance.system.user.coords,model_hr_attendance_geo_coords,hr_attendance_base.group_hr_attendance_user_pro,1,0,0,0
+access_hr_attendance_all_geo_coords,hr.attendance.system.public.coords,model_hr_attendance_geo_coords,,1,0,0,0

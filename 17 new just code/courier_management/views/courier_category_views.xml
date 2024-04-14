@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--        Courier category tree view-->
+    <record id="courier_category_view_tree" model="ir.ui.view">
+        <field name="name">courier.category.view.tree</field>
+        <field name="model">courier.category</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="courier_category"/>
+            </tree>
+        </field>
+    </record>
+    <!--        Courier category search view -->
+    <record id="courier_category_view_search" model="ir.ui.view">
+        <field name="name">courier.category.view.search</field>
+        <field name="model">courier.category</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="courier_category"/>
+            </search>
+        </field>
+    </record>
+    <!--    Courier Category menu action-->
+    <record id="courier_category_action" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="res_model">courier.category</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>

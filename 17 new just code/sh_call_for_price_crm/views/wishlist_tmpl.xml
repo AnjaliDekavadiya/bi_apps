@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="sh_call_for_price_wishlist_tmpl_inherit" inherit_id="website_sale_wishlist.product_wishlist" name="Wishlist Temaplte" priority="50">
+        <xpath expr="//td[3]" position="before">
+            <t t-set="call_for_price_class" t-value="''" />
+
+            <t t-if="wish.product_id.product_tmpl_id.call_for_price">
+                <t t-set="call_for_price_class" t-value="'visibility:hidden;'" />
+            </t>
+        </xpath>
+
+        <xpath expr="//td[3]" position="attributes">
+            <attribute name="t-attf-style">#{call_for_price_class}</attribute>
+        </xpath>
+
+        <xpath expr='//button[hasclass("o_wish_add")]' position="attributes">
+            <attribute name="t-if">
+                not wish.product_id.product_tmpl_id.call_for_price
+            </attribute>
+        </xpath>
+
+        <xpath expr="//body//tr[1]//td[4]" position="attributes">
+            <attribute name="t-attf-style">{{ 'display: none !important;' if wish.product_id.call_for_price else ''}}</attribute>            
+        </xpath>
+
+    </template>
+</odoo>

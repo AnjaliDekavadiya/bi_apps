@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cloth_repair_request_wizard_manager,cloth.repair.request.wizard.manager,model_cloth_repair_request_wizard,cloth_tailor_management_odoo.custom_group_tailor_manager,1,1,1,1
+access_cloth_repair_request_wizard_user,cloth.repair.request.wizard.user,model_cloth_repair_request_wizard,cloth_tailor_management_odoo.custom_group_tailor_user,1,1,1,1

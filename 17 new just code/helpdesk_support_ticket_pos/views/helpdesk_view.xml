@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+    
+        <record id="helpdesk_support_form_inherit_pos_order" model="ir.ui.view">
+            <field name="name">Helpdesk POS Ticket Inherit</field>
+            <field name="model">helpdesk.support</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_support_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr = "//button[@name='show_analytic_account']" position="after">
+                    <button class="oe_stat_button" type="object" name="show_helpdesk_pos_custom" string="POS Order" icon="fa-book" invisible="cust_pos_order_id == False"/>
+                </xpath>
+                <xpath expr = "//field[@name='allow_user_ids']" position="after">
+                    <field name="cust_pos_order_id" readonly="stage_type == 'closed'"/>
+                </xpath>
+            </field>
+          </record>
+          
+    </data>
+ </odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="view_hr_salary_amount_tree" model="ir.ui.view">
+		<field name="name">hr.salary.amount.tree</field>
+		<field name="model">hr.salary.amount</field>
+		<field name="arch" type="xml">
+			<tree editable="top">
+				<field name="schedule_id" invisible="1" />
+				<field name="grade_id" domain="[('schedule_id','=', schedule_id)]" options="{'no_create_edit' : True}" />
+				<field name="step_id" domain="[('schedule_id','=', schedule_id)]" options="{'no_create_edit' : True}" />
+				<field name="amount" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_hr_salary_amount_search" model="ir.ui.view">
+		<field name="name">hr.salary.amount.search</field>
+		<field name="model">hr.salary.amount</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="grade_id" />
+				<field name="step_id" />
+				<filter name="grade_id" string="Grade" context="{'group_by' : 'grade_id'}" />
+				<filter name="step_id" string="Step" context="{'group_by' : 'step_id'}" />
+			</search>
+		</field>
+	</record>
+
+	<record id="view_hr_salary_amount_pivot" model="ir.ui.view">
+		<field name="name">hr.salary.amount.pivot</field>
+		<field name="model">hr.salary.amount</field>
+		<field name="arch" type="xml">
+			<pivot string="Salary Amounts">
+				<field name="grade_id" type="row" />
+				<field name="step_id" type="col" />
+				<field name="amount" type="measure" />
+			</pivot>
+		</field>
+	</record>
+
+</odoo>

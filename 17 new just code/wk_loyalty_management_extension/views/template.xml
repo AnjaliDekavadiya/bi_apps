@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+
+<odoo>
+  <template id="products_template" inherit_id="website_sale.product">
+    <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="before">
+      <t t-set="loyalty_obj" t-value="request.website._get_loyalty_points(product_variant,add_qty)"/>
+        <t t-if="loyalty_obj">
+          <t t-if="loyalty_obj.get('total')">
+            <div class="alert alert-success" id="msg_div">
+              <t t-esc="loyalty_obj.get('message')"/>
+                <span class="points">
+                  <t t-esc="loyalty_obj.get('total')"/>
+                </span>
+            </div>
+          </t>
+      </t>     
+    </xpath>
+  </template>
+</odoo>

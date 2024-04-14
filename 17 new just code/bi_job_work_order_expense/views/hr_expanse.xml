@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="bi_project_exp_inherit">
+			<field name="name">bi.project.inherit</field>
+			<field name="model">project.project</field>
+			<field name="inherit_id" ref="project.edit_project" />
+			<field name="arch" type="xml">
+				<div name="button_box" position="inside">
+					<button type="object"
+		                    name="button_view_expenses"
+		                    class="oe_stat_button"
+		                    icon="fa-truck"
+		                    invisible="count_of_expanse == 0">
+		                    <field name="count_of_expanse" widget="statinfo" string="Expenses"/>
+                	</button>
+
+	        		<button type="object"
+                        name="button_view_expenses_sheet"
+                        class="oe_stat_button"
+                        icon="fa-truck"
+                        invisible="count_of_expanse_sheet == 0" >
+                        <field name="count_of_expanse_sheet" widget="statinfo" string="Expenses Sheet"/>
+                    </button>
+         		</div>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="bi_project_exp_job_order">
+			<field name="name">bi.job.order.inherit</field>
+			<field name="model">job.order</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view" />
+			<field name="arch" type="xml">
+				<div name="button_box" position="inside">
+					<button type="object"
+		                    name="button_view_expenses"
+		                    class="oe_stat_button"
+		                    icon="fa-money"
+		                    invisible="count_of_expanse == 0" >
+		                    <field name="count_of_expanse" widget="statinfo" string="Expenses"/>
+		            </button>
+
+			    	<button type="object"
+		                    name="button_view_expenses_sheet"
+		                    class="oe_stat_button"
+		                    icon="fa-money"
+		                    invisible="count_of_expanse_sheet == 0" >
+		                    <field name="count_of_expanse_sheet" widget="statinfo" string="Expenses Sheet" />
+	                </button>
+	         	</div>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="bi_hr_expense_sheet_inherit">
+			<field name="name">hr.expense.sheet.fill</field>
+			<field name="model">hr.expense.sheet</field>
+			<field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='expense_line_ids']/tree/field[@name='name']" position="after">
+					<field name="project_id"/>
+                    <field name="job_order_id"/>
+         		</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="bi_hr_exp_inherit">
+			<field name="name">bi.hr.exp.inherit</field>
+			<field name="model">hr.expense</field>
+			<field name="inherit_id" ref="hr_expense.hr_expense_view_form" />
+			<field name="arch" type="xml">
+				<field name="company_id" position="after">
+                   <field name="project_id"/>
+                   <field name="job_order_id"/>
+                </field>
+
+				<xpath expr="//sheet" position="inside">
+                   <notebook>
+                     <page string="Images Of Expense">
+                     	<field name="attachment_ids" mode="kanban">
+                        <kanban>
+                        	<field name="id"/>
+				            <field name="mimetype"/>
+				            <field name="type"/>
+				            <field name="name"/>
+                            <templates>
+				                <t t-name="kanban-box">
+				                    <div class="oe_kanban_global_click">
+				                        <div class="oe_kanban_vignette">
+				                            <div class="oe_attachment">
+				                                <div class="oe_name">
+				                                    <field name="name"/>
+				                                </div>
+				                                <div t-if="record.type.raw_value == 'binary'">
+				                                    <a t-attf-href="/web/content/#{record.id.raw_value}?download=1">
+				                                        <t t-set="webimage" t-value="new RegExp('image.*(gif|jpeg|jpg|png)').test(record.mimetype.value)"/>
+				                                        <div t-if="!webimage" class="o_image" t-att-data-mimetype="record.mimetype.value"/>
+				                                        <div t-if="webimage" class="o_attachment_image">
+				                                            <img t-attf-src="/web/image/#{record.id.raw_value}?download=1" alt="image"/>
+				                                        </div>
+				                                    </a>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+				                </t>
+				            </templates>
+                      </kanban>
+                          
+               		 <form string="Images Data">
+                    	<sheet>
+                 			<sheet>
+                    			<label for="name" class="oe_edit_only"/>
+						        <h1>
+						            <field name="name"/>
+						        </h1>
+						        <group>
+						            <group>
+						                <field name="type"/>
+						                <field name="datas" invisible="type == 'url'"/>
+						                <field name="url" widget="url"  invisible="type == 'binary'"/>
+						                <field name="mimetype"/>
+						            </group>
+						            <group string="Attached To" groups="base.group_no_one">
+						                <field name="res_model"/>
+						                <field name="res_field"/>
+						                <field name="res_id"/>
+						                <field name="res_name"/>
+						                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+						                <field name="public"/>
+						            </group>
+						            <group string="History" groups="base.group_no_one">
+						                <label for="create_uid" string="Creation"/>
+						                <div name="creation_div">
+						                    <field name="create_uid" readonly="1" class="oe_inline"/> on
+						                    <field name="create_date" readonly="1" class="oe_inline"/>
+						                </div>
+						            </group>
+						            <group name="description_group" string="Description" groups="base.group_no_one" colspan="4">
+						                <field name="description" nolabel="1"/>
+						            </group>
+						            <group groups="base.group_no_one" string="Indexed Content" colspan="4">
+						                <field name="index_content" nolabel="1"/>
+						            </group>
+						        </group>
+						      </sheet>
+                          </sheet>
+                      </form>
+                    </field>
+                 </page>
+              </notebook>
+			</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+whatsapp_settings_access,access_whatsapp_settings,model_whatsapp_settings,,1,0,0,0
+whatsapp_member_type_access,access_whatsapp_member_type,model_whatsapp_member_type,,1,0,0,0
+
+whatsapp_settings_access_user,user_access_whatsapp_settings,model_whatsapp_settings,base.group_user,1,1,1,1
+whatsapp_member_type_access_user,user_access_whatsapp_member_type,model_whatsapp_member_type,base.group_user,1,1,1,1

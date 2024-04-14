@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+	<div t-name="PreviewDialog" class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" aria-hidden="true" t-att-id="uniqueId">
+	    <div class="modal-dialog modal-lg">
+	        <div class="modal-content">
+	            <header class="modal-header">
+
+                    <h4 class="col text-center modal-title">
+                        <t t-raw="title"/>
+                    </h4>
+                    <button type="button" style="margin-top: -1px;" class="preview-dialog-btn preview-maximize">
+	                	<i class="fa fa-square-o"></i>
+	                </button>
+	                <button type="button" style="margin-top: -1px;" class="preview-dialog-btn preview-minimize">
+	                	<i class="fa fa-clone"></i>
+	                </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" tabindex="-1">
+                	</button>
+                </header>
+	            <main class="modal-body preview-body"/>
+	        </div>
+	    </div>
+	</div>
+</templates>

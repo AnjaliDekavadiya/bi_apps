@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="message_cash_not_allow" model="ir.ui.view">
+            <field name="name">sale.order.form.inherits</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="is_cod"/>
+                </xpath>
+                <xpath expr = "//div[@name = 'button_box']" position="inside">
+                    <button class="oe_stat_button" type="object" string="COD Collection" name="show_collection"  icon="fa-money">
+                    </button>
+                </xpath>
+            </field>
+         </record>
+
+    </data>
+</odoo>

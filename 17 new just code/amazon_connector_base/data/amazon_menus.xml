@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="amazon_connector_menu" name="Amazon Connector"
+        web_icon="amazon_connector_base,static/description/Amazon-logo.png"
+        sequence="100"
+    />
+
+    <menuitem id="amazon_connector_menu_pim" name="Amazon PIM"
+        parent="amazon_connector_base.amazon_connector_menu"
+        sequence="50"
+    />
+    <menuitem id="amazon_connector_menu_log" name="Amazon Logs"
+        parent="amazon_connector_base.amazon_connector_menu"
+        sequence="100"
+    />
+    <menuitem id="amazon_connector_menu_report" name="Amazon Reports"
+        parent="amazon_connector_base.amazon_connector_menu"
+        sequence="150"
+    />
+    <menuitem id="amazon_connector_menu_config" name="Configuration"
+        parent="amazon_connector_base.amazon_connector_menu"
+        sequence="200"
+    />
+
+</odoo>

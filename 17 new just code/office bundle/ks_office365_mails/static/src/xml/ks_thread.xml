@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <!--This template Provide Sender's address And Receiver's Address and Subject of the Mail-->
+    <t t-inherit="mail.Message" t-inherit-mode="extension">
+        <xpath expr="//p[hasclass('o_Message_subject')]" position="attributes">
+            <attribute name="class">o_Message_subject mx-2 mb0</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('o_Message_content')]" position="before">
+            <p class="o_Message_subject mx-2 mb-3">
+                <span>From: </span>
+                <t t-esc="messageView.message.email_from"/>
+                <br/>
+                <span>To: </span>
+                <t t-if="messageView.message._ks_send_to">
+                    <t t-esc="messageView.message._ks_send_to"/>
+                </t>
+                <t t-else="">
+                    <span>Loading... </span>
+                </t>
+                <br/>
+                <t t-if="messageView.message._ks_cc">
+                    <span>Cc: </span>
+                    <t t-esc="messageView.message._ks_cc"/>
+                    <br/>
+                </t>
+                <t t-if="messageView.message._ks_bcc">
+                    <span>Bcc: </span>
+                    <t t-esc="messageView.message._ks_bcc"/>
+                    <br/>
+                </t>
+                <span>Date: </span>
+                <t t-if="messageView.message.date">
+                    <t t-esc="messageView.message.date.format(messageView.message.datetime_format)"/>
+                </t>
+                <br/>
+            </p>
+        </xpath>
+    </t>
+
+    <!-- @Todo: Please find out if this template exist in mail module or it has been change -->
+    <t t-extend="mail.widget.Thread.Message">
+        <t t-jquery=".o_mail_subject" t-operation="replace">
+            <t t-if="message.getEmailFrom &amp;&amp; message._threadIDs &amp;&amp; message._threadIDs.includes('mailbox_inbox')"></t>
+        </t>
+    </t>
+</templates>

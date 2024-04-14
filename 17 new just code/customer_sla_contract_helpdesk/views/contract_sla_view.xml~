@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+    <record id="customer_sla_contract_helpdesk_action" model="ir.actions.act_window">
+            <field name="name">Service Level Agreements</field>
+            <field name="res_model">account.analytic.account</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="analytic.view_account_analytic_account_search"/>
+            <field name="context">{'search_default_active':1}</field>
+            <field name="view_id" ref="analytic.view_account_analytic_account_list"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add an Service Level Agreement.
+              </p>
+            </field>
+        </record>
+        
+        <menuitem id="menu_contract_sla_agreements" name="Contracts" parent='website_helpdesk_support_ticket.main_helpdesk_support' groups="website_helpdesk_support_ticket.group_helpdesk_manager" sequence="2"/>
+        <menuitem id="menu_contract_sla_agreement" name="Service Level Agreements" parent="menu_contract_sla_agreements" action = 'customer_sla_contract_helpdesk.customer_sla_contract_helpdesk_action' groups="website_helpdesk_support_ticket.group_helpdesk_manager"/>
+
+    </data>
+</odoo>

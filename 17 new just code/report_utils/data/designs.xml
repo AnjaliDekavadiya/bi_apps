@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+
+    <!--Default-->
+    <record id="data_options_combo_box_design_default" model="report.template.options.combo.box.item">
+        <field name="name">Default</field>
+        <field name="name_technical">default</field>
+        <field name="key">report_utils__template_design</field>
+    </record>
+
+    <record id="data_options_combo_box_design_pink" model="report.template.options.combo.box.item">
+        <field name="name">Pink</field>
+        <field name="name_technical">pink</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#F28081','color2':'#FEF5F5'}</field>
+    </record>
+
+    <!--Golden-->
+    <record id="data_options_combo_box_design_golden" model="report.template.options.combo.box.item">
+        <field name="name">Golden</field>
+        <field name="name_technical">golden</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#d0a853','color2':'#e6e6e6', }</field>
+    </record>
+
+    <!--Silver-->
+    <record id="data_options_combo_box_design_silver" model="report.template.options.combo.box.item">
+        <field name="name">Silver</field>
+        <field name="name_technical">silver</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#989898','color2':'#D3D3D3', }</field>
+    </record>
+
+
+    <!--Teal-->
+    <record id="data_options_combo_box_design_teal" model="report.template.options.combo.box.item">
+        <field name="name">Teal</field>
+        <field name="name_technical">teal</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#4cc0c0','color2':'#d9f2f2', }</field>
+    </record>
+
+    <!--Blue-->
+    <record id="data_options_combo_box_design_blue" model="report.template.options.combo.box.item">
+        <field name="name">Blue</field>
+        <field name="name_technical">blue</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#008bde','color2':'#b3e3ff', }</field>
+    </record>
+
+
+    <!--Blue Cyan-->
+    <record id="data_options_combo_box_design_blue_cyan" model="report.template.options.combo.box.item">
+        <field name="name">Blue Cyan</field>
+        <field name="name_technical">blue_cyan</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#001f3d','color2':'#a8e9ca', }</field>
+    </record>
+
+
+    <!--Blue Yellow-->
+    <record id="data_options_combo_box_design_blue_yellow" model="report.template.options.combo.box.item">
+        <field name="name">Blue Yellow</field>
+        <field name="name_technical">blue_yellow</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#111820','color2':'#f3aa4e', }</field>
+    </record>
+
+
+    <!--Blue Pink-->
+    <record id="data_options_combo_box_design_blue_pink" model="report.template.options.combo.box.item">
+        <field name="name">Blue Pink</field>
+        <field name="name_technical">blue_pink</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#348093','color2':'#eca491', }</field>
+    </record>
+
+
+    <!--Dark Blue-->
+    <record id="data_options_combo_box_design_dark_blue" model="report.template.options.combo.box.item">
+        <field name="name">Dark Blue</field>
+        <field name="name_technical">dark_blue</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#344c67','color2':'#aabed4', }</field>
+    </record>
+
+
+    <!--Green-->
+    <record id="data_options_combo_box_design_green" model="report.template.options.combo.box.item">
+        <field name="name">Green</field>
+        <field name="name_technical">green</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#194742','color2':'#a1ded7', }</field>
+    </record>
+
+
+    <!--Dark-->
+    <record id="data_options_combo_box_design_dark" model="report.template.options.combo.box.item">
+        <field name="name">Dark</field>
+        <field name="name_technical">dark</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#5a5250','color2':'#c3bdbb', }</field>
+    </record>
+
+
+    <!--Dark Red-->
+    <record id="data_options_combo_box_design_dark_red" model="report.template.options.combo.box.item">
+        <field name="name">Dark Red</field>
+        <field name="name_technical">dark_red</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#e94a53','color2':'#f4a4a8', }</field>
+    </record>
+
+
+    <!--Chocolate-->
+    <record id="data_options_combo_box_design_chocolate" model="report.template.options.combo.box.item">
+        <field name="name">Chocolate</field>
+        <field name="name_technical">chocolate</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#62310e','color2':'#eca979', }</field>
+    </record>
+
+
+    <!--Violet-->
+    <record id="data_options_combo_box_design_violet" model="report.template.options.combo.box.item">
+        <field name="name">Violet</field>
+        <field name="name_technical">violet</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#ff00ff','color2':'#ffb3ff', }</field>
+    </record>
+
+
+    <!--Violet Pink-->
+    <record id="data_options_combo_box_design_violet_pink" model="report.template.options.combo.box.item">
+        <field name="name">Violet Pink</field>
+        <field name="name_technical">violet_pink</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#3d2450','color2':'#da6285', }</field>
+    </record>
+
+
+    <!--Maroon-->
+    <record id="data_options_combo_box_design_maroon" model="report.template.options.combo.box.item">
+        <field name="name">Maroon</field>
+        <field name="name_technical">maroon</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#631F3A','color2':'#a96e85', }</field>
+    </record>
+
+
+    <!--Maroon Yellow-->
+    <record id="data_options_combo_box_design_maroon_yellow" model="report.template.options.combo.box.item">
+        <field name="name">Maroon Yellow</field>
+        <field name="name_technical">maroon_yellow</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#48161d','color2':'#dbab42', }</field>
+    </record>
+
+
+    <!--Red Yellow-->
+    <record id="data_options_combo_box_design_red_yellow" model="report.template.options.combo.box.item">
+        <field name="name">Red Yellow</field>
+        <field name="name_technical">red_yellow</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#f05556','color2':'#f9cf59', }</field>
+    </record>
+
+
+    <!--Dark Orange-->
+    <record id="data_options_combo_box_design_dark_orange" model="report.template.options.combo.box.item">
+        <field name="name">Dark Orange</field>
+        <field name="name_technical">dark_orange</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#2d2e28','color2':'#f36d31', }</field>
+    </record>
+
+
+    <!--Olive-->
+    <record id="data_options_combo_box_design_olive" model="report.template.options.combo.box.item">
+        <field name="name">Olive</field>
+        <field name="name_technical">olive</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#4a4a43','color2':'#c5bd96', }</field>
+    </record>
+
+
+    <!--Jacaranda-->
+    <record id="data_options_combo_box_design_jacaranda" model="report.template.options.combo.box.item">
+        <field name="name">Jacaranda</field>
+        <field name="name_technical">jacaranda</field>
+        <field name="key">report_utils__template_design</field>
+        <field name="parameters">{'color1':'#69488c','color2':'#a187bd', }</field>
+    </record>
+
+
+
+
+
+</odoo>

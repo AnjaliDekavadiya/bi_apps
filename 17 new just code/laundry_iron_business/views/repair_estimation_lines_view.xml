@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="laundry_service_lines_form_view">
+            <field name="name">Laundry Service Estimation Lines form</field>
+            <field name="model">laundry.service.estimation.lines</field>
+            <field name="arch" type="xml">
+                <form> 
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="qty"/>
+                                <field name="product_uom"/>
+                                <field name="price"/>
+                                <field name="notes"/>
+                            </group>
+                         </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="laundry_service_lines_car_tree_view">
+            <field name="name">Laundry Service Estimation Lines tree</field>
+            <field name="model">laundry.service.estimation.lines</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product_id"/>
+                    <field name="qty"/>
+                    <field name="product_uom"/>
+                    <field name="price"/>
+                    <field name="notes"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_laundry_service_lines" model="ir.actions.act_window">
+            <field name="name">Laundry Service Estimation Lines</field>
+            <field name="res_model">laundry.service.estimation.lines</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+    </data>
+</odoo>

@@ -1,0 +1,342 @@
+.o_content.kitchen .btn {
+    border-radius: 5px;
+}
+
+.o_content.kitchen .recipie_container, .o_content.kitchen .note_container, .o_content.kitchen .setup_container {
+    background: #fff;
+    padding: 10px 15px;
+    margin: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #aaa;
+}
+
+.o_content.kitchen .setup_container {
+    background: #990b0b;
+    color: #fff;
+    font-weight: bold;
+}
+
+.o_content.kitchen .recipie_container .icon-close, .o_content.kitchen .note_container .icon-close {
+    text-align: right;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.o_content.kitchen .recipie_container .icon-close-container, .o_content.kitchen .note_container .icon-close-container {
+    text-align: right;
+    float: right;
+    width: 100px;
+    margin-top: -10px;
+}
+.o_content.kitchen .show_receipie, .o_content.kitchen .show_note {
+    cursor: pointer;
+    color: #1d80ff;
+}
+
+.o_content.kitchen .show_note_disabled {
+    cursor: pointer;
+    color: #ccc;
+}
+
+.o_content.kitchen .recipie_container .recipie_wrapper {
+    display: flex;
+    place-content: row;
+}
+
+.o_content.kitchen .note_container .note_wrapper {
+    display: block;
+}
+
+.o_content.kitchen .note_container .note_wrapper p {
+    margin-bottom: 5px;
+}
+
+.o_content.kitchen .recipie_container .recipie_wrapper .product_image img {
+    max-width: 200px;
+}
+
+.o_content.kitchen .recipie_container .recipie_wrapper .product_image {
+    margin-right: 15px;
+}
+
+.i_content.kitchen .badge {
+    margin: 1px 2px 1px 0;
+    border-radius: 4px;
+    padding: 4px 7px;
+    padding-bottom: 6px;
+    font-weight: bold;
+}
+
+.o_content.kitchen h3.title {
+    color: #222;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+.kitchen_order {
+    padding: 10px 15px;
+    margin: 10px;
+    min-width: 400px;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #aaa;
+}
+.kitchen_grid table thead td {
+    font-weight: bold;
+}
+
+.kitchen_grid table tbody td {
+    color: #888;
+    font-size: 15px;
+}
+
+.kitchen_grid table thead td.qty-column,
+.kitchen_grid table tbody td.qty-column {
+    max-width: 80px;
+}
+
+.kitchen_grid table tr td {
+    text-align: center;
+}
+
+.kitchen_grid table tr td.name-column {
+    text-align: left;
+}
+
+.kitchen_grid table tr td.name-column .text {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.kitchen_order .title_wrapper {
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+.kitchen_order .title_wrapper .col {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.kitchen_order .title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.kitchen_order .pos-reference {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.kitchen_order .waiter {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.kitchen_order .content {
+    margin-top: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.kitchen_order .footer {
+    position: relative;
+    right: 0;
+    bottom: 0px;
+    left: 0;
+    z-index: 1030;
+    padding-top: 15px;
+}
+
+.kitchen_grid {
+    padding: 0px 15px;
+}
+
+.kitchen_grid table {
+    width:100%;
+   table-layout: auto;
+   overflow-wrap: break-word;
+}
+
+.o_content.kitchen .options_container {
+    margin: 5px 15px;
+    background: #fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #aaa;
+}
+
+.o_content.kitchen .options_container .options_body {
+    border-top: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+.o_content.kitchen .badge.badge-note {
+    background: #ff9a30;
+    color: #fff;
+    cursor: pointer;
+}
+
+.o_content.kitchen .badge.badge-success {
+    background: #28a745;
+    color: #fff;
+}
+.o_content.kitchen .badge.badge-danger {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.o_content.kitchen .badge.badge-warning {
+    background: #ffcc00;
+    color: #000;
+}
+
+.o_content.kitchen .options_container .options_body button.manual-refresh {
+    margin-left: 15px;
+    background: #00bb0c;
+    color: #fff;
+}
+.o_content.kitchen .options_container .refresh-time {
+    display: inline;
+    width: 50px;
+}
+
+.o_content.kitchen .options_container .options_body {
+    padding: 15px 0px;
+}
+
+.o_content.kitchen .options_container .chevron-icons {
+    float: right;
+}
+
+.o_content.kitchen .options_container .options_body button {
+    background: #ccc;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.o_content.kitchen .options_container .options_body .buttons-group {
+    display: inline-block;
+    margin-right: 15px;
+}
+@media screen and (min-width: 500px) {
+    .o_content.kitchen .options_container .options_body .buttons-group button {
+        border-radius: 0px;
+    }
+    .o_content.kitchen .options_container .options_body .buttons-group button:last-child {
+        border-radius: 0px 5px 5px 0px;
+    }
+    
+    .o_content.kitchen .options_container .options_body .buttons-group button:first-child {
+        border-radius: 5px 0px 0px 5px;
+    }
+}
+@media screen and (max-width: 499px) {
+    .o_content.kitchen .options_container .options_body .buttons-group button {
+        margin: 7px;
+    }
+}
+
+.o_content.kitchen .options_container .options_body button.active {
+    background: #1e6acc;
+    color: #fff;
+}
+
+.o_content.kitchen .options_container .options_body select.theme-select {
+    width: 120px;
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+    border-radius: 5px;
+    display: inline;
+    margin-left: 15px;
+}
+
+/* LIGHT GREEN THEME */
+.o_content.kitchen.theme-light-green {
+    background: #cdffd7;
+}
+.o_content.kitchen.theme-light-green h3.title {
+    color: #00480e;
+}
+
+/* PINK THEME */
+.o_content.kitchen.theme-pink {
+    background: #fdcdff;
+}
+.o_content.kitchen.theme-pink h3.title {
+    color: #000;
+}
+
+/* ODOO THEME */
+.o_content.kitchen.theme-odoo {
+    background: #71639e;
+}
+
+/* GREEN THEME */
+.o_content.kitchen.theme-green {
+    background: #21840d;
+}
+
+.o_content.kitchen.theme-green h3.title {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+/* BLUE THEME */
+.o_content.kitchen.theme-blue {
+    background: #009fff;
+}
+
+.o_content.kitchen.theme-blue h3.title {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+/* DARK THEME */
+.o_content.kitchen.theme-dark {
+    background: #111;
+}
+.o_content.kitchen.theme-dark .options_container {
+    background: #777;
+    color: #eee;
+}
+.o_content.kitchen.theme-dark .options_container .options_body select.theme-select {
+      color: #eee;
+}
+.o_content.kitchen.theme-dark .options_container .options_body select.theme-select option {
+    background: #bbb;
+    color: #eee;
+}
+
+.o_content.kitchen.theme-dark .kitchen_order,
+.o_content.kitchen.theme-dark .kitchen_grid table tr td.name-column .text, 
+.o_content.kitchen.theme-dark .kitchen_grid table tr td.qty-column {
+    color: #eee;
+}
+
+.o_content.kitchen.theme-dark .kitchen_order {
+    background: #777;
+}
+
+.o_content.kitchen.theme-dark .recipie_container, .o_content.kitchen.theme-dark .note_container {
+    background: #777;
+    color: #eee;
+}
+
+.o_content.kitchen.theme-dark .recipie_container h5, .o_content.kitchen.theme-dark .note_container h5 {
+    color: #eee;
+}
+
+.o_content.kitchen.theme-dark h3.title {
+    color: #eee;
+}

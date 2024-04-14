@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_cloth_request_details_inherit_repair" model="ir.ui.view">
+            <field name="name">cloth.request.details.form.form.inherit.repair</field>
+            <field name="model">cloth.request.details</field>
+            <field name="inherit_id" ref="cloth_tailor_management_odoo.cloth_request_details_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='stage_id']" position="before">
+                    <button string="Create Repair Request" name="%(cloth_tailor_repair_manage.action_view_cloth_repair_request_wizard)d" type="action" class="oe_highlight" invisible="not probc_is_repair_stage"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="custom_action_repair_request" type="object" class="oe_stat_button" icon="fa-wrench" string="Repair Requests"></button>
+                </xpath>
+                <xpath expr="//field[@name='cloth_type_id']" position="after">
+                    <field name="probc_is_repair_stage" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

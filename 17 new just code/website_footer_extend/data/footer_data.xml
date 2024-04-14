@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="privacy" model="ir.ui.view">
+            <field name="name">About us</field>
+            <field name="type">qweb</field>
+            <field name="key">website.privacy</field>
+            <field name="arch" type="xml">
+                <t name="About us" t-name="website.privacy">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="oe_structure">
+
+                                <section>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h1 class="text-center">Odoo Privacy Statement</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 mt32">
+                                                <p>
+                                                      Write your privacy statement here...
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                            </div>
+                            <div class="oe_structure"></div>
+                        </div>
+                </t>
+                </t>
+            </field>
+        </record>
+        
+        <record id="termofuse" model="ir.ui.view">
+            <field name="name">Term of Use</field>
+            <field name="type">qweb</field>
+            <field name="key">website.termofuse</field>
+            <field name="arch" type="xml">
+                <t name="About us" t-name="website.termofuse">
+                    <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+    
+                    <section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1 class="text-center">Odoo - Term Of Use</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 mt32">
+                                    <p>
+                                          Write your term of use here..
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+    
+                </div>
+                <div class="oe_structure"></div>
+            </div>
+        </t>
+                </t>
+            </field>
+        </record>
+        
+        <record id="trademark" model="ir.ui.view">
+            <field name="name">Term of Use</field>
+            <field name="type">qweb</field>
+            <field name="key">website.trademark</field>
+            <field name="arch" type="xml">
+                <t name="About us" t-name="website.trademark">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="oe_structure">
+                
+                                <section>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h1 class="text-center">Odoo - Trademark</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                
+                                <section>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 mt32">
+                                                <p>
+                                                      Hage Hodes and the HH Logo are trademarks of Hage Hodes, PA.
+                                                </p>
+                                                <p>
+                                                    Trademark attribution statements are typically included along with other legal or regulatory statements, such as a copyright notice, at the bottom of a webpage or, if in printed material, at the end of a document, or on the back of product packaging.
+                                                </p>
+                                                <p>
+                                                    If you feel that the use of these symbols disrupts the aesthetic look of your marketing materials – you do not have to use them you can simply list them in a single location that does not interfere with the design of your advertising or packaging. It’s important to note that failing to use trademark symbols will not result in the loss of your trademark rights, but the use of trademark symbols and attribution statements is notice for third-parties that you are serious about protecting and enforcing your valuable trademark rights.
+                                                </p>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                    </section>
+    
+                </div>
+                <div class="oe_structure"></div>
+            </div>
+        </t>
+                </t>
+            </field>
+        </record>
+        
+        <record id="legaldisclosure" model="ir.ui.view">
+            <field name="name">Legal Disclosure</field>
+            <field name="type">qweb</field>
+            <field name="key">website.legaldisclosure</field>
+            <field name="arch" type="xml">
+                <t name="About us" t-name="website.legaldisclosure">
+                    <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="oe_structure">
+                            <section>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1 class="text-center">Odoo - Legal Disclosure</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+            
+                            <section>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12 mt32">
+                                            <p>
+                                                  Write your legal disclosure here..
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                <div class="oe_structure"></div>
+            </div>
+                    </t>
+                </t>
+            </field>
+        </record>
+        
+        <record id="copyright" model="ir.ui.view">
+            <field name="name">Legal Disclosure</field>
+            <field name="type">qweb</field>
+            <field name="key">website.copyright</field>
+            <field name="arch" type="xml">
+                <t name="About us" t-name="website.copyright">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="oe_structure">
+                            
+                                <section>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h1 class="text-center">Odoo - Copyright</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12 mt32">
+                                            <p>
+                                            Write your copyright statement here....
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </section>
+
+                            </div>
+                            <div class="oe_structure"></div>
+                        </div>
+                    </t>
+                </t>
+            </field>
+        </record>
+
+        <record id="privacy_page" model="website.page">
+            <field name="website_published">True</field>
+            <field name="url">/privacy</field>
+            <field name="view_id" ref="privacy"/>
+        </record>
+        
+        <record id="termofuse_page" model="website.page">
+            <field name="website_published">True</field>
+            <field name="url">/termofuse</field>
+            <field name="view_id" ref="termofuse"/>
+        </record>
+        
+        <record id="trademark_page" model="website.page">
+            <field name="website_published">True</field>
+            <field name="url">/trademark</field>
+            <field name="view_id" ref="trademark"/>
+        </record>
+        
+        <record id="legaldisclosure_page" model="website.page">
+            <field name="website_published">True</field>
+            <field name="url">/legaldisclosure</field>
+            <field name="view_id" ref="legaldisclosure"/>
+        </record>
+        
+        <record id="copyright_page" model="website.page">
+            <field name="website_published">True</field>
+            <field name="url">/copyright</field>
+            <field name="view_id" ref="copyright"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_dashboard" model="ir.actions.act_window">
+        <field name="name">Conversations Dashboard</field>
+        <field name="res_model">conversations.dashboard</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="action_discuss" model="ir.actions.client">
+        <field name="name">Conversations Dashboard</field>
+        <field name="tag">all.widgets.conversation</field>
+        <field name="res_model">conversations.dashboard</field>
+        <field name="params" eval="&quot;{'default_active_id': 'mail.box_inbox' }&quot;"/>
+        <field name="target">current</field>
+    </record>
+
+    <record id="action_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="pragtech_conversations_dashboard.res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'conversations', 'bin_size': False}</field>
+    </record>
+
+    <menuitem id="conversations_root_menu" name="Conversations Dashboard" sequence="8" web_icon="pragtech_conversations_dashboard,static/description/icon.png"/>
+    <menuitem id="dashboard_main" name="Dashboard" action="action_discuss" sequence="1" parent="conversations_root_menu"/>
+    <menuitem id="config_menu" name="Configuration" sequence="2" parent="conversations_root_menu"/>
+    <menuitem id="settings_link" action="action_settings" sequence="1" name="Settings" parent="config_menu" groups="base.group_system"/>
+</odoo>

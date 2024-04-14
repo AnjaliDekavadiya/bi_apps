@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+    <menuitem name="Checklist Types"
+        id="menu_event_checklist_type_custom"
+        sequence="3"
+        parent="event.menu_event_configuration"
+        action="action_checklist_type_custom"/>
+
+    <menuitem name="Checklist Templates"
+        id="menu_event_checklist_templates_custom"
+        sequence="3"
+        parent="event.menu_event_configuration"
+        action="action_checklist_template_view_custom"/>
+
+    </data>
+</odoo>

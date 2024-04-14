@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    
+    <data noupdate="1">
+        
+        <!-- Sample stage-related template -->
+        <record id="email_ticket_response_custom_probc" model="mail.template">
+            <field name="name">Support Ticket Response - Send by Email</field>
+            <field name="model_id" ref="website_helpdesk_support_ticket.model_helpdesk_support"/>
+            <field name="subject">${object.name} - ${(object.stage_id.name)}</field>
+            <field name="use_default_to" eval="True"/>
+            <field name="body_html" type="html">
+            <div>
+                Dear ${object.partner_id.name},<br/>
+                Your Ticket ${object.name} has been moved to ${(object.stage_id.name)}.<br />
+                If you have any questions, please let us know.
+                <br/><br/>
+                Thank you,
+                % if user.signature
+                    <br />
+                    ${user.signature | safe}
+                % endif
+            </div>
+            </field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+
+</odoo>

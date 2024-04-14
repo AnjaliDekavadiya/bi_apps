@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="job_cost_sheet_inherit_form" model="ir.ui.view">
+        <field name="name">job.cost.sheet.inherit.form</field>
+        <field name="model">job.cost.sheet</field>
+        <field name="inherit_id" ref="bi_odoo_job_costing_management.job_cost_sheet_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[1]/field/tree" position="inside">
+                <field name="material_project_id" invisible="0"/>
+            </xpath>
+            <xpath expr="//page[2]/field/tree" position="inside">
+                <field name="labour_project_id" invisible="0"/>
+            </xpath>
+            <xpath expr="//page[3]/field/tree" position="inside">
+                <field name="overhead_project_id" invisible="0"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="bi_view_purchase_order_project_line_form" model="ir.ui.view">
+        <field name="name">inherit.view.purchase.order.project.line.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <field name="date_order" position="after">
+                <field name="project_id"/>
+            </field>
+        </field>
+    </record>
+    
+    <record id="bi_view_invoice_project_line_form" model="ir.ui.view">
+        <field name="name">inherit.view.move.project.line.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <field name="purchase_vendor_bill_id" position="after">
+                <field name="project_id"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="job_cost_line_dashboard_search" model="ir.ui.view">
+            <field name="name">job.cost.line.search</field>
+            <field name="model">job.cost.line</field>
+            <field name="arch" type="xml">
+                <search string="Job Cost Sheet">
+                    <field name="material_project_id" />
+                    <field name="overhead_project_id" />
+                    <field name="labour_project_id" />
+                    <group expand="0" name="Group By" string="Group By">
+                        <filter string="Project (Material)" name="groupby_material_project" domain="[]" context="{'group_by':'material_project_id'}"/>
+                        <filter string="Project (Overhead)" name="groupby_overhead_project" domain="[]" context="{'group_by':'overhead_project_id'}"/>
+                        <filter string="Project (Labour)" name="groupby_labour_project" domain="[]" context="{'group_by':'labour_project_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    <record id="job_cost_sheet_dashboard_search" model="ir.ui.view">
+        <field name="name">job.cost.sheet.search</field>
+        <field name="model">job.cost.sheet</field>
+        <field name="arch" type="xml">
+            <search string="Job Cost Sheet">
+                <field name="project_id" string="Project"/>
+                <group expand="0" name="Group By" string="Group By">
+                    <filter string="Project" name="groupby_project" domain="[]" context="{'group_by':'project_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="account_purchase_order_project" model="ir.ui.view">
+        <field name="name">purchase.order.groupby.project</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="project_id"/>
+            </xpath>
+            <xpath expr="//group/filter[@name='vendor']" position="after">
+                <filter string="Project" name="groupby_project" domain="[]" context="{'group_by':'project_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_view_purchase_order_project_day" model="ir.actions.act_window">
+        <field name="name">Purchase Order</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">
+            {
+                'default_project_id': active_id,
+                'search_default_project_id': [active_id],
+            }
+        </field>
+        <field name="domain">[('project_id', '!=', False)]</field>
+        <field name="view_id" ref="purchase.purchase_order_tree"/>
+        <field name="search_view_id" ref="account_purchase_order_project"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Purchase Order
+            </p><p>
+                
+            </p>
+        </field>
+    </record>
+
+    <record id="account_invoice_groupby_inherit_project" model="ir.ui.view">
+        <field name="name">account.move.groupby.project</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_user_id']" position="after">
+                <field name="project_id"/>
+            </xpath>
+            <xpath expr="//group/filter[@name='status']" position="after">
+                <filter string="Project" name="groupby_project" domain="[]" context="{'group_by':'project_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_view_invoice_project_day" model="ir.actions.act_window">
+        <field name="name">Account Invoice</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">
+            {
+                'default_project_id': active_id,
+                'search_default_project_id': [active_id],
+            }
+        </field>
+        <field name="domain">[('project_id', '!=', False)]</field>
+        <field name="view_id" ref="account.view_invoice_tree"/>
+        <field name="search_view_id" ref="account_invoice_groupby_inherit_project"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Purchase Order
+            </p><p>
+                
+            </p>
+        </field>
+    </record>
+
+
+
+
+    <record id="job_cost_labour_lines" model="ir.ui.view">
+        <field name="name">job.cost.line.inherit.form</field>
+        <field name="model">job.cost.line</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false">  
+                <field name="date" />
+                <field name="job_type_id" />
+                <field name="product_id" />
+                <field name="description" />
+                <field name="reference" />
+                <field name="labour_project_id" />
+                <field name="hours"  sum="hours"/>
+                <field name="unit_price"  sum="cost"/>
+                <field name="actual_timesheet_hours"  sum="actual_timesheet_hours"/>
+                <field name="subtotal" widget="monetary"  sum="subtotal"/>
+                <field name="job_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="job_cost_material_lines" model="ir.ui.view">
+        <field name="name">job.cost.line.inherit.form</field>
+        <field name="model">job.cost.line</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false">  
+                <field name="date" />
+                <field name="job_type_id" />
+                <field name="product_id" />
+                <field name="description" />
+                <field name="reference"/>
+                <field name="material_project_id" />
+                <field name="quantity" sum="quantity"/>
+                <field name="uom_id" />
+                <field name="unit_price"/>
+                <field name="actual_purchase_qty" sum="actual_purchase_qty"/>
+                <field name="actual_invoice_qty" sum="actual_invoice_qty"/>
+                <field name="subtotal" widget="monetary" sum="subtotal"/>
+                <field name="currency_id" invisible="1" />
+                <field name="job_type" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="job_cost_overhead_lines" model="ir.ui.view">
+        <field name="name">job.cost.line.inherit.form</field>
+        <field name="model">job.cost.line</field>
+        <field name="arch" type="xml">
+            <tree create="false" >  
+                <field name="date" />
+                <field name="job_type_id" />
+                <field name="product_id" />
+                <field name="description" />
+                <field name="reference" />
+                <field name="basis" />
+                <field name="overhead_project_id" />
+                <field name="quantity" sum="quantity"/>
+                <field name="uom_id" />
+                <field name="unit_price" />
+                <field name="actual_purchase_qty" sum="actual_purchase_qty"/>
+                <field name="actual_invoice_qty" sum="actual_invoice_qty"/>
+                <field name="subtotal" widget="monetary" sum="subtotal"/>
+                <field name="currency_id" invisible="1" />
+                <field name="job_type" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_job_cost_sheet_labour_tree_button" model="ir.actions.act_window">
+        <field name="name">Job Cost Sheet Labour</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">job.cost.line</field>
+        <field name="view_id" ref="job_cost_labour_lines"/>
+        <field name="domain">[('labour_project_id', '!=', False)]</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+                'default_labour_project_id': active_id,
+                'search_default_labour_project_id': [active_id],
+                'default_job_type': 'labour',
+                'show_address': 1,
+            }
+        </field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Create Job cost sheet with labour
+          </p><p>
+          </p>
+        </field>
+    </record>
+
+    <record id="action_job_cost_sheet_material_tree_button" model="ir.actions.act_window">
+        <field name="name">Job Cost Sheet Material</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">job.cost.line</field>
+        <field name="view_id" ref="job_cost_material_lines"/>
+        <field name="domain">[('material_project_id', '!=', False)]</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+                'default_material_project_id': active_id,
+                'search_default_material_project_id': [active_id],
+                'default_job_type': 'material',
+                'show_address': 1,
+            }
+        </field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Create Job cost sheet with material
+          </p><p>
+          </p>
+        </field>
+    </record>
+
+    <record id="action_job_cost_sheet_overhead_tree_button" model="ir.actions.act_window">
+        <field name="name">Job Cost Sheet Overhead</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">job.cost.line</field>
+        <field name="view_id" ref="job_cost_overhead_lines"/>
+        <field name="domain">[('overhead_project_id', '!=', False)]</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+                'default_overhead_project_id': active_id,
+                'search_default_overhead_project_id': [active_id],
+                'default_job_type': 'overhead',
+                'show_address': 1,
+            }
+        </field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Create Job cost sheet with overhead
+          </p><p>
+          </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_home_job_order" name="Portal My Home: Job Order Details"
+              inherit_id="portal.portal_my_home" priority="40">
+        <div id="portal_client_category" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'/bi_job_order_start_stop_timer/static/src/portal_icon.png'"/>
+                <t t-set="title">Job Order Details</t>
+                <t t-set="url" t-value="'/my/job_order'"/>
+                <t t-set="placeholder_count" t-value="'job_order_count'"/>
+            </t>
+        </div>
+    </template>
+
+
+    <template id="portal_my_home_menu_job_order" name="Portal layout : job order entries"
+              inherit_id="portal.portal_breadcrumbs" priority="25">
+        <xpath expr="//ol[contains(@class,'o_portal_submenu')]" position="inside">
+            <t t-if="page_name == 'job_order'">
+                <a t-if="job_order" t-attf-href="/my/job_order?{{ keep_query() }}">Job Order</a>
+                <t t-else="">/Job order</t>
+            </t>
+        </xpath>
+    </template>
+
+
+    <template id="portal_job_order_list" name="Job Order Details List">
+        <t t-call="portal.portal_layout">
+            <h3>
+                Job orders List
+            </h3>
+            <t t-if="not job">
+                <p>There are currently no Job Order.</p>
+            </t>
+            <div t-if="job" class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover o_portal_my_doc_table">
+                        <thead>
+                            <tr class="active">
+                                <th>Job Orders</th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="job" t-as="job_id">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/job/view/detail/#{job_id.id}">
+                                        <t t-esc="job_id.name"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+                <div t-if="pager" class="o_portal_pager text-center">
+                    <t t-call="website.pager"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="job_order_request_view" name="Job Order Request View">
+        <t t-call="portal.portal_layout">
+            <h3>
+                Task List
+            </h3>
+            <t t-if="not job_data_list">
+                <p>There are currently no Task .</p>
+            </t>
+            <div t-if="job_data_list" class="panel panel-default">
+                <div class="table-responsive">
+                    <t t-foreach="job_data_list" t-as="job_id">
+                        <table class="table table-hover o_portal_my_doc_table">
+                            <thead>
+                                <tr class="active">
+                                    <th>Task for project :
+                                        <span t-field="job_data_list.project_id.name"/>
+                                        <t t-esc="job_id"/>
+                                    </th>
+                                    <th>Stage</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="job_id.project_id.task_ids" t-as="task_id">
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="job" id="job_order_id" t-att-value="job_id.id"/>
+                                        <a t-attf-href="/my/task/#{task_id.id}?{{ keep_query('job_id') }}">
+                                            <t t-esc="task_id.name"/>
+
+                                        </a>
+                                    </td>
+
+                                    <td>
+                                        <t class="label label-info" t-esc="task_id.stage_id.name"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </t>
+                </div>
+                <div t-if="pager" class="o_portal_pager text-center">
+                    <t t-call="website.pager"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="task_order_request_view" name="My Task" inherit_id="project.portal_my_task">
+        <xpath expr="//div[hasclass('col-md-6')]" position="before">
+            <div class="col-md-6">
+                <div class="mb8">
+                    <strong>Start DateTime :</strong>
+                    <label id="start_date"/>
+                    <label id="clock"/>
+                </div>
+
+                <div class="mb8">
+                    <strong>Stop DateTime :</strong>
+                    <label id="stop_date"/>
+                </div>
+
+                <div class="mb8">
+                    <strong>Status :</strong>
+                    <label id="status"/>
+                </div>
+
+                <div class="mb8">
+                    <strong>Total Duration :</strong>
+                    <label id="totduration"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb8">
+                    <strong>Start DateTime :</strong>
+                    <label id="new_clock"/>
+                </div>
+
+                <div class="mb8">
+                    <strong>Pause Time :</strong>
+                    <label id="pause_time"/>
+                </div>
+
+                <div class="mb8">
+                    <strong>Stop DateTime :</strong>
+                    <label id="stop_time"/>
+                </div>
+
+                <div class="mb8">
+                    <strong>Duration :</strong>
+                    <label id="duration"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb8" style="visibility: hidden">
+                    <strong>Project Id :</strong>
+                    <span id="project_name" t-field="job_order.project_id.id"/>
+                </div>
+                <div class="mb8" style="visibility: hidden">
+                    <strong>task Id :</strong>
+                    <span id="task_name" t-field="task.id"/>
+                </div>
+                <div class="mb8" style="visibility: hidden">
+                    <strong>Job Order ID :</strong>
+                    <span id="order_name" t-field="job_order.id"/>
+                    <input type="hidden" name="job" id="job_order_id" t-att-value="job_order.id"/>
+                </div>
+
+                <div class="form-group  col-lg-12 pull-left">
+                    <table>
+                        <tr>
+                            <td>
+                                <button id="start" type="button" class="btn btn-default btn-primary mb32 a-submit">
+                                    Start
+                                </button>
+                            </td>
+                            <td>
+                                <button id="pause" type="button" class="btn btn-default btn-primary mb32 a-submit">
+                                    Pause
+                                </button>
+                            </td>
+                            <td>
+                                <button id="resume" type="button" class="btn btn-default btn-primary mb32 a-submit">
+                                    Resume
+                                </button>
+                            </td>
+                            <td>
+                                <button id="stop" type="button" class="btn btn-default btn-primary mb32 a-submit">
+                                    Stop
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6" name="sign">
+                <t t-if="job_order.digital_signature">
+                    <img t-att-src="'data:image/png;base64,%s' % str(job_order.digital_signature, 'UTF-8')"
+                         style="height:auto; max-width:40%;"/>
+                </t>
+                <button type="button" class="btn btn-primary mt8 " data-bs-toggle="modal" data-bs-target="#myModal">
+                    Digital
+                    Signature
+                </button>
+            </div>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Digital signature</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <t t-call="portal.signature_form">
+                                            <t t-set="object" t-value="job_order"/>
+                                            <t t-set="default_name" t-value="job_order.user_id.name"/>
+                                            <t t-set="call_url" t-value="'/my/task/accept'"/>
+                                            <t t-set="signature_ratio" t-value="job_order.id"/>
+                                            <t t-set="send_label" t-value="'Added signature'"/>
+                                        </t>
+                                    </div>
+                                </div>
+                                <br/>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" id="close_button" data-dismiss="modal">Close
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template inherit_id='bi_website_mobile_timesheet.bi_portal_edit_timesheet' id="timesheet_details"
+              name="timesheet new">
+        <xpath expr="//h1[hasclass('text-center')]" position="replace">
+            <h1 class="text-center">
+                Add Timesheet
+            </h1>
+
+        </xpath>
+    </template>
+</odoo>

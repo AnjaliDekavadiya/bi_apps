@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+	<record id="view_transientmodel_wizard_form" model="ir.ui.view">
+		<field name="name">transient.form</field>
+		<field name="model">create.repair.request</field>
+		<field name="arch" type="xml">
+			<form string="Sale Order">
+				<p class="oe_grey"> </p>
+				<group>
+					<field name="partner_id" />
+				</group>
+				<group>
+					<field name="new_order_line_ids" nolabel ="1" colspan="2">
+						<tree editable="botttom" >
+							<field name="product_id" />
+							<field name="damage" />
+							<field name="machine_repair_team_id" /> 
+							<field name="analytic_account_id" />
+							<field name="machine_services_id" />
+							<field name="machine_service_type_id" widget="many2many_tags"/> 
+							<field name="lot_id" />
+							<field name="problem" />
+						</tree>
+					</field>
+				</group>
+				<footer>
+					<button name="action_create_repair_request" string="Create Repair Request" type="object" class="btn-primary"/>
+					<button string="Cancel" class="btn-default" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_repair_request_wizard" model="ir.actions.act_window">
+		<field name="name">Create Repair Request</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">create.repair.request</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+	</record>
+</odoo>

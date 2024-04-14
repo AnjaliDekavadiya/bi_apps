@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="job_inspection_temp_id_template">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <br/><br/><br/><br/><br/>
+                        <div class="container">
+                            <div class="row" >
+                                <h2 style="text-align : center;">
+                                    Job Inspection<span t-field="o.name" />-<span t-field="o.sequance"/>
+                                </h2>
+                                <br />
+                            </div>
+                        </div>
+                        <table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+                            <tr
+                                style="padding: 8px;text-align: left;border-top: 1px solid #ddd;height:50%;">
+                                <td>
+                                    <strong>Project : </strong>
+                                </td>
+                                <td>
+                                    <span t-esc="o.project_id.name"/>
+                                </td>
+
+                                <td>
+                                    <strong>Date : </strong>
+                                </td>
+                                <td>
+                                    <span t-esc="o.create_date"/>
+                                </td>
+                            </tr>
+
+                            <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                                <td>
+                                    <strong>Analytic Account_id : </strong>
+                                </td>
+                                <td>
+                                    <span t-esc="o.analytic_account_id.name"/>
+                                </td>
+
+                                <td>
+                                    <strong>Inspection Location : </strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.inspection_location" />
+                                </td>
+                            </tr>
+
+                            <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                                <td>
+                                    <strong> Job Order : </strong>
+                                </td>
+                                <td>
+                                    <span t-esc="o.job_order_id.name" />
+                                </td>
+
+                                <td>
+                                    <strong>Inspection Resposible : </strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.inspection_resposible.name"/>
+                                </td>
+                            </tr>
+                            <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                                <td>
+                                    <strong> Job Cost Sheet : </strong>
+                                </td>
+                                <td>
+                                    <span t-esc="o.job_cost_sheet_id.name" />
+                                </td>
+                                <td>
+                                    <strong>Subcontaractor : </strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.subcontractor_id.name"/>
+                                </td>
+                            </tr>
+
+
+
+                            <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                                <td>
+                                    <strong> Job Cost Sheet Line: </strong>
+                                </td>
+                                <td>
+                                    <span t-esc="o.job_cost_sheet_id.name" />
+                                </td>
+
+                                <td>
+                                    <strong>Reference Specification : </strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.reference_specification"/>
+                                </td>
+                            </tr>
+
+
+                            <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                                <td>
+                                    <strong> Inspection Type : </strong>
+                                </td>
+                                <td>
+                                    <span t-esc="o.inspection_type_id.name" />
+                                </td>
+
+                                <td>
+                                    <strong>Inspection Result : </strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.inspection_result_id.name"/>
+                                </td>
+                            </tr>
+
+                            <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                                <td>
+                                    <strong> Start Date : </strong>
+                                </td>
+                                <td>
+                                    <span t-esc="o.inspection_start_date" />
+                                </td>
+
+                                <td>
+                                    <strong>End Date : </strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.inspection_end_date"/>
+                                </td>
+                            </tr>
+
+                        <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                                <td>
+                                    <strong> Resposible User : </strong>
+                                </td>
+                                <td>
+                                    <span t-esc="o.resposible_user.name" />
+                                </td>
+
+                                <td>
+                                    <strong>Company : </strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.company_id.name"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <h2>Inspection Line</h2>
+                        <br/>
+                    <table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+                        <th>Inspection </th>
+                        <th>Inspection Result</th>
+                        <th>Description</th>
+                        <tbody class="components_tbody">
+                            <t t-foreach="o.job_inspection_line_ids" t-as="l">
+                                <tr>
+                                    <td>
+                                        <span t-esc="l.inspection_value_id.name"/>
+                                    </td>
+
+                                    <td>
+                                        <span t-esc="l.inspection_result_id.name"/>
+                                    </td>
+
+                                   
+                                    <td>
+                                        <span t-esc="l.description"/>
+                                    </td>                                    
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <h3>Inspection Notes</h3>
+                    <span t-esc="o.notes"/>
+                    <h3>Result Description</h3>
+                    <span t-esc="o.result_description"/>
+                    <h3>Inspection Photos</h3>
+                    <br />
+                    <table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+                        <tbody class="components_tbody">
+                            <t t-foreach="o.attachment_ids" t-as="attach">
+                                <tr>
+                                    <td>
+                                        <span t-field="attach.name" />
+                                    </td>
+                                     <td>
+                                        <div class="img img-responsive">
+                                           <span t-field="attach.datas" t-options='{"widget": "image"}'/>
+                                        </div>
+                                    </td>
+                                    
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>    
+                    <table class="table-borderless">
+                        <tr style="padding: 8px;">
+                            <td colspan="5">
+                                <strong>Inspector Sign </strong>
+                            </td>
+                            <td colspan="4">
+                                <strong> _____________________________ </strong>
+                            </td>
+                            <td></td>
+                            <td colspan="5">
+                                <strong>Authorized Sign </strong>
+                            </td>
+                            <td colspan="3">
+                                <strong> _____________________________ </strong>
+                             </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr style="padding: 8px;">
+                            <td colspan="5">
+                                <strong>Date </strong>
+                            </td>
+                            <td colspan="3">
+                                <strong> _____________________________ </strong>
+                             </td>
+                        <td></td>
+                        <td colspan="5">
+                                <strong>Date </strong>
+                            </td>
+                            <td colspan="3">
+                                <strong> _____________________________ </strong>
+                             </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </template>
+        <template id="job_inspection_temp_id">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="bi_job_inspection.job_inspection_temp_id_template" />
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

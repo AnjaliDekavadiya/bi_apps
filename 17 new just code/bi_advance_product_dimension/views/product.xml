@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<odoo>
+	<data>
+		<record id="view_product_product_extended" model="ir.ui.view">
+			<field name="name">product.product.form.extended</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="product.product_normal_form_view" />
+			<field name="arch" type="xml">
+				<group name="group_standard_price" position="inside">
+					<field name="dimension" />
+				</group>
+				<page name='general_information' position="inside">
+					<div invisible="not dimension">
+						<group string="Relevant Dimensions" invisible="not dimension">
+							<field name="custom_uom_id" string="UOM Prompt" />
+						</group>
+						<div class="row mb-3">
+							<div style="width:30%;"><span>Active</span></div>
+							
+							<div style="width:30%;"><span>Minimum</span></div>
+							<div style="width:30%;"><span>Maximum</span></div>
+						</div>
+						<div class="row mb-3">
+							<div style="width:30%;">
+								<field name="active_1" />
+								<label for="active_1" />
+							</div>
+							
+							<div style="width:30%;">
+								<field name="len_min_1" readonly="not active_1" nolabel="1" />
+							</div>
+							<div style="width:30%;">
+								<field name="len_max_1" readonly="not active_1" nolabel="1" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div style="width:30%;">
+								<field name="active_2" />
+								<label for="active_2" />
+							</div>
+							
+							<div style="width:30%;">
+								<field name="width_min_2" readonly="not active_2" nolabel="1" />
+							</div>
+							<div style="width:30%;">
+								<field name="width_max_2" readonly="not active_2" nolabel="1" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div style="width:30%;">
+								<field name="active_3" />
+								<label for="active_3" />
+							</div>
+							
+							<div style="width:30%;">
+								<field name="height_min_3" readonly="not active_3" nolabel="1" />
+							</div>
+							<div style="width:30%;">
+								<field name="height_max_3" readonly="not active_3" nolabel="1" />
+							</div>
+						</div>
+					</div>
+				</page>
+			</field>
+		</record>
+	</data>
+</odoo>

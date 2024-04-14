@@ -1,0 +1,96 @@
+# -*- coding: utf-8 -*-
+
+from odoo import models, fields, api
+
+
+class ReturnOrder(models.Model):
+    _inherit = 'return.order'
+
+    return_product_line_ids = fields.One2many(
+        'return.product.line',
+        'return_order_id',
+        string='Return Product Line',
+    )
+    reason_id = fields.Many2one(
+        'return.reason',
+        string='Return Reason',
+    )
+    address = fields.Text(
+        string='Return Address',
+    )
+    return_identify = fields.Selection([
+        ('single', 'Single Return'),
+        ('multiple', 'Multiple Return')],
+        default='single',
+    )
+    product_id = fields.Many2one(
+        'product.product',
+        required=False,
+    )
+    quantity = fields.Float(
+        required=False,
+    )
+    uom_id = fields.Many2one(
+        'product.uom',
+        required =False,
+    )
+    repair_scrape = fields.Selection([
+        ('repair', 'Is Repairable'),
+        ('scrape', 'Is Scrape')],
+        string='Repair Method',
+        default='repair',
+    )
+    shipping_reference = fields.Char(
+        string='Shipping Reference',
+    )
+
+    @api.multi
+    def show_saleorder(self):
+        for rec in self:
+            res = self.env.ref('sale.action_orders')
+            res = res.read()[0]
+            res['domain'] = str([('id','=', rec.saleorder_id.id)])
+        return res
+
+    @api.multi
+    def show_invoice(self):
+        for rec in self:
+            res = self.env.ref('account.action_invoice_tree1')
+            res = res.read()[0]
+            res['domain'] = str([('id','in', rec.saleorder_id.invoice_ids.ids)])
+        return res
+        
+    @api.multi
+    def send_rma(self):
+        self.ensure_one()
+        ir_model_data = self.env['ir.model.data']
+        try:
+            template_id = ir_model_data.get_object_reference('website_request_return_rma_odoo', 'email_template_rma_send_to_customer')[1]
+        except ValueError:
+            template_id = False
+        try:
+            compose_form_id = ir_model_data.get_object_reference('mail', 'email_compose_message_wizard_form')[1]
+        except ValueError:
+            compose_form_id = False
+        ctx = dict()
+        ctx.update({
+            'default_model': 'return.order',
+            'default_res_id': self.ids[0],
+            'default_use_template': bool(template_id),
+            'default_template_id': template_id,
+            'default_composition_mode': 'comment',
+            'mark_so_as_sent': True,
+            #'custom_layout': "sale.mail_template_data_notification_email_sale_order",
+        })
+        return {
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'mail.compose.message',
+            'views': [(compose_form_id, 'form')],
+            'view_id': compose_form_id,
+            'target': 'new',
+            'context': ctx,
+        }
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

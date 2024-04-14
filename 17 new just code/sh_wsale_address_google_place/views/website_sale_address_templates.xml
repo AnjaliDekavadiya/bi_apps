@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+	<!-- Website sale address -->
+	<template id="sh_wsale_address_google_place_address" inherit_id="website_sale.address" name="Google Address Autofill" active="True" customize_show="True">
+		<xpath expr="//div[contains(@t-attf-class, 'div_street')]" position="before">
+			<div class="col-lg-12 sh_js_cls_address_autofill mb-3" t-if='website.google_maps_api_key' data-view-template="shop">
+                 <label class="col-form-label" for="address">Address</label>
+                 <input type="text" name="address" class="form-control" value="" />
+             </div>
+		</xpath>
+	</template>
+	
+</odoo>

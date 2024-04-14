@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="chnage_order_form_view" model="ir.ui.view">
+			<field name="name">change.order.form.view</field>
+			<field name="model">change.order</field>
+			<field name="arch" type="xml">
+				<form string="Change Orders">
+					<header>
+						<button name="action_confirm" string="Confirm" type="object" class="oe_highlight" invisible="state in ['confirm','approve','done','customer_approve','close']"/>
+						<button name="action_approve" string="Approve" type="object" class="oe_highlight" invisible="state in ['draft','approve','done','customer_approve','close']" groups="project.group_project_manager"/>
+						<button name="action_customer_approve" string="Customer Approve" type="object" class="oe_highlight" invisible="state in ['draft','confirm','done','customer_approve','close']" groups="project.group_project_manager"/>
+						<button name="action_done" string="Done" type="object" class="oe_highlight" invisible="state in ['done','close','approve','confirm']"/>
+						<button name="action_close" string="Reject" type="object" class="oe_highlight" invisible="state in ['draft','done','customer_approve','approve','close']"/>
+						<button name="action_customer_close" string="Customer Reject" type="object" class="oe_highlight" invisible="state in ['draft','done','confirm','customer_approve','close']"/>
+
+						<button name="create_quotation" string="Create Quotation" type="object" class="oe_highlight" invisible="state in ['draft','confirm','approve','customer_approve','close'] and sale_id !=  False"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+					<sheet>
+					    <div class="oe_button_box" name="button_box">
+							<button class="oe_stat_button" name="action_contract" string="Contracts"
+								type="object" icon="fa-pencil-square-o" invisible="state in ['draft']">
+							</button>
+							<button type="object" name="sale_order_button" class="oe_stat_button" icon="fa-book" invisible="sale_order_count == 0">
+                            	<field name="sale_order_count" widget="statinfo" string="sale Order" />
+                        	</button>
+							
+						</div>
+						<div class="oe_title">
+							<h1>
+								<field name="sequence" />
+							</h1>
+						</div>
+						<group>
+							<group>
+								<field name="previous" invisible='1'/>
+
+								<field name="partner_id" required="1" readonly="state != 'draft'"/>
+								<field name="guarantor_one" readonly="state != 'draft'"/>
+								<field name="guarantor_two" readonly="state != 'draft'"/>
+								<field name="project_id" readonly="state != 'draft'"/>
+								<field name="analytic_id" readonly="state != 'draft'"/>
+								<field name="job_order_id" readonly="state != 'draft'"/>
+								<field name="original_completion_date" readonly="state != 'draft'"/>
+							</group>
+							<group>
+								<field name="create_date" readonly="state != 'draft'"/>
+								<field name="company_id" readonly="state != 'draft'"/>
+								<field name="currency_id" readonly="state != 'draft'"/>
+								<field name="user_id" readonly="state != 'draft'"/>
+								<field name="pricelist" required="1" readonly="state != 'draft'"/>
+								<field name="estimate_date" readonly="state != 'draft'"/>
+							</group>
+						</group>
+
+						<notebook>
+							<page string="Change Order Lines">
+								<field name="change_order_line_ids" widget="one2many_list" readonly="state != 'draft'">
+									<tree string="Change Order Lines" editable="bottom">
+										<field name="product_id" />
+										<field name="description" />
+										<field name="quantity" />
+										<field name="uom_id" />
+										<field name="unit_price"/>
+                                        <field name="price_tax" invisible="1"/>
+
+										<field name="tax_ids" widget="many2many_tags" options="{'no_create': True}" domain="[('type_tax_use','=','sale')]"/>
+										<field name="subtotal" widget="monetary" sum="subtotal"/>
+									</tree>
+								</field>
+								<group class="oe_subtotal_footer oe_right" colspan="2"
+									name="total_untax_amount">
+									<field name="total_untax_amount" widget="monetary" />
+									<field name="total_taxs_amount" widget="monetary" />
+									<field name="contract_amount" widget="monetary" />
+									<field name="total_contract_amount" widget="monetary" />
+									<field name="total_amount" widget="monetary" />
+								</group>
+								<separator string="Reason For Change" />
+								<field name="reason_notes" class="oe_inline" />
+								<separator string="Internal Notes" />
+								<field name="internal_notes" class="oe_inline" />
+								<separator string="Terms and conditions" />
+								<field name="term_notes" class="oe_inline" />
+							</page>
+							<page string="Additional Information">
+								<group>
+									<group>
+										<field name="confirm_by" readonly="1"/>
+										<field name="approve_by" readonly="1"/>
+										<field name="customer_approve" readonly="1"/>
+										<field name="closed_by" readonly="1"/>
+									</group>
+									<group>
+									    <field name="confirm_date" readonly="1"/>
+										<field name="approve_date" readonly="1"/>
+										<field name="customer_approve_date" readonly="1"/>
+										<field name="closed_date" readonly="1"/>
+										<field name="sale_id" invisible="1"/>
+									</group>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="change_order_tree_view" model="ir.ui.view">
+			<field name="name">change.order.tree.view</field>
+			<field name="model">change.order</field>
+			<field name="arch" type="xml">
+				<tree string="Change Orders">
+					<field name="sequence" />
+					<field name="partner_id" />
+					<field name="create_date" />
+					<field name="project_id" />
+					<field name="job_order_id" />
+					<field name="total_amount" widget="monetary"/>
+					<field name="state" />
+					<field name="company_id" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_job_cost_sheet" model="ir.actions.act_window">
+			<field name="name">Change Orders</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">change.order</field>
+			<field name="binding_view_types">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem name="Change Orders" id="menu_change_order"
+			parent="bi_odoo_job_costing_management.main_menu_job_estimates" />
+		
+		<menuitem name="Change Orders" id="sub_menu_change_order"
+			parent="menu_change_order" action="action_job_cost_sheet"
+			sequence='1' />
+		
+		<record id="seq_change_order_sheet" model="ir.sequence">
+            <field name="name">Change Orders</field>
+            <field name="code">change.order</field>
+            <field name="prefix">CO00</field>
+            <field name="padding">2</field>
+        </record>
+        
+        <record id="sale_order_extend_process_form" model="ir.ui.view">
+			<field name="name">sale.order.extend.process.form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+				<field name="origin" position="after">
+					<field name="change_order_id" invisible="1"/>
+				</field>
+			</field>
+		</record>
+		
+		<record id="project_extend_process_form" model="ir.ui.view">
+			<field name="name">project.extend.process.form</field>
+			<field name="model">project.project</field>
+			<field name="inherit_id" ref="project.edit_project" />
+			<field name="arch" type="xml">
+				<div class="oe_button_box" name="button_box" position="inside">
+					<button class="oe_stat_button" name="action_change_order" string="Change Orders"
+						type="object" icon="fa-bars" >
+					</button>
+				</div>
+			</field>
+		</record>
+
+		<record id="job_order_form_extend_process_form" model="ir.ui.view">
+			<field name="name">job.order.extend.process.form</field>
+			<field name="model">job.order</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view" />
+			<field name="arch" type="xml">
+				<button name="job_note_button" position="after">
+					<button class="oe_stat_button" name="action_change_order" string="Change Orders"
+								type="object" icon="fa-bars" > 
+					</button>
+				</button>
+			</field>
+		</record>
+		
+		<record id="res_partner_form_extend_process_form" model="ir.ui.view">
+			<field name="name">res.partner.extend.process.form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<div class="oe_button_box" name="button_box" position="inside">
+					<button class="oe_stat_button" name="action_change_order" string="Change Orders"
+								type="object" icon="fa-bars" >
+					</button>
+				</div>
+
+			</field>
+		</record>
+        
+	</data>
+</odoo>        

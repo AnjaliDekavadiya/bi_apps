@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_import_tickets_form" model="ir.ui.view">
+			<field name="name">import.tickets.form</field>
+			<field name="model">import.tickets</field>
+			<field name="arch" type="xml">
+				<form string="Import Tickets">
+					<group>
+						<group>
+							<field name="partner_id" domain="[('customer_rank','>', 0)]" />
+							<label for="file" />
+							<div>
+								<field name="file" class="oe_inline" />
+								<field name="file_restrict_content" class="oe_inline" />
+							</div>
+						</group>
+						<group></group>
+					</group>
+					<footer>
+						<button name="import_tickets" string="Import" type="object"
+							class="oe_highlight" />
+						or
+						
+						<button string="Cancel" class="btn btn-default" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_import_tickets" model="ir.actions.act_window">
+			<field name="name">Import Tickets</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">import.tickets</field>
+			<field name="view_mode">form</field>
+			<field name="context">{}</field>
+			<field name="target">new</field>
+			<field name="view_id" ref="view_import_tickets_form" />
+		</record>
+		
+	</data>
+</odoo>

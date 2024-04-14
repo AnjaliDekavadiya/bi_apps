@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<odoo>
+	<data>
+		<record id="mrp_production_form_view_bi_inherit" model="ir.ui.view">
+			<field name="name">mrp.production.form.view.bi.inherit</field>
+			<field name="model">mrp.production</field>
+			<field name="inherit_id" ref="mrp.mrp_production_form_view" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//div[@name='bom_div']" position="after">
+					<field name="dimension_method" readonly="state not in ('draft', 'progress')"/>
+					<field name="label"  invisible="dimension_method == 'w_h'"/>
+					<field name="pro_length" invisible="dimension_method == 'w_h'"/>
+					<field name="pro_width" invisible="dimension_method == 'w_h'"/>
+					<field name="pro_height" invisible="dimension_method == 'w_h'"/>
+					<field name="tot_qty" invisible="dimension_method == 'w_h'"/>
+					<field name="custom_weight" invisible="dimension_method == 'w_h'"/>
+					<field name="length_chk" invisible="1" />
+					<field name="width_chk" invisible="1" />
+					<field name="height_chk" invisible="1" />
+				</xpath>
+				<xpath expr="//field[@name='height']" position="attributes">
+                    <attribute name="invisible">dimension_method == 'l_w_h'</attribute>
+                </xpath>
+                <xpath expr="//field[@name='width']" position="attributes">
+                    <attribute name="invisible">dimension_method == 'l_w_h'</attribute>
+                </xpath>
+                <xpath expr="//field[@name='square_meter']" position="attributes">
+                    <attribute name="invisible">dimension_method == 'l_w_h'</attribute>
+                </xpath>
+
+			</field>
+		</record>
+	</data>
+</odoo>

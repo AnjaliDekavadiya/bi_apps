@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="helpdesk_support_lock_form_view">
+            <field name="name">Helpdesk form</field>
+            <field name="model">helpdesk.support</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_support_form_view"/>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//div[@class='oe_button_box']" position="before"> -->
+                <xpath expr="//div[hasclass('oe_button_box')]" position="after">
+                    <!-- <div class="oe_title">
+                        <div class="oe_title"> -->
+                            <h4 style="color:black;align=center;background-color:#C9FFE5" colspan="3" invisible="not is_helpdesk_locked">This ticket has been locked by 
+                                <field name="locked_user_id"/>
+                                <hr style="height:3px;border:none;color:green;background-color:red;"></hr>
+                            </h4>
+                        <!-- </div>
+                    </div> -->
+                </xpath>
+                
+                <xpath expr="//button[last()]" position="after">
+                    <button name="%(action_lock_support_ticket)d" string="Lock Ticket" type="action" invisible="is_helpdesk_locked" groups="website_helpdesk_support_ticket.group_helpdesk_user"/>
+                    <button name="action_unlock_ticket" string="Unlock Ticket" type="object" invisible="not is_helpdesk_locked" groups="website_helpdesk_support_ticket.group_helpdesk_user"/>
+                </xpath>
+                <xpath expr="//notebook/page[last()]" position="after">
+                    <page string="Lock Information" name="lock_information">
+                        <group>
+                            <group name="lock_ticket">
+                                <field name="is_helpdesk_locked"/>
+                                <field name="locked_user_id"/>
+                                <field name="unlock_user_id"/>
+                            </group>
+                            <group name="lock_ticket_date">
+                                <field name="lock_start_date"/>
+                                <field name="lock_end_date"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <!-- <xpath expr="//div[@class='oe_chatter']/field[@name='message_follower_ids']" position='attributes'> -->
+                <xpath expr="//div[hasclass('oe_chatter')]/field[@name='message_follower_ids']" position='attributes'>
+                    <attribute name="readonly">is_helpdesk_locked</attribute>
+                    
+                    <!-- <attribute name="attrs">{'readonly': [('is_helpdesk_locked', '=', 1)]}</attribute> -->
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

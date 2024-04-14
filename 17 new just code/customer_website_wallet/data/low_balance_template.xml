@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        
+        <record id="lowbalance" model="ir.ui.view">
+<!--            <field name="name">About us</field>-->
+            <field name="name">Wallet Low Balance</field>
+            <field name="type">qweb</field>
+            <field name="key">website.lowbalance</field>
+            <field name="arch" type="xml">
+                <t name="Wallet Low Balance" t-name="website.lowbalance">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="oe_structure">
+                                <div class="container">
+                                    <span class="d-block fa fa-6x fa-exclamation-circle mx-auto"/><br/>
+                                     <!-- <span class="d-block fa-exclamation-triangle bg-primary"/><br/> -->
+                                    <h5 class="text-left">Dear <span t-field="request.env.user.partner_id.name"/>,</h5>
+                                    <h5 class="text-left">You can not use your wallet for this order since your wallet balance is insufficient. 
+                                    </h5>
+                                     <h5 class="text-left">You may contact our team or continue with other payment methods available. 
+                                    </h5>
+                                     <h5 class="text-left">Thank you for your understanding.
+                                    </h5>
+                                     <h5 class="text-left">Sales Team 
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="oe_structure">
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </field>
+        </record>
+
+        <!-- <template id="lowbalance" name="Low Balance">
+                <t t-call="website.layout">
+                  <div id="wrap">
+                    <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_1"/>
+                    <div class="container mt-4">
+                        <div class="row">
+                            <div class="col-lg-7 col-xl-6 mr-lg-auto oe_structure">
+                                <section class="pt40 s_text_block pb40 o_colored_level o_cc o_cc1" data-snippet="s_text_block" data-name="Text">
+                                    <div class="container">
+                                        <span class="d-block fa fa-4x fa-thumbs-up mx-auto rounded-circle bg-primary"/><br/>
+                                        <h5>Dear <span t-field="request.env.user.partner_id.name"/>,</h5><br/>
+                                        <h5>Sorry, You have low wallet balance. 
+                                        </h5>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_2"/>
+                  </div>
+                </t>
+        </template> -->
+
+        
+        <record id="lowbalance_page" model="website.page">
+            <field name="website_published">True</field>
+            <field name="url">/low/blance</field>
+            <field name="view_id" ref="lowbalance"/>
+        </record>
+        
+    </data>
+</odoo>

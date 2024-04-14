@@ -1,0 +1,86 @@
+<odoo>
+
+	<record id="view_hr_attribute_value_form_approval" model="ir.ui.view">
+		<field name="name">hr.attribute.value.approval.form</field>
+		<field name="model">hr.attribute.value.approval</field>
+		<field name="inherit_id" ref="view_hr_attribute_value_form"/>
+		<field name="mode">primary</field>
+		<field name="arch" type="xml">
+			<sheet position="before">
+				<header>
+					<field name="state" widget="statusbar"/>
+					<field name="workflow_states" invisible="1"/>
+					<field name="user_can_approve" invisible="1"/>
+					<field name="button_approve_enabled" invisible="1"/>
+					<field name="button_forward_enabled" invisible="1"/>
+					<field name="button_return_enabled" invisible="1"/>															
+					<field name="approve_button_name" invisible="1"/>
+					<field name="approve_confirm_msg" invisible="1"/>
+					<field name="reject_button_wizard" invisible="1"/>
+					<field name="reject_button_name" invisible="1"/>
+					<field name="reject_confirm_msg" invisible="1"/>
+					<button name="action_approve" type="object" string="Confirm" class="oe_highlight" invisible="state not in ['draft']"/>
+					<button name="action_approve" type="object" string="Approve" class="oe_highlight oe_workflow_approve" invisible="not user_can_approve"/>
+					<button name="action_reject_wizard" type="object" string="Reject" class="oe_workflow_reject" invisible="not user_can_approve or not reject_button_name or not reject_button_wizard"/>
+					<button name="action_reject" type="object" string="Reject" class="oe_workflow_reject" invisible="not user_can_approve or not reject_button_name or reject_button_wizard"/>
+					<button name="action_draft" type="object" confirm="Reset to draft ?" string="Reset to draft" invisible="state not in ['rejected']"/>
+					<button name="action_forward" type="object" string="Forward" invisible="not button_forward_enabled"/>
+					<button name="action_return" type="object" string="Return" invisible="not button_return_enabled"/>															
+				</header>
+			</sheet>
+			<sheet position="after">
+				<div class="oe_chatter" modifiers="{}">
+					<field name="message_follower_ids" widget="mail_followers" modifiers="{}"/>
+					<field name="activity_ids" widget="mail_activity" modifiers="{}"/>
+					<field name="message_ids" widget="mail_thread" modifiers="{}" options="{'display_log_button': True}"/>
+				</div>			
+			</sheet>
+			<field name="isactive" position="replace"/>
+			<field name="attribute_id" position="attributes">
+				<attribute name="domain">[('required_approval','=', True)]</attribute>
+			</field>
+			<field name="attribute_id" position="after">
+				<field name="update_type"/>
+				<field name="update_attribute_value_id" domain="[('attribute_id','=', attribute_id) ,('employee_id','=', employee_id), ('active','=', True), '|', ('valid_to','=', False), ('valid_to','&gt;=', context_today().strftime('%Y-%m-%d'))]" options="{'no_create_edit' : True}" invisible="update_type == 'new'" required="update_type != 'new'"/>
+			</field>
+		</field>
+	</record>
+
+	<record id="view_hr_attribute_value_approval" model="ir.ui.view">
+		<field name="name">hr.attribute.value.approval.tree</field>
+		<field name="model">hr.attribute.value.approval</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="attribute_id"/>
+				<field name="display_name"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_hr_attribute_value_approval_search" model="ir.ui.view">
+		<field name="name">hr.attribute.value.approval.search</field>
+		<field name="model">hr.attribute.value.approval</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="attribute_id"/>
+				<filter name="valid_from_filter" string="Valid From" date="valid_from"/>
+				<separator/>
+				<filter string="Waiting My Approval" name="my_approval" domain="[('approval_user_ids', '=', uid)]"/>
+				<filter string="Waiting Approval" name="approval" domain="[('waiting_approval', '=', True)]"/>				
+				<separator/>
+				<filter string="My Activities" name="activities_my" domain="[('activity_ids.user_id', '=', uid)]"/>
+				<separator/>
+				<filter string="Late Activities" name="activities_overdue" domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" help="Show all records which has next action date is before today"/>
+				<filter string="Today Activities" name="activities_today" domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
+				<filter string="Future Activities" name="activities_upcoming_all" domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))                         ]"/>
+				<group expand="0" string="Group By">
+					<filter string="Status" name="status" domain="[]" context="{'group_by':'state'}"/>
+					<filter string="Created on" name="create_date" domain="[]" context="{'group_by':'create_date'}"/>
+				</group>
+			</search>
+		</field>
+	</record>
+
+
+</odoo>

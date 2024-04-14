@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-name="bi_plaid_integration.FormView.Buttons" t-inherit="web.FormView" t-inherit-mode="extension" owl="1">
+        <xpath expr="//button[hasclass('btn-outline-primary')]" position="after">
+            <button type="button" class="btn btn-secondary" t-on-click="this.__proto__.token_initialize">
+                Connect Via Plaid
+            </button>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_custom_audio_file_template_form_view" model="ir.ui.view">
+            <field name="name">product.custom.audio.file.template.form.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='website_id']" position="after">
+                    <field name="custom_file_type" widget="radio"/>
+                    <field name="custom_video_type" invisible="custom_file_type != 'video'" widget="radio"/>
+                    <field name="custom_url" invisible="custom_file_type == 'audio' or custom_video_type == 'attachment'"/>
+                    <field name="custom_file_attachment_id" invisible="custom_file_type == 'video' and custom_video_type == 'url'"/>
+                </xpath>
+            </field>
+        </record>
+        <template id="add_audio_probc" inherit_id="website_sale.product">
+            <xpath expr="//div[@id='product_details']" position="inside">
+                <t t-if="product.sudo().custom_file_attachment_id">
+                    <t t-set="attchment_type" t-value="product.sudo().custom_file_attachment_id.name.split('.')[-1]"/>
+                    <t t-if="product.sudo().custom_file_type == 'audio'">
+                        <t t-if="attchment_type == 'mp3' or attchment_type == 'ogv' or attchment_type == 'wav' or attchment_type == 'ogg'">
+                            <audio controls="controls" autoplay="autoplay">
+                              <source t-attf-src="/web/content/#{product.custom_file_attachment_id.id}" type="audio/ogg"/>
+                              <source t-attf-src="/web/content/#{product.custom_file_attachment_id.id}" type="audio/mpeg"/>
+                            </audio>
+                        </t>
+                    </t>
+                    <t t-if="product.sudo().custom_file_type == 'video'">
+                        <t t-if="product.sudo().custom_video_type == 'attachment'">
+                            <t t-if="attchment_type == 'mp4' or attchment_type == 'ogv' or attchment_type == 'webv' or attchment_type == 'webm'">
+                               <video width="320" height="240" controls="controls" autoplay="autoplay">
+                                  <source t-attf-src="/web/content/#{product.custom_file_attachment_id.id}/#{product.custom_file_attachment_id.name}" type="video/mp4"/>
+                                  <source t-attf-src="/web/content/#{product.custom_file_attachment_id.id}/#{product.custom_file_attachment_id.name}" type="video/ogg"/>
+                               </video>
+                            </t>
+                        </t>
+                    </t>
+                 </t>
+                <t t-if="product.sudo().custom_video_type == 'url'">
+                    <t t-set="url" t-value="website.custom_embded_video(product.sudo().custom_url)"/>
+                    <t t-raw="url"/>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

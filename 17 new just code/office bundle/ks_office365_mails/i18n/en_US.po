@@ -1,0 +1,529 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ks_office365_mails
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-19 13:00+0000\n"
+"PO-Revision-Date: 2021-03-19 13:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid ""
+"\n"
+"Check Jobs to know how many records have been processed."
+msgstr ""
+
+#. module: ks_office365_mails
+#: model_terms:ir.ui.view,arch_db:ks_office365_mails.ks_office365_mails_view_users_form
+msgid ""
+"<span style=\"font-size: 12px; font-weight: bold;\">\n"
+"                                <u>Import mails from Outlook</u>\n"
+"                            </span>"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_option_archive
+#: model_terms:ir.ui.view,arch_db:ks_office365_mails.ks_office365_mails_view_users_form
+msgid "Archive"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__ks_archive_records
+msgid "Archive mail Processed"
+msgstr ""
+
+#. module: ks_office365_mails
+#. openerp-web
+#: code:addons/ks_office365_mails/static/src/xml/ks_thread.xml:0
+#, python-format
+msgid "Bcc:"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_module__calendar
+msgid "Calendar"
+msgstr ""
+
+#. module: ks_office365_mails
+#. openerp-web
+#: code:addons/ks_office365_mails/static/src/xml/ks_thread.xml:0
+#, python-format
+msgid "Cc:"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_status__completed
+msgid "Completed"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_module__contact
+msgid "Contact"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__create_uid
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_category__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__create_date
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_category__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_sync_using_date
+msgid "Date & Time:"
+msgstr ""
+
+#. module: ks_office365_mails
+#. openerp-web
+#: code:addons/ks_office365_mails/static/src/xml/ks_thread.xml:0
+#, python-format
+msgid "Date:"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "Days can only be in numbers lessthan 999 and greater than or equal 0."
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__display_name
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_category__display_name
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_mail__display_name
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_message__display_name
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_status__error
+msgid "Error"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__ks_mail_error_text
+msgid "Error Message"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "Error While Updating/Creating Mail Channel"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "Error while moving message in Folder"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_export_office365_mail
+msgid "Export Mails"
+msgstr ""
+
+#. module: ks_office365_mails
+#. openerp-web
+#: code:addons/ks_office365_mails/static/src/xml/ks_thread.xml:0
+#, python-format
+msgid "From:"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "Generate Authentication Token"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__id
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_category__id
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_mail__id
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_message__id
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__id
+msgid "ID"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,help:ks_office365_mails.field_res_users__ks_sync_without_attachment
+msgid ""
+"If any mail's attachment is corrupt or could not be synced. Do you still "
+"want to create that mail?"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_import_office365_mail
+msgid "Import Mails"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model_terms:ir.ui.view,arch_db:ks_office365_mails.ks_office365_mails_view_users_form
+msgid "Import Mails from Office 365"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_status__in_process
+msgid "In Process"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_option_inbox
+#: model_terms:ir.ui.view,arch_db:ks_office365_mails.ks_office365_mails_view_users_form
+msgid "Inbox"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__ks_inbox_records
+msgid "Inbox mail Processed"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_is_manager_mail
+msgid "Is Manager"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_mail_filter_domain
+msgid "Ks Mail Filter Domain"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_mail__ks_sent_from
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_message__ks_sent_from
+msgid "Ks Sent From"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_mail__ks_cc
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_message__ks_cc
+msgid "Ks Sent Mail Recipients"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_mail__ks_send_to
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_message__ks_send_to
+msgid "Ks Sent Mail bcc"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_mail__ks_bcc
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_message__ks_bcc
+msgid "Ks Sent Mail cc"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_sync_using_days
+msgid "Ks Sync Using Days"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_mail__ks_user_id
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_message__ks_user_id
+msgid "Ks User"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job____last_update
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_category____last_update
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_mail____last_update
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_message____last_update
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__write_uid
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_category__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__write_date
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_category__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: ks_office365_mails
+#. openerp-web
+#: code:addons/ks_office365_mails/static/src/xml/ks_thread.xml:0
+#, python-format
+msgid "Loading..."
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_module__mail
+msgid "Mail"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_mail_category__name
+#: model:ir.ui.menu,name:ks_office365_mails.ks_office365_mail_category_menu_id
+msgid "Mail Category"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "Mail Channel has been Updated/Created"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.ui.menu,name:ks_office365_mails.ks_office365_mail_jobs_menu
+msgid "Mail Jobs"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_sync_using_category
+msgid "Mail category"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "Mail is not synced because some attachment could not be created!"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "Mail moved to %s channel"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model_terms:ir.ui.view,arch_db:ks_office365_mails.office365_settings_mail_scope
+msgid "Mails"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model,name:ks_office365_mails.model_mail_message
+msgid "Message"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "Message in Mail Folder has been Updated"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__ks_mail_module
+msgid "Module"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_job__calendar_export
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_job__contact_export
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_job__mail_export
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_job__task_export
+msgid "Odoo to Office"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.actions.act_window,name:ks_office365_mails.ks_office_mail_jobs_action
+msgid "Office 365 Jobs"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.actions.act_window,name:ks_office365_mails.ks_office_mail_category_action
+msgid "Office 365 Mail Category"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model_terms:ir.ui.view,arch_db:ks_office365_mails.ks_office365_mails_view_users_form
+msgid "Office 365 Mails"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model,name:ks_office365_mails.model_ks_office_mail_job
+msgid "Office 365 Mails Module Jobs Processes"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_job__calendar_import
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_job__contact_import
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_job__mail_import
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_job__task_import
+msgid "Office to Odoo"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_office365_channel_archive
+msgid "Office365 Archive"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_office365_channel_inbox
+msgid "Office365 Inbox"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_office365_channel_sentitems
+msgid "Office365 Sentitems"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__ks_mail_job
+msgid "Operation"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model,name:ks_office365_mails.model_mail_mail
+msgid "Outgoing Mails"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model,name:ks_office365_mails.model_mail_category
+msgid "Outlook Categories for Syncing Mails"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "Please Select at Least one mail folder to sync"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "Process Is Already Running."
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid ""
+"Record is not created created! \n"
+"Reason: "
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.actions.server,name:ks_office365_mails.ir_cron_sync_import_mail_ir_actions_server
+#: model:ir.cron,cron_name:ks_office365_mails.ir_cron_sync_import_mail
+#: model:ir.cron,name:ks_office365_mails.ir_cron_sync_import_mail
+msgid "Run Office 365 Mails Import Cron"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_sync_using_email
+msgid "Sender's Email:"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_option_sentitems
+#: model_terms:ir.ui.view,arch_db:ks_office365_mails.ks_office365_mails_view_users_form
+msgid "Sent Items"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__ks_sentbox_records
+msgid "Sent mail Processed"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid ""
+"Some error occurred! \n"
+"Please check logs for more information."
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_ks_office_mail_job__ks_mail_status
+msgid "Status"
+msgstr ""
+
+#. module: ks_office365_mails
+#. openerp-web
+#: code:addons/ks_office365_mails/static/src/xml/ks_thread.xml:0
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_sync_using_mail_subject
+#, python-format
+msgid "Subject:"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_sync_days_before
+#: model_terms:ir.ui.view,arch_db:ks_office365_mails.ks_office365_mails_view_users_form
+msgid "Sync mails from last (In Days)"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,field_description:ks_office365_mails.field_res_users__ks_sync_without_attachment
+msgid "Sync without attachment (For corrupt attachment)"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields.selection,name:ks_office365_mails.selection__ks_office_mail_job__ks_mail_module__task
+msgid "Task"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,help:ks_office365_mails.field_res_users__ks_mail_filter_domain
+msgid ""
+"This filter domain is only applicable while syncing from Odoo to office 365."
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,help:ks_office365_mails.field_res_users__ks_sync_using_category
+msgid "This will allow you to sync only selected mails"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,help:ks_office365_mails.field_res_users__ks_sync_days_before
+msgid ""
+"This will allow you to sync only those contacts that are created or updated "
+"in the given days. Here 0 days means Today."
+msgstr ""
+
+#. module: ks_office365_mails
+#. openerp-web
+#: code:addons/ks_office365_mails/static/src/xml/ks_thread.xml:0
+#, python-format
+msgid "To:"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model,name:ks_office365_mails.model_res_users
+msgid "Users"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,help:ks_office365_mails.field_res_users__ks_option_inbox
+msgid "Using Inbox folder of Outlook"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,help:ks_office365_mails.field_res_users__ks_option_sentitems
+msgid "Using Sentitems folder of Outlook"
+msgstr ""
+
+#. module: ks_office365_mails
+#: model:ir.model.fields,help:ks_office365_mails.field_res_users__ks_option_archive
+msgid "Using archive folder of Outlook"
+msgstr ""
+
+#. module: ks_office365_mails
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#: code:addons/ks_office365_mails/models/ks_mail_user.py:0
+#, python-format
+msgid "errorcode"
+msgstr ""

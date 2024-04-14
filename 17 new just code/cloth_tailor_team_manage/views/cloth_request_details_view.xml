@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_cloth_request_details_inherit_tailor_team" model="ir.ui.view">
+            <field name="name">cloth.request.details.form.form.inherit.tailor_team</field>
+            <field name="model">cloth.request.details</field>
+            <field name="inherit_id" ref="cloth_tailor_management_odoo.cloth_request_details_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fabric_color']" position="after">
+                    <field name="tailor_team_id"/>
+                    <field name="tailor_team_leader_id"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

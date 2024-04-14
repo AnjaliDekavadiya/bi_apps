@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+    <data>
+        <record id="inherited_pos_gift_card_view_pos_pos_form" model="ir.ui.view">
+            <field name="name">pos.order.form</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='lines']//tree//field[@name='price_subtotal_incl']" position="after">
+                    <field name="is_pos_gift_card" invisible="1" />
+                    <button name="print_pos_gift_card_voucher" type="object" icon="fa-print" title="Print" invisible="not is_pos_gift_card" />
+                </xpath>
+                <xpath expr="//field[@name='lines']//form//group" position="before">
+                    <header>
+                        <field name="is_pos_gift_card" invisible="1" />
+                        <button name="print_pos_gift_card_voucher" type="object" class="oe_highlight" string="Print Voucher" invisible="not is_pos_gift_card" />
+                    </header>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

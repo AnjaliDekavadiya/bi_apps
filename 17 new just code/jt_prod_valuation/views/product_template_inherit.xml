@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Template Form View -->
+    <record id="product_form_view_valuation_button" model="ir.ui.view">
+        <field name="name">product.template.valuation.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='open_pricelist_rules']" position="after">
+                <button class="oe_stat_button" icon="fa-dollar" name="action_real_cost_valuation" type="object">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field class="mr4" name="valuation" nolabel="1" widget="statinfo"/>
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+    <!-- Product Template Tree View -->
+    <record id="product_tree_view_valuation" model="ir.ui.view">
+        <field name="name">product.template.valuation.tree</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_id']" position="after">
+                <field name="valuation" string="Total Valuation"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

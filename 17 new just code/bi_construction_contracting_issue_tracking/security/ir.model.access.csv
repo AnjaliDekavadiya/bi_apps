@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_issue_teams,access_issue_teams,model_issue_teams,base.group_user,1,1,1,1
+access_type_issue_subject,access_type_issue_subject,model_type_issue_subject,base.group_user,1,1,1,1
+access_type_issue,access_type_issue,model_type_issue,base.group_user,1,1,1,1
+access_issue_stages,access_issue_stages,model_issue_stages,base.group_user,1,1,1,1
+access_add_invoice,access_add_invoice,model_add_invoice,base.group_user,1,1,1,1
+access_categories,access_categories,model_categories,base.group_user,1,1,1,1

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data>
+        <record id="inherit_wk_seller_form_for_fb_ads_feeds" model="ir.ui.view">
+            <field name="name">seller.form.inherit.fb.ads.feeds</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="odoo_marketplace.wk_seller_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[1]//group[@name='seller_wise_settings']" position="inside">
+                    <group groups="odoo_marketplace.marketplace_officer_group">
+                        <label for="allow_seller_for_fb_ads" string="Allow Seller for facebook catalog integration" help="Enable to allow seller for facebook catalog integration"/>
+                        <div>
+                            <field name="allow_seller_for_fb_ads" readonly="1" help="Enable to allow seller for facebook catalog integration"/>
+                            <button name="enable_seller_fb_ads_group" string="Click to Allow" type="object" class="oe_link" invisible="allow_seller_for_fb_ads"/>
+                            <button name="disable_seller_fb_ads_group" string="Click to Deny" type="object" class="oe_link" invisible="not allow_seller_for_fb_ads"/>
+                        </div>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<odoo>
+    <data>
+        <report
+            id="top_sale_report_customer"
+            model="topsalecustomer.report"
+            string="Top Sale Customers Report"
+            report_type="qweb-pdf"
+            name="top_sales_by_item_customer.report_topsalecustomer"
+            file="top_sales_by_item_customer.report_topsalecustomer"
+        />
+        
+        <template id="report_topsalecustomer">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="report.internal_layout">
+                    <div class="page">
+                        <center><h2>Top <span t-esc="doc.top_sale_value"/> Customers</h2></center>
+                        
+                        <div class="row mt32 mb32">
+                            <table class="table table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>From Date:</strong>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.start_date"/>
+                                        </td>
+                                        <td>
+                                            <strong>To Date:</strong>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.end_date"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="row mt32 mb32">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Sequence</th>
+                                        <th>Customer</th>
+                                        <th class="text-right">Total Sale Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="count" t-value="1"/>
+                                    <tr t-foreach="customer_ids" t-as="customers">
+                                        <td>
+                                            <span t-esc="count"/>
+                                            <t t-set="count" t-value="count + 1"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="customers['customer_id'].name"/> 
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="customers['amount']" t-options='{"widget": "monetary", "display_currency": currency}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
+
+

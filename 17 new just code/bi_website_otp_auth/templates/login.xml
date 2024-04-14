@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="otp_login_inherit" inherit_id="web.login">
+		<xpath expr="//div[hasclass('field-login')]" position="after">
+            <t t-set="otp_record" t-value="request.env['website.otp'].sudo().search([], limit=1)"/>
+            <t t-if="otp_record.signin_auth == True">
+                <p id="email_msg" class="alert alert-danger d-none">Please enter valid email address.</p>
+                <input type="hidden" class="otp_type" name="otp_type" t-att-value="otp_record.otp_auth_type"/>
+                <input type="hidden" class="otp_limit" name="otp_limit" t-att-value="otp_record.otp_auth_limit"/>
+                <div class="form-group field-otp" style="display: none;">
+                    <div id="select_verification_method">
+                        Select verification method
+                    </div>
+                    <div>
+                        <label class="otp-option">Send OTP
+                            <input type="radio" value="otp" name="otp_option"/>
+                            <span class="valuechecked"></span>
+                        </label>
+                        <label class="otp-option">I have a password
+                            <input type="radio" value="pwd" name="otp_option"/>
+                            <span class="valuechecked"></span>
+                        </label>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//button[@type='submit']" position="before">
+            <t t-set="otp_record" t-value="request.env['website.otp'].sudo().search([], limit=1)"/>
+            <t t-if="otp_record.signin_auth == True">
+                <button type="button" class="btn btn-primary otp_next_btn">Next</button>
+            </t>
+        </xpath>
+        <xpath expr="//p[hasclass('alert-success')]" position="after">
+            <t t-set="otp_record" t-value="request.env['website.otp'].sudo().search([], limit=1)"/>
+            <t t-if="otp_record.signin_auth == True">
+                <p id="bi_login_otpvalue"/>
+            </t>
+        </xpath>
+	</template>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="3pl_stock_picking_tree_view" model="ir.ui.view">
+        <field name="name">3pl.stock.warehouse.tree.view</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <field name="priority" position="after">
+                <field name="is_exported" readonly="1" force_save="1"/>
+                <field name="tpl_status" readonly="1" force_save="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="3pl_stock_picking_form_view" model="ir.ui.view">
+        <field name="name">3pl.stock.warehouse.form.view</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <group name="other_infos" position="after">
+                <group string="3PL Information" name="3pl_information">
+                    <field name="is_exported" readonly="1" force_save="1"/>
+                    <field name="tpl_status" readonly="1" force_save="1"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="action_mark_exported_not_exported" model="ir.actions.server">
+        <field name="name">Mark As Exported / Not Exported</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name='groups_id' eval="[(4, ref('stock.group_stock_manager'))]"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                action = records.mark_exported_not_exported()
+        </field>
+    </record>
+</odoo>

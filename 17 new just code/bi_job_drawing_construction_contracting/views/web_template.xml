@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<odoo>
+		<template id="google_drawings" name="google_drawings">
+			<t t-call="website.layout">
+				<div class="oe_product_image" >
+				<span ></span>
+				<table>
+					<tr>
+						<td width='33%'></td>
+						<td width='34%'>
+							<span t-field="img.drawing_url"/>
+							<span ></span>
+						</td >
+						<td width='33%'></td>
+					</tr>
+				</table>
+
+				</div>
+			</t>
+		</template>
+
+	<template id="portal_my_home_menu_job_order" name="Portal layout : job order entries"
+		inherit_id="portal.portal_my_home" priority="40">
+		<xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+			<div class="o_portal_index_card col-md-6 order-2">
+				<a class="d-flex justify-content-start gap-2 gap-md-3 align-items-center py-3 pe-2 px-md-3 h-100 rounded text-decoration-none text-reset text-bg-light" t-if="job_order_count" href="/my/job_order">
+					<div class="o_portal_icon align-self-start">
+	                    <img data-oe-model="ir.ui.view" data-oe-id="549" data-oe-field="arch" data-oe-xpath="/t[1]/div[1]/a[1]/div[1]/img[1]" src="/bi_job_drawing_construction_contracting/static/description/icon.png" loading="lazy" style="height: 65px;"/>
+	                </div>
+	                <div>
+	                	<h5 class="mt-0 mb-1 d-flex gap-2">
+	                		<span>Job Order</span>
+	                	</h5>
+
+	                </div>
+				</a>
+			</div>
+		</xpath>
+	</template>
+
+    <template id="portal_job_order_list" name="Job Order Details List">
+		<t t-call="portal.portal_layout">
+			<h3>
+				Job orders List
+			</h3>
+			<t t-if="not job">
+				<p>There are currently no Job Order.</p>
+			</t>
+			<div t-if="job" class="panel panel-default">
+				<div class="table-responsive">
+					<table class="table table-hover o_portal_my_doc_table">
+						<thead>
+							<tr class="active">
+								<th>Job Orders</th>
+							</tr>
+						</thead>
+						<t t-foreach="job" t-as="job_id">
+							<tr>
+								<td>
+									<a t-attf-href="/job/view/detail/#{job_id.id}">
+										<t t-esc="job_id.name" />
+									</a>
+								</td>
+							</tr>
+						</t>
+					</table>
+				</div>
+				<div t-if="pager" class="o_portal_pager text-center">
+					<t t-call="website.pager" />
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<template id="job_order_request_view" name="Job Order Request View">
+		<t t-call="portal.portal_layout">
+			<h3>
+				Task List
+			</h3>
+			<t t-if="not job_data_list">
+				<p>There are currently no Task .</p>
+			</t>
+			<div t-if="job_data_list" class="panel panel-default">
+				<div class="table-responsive">
+					<t t-foreach="job_data_list" t-as="job_id">
+					<table class="table table-hover o_portal_my_doc_table">
+						<thead>
+							<tr class="active">
+								<th>Task for project : <span t-field="job_data_list.project_id.name"/></th>
+								<th>Stage</th>
+							</tr>
+						</thead>
+						<t t-foreach="job_id.project_id.task_ids" t-as="task_id">
+							<tr>
+								<td>
+									<input type="hidden" name="job" id="job_order_id" t-att-value="job_id.id"/>
+									<a t-attf-href="/my/drawing/#{task_id.id}/#{job_id.id}?{{ keep_query() }}">
+										<t t-esc="task_id.name" />
+									</a>
+								</td>
+
+								<td>
+									<t class="label label-info" t-esc="task_id.stage_id.name" />
+								</td>
+							</tr>
+						</t>
+					</table>
+				</t>
+				</div>
+				<div t-if="pager" class="o_portal_pager text-center">
+					<t t-call="website.pager" />
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<template id="drawing_portal_job_order_inherit" name="Drawings job order" inherit_id="project.portal_my_task">
+		<xpath expr="//div[hasclass('col-md-6')]" position="before">
+		<h3 style="margin-left:20px">Google Contract Drawing</h3>
+			<div class="col-lg-12" >
+			<div class="panel panel-primary">
+				<div class="panel-heading" style=" height: 50px; padding: 10px 1px;background-color:#17a2b8;border-radius:5px;">
+						<ul class="nav">
+								<li class="active"><a href="#tab1primary" style="color:white;padding:10px 15px;" data-toggle="tab">Drawings</a></li>
+						</ul>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab1primary">
+							<div class="table-responsive">
+								<table class="table table-hover o_portal_my_doc_table">
+									<thead>
+										<tr class="active">
+											<th>Drawing Name</th>
+											<th>Drawing Description</th>
+										</tr>
+									</thead>
+									<t t-foreach="job_order.google_contract_drawings_ids" t-as="line">
+										<tr>
+											<td>
+												<t t-esc="line.name" />
+											</td>
+											<td>
+												<span t-field="line.description" />
+											</td>
+											<td>
+												<a t-attf-href="#{line.drawing_url} " class=" btn-primary">
+													<button id="open" type="button" class=" btn-primary">Open</button>
+												</a>
+											</td>
+										</tr>
+									</t>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		</xpath>
+	</template>
+</odoo>
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <record id="pos_order_add_rma_button_custom" model="ir.ui.view">
+            <field name="name">pos.order.add.rma.button.custom</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" name="action_view_pos_return_rma_custom" type="object" icon="fa-truck" string="RMA">
+                    </button>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

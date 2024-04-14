@@ -1,0 +1,49 @@
+# -*- coding: utf-8 -*-
+
+# Part of Probuse Consulting Service Pvt Ltd. See LICENSE file for full copyright and licensing details.
+
+{
+    'name': 'Fleet Services Integration with Job Orders / Project Tasks',
+    'version': '1.1.1',
+    'currency': 'EUR',
+    'price': 9.0,
+    'license': 'Other proprietary',
+    'category': 'Fleet',
+    'summary': 'Allow you to create job order / tasks under project from fleet service.',
+    'description': """
+fleet app
+fleet management
+fleet service
+fleet jobs
+job order
+work order
+job orders
+fleet app
+Fleet Vehicle Inspection Management
+odoo fleet app
+fleet module
+fleet app
+service job order
+service work orders
+service task
+fleet task
+fleet project
+task fleet
+vehicle task
+""",
+    'author': 'Probuse Consulting Service Pvt. Ltd.',
+    'website': 'www.probuse.com',
+    'depends': ['fleet','project'],
+    'support': 'contact@probuse.com',
+    'live_test_url': 'https://youtu.be/Qdq2ud1p1R0',
+    'images': ['static/description/img1.jpg'],
+    'data': [
+              'views/fleet_log_service_inherit.xml',
+              'wizard/create_joborder_view.xml',
+             ],
+    'installable': True,
+    'application': False,
+}
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+

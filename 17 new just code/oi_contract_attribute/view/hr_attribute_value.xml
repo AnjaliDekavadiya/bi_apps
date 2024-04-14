@@ -1,0 +1,172 @@
+<odoo>
+
+	<record id="view_hr_attribute_value_form" model="ir.ui.view">
+		<field name="name">hr.attribute.value.form</field>
+		<field name="model">hr.attribute.value</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="sync_field_value" string="Update Contracts" type="object" groups="hr_contract.group_hr_contract_manager,oi_contract_attribute.group_employee_attribute" />
+				</header>
+				<sheet>
+					<widget name="web_ribbon" text="Archived" bg_color="bg-danger" invisible="active"/>
+					<group>
+						<group>
+							<field name="attribute_id" options="{'no_create_edit' : True}" widget="attribute_many2one"/>
+							<field name="value" readonly="1" invisible="1"/>
+							<field name="selection_id" domain="[('attribute_id','=', attribute_id)]"/>
+							<field name="valid_from"/>
+							<field name="valid_to" required="valid_to_required"/>
+							<field name="isactive"/>
+							<field name="has_selection" invisible="1"/>
+							<field name="type" invisible="1"/>
+							<field name="code" invisible="1"/>
+							<field name="valid_to_required" invisible="1"/>		
+							<field name="active" invisible="1"/>					
+						</group>
+						<group>
+							<field name="contract" invisible="1"/>
+							<field name="contracts" invisible="1"/>
+							<field name="job" invisible="1"/>
+							<field name="step" invisible="1"/>
+							<field name="grade" invisible="1"/>							
+							<field name="department" invisible="1"/>
+							<field name="schedule" invisible="1"/>
+							<field name="category" invisible="1"/>
+							<field name="company" invisible="1"/>
+																				
+							<field name="employee_id" readonly="0" options="{'no_create_edit' : True}" domain="[('contract_ids','!=', False)]" invisible="not contract"/>
+							<field name="contract_id" options="{'no_create_edit' : True}" invisible="not contract"/>							
+							<field name="job_id" options="{'no_create_edit' : True}" invisible="not job" required="job"/>
+							<field name="schedule_id" options="{'no_create_edit' : True}" invisible="not schedule and not grade and not step" required="step"/>
+							<field name="grade_id" domain="[('schedule_id','=', schedule_id)]" options="{'no_create_edit' : True}" invisible="not grade and not step" required="step"/>														
+							<field name="step_id" domain="[('grade_ids','=', grade_id)]" options="{'no_create_edit' : True}" invisible="not step" required="step"/>
+							<field name="department_id" options="{'no_create_edit' : True}" invisible="not department"/>
+							
+							<field name="category_id" options="{'no_create_edit' : True}" invisible="not category"/>
+							<field name="company_id" options="{'no_create_edit' : True}" invisible="not company"/>
+						</group>
+						<group string="Contracts" invisible="not contracts">
+							<field name="contract_ids" nolabel="1" colspan="4" domain="[('state','not in', ['close', 'cancel'])]"/>
+						</group>
+					</group>
+					<group>
+						<field name="description"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	
+	<record id="view_hr_attribute_value_form_emp" model="ir.ui.view">
+		<field name="name">hr.attribute.value.form.emp</field>
+		<field name="model">hr.attribute.value</field>
+		<field name="inherit_id" ref="view_hr_attribute_value_form"/>
+		<field name="mode">primary</field>
+		<field name="arch" type="xml">
+			<field name="attribute_id" position="attributes">
+				<attribute name="domain">[('contract','=', True)]</attribute>
+			</field>
+		</field>
+	</record>
+	
+	<record id="view_hr_attribute_value_form_job" model="ir.ui.view">
+		<field name="name">hr.attribute.value.form.job</field>
+		<field name="model">hr.attribute.value</field>
+		<field name="inherit_id" ref="view_hr_attribute_value_form"/>
+		<field name="mode">primary</field>
+		<field name="arch" type="xml">
+			<field name="attribute_id" position="attributes">
+				<attribute name="domain">[('job','=', True)]</attribute>
+			</field>
+		</field>
+	</record>
+	
+
+
+	<record id="view_hr_attribute_value_tree" model="ir.ui.view">
+		<field name="name">hr.attribute.value.tree</field>
+		<field name="model">hr.attribute.value</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="attribute_id"/>
+				<field name="value" invisible="1" column_invisible="1"/>
+				<field name="selection_id"  />
+				<field name="valid_from"/>
+				<field name="valid_to"/>
+				<field name="active"/>
+				<field name="employee_id"/>
+				<field name="contract_id"/>	
+				<field name="contract_ids"/>
+				<field name="job_id"/>						
+				<field name="grade_id"/>
+				<field name="department_id"/>
+				<field name="schedule_id"/>
+				<field name="category_id"/>
+				<field name="company_id"/>			
+				<field name="isactive"/>
+			</tree>
+		</field>
+	</record>
+	
+	<record id="view_hr_attribute_value_tree_emp" model="ir.ui.view">
+		<field name="name">hr.attribute.value.tree.emp</field>
+		<field name="model">hr.attribute.value</field>
+		<field name="inherit_id" ref="view_hr_attribute_value_tree"/>
+		<field name="mode">primary</field>
+		<field name="arch" type="xml">
+			<field name="job_id" position="replace"/>
+			<field name="grade_id" position="replace"/>
+			<field name="department_id" position="replace"/>
+			<field name="schedule_id" position="replace"/>
+			<field name="category_id" position="replace"/>
+			<field name="company_id" position="replace"/>
+		</field>
+	</record>
+	
+	<record id="view_hr_attribute_value_tree_job" model="ir.ui.view">
+		<field name="name">hr.attribute.value.tree.job</field>
+		<field name="model">hr.attribute.value</field>
+		<field name="inherit_id" ref="view_hr_attribute_value_tree"/>
+		<field name="mode">primary</field>
+		<field name="arch" type="xml">
+			<field name="contract_id" position="replace"/>
+			<field name="employee_id" position="replace"/>
+			<field name="contract_ids" position="replace"/>
+			<field name="grade_id" position="replace"/>
+			<field name="department_id" position="replace"/>
+			<field name="schedule_id" position="replace"/>
+			<field name="category_id" position="replace"/>
+			<field name="company_id" position="replace"/>
+		</field>
+	</record>
+	
+	
+	<record id="view_hr_attribute_value_search" model="ir.ui.view">
+		<field name="name">hr.attribute.value.search</field>
+		<field name="model">hr.attribute.value</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="attribute_id" filter_domain="['|', ('attribute_id.name', 'ilike', self), ('attribute_id.code', 'ilike', self)]"/>
+				<field name="employee_id"/>
+				<filter name="active" string="Active" domain="[('active','=',True)]"/>
+				<filter name="inactive" string="Inactive" domain="[('active','=',False)]"/>
+				<filter name="isactive" string="Current Value" domain="[('isactive','=',True)]"/>
+				<separator/>
+				<filter name="contract" string="Contract" domain="[('attribute_id.contract','=',True)]"/>
+				<filter name="contracts" string="Contracts" domain="[('attribute_id.contracts','=',True)]"/>
+				<filter name="job" string="Job Position" domain="[('attribute_id.job','=',True)]"/>
+				<filter name="grade" string="Grade" domain="[('attribute_id.grade','=',True)]"/>				
+				<filter name="department" string="Department" domain="[('attribute_id.department','=',True)]"/>
+				<filter name="schedule" string="Salary Schedule" domain="[('attribute_id.schedule','=',True)]"/>
+				<filter name="category" string="Contract Type" domain="[('attribute_id.category','=',True)]"/>
+				<filter name="company" string="Company" domain="[('attribute_id.company','=',True)]"/>
+				<separator/>
+				<filter name="g_attribute" string="Attribute" context="{'group_by' : 'attribute_id'}"/>
+				<filter name="g_employee" string="Employee" context="{'group_by' : 'employee_id'}"/>
+				<filter name="g_valid_from" string="Valid From" context="{'group_by' : 'valid_from'}"/>
+			</search>
+		</field>
+	</record>
+
+</odoo>

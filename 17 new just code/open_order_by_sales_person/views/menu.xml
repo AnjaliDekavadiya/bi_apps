@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem name="Open Orders by Sales Person" id="export_sale_order_user_excel" parent="sale.menu_sale_report" groups="sales_team.group_sale_manager" action="open_order_by_sales_person.export_user_sale_order_wizard_action" sequence="2"/>
+    </data>
+</odoo> 

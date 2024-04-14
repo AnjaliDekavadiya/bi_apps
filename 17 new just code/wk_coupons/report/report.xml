@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="coupons_report" model="ir.actions.report">
+        <field name="name">Vouchers</field>
+        <field name="model">voucher.voucher</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">wk_coupons.report_coupon</field>
+    </record>
+</odoo>

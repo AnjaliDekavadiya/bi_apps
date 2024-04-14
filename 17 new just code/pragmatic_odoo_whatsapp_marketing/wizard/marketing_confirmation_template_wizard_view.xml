@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_marketing_confirmation_template_wizard_form" model="ir.ui.view" >
+			<field name="name">marketing.confirmation.template.wizard.form</field>
+			<field name="model">marketing.confirmation.template.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Confirmation Template Message">
+					<field name="message"/>
+					<footer>
+                        <button string="Continue" type="object" class="btn-secondary" name="action_confirm_create_template_in_odoo"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+		<record id="action_confirmation_template_message" model="ir.actions.act_window">
+            <field name="name">Confirmation Template Message</field>
+            <field name="res_model">marketing.confirmation.template.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>

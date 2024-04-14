@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- The template includes details about the customer, a message, and a
+           table displaying invoice details. The total amount due is also
+           calculated and displayed. -->
+    <template id="report_followup_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div>
+                        <div align="right">
+                            <b>
+                                <t t-esc="data.name"/>
+                            </b>
+                            <br/>
+                            <t t-esc="data.street"/>
+                            <br/>
+                            <t t-esc="data.city"/>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </div>
+                        <p>
+                            Dear<t t-esc="data.name"/>,
+                            <br/>
+                            <br/>
+                            &amp;emsp; &amp;emsp; Our records indicate that
+                            some payments on your account are still due. Please
+                            find details below.
+                            If the amount has already been paid, please
+                            disregard this notice. Otherwise, please forward us
+                            the total amount stated below.
+                            If you have any queries regarding your account,
+                            Please contact us. Thank you in advance for your
+                            cooperation.
+                            <br/>
+                            <br/>
+                            Best Regards,
+                        </p>
+                        <p>Here is your invoice details</p>
+                        <table border="2" class="table" cellpadding="10">
+                            <t t-set="total" t-value="0"/>
+                            <tbody>
+                                <tr>
+                                    <th>Invoice Date</th>
+                                    <th>Description</th>
+                                    <th>Reference</th>
+                                    <th>Due Date</th>
+                                    <th>Amount</th>
+                                </tr>
+                                <t t-foreach="data.invoice_ids" t-as="t">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="t.invoice_date"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="t.name"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="t.payment_reference"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="t.invoice_date_due"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="t.amount_residual_signed"/>
+                                        </td>
+                                    </tr>
+                                    <t t-set="total"
+                                       t-value="total+t.amount_residual_signed"/>
+                                </t>
+                                <tr>
+                                    <td>
+                                        <span>Total Amount Due:
+                                            <t t-esc="total"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

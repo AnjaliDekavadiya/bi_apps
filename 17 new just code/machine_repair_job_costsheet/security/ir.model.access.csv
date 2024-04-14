@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_machine_cost_line_project_manager,machine_cost_line_project_manager,machine_repair_job_costsheet.model_machine_jobcost_line,machine_repair_management.group_machine_repair_user,1,1,1,1
+access_machine_cost_line_employee,machine_cost_line_employee,machine_repair_job_costsheet.model_machine_jobcost_line,base.group_user,1,0,0,0

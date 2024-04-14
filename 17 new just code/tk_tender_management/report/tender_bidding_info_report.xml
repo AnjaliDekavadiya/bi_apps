@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="tender_bidding_info_qweb_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.basic_layout">
+                        <div class="page">
+                            Tender
+                            <h2>
+                                <span t-field="o.name"/>
+                            </h2>
+                            <t t-if="o.is_site_specific">
+                                <table style="width:100%;" class="table table-borderless">
+                                    <tr style="border-bottom:1px solid black;border-top:1px solid black;">
+                                        <td style="width:50%;padding:0px;">
+                                            <table style="width:100%;">
+                                                <tr style="border-bottom:1px solid black;">
+                                                    <td>
+                                                        Category
+                                                    </td>
+                                                    <td style="border-right:1px solid black;">
+                                                        <strong>
+                                                            <span t-field="o.tender_type_id"/>
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr style="border-bottom:1px solid black;">
+                                                    <td>
+                                                        Tender Start Date
+                                                    </td>
+                                                    <td style="border-right:1px solid black;">
+                                                        <strong>
+                                                            <span t-field="o.start_date"/>
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr style="border-bottom:1px solid black;">
+                                                    <td>
+                                                        Tender End Date
+                                                    </td>
+                                                    <td style="border-right:1px solid black;">
+                                                        <strong>
+                                                            <span t-field="o.end_date"/>
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr style="border-bottom:1px solid black;">
+                                                    <td>
+                                                        Bid Start Date
+                                                    </td>
+                                                    <td style="border-right:1px solid black;">
+                                                        <strong>
+                                                            <span t-field="o.bid_start_date"/>
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Bid End Date
+                                                    </td>
+                                                    <td style="border-right:1px solid black;">
+                                                        <strong>
+                                                            <span t-field="o.bid_end_date"/>
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="width:50%;vertical-align:middle;">
+                                            <span>
+                                                <span t-field="o.street"/>
+                                                <br/>
+                                                <span t-field="o.street2"/>
+                                                <br/>
+                                                <span t-field="o.city"/>
+                                                <span t-field="o.state_id.name"/>
+                                                <span t-field="o.zip"/>
+                                                <br/>
+                                                <span t-field="o.country_id.name"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <t t-if="o.purchase_order_id">
+                                        <tr style="border-bottom:1px solid black;">
+                                            <td style="width:50%;padding:0px;">
+                                                Purchase order
+                                                <strong>
+                                                    <span t-field="o.purchase_order_id"/>
+                                                </strong>
+                                            </td>
+                                            <td style="width:50%;padding:0px;">
+                                                Bid Ref.
+                                                <strong>
+                                                    <span t-field="o.bid_id"/>
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </table>
+                            </t>
+                            <t t-else="">
+                                <table style="width:100%;" class="table table-borderless">
+                                    <tr style="border-top:1px solid black;border-bottom:1px solid black;">
+                                        <td colspan="4" style="padding:3px;">
+                                            Category
+                                            <strong>
+                                                <span t-field="o.tender_type_id"/>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid black;">
+                                        <td style="padding:0px;">
+                                            Tender Start Date
+                                        </td>
+                                        <td style="border-right:1px solid black;padding:0px;">
+                                            <strong>
+                                                <span t-field="o.start_date"/>
+                                            </strong>
+                                        </td>
+                                        <td style="padding:0px;padding-left:5px;">
+                                            Tender End Date
+                                        </td>
+                                        <td style="padding:0px;">
+                                            <strong>
+                                                <span t-field="o.end_date"/>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid black;">
+                                        <td style="padding:0px;">
+                                            Bid Start Date
+                                        </td>
+                                        <td style="border-right:1px solid black;padding:0px;">
+                                            <strong>
+                                                <span t-field="o.bid_start_date"/>
+                                            </strong>
+                                        </td>
+                                        <td style="padding:0px;padding-left:5px;">
+                                            Bid End Date
+                                        </td>
+                                        <td style="padding:0px;">
+                                            <strong>
+                                                <span t-field="o.bid_end_date"/>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                    <t t-if="o.type=='single_vendor'">
+                                        <tr style="border-bottom:1px solid black;">
+                                            <td style="padding:0px;">
+                                                Purchase order
+                                            </td>
+                                            <td style="border-right:1px solid black;padding:0px;">
+                                                <strong>
+                                                    <span t-field="o.purchase_order_id"/>
+                                                </strong>
+                                            </td>
+                                            <td style="padding:0px;padding-left:5px;">
+                                                Bid Ref.
+                                            </td>
+                                            <td style="padding:0px;">
+                                                <strong>
+                                                    <span t-field="o.bid_id"/>
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </table>
+                            </t>
+                            <t t-if="o.desc">
+                                <br/>
+                                <h4 style="border-bottom: 1px solid;border-top: 1px solid;">
+                                    <span class="svg-icon svg-icon-muted svg-icon-2hx">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path opacity="0.3"
+                                                  d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z"
+                                                  fill="currentColor"/>
+                                            <path d="M20 8L14 2V6C14 7.10457 14.8954 8 16 8H20Z" fill="currentColor"/>
+                                            <rect x="13.6993" y="13.6656" width="4.42828" height="1.73089" rx="0.865447"
+                                                  transform="rotate(45 13.6993 13.6656)" fill="currentColor"/>
+                                            <path d="M15 12C15 14.2 13.2 16 11 16C8.8 16 7 14.2 7 12C7 9.8 8.8 8 11 8C13.2 8 15 9.8 15 12ZM11 9.6C9.68 9.6 8.6 10.68 8.6 12C8.6 13.32 9.68 14.4 11 14.4C12.32 14.4 13.4 13.32 13.4 12C13.4 10.68 12.32 9.6 11 9.6Z"
+                                                  fill="currentColor"/>
+                                        </svg>
+                                    </span>
+                                    Description
+                                </h4>
+                                <span t-field="o.desc" style="font-size:12px;"/>
+                            </t>
+                            <p style="page-break-before:always;"/>
+                            <h4 style="border-bottom: 1px solid;border-top: 1px solid;">
+                                <span class="svg-icon svg-icon-muted svg-icon-2hx">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                              d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z"
+                                              fill="currentColor"/>
+                                        <path d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z"
+                                              fill="currentColor"/>
+                                    </svg>
+                                </span>
+                                Bid Details
+                            </h4>
+                            <t t-foreach="o.tender_bid_ids" t-as="b">
+                                <table style="width:100%;;" class="table table-sm table table-borderless">
+                                    <tr style="border-bottom:1px solid black;">
+                                        <td style="width:33.33%;">
+                                            Vendor
+                                            <br/>
+                                            <strong>
+                                                <span t-field="b.vendor_id"/>
+                                            </strong>
+                                        </td>
+                                        <td style="width:33.33%;">
+                                            <strong>
+                                                <span t-field="b.name"/>
+                                            </strong>
+                                            <br/>
+                                            <span style="font-size:12px;">
+                                                Date
+                                                <strong>
+                                                    <span t-field="b.date"/>
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td style="width:33.33%;text-align:center;vertical-align:middle;">
+                                            <t t-if="b.qualify_status=='qualified'">
+                                                <span t-field="b.qualify_status"
+                                                      style="border-radius: 10px; border: 1px solid #ACF3AE; padding: 4px; background: #ACF3AE;"/>
+                                                <br/>
+                                                <t t-if="b.type=='single_vendor'">
+                                                    Rank:
+                                                    <strong>
+                                                        <span t-field="b.rank"/>
+                                                    </strong>
+                                                </t>
+                                            </t>
+                                            <t t-if="b.qualify_status=='disqualified'">
+                                                <span t-field="b.qualify_status"
+                                                      style="border-radius: 10px; border: 2px solid #FA6B84; padding: 4px; background: #FA6B84; color: white;"/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <t t-if="b.qualify_status=='disqualified'">
+                                        <tr>
+                                            <td colspan="3">
+                                                <span t-field="b.dis_qualified_reason" style="font-size:13px;"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-else="">
+                                        <tr>
+                                            <td colspan="3" style="width:100%;padding:0px;">
+                                                <table class="table table-borderless table-sm"
+                                                       style="font-size: 14px;margin:0px;">
+                                                    <tr style="border-bottom:1px solid;">
+                                                        <td>
+                                                            <strong>
+                                                                Description
+                                                            </strong>
+                                                        </td>
+                                                        <td>
+                                                            <strong>
+                                                                Code
+                                                            </strong>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <strong>
+                                                                Qty.
+                                                            </strong>
+                                                        </td>
+                                                        <td>
+                                                            <strong>
+                                                                UOM
+                                                            </strong>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <strong>
+                                                                Price/Qty.
+                                                            </strong>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <strong>
+                                                                Total Price
+                                                            </strong>
+                                                        </td>
+                                                    </tr>
+                                                    <t t-foreach="b.bidding_line_ids" t-as="l">
+                                                        <tr style="border-bottom:1px solid;">
+                                                            <t t-if="l.display_type">
+                                                                <td colspan="6"
+                                                                    style="background: #D1D1D1; color: black;font-size:13px;">
+                                                                    <span t-field="l.name"/>
+                                                                </td>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <td>
+                                                                    <span t-field="l.name"/>
+                                                                </td>
+                                                                <td>
+                                                                    <span t-field="l.code"/>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <span t-field="l.qty"/>
+                                                                </td>
+                                                                <td>
+                                                                    <span t-field="l.uom_id"/>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <span t-field="l.price"/>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <span t-field="l.total"/>
+                                                                </td>
+                                                            </t>
+                                                        </tr>
+                                                    </t>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-if="b.qualify_status=='qualified'">
+                                        <tr style="border-top:None;">
+                                            <td colspan="3" style="text-align:right;">
+                                                <strong>
+                                                    Total Amount :
+                                                    <span t-field="b.total_amount"/>
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </table>
+                                <p style="page-break-before:always;"/>
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+        <record id="tender_bidding_info_report_id" model="ir.actions.report">
+            <field name="name">Bidding Statistics</field>
+            <field name="model">tender.information</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">tk_tender_management.tender_bidding_info_qweb_report</field>
+            <field name="report_file">tk_tender_management.tender_bidding_info_qweb_report</field>
+            <field name="paperformat_id" ref="tk_tender_management.tender_paper_format"/>
+            <field name="binding_model_id" ref="model_tender_information"/>
+            <field name="binding_type">report</field>
+            <field name="print_report_name">'Bidding Statistics'</field>
+        </record>
+    </data>
+</odoo>

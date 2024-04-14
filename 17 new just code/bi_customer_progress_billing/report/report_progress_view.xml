@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="custom_document_tax_totals">
+		<t t-foreach="tax_totals['subtotals']" t-as="subtotal_custom">
+			<t t-set="subtotal_to_show" t-value="subtotal_custom['name']"/>
+			<t t-call="account.tax_groups_totals"/>
+		</t>
+	</template>
+
+	<template id="progress_billing">
+		<!-- Multicompany -->
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="invoice">
+				<t t-call="web.external_layout">
+					<div class="page">
+						<h2 class="text-center">Progress Billing</h2>
+						<br/>
+						<div>
+							<table  style="width:100%;border:1px;" class="table table-condensed">
+								<thead>
+									<tr>
+										<th class="text-right">Progress Billing Title</th>
+							            <th class="text-right">Progress Billing Date</th>
+							            <th class="text-right">Due Date</th>
+							        </tr>
+								</thead>
+								<tbody class="bill_tbody">
+								    <tr>
+										<td class="text-center">
+											<span t-field="invoice.progress_billing_title"/>
+										</td>
+										<td class="text-center">
+										    <span t-field="invoice.invoice_date"/>
+										</td>
+										<td class="text-center">
+											<span t-field="invoice.invoice_date_due"/>
+										</td>
+								    </tr>
+								</tbody>
+							</table>
+						</div>
+						<br/>
+						<br/>
+						<table  style="width:100%;border:1px;" class="table table-condensed">
+							<thead>
+								<tr>
+									<th class="text-right">Description</th>
+									<th class="text-right">Quantity</th>
+									<th class="text-right">Unit Price</th>
+									<th class="text-right">Discount</th>
+									<th class="text-right">Taxes</th>
+									<th class="text-right">Subtotal</th>
+								</tr>
+							</thead>
+							<tbody class="invoice_tbody">
+								<tr t-foreach="invoice.invoice_line_ids" t-as="l">
+									<td class="text-center">
+										<span t-field="l.name"/>
+									</td>
+									<td class="text-center">
+										<span t-field="l.quantity"/>
+
+									</td>
+									<td class="text-center">
+										<span t-field="l.price_unit"/>
+									</td>
+									<td class="text-center">
+										<span t-field="l.discount"/>
+									</td>
+									<td class="text-center">
+										<t t-foreach='l.tax_ids' t-as='value'>
+											<t t-esc="value.name"/>
+										</t>
+									</td>
+									<td class="text-center" id="subtotal">
+										<span t-field="l.price_subtotal"
+											  t-options='{"widget": "monetary", "display_currency": invoice.currency_id}'/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="clearfix">
+	                        <div class="row" name="total">
+	                            <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
+
+	                                <table class="table table-sm">
+	                                	<tr class="border-black is-subtotal text-right">
+	                                        <td>
+	                                            <strong>Subtotal</strong>
+	                                        </td>
+                                            <td class="text-end">
+                                               <span t-field="invoice.amount_untaxed"/>
+                                            </td>
+                                        </tr>
+                                            <t t-set="tax_totals" t-value="invoice.tax_totals"/>
+											<t t-if="tax_totals">
+												<t t-call="bi_customer_progress_billing.custom_document_tax_totals"/>
+											</t>
+                                        <tr class="border-black is-subtotal text-right">										
+											<td>
+												<strong>Total</strong>
+											</td>
+											<td class="text-end">
+												<span t-field="invoice.amount_total"/>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+						<br/>
+						<br/>
+						<div>
+							<div class="col-xs-12">
+								<h4 class="text-center">
+									<b>Progress Billing Information</b>
+								</h4>
+								<br/>
+								<table  style="width:100%;border:1px;" class="table table-condensed">
+									<thead>
+										<tr>
+											<t t-if="invoice.move_type in ('out_invoice','out_refund','out_receipt')">
+												<th class="text-right">Total Progress Billing</th>
+									            <th class="text-right">Previously Invoiced</th>
+									            <th class="text-right">Invoice To Date</th>
+									            <th class="text-right">Remaining Progress Billing</th>
+									            <th class="text-right">Previously Invoiced Due</th>
+									            <th class="text-right">Currently Invoiced</th>
+									            <th class="text-right">Total Due</th>
+									        </t>
+
+									        <t t-if="invoice.move_type in ('in_invoice','in_refund','in_receipt')">
+												<th class="text-right">Total Progress Billing</th>
+									            <th class="text-right">Previously Billed</th>
+									            <th class="text-right">Bill To Date</th>
+									            <th class="text-right">Remaining Progress Billing</th>
+									            <th class="text-right">Previously Billed Due</th>
+									            <th class="text-right">Currently Bill</th>
+									            <th class="text-right">Total Due</th>
+									        </t>
+
+								        </tr>
+								    </thead>
+								    <tbody>
+								    	<tr>
+								    		<td class="text-center">
+								    			<span t-esc="invoice.total_progress_billing"
+												  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+								    		</td>
+								    		<td class="text-center">
+								    			<span t-esc="invoice.previous_invoiced"
+												  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+								    		</td>
+								    		<td class="text-center">
+								    			<span t-esc="invoice.invoice_to_date"
+												  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+								    		</td>
+								    		<td class="text-center">
+								    			<span t-esc="invoice.remaining_progress"
+												  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+								    		</td>
+								    		<td class="text-center">
+								    			<span t-esc="invoice.previous_invoice_due"
+												  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+								    		</td>
+								    		<td class="text-center">
+                                                <span t-esc="invoice.current_invoice"
+												  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+								    		</td>
+								    		<td class="text-center">
+                                                <span t-esc="invoice.total_due"
+												  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+								    		</td>
+								    	</tr>
+								    </tbody>
+								</table>
+							</div>
+						</div>
+						<br/>
+						<p t-if="invoice.invoice_payment_term_id">
+							<span t-field="invoice.invoice_payment_term_id.note"/>
+						</p>
+						<p style="page-break-before:always;"></p>
+					</div>
+				</t>
+			</t>
+		</t>
+	</template>
+
+</odoo>

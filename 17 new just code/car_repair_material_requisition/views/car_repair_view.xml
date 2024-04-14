@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="car_repair_support_material_requisition_inherit" model="ir.ui.view">
+            <field name="name">car.repair.support.inherit</field>
+            <field name="model">car.repair.support</field>
+            <field name="inherit_id"
+            ref="car_repair_maintenance_service.car_repair_support_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page[5]" position="after">
+                    <page string="Requisitions Lines">
+                        <field name="material_requisition_car_repair_ids">
+                            <tree editable="bottom">
+                                <field name="custom_requisition_line_id" invisible="1"/>
+                                <field name="requisition_type"/>
+                                <field name="product_id"/>
+                                <field name="description"/>
+                                <field name="qty"/>
+                                <field name="uom"/>
+                                <field name="custom_requisition_line_id"/>
+                                <field name="custom_material_requisition_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='problem']" position="after">
+                    <field name="custom_material_requisition_ids" widget="many2many_tags"/>
+                </xpath>
+                <xpath expr="//button[@name='create_work_order']" position="after">
+                    <button name="%(car_repair_material_requisition.action_car_repair_material_requisition_wizard)d" string="Create Material Requisition" type="action" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//div[@class='oe_button_box']" position="inside">
+                    <button name="action_material_requisition" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="requisition_count == 0" groups="car_repair_maintenance_service.group_car_repair_manager,car_repair_maintenance_service.group_car_repair_user">
+                        <field string="Requisitions" name="requisition_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+                
+            </field>
+        </record>
+        
+    </data>
+</odoo>

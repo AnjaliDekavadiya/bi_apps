@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+        <record id="fleet_vehicle_view_form_inherit_repair_request" model="ir.ui.view">
+            <field name="name">fleet.vehicle.inherit.request</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+            <field name="arch" type="xml">
+                <field name="car_value" position="after">
+                    <field name="custom_product_id"/>
+<!--                    <field name="fleet_repair_id"/-->
+                </field>
+                <field name="driver_id" position="before">
+                    <field name="custom_partner_id"/>
+                </field>
+                <!-- <xpath expr="//form/sheet/group[last()]" position="after"> -->
+                <xpath expr="//form//sheet//notebook" position="inside">
+                    <!-- <notebook colspan="4"> -->
+                      <page string="Service">
+                        <field name="fleet_repair_ids">
+                        <tree string="Review" editable="bottom">
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="event_id"/>
+                            <field name="request_date"/>
+                            <field name="service_type_ids"/>
+                        </tree>
+                        </field>
+                    </page>
+                 <!-- </notebook> -->
+                </xpath>
+            </field>
+          </record>
+          
+          <record id="fleet_vehiclelog_services_view_form_inherit_repairrequest" model="ir.ui.view">
+            <field name="name">fleet.vehicle.log.services.form</field>
+            <field name="model">fleet.vehicle.log.services</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_view_form"/>
+            <field name="arch" type="xml">
+                <!-- <field name="inv_ref" position="after"> -->
+                <xpath expr="//field[@name='vendor_id']" position="after">
+                    <field name="fleet_repair_id"/>
+                </xpath>
+            </field>
+          </record>
+          
+          <record id="fleet_vehicle_service_types_view_tree_inherit_charges" model="ir.ui.view">
+            <field name="name">ffleet.service.type.tree</field>
+            <field name="model">fleet.service.type</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_service_types_view_tree"/>
+            <field name="arch" type="xml">
+                <field name="category" position="before">
+                    <field name="service_time" widget="float_time"/>
+                    <field name="service_charges"/>
+                    <field name="currency_id"/>
+                </field>
+            </field>
+          </record>
+          
+    </data>
+ </odoo>
+ 

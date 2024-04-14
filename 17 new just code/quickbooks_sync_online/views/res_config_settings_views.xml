@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.quickbooks_online</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="99"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">   
+                <app 
+                    data-string="QuickBooks Online"
+                    string="QuickBooks Online"
+                    name="quickbooks_sync_online"
+                    groups="quickbooks_sync_online.qbo_security_group_manager"
+                >
+                    <field name="qbo_refresh_token" invisible="1"/>
+                    <h2>QuickBooks Company</h2>
+                    <div class="row mt16 o_settings_container" name="qbo_company_container">
+                        <strong>
+                            <div class="o_setting_box">
+                                <field name="qbo_company_info"/>
+                            </div>
+                        </strong>
+                        <div class="col-12 col-lg-3 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="is_authenticated"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="is_authenticated"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="is_authorized"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="is_authorized"/>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>QuickBooks Credentials</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_environment"/>
+                                    <field name="qbo_environment" widget="radio"/>
+                                </div>
+                                <div class="text-muted">
+                                    In your Intuit Apps Dashboard settings.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_client_id"/>
+                                    <field name="qbo_client_id"
+                                           readonly="qbo_refresh_token"/>
+                                </div>
+                                <div class="text-muted">
+                                    In your Intuit Apps Dashboard settings.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_client_secret"/>
+                                    <field name="qbo_client_secret"
+                                           readonly="qbo_refresh_token"/>
+                                </div>
+                                <div class="text-muted">
+                                    In your Intuit Apps Dashboard settings.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_company_id"/>
+                                    <field name="qbo_company_id"
+                                           readonly="qbo_refresh_token"/>
+                                </div>
+                                <div class="text-muted">
+                                    In your Intuit Apps Dashboard settings.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_redirect_uri"/>
+                                    <field name="qbo_redirect_uri"/>
+                                </div>
+                                <div class="text-muted">
+                                    In your Intuit Apps Dashboard settings.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane" groups="base.group_no_one">
+                                <div>
+                                    <label for="qbo_csrf_token"/>
+                                    <field name="qbo_csrf_token"/>
+                                </div>
+                                <div class="text-muted">
+                                    debug
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane" groups="base.group_no_one">
+                                <div>
+                                    <label for="qbo_auth_url"/>
+                                    <field name="qbo_auth_url" widget="url"/>
+                                </div>
+                                <div class="text-muted">
+                                    debug
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box" groups="base.group_no_one">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_refresh_token"/>
+                                    <field name="qbo_refresh_token"/>
+                                </div>
+                                <div class="text-muted">
+                                    debug
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box" groups="base.group_no_one">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_access_token"/>
+                                    <field name="qbo_access_token"/>
+                                </div>
+                                <div class="text-muted">
+                                    debug
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Options</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_auto_export"/>
+                                    <field name="qbo_auto_export"/>
+                                </div>
+                                <div class="text-muted">
+                                    Allow automatic export invoices from the beginning of the "Export Date Poin".
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_export_date_point"/>
+                                    <field name="qbo_export_date_point" widget="date"/>
+                                </div>
+                                <div class="text-muted">
+                                    Invoices export date point.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_export_limit"/>
+                                    <field name="qbo_export_limit"/>
+                                </div>
+                                <div class="text-muted">
+                                    Export limit of invoices per time.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_next_call_point"/>
+                                    <field name="qbo_next_call_point"/>
+                                </div>
+                                <div class="text-muted">
+                                    Next automatic export.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_payment_sync_in"/>
+                                    <field name="qbo_payment_sync_in"/>
+                                </div>
+                                <div class="text-muted">
+                                    Special 'Scheduled action' will run periodically to download
+                                    Customer and Vendor Payments from QBO and try to add them 
+                                    to corresponding Customer Invoices/Vendor Bills in Odoo. 
+                                    So one can see real payment status of Invoice/Bill directly in Odoo.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane" groups="base.group_no_one">
+                                <div>
+                                    <label for="qbo_payment_sync_out"/>
+                                    <field name="qbo_payment_sync_out"/>
+                                </div>
+                                <div class="text-muted">
+                                    Special 'Scheduled action' will run periodically and send 
+                                    to QBO Payments that were manually registered in Odoo 
+                                    for Vendor Bills/Customer Invoices.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box" groups="base.group_no_one">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_cus_pay_point"/>
+                                    <field name="qbo_cus_pay_point"/>
+                                </div>
+                                <div class="text-muted">
+                                    Last Date and Time Customer Payments were downloaded from QBO.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box" groups="base.group_no_one">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_ven_pay_point"/>
+                                    <field name="qbo_ven_pay_point"/>
+                                </div>
+                                <div class="text-muted">
+                                    Last Date and Time Vendor Payments were downloaded from QBO.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Product Settings</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_sync_product"/>
+                                    <field name="qbo_sync_product" force_save="1"
+                                           readonly="qbo_sync_product_category"/>
+                                </div>
+                                <div class="text-muted">
+                                    With an active checkbox should sync a Product and all its stuff.<br/>
+                                    With an inactive checkbox should sync only description of the Invoice line.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_sync_product_category"/>
+                                    <field name="qbo_sync_product_category" force_save="1"
+                                           readonly="not qbo_sync_product"/>
+                                </div>
+                                <div class="text-muted">
+                                    Sync Product as Product category Name and description of the Invoice line.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_sync_storable_to_consumable"/>
+                                    <field name="qbo_sync_storable_to_consumable" force_save="1"
+                                           readonly="qbo_sync_product"/>
+                                </div>
+                                <div class="text-muted">
+                                    Export Storable Product as Consumable.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h2>Accounting Settings</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_export_out_invoice"/>
+                                    <field name="qbo_export_out_invoice"/>
+                                </div>
+                                <div class="text-muted">
+                                    Allowed export Customer Invoices.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_export_out_refund"/>
+                                    <field name="qbo_export_out_refund"/>
+                                </div>
+                                <div class="text-muted">
+                                    Allowed export Credit Notes.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_export_in_invoice"/>
+                                    <field name="qbo_export_in_invoice"/>
+                                </div>
+                                <div class="text-muted">
+                                    Allowed export Vendor Bills.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_export_in_refund"/>
+                                    <field name="qbo_export_in_refund"/>
+                                </div>
+                                <div class="text-muted">
+                                    Allowed Export Vendor Refunds.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_default_stock_valuation_account_id"/>
+                                    <field name="qbo_default_stock_valuation_account_id"
+                                           options="{'no_create': True, 'no_quick_create': True, 'no_create_edit': True}"
+                                           required="qbo_sync_product and qbo_company_id"/>
+                                </div>
+                                <div class="text-muted">
+                                    Select here account that will be used for products that are Storable,
+                                    but there "Inventory Valuation" method is set to Manual.
+                                    We need it cause quickbooks required this account for Stockable products.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_default_write_off_account_id"/>
+                                    <field name="qbo_default_write_off_account_id"
+                                           options="{'no_create': True, 'no_quick_create': True, 'no_create_edit': True}"
+                                           reauired="qbo_payment_sync_in"/>
+                                </div>
+                                <div class="text-muted">
+                                    Select here account that will be used to record difference between payment
+                                    downloaded from QBO and Invoice total in Odoo in case QBO Invoice is marked
+                                    as Paid and we also need to closed it on Odoo side.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <label for="qbo_def_journal_id"/>
+                                    <field name="qbo_def_journal_id"
+                                           options="{'no_create': True, 'no_quick_create': True, 'no_create_edit': True}"
+                                           required="qbo_payment_sync_in"
+                                           domain="[('company_id', '=', company_id), ('type', 'in', ('bank', 'cash'))]"/>
+                                </div>
+                                <div class="text-muted">
+                                    In Quickbooks it is possible to Register Payment without Payment method specified. 
+                                    To be able to auto-create such payment in Odoo, we need to specify "Default Payment Journal".
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Actions</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <button string="Authorize" type="object" class="btn-primary"
+                                        name="get_qbo_credentials"
+                                        invisible="not qbo_client_id or not qbo_client_secret or not qbo_company_id"
+                                />
+                                <button string="Authorize" type="object" class="btn-primary"
+                                        name="get_qbo_credentials"
+                                        disabled="disabled"
+                                        invisible="qbo_client_id and qbo_client_secret and qbo_company_id"
+                                />
+                                <div class="text-muted">
+                                    Authorization to your Intuit Company.
+                                </div>
+                                <div class="text-muted" groups="base.group_no_one">
+                                    An authorization token is valid for 100 days.
+                                    <p>Next manual re-authorizing:
+                                        <field name="refresh_token_update_point"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane" groups="base.group_no_one">
+                                <button string="Refresh Token" type="object"
+                                        invisible="not qbo_refresh_token"
+                                        name="refresh_qbo_access_token_settings"/>
+                                <button string="Refresh Token" type="object"
+                                        invisible="qbo_refresh_token"
+                                        name="refresh_qbo_access_token_settings"
+                                        disabled="disabled"/>
+                                <div class="text-muted">
+                                    The access token will be updated every hour automatically.
+                                    It can be done manually as well.
+                                    <div>
+                                        <div>Access token is valid until:
+                                            <field name="access_token_update_point"/>
+                                        </div>
+                                        <div>Next automated updating:
+                                            <field name="access_token_cron_point"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <button string="Revoke Access" type="object" name="revoke_qbo_access_settings"/>
+                                <div class="text-muted">
+                                    Revoke access to your Intuit Company / Clear Settings Form.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

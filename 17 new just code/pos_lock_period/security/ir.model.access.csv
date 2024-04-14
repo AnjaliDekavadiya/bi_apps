@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_pos_lock_period_pos_manager,access_custom_pos_lock_period_pos_manager,model_custom_pos_lock_period,point_of_sale.group_pos_manager,1,1,1,1
+access_custom_pos_lock_period_pos_employee,access_custom_pos_lock_period_pos_emloyee,model_custom_pos_lock_period,base.group_user,1,1,1,0

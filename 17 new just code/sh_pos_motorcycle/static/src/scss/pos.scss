@@ -1,0 +1,196 @@
+.pos {
+	.sh_motorcycle_search {
+		display: flex;	
+		overflow-x: auto;
+		flex: none;
+		.search-box {
+			font-size: 13px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			input {
+				font-size: 13px;
+				height: 30px;
+				border: none;
+				color: #63717f;
+				padding-left: 38px;
+				padding-right: 35px;
+				outline: none !important;
+                &:disabled{
+                    background-color: #e8e8e8;
+                }
+			}
+			.icon {
+				position: absolute;
+				left: 0;
+				margin-left: 12px;
+				z-index: 1;
+				color: #4f5b66;
+			}
+			.clear-icon {
+				position: absolute;
+				right: 0;
+				margin-right: 12px;
+				z-index: 1;
+				color: #4f5b66;
+				cursor: pointer;
+			}
+		}
+		.sh_search_box {
+			margin: 8px;
+		}
+	}
+	.pos-rightheader.sh_main_right_header {
+		.header-button {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		.status-buttons-portal {
+			.status-buttons {
+				.oe_status {
+					padding: 14px 6px;
+				}
+			}
+		}
+	}
+	.sh_auto_part_popup{
+        .product_details_tbl {
+			thead {
+				background: #4A4F59;
+				color: #fff;
+				text-transform: capitalize;
+				position: sticky;
+				top: 0;
+				th {
+					padding: 10px 10px;
+					font-size: 14px;
+				}
+				th.sh_make_th {
+					width: 25%;word-break: break-word;
+				}
+				th.sh_model_th {
+					width: 25%;word-break: break-word;
+				}
+				th.sh_start_th {
+					width: 25%;word-break: break-word;
+				}
+				th.sh_end_th {
+					width: 25%;word-break: break-word;
+				}
+			}
+			tbody {
+				td {
+					padding: 10px 10px;
+					font-size: 15px;
+					word-break: break-word;
+					text-transform: capitalize;
+				}
+				tr {
+					&:nth-child(odd) {
+						background: #E0E2E6;
+					}
+					&:hover {
+						color: #fff;
+						background-color: $o-brand-primary;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+		.main_div_sh_payment {
+			margin: 0px;
+			max-height: 180px;
+			min-height: 180px;
+			overflow: auto;
+            padding: 0;
+		}
+    }
+		
+}
+.product {
+	.common_product_tag {
+		left: -26px !important;
+		position: absolute;
+		top: 11%;
+		height: 17px;
+		color: #fff;
+		width: 65%;
+		line-height: 15px;
+		background: gray;
+		transform: rotate(-53deg);
+		padding: 1px 10px 0 25px;
+		font-size: 10px;
+        @include media-breakpoint-down(md) {
+            left: -23px !important;
+            top: 9%;
+            width: 67%;
+        }
+	}
+	.product_details {
+		right: 0px;
+	}
+}
+.product_details_tbl {
+    width: 100%;
+}
+.product-image-icon {
+	position: absolute;
+	bottom: 4px;
+	font-size: 17px;
+	right: 4px;
+	line-height: 13px;
+	border-radius: 2px;
+	z-index: 1000;
+	padding: 3px;
+}
+.product-image-icon.sh_is_enlarge {
+	right: 22px;
+}
+
+@media (min-width: 992px){
+    .pos {
+        .pos-rightheader.sh_main_right_header {
+            .status-buttons-portal {
+                .status-buttons {
+                    .oe_status {
+                        &:first-child {
+                            white-space: nowrap;
+                            width: 90px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+@media (max-width: 767.98px){
+
+    .pos {
+        .product_details_tbl {
+            thead {
+                white-space: nowrap;
+            }
+            tbody {
+                td {
+                    white-space: nowrap;
+                }
+            }
+        }
+        .sh_product {
+            &:active {
+                border: 2px solid $o-brand-primary;
+            }
+        }
+    }
+    .sh_motorcycle_search {
+        justify-content: unset !important;
+        overflow: auto;
+        .sh_hide_search {
+            display: none !important;
+        }
+    }
+    
+}

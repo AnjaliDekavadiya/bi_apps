@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data>
+        <data noupdate="1">
+        
+            <record id="wk_sellers_event_rule" model="ir.rule">
+                <field name="name">Seller Events</field>
+                <field name="model_id" ref="marketplace_event.model_event_event"/>
+                <field name="domain_force">['|',('marketplace_seller_id.id','=',user.partner_id.id),('create_uid','=', user.id)]</field>
+                <field name="groups" eval="[(4, ref('odoo_marketplace.marketplace_seller_group'))]"/>
+            </record>
+            
+            <record id="wk_officer_event_rule" model="ir.rule">
+                <field name="name">Officer Events Rule</field>
+                <field name="model_id" ref="marketplace_event.model_event_event"/>
+                <field name="domain_force">[(1,'=',1)]</field>
+                <field name="groups" eval="[(4, ref('odoo_marketplace.marketplace_officer_group'))]"/>
+            </record>
+
+            <record id="wk_seller_partner_create_rule" model="ir.rule">
+                <field name="name">Seller Partner Create Rule</field>
+                <field name="model_id" ref="model_res_partner"/>
+                <field name="domain_force">[(1,'=',1)]</field>
+                <field name="perm_write" eval="1"/>
+                <field name="perm_read" eval="1"/>
+                <field name="perm_create" eval="1"/>
+                <field name="perm_unlink" eval="0"/>
+                <field name="groups" eval="[(4, ref('odoo_marketplace.marketplace_seller_group'))]"/>
+            </record>
+
+            <record id="show_seller_event_event_ticket_rule" model="ir.rule">
+                <field name="name">Seller Event Event Ticket</field>
+                <field name="model_id" ref="event.model_event_event_ticket"/>
+                <field name="domain_force">[(1,'=',1)]</field>
+                <field name="groups" eval="[(4, ref('odoo_marketplace.marketplace_seller_group'))]"/>
+            </record>
+        </data>
+    </data>
+</odoo>

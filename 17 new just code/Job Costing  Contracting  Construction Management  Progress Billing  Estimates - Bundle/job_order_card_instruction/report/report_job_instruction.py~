@@ -1,0 +1,22 @@
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
+from odoo import api, models
+
+
+class report_job_instruction(models.AbstractModel):
+    _name = 'report.job_order_card_instruction.job_instruction_print'
+
+    @api.model
+    def get_report_values(self, docids, data=None):
+        doc_ids = docids
+        doc_model = self._context.get('active_model', 'job.instruction')
+
+        docargs = {
+            'doc_ids': doc_ids,
+            'doc_model':  doc_model,
+            'docs': self.env[doc_model].browse(doc_ids),
+            'data': data,
+            #'work_order_id' : work_order_id
+        }
+        return docargs

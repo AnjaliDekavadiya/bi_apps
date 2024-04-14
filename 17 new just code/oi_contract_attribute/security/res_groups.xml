@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="group_employee_attribute" model="res.groups">
+		<field name="name">Employee Attribute</field>
+		<field name="implied_ids" eval="[(4, ref('hr.group_hr_user'))]" />
+		<field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]" />
+	</record>
+	
+	<record id="hr_contract.group_hr_contract_manager" model="res.groups">
+		<field name="implied_ids" eval="[(4, ref('group_employee_attribute'))]" />
+	</record>	
+
+</odoo>

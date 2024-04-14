@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_sale_integration_form" model="ir.ui.view">
+            <field name="name">sale.integration.form</field>
+            <field name="model">sale.integration</field>
+            <field name="inherit_id" ref="integration.view_sale_integration_form" />
+            <field name="arch" type="xml">
+                <button name="%(integration.import_customers_wizard_action)d" position="attributes">
+                    <attribute name="invisible">type_api == 'woocommerce'</attribute>
+                </button>
+                <button name="%(integration.import_customers_wizard_action)d" position="after">
+                    <button name="%(import_customers_wizard_action_woocommerce)d"
+                            string="Import Customers"
+                            type="action"
+                            invisible="type_api != 'woocommerce'"
+                            class="btn btn-outline-primary text-uppercase w-100"
+                    />
+                </button>
+                <field name="gift_wrapping_product_id" position="after">
+                    <field name="fee_line_product_id" invisible="type_api != 'woocommerce'" context="{'default_detailed_type': 'service', 'default_exclude_from_synchronization': True, 'default_integration_ids': {}, }" />
+                </field>
+                <field name="so_external_reference_field" position="after">
+                    <field name="tracking_number_api_field_name" invisible="type_api != 'woocommerce'"/>
+                </field>
+                <field name="customer_company_vat_field_name" position="after">
+                    <field name="woocommerce_vat_metafield_field_name"
+                           invisible="type_api != 'woocommerce'" required="customer_company_vat_field_name != False and type_api == 'woocommerce'"/>
+
+                    <label for="set_customer_language_based_on_orders_metadata" invisible="type_api != 'woocommerce'">Set Customer Language based on language from orders metadata</label>
+                    <div invisible="type_api != 'woocommerce'">
+                        <field name="set_customer_language_based_on_orders_metadata" widget="boolean_toggle"/>
+
+                        <div colspan="1" class="text-muted">
+                            WPML plugin is required for this feature to work.
+                            Check <a href="https://ventortech.atlassian.net/servicedesk/customer/portal/1/article/467042381" target="_blank"> this link</a> for more details
+                        </div>
+                    </div>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="quotation_comp_particular_tree" model="ir.ui.view">
+            <field name="name">quotation.compare.particular.tree</field>
+            <field name="model">quotation.compare.particular</field>
+            <field name="arch" type="xml">
+                <tree string="Particular" create="false" delete="false" editable="bottom">
+                    <field name="is_approve"/>
+                    <field name="product_id" readonly="1"/>
+                    <field name="price_expt" readonly="1"/>
+                    <field name="product_qty" invisible="0"/>
+                    <field name="product_uom" invisible="0"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="quotation_comparison_form_view" model="ir.ui.view">
+            <field name="name">quotation.comparison.view</field>
+            <field name="model">quotation.comparison</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Comparison Details">
+
+                    <header>
+                        <button name="confirm_action" type="object" string="confirm" class="oe_highlight" invisible="state not in ('draft')"/>
+                        <field name="state" readonly="1" widget="statusbar"/>
+                    </header>
+
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="sequence_name" readonly="1"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="project_id" readonly="state == 'confirm'"/>
+                                <field name="project_wbs_id" readonly="state == 'confirm'"
+                                       domain="[('project_id', '!=', False), ('project_id', '=', project_id), ('sub_project', '=', sub_project), ('is_wbs', '=', True)]"/>
+                            </group>
+                            <group>
+                                <field name="sub_project" domain="[('project_id', '=', project_id)]" readonly="state == 'confirm'"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <group>
+                                <field name="from_date" readonly="state == 'confirm'"/>
+                                <field name="selected_vendors"/>
+                            </group>
+                            <group>
+                                <field name="to_date" readonly="state == 'confirm'"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <group string="Material List">
+                                <field name="material_line">
+                                    <tree create="false" delete="false" editable="bottom">
+                                        <field name="material_id"/>
+                                        <field name="is_material" readonly="0"/>
+                                    </tree>
+                                </field>
+                            </group>
+
+                            <group string="Supplier List">
+                                <field name="vendors_line">
+                                    <tree create="false" delete="false" editable="bottom">
+                                        <field name="vendor_id"/>
+                                        <field name="is_vendor"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <button name="compute_quotation_details" type="object" class="oe_left fa fa-search" string="Search Quotation" invisible="state in ('confirm')"/>
+                        </group>
+
+                        <separator string="Quotation Details" invisible="state not in ('draft')"/>
+                        <field name="quotation_details" invisible="state not in ('draft')">
+                            <tree create="false" delete="false" editable="bottom">
+                                <field name="is_use" readonly="0"/>
+                                <field name="vendor_id" readonly="1"/>
+                                <field name="name" readonly="1"/>
+                                <field name="date" readonly="1"/>
+                                <field name="product_id" readonly="1"/>
+                                <field name="product_qty" readonly="1"/>
+                                <field name="product_uom" readonly="1"/>
+                                <field name="price_unit" readonly="1"/>
+                                <field name="tax_id" widget="many2many_tags" readonly="1" domain="[('type_tax_use', '=', 'purchase')]" context="{'default_type_tax_use': 'purchase'}"/>
+                                <field name="tax_percent" invisible="1"/>
+                                <field name="tax" readonly="1"/>
+                                <field name="negotiated_rate" readonly="1"/>
+                                <field name="price_subtotal" readonly="1"/>
+                            </tree>
+                        </field>
+
+                        <group class="oe_subtotal_footer oe_right" invisible="state not in ('draft')">
+                            <field name="total_amount"/>
+                        </group>
+
+                        <group class="oe_subtotal_footer oe_right">
+                            <button name="compute_selected_quotations" type="object" class="fa fa-plus" string="Add" invisible="state in ('confirm')"/>
+                        </group>
+
+                        <separator string="Particulars"/>
+                        <field name="quotation_comp_particular" nolabel="1" readonly="state == 'confirm'">
+                            <tree string="Particular" create="false" delete="false" editable="bottom">
+                                <field name="is_approve"/>
+                                <field name="product_id" readonly="1"/>
+                                <field name="price_expt" readonly="1"/>
+                                <field name="product_qty" invisible="0"/>
+                                <field name="product_uom" invisible="0"/>
+                            </tree>
+                        </field>
+
+
+                        <group name="vendor1" invisible="selected_vendors == 0">
+                            <div style="margin-top: 10px;margin-right: 10px">
+                                <h2>
+                                    <field name="vendor1" nolabel="1" readonly="1"/>
+                                </h2>
+
+                                <field name="quotation_comp_vendor1" nolabel="1" readonly="state == 'confirm'">
+                                    <tree string="Vendor lines" create="false" delete="false" editable="bottom" colors="blue:is_approve==True">
+                                        <field name="is_approve" invisible="0"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="negotiated_rate"/>
+                                        <field name="tax_id" invisible="1"/>
+                                        <field name="amount" readonly="1"/>
+                                    </tree>
+                                </field>
+
+                                <field name="quotation_comp_tax_details1" nolabel="1" readonly="state == 'confirm'">
+                                    <tree string="tax_details_vendor1" create="false" delete="false" editable="bottom">
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use', '=', 'purchase')]" context="{'default_type_tax_use': 'purchase'}"/>
+                                        <field name="tax"/>
+                                    </tree>
+                                </field>
+
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_vendor1"/>
+                                </group>
+
+                                <group>
+                                    <button name="get_taxes1" string="Calculate All Taxes" type="object" class="oe_link" invisible="state in ('confirm')"/>
+                                </group>
+                            </div>
+                        </group>
+
+                        <group name="vendor2" invisible="vendor2 == False">
+                            <div style="margin-top: 10px;margin-right: 10px">
+                                <h2>
+                                    <field name="vendor2" nolabel="1" readonly="1"/>
+                                </h2>
+
+                                <field name="quotation_comp_vendor2" readonly="state == 'confirm'">
+                                    <tree priority="1" string="Vendor Lines" create="false" delete="false" editable="bottom" colors="blue:is_approve==True">
+                                        <field name="is_approve"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="negotiated_rate"/>
+                                        <field name="amount" readonly="1"/>
+                                        <field name="tax_id" invisible="1"/>
+                                    </tree>
+                                </field>
+
+                                <field name="quotation_comp_tax_details2" nolabel="1" readonly="state == 'confirm'">
+                                    <tree string="tax_details_vendor2" create="false" delete="false" editable="bottom">
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use', '=', 'purchase')]" context="{'default_type_tax_use': 'purchase'}"/>
+                                        <field name="tax"/>
+                                    </tree>
+                                </field>
+
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_vendor2"/>
+                                </group>
+
+                            </div>
+                        </group>
+
+                        <group name="vendor3" invisible="vendor3 == False">
+                            <div style="margin-top: 10px;margin-right: 10px">
+                                <h2>
+                                    <field name="vendor3" nolabel="1" readonly="1"/>
+                                </h2>
+
+                                <field name="quotation_comp_vendor3" readonly="state == 'confirm'">
+                                    <tree string="Vendor Lines" create="false" delete="false" editable="bottom" colors="blue:is_approve==True">
+                                        <field name="is_approve"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="negotiated_rate"/>
+                                        <field name="amount" readonly="1"/>
+                                        <field name="tax_id" invisible="1"/>
+                                    </tree>
+                                </field>
+
+                                <field name="quotation_comp_tax_details3" nolabel="1" readonly="state == 'confirm'">
+                                    <tree string="tax_details_vendor3" create="false" delete="false" editable="bottom">
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use', '=', 'purchase')]" context="{'default_type_tax_use': 'purchase'}"/>
+                                        <field name="tax"/>
+                                    </tree>
+                                </field>
+
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_vendor3"/>
+                                </group>
+                            </div>
+                        </group>
+
+                        <group name="vendor4" invisible="vendor4 == False">
+                            <div style="margin-top: 10px;margin-right: 10px">
+                                <h2>
+                                    <field name="vendor4" nolabel="1" readonly="1"/>
+                                </h2>
+
+                                <field name="quotation_comp_vendor4" readonly="state == 'confirm'">
+                                    <tree string="Vendor lines" create="false" delete="false" editable="bottom" colors="blue:is_approve==True">
+                                        <field name="is_approve"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="negotiated_rate"/>
+                                        <field name="amount" readonly="1"/>
+                                        <field name="tax_id" invisible="1"/>
+                                    </tree>
+                                </field>
+
+                                <field name="quotation_comp_tax_details4" nolabel="1" readonly="state == 'confirm'">
+                                    <tree string="tax_details_vendor4" create="false" delete="false" editable="bottom">
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use', '=', 'purchase')]" context="{'default_type_tax_use': 'purchase'}"/>
+                                        <field name="tax"/>
+                                    </tree>
+                                </field>
+
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_vendor4"/>
+                                </group>
+                            </div>
+                        </group>
+
+                        <group name="vendor5" invisible="vendor5 == False">
+                            <div style="margin-top: 10px; margin-right: 10px;">
+                                <h2>
+                                    <field name="vendor5" nolabel="1" readonly="1"/>
+                                </h2>
+
+                                <field name="quotation_comp_vendor5" nolabel="1" readonly="state == 'confirm'">
+                                    <tree string="Vendor Lines" create="false" delete="false" editable="bottom" colors="blue:is_approve==True">
+                                        <field name="is_approve"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="negotiated_rate"/>
+                                        <field name="amount" readonly="1"/>
+                                        <field name="tax_id" invisible="1"/>
+                                    </tree>
+                                </field>
+
+                                <field name="quotation_comp_tax_details5" nolabel="1" readonly="state == 'confirm'">
+                                    <tree string="tax_details_vendor5" create="false" delete="false" editable="bottom">
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use', '=', 'purchase')]" context="{'default_type_tax_use': 'purchase'}"/>
+                                        <field name="tax"/>
+                                    </tree>
+                                </field>
+
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_vendor5"/>
+                                </group>
+                            </div>
+                        </group>
+
+                        <group name="vendor6" invisible="vendor6 == False">
+                            <div style="margin-top: 10px; margin-right: 10px;">
+                                <h2>
+                                    <field name="vendor6" nolabel="1" readonly="1"/>
+                                </h2>
+
+                                <field name="quotation_comp_vendor6" nolabel="1" readonly="state == 'confirm'">
+                                    <tree string="Vendor Lines" create="false" delete="false" editable="bottom" colors="blue:is_approve==True">
+                                        <field name="is_approve"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="negotiated_rate"/>
+                                        <field name="amount" readonly="1"/>
+                                        <field name="tax_id" invisible="1"/>
+                                    </tree>
+                                </field>
+
+                                <field name="quotation_comp_tax_details6" nolabel="1" readonly="state == 'confirm'">
+                                    <tree string="tax_details_vendor6" create="false" delete="false" editable="bottom">
+                                        <field name="vendor_id" invisible="1"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use', '=', 'purchase')]" context="{'default_type_tax_use': 'purchase'}"/>
+                                        <field name="tax"/>
+                                    </tree>
+                                </field>
+
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_vendor6"/>
+                                </group>
+                            </div>
+                        </group>
+
+                        <separator string="Terms and Conditions"/>
+                        <field name="description1" placeholder="External note..."/>
+                        <field name="description2" placeholder="External note..."/>
+                        <field name="description3" placeholder="External note..."/>
+                        <field name="description4" placeholder="External note..."/>
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="quotation_compare_search_view" model="ir.ui.view">
+            <field name="name">quotation.comparison.search.form</field>
+            <field name="model">quotation.comparison</field>
+            <field name="arch" type="xml">
+                <search string="Tasks">
+                    <field name="project_id"/>
+                    <field name="project_wbs_id"/>
+                    <field name="sequence_name"/>
+                    <field name="state"/>
+
+                    <separator/>
+                    <filter string="Confirmed" name="confirmed" domain="[('state', '=', 'confirm')]"/>
+                    <filter string="Not Confirmed" name="not confirmed" domain="[('state', '=', 'draft')]"/>
+                    <separator/>
+
+                    <group expand="0" string="Group By">
+                        <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
+                        <filter string="Project Wbs" name="project webs" domain="[]" context="{'group_by': 'project_wbs_id'}"/>
+                        <filter string="Name/No" name="nameno" domain="[]" context="{'group_by': 'sequence_name'}"/>
+                        <filter string="State" name="state" domain="[]" context="{'group_by': 'state'}"/>
+                        <separator/>
+                    </group>
+
+                </search>
+            </field>
+        </record>
+
+        <record id="quotation_comparison_tree_view" model="ir.ui.view">
+            <field name="name">quotation.comparison.tree</field>
+            <field name="model">quotation.comparison</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="quotation_comparison_tree">
+                    <field name="sequence_name"/>
+                    <field name="project_wbs_id"/>
+                    <field name="project_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="quotation_comparison_action" model="ir.actions.act_window">
+            <field name="name">Quotation Comparison</field>
+            <field name="res_model">quotation.comparison</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="quotation_comparison_id" parent="purchase.menu_procurement_management" sequence="2" name="Quotation Comparison" action="quotation_comparison_action" groups="pragtech_purchase.group_fleet_user"/>
+
+        <record id="material_list_tree_view" model="ir.ui.view">
+            <field name="name">material.list.tree</field>
+            <field name="model">material.list</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="material_list_tree">
+                    <field name="material_id"/>
+                    <field name="is_material"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- POS order feedback mail -->
+        <record id="custom_customer_pos_feedback_email_template" model="mail.template">
+            <field name="name">POS: Custom customer feedback mail</field>
+            <field name="model_id" ref="point_of_sale.model_pos_order"/>
+            <field name="email_from">{{object.user_id.email_formatted or user.email_formatted}}</field>
+            <field name="partner_to">{{object.partner_id.id}}</field>
+            <field name="subject">POS Order({{object.name or 'n/a'}}): {{object.pos_reference or 'n/a'}} (Feedback Mail)</field>
+            <!-- <field name="report_template" ref="pos_order_report.pos_order_id"/>
+            <field name="report_name">{{object.name or ''}}</field> -->
+            <field name="report_template_ids" eval="[(4, ref('pos_order_report.pos_order_id'))]"/>
+            <field name="lang">{{object.partner_id.lang}}</field>
+            <!-- <field name="user_signature" eval="False"/> -->
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear <t t-out="object.partner_id.name"/>,
+                        <br /><br />
+                        <p>Thank you for visit our shop we are request you to fill your valuable feedback by click on below button.
+                        </p>
+                        <br /><br />
+                        <t t-set="feedback_url" t-value="ctx.get('feedback_url')"/>
+                        <a style="padding: 8px 30px 8px 30px;border-radius: 6px;border: 1px solid #CCCCCC;background:#008080;margin-left: 2px;text-decoration: none;color:#FFFFFF;" t-att-href="feedback_url" target="_blank">Click here to give feedback</a>
+                        <br/>
+                        <br/>
+                        Do not hesitate to contact us if you have any questions.
+                        <br/><br/>
+                        <center>
+                            <t t-set="unsubscribe_url" t-value="ctx.get('unsubscribe_url')"/>
+                            <a style="padding: 8px 30px 8px 30px;border-radius: 6px;border: 1px solid #CCCCCC;background:#ffffff;margin-left: 2px;text-decoration: none;color:#bfbfbf;" t-att-href="unsubscribe_url" target="_blank" >UNSUBSCRIBE</a>
+                        </center>
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

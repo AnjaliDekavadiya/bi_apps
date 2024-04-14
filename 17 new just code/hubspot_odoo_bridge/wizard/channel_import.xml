@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+<odoo>
+	<data>
+		<record id="form_channel_import_wizard" model="ir.ui.view">
+			<field name="name">channel.import.form</field>
+			<field name="model">channel.import</field>
+			<field name="inherit_id" ref="odoo_multi_channel_crm.form_channel_import_wizard"/>
+			<field name="arch" type="xml">
+				<xpath expr="//group[@name='filter_type']" position="inside">
+					<field
+						name="hubspot_filter"
+						invisible = "channel != 'hubspot'"
+						required = "channel == 'hubspot'"
+					/>
+				</xpath>
+				<xpath expr="//group[@name='filter']" position="inside">
+					<field
+						name="hubspot_id"
+						invisible = "channel == 'hubspot' and hubspot_filter != 'id'"
+						required = "channel == 'hubspot' and hubspot_filter != 'id'"
+					/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

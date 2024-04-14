@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data>
+        <template id="paypal_recurring_form" inherit_id="payment_paypal_express.paypal_checkout_form">
+            <xpath expr="//input[@name='amount']" position="after">
+                <input type='hidden' name='plan_id' t-att-value='plan_id'/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

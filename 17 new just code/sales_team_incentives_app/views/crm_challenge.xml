@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record model="ir.ui.view" id="view_crm_challenge_kanban">
+            <field name="name">crm.challenge.kanban</field>
+            <field name="model">crm.challenge</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="assign_chal"/>
+                    <field name="chal_name"/>
+                    <field name="crm_goal_details_ids"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                                <div>
+                                    <strong class="o_kanban_record_title"><span><field name="chal_name"/></span></strong>
+                                </div>
+                                <div>
+                                    <span class="o_kanban_record_subtitle"><field name="crm_goal_details_ids"/></span>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_right">
+                                        <t t-foreach="record.assign_chal.raw_value" t-as="room">
+                                        <img t-att-src="kanban_image('res.users', 'image_128',room)" t-att-title="room" t-att-alt="room" class="oe_kanban_avatar float-right"/>
+                                    </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="crm_challenge_view" model="ir.ui.view">
+            <field name="name">crm.challenge.view</field>
+            <field name="model">crm.challenge</field>
+            <field name="arch" type="xml">
+                <form string="CRMChallenge">
+                    <header>
+                        <button name="start_challenge" class="btn-primary" type="object" string="START CHALLENGE" invisible="state not in ['draft']"/>
+                        <button name="refresh_challenge" class="btn-primary" type="object" string="Refresh Challenge" invisible="state in ['draft']"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,progress,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_goals"
+                                    type="object"
+                                    string="Related Goals"
+                                    class="oe_stat_button"
+                                    icon="fa-table"
+                                    invisible="state == 'draft'">
+                            </button>
+                            <button name="action_view_scheme"
+                                    type="object"
+                                    string="Related Schemes"
+                                    class="oe_stat_button"
+                                    icon="fa-arrow-right"
+                                    invisible="state == 'draft'">
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="chal_name" required="1"/>
+                            </group>
+                            <group>
+                                <button class="btn btn-link" name="records_user" type="object" string="Records">
+                                    <i class="fa arrow right" role="img" title="Switch to automatic probability" aria-label="Switch to automatic probability"></i>
+                                </button>
+                            </group>
+                            <group>
+                              <field name="assign_chal" widget="many2many_tags" required="1"/>
+                            </group>
+                            <group>
+                                <field name="periodicity" required="1"/>
+                                <field name="disp_mode" widget="radio"/>
+                            </group>
+                            <group>
+                                <field name="responsible_id"/>
+                                <field name="inc_calc"/>
+                                <field name="start_date" required="1"/>
+                                <field name="end_date" required="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Goals" name="goals">
+                                <field name="crm_goal_details_ids">
+                                    <tree editable="bottom">
+                                        <field name="name" required="1"/>
+                                        <field name="requirements" string="Goal Performance" required="1"/>
+                                        <field name="target_value" required="1"/>
+                                        <field name="suffix"/>
+                                    </tree>
+                                </field>
+                            </page>
+
+                            <page string="Reward" name="reward">
+                                <group>
+                                    <field name="crm_lost_id"/>
+                                    <field name="responsible_id" string="For 1st User"/>
+                                    <field name="reward_boolean"/>
+                                </group>
+                            </page>
+                            <page string="Advanced Options" name="adv_options">
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="crm_challenge_action_view" model="ir.actions.act_window">
+                <field name="name">CRM Challenge</field>
+                <field name="res_model">crm.challenge</field>
+                <field name="view_mode">kanban,form</field>
+        </record>
+
+        <menuitem id="crm_challenge_menuitem_id" parent="crm.crm_menu_root" name="Challenge" sequence="26" />
+
+        <menuitem id="crm_challenges_menuitem_id" parent="crm_challenge_menuitem_id" name="Challenges" sequence="2" action="crm_challenge_action_view" />
+
+        <menuitem id="crm_badges_menuitem_id" parent="crm_challenge_menuitem_id" name="Badges" sequence="1" action="crm_challenge_action_view" />
+
+
+</odoo>

@@ -1,0 +1,969 @@
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+
+<section class="oe_container ml-4" id="wk_header">
+    <div class="mt32 mb32">
+      <h2 class="text-center"
+          style="
+            font-family: 'Open Sans', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 41px;
+            letter-spacing: 0px;
+            text-align: center;
+            color: #000000;">
+            <strong>Royal Mail Pro Shipping</strong>
+      </h2>
+      <h5 class="mt8 mb8 text-center"
+          style="
+            font-family: 'Montserrat';
+            font-style: italic;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0px;
+            text-align: center;
+            color: #333333;">
+            <i> Upscale Shipping Convenience in Odoo! </i>
+      </h5>
+    </div>
+    <div class="row mt16 mb16 py-2 m-1">
+      <div class="container col-md-6 border-right"
+        style="
+          font-family: 'Open Sans', sans-serif;
+          vertical-align: middle;
+          display: grid;">
+        <p style="
+            height: fit-content;
+            font-family: 'Open Sans', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: #484848;"
+            class="mb4 mt4 mr8">
+            Logistics delivery is made easier with the help of Royal Mail Pro Shipping. Create 
+            several deliveries of products and a combined order for them for Royal Mail on Odoo. 
+            Each day, the cron scheduler generates combined orders for Royal Mail. It allows both 
+            domestic and international shipping. Admin can set rates for shipping as well.
+        </p>
+      </div>
+      <div class="container col-md-6 border-left">
+        <h4 class="ml-md-3">
+          <strong
+            style="
+              font-family: 'Open Sans', sans-serif;
+              font-style: normal;
+              font-weight: 700;
+              font-size: 18px;
+              line-height: 30px;
+              color: #333333;">
+              Information</strong>
+        </h4>
+        <div class="mt-2 ml-md-3" style="display: flex">
+          <span class="ml-1 mr-2 my-auto">
+            <img src="icon-user-guide.png" alt="user-guide"/>
+          </span>
+          <div style="font-weight: 600; font-size: 14px; line-height: 10px" class="mt-2">
+              User Guide
+          </div>
+        </div>
+        <div class="ml-md-3" style="display: flex">
+          <span style="font-size: 16px; margin-top: 0.2rem">
+            https://webkul.com/blog/guide-for-odoo-royal-mail-proshipping-delivery-carrier/
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="oe_container lead mb-4">
+    <div
+      class="mt16 mb16 m-1 shadow-sm border pt-3 p-2"
+      style="
+        background-color: #ffffff;
+        border-radius: 2px;
+        font-family: 'Open Sans', sans-serif;">
+      <div class="d-flex">
+        <div class="">
+          <img class="float-left p-2" src="icon-0.png" />
+        </div>
+        <div class="pl-2 my-auto">
+          <h3
+            style="
+              font-family: 'Open Sans', sans-serif;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 18px;
+              line-height: 30px;
+              color: #333333;">
+                Technical Requirements for Royal Mail Pro Shipping API Integration
+          </h3>
+        </div>
+      </div>
+        <div>
+          <div class="col col-12 p-2" style="
+          color: #555555;
+          font-family: 'Open Sans', sans-serif;
+          font-weight: 400;
+          font-size: 16px;
+        ">
+        <ul>
+          <li>
+            <b>Provider:</b>  Royal Mail
+          </li>
+          <li>
+            <b>Division / API:</b> PRO SHIPPING API <i class="text-info">(v4.0-RM)</i>
+          </li>
+          <li>
+            <b>Region:</b> United Kingdom
+          </li>
+          <li>
+            <b>Used for:</b> Shipping, Tracking
+          </li>
+          <li>
+            <b>Get API access:</b> <span class="text-info">https://www.royalmail.com/business/parcels/shipping-solutions/pro-shipping</span>
+          </li>
+          Please ensure that you have a valid Royal Mail Pro API key and Secret to integrate.
+        </ul>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="oe_container lead mb-4">
+    <div
+      class="mt16 mb16 m-1 shadow-sm border pt-3 p-2"
+      style="
+        background-color: #ffffff;
+        border-radius: 2px;
+        font-family: 'Open Sans', sans-serif;">
+      <div class="d-flex">
+        <div class="">
+          <img class="float-left p-2" src="icon-1.png" />
+        </div>
+        <div class="pl-2 my-auto">
+          <h3
+            style="
+              font-family: 'Open Sans', sans-serif;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 18px;
+              line-height: 30px;
+              color: #333333;">
+                Why use Royal Mail Pro Shipping?
+          </h3>
+        </div>
+      </div>
+      <div>
+        <div class="col col-12 p-2"
+          style="font-family: 'Open Sans', sans-serif;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 27px;
+              color: #646464;">
+              Managing deliveries can be complex, involving a lot of tracking and organization. 
+              To simplify this, you can use a carrier service to handle these tasks. Royal Mail is a 
+              top-quality delivery company known worldwide. It can assist in getting orders to customers 
+              promptly and accurately. Our module connects your Odoo system with Royal Mail to create 
+              an efficient delivery system. With the Royal Mail Delivery Carrier module, you can easily 
+              prepare packages for delivery. Features like listing items for delivery, handing them over 
+              to Royal Mail for shipping, and tracking them are also included.
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="oe_container lead mb-4">
+    <div
+      class="mt16 mb16 m-1 shadow-sm border pt-3 p-2"
+      style="
+        background-color: #ffffff;
+        border-radius: 2px;
+        font-family: 'Open Sans', sans-serif;">
+      <div class="d-flex">
+        <div class="">
+          <img class="float-left p-2" src="icon-2.png" />
+        </div>
+        <div class="my-auto pl-2">
+          <h3
+            style="
+              font-family: 'Open Sans', sans-serif;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 18px;
+              line-height: 30px;
+              color: #333333;">
+              Advantages of Pro Shipping
+          </h3>
+        </div>
+      </div>
+      <div>
+        <div class="col col-12 p-2"
+          style="font-family: 'Open Sans', sans-serif;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 27px;
+              color: #646464;">
+            It offers an efficient solution for online retailers. It allows the creation of 
+            shipping labels with ease, even across multiple workstations. Businesses can save 
+            time and effort by sharing a single account among colleagues. It also prevents duplication. 
+            The Pro Shipping API simplifies paperwork and accounting by automatically adding multiple 
+            orders from different sources to your account. It has customizable file templates for 
+            bulk order uploads. Hence, it aligns perfectly with business needs.
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="oe_container lead mb-4 ml-1 mr-1">
+    <div
+      class="pb-3 text-center"
+      style="color: #2c3145; font-family: 'Open Sans', sans-serif">
+      <span style="font-size: 36px; font-weight: 700">
+        Highlighted-features
+      </span>
+      <p class="d-flex align-items-start justify-content-center"
+        style="
+          font-family: 'Open Sans', sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 22px;
+          color: #64687A;">
+          Below is the detailed list of Feature for Royal Mail Pro Shipping
+      </p>
+    </div>
+      <div class="d-flex justify-content-center">
+        <div class='container d-flex row w-100 w-md-75'>
+          <div class="col-md-4 col-sm-12 p-3" style='border:none'>
+            <div class="card-body justify-content-start">
+              <div class="d-flex align-items-center">
+                <img class="mr-2" src="feature-icon-1.png" alt="Icon" />
+                <span style="font-family: 'Open Sans', 'Helvetica', Sans;
+                  font-style: normal;
+                  font-weight: 700;
+                  font-size: 18px;
+                  line-height: 22px;
+                  color: bold;">Connects Odoo with Royal Mail Shipping
+                </span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-4 col-sm-12 p-3" style='border:none'>
+            <div class="card-body justify-content-start">
+              <div class="d-flex align-items-center">
+                <img class="mr-2" src="feature-icon-2.png" alt="Icon" />
+                <span style="font-family: 'Open Sans', 'Helvetica', Sans;
+                  font-style: normal;
+                  font-weight: 700;
+                  font-size: 18px;
+                  line-height: 22px;
+                  color:bold;">Generates shipping label for order
+                </span>
+              </div>
+            </div>
+          </div>
+  
+  
+          <div class="col-md-4 col-sm-12 p-3" style='border:none'>
+            <div class="card-body justify-content-start w-40">
+              <div class="d-flex align-items-center">
+                <img class="mr-2" src="feature-icon-3.png" alt="Icon" />
+                <span style="font-family: 'Open Sans', 'Helvetica', Sans;
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 22px;
+                    color: bold;">Usable for local/international orders
+                </span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-4 col-sm-12 p-3" style='border:none'>
+            <div class="card-body justify-content-start">
+              <div class="d-flex align-items-center">
+                <img class="mr-2" src="feature-icon-4.png" alt="Icon" />
+                <span style="font-family: 'Open Sans', 'Helvetica', Sans;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 22px;
+                color: bold;">Choosing delivery methods
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-12 p-3" style='border:none'>
+            <div class="card-body justify-content-start">
+              <div class="d-flex align-items-center">
+                <img class="mr-2" src="feature-icon-5.png" alt="Icon" />
+                <span style="font-family: 'Open Sans', 'Helvetica', Sans;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 22px;
+                color: bold;">Order tracking after validation
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-12 p-3" style='border:none'>
+            <div class="card-body justify-content-start">
+              <div class="d-flex align-items-center">
+                <img class="mr-2" src="feature-icon-6.png" alt="Icon" />
+                <span style="font-family: 'Open Sans', 'Helvetica', Sans;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 22px;
+                color: bold;">Place Orders from frontend or backend
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <section class="oe_spaced mw-100 card m-1"
+          style="margin-top: 20px; margin-bottom: 20px">
+    <div
+      class="card-header shadow-sm p-0"
+      style="
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 28px;
+        color: #333333;">
+      <ul
+        class="nav nav-tabs justify-content-center pt-1"
+        role="tablist"
+        style="background-color: #ebf3f5">
+        <li
+          class="nav-item border border-bottom-0 border-dark mr-2"
+          style="
+            background-color: #ebf3f5;
+            color: #333333;
+            border-radius: 5px 5px 0px 0px;">
+          <span
+            href="#screenshot"
+            class="nav-link"
+            role="tab"
+            aria-selected="false"
+            data-bs-toggle="tab">
+            Screenshots
+          </span>
+        </li>
+        <li
+          class="nav-item border border-bottom-0 border-dark mr-2"
+          style="
+            background-color: #ebf3f5;
+            color: #333333;
+            border-radius: 5px 5px 0px 0px;">
+          <span
+            href="#features"
+            class="nav-link active"
+            role="tab"
+            aria-selected="true"
+            data-bs-toggle="tab">
+            Detailed Features
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body tab-content p-0" style="font-weight: 400">
+      <div class="tab-pane fade show active slow" id="features" role="tabpanel">
+        <section class="mt32 mb32">
+          <div
+            class="p-2 mb-2 ml64 mr64"
+            style="color: #333333; font-family: 'Open Sans', sans-serif">
+            <span
+              style="
+                font-family: 'Open Sans', sans-serif;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 26px;
+                line-height: 38px;
+                color: #333333;">
+                Detailed Features List
+            </span>
+            <br />
+            <span
+              style="
+                font-family: 'Open Sans', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 37px;
+                color: #555555;">
+                Below is the list of features Royal Mail Pro Shipping 
+            </span>
+          </div>
+          <div
+            class="row pt-2 ml64 mr64"
+            style="font-family: 'Open Sans', sans-serif">
+            <div
+              class="col col-12 col-md-6 mb-4"
+              style="font-weight: normal; font-size: 16px">
+              <div
+                class="shadow p-2 h-100"
+                style="
+                  background: #ffffff;
+                  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);
+                  border-radius: 4px;">
+                <h4 class="pl-4 pt-2"
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    color: #333333;">
+                    Using Royal Mail Pro Shipping in Odoo
+                </h4>
+                <ul class="fa-ul"
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: #555555;">
+                  <li class="d-flex align-items-baseline">
+                    <i class="fa fa-check mr-1" style="color: #500fda"></i>
+                    Place orders with delivery from both the front and back end.
+                  </li>
+                  <li class="d-flex align-items-baseline">
+                    <i class="fa fa-check mr-1" style="color: #500fda"> </i>
+                    Configure delivery options for both domestic and international orders.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="col col-12 col-md-6 mb-4"
+              style="font-weight: normal; font-size: 16px">
+              <div
+                class="shadow p-2 h-100"
+                style="
+                  background: #ffffff;
+                  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);
+                  border-radius: 4px;">
+                <h4 class="pl-4 pt-2"
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    color: #333333;">
+                    Generating Shipments in Odoo
+                </h4>
+                <ul class="fa-ul"
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: #555555;">
+                  <li class="d-flex align-items-baseline">
+                    <i class="fa fa-check mr-1" style="color: #500fda"></i>
+                    Automatic creation of shipping labels and tracking information after validation.
+                  </li>
+                  <li class="d-flex align-items-baseline">
+                    <i class="fa fa-check mr-1" style="color: #500fda"></i>
+                    Shipments are generated after the order is validated.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="col col-12 col-md-6 mb-4"
+              style="font-weight: normal; font-size: 16px">
+              <div
+                class="shadow p-2 h-100"
+                style="
+                  background: #ffffff;
+                  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);
+                  border-radius: 4px;">
+                <h4 class="pl-4 pt-2"
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    color: #333333;">
+                    Set Default Shipment Value
+                </h4>
+                <ul class="fa-ul"
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: #555555;">
+                  <li class="d-flex align-items-baseline">
+                    <i class="fa fa-check mr-1" style="color: #500fda"></i>
+                    The system will automatically use these default values when creating packages.
+                  </li>
+                  <li class="d-flex align-items-baseline">
+                    <i class="fa fa-check mr-1" style="color: #500fda"></i>
+                    Set Default packaging options for both domestic and international packages.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="col col-12 col-md-6 mb-4"
+              style="font-weight: normal; font-size: 16px">
+              <div
+                class="shadow p-2 h-100"
+                style="
+                  background: #ffffff;
+                  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.122396);
+                  border-radius: 4px;">
+                <h4 class="pl-4 pt-2"
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    color: #333333;">
+                    Combined Order with Tracking
+                </h4>
+                <ul class="fa-ul"
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: #555555;">
+                  <li class="d-flex align-items-baseline">
+                    <i class="fa fa-check mr-1" style="color: #500fda"></i>
+                    Generate an invoice for Royal Mail for each package daily.
+                  </li>
+                  <li class="d-flex align-items-baseline">
+                    <i class="fa fa-check mr-1" style="color: #500fda"></i>
+                    Package tracking is accessible from the backend for admins and via a tracking link for customers.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+      </div>
+      <div
+        class="tab-pane show fade slow text-center"
+        id="screenshot"
+        role="tabpanel">
+        <div class="container shadow-sm px-4">
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    1. Shipping Method Settings
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot1.png"
+                  style="width: 100%"
+                  class="img-responsive border"
+                />
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    2. Delivery Settings for Shipping Method
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot2.png"
+                  style="width: 100%"
+                  class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    3. Destination for delivery Settings
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img src="screenshot3.png"
+                    style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    4. Credential Input from Royal Mail
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img src="screenshot4.png"
+                    style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    5. Adding Shipping to Quotation
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot5.png"
+                  style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    6. Shipping Method Selection and Cost
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot6.png"
+                  style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    7. Delivery Shortcut for Quotations
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot7.png"
+                  style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    8. 'Put In Pack' for Delivery
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot8.png"
+                  style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    9. 'Packages' shortcut for Delivery
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot9.png"
+                  style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    10. Package Configuration
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot10.png"
+                  style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    11. Royal Mail Pro Manifest
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot11.png"
+                  style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    12. Mainfest Details and Manifest pdf
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot12.png"
+                  style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+          <section class="oe_container my-4">
+            <div class="panel panel-primary">
+              <div
+                class="panel-heading"
+                style="font-size: 16px; line-height: 20px">
+                <div
+                  style="
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;">
+                    13. Sample Manifest
+                </div>
+              </div>
+              <div class="panel-body p-3">
+                <img
+                  src="screenshot13.png"
+                  style="width: 100%" class="img-responsive border"/>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section
+    class="pt32"
+    id="webkul_support"
+    style="font-family: 'Open Sans', sans-serif">
+    <div class="row">
+      <div class="col-12">
+        <h2
+          class="text-center text-dark"
+          style="
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 29px;
+            text-align: center;
+            color: #333333;">
+          Support
+        </h2>
+        <p
+          class="mb-2 text-center"
+          style="
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 22px;
+            text-align: center;
+            color: #333333;">
+          Get Immediate support for any of your query
+        </p>
+      </div>
+      <div class="col-12 mb-2">
+        <p
+          class="text-center px-5"
+          style="
+            font-family: 'Open Sans', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            text-align: center;
+            color: #555555;">
+          You will get 90 days free support for any doubt, queries, and bug fixing
+          (excluding data recovery) or any type of issue related to this module.
+        </p>
+      </div>
+      <div class="mx-auto col-lg-9 mb-4 oe_screenshot">
+        <div class="row align-items-center justify-content-center mx-0 p-3">
+          <div class="col-sm-2 text-center pr-0">
+            <img src="mail.png" alt="mail" class="img img-fluid" />
+          </div>
+          <div class="col-xl-7 col-sm-10">
+            <p class="my-2" style="color: #555; font-weight: bold">
+              WRITE TO US AT
+            </p>
+            <b class="text-primary" style="font-size: 18px; color: #1f1f1f"
+              >support@webkul.com</b>
+            <p class="my-2"
+              style="font-size: 14px; color: #777; font-weight: normal">
+              For any help and doubt or issue regarding the module, Drop a mail to
+              our technical team.
+            </p>
+          </div>
+          <div class="col-xl-3 offset-xl-0 float-xl-right col-sm-10 offset-sm-2 float-left mt16">
+            <a href="mailto:support@webkul.com"
+              style="
+                padding: 10px 22px;
+                background-color: #2335d7;
+                font-size: 14px;
+                color: #fff;">Write To US</a>
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto col-lg-9 oe_screenshot">
+        <div class="row align-items-center justify-content-center mx-0 p-3">
+          <div class="col-sm-2 text-center pr-0">
+            <img
+              src="support-icon.png"
+              alt="support-icon"
+              class="img img-fluid"
+            />
+          </div>
+          <div class="col-sm-10">
+            <p class="my-2" style="font-weight: bold; color: #555">
+              RAISE A TICKET AT
+            </p>
+            <b
+              class="text-primary text-break"
+              style="font-size: 18px; color: #1f1f1f">
+              https://webkul.uvdesk.com/en/customer/create-ticket/
+              </b>
+            <p class="my-2"
+              style="font-weight: normal; font-size: 14px; color: #777">
+              For support or to request customization, Create A Support Ticket by
+              copying the link and opening it in a new tab
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

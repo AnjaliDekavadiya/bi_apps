@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="print_pdf_report_wizard" model="ir.ui.view">
+            <field name="name">Print Report</field>
+            <field name="model">print.report.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="do_ref" invisible="1"/>
+                        <field name="report_type"/>
+                        <field name="partner_id"/>
+                        <field name="tickets" widget="many2many_tags"/>
+                        <field name="company_id" invisible="1"/>
+                        <field name="user_id" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="print_do_report" string="Print"
+                            type="object" class="oe_highlight"/> or
+                        
+                        <button special="cancel" string="Cancel" type="object" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_print_pdf_wizard" model="ir.actions.act_window">
+            <field name="name">Print Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">print.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="print_pdf_report_wizard"/>
+        </record>
+
+    </data>
+</odoo>

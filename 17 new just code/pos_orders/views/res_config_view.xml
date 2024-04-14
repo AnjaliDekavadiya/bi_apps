@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+    <record id="res_config_settings_view_form_pos_orders" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.pos_orders</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='pos_interface_section']" position="after">
+                <block title="POS All Orders List" id="wk_pos_orders">
+                    <div class="text-muted">
+                        Select among the given options to load orders that you wish to load in current POS Session
+                    </div>
+                    <setting id="multiple_employee_session" title="select 'Load Orders Of Current Session' if you wish to load order that belongs to current session or
+                        select 'Load Orders Of Last 'n' Days' to load all orders upto last n days.">
+                        <field  style="font-weight:bold" name="pos_order_loading_options" widget="radio"/>
+                        <div invisible="pos_order_loading_options == 'current_session' or pos_order_loading_options == 'all_orders'">
+                            <field name="pos_number_of_days"/>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

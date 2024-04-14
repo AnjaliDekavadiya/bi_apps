@@ -1,0 +1,49 @@
+.arrow-size {
+  font-size: 2em;
+}
+.hr-attendace-base-width {
+  min-width: 250px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.round-arrow {
+  margin-top: 4px;
+  margin-left: 7px;
+  width: 30px;
+  height: 30px;
+  /* line-height: 30px; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 100px;
+  background: #fff;
+  /* border: 2px solid; */
+  z-index: 2;
+  text-align: center;
+  font-size: 25px;
+}
+.round-status {
+  /* margin-top: 7px; */
+  margin-right: 7px;
+  width: 30px;
+  height: 30px;
+  /* line-height: 30px; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 100px;
+  background: #fff;
+  /* border: 2px solid #e0e0e0; */
+  z-index: 2;
+  text-align: center;
+  font-size: 17px;
+}
+
+.round-tab fa-times {
+  margin-bottom: 1px;
+}
+
+.round-tab i {
+  color: #555555;
+}

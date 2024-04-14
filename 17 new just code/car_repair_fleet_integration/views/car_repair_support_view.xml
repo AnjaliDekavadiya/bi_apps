@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record model="ir.ui.view" id="car_repair_support_form_view_custom_inherit_fleet_repair_type">
+            <field name="name">car_repair_support_form_view.custom.inherit</field>
+            <field name="model">car.repair.support</field>
+            <field name='inherit_id' ref="car_repair_maintenance_service.car_repair_support_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//header/button[@name='create_work_order']" position='after'>
+                        <button name="%(action_car_service)d"
+                         type="action" string="Create Vehicle Service" class="oe_highlight"
+                         groups="car_repair_maintenance_service.group_car_repair_manager"/>
+                         <button name="%(action_fleet_vehicle)d" type="action"
+                         string="Create Vehicle" class="oe_highlight" invisible="vehicle_id != False"
+                         context="{'default_partner_id' : partner_id, 'default_license_plate' : license_plate}"
+                         groups="car_repair_maintenance_service.group_car_repair_manager"/>
+                    </xpath>
+                    
+                    <xpath expr="//div[hasclass('oe_button_box')]" position='inside'>
+                        <button name="show_vehicle_services" class="oe_stat_button"
+                        icon="fa-wrench" type="object">
+                            <field name="custom_services_count" widget="statinfo" string="Services"/>
+                        </button>
+                        <button name="show_created_vehicle" class="oe_stat_button"
+                        icon="fa-car" type="object">
+                            <field name="custom_vehicle_count" widget="statinfo" string="Vehicle"/>
+                        </button>
+                    </xpath>
+                    
+                    <xpath expr="//sheet/group[last()]" position='after'>
+                        <group string="Vehicle Fleet Information">
+                            <group>
+                                <field name='vehicle_id'/>
+                                <field name='license_plate'/>
+                            </group>
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    
+    </data>
+</odoo>

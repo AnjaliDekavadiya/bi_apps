@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="ks_office365_settings_menu" name="Office 365 Settings" action="settings_action_id" sequence="99"
+              parent="base.menu_users" groups="office_manager_group_id"/>
+
+    <menuitem id="ks_office365_main_sidemenu" name="Office 365"
+              web_icon="ks_office365_base,static/description/icon.png"/>
+    <menuitem id="ks_office365_menus" name="Home" sequence="1" action="ks_office_setting_actions_user"
+              parent="ks_office365_main_sidemenu"/>
+    <menuitem id="ks_office365_logs_sidemenu" name="Logs" sequence="2" action="ks_logs_action_item_id"
+              parent="ks_office365_main_sidemenu"/>
+    <menuitem id="ks_office365_general_menu" name="General Menu" sequence="4"
+              parent="ks_office365_base.ks_office365_main_sidemenu"/>
+    <menuitem id="ks_office365_jobs_menu" name="Syncing Jobs" sequence="1"
+              action="ks_office_jobs_action" parent="ks_office365_general_menu"/>
+
+</odoo>

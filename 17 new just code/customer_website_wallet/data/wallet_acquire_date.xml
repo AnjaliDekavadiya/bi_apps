@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+<!--        <record id="wallet_acquirer_transfer" model="payment.acquirer">-->
+<!--            <field name="name">Use Wallet Money</field>-->
+<!--            <field name="image" type="base64" file="customer_website_wallet/static/src/img/Wallet_icon.png"/>-->
+<!--            <field name="image_128" type="base64" file="customer_website_wallet/static/src/img/Wallet_icon.png"/>-->
+<!--            <field name="provider">wallet</field>-->
+<!--            <field name="company_id" ref="base.main_company"/>-->
+<!--            <field name="view_template_id" ref="wallet_form"/>-->
+<!--            <field name="environment">test</field>-->
+<!--            <field name="state">test</field>-->
+<!--            <field name="website_published" eval="True"/>-->
+<!--            <field name="pre_msg"><![CDATA[-->
+<!--<p>Transfer information will be provided after choosing the payment aquirer.</p>]]>-->
+<!--            </field>-->
+<!--        </record>-->
+        
+<!--        <record id="wallet_acquirer_transfer" model="payment.acquirer">-->
+<!--            <field name="name">Use Wallet Money</field>-->
+<!--            <field name="provider">wallet</field>-->
+<!--            <field name="redirect_form_view_id" ref="wallet_form"/>-->
+<!--            <field name="support_authorization">False</field>-->
+<!--            <field name="support_fees_computation">False</field>-->
+<!--            <field name="support_refund"></field>-->
+<!--            <field name="support_tokenization">False</field>-->
+<!--            <field name="pre_msg"><![CDATA[-->
+<!--<p>Transfer information will be provided after choosing the payment aquirer.</p>]]>-->
+<!--            </field>-->
+<!--        </record>-->
+        
+        <record id="wallet_provider_transfer" model="payment.provider"><!--#16-->
+            <field name="name">Use Wallet Money</field>
+            <field name="image_128" type="base64" file="customer_website_wallet/static/src/img/Wallet_icon.png"/>
+            <field name="code">wallet</field>
+            <field name="redirect_form_view_id" ref="wallet_form"/>
+        </record>
+
+        <record id="payment_method_wallet" model="account.payment.method">
+            <field name="name">Wallet</field>
+            <field name="code">wallet</field>
+            <field name="payment_type">inbound</field>
+        </record>
+
+    </data>
+</odoo>

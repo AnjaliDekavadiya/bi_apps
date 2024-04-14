@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!--This is a cron to send warning emails. It runs everyday by default, but it can be changed.-->
+    <record forcecreate="True" id="ir_cron_send_warning_mails" model="ir.cron">
+        <field name="name">CC : Send Warning Mails</field>
+        <field name="model_id" ref="customer_credit_control.model_warning_mail"/>
+        <field name="state">code</field>
+        <field name="code">model.send_mail_cron()</field>
+        <field name="active" eval="False"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+</odoo>

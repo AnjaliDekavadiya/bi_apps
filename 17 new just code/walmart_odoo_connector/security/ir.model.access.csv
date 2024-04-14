@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+all_walmart_feed,walmart.feed.all,model_walmart_feed,base.group_user,1,0,0,0
+user_walmart_feed,walmart.feed.user,model_walmart_feed,odoo_multi_channel_sale.group_multi_channel_user,1,1,1,0
+manager_walmart_feed,walmart.feed.manager,model_walmart_feed,odoo_multi_channel_sale.group_multi_channel_admin,1,1,1,1
+
+all_walmart_import_operation,walmart.import.operation.all,model_walmart_import_operation,base.group_user,1,0,0,0
+user_walmart_import_operation,walmart.import.operation.user,model_walmart_import_operation,odoo_multi_channel_sale.group_multi_channel_user,1,1,1,0
+manager_walmart_import_operation,walmart.import.operation.manager,model_walmart_import_operation,odoo_multi_channel_sale.group_multi_channel_admin,1,1,1,1

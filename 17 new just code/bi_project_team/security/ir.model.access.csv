@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_teams,access_project_teams,model_project_teams,,1,1,1,1
+access_cost_sheet_tags,access_cost_sheet_tags,model_cost_sheet_tags,,1,1,1,1
+access_team_members,access_team_members,model_team_members,,1,1,1,1
+access_security_guards,access_security_guards,model_security_guards,,1,1,1,1
+access_store_officer,access_store_officer,model_store_officer,,1,1,1,1

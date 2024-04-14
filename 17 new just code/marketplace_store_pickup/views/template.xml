@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+
+<odoo>
+    <data>
+        <!-- <template id="assets_frontend_mp_badges" inherit_id="website.assets_frontend" name="Assets Frontend">
+			<xpath expr="." position="inside">
+                <link rel="stylesheet" href="/marketplace_store_pickup/static/src/css/shop_style.css" media="all" type="text/css"/>
+				<script src="/marketplace_store_pickup/static/src/js/seller_store.js" type="text/javascript"></script>
+                <script src="/marketplace_store_pickup/static/src/js/map_pickup.js" type="text/javascript"></script>
+			</xpath>
+		</template> -->
+
+        <template id="mp_product_store_temp">
+            <div t-att-class="'row product_store seller-store2' if selected_id and selected_id == p_store.id else 'row product_store seller-store1'">
+                <input t-att-value="p_store.id" type="hidden" name="seller_store"/>
+                <input t-att-value="p_store.store_lat" type="hidden" name="store_latitude"/>
+                <input t-att-value="p_store.store_long" type="hidden" name="store_longitude"/>
+                <div class="col-md-4" style="padding: 30px;">
+                    <div class="seller-image">
+                        <img t-if="p_store.shop_logo" style="width: 70px;height: 70px;margin-left:-10px;border-radius: 50%;" t-attf-src="/marketplace/image/#{p_store.id}/seller.shop/shop_logo"/>
+                        <img t-if="not p_store.shop_logo" style="width: 70px;height: 70px;margin-left:-10px;border-radius: 50%;" src="/marketplace_store_pickup/static/img/store1.png"/>
+                    </div>
+                </div>
+                <div class="col-md-8" style="padding: 10px;">
+                    <div style="font-weight: bold;">
+                        <t t-out="p_store.name"/>
+                    </div>
+                    <div style="">
+                        <t t-out="p_store.contact_address"/>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="selected_store_pickup_view">
+            <div>
+                <input t-att-value="product_store.store_lat" type="hidden" name="store_latitude"/>
+                <input t-att-value="product_store.store_long" type="hidden" name="store_longitude"/>
+                <div class="row" style="margin: auto;">
+                    <div class="col-md-6" style="padding-left: 0;">
+                        <div class="row" style="margin: 12px 0;">
+                            <div class="store_txt col-md-4 no-padding">Store Name:</div>
+                            <div class="col-md-7" t-out="product_store.name"/>
+                        </div>
+                        <div class="row" style="margin: 12px 0;">
+                            <div class="store_txt col-md-4 no-padding">Store Address:</div>
+                            <div class="col-md-7" t-out="product_store.contact_address"/>
+                        </div>
+                        <div class="row" style="margin: 12px 0;">
+                            <div class="store_txt col-md-4 no-padding">Contact Details:</div>
+                            <div class="col-md-7">
+                                <div class="row" style="margin: 6px 0;">
+                                    <div class="no-padding col-md-3 store_txt" style="font-weight:normal;">Email: </div>
+                                    <div class="col-md-9"><t t-out="product_store.email"/></div>
+                                </div>
+                                <div class="row" style="margin: 6px 0;">
+                                    <div class="no-padding col-md-3 store_txt" style="font-weight:normal;">Mobile: </div>
+                                    <div class="col-md-9"><t t-out="product_store.shop_mobile"/></div>
+                                </div>
+                                <div class="row" style="margin: 6px 0;">
+                                    <div class="no-padding col-md-3 store_txt" style="font-weight:normal;">Phone: </div>
+                                    <div class="col-md-9"><t t-out="product_store.phone"/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 no-padding">
+                        <t t-set="store_timing" t-value="product_store.store_timing"/>
+                        <div class="row" style="margin: 12px 0;">
+                            <div class="store_txt col-md-4 no-padding">Store Timing:</div>
+                            <div class="col-md-7" style="padding-right: 0;">
+                                <t t-foreach="store_timing" t-as="day">
+                                    <div class="row" style="margin: auto;">
+                                        <span class="col-md-6 text-capitalize no-padding"><t t-out="day.days"/></span>
+                                        <span class="col-md-6">
+                                            <t t-if="day.status == 'open'">
+                                                <span><t t-out="day.open_time" t-options="{'widget':'float_time'}"/> to&#160;</span>
+                                                <span><t t-out="day.close_time" t-options="{'widget':'float_time'}"/></span>
+                                            </t>
+                                            <t t-if="not day.status == 'open'">
+                                                <span>Closed</span>
+                                            </t>
+                                        </span>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin: auto;">
+                    <div class="col-md-6" style="padding-left: 0;">
+                        <div class="row" style="margin: auto;">
+                            <div class="col-md-4 store_txt" style="padding: 6px 0;">Pick Up Date:</div>
+                            <div class="col-md-7 no-padding">
+                                <div t-att-class="'input-group date pickup_date_%i' % line_id" data-target-input="nearest">
+                                    <input type="date" class="pickup_date_value form-control" name='pickup_date_value' t-att-data-target="'.pickup_date_%i' % line_id" placeholder="Available dates..." />
+                                    <div class="input-group-append" t-att-data-target="'.pickup_date_%i' % line_id" data-toggle="datetimepicker">
+                                        <!-- <div class="input-group-text"><i class="fa fa-calendar"></i></div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row" style="margin: auto;">
+                            <div class="col-md-5 store_txt" style="padding: 6px 0;">Pick Up Timing:</div>
+                            <div class="col-md-7 no-padding">
+                                <select t-att-id="'pickup_timing_%i' % product_store.id" name="pickup_timing" class="form-control" t-att-required="None" autocomplete="off">
+                                    <option value="">Available time slots...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="select_store_pickup_on_map">
+            <div id="store_map_modal" class="modal fade in" role="dialog">
+                <div class="modal-dialog" style="max-width: 880px;width: UNSET; margin-top:5%;">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row" style="margin: auto;">
+                                <div class="col-md-5" style="padding: 0;">
+                                    <div class="container">
+                                        <center>
+                                            <button type="button" class="btn btn-info" id="selected_store_on_map" style="padding: 7px 38px;margin-right: 10px;">APPLY</button>
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="padding: 7px 32px;">CANCEL</button>
+                                            <input type="hidden" name="temp_selected_store" id="temp_selected_store" t-att-value="selected_id if selected_id else -1"/>
+                                        </center>
+                                    </div>
+                                    <div style="height: 476px;border: 1px solid #d5d5d5;border-radius: 8px;margin-top: 10px;">
+                                        <div class="store_txt" style="border-bottom: 1px solid #d5d5d5;padding: 10px 15px;font-size: 16px;">
+                                            SELECT STORE
+                                        </div>
+                                        <div class="modal_store_main">
+                                            <t t-foreach="product_store_ids" t-as="p_store">
+                                                <t t-call="marketplace_store_pickup.mp_product_store_temp"/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7" style="padding-right: 0;">
+                                    <div id="show_store_on_map" style="height: 520px;border: 1px solid #d5d5d5;border-radius: 8px;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="inherit_checkout_layout_page" inherit_id="website_sale.checkout_layout">
+            <!-- t-att-href="request.httprequest.path -->
+            <!-- <xpath expr="//div[@id='o_wsale_total_accordion']" position="attributes">   -->
+                <!-- <t t-if="request.httprequest.path == '/shop/payment'">        -->
+                <!-- <attribute name="t-att-class">'o_wsale_accordion accordion' if xmlid=='website_sale.payment' else 'o_wsale_accordion accordion sticky-lg-top offset-xl-1 col-12 col-lg-5 col-xl-4 order-lg-2 rounded'</attribute>          -->
+            <!-- </t> -->
+        <!-- </xpath> -->
+
+        </template>
+
+        <template id="inherit_store_sol_payment_delivery" inherit_id="shipping_per_product.sol_delivery_carriers">
+            <xpath expr="//div[hasclass('sol_delivery_carrier')]//ul" position="before">
+                <t t-set="product_store_ids" t-value="line.product_id.product_tmpl_id.seller_shop_ids.filtered(lambda s: s.store_lat and s.store_long and s.website_published)"/>
+            </xpath>
+            <xpath expr="//div[hasclass('sol_delivery_carrier')]//ul//li/input" position="before">
+                <input type="hidden" name="is_store_delivery" t-att-value="'1' if delivery.is_store_carrier else '0'"/>
+            </xpath>
+            <xpath expr="//div[hasclass('sol_delivery_carrier')]//ul//li" position="attributes">
+                <attribute name="t-if">not delivery.is_store_carrier or product_store_ids</attribute>
+            </xpath>
+            <xpath expr="//div[hasclass('sol_delivery_carrier')]//ul" position="after">
+                <!-- <t t-set="product_store_ids" t-value="line.product_id.product_tmpl_id.seller_shop_ids.filtered(lambda s: s.store_lat and s.store_long)"/> -->
+                <div t-if="product_store_ids" class="seller_p_stores" style="padding: 0px 32px 20px 20px;display:none;background: white;">
+                    <div class="empty_store_pickup_error alert alert-danger" style="margin:0;display:none;margin-bottom: 18px;">
+                        Please first select store to proceed.
+                    </div>
+                    <div style="font-family: Arial;font-weight: bold;font-size: 16px;color: #2D2D2D;">Store Information</div>
+                    <div class="row" style="margin: auto;margin-top: 15px;">
+                        <div class="col-md-3" style="font-family: Arial;font-weight: bold;font-size: 15px;color: #2D2D2D;width: 16%;padding: 10px 5px 10px 0;">Select Store: </div>
+                        <div class="col-md-8 store_selector input-group" style="padding-left: 0;">
+                            <select t-att-id="'store_id_%i' % line.id" name="store_id" class="form-control" t-att-required="None" autocomplete="off" style="height: 41px;">
+                                <option value="">Available Stores...</option>
+                                <t t-foreach="product_store_ids" t-as="store">
+                                    <option t-att-value="store.id">
+                                        <t t-out="store.name" />
+                                    </option>
+                                </t>
+                            </select>
+                            <span class="product_store_ids" t-att-data-product_store_ids="product_store_ids.ids"/>
+                            <span class="input-group-addon store_pickup_on_map" style="padding: 3px 20px;background-color: #338ffc;color: white;border: 4px solid #338ffc;"><span class="fa fa-map-marker" style="font-size: 21px;margin-top: 2px;"/></span>
+                        </div>
+                    </div>
+                    <div class="selected_store_details"/>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="inherit_sol_cart_summary_delivery" inherit_id="shipping_per_product.sol_cart_summary_delivery">
+            <xpath expr="//div[hasclass('toggle_summary_div')]" position="after">
+                <script type="text/javascript" t-att-src="website.sudo().mp_pickup_get_map_api_url()"></script>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

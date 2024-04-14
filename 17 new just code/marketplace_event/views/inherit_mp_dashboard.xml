@@ -1,0 +1,69 @@
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+
+<odoo>
+    <record id="wk_event_seller_product_template_kanban" model="ir.ui.view">
+        <field name="name">event.product.piciking.template.kanban</field>
+        <field name="model">marketplace.dashboard</field>
+        <field name="inherit_id" ref="odoo_marketplace.wk_marketplace_dashboard_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban/templates/t/div/div/div[2]/div/div/div[4]" position="after">
+                <div t-if="record.state.raw_value =='events'" style="color:rgb(162, 70, 137)">
+                    <center><i class="fa fa-calendar fa-5x" title="Calendar"></i>
+                    <h3>Events</h3></center>
+                </div>
+            </xpath>
+
+            <xpath expr="//kanban/templates/t/div/div/div[2]/div/div[2]" position="inside">
+                <div t-if="record.state.raw_value =='events'">
+                    <a class="bg-primary wk_kanban_button_box text-white" name="%(mp_events_action_pending)d" type="action">
+                        <span class="o_value me-1"><t t-out="record.count_product_pending.raw_value"/></span>
+                        <span class="o_label">Pending</span>
+                    </a>
+                    <a class="wk_kanban_button_box text-white" name="%(mp_events_action_approved)d" type="action" style="background-color:#5cb85c">
+                        <span class="o_value me-1"><t t-out="record.count_product_approved.raw_value"/></span>
+                        <span class="o_label">Approved</span>
+                    </a>
+                    <a class="wk_kanban_button_box text-white" name="%(mp_events_action_rejected)d" type="action" style="background-color:#d9534f">
+                        <span class="o_value me-1"><t t-out="record.count_product_rejected.raw_value"/></span>
+                        <span class="o_label">Rejected</span>
+                    </a>
+                </div>
+            </xpath>
+
+            <xpath expr="//kanban/templates/t/div/div/div[1]/div[1]/div[1]/div/div[last()]" position="before">
+                <div t-if="record.state.raw_value =='events'" class="row">
+                    <div class="col-xs-6 o_kanban_card_manage_section o_kanban_manage_view">
+                        <div class="o_kanban_card_manage_title">
+                            <span style="color:#a24689">View</span>
+                        </div>
+                        <div>
+                            <a name="%(marketplace_event.wk_seller_action_event_view)d" type="action">All</a>
+                        </div>
+                        <div>
+                            <a name="%(marketplace_event.mp_events_action_approved)d" type="action">Approved</a>
+                        </div>
+                        <div>
+                            <a name="%(marketplace_event.mp_events_action_pending)d" type="action" >Pending</a>
+                        </div>
+                        <div>
+                            <a name="%(marketplace_event.mp_events_action_rejected)d" type="action" >Rejected</a>
+                        </div>
+                        <div>
+                            <a name="%(marketplace_event.mp_events_action_draft)d" type="action" >Draft</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 o_kanban_card_manage_section o_kanban_manage_new">
+                        <div class="o_kanban_card_manage_title">
+                            <span style="color:#a24689">New</span>
+                        </div>
+                        <div>
+                            <a name="%(marketplace_event.wk_seller_action_event_create)d" type="action">Create Events</a>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

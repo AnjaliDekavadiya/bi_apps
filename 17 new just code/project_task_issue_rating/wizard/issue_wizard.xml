@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record model ="ir.ui.view" id="issue_rating_wizard_id">
+           <field name="name">import.product.wizard</field>
+           <field name="model">issue.feedback.wizard</field>
+           <field name="arch" type="xml">
+               <form string="Issue Rating Wizard">
+                   <group>
+                    <field  name="partner_id"/>
+                    <field  name="project_id"/>
+                    <field  name="issue"/>
+                    <field  name="feedback"/>
+                    </group>
+                   <footer>
+                        <button string="Send" name="issue_rating" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+       <record model="ir.actions.act_window" id="issue_rating_action1">
+           <field name="name">Request for Feedback</field>
+           <field name="res_model">issue.feedback.wizard</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+       </record>
+           
+    </data>
+</odoo>

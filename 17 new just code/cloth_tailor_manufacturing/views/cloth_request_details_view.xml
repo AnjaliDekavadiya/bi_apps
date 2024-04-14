@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_cloth_request_inherit_bom_line" model="ir.ui.view">
+            <field name="name">cloth.request.details.inherit.bom_line</field>
+            <field name="model">cloth.request.details</field>
+            <field name="inherit_id" ref="cloth_tailor_management_odoo.cloth_request_details_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="custom_action_mrp_work_orders" type="object" class="oe_stat_button" icon="fa-sun-o" string="Work Orders"></button>
+                    <button name="custom_action_view_mrp_production" type="object" class="oe_stat_button" icon="fa-industry" string="Manufacturing Orders"></button>
+                </xpath>
+                <xpath expr="//notebook//page[last()]" position="after">
+                    <page string="BOM" name="bom_line">
+                        <group>
+                            <group>
+                                <field name="custom_is_created_bom" invisible="1"/>
+                                <field name="custom_is_manufacturing_order" invisible="1"/>
+                                <field name="mrp_product_id"/>
+                                <label for="quantity" string="Quantity"/>
+                                <div class="o_row">
+                                    <field name="quantity"/>
+                                    <field name="uom_id" options="{'no_open':True,'no_create':True}" groups="uom.group_uom"/>
+                                </div>
+                                <field name="custom_bom_type"  widget="radio"/>
+                                <field name="custom_bom_id" readonly="custom_bom_type not in 'old_bom'"/>
+                            </group>
+                            <!-- <group> -->
+                            <div>
+                                <button name="action_custom_create_manufacturing_orders" type="object" string="Create Manufacturing Orders" class="oe_highlight btn-xs" invisible="custom_is_manufacturing_order"/><br/><br/>
+                                <button name="action_custom_create_bom" type="object" string="Create BoM" class="oe_highlight btn-xs btn-success"
+                                invisible="custom_is_created_bom or custom_bom_type not in 'new_bom'"/>
+                            </div>
+                            <!-- </group> -->
+                        </group>
+                        <notebook invisible="custom_bom_type not in 'new_bom'">
+                            <page name="material_consumed" string="Materials Consumed">
+                                <field name="custom_mrp_bom_line_ids">
+                                    <tree string="Components" editable="bottom">
+                                        <field name="custom_product_id"/>
+                                        <field name="custom_product_qty"/>
+                                        <field name="custom_product_uom_id"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="custom_product_id"/>
+                                                <field name="custom_product_qty"/>
+                                            </group>
+                                            <group>
+                                                <field name="custom_product_uom_id"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

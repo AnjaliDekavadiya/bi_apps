@@ -1,0 +1,74 @@
+<odoo>
+	<data>
+		<record id="inherit_project_form" model="ir.ui.view">
+			<field name="name">inherit.project.form</field>
+			<field name="model">project.project</field>
+			<field name="inherit_id" ref="project.edit_project" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='user_id']" position="before">
+					<field name="project_team_id"/>
+				</xpath>
+				<xpath expr="//page[@name='settings']" position="after">
+					<page string="Construction Site Detail" name="construction_site_detail">    
+						<group>
+							<group>
+								<group colspan="4">
+									<field name="type_of_construction" />
+									<field name="cstmr_id" string="Customer"/>
+								</group>
+								<group colspan="4">
+									<label for="street" string="Location"/>
+									<div class="o_address_format">
+										<field name="street" placeholder="Street..." class="o_address_street"/>
+										<field name="street2" placeholder="Street 2..." class="o_address_street"/>
+										<field name="city" placeholder="City" class="o_address_city"/>
+										<field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
+										<field name="zip" placeholder="ZIP" class="o_address_zip"/>
+										<field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True}'/>
+									</div>
+								</group>
+							</group>
+						</group>
+					</page>
+				</xpath>
+
+				<xpath expr="//page[@name='construction_site_detail']" position="after">
+					<page string="Project Team" name="project_team_page">    
+						<group>
+							<field name="site_engineer_id"/>
+						</group>
+						<group name = "Team Members" string="Team Members"/>
+						<field name="team_members_ids">
+							<tree string="Store Officer" editable="bottom">
+								<field name="user_id"/>
+								<field name="login"/>
+								<field name="language"/>
+								<field name="latest_connection"/>
+							</tree>
+						</field>
+						
+						<group name = "Store Officer" string="Store Officer"/>
+						<field name="store_officer_ids">
+							<tree string="Store Officer" editable="bottom">
+								<field name="user_id"/>
+								<field name="login"/>
+								<field name="language"/>
+								<field name="latest_connection"/>
+							</tree>
+						</field>
+						
+						<group name = "Security Guards" string="Security Guards"/>
+						<field name="security_guards_ids">
+							<tree string="Store Officer" editable="bottom">
+								<field name="user_id"/>
+								<field name="login"/>
+								<field name="language"/>
+								<field name="latest_connection"/>
+							</tree>
+						</field>
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

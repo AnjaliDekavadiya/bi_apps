@@ -1,0 +1,37 @@
+ <odoo>
+    <data>
+         <record model="ir.ui.view" id="inventory_tags_form_view">
+            <field name="name">Inventory Tag</field>
+            <field name="model">inventory.tags</field>
+            <field name="arch" type="xml">
+                <form string="Inventory Tags">
+                    <sheet>
+                            <group>
+                                <group>
+                                    <field name="name"/>
+                                </group>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+         <record model="ir.ui.view" id="inventory_tags_tree_view">
+            <field name="name">Inventory Tag</field>
+            <field name="model">inventory.tags</field>
+            <field name="arch" type="xml">
+                <tree string="Inventory Tag List">
+                       <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="inventory_tags_action">
+            <field name="name">Inventory Tag</field>
+            <field name="res_model">inventory.tags</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+      <menuitem id="inventory_tags_id" name="Inventory Tags" parent="stock.menu_stock_config_settings" action="inventory_tags_action" groups="stock.group_stock_manager"/>
+       
+    </data>
+</odoo>        

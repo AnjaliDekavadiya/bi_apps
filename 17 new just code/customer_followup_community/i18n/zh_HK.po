@@ -1,0 +1,569 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* customer_followup_community
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-31 11:08+0000\n"
+"PO-Revision-Date: 2021-07-31 11:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: customer_followup_community
+#: model:mail.template,body_html:customer_followup_community.before_due_date_mail_template_followup
+msgid ""
+"\n"
+"\n"
+"    <div>\n"
+"        ${object.customer_followup_done_ids.description_before | safe}<br/>\n"
+"        <p>Here is your invoice details</p>\n"
+"             <div style=\"margin-left: 15px;\" >\n"
+"                 <div class=\"row\">\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Invoice Date</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Description</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Reference</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Due Date</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Amount</strong></div>\n"
+"                 </div>\n"
+"                 <newline/>\n"
+"                 % for lines in object.invoice_ids:\n"
+"                 <div class=\"row\">\n"
+"                    <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date}</div>\n"
+"                    <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.name}</div>\n"
+"                    <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.payment_reference}</div>\n"
+"                    <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date_due}</div>\n"
+"                    <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.amount_residual_signed}</div>\n"
+"                 </div>\n"
+"                 <newline/>\n"
+"                 % endfor\n"
+"             </div>\n"
+"    </div>\n"
+"\n"
+"            "
+msgstr ""
+"\n"
+"\n"
+"    <div>\n"
+"        ${object.customer_followup_done_ids.description_before | safe}<br/>\n"
+"        <p>这是您的发票详细信息</p>\n"
+"             <div style=\"margin-left: 15px;\" >\n"
+"                 <div class=\"row\">\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>发票日期</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>描述</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>参考</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>截止日期</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>数量</strong></div>\n"
+"                 </div>\n"
+"                 <newline/>\n"
+"                 % for lines in object.invoice_ids:\n"
+"                 <div class=\"row\">\n"
+"                    <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date}</div>\n"
+"                    <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.name}</div>\n"
+"                    <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.payment_reference}</div>\n"
+"                    <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date_due}</div>\n"
+"                    <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.amount_residual_signed}</div>\n"
+"                 </div>\n"
+"                 <newline/>\n"
+"                 % endfor\n"
+"             </div>\n"
+"    </div>\n"
+"\n"
+"            "
+#. module: customer_followup_community
+#: model:mail.template,body_html:customer_followup_community.after_due_date_mail_template_followup
+msgid ""
+"\n"
+"                \n"
+"                 <div>\n"
+"                       ${object.customer_followup_done_ids.description_after | safe}<br/>\n"
+"                         <p>Here is your invoice details</p>\n"
+"                <div style=\"margin-left: 15px;\" >\n"
+"                     <div class=\"row\">\n"
+"                         <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Invoice Date</strong></div>\n"
+"                         <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Description</strong></div>\n"
+"                         <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Reference</strong></div>\n"
+"                         <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Due Date</strong></div>\n"
+"                         <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Amount</strong></div>\n"
+"                     </div>\n"
+"                     <newline/>\n"
+"                     % for lines in object.invoice_ids:\n"
+"                     <div class=\"row\">\n"
+"                        <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date}</div>\n"
+"                        <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.name}</div>\n"
+"                        <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.payment_reference}</div>\n"
+"                        <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date_due}</div>\n"
+"                        <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.amount_residual_signed}</div>\n"
+"                     </div>\n"
+"                     <newline/>\n"
+"                     % endfor\n"
+"                </div>\n"
+"               </div>\n"
+"                \n"
+"            "
+msgstr ""
+"\n"
+"                \n"
+"                 <div>\n"
+"                       ${object.customer_followup_done_ids.description_after | safe}<br/>\n"
+"                         <p>这是您的发票详细信息</p>\n"
+"                <div style=\"margin-left: 15px;\" >\n"
+"                     <div class=\"row\">\n"
+"                           <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>发票日期</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>描述</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>参考</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>截止日期</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>数量</strong></div>\n"
+"                 </div>\n"
+"                     <newline/>\n"
+"                     % for lines in object.invoice_ids:\n"
+"                     <div class=\"row\">\n"
+"                        <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date}</div>\n"
+"                        <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.name}</div>\n"
+"                        <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.payment_reference}</div>\n"
+"                        <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date_due}</div>\n"
+"                        <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.amount_residual_signed}</div>\n"
+"                     </div>\n"
+"                     <newline/>\n"
+"                     % endfor\n"
+"                </div>\n"
+"               </div>\n"
+"                \n"
+"            "
+#. module: customer_followup_community
+#: model:mail.template,body_html:customer_followup_community.mail_template_data_follow_cust_test
+msgid ""
+"\n"
+"                \n"
+"                <div>\n"
+"                    <div align=\"right\">\n"
+"                        ${object.name}<br/>\n"
+"                        ${object.street}<br/>\n"
+"                        ${object.city}<br/>\n"
+"                        <br/>\n"
+"                        <br/>\n"
+"                    </div>\n"
+"                     <p align=\"justify\">Dear Sir/Madam, Our records indicate that some payments on your account are still due.\n"
+"                     Please find details below. If the amount has already been paid, please disregard this notice.\n"
+"                     Otherwise, please forward us the total amount stated below. If you have any queries regarding your account,\n"
+"                     Please contact us. Thank you in advance for your cooperation.\n"
+"                     Best Regards, </p>\n"
+"                     <br/>\n"
+"                     <p>Here is your invoice details</p>\n"
+"\n"
+"                     <div style=\"margin-left: 15px;\" >\n"
+"                         <div class=\"row\">\n"
+"                             <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Invoice Date</strong></div>\n"
+"                             <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Description</strong></div>\n"
+"                             <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Reference</strong></div>\n"
+"                             <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Due Date</strong></div>\n"
+"                             <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>Amount</strong></div>\n"
+"                         </div>\n"
+"                         <newline/>\n"
+"                         % for lines in object.invoice_ids:\n"
+"                         <div class=\"row\">\n"
+"                            <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date}</div>\n"
+"                            <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.name}</div>\n"
+"                            <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.payment_reference}</div>\n"
+"                            <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date_due}</div>\n"
+"                            <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.amount_residual_signed}</div>\n"
+"                         </div>\n"
+"                         <newline/>\n"
+"                         % endfor\n"
+"                     </div>\n"
+"                </div>\n"
+"                \n"
+"            "
+msgstr ""
+"\n"
+"                \n"
+"                <div>\n"
+"                    <div align=\"right\">\n"
+"                        ${object.name}<br/>\n"
+"                        ${object.street}<br/>\n"
+"                        ${object.city}<br/>\n"
+"                        <br/>\n"
+"                        <br/>\n"
+"                    </div>\n"
+"                     <p align=\"justify\">尊敬的先生/女士，我们的记录显示您帐户中的某些付款仍未到期。\n"
+" 请在下面查看详细信息。如果金额已经支付，请忽略此通知。\n"
+" 否则，请将以下总金额转发给我们。如果您对您的帐户有任何疑问，\n"
+" 请与我们联系。预先感谢您的合作。\n"
+“                     最好的祝福，</p>\n"
+"                     <br/>\n"
+"                     <p>这是您的发票详细信息</p>\n"
+"\n"
+"                     <div style=\"margin-left: 15px;\" >\n"
+"                         <div class=\"row\">\n"
+"                                  <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>发票日期</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>描述</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>参考</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>截止日期</strong></div>\n"
+"                     <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" ><strong>数量</strong></div>\n"
+"                  </div>\n"
+"                         <newline/>\n"
+"                         % for lines in object.invoice_ids:\n"
+"                         <div class=\"row\">\n"
+"                            <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date}</div>\n"
+"                            <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.name}</div>\n"
+"                            <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.payment_reference}</div>\n"
+"                            <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.invoice_date_due}</div>\n"
+"                            <div style=\"border: 2px solid black;\" class=\"col\" align=\"center\" >${lines.amount_residual_signed}</div>\n"
+"                         </div>\n"
+"                         <newline/>\n"
+"                         % endfor\n"
+"                     </div>\n"
+"                </div>\n"
+"                \n"
+"            "
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_template
+msgid ""
+", <br/><br/>\n"
+"                   &amp;emsp; &amp;emsp; Our records indicate that some payments on your account are still due. Please find details below.\n"
+"                   If the amount has already been paid, please disregard this notice. Otherwise, please forward us the total amount stated below.\n"
+"                   If you have any queries regarding your account, Please contact us. Thank you in advance for your cooperation. <br/><br/>\n"
+"                   Best Regards,"
+msgstr ""
+", <br/><br/>\n"
+"                   &amp;emsp; &amp;emsp; 我们的记录表明，您帐户中的某些付款仍未到期。请在下面找到详细信息。\n"
+" 如果金额已经支付，请忽略此通知。否则，请将以下总金额转发给我们。\n"
+" 如果您对您的帐户有任何疑问，请与我们联系。预先感谢您的合作。<br/><br/>\n"
+“                   最好的祝福，”
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report
+msgid "<b>Date:</b>"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_partner__customer_followup_done
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_users__customer_followup_done
+msgid "Action Taken"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields.selection,name:customer_followup_community.selection__followup_line__after_before__after
+msgid "After"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_line__after_before
+msgid "After Before"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_all
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_template
+msgid "Amount"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields.selection,name:customer_followup_community.selection__followup_line__after_before__before
+msgid "Before"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.followup_mails_wizard
+msgid "Cancel"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model,name:customer_followup_community.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_mails__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_mails__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:mail.template,subject:customer_followup_community.after_due_date_mail_template_followup
+#: model:mail.template,subject:customer_followup_community.before_due_date_mail_template_followup
+#: model:mail.template,subject:customer_followup_community.mail_template_data_follow_cust_test
+msgid "Customer Followup Mail"
+msgstr "客户跟进邮件"
+
+#. module: customer_followup_community
+#: model:ir.model.fields.selection,name:customer_followup_community.selection__followup_line__days_hours__days
+msgid "Days"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_line__days_hours
+msgid "Days Hours"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.constraint,message:customer_followup_community.constraint_followup_line_days_uniq
+msgid "Days of the follow-up levels must be different"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_template
+msgid "Dear"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_all
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_template
+msgid "Description"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_line__display_name
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_mails__display_name
+#: model:ir.model.fields,field_description:customer_followup_community.field_report_customer_followup_community_report__display_name
+#: model:ir.model.fields,field_description:customer_followup_community.field_report_customer_followup_community_report_followup_all__display_name
+#: model:ir.model.fields,field_description:customer_followup_community.field_report_customer_followup_community_report_followup_template__display_name
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_all
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_template
+msgid "Due Date"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_mails__email_count_value
+msgid "Email Count Value"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.view_followup_partner_form
+msgid "Follow Ups"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model,name:customer_followup_community.model_followup_line
+msgid "Follow-up Criteria"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.followup_mails_wizard
+msgid "Followups"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_all
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_template
+msgid "Here is your invoice details"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields.selection,name:customer_followup_community.selection__followup_line__days_hours__hours
+msgid "Hours"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_line__id
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_mails__id
+#: model:ir.model.fields,field_description:customer_followup_community.field_report_customer_followup_community_report__id
+#: model:ir.model.fields,field_description:customer_followup_community.field_report_customer_followup_community_report_followup_all__id
+#: model:ir.model.fields,field_description:customer_followup_community.field_report_customer_followup_community_report_followup_template__id
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_all
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_template
+msgid "Invoice Date"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_partner__invoice_list
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_users__invoice_list
+msgid "Invoice Details"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report
+msgid "Invoice List With Due Amount"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_line____last_update
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_mails____last_update
+#: model:ir.model.fields,field_description:customer_followup_community.field_report_customer_followup_community_report____last_update
+#: model:ir.model.fields,field_description:customer_followup_community.field_report_customer_followup_community_report_followup_all____last_update
+#: model:ir.model.fields,field_description:customer_followup_community.field_report_customer_followup_community_report_followup_template____last_update
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_partner____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_mails__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_mails__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_line__description_before
+msgid "Message"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_partner__customer_followup_to_do
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_users__customer_followup_to_do
+msgid "Next Action"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_partner__next_followup_action_date
+#: model:ir.model.fields,field_description:customer_followup_community.field_res_users__next_followup_action_date
+msgid "Next Action Date"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.view_followup_partner_form
+msgid "Next Action:"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,help:customer_followup_community.field_followup_line__after_before
+msgid "Option to send remainder after/before due days"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,help:customer_followup_community.field_followup_line__days_hours
+msgid "Option to set remainder mail for days/hours "
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.view_followup_partner_form
+msgid "PRINT LETTER"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.actions.report,name:customer_followup_community.action_report
+msgid "Print"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.actions.report,name:customer_followup_community.action_report_followup_community
+#: model:ir.actions.report,name:customer_followup_community.action_report_followup_community_mail_cron
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.followup_mails_wizard
+msgid "Print Letter"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_line__print_letter
+msgid "Print a Letter"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_line__description_after
+msgid "Printed Message"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_all
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_template
+msgid "Reference"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.view_followup_partner_form
+msgid "SEND MAIL"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.ui.menu,name:customer_followup_community.call_followup_function_menu
+msgid "Send Overdue"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,field_description:customer_followup_community.field_followup_line__send_email
+msgid "Send an Email"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.followup_mails_wizard
+msgid "Send emails"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.actions.server,name:customer_followup_community.call_followup_function_action
+msgid "Send letters and emails"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.followup_mails_wizard
+msgid ""
+"This action will send email to customers with due payments according to "
+"follow-up levels"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_all
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.report_followup_template
+msgid "Total Amount Due:"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,help:customer_followup_community.field_followup_line__print_letter
+msgid "When processing, it will print a PDF"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model.fields,help:customer_followup_community.field_followup_line__send_email
+msgid "When processing, it will send an email"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.followup_mails_wizard
+msgid "emails send"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model,name:customer_followup_community.model_followup_mails
+msgid "followup.mails"
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.view_followup_partner_form
+msgid "has no due amount."
+msgstr ""
+
+#. module: customer_followup_community
+#: model_terms:ir.ui.view,arch_db:customer_followup_community.view_followup_partner_form
+msgid "on:"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model,name:customer_followup_community.model_report_customer_followup_community_report
+msgid "report.customer_followup_community.report"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model,name:customer_followup_community.model_report_customer_followup_community_report_followup_all
+msgid "report.customer_followup_community.report_followup_all"
+msgstr ""
+
+#. module: customer_followup_community
+#: model:ir.model,name:customer_followup_community.model_report_customer_followup_community_report_followup_template
+msgid "report.customer_followup_community.report_followup_template"
+msgstr ""

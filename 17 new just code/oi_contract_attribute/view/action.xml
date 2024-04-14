@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+	<record id="act_hr_attribute" model="ir.actions.act_window">
+		<field name="name">Employee Attribute</field>
+		<field name="res_model">hr.attribute</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+	
+	<record id="act_hr_contract_type" model="ir.actions.act_window">
+		<field name="name">Contract Type</field>
+		<field name="res_model">hr.contract.type</field>
+		<field name="view_mode">tree,form</field>
+	</record>	
+
+	<record id="act_hr_contract_attribute_report" model="ir.actions.server">
+		<field name="name">Attribute Report</field>
+		<field name="state">code</field>
+		<field name="code">action = records.attribute_report()</field>
+		<field name="model_id" ref="model_hr_contract"/>
+		<field name="binding_model_id" ref="model_hr_contract"/>
+		<field name="binding_type">report</field>		
+	</record>
+	
+	<record id="act_hr_attribute_value" model="ir.actions.act_window">
+		<field name="name">Employee Attribute (All)</field>
+		<field name="res_model">hr.attribute.value</field>
+		<field name="view_mode">tree,form</field>
+	</record>	
+	
+	<record id="act_hr_attribute_value_approval" model="ir.actions.act_window">
+		<field name="name">Employee Attribute</field>
+		<field name="res_model">hr.attribute.value.approval</field>
+		<field name="view_mode">tree,form</field>
+	</record>	
+	
+
+</odoo>

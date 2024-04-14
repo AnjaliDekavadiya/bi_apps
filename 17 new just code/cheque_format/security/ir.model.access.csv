@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cheque_format_readonly,access_cheque_format_readonly,model_cheque_format,account.group_account_readonly,1,0,0,0
+access_cheque_format,access_cheque_format,model_cheque_format,account.group_account_invoice,1,1,1,1

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+
+<odoo>
+    <data>
+      <record id="support_team_search_view" model="ir.ui.view">
+        <field name="name">Support Team</field>
+        <field name="model">res.partner</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+          <search string="Support Team">
+            <field name="name" filter_domain="['|','|',('display_name','ilike',self),('ref','=',self),('email','ilike',self)]"/>
+            <field name="mobile"/>
+            <field name="member_type"/>
+            <filter string="Active" domain="[('status','=','active')]" name="active"/>
+            <filter string="In Active" domain="[('status','=','inactive')]" name="inactive"/>
+            <group>
+              <filter name="group_member_type" string="Member Type" context="{'group_by':'member_type'}"/>
+            </group>
+          </search>
+        </field>
+      </record>
+
+      <record id="wk_support_team_form_view" model="ir.ui.view">
+        <field name="name">Res Partner Form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='category_id']" position="after">
+            <label for="whatsapp_support_member" string="Is Support Member"/>
+            <div class="text-muted">
+            <field name="whatsapp_support_member" string="Is Support Member"/>
+                ⇒ Enable this for WhatsApp Support Member
+            </div>
+          </xpath>
+          <xpath expr="//notebook/page[last()]" position="after">
+            <page string="Whatsapp Settings" invisible="whatsapp_support_member == False">
+              <group string="Whatsapp" col="2">
+                <label for="status" string="Status" invisible="whatsapp_support_member == False"/>
+                <div invisible="whatsapp_support_member == False">
+                    <field name="status" class="text-info w-auto" readonly="1" invisible="whatsapp_support_member == False"/>
+                    <button name="active_status" string="Click to Active" type="object" class="oe_link pt-0" invisible="status == 'active'"/>
+                    <button name="inactive_status" string="Click to Inactive" type="object" class="oe_link pt-0" invisible="status == 'inactive'"/>
+                </div>
+              </group>
+              <group string="Member Details">
+                <group>
+                  <field name="member_type" string="Member Type" placeholder="Select Member Type" required="whatsapp_support_member == True"/>
+                  <field name="time_from" widget='float_time'/>
+                  <field name="whatsapp_message" placeholder="Enter message here..."/>
+                </group>
+                <group>
+                  <field name="mobile" placeholder="+91-9999999999" string="Whatsapp Contact" required="whatsapp_support_member == True"/>
+                  <field name="time_to" widget='float_time'/>
+                  <field name="website_id" string="Website" options="{'no_create': True}" groups="website.group_multi_website"/>
+                </group>
+              </group>
+            </page>
+          </xpath>
+        </field>
+      </record>
+
+      <record id="wk_support_team_kanban_view" model="ir.ui.view">
+        <field name="name">Res Partner Kanban Inherit</field>
+        <field name="model">res.partner</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="priority">32</field>
+        <field name="arch" type="xml">
+          <xpath expr="//kanban" position="attributes">
+            <attribute name="group_create">false</attribute>
+          </xpath>
+        </field>
+      </record>
+    </data>
+</odoo>

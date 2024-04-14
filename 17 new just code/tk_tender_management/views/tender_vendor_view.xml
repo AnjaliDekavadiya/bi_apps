@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="tender_res_partner_form" model="ir.ui.view">
+            <field name="name">tender.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="is_vendor" widget="boolean_toggle"/>
+                    <field name="tender_category_ids" widget="many2many_tags" required="is_vendor"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="tender_vendor_action" model="ir.actions.act_window">
+            <field name="name">Vendors</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <field name="context">{'default_is_vendor': True}</field>
+            <field name="domain">[('is_vendor','=',True)]</field>
+        </record>
+    </data>
+</odoo>

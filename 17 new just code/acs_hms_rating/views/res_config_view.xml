@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.vaccination</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="acs_hms.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='prescription_data']" position="before">
+                <block title="Rating" name="rating_setting_container">
+                    <setting help="Appointment Rating Request." id="appointment_rating_mail_template_id_setting">
+                        <field name="appointment_rating_mail_template_id" class="o_light_label" string="Appointment Rating Mail template"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

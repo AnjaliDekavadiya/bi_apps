@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="price_checker_config_setting_form_view" model="ir.ui.view">
+            <field name="name">price.checker.config.setting.form.view</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="11" />
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <app data-string="Price Checker" string="Price Checker" name="sh_price_checker_kiosk" groups="sh_price_checker_kiosk.price_checker_group">
+                        <block title="Price Checker Configuration">
+                            <setting>
+                                <field name="sh_product_image" />
+                            </setting>
+                            <setting>
+                                <field name="sh_product_code" />
+                            </setting>
+                            <setting>
+                                <field name="sh_product_barcode" />
+                            </setting>
+                            <setting>
+                                <field name="sh_product_weight" />
+                            </setting>
+                            <setting groups="product.group_product_pricelist">
+                                <field name="sh_product_pricelist" />
+                            </setting>
+                            <setting>
+                                <field name="sh_product_sale_price" />
+                            </setting>
+                            <setting>
+                                <field name="sh_product_sale_description" />
+                            </setting>
+                            <setting>
+                                <field name="sh_product_attribute" />
+                            </setting>
+                            <setting>
+                                <field name="sh_product_category" />
+                            </setting>
+                            <setting>
+                                <field name="sh_touch_kyboard" />
+                            </setting>
+                            <setting>
+                                <field name="sh_company_logo" />
+                            </setting>
+                            <setting>
+                                <field name="sh_welcome_message" />
+                            </setting>
+                            <setting invisible="not sh_welcome_message">
+                                <field name="sh_message" />
+                            </setting>
+                            <setting>
+                                <field name="sh_display" />
+                            </setting>
+                            <setting invisible="not sh_display">
+                                <field name="sh_display_view" required="sh_display" />
+                            </setting>
+                            <setting invisible="not sh_display_view or sh_display_view=='portrait'">
+                                <field name="sh_display_landscape" required="sh_display_view == 'landscape'" />
+                            </setting>
+                            <setting invisible="not sh_display_view or sh_display_view=='landscape'">
+                                <field name="sh_display_portrait" required="sh_display_view == 'portrait'" />
+                            </setting>
+                            <setting>
+                                <field name="sh_delay_screen" />
+                            </setting>
+                            <setting>
+                                <field name="sh_search_char_field_product" widget="many2many_tags" options="{'no_create_edit': True, 'no_quick_create': True}" />
+                            </setting>
+                            <setting>
+                                <field name="sh_product_stock" />
+                            </setting>
+                            <setting invisible="not sh_product_stock">
+                                <field name="sh_warehouse_ids" domain="[('company_id','=',company_id)]" options="{'no_create_edit': True, 'no_quick_create': True}" widget="many2many_tags" />
+                            </setting>
+                        </block>
+                    </app>
+                </xpath>
+            </field>
+        </record>
+        <record id="action_price_checker_config_settings" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'sh_price_checker_kiosk', 'bin_size': False}</field>
+        </record>
+        <menuitem id="price_checker_main_menu" name="Price Checker" />
+        <menuitem id="menu_config" name="Configuration" parent="price_checker_main_menu" sequence="1" groups="sh_price_checker_kiosk.price_checker_group" />
+        <menuitem id="menu_price_checker_general_settings" name="Settings" parent="menu_config" sequence="0" action="action_price_checker_config_settings" groups="base.group_system" />
+    </data>
+</odoo>

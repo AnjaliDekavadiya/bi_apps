@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="purchase_order_short_supply_wizard_form_view" model="ir.ui.view">
+            <field name="name">Short Supply</field>
+            <field name="model">short.supply.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Short Supply">
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="project_id"/>
+                                <field name="project_wbs"/>
+                                <field name="purchase_order_id"/>
+                            </group>
+
+                            <group>
+                                <field name="sub_project"/>
+                                <field name="partner_id" context="{'res_partner_search_mode': 'supplier'}"/>
+                                <field name="stage_id"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <group>
+                                <field name="from_date"/>
+                            </group>
+                            <group>
+                                <field name="to_date"/>
+                            </group>
+                        </group>
+
+                        <button name="compute_purchase_orders" type="object" class="fa fa-search" string="Search"/>
+
+                        <field name="order_line">
+                            <tree string="order_line_tree" editable="bottom" create="false" delete="false">
+                                <field name="project_id" readonly="True"/>
+                                <field name="sub_project" readonly="True"/>
+                                <field name="project_wbs" readonly="True" context="{'form_view_ref': 'pragtech_ppc.project_task_inherited_form_wbs1'}"/>
+                                <field name="purchase_order_id" readonly="True"/>
+                                <field name="partner_id" readonly="True"/>
+                                <field name="product_id" readonly="True"/>
+                                <field name="product_qty" readonly="True"/>
+                                <field name="recieved_qty" readonly="True"/>
+                                <field name="remain_qty" readonly="True"/>
+                                <field name="balance_amount" readonly="True"/>
+                            </tree>
+                        </field>
+
+                    </sheet>
+                    <footer>
+                        <div align="center">
+                            <button name="%(pragtech_purchase.action_report_purchase_order_short_supply)d" type="action" class="fa fa-print" string="Print"/>
+                        </div>
+                    </footer>
+
+                </form>
+
+                
+            </field>
+        </record>
+
+        <record id="purchase_order_short_supply_action" model="ir.actions.act_window">
+            <field name="name">Short Supply</field>
+            <field name="res_model">short.supply.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="purchase_order_short_supply_wizard_form_view"/>
+        </record>
+
+    </data>
+</odoo>
+

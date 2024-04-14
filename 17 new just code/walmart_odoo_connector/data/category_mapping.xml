@@ -1,0 +1,149 @@
+<odoo>
+    <data noupdate='1'>
+      <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+      <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+        <record forcecreate='True' model="product.category" id="wm_category_animal">
+            <field name="name">Animal</field>
+        </record>
+		<record id="wm_category_map_1" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_animal"/>
+            <field name="odoo_category_id" eval="wm_category_animal"/>
+            <field name="store_category_id">Animal</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_baby">
+            <field name="name">Baby</field>
+        </record>
+		<record id="wm_category_map_2" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_baby"/>
+            <field name="odoo_category_id" eval="wm_category_baby"/>
+            <field name="store_category_id">Baby</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_clothing">
+            <field name="name">Clothing</field>
+        </record>
+		<record id="wm_category_map_3" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="odoo_category_id" ref="wm_category_clothing"/>
+            <field name="category_name" eval="wm_category_clothing"/>
+            <field name="store_category_id">ClothingCategory</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_electronics">
+            <field name="name">Electronics</field>
+        </record>
+		<record id="wm_category_map_4" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_electronics"/>
+            <field name="odoo_category_id" eval="wm_category_electronics"/>
+            <field name="store_category_id">Electronics</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_footwear">
+            <field name="name">Footwear</field>
+        </record>
+		<record id="wm_category_map_5" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_footwear"/>
+            <field name="odoo_category_id" eval="wm_category_footwear"/>
+            <field name="store_category_id">FootwearCategory</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_furniture">
+            <field name="name">Furniture</field>
+        </record>
+		<record id="wm_category_map_6" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_furniture"/>
+            <field name="odoo_category_id" eval="wm_category_furniture"/>
+            <field name="store_category_id">FurnitureCategory</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_art_craft">
+            <field name="name">Art &amp; Craft</field>
+        </record>
+		<record id="wm_category_map_7" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_art_craft"/>
+            <field name="odoo_category_id" eval="wm_category_art_craft"/>
+            <field name="store_category_id">ArtAndCraftCategory</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_carrier_access">
+            <field name="name">Carriers &amp; Accessories</field>
+        </record>
+		<record id="wm_category_map_8" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_carrier_access"/>
+            <field name="odoo_category_id" eval="wm_category_carrier_access"/>
+            <field name="store_category_id">CarriersAndAccessoriesCategory</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_cleaning_safety">
+            <field name="name">Cleaning, Safety, &amp; Other</field>
+        </record>
+		<record id="wm_category_map_9" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_cleaning_safety"/>
+            <field name="odoo_category_id" eval="wm_category_cleaning_safety"/>
+            <field name="store_category_id">OtherCategory</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_food_beverage">
+            <field name="name">Food &amp; Beverage</field>
+        </record>
+		<record id="wm_category_map_10" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_food_beverage"/>
+            <field name="odoo_category_id" eval="wm_category_food_beverage"/>
+            <field name="store_category_id">FoodAndBeverageCategory</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_garden">
+            <field name="name">Garden &amp; Patio</field>
+        </record>
+		<record id="wm_category_map_11" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_garden"/>
+            <field name="odoo_category_id" eval="wm_category_garden"/>
+            <field name="store_category_id">GardenAndPatioCategory</field>
+        </record>
+
+		<record forcecreate='True' model="product.category" id="wm_category_health_beauty">
+            <field name="name">Health &amp; Beauty</field>
+        </record>
+		<record id="wm_category_map_12" forcecreate='True'
+            model="channel.category.mappings">
+            <field name="channel_id" ref="walmart_instance"/>
+			<field name="ecom_store">walmart</field>
+            <field name="category_name" ref="wm_category_health_beauty"/>
+            <field name="odoo_category_id" eval="wm_category_health_beauty"/>
+            <field name="store_category_id">HealthAndBeauty</field>
+        </record>
+	</data>
+</odoo>

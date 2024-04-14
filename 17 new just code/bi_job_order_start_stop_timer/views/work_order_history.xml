@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="inherited_job_order_history_view" model="ir.ui.view">
+			<field name="name">inherited.job.order.history.form.view</field>
+			<field name="model">job.order</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//notebook" position="inside">
+					<page string="Customer Sign">
+						<field name="digital_signature" widget="signature"/>
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

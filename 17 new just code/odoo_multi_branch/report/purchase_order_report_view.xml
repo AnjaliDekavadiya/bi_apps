@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_purchaseorder_document_inherit_branch" inherit_id="purchase.report_purchaseorder_document">
+            <!-- <xpath expr="//div[hasclass('row mt32 mb32')]" position="inside"> -->
+            <xpath expr="//div[@t-if='o.partner_ref']" position="after">
+                <div t-if="o.company_branch_id" class="col-3 bm-2">
+                    <strong>Branch:</strong>
+                    <p t-field="o.company_branch_id" class="m-0"/>
+                </div>
+            </xpath>
+            <!--
+            <xpath expr="//table[@class='table table-condensed']/thead/tr/th" position="after">
+                <th t-if="o.company_branch_id">
+                    <strong>Branch</strong>
+                </th>
+            </xpath>
+            <xpath expr="//table[@class='table table-condensed']/tbody/tr/td" position="after">
+                <td><span t-field="line.company_branch_id"/></td>
+            </xpath>-->
+        </template>
+
+        <record id="view_purchase_report_filter_inherit_company_branch" model="ir.ui.view">
+            <field name="name">purchase.report.filter.company.branch</field>
+            <field name="model">purchase.report</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search//field[@name='product_id']" position="after">
+                     <field name="company_branch_id" 
+                     groups="odoo_multi_branch.group_multi_branches"/>
+                </xpath>
+                <xpath expr="//group//filter[@name='company']" position="after">
+                     <filter name="company_branch_id" string="Branch" 
+                     context="{'group_by':'company_branch_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

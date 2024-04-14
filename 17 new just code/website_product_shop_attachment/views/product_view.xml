@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="view_product_website_product_attachments" model="ir.ui.view">
+            <field name="name">product.template.form.website.product.attachments</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <!-- <data> -->
+                    <!-- <field name="website_style_ids" position="after"> -->
+                    <xpath expr="//group[@name='shop']" position="inside">
+                        <separator name="website_product_attachments" string="Website Product Attachments"/>
+<!--                        <group string="Website Product Attachments" groups="sales_team.group_sale_salesman">-->
+                        <field name="website_product_attachment" nolabel='1' groups="sales_team.group_sale_salesman"/>
+<!--                        </group>-->
+                    </xpath>
+                    <!-- </field> -->
+                <!-- </data> -->
+            </field>
+        </record>
+
+    </data>
+</openerp>

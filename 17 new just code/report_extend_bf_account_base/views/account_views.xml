@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_move_form">
+        <field name="name">account.move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <button name="action_post" position="before">
+                <button name="preview_report_invoice" string="Preview report" type="object" data-hotkey="p"/>
+            </button>
+        </field>
+    </record>
+
+    <!-- Consulta masiva de datos -->
+    <record id="preview_report_account_move_server_action" model="ir.actions.server">
+        <field name="name">Preview report</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">action = records.preview_report_invoice()</field>
+    </record>
+</odoo>

@@ -1,0 +1,53 @@
+<odoo>
+	<data>
+		<record id="cost_sheet_tags_view_form" model="ir.ui.view">
+			<field name="name">view.cost.sheet.tags.form</field>
+			<field name="model">cost.sheet.tags</field>
+			<field name="arch" type="xml">
+				<form string="Cost Sheet Tags">
+					<sheet>
+						<group>
+							<field name="name" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="cost_sheet_tags_view_tree" model="ir.ui.view">
+			<field name="name">view.cost.sheet.tags.tree</field>
+			<field name="model">cost.sheet.tags</field>
+			<field name="arch" type="xml">
+				<tree string="Cost Sheet Tags">
+						<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="cost_sheet_tags_view_action" model="ir.actions.act_window">
+			<field name="name">Cost Sheet Tags </field>
+			<field name="res_model">cost.sheet.tags</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+				Click to add a new employee.
+			  	</p>
+			</field>
+		</record>
+
+		<record id="inherit_job_cost_sheet_form" model="ir.ui.view">
+			<field name="name">inherit.job.cost.sheet.form</field>
+			<field name="model">job.cost.sheet</field>
+			<field name="inherit_id" ref="bi_odoo_job_costing_management.job_cost_sheet_form_view" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='project_id']" position="after">
+					<field name="project_team_id"/>
+					<field name="cost_sheet_tags_ids" widget="many2many_tags"/>
+				</xpath>
+			</field>
+		</record>
+
+		<menuitem id="cost_sheet_tags" parent= "bi_odoo_job_costing_management.sub_menu_configuration" name="Cost Sheet tags" sequence = '2' action="bi_project_team.cost_sheet_tags_view_action"/>
+	</data>
+</odoo>

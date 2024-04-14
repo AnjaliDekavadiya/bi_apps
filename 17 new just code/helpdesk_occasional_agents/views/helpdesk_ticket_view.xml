@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="helpdesk_support_form_view_inherit_occastional_agents">
+            <field name="name">helpdesk.support.form.inherit.history</field>
+            <field name="model">helpdesk.support</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_support_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[last()]" position="after">
+                    <page string="Occasional Agents" >
+                        <field name="occational_agent_ids" nolabel="1">
+                            <tree string="Occasional Agents">
+                                 <field name="name" />
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="helpdesk_support_search_view_inherit_occastional_agents">
+            <field name="name">helpdesk.support.search.inherit.occational_agents</field>
+            <field name="model">helpdesk.support</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_support_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="occational_agent_ids" />
+                </xpath>
+            </field>
+        </record>
+        
+        <menuitem name="Occasional Agents Desk" id="menu_item_occasional_agents" />
+        
+        <menuitem name="Helpdesk Tickets" id="menu_helpdesk_tickets" parent="menu_item_occasional_agents"  
+                 />
+        <menuitem name="Helpdesk Tickets" id="menu_item_helpdesk_tickets" parent="menu_helpdesk_tickets" 
+                  action="website_helpdesk_support_ticket.action_helpdesk_support"/>       
+    </data>
+</odoo>

@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+    Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+-->
+<odoo>
+    <template id="homes" name="Home">
+        <t t-call="website.layout">
+            <div id="wrapper">
+                <!-- content-->
+                <div class="content">
+                    <!--section  -->
+                    <section class="p-section hero-section" data-scrollax-parent="true">
+                        <div class="bg-tabs-wrap">
+                            <div class="bg-parallax-wrap" data-scrollax="properties: { translateY: '200px' }">
+                                <t t-if="home_config.hero_choice and home_config.hero_choice in ['vid', 'youtube'] and (home_config.video_bg_url or home_config.youtube_bg_video)">
+                                    <div class="video-container" t-if="home_config.hero_choice == 'vid' and home_config.video_bg_url">
+                                        <video autoplay="autoplay"  playsinline="playsinline" loop="loop" muted="muted"  class="bgvid">
+                                            <source t-att-src="home_config.video_bg_url" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                    <div  class="background-youtube-wrapper" t-att-data-vid="home_config.youtube_bg_video" data-mv="1" t-else=""> </div>
+                                    <div class="bg mob_bg" t-att-data-bg="image_data_uri(home_config.mob_background) if home_config.mob_background else '/tk_website_rental_management/static/src/images/bg/hero/1.jpg'"></div>
+                                </t>
+                                <t t-else="">
+                                    <div class="bg bg_tabs" t-att-data-bg="image_data_uri(home_config.image_1920_0) if home_config.image_1920_0 else '/tk_website_rental_management/static/src/images/bg/hero/1.jpg'"></div>
+                                </t>
+                                <div class="overlay op7"></div>
+                            </div>
+                        </div>
+                        <div class="p-container container small-container">
+                            <div class="intro-item fl-wrap">
+                                <span class="section-separator"></span>
+                                <div class="bubbles">
+                                    <h1>Explore Best Property In City</h1>
+                                </div>
+                                <h3>Find some of the best tips from around the city from our partners and friends.</h3>
+                            </div>
+                            <!-- main-search-input-tabs-->
+                            <div class="main-search-input-tabs  tabs-act fl-wrap">
+                                <ul class="tabs-menu change_bg no-list-style">
+                                    <li class="current"><a href="#tab-inpt1" t-att-data-bgtab="image_data_uri(home_config.image_1920_1) if home_config.image_1920_1 else '/tk_website_rental_management/static/src/images/bg/hero/1.jpg'">Any Status</a></li>
+                                    <li><a href="#tab-inpt2" t-att-data-bgtab="image_data_uri(home_config.image_1920_2) if home_config.image_1920_2 else '/tk_website_rental_management/static/src/images/bg/hero/1.jpg'">For Rent</a></li>
+                                    <li><a href="#tab-inpt3" t-att-data-bgtab="image_data_uri(home_config.image_1920_3) if home_config.image_1920_3 else '/tk_website_rental_management/static/src/images/bg/hero/1.jpg'">For Sale</a></li>
+                                </ul>
+                                <!--tabs -->
+                                <div class="tabs-container fl-wrap">
+                                    <!--tab -->
+                                    <div class="tab">
+                                        <div id="tab-inpt1" class="tab-content first-tab">
+                                            <div class="main-search-input-wrap fl-wrap">
+                                                <div class="main-search-input fl-wrap">
+                                                    <form method="GET" action="/properties-list" id="general">
+                                                        <div class="main-search-input-item location autocomplete-container">
+                                                            <label><i class="fal fa-keyboard"></i></label>
+                                                            <input type="text" placeholder="What you are looking for ?" name="search_term" class="autocomplete-input" id="autocompleteid" value=""/>
+                                                        </div>
+                                                        <div class="main-search-input-item">
+                                                            <label><i class="fal fa-money-bill"></i></label>
+                                                            <input type="number" placeholder="Max Price" name="max_prc" value=""/>
+                                                        </div>
+                                                        <div class="main-search-input-item">
+                                                            <select data-placeholder="City" name="cn" class="chosen-select">
+                                                                <option selected="selected">All Cities</option>
+                                                                <t t-foreach="cities" t-as="city">
+                                                                    <option t-att-value="city"><t t-esc="city" /></option>
+                                                                </t>
+                                                            </select>
+                                                        </div>
+                                                        <button type="submit" form="general" class="main-search-button color2-bg">Search <i class="far fa-search"></i></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--tab end-->
+                                    <!--tab -->
+                                    <div class="tab">
+                                        <div id="tab-inpt2" class="tab-content">
+                                            <div class="main-search-input-wrap fl-wrap">
+                                                <div class="main-search-input fl-wrap">
+                                                    <form method="GET" action="/properties-list" id="rent-properties">
+                                                        <input type="hidden" name="st" value="rent" />
+                                                        <div class="main-search-input-item location autocomplete-container">
+                                                            <label><i class="fal fa-keyboard"></i></label>
+                                                            <input type="text" placeholder="What you are looking for ?" name="search_term" class="autocomplete-input" id="autocompleteid" value=""/>
+                                                        </div>
+                                                        <div class="main-search-input-item">
+                                                            <label><i class="fal fa-money-bill"></i></label>
+                                                            <input type="number" placeholder="Max Price" name="max_prc" value=""/>
+                                                        </div>
+                                                        <div class="main-search-input-item">
+                                                            <select data-placeholder="City" name="cn" class="chosen-select">
+                                                                <option selected="selected">All Cities</option>
+                                                                <t t-foreach="cities" t-as="city">
+                                                                    <option t-att-value="city"><t t-esc="city" /></option>
+                                                                </t>
+                                                            </select>
+                                                        </div>
+                                                        <button class="main-search-button color2-bg" form="rent-properties" type="submit">Search <i class="far fa-search"></i></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--tab end-->
+                                    <!--tab -->
+                                    <div class="tab">
+                                        <div id="tab-inpt3" class="tab-content">
+                                            <div class="main-search-input-wrap fl-wrap">
+                                                <div class="main-search-input fl-wrap">
+                                                    <form method="GET" action="/properties-list" id="sale-properties">
+                                                        <input type="hidden" name="st" value="sale" />
+                                                        <div class="main-search-input-item location autocomplete-container">
+                                                            <label><i class="fal fa-keyboard"></i></label>
+                                                            <input type="text" placeholder="What you are looking for ?" name="search_term" class="autocomplete-input" id="autocompleteid" value=""/>
+                                                        </div>
+                                                        <div class="main-search-input-item">
+                                                            <label><i class="fal fa-money-bill"></i></label>
+                                                            <input type="number" placeholder="Max Price" name="max_prc" value=""/>
+                                                        </div>
+                                                        <div class="main-search-input-item">
+                                                            <select data-placeholder="City" name="cn" class="chosen-select">
+                                                                <option selected="selected">All Cities</option>
+                                                                <t t-foreach="cities" t-as="city">
+                                                                    <option t-att-value="city"><t t-esc="city" /></option>
+                                                                </t>
+                                                            </select>
+                                                        </div>
+                                                        <button class="main-search-button color2-bg" form="sale-properties" type="submit">Search <i class="far fa-search"></i></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--tab end-->
+                                </div>
+                                <!--tabs end-->
+                            </div>
+                            <!-- main-search-input-tabs end-->
+                            <div class="hero-categories fl-wrap">
+                                <h4 class="hero-categories_title">Just looking around ? Use quick search by category :</h4>
+                                    <ul class="d-flex flex-wrap justify-content-center no-list-style">
+                                        <t t-foreach="hero_categories" t-as="ll">
+<!--                                            <li class="col-2 w25" t-if="ll.display_on_home"><a t-attf-href="/properties-list/#{ll.name}"><i class="far fa-building"></i><span><t t-esc="ll.name"/></span></a></li>-->
+                                            <li class="d-flex col-2 w25" t-if="ll.display_on_home">
+                                                <a class=" " t-attf-href="/properties-list?categ=#{ll.type}&amp;dc=0#{ll.id}">
+                                                    <img class="w10" t-att-src="image_data_uri(ll.image) if ll.image else '/tk_website_rental_management/static/src/images/category-placeholder.png'" t-att-alt="ll.name" />
+                                                    <p><span><t t-esc="ll.name"/></span></p>
+                                                </a>
+                                            </li>
+                                        </t>
+                                    </ul>
+                            </div>
+                        </div>
+                        <div class="header-sec-link">
+                            <a href="#sec1" class="custom-scroll-link"><i class="fal fa-angle-double-down"></i></a>
+                        </div>
+                    </section>
+                    <section class="oe_structure oe_empty"></section>
+                    <!--section end-->
+                    <!--section  -->
+                    <t t-set="logged_user" t-value="request.env.user.id != request.env.ref('base.public_user').id" />
+                    <section class="slw-sec p-section" id="sec1">
+                        <div class="section-title">
+                            <h2>The Latest Listings</h2>
+                            <div class="section-subtitle">Newest  Listings</div>
+                            <span class="section-separator"></span>
+                            <p>Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum elementum.</p>
+                        </div>
+                        <div class="listing-slider-wrap fl-wrap">
+                            <div class="listing-slider fl-wrap">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                        <!--  swiper-slide  -->
+                                        <t t-foreach="latest_listing" t-as="ll">
+                                            <div class="swiper-slide">
+                                                <div class="listing-slider-item fl-wrap">
+                                                    <!-- listing-item  -->
+                                                    <div class="listing-item listing_carditem">
+                                                        <article class="geodir-category-listing fl-wrap">
+                                                            <div class="geodir-category-img">
+                                                                <div t-attf-class="geodir-js-favorite_btn #{' liked' if ll.id in book_properties else ''}" t-att-data-access="ll.access_token" t-if="logged_user"><i class="fal fa-heart"></i></div>
+                                                                <a t-attf-href="/property-details/#{slug(ll)}" class="geodir-category-img-wrap fl-wrap">
+                                                                    <img t-att-src="image_data_uri(ll.image) if ll.image else '/tk_website_rental_management/static/src/images/property-placeholder.jpg'" t-att-alt="ll.name" />
+                                                                </a>
+                                                                <div class="geodir_status_date gsd_open">Available</div>
+                                                                <div class="geodir-category-opt">
+                                                                    <div class="geodir-category-opt_title">
+                                                                        <h4><a t-attf-href="/property-details/#{slug(ll)}"><t t-esc="ll.name" /></a><span t-if="ll.is_verify" class="verified-badge"><i class="fal fa-check"></i></span></h4>
+                                                                        <div class="geodir-category-location"><a t-attf-href="https://maps.google.com/maps?q=loc:#{ll.latitude},#{ll.longitude}" target="_blank"><i class="fas fa-map-marker-alt"></i>  <t t-if="ll.street"><t t-esc="ll.street" />, </t> <t t-if="ll.city_id"><t t-esc="ll.city_id.name" />,</t> <t t-if="ll.state_id and ll.state_id.code"> <t t-esc="ll.state_id.code" />, </t> <t t-esc="ll.country_id.code" /></a></div>
+                                                                    </div>
+                                                                    <div class="listing-rating-count-wrap">
+                                                                        <div class="review-score"><t t-if="ll.sale_lease == 'for_sale'">Sale</t><t t-else="">Rent</t></div>
+                                                                    </div>
+                                                                    <div class="listing_carditem_footer fl-wrap">
+                                                                        <t t-if="ll.type == 'residential'">
+                                                                            <a class="listing-item-category-wrap">
+                                                                                <div class="listing-item-category green-gradient-bg "><i class="fal fa-building"></i></div>
+                                                                                <span t-esc="ll.property_subtype_id.name"/>
+                                                                            </a>
+                                                                        </t>
+                                                                        <t t-if="ll.type == 'land'">
+                                                                            <a class="listing-item-category-wrap">
+                                                                                <div class="listing-item-category purp-gradient-bg"><i class="fal fa-map"></i></div>
+                                                                                <span t-esc="ll.property_subtype_id.name"/>
+                                                                            </a>
+                                                                        </t>
+                                                                        <t t-if="ll.type == 'commercial'">
+                                                                            <a class="listing-item-category-wrap">
+                                                                                <div class="listing-item-category coral-bg"><i class="fal fa-dumpster"></i></div>
+                                                                                <span t-esc="ll.property_subtype_id.name"/>
+                                                                            </a>
+                                                                        </t>
+                                                                        <t t-if="ll.type == 'industrial'">
+                                                                            <a class="listing-item-category-wrap">
+                                                                                <div class="listing-item-category yellow-bg"><i class="fal fa-industry"></i></div>
+                                                                                <span t-esc="ll.property_subtype_id.name"/>
+                                                                            </a>
+                                                                        </t>
+                                                                        <div class="price-level geodir-category_price">
+                                                                            <span class="price-level-item">
+                                                                                <t t-if="ll.sale_lease == 'for_sale'">
+                                                                                    <t t-esc="ll.price" t-options='{"widget": "monetary", "display_currency": ll.currency_id}' />
+                                                                                </t>
+                                                                                <t t-else="">
+                                                                                    <t t-esc="ll.price" t-options='{"widget": "monetary", "display_currency": ll.currency_id}' /> <t t-if="ll.rent_unit">/ <t t-esc="ll.rent_unit" /></t>
+                                                                                </t>
+                                                                            </span>
+                                                                            <span class="price-name-tooltip"><t t-if="ll.sale_lease == 'for_sale'">Sale</t><t t-else="">Rent</t></span>
+                                                                        </div>
+                                                                        <t t-if="home_config and home_config.display_landlord">
+                                                                            <div class="post-author"><a href="#"><img t-att-src="image_data_uri(ll.landlord_id.sudo().image_1920) if ll.landlord_id.sudo().image_1920 else '/tk_website_rental_management/static/src/images/user.png'" t-att-alt="ll.landlord_id.name" /></a></div>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                    <!-- listing-item end -->
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="listing-carousel-button listing-carousel-button-next2"><i class="fas fa-caret-right"></i></div>
+                                <div class="listing-carousel-button listing-carousel-button-prev2"><i class="fas fa-caret-left"></i></div>
+                            </div>
+                            <div class="tc-pagination_wrap">
+                                <div class="tc-pagination2"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="oe_structure oe_empty"></section>
+                    <!--section end-->
+					<div class="sec-circle fl-wrap"></div>
+                    <!--section -->
+                    <section class="oe_structure oe_empty"></section>
+                    <section  class="p-section gray-bg hidden-section particles-wrapper" t-if="home_config.city_ids">
+                        <div class="p-container container">
+                            <div class="section-title">
+                                <h2>Most Popular Places</h2>
+                                <div class="section-subtitle">Properties In Most Popular Places</div>
+                                <span class="section-separator"></span>
+                                <p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus.</p>
+                            </div>
+                            <div class="listing-item-grid_container fl-wrap">
+                                <div class="row">
+                                    <!--  listing-item-grid  -->
+                                    <t t-foreach="home_config.city_ids" t-as="city">
+                                        <div t-attf-class="col-sm-#{city.size}">
+                                            <div class="listing-item-grid">
+                                                <div class="bg"  t-att-data-bg="image_data_uri(city.cover_image)"></div>
+                                                <div class="d-gr-sec"></div>
+                                                <div class="listing-counter color2-bg"><span t-esc="city.property_count" /> Properties</div>
+                                                <div class="listing-item-grid_title">
+                                                    <h3><a t-attf-href="/properties/city/#{slug(city.city_id)}/"><t t-esc="city.city_id.name" /></a></h3>
+                                                    <p t-esc="city.tag_line" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                            <a href="/properties-list" class="btn dec_btn color2-bg">View All Properties<i class="fal fa-arrow-alt-right"></i></a>
+                        </div>
+                    </section>
+                    <!--  section  -->
+                    <section class="oe_structure oe_empty"></section>
+                    <!--section end-->
+                    <section class="p-section parallax-section small-par" data-scrollax-parent="true">
+                        <div class="bg par-elem " t-att-data-bg="image_data_uri(home_config.sec_img_2) if home_config.sec_img_2 else '/tk_website_rental_management/static/src/images/bg/hero/22.jpg'" data-scrollax="properties: { translateY: '30%' }"></div>
+                        <div class="overlay  op7"></div>
+                        <div class="p-container container">
+                            <div class=" single-facts single-facts_2 fl-wrap">
+                                <!-- inline-facts -->
+                                <div class="inline-facts-wrap">
+                                    <div class="inline-facts">
+                                        <div class="milestone-counter">
+                                            <div class="stats animaper">
+                                                <div class="num" data-content="0" t-att-data-num="home_config.hs_one"><t t-esc="home_config.hs_one" /></div>
+                                            </div>
+                                        </div>
+                                        <h6>New Visiters Every Week</h6>
+                                    </div>
+                                </div>
+                                <!-- inline-facts end -->
+                                <!-- inline-facts  -->
+                                <div class="inline-facts-wrap">
+                                    <div class="inline-facts">
+                                        <div class="milestone-counter">
+                                            <div class="stats animaper">
+                                                <div class="num" data-content="0" t-att-data-num="home_config.hs_two"><t t-esc="home_config.hs_two" /></div>
+                                            </div>
+                                        </div>
+                                        <h6>Happy customers every year</h6>
+                                    </div>
+                                </div>
+                                <!-- inline-facts end -->
+                                <!-- inline-facts  -->
+                                <div class="inline-facts-wrap">
+                                    <div class="inline-facts">
+                                        <div class="milestone-counter">
+                                            <div class="stats animaper">
+                                                <div class="num" data-content="0" t-att-data-num="home_config.hs_three"><t t-esc="home_config.hs_three" /></div>
+                                            </div>
+                                        </div>
+                                        <h6>Won Amazing Awards</h6>
+                                    </div>
+                                </div>
+                                <!-- inline-facts end -->
+                                <!-- inline-facts  -->
+                                <div class="inline-facts-wrap">
+                                    <div class="inline-facts">
+                                        <div class="milestone-counter">
+                                            <div class="stats animaper">
+                                                <div class="num" data-content="0" t-att-data-num="home_config.hs_four"><t t-esc="home_config.hs_four" /></div>
+                                            </div>
+                                        </div>
+                                        <h6>New Listing Every Week</h6>
+                                    </div>
+                                </div>
+                                <!-- inline-facts end -->
+                            </div>
+                        </div>
+                    </section>
+                    <!--section end-->
+                    <section class="oe_structure oe_empty"></section>
+                    <!--section  -->
+                    <section class="p-section">
+                        <div class="p-container container big-container">
+                            <div class="section-title">
+                                <h2><span>Popular Properties</span></h2>
+                                <div class="section-subtitle">Featured Listings</div>
+                                <span class="section-separator"></span>
+                                <p>Proin dapibus nisl ornare diam varius tempus. Aenean a quam luctus, finibus tellus ut, convallis eros sollicitudin turpis.</p>
+                            </div>
+                            <div class="listing-filters gallery-filters fl-wrap">
+                                <a href="#" class="gallery-filter  gallery-filter-active" data-filter="*">All Categories</a>
+                                <a href="#" class="gallery-filter" data-filter=".residential">Residential</a>
+                                <a href="#" class="gallery-filter" data-filter=".commercial">Commercial</a>
+                                <a href="#" class="gallery-filter" data-filter=".industrial">Industrial</a>
+                                <a href="#" class="gallery-filter" data-filter=".land">Land</a>
+                            </div>
+                            <div class="grid-item-holder gallery-items fl-wrap" >
+                                <t t-foreach="popular_listing" t-as="ll">
+                                    <!--  gallery-item-->
+                                    <div t-attf-class="gallery-item #{ll.type}">
+                                        <!-- listing-item  -->
+                                        <div class="listing-item">
+                                            <article class="geodir-category-listing fl-wrap">
+                                                <div class="geodir-category-img">
+                                                    <div t-attf-class="geodir-js-favorite_btn #{' liked' if ll.id in book_properties else ''}" t-att-data-access="ll.access_token" t-if="logged_user"><i class="fal fa-heart"></i></div>
+                                                    <a t-attf-href="/property-details/#{slug(ll)}" class="geodir-category-img-wrap fl-wrap">
+                                                    <img class="popular_property" t-att-src="image_data_uri(ll.image) if ll.image else '/tk_website_rental_management/static/src/images/property-placeholder.jpg'" t-att-alt="ll.name" />
+                                                    </a>
+                                                    <t t-if="home_config and home_config.display_landlord">
+                                                        <div class="listing-avatar">
+                                                            <a href="#"><img t-att-src="image_data_uri(ll.landlord_id.sudo().image_1920) if ll.landlord_id.sudo().image_1920 else '/tk_website_rental_management/static/src/images/user.png'" t-att-alt="ll.landlord_id.name" /></a>
+                                                        </div>
+                                                    </t>
+                                                    <div class="geodir_status_date gsd_open">Available</div>
+                                                    <div class="geodir-category-opt">
+                                                        <div class="listing-rating-count-wrap">
+                                                            <div class="review-score"><t t-if="ll.sale_lease == 'for_sale'">Sale</t><t t-else="">Rent</t></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="geodir-category-content fl-wrap title-sin_item">
+                                                    <div class="geodir-category-content-title fl-wrap">
+                                                        <div class="geodir-category-content-title-item">
+                                                            <h3 class="title-sin_map"><a t-attf-href="/property-details/#{slug(ll)}"><t t-esc="ll.name" /></a><span t-if="ll.is_verify" class="verified-badge"><i class="fal fa-check"></i></span></h3>
+                                                            <div class="geodir-category-location fl-wrap">
+                                                                <a t-attf-href="https://maps.google.com/maps?q=loc:#{ll.latitude},#{ll.longitude}" target="_blank" >
+                                                                    <i class="fas fa-map-marker-alt"></i> <t t-if="ll.street"><t t-esc="ll.street" />, </t> <t t-if="ll.city_id"><t t-esc="ll.city_id.name" />,</t> <t t-if="ll.state_id and ll.state_id.code"> <t t-esc="ll.state_id.code" />, </t> <t t-esc="ll.country_id.code" />
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="geodir-category-text fl-wrap">
+                                                        <p class="small-text" t-esc="ll.short_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                                        <div class="facilities-list fl-wrap">
+                                                            <div class="facilities-list fl-wrap">
+                                                                <div class="facilities-list-title p-price">
+                                                                    <t t-if="ll.sale_lease == 'for_sale'">
+                                                                        <t t-esc="ll.price" t-options='{"widget": "monetary", "display_currency": ll.currency_id}' />
+                                                                    </t>
+                                                                    <t t-else="">
+                                                                        <t t-esc="ll.price" t-options='{"widget": "monetary", "display_currency": ll.currency_id}' /> <t t-if="ll.rent_unit">/ <t t-esc="ll.rent_unit" /></t>
+                                                                    </t>
+                                                                </div>
+                                                            </div>
+                                                            <div class="facilities-list-title">Facilities : </div>
+                                                            <ul class="no-list-style">
+                                                                <li class="tolt" data-microtip-position="top" data-tooltip="Internet Available" t-if="ll.web_gym"><i class="fal fa-dumbbell"></i></li>
+                                                                <li class="tolt" data-microtip-position="top" data-tooltip="Internet Available" t-if="ll.web_wifi"><i class="fal fa-wifi"></i></li>
+                                                                <li class="tolt" data-microtip-position="top" data-tooltip="Parking Available" t-if="ll.web_parking"><i class="fal fa-parking"></i></li>
+                                                                <li class="tolt" data-microtip-position="top" data-tooltip="Air Conditioned" t-if="ll.web_air_condition"><i class="fal fa-cloud"></i></li>
+                                                                <li class="tolt" data-microtip-position="top" data-tooltip="Semi Furnished" t-if="ll.web_semi_furnish"><i class="fal fa-couch"></i></li>
+                                                                <li class="tolt" data-microtip-position="top" data-tooltip="Full Furnished" t-if="ll.web_full_furnish"><i class="fal fa-loveseat"></i></li>
+                                                                <li class="tolt" data-microtip-position="top" data-tooltip="Security" t-if="ll.web_security"><i class="fal fa-cctv"></i></li>
+                                                                <li class="tolt" data-microtip-position="top" data-tooltip="Laundry Room" t-if="ll.web_laundry"><i class="fal fa-washer"></i></li>
+                                                                <t t-foreach="ll.website_amenity_ids" t-as="dm" t-if="ll.website_amenity_ids">
+                                                                    <li class="tolt" data-microtip-position="top" t-att-data-tooltip="dm.title"><i t-attf-class="fal #{dm.fa_class}"></i></li>
+                                                                </t>
+                                                                <li class="tolt" data-microtip-position="top" data-tooltip="Not Available" t-if="not ll.web_equip_kitchen and not ll.web_wifi and not ll.web_parking and not ll.web_air_condition and not ll.web_semi_furnish and not ll.web_full_furnish and not ll.web_security and not ll.web_laundry and not ll.website_amenity_ids">
+                                                                    <i class="fal fa-ban"></i>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="geodir-category-footer fl-wrap">
+                                                        <t t-if="ll.type == 'residential'">
+                                                            <a class="listing-item-category-wrap">
+                                                                <div class="listing-item-category green-gradient-bg "><i class="fal fa-building"></i></div>
+                                                                <span t-esc="ll.property_subtype_id.name"/>
+                                                            </a>
+                                                        </t>
+                                                        <t t-if="ll.type == 'land'">
+                                                            <a class="listing-item-category-wrap">
+                                                                <div class="listing-item-category purp-gradient-bg"><i class="fal fa-map"></i></div>
+                                                                <span t-esc="ll.property_subtype_id.name"/>
+                                                            </a>
+                                                        </t>
+                                                        <t t-if="ll.type == 'commercial'">
+                                                            <a class="listing-item-category-wrap">
+                                                                <div class="listing-item-category coral-bg"><i class="fal fa-dumpster"></i></div>
+                                                                <span t-esc="ll.property_subtype_id.name"/>
+                                                            </a>
+                                                        </t>
+                                                        <t t-if="ll.type == 'industrial'">
+                                                            <a class="listing-item-category-wrap">
+                                                                <div class="listing-item-category yellow-bg"><i class="fal fa-industry"></i></div>
+                                                                <span t-esc="ll.property_subtype_id.name"/>
+                                                            </a>
+                                                        </t>
+                                                        <div class="geodir-opt-list">
+                                                            <ul class="no-list-style">
+                                                                <li><a t-attf-href="https://www.google.com/maps?q=loc:#{ll.latitude},#{ll.longitude}" class="single-map-item" target="_blank" t-if="ll.latitude and ll.longitude" ><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span> </a></li>
+                                                                <li t-if="ll.property_images_ids">
+                                                                    <t t-set="d_gal" t-value="[]" />
+                                                                    <t t-foreach="ll.property_images_ids" t-as="img">
+                                                                        <t t-set="d_gal" t-value="d_gal + [{'src': image_data_uri(img.image)}]" />
+                                                                    </t>
+                                                                    <div class="dynamic-gal gdop-list-link" t-att-data-dynamicPath="str(d_gal)"><i class="fal fa-search-plus"></i><span class="geodir-opt-tooltip">Gallery</span></div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="geodir-category_contacts">
+                                                            <div class="close_gcc"><i class="fal fa-times-circle"></i></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                        <!-- listing-item end -->
+                                    </div>
+                                </t>
+                            </div>
+                            <a href="/properties-list" class="btn  dec_btn  color2-bg">Check Out All Listings<i class="fal fa-arrow-alt-right"></i></a>
+                        </div>
+                    </section>
+                    <!--section end-->
+                    <section class="oe_structure oe_empty"></section>
+                    <!--section  -->
+                    <section class="p-section parallax-section" data-scrollax-parent="true">
+                        <div class="bg par-elem "  t-att-data-bg="image_data_uri(home_config.sec_img_3) if home_config.sec_img_3 else '/tk_website_rental_management/static/src/images/bg/03.jpg'" data-scrollax="properties: { translateY: '30%' }"></div>
+                        <div class="overlay op7"></div>
+                        <!--container-->
+                        <div class="p-container container">
+                            <div class="video_section-title fl-wrap">
+                                <h4>Aliquam erat volutpat interdum</h4>
+                                <h2>Get ready to start your exciting journey. <br /> Our agency will lead you through the amazing digital world</h2>
+                            </div>
+                            <a t-att-href="home_config.video_link" class="promo-link big_prom image-popup"><i class="fal fa-play"></i><span>Promo Video</span></a>
+                        </div>
+                    </section>
+                    <!--section end-->
+                    <section class="oe_structure oe_empty"></section>
+                    <!--section  -->
+                    <section class="p-section" data-scrollax-parent="true">
+                        <div class="p-container container">
+                            <div class="section-title">
+                                <h2>How it works</h2>
+                                <div class="section-subtitle">Discover &amp; Connect </div>
+                                <span class="section-separator"></span>
+                                <p>Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus.</p>
+                            </div>
+                            <div class="process-wrap fl-wrap">
+                                <ul class="no-list-style">
+                                    <li>
+                                        <div class="process-item">
+                                            <span class="process-count">01 </span>
+                                            <div class="time-line-icon"><i class="fal fa-map-marker-alt"></i></div>
+                                            <h4> Find Interesting Property</h4>
+                                            <p>Proin dapibus nisl ornare diam varius tempus. Aenean a quam luctus, finibus tellus ut, convallis eros sollicitudin turpis.</p>
+                                        </div>
+                                        <span class="pr-dec"></span>
+                                    </li>
+                                    <li>
+                                        <div class="process-item">
+                                            <span class="process-count">02</span>
+                                            <div class="time-line-icon"><i class="fal fa-mail-bulk"></i></div>
+                                            <h4> Contact a Few Owners</h4>
+                                            <p>Faucibus ante, in porttitor tellus blandit et. Phasellus tincidunt metus lectus sollicitudin feugiat pharetra consectetur.</p>
+                                        </div>
+                                        <span class="pr-dec"></span>
+                                    </li>
+                                    <li>
+                                        <div class="process-item">
+                                            <span class="process-count">03</span>
+                                            <div class="time-line-icon"><i class="fal fa-layer-plus"></i></div>
+                                            <h4> Book Property</h4>
+                                            <p>Maecenas pulvinar, risus in facilisis dignissim, quam nisi hendrerit nulla, id vestibulum metus nullam viverra porta.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="process-end"><i class="fal fa-check"></i></div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--section end-->
+                    <section class="oe_structure oe_empty"></section>
+                    <!--section end-->
+                    <!--section  -->
+                    <section class="p-section">
+                        <div class="p-container container">
+                            <div class="section-title">
+                                <h2>What Our Clients Say</h2>
+                                <div class="section-subtitle">Clients Reviews</div>
+                                <span class="section-separator"></span>
+                                <p>Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="testimonilas-carousel-wrap fl-wrap">
+                            <div class="listing-carousel-button listing-carousel-button-next"><i class="fas fa-caret-right"></i></div>
+                            <div class="listing-carousel-button listing-carousel-button-prev"><i class="fas fa-caret-left"></i></div>
+                            <div class="testimonilas-carousel">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                        <t t-foreach="home_config.review_ids" t-as="ll">
+                                            <div class="swiper-slide">
+                                                <div class="testi-item fl-wrap">
+                                                    <div class="testi-avatar"><img t-att-src="image_data_uri(ll.image_1920) if ll.image_1920 else '/tk_website_rental_management/static/src/images/user.png'" t-att-alt="ll.name" /></div>
+                                                    <div class="testimonilas-text fl-wrap">
+                                                        <div class="listing-rating card-popup-rainingvis" t-att-data-starrating2="ll.rate"></div>
+                                                        <p>"<t t-esc="ll.reviews" />"</p>
+                                                        <div class="testimonilas-avatar fl-wrap">
+                                                            <h3 t-esc="ll.name">Andy Dimasky</h3>
+                                                            <h4 t-esc="ll.role">Restaurant Owner</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tc-pagination"></div>
+                        </div>
+                        <div class="waveWrapper waveAnimation">
+                          <div class="waveWrapperInner bgMiddle">
+                            <div class="wave-bg-anim waveMiddle" style="background-image: url('/tk_website_rental_management/static/src/images/wave-top.png')"></div>
+                          </div>
+                          <div class="waveWrapperInner bgBottom">
+                            <div class="wave-bg-anim waveBottom" style="background-image: url('/tk_website_rental_management/static/src/images/wave-top.png')"></div>
+                          </div>
+                        </div>
+                    </section>
+                    <section class="oe_structure oe_empty"></section>
+                    <section class="p-section gray-bg">
+                        <div class="p-container container">
+                            <div class="clients-carousel-wrap fl-wrap">
+                                <div class="cc-btn   cc-prev"><i class="fal fa-angle-left"></i></div>
+                                <div class="cc-btn cc-next"><i class="fal fa-angle-right"></i></div>
+                                <div class="clients-carousel">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <t t-foreach="home_config.partner_ids" t-as="ll">
+                                                <!--client-item-->
+                                                <div class="swiper-slide">
+                                                    <a href="#" class="client-item"><img t-att-src="image_data_uri(ll.partner_logo) if ll.partner_logo else '/tk_website_rental_management/static/src/images/client.png'" t-att-alt="ll.name" /></a>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="oe_structure oe_empty"></section>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

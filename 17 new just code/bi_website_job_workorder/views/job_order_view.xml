@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		
+        <record id="project_project_view_form" model="ir.ui.view">
+            <field name="name">project.project.view</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                        <field name="reference"/>
+                </field>
+            </field>
+        </record>
+
+		<record id="inherit_job_order_view_form" model="ir.ui.view">
+            <field name="name">inherit.job.order.view</field>
+            <field name="model">job.order</field>
+            <field name="inherit_id" ref="bi_odoo_job_costing_management.job_order_form_view" />
+            <field name="arch" type="xml">
+                <field name="end_date" position="after">
+                    <field name="customer_id"/>
+					<field name="customer_name"/>
+                </field>
+				
+				<field name="planned_hours" position="after">
+					<field name="customer_email"/>
+					<field name="customer_phone"/>
+				</field>
+            </field>
+        </record>
+
+        <record id="email_template_job_order" model="mail.template">
+            <field name="name">Website Job Order</field>
+            <field name="subject">{{ object.name }} </field>
+            <field name="email_to">${ object.email }</field>
+            <field name="model_id" ref="bi_website_job_workorder.model_job_order" />
+            <field name="auto_delete" eval="True" />
+            <field name="body_html"><![CDATA[
+                    <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <p>Dear <t t-out="object.customer_id.name"></p>
+                        <p> We received your Job Order.</p>
+                        <p> Job Order : <t t-out="object.name"></p>
+                        <p> We will get back to you soon </p>
+                        <p> Thank You</p>
+                    </div>
+                        ]]>
+            </field>
+        </record>
+        
+</odoo>

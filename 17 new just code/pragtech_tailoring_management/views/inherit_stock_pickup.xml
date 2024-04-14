@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+        <!-- ******************************** Inherit stock.picking Tree View ********************************** -->
+
+        <record model="ir.ui.view" id="view_stock_pickup_tree_inherit">
+            <field name="name">stock.pickup.tree.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree" />
+            <field name="arch" type="xml">
+                <!-- Invisibled activity_ids field in tree view -->
+                <xpath expr="//field[@name='company_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+                <!-- Invisibled origin field in tree view -->
+                <xpath expr="//field[@name='origin']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+                <!-- Added driver_id field after the origin field -->
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="driver_id"/>
+                </xpath>
+            </field>
+        </record>
+        <!-- ******************************** Inherit stock.picking Form View ********************************** -->
+        <record id="action_custom_stock_picking" model="ir.actions.act_window">
+            <field name="name">Stock Picking</field>
+            <field name="res_model">stock.picking</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('picking_type_id.code', '=', 'outgoing')]</field>
+        </record>
+
+        <record id="view_stock_pickup_form_inherit" model="ir.ui.view">
+            <field name="name">stock.pickup.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form" />
+            <field name="arch" type="xml">
+
+                <!-- Added Deliverd button inside the header -->
+                <xpath expr="//header" position="inside">
+                    <button name="delivered" type="object" string="DELIVERED" icon="fa-truck fa-flip-horizontal fa-2px" class="btn btn-primary" invisible="state in ('draft', 'waiting', 'assigned', 'delivered', 'cancel') or is_delivery == False"/>
+                </xpath>
+
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name='is_delivery' invisible='1'/>
+                    <field name="driver_id" domain="[('function', '=', 'Driver')]" options="{'no_create': True,'no_create_edit': True}"  invisible="is_delivery == False" required="is_delivery == True"/>
+                    <field name="otp"  invisible="state not in('done', 'delivered')" />
+
+                </xpath>
+                <xpath expr="//button[@name='button_validate']" position="replace">
+                <button name="button_validate" invisible="state in ('draft', 'confirmed', 'done', 'cancel','delivered')" string="Validate" type="object" class="oe_highlight" groups="stock.group_stock_user" data-hotkey="v"/>                
+                </xpath>
+                <xpath expr="//button[@name='button_validate'][hasclass('o_btn_validate')]" position="replace">
+                    <button name="button_validate" invisible="state in ('waiting', 'assigned', 'done', 'cancel','delivered')" string="Validate" type="object" groups="stock.group_stock_user" class="o_btn_validate" data-hotkey="v"/>
+                </xpath>
+
+                <!-- Added Statusbar -->
+                <field name="state" position="attributes">
+                    <attribute name= 'statusbar_visible'>draft,confirmed,assigned,done,delivered</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

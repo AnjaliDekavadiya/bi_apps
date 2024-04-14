@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="clouds_client_view_form" model="ir.ui.view">
+        <field name="name">clouds.client.form.dropbox</field>
+        <field name="model">clouds.client</field>
+        <field name="inherit_id" ref="cloud_base.clouds_client_view_form"/>
+        <field name="arch" type="xml">
+            <group name="main_setting" position="after">
+                <group name="dropbox_settings" invisible="cloud_client != 'dropbox'">
+                    <field name="dropbox_app_key" readonly="state != 'draft'" required="cloud_client == 'dropbox'" string="App key"/>
+                    <field name="dropbox_app_secret"
+                           password="True"
+                           required="cloud_client == 'dropbox'"
+                           readonly="state not in ('draft', 'reconnect',)"
+                           string="App secret"
+                    />
+                    <field name="dropbox_redirect_url"
+                           required="cloud_client == 'dropbox'"
+                           readonly="state not in ('draft', 'reconnect',)"
+                           placeholder="https://yourodoodomain/dropbox_token"
+                           string="Redirect URL"
+                    />
+                    <field name="dropbox_team" string="Dropbox teams" readonly="state != 'draft'"/>
+                    <field name="dropbox_admin"
+                           string="Admin email"
+                           invisible="not dropbox_team"
+                           required="dropbox_team"
+                           readonly="state != 'draft'"
+                    />
+                    <field name="dropbox_no_links"/>
+                </group>
+                <group name="dropbox_tech" groups="base.group_no_one" invisible="1">
+                    <field name="dropbox_refresh_token"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>

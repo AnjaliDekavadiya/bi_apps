@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Search view -->
+        <record id="sh_parking_subslot_search_view" model="ir.ui.view">
+            <field name="name">Dashboard</field>
+            <field name="model">sh.parking.subslot</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <filter string="Allocated Slot" name="sh_parking_indication_available" domain="[('sh_parking_indication','=',False)]"/>
+                    <filter string="Not Allocated Slot" name="sh_parking_indication_not" domain="[('sh_parking_indication','=',True)]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Kanban view -->
+        <record id="sh_parking_subslot_kanban_view" model="ir.ui.view">
+            <field name="name">Dashboard</field>
+            <field name="model">sh.parking.subslot</field>
+            <field name="arch" type="xml">
+                <kanban js_class="parking_dashboard_kanban" records_draggable="0" default_group_by="sh_vehicle_id" create="false" group_create="false">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_details d-flex space-between" style="align-items: center;">
+                                <div style="display: none;"></div>
+                                <div class="col-4">
+                                    <strong class="w-100"><field name="name" /></strong>
+                                </div>
+                                <div class="col-6" invisible="sh_parking_indication==False">
+                                    <button name="%(sh_parking_mgmt.sh_parking_booking_wizard_action)d" type="action" style="padding: 0; border: none; background: none;">
+                                        <img src="sh_parking_mgmt/static/description/booking_icon3.png" style="width: 90%;" alt="Image" />
+                                    </button>
+                                </div>
+                                <div class="col-6" invisible="sh_parking_indication!=False">
+                                    <button name="%(sh_parking_mgmt.sh_parking_no_check_in_wizard_action)d" type="action" style="padding: 0; border: none; background: none;">
+                                        <img src="sh_parking_mgmt/static/description/booking_icon3.png" style="width: 90%;" alt="Image" />
+                                    </button>
+                                </div>
+                                <div class="col-2" invisible="sh_parking_indication!=False">
+                                    <i class="fa fa-circle text-danger" role="img" aria-label="Not Available for Parking Vehicle." title="Invalid" />
+                                </div>
+                                <div class="col-2" invisible="sh_parking_indication==False">
+                                    <i class="fa fa-circle text-success" role="img" aria-label="Available for parking vehicle." title="Ok" />
+                                </div>
+                                <field name="sh_parking_indication" invisible="1" />
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Action -->
+
+        <record id="sh_parking_subslot_action" model="ir.actions.act_window">
+            <field name="name">Paking Dashboard</field>
+            <field name="res_model">sh.parking.subslot</field>
+            <field name="view_mode">kanban</field>
+        </record>
+    </data>
+</odoo>

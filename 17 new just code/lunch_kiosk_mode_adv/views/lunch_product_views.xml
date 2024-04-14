@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="lunch_product_action_order_kiosk" model="ir.actions.act_window">
+        <field name="name">Order Your Lunch</field>
+        <field name="res_model">lunch.product</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('lunch.view_lunch_product_kanban_order')}),
+        ]"/>
+        <field name="search_view_id" ref="lunch.lunch_product_view_search"/>
+        <field name="context">{'search_default_available_today': 1}
+        </field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            There is no product available today
+            </p><p>
+            To see some products, check if your vendors are available today and that you have configured some products
+            </p>
+        </field>
+    </record>
+</odoo>

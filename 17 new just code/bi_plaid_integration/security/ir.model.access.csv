@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bi_plaid_bank_details,Access.bi.plaid.bank.details,model_bi_plaid_bank_details,,1,1,1,1
+access_bi_plaid_account_details,Access.bi.plaid.account.details,model_bi_plaid_account_details,,1,1,1,1
+access_bi_plaid_transaction,Access.bi.plaid.transactions,model_bi_plaid_transactions,,1,1,1,1

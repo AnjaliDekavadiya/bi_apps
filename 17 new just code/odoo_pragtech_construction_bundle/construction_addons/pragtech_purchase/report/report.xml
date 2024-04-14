@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_report_purchase_order_summary" model="ir.actions.report">
+          <field name="name">Purchase Order Summary</field>
+          <field name="model">po.summary.wizard</field>
+          <field name="report_type">qweb-pdf</field>
+          <field name="report_name">pragtech_purchase.report_purchase_order_summary</field>
+          <field name="report_file">pragtech_purchase.report_purchase_order_summary</field>
+          <field name="binding_model_id" ref="model_po_summary_wizard"/>
+          <field name="binding_type">report</field>
+
+        </record>
+
+        <record id="action_report_purchase_order_summary_group_by_vendor" model="ir.actions.report">
+          <field name="name">Purchase Order Summary</field>
+          <field name="model">po.summary.wizard</field>
+          <field name="report_type">qweb-pdf</field>
+          <field name="report_name">pragtech_purchase.report_purchase_order_summary_group_by_vendor</field>
+          <field name="report_file">pragtech_purchase.report_purchase_order_summary_group_by_vendor</field>
+          <field name="binding_model_id" ref="model_po_summary_wizard"/>
+          <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_purchase_order_bill_summary" model="ir.actions.report">
+          <field name="name">Purchase Order Bill Summary</field>
+          <field name="model">po.bill.summary.wizard</field>
+          <field name="report_type">qweb-pdf</field>
+          <field name="report_name">pragtech_purchase.report_purchase_order_bill_summary</field>
+          <field name="report_file">pragtech_purchase.report_purchase_order_bill_summary</field>
+          <field name="binding_model_id" ref="model_po_bill_summary_wizard"/>
+          <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_purchase_order_short_supply" model="ir.actions.report">
+          <field name="name">Short Supply Report</field>
+          <field name="model">short.supply.wizard</field>
+          <field name="report_type">qweb-pdf</field>
+          <field name="report_name">pragtech_purchase.report_purchase_order_short_supply_summary</field>
+          <field name="report_file">pragtech_purchase.report_purchase_order_short_supply_summary</field>
+          <field name="binding_model_id" ref="model_short_supply_wizard"/>
+          <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_purchase_order_unbilled_grn" model="ir.actions.report">
+          <field name="name">Unbilled GRN Report</field>
+          <field name="model">unbilled.grn.wizard</field>
+          <field name="report_type">qweb-pdf</field>
+          <field name="report_name">pragtech_purchase.report_purchase_order_unbilled_grn</field>
+          <field name="report_file">pragtech_purchase.report_purchase_order_unbilled_grn</field>
+          <field name="binding_model_id" ref="model_unbilled_grn_wizard"/>
+          <field name="binding_type">report</field>
+
+        </record>
+
+        <record id="action_report_purchase_consumption" model="ir.actions.report">
+          <field name="name">Consumption Report</field>
+          <field name="model">consumption.report.wizard</field>
+          <field name="report_type">qweb-pdf</field>
+          <field name="report_name">pragtech_purchase.report_consumption</field>
+          <field name="report_file">pragtech_purchase.report_consumption</field>
+          <field name="binding_model_id" ref="model_consumption_report_wizard"/>
+          <field name="binding_type">report</field>
+
+        </record>
+    </data>
+</odoo>
+

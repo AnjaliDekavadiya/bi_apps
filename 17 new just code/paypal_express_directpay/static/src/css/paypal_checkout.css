@@ -1,0 +1,10 @@
+.pro_paypal_button {
+    /* display: inline-block; */
+    /* position: absolute; */
+    margin-top: 8px;
+    /* margin-left: 5px; */
+    max-width: 260px;
+}
+.cart_paypal_button {
+    margin-right: 5px;
+}

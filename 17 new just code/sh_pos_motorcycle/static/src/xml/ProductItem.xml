@@ -1,0 +1,18 @@
+<templates id="template" xml:space="preserve">
+    
+    <t t-name="ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension">
+        <xpath expr='//div[hasclass("product-information-tag")]' position='after'>
+            <t t-if='env.services.pos.db.get_product_by_id(props.productId).sh_is_common_product'>
+                <span class="common_product_tag">Common</span>
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('product-content')]/div" position='after'>
+            <t t-if='!env.services.pos.db.get_product_by_id(props.productId).sh_is_common_product and env.services.pos.db.get_product_by_id(props.productId).motorcycle_ids.length > 0'>
+                <div class="product-image-icon" t-attf-class="{{ env.services.pos.config.sh_enable_image ? 'sh_is_enlarge' : '' }}">
+                    <i t-on-click="() => this.ClickOnDetails(props.productId)" class="fa fa-building-o " aria-hidden="true"></i>
+                </div>
+            </t>
+        </xpath>
+    </t>
+    
+</templates>

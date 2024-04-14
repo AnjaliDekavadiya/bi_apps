@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record model="ir.ui.view" id="fleet_vehicle_log_services_view_form_custom_inherit_car_repair">
+            <field name="name">fleet_vehicle_log_services_view_form_custom_inherit</field>
+            <field name="model">fleet.vehicle.log.services</field>
+            <field name='inherit_id' ref="fleet.fleet_vehicle_log_services_view_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <!-- <xpath expr="//field[@name='inv_ref']" position="after"> -->
+                    <xpath expr="//field[@name='vendor_id']" position="after">
+                        <field name="car_repair_support_id" readonly='True'/>
+                    </xpath>
+                    
+                    <xpath expr="//widget[@name='web_ribbon']" position="before">
+                        <div class="oe_button_box" name="button_box">
+                            <button name="show_car_ticket" class="oe_stat_button"
+                            icon="fa-ticket" type="object">
+                                <field name="custom_ticket_count" widget="statinfo" string="Car Repair"/>
+                            </button>
+                        </div>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    
+    </data>
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<openerp>
+   <data noupdate="0">
+       <record id="email_template_wallet_balance_credit" model="mail.template">
+           <field name="name">Wallet Balance Credit</field>
+           <field name="model_id" ref="customer_website_wallet.model_customer_wallet"/>
+           <field name="auto_delete" eval="True"/>
+<!--           <field name="email_from">${object.company_id.email or ''}</field>-->
+<!--           <field name="email_to">${object.customer_id.email or ''}</field>-->
+<!--           <field name="subject">Wallet Balance Credit</field>-->
+<!--           <field name="body_html"><![CDATA[-->
+<!--                <p>Dear ${object.customer_id.name or ''}</p>-->
+<!--                <p>A sum of <b>${object.amount or ''} ${object.company_id.currency_id.name}</b> have been successfully added to your wallet!</p>-->
+<!--                <p>Your current wallet balance is <b>${object.customer_id.wallet_balance or ''} ${object.company_id.currency_id.name}</b>./p>-->
+<!--                <p>Thanks,</p>-->
+<!--               <p>${object.company_id.name}</p>-->
+<!--               ]]>-->
+<!--           </field>-->
+            <field name="email_from">{{object.company_id.email or ''}}</field>
+            <field name="email_to">{{object.customer_id.email or ''}}</field>
+            <field name="subject">Wallet Balance Credit</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear <t t-out="object.customer_id.name or ''"/></p>
+                <p>A sum of <b><t t-out="object.amount or ''"/> <t t-out="object.company_id.currency_id.name"/></b> has been successfully added to your wallet!</p>
+                <p>Your current wallet balance is <b><t t-out="object.customer_id.wallet_balance or ''"/> <t t-out="object.company_id.currency_id.name"/></b>./p>
+                <p>Thanks,</p>
+                <p><t t-out="object.company_id.name"/></p>
+                ]]>
+            </field>
+       </record>
+       
+       <record id="email_template_wallet_balance_debit" model="mail.template">
+           <field name="name">Wallet Balance Debit</field>
+           <field name="model_id" ref="customer_website_wallet.model_customer_wallet"/>
+           <field name="auto_delete" eval="True"/>
+<!--           <field name="email_from">${object.company_id.email or ''}</field>-->
+<!--           <field name="email_to">${object.customer_id.email or ''}</field>-->
+<!--           <field name="subject">Wallet Balance Debit</field>-->
+<!--           <field name="body_html"><![CDATA[-->
+<!--                <p>Dear ${object.customer_id.name or ''}</p>-->
+<!--                <p>A sum of <b>${object.amount or ''} ${object.company_id.currency_id.name}</b> have been successfully deduct to your wallet!</p>-->
+<!--                <p>Your current wallet balance is <b>${object.customer_id.wallet_balance or ''} ${object.company_id.currency_id.name}</b>./p>-->
+<!--                <p>Thanks,</p>-->
+<!--                <p>${object.company_id.name}</p>-->
+<!--               ]]>-->
+<!--           </field>-->
+                <field name="email_from">{{object.company_id.email or ''}}</field>
+                <field name="email_to">{{object.customer_id.email or ''}}</field>
+                <field name="subject">Wallet Balance Debit</field>
+                <field name="body_html"><![CDATA[
+                    <p>Dear <t t-out="object.customer_id.name or ''"/></p>
+                    <p>A sum of <b><t t-out="object.amount or ''"/> <t t-out="object.company_id.currency_id.name"/></b> has been successfully deducted from your wallet!</p>
+                    <p>Your current wallet balance is <b><t t-out="object.customer_id.wallet_balance or ''"/> <t t-out="object.company_id.currency_id.name"/></b>./p>
+                    <p>Thanks,</p>
+                    <p><t t-out="object.company_id.name"/></p>
+                    ]]>
+                </field>
+       </record>
+   </data>
+</openerp>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data>
+        <record id="inherit_mp_settings_form_for_facebook_ads_feeds" model="ir.ui.view">
+            <field name="name">marketplace.config.setting.fb.ads.feeds</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="odoo_marketplace.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='config_product_terms']" position="inside">
+                    <div class="row mt16 mb16">
+                    <div class="col-12 col-lg-6  o_setting_box">
+                        <separator string="Seller Facebook Catalog Settings"/>
+                        <div class="o_setting_left_pane">
+                            <field name="group_allow_seller_for_fb_ads" class="oe_inline" help="Enable to allow Seller for facebook Catalog Integration"/>
+                        </div>
+                        <div class="o_setting_right_pane" title="Allow Seller for Product Facebook Catalog Integration.">
+                            <label for="group_allow_seller_for_fb_ads" string="Allow Seller Facebook Catalog Integration"/>
+                            <div class="text-muted">
+                                ⇒ Enable to allow Seller for facebook catalog integration.
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

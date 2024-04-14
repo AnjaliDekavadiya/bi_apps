@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record model="ir.ui.view" id="analytic_account_import_id">
+           <field name="name">import.analytic.account.view</field>
+           <field name="model">import.analytic.account</field>
+           <field name="arch" type="xml">
+               <form string="Import Analytic Account Wizard">
+                   <separator string="This wizard will import multiple Analytic Accounts from selected excel file. Make sure you have selected .xls/xlsx file..."/>
+                   <group>
+                      <group>
+                        <field name="company_id" class="oe_inline" />
+                      </group>
+                   </group>                
+                   <group/>
+                       <div>
+                          <field name="files" class="oe_inline" filename="datas_fname" required="True"/>
+                       </div>
+                   <!-- </group> -->
+                   <footer>
+                        <button string="Import" name="analytic_account_with_excel" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+       <record model="ir.actions.act_window" id="analytic_account_import_action">
+            <field name="name">Import Analytic Accounts </field>
+           <field name="res_model">import.analytic.account</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+        </record>
+       
+        
+        <menuitem name="Import Analytic Accounts" 
+                        id="import_analytic_account_task_excel" 
+                        parent="account.menu_analytic_accounting" 
+                        action="import_analytic_account.analytic_account_import_action" 
+                        sequence="11"/>
+       
+    </data>
+</odoo>

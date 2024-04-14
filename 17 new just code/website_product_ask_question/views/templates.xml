@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="custom_probc_products_ask_que_btn" inherit_id="website_sale.product" name="Product Ask Questions">
+            <xpath expr="//form//a[@id='add_to_cart']" position="after">
+                <div class="modal fade" id="probc_que_submit" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                               <h3 class="mt0 ml16 mb0 center">Ask Question</h3>
+                               <button type="button" class="close" data-bs-dismiss="modal">&amp;times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <label class="center">Ask Question</label>
+                                <!-- <div class="text-center">
+                                    <label id="label" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Field must be fill up</label>
+                                </div> -->
+                                <div class="form-group row form-field o_website_form_required_custom">
+                                    <div class="col-lg-3 col-md-4">
+                                        <label class="col-form-label" for="name">Your Name</label>
+                                    </div>
+                                    <div class="col-lg-7 col-md-8">
+                                        <input type="text" class="form-control" required="True" t-attf-value="#{user_id.partner_id.name if not request.env.user._is_public() else ''}" id="custom_probc_name"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row form-field o_website_form_required_custom">
+                                    <div class="col-lg-3 col-md-4 ">
+                                        <label class="col-form-label" for="email">Your Email</label>
+                                    </div>
+                                    <div class="col-lg-7 col-md-8">
+                                        <input type="text" class="form-control" required="True" t-attf-value="#{user_id.partner_id.email}" id="custom_probc_email"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row form-field o_website_form_required_custom">
+                                    <div class="col-lg-3 col-md-4 ">
+                                        <label class="col-form-label" for="phone">Your Phone</label>
+                                    </div>
+                                    <div class="col-lg-7 col-md-8">
+                                        <input type="text" class="form-control" required="True" t-attf-value="#{user_id.partner_id.phone}" id="custom_probc_phone"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row form-field o_website_form_required_custom">
+                                    <div class="col-lg-3 col-md-4 ">
+                                        <label class="col-form-label" for="question">Question</label>
+                                    </div>
+                                    <div class="col-lg-7 col-md-8">
+                                        <input type="text" class="form-control o_website_form_input" name="description" id="custom_probc_description"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row form-field o_website_form_required_custom">
+                                    <div class="col-lg-3 col-md-4 ">
+                                        <label class="col-form-label" for="details">Details</label>
+                                    </div>
+                                    <div class="col-lg-7 col-md-8">
+                                        <textarea type="text" placeholder='Details...' class="form-control o_website_form_input" name="details" id="custom_probc_detail"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" id="probc_submit_question" class="btn btn-primary">Send Question Now</button>
+                                <button type="button" id="cancel" class="btn">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <button type="button" class="btn btn-success btn-lg mt16" data-toggle="modal" data-target="#probc_que_submit" id="probc_ask_que_btn">Ask Question</button> -->
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#probc_que_submit" id="probc_ask_que_btn">Ask Question</button>
+            </xpath>
+        </template>
+        
+    </data>
+</odoo>

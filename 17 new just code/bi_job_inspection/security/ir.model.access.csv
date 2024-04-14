@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inspection_value,user_inspection_value,model_inspection_value,base.group_user,1,1,1,1
+access_inspection_result,user_inspection_result,model_inspection_result,base.group_user,1,1,1,1
+access_inspection_type,user_inspection_type,model_inspection_type,base.group_user,1,1,1,1
+access_job_inspection,user_job_inspection,model_job_inspection,base.group_user,1,1,1,1
+access_job_inspection_line,user_job_inspection_line,model_job_inspection_line,base.group_user,1,1,1,1
+
+
+
+

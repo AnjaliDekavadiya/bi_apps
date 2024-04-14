@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.actions.report" id="action_report_so_tmpl_logo_footer_green">
+            <field name="name">Sale Logo Footer Green (pdf)</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">LogoFooterGreen</field>
+            <field name="print_report_name">(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_logo_footer_green"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/footer_logo_green.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_logo_footer_red">
+            <field name="name">Sale Logo Footer Red</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">LogoFooterRed</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_logo_footer_red"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/footer_logo_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_logo_footer_orange">
+            <field name="name">Sale Logo Footer Orange</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">LogoFooterOrange</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_logo_footer_orange"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/footer_logo_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_logo_footer_blue">
+            <field name="name">Sale Logo Footer Blue</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">LogoFooterBlue</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_logo_footer_blue"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/footer_logo_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_bubble">
+            <field name="name">Sale Bubble</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">Bubble</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_bubble"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/burbuja.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_ElegantSaleGreen">
+            <field name="name">Elegant Sale Green (pdf)</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ElegantSaleGreen</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_ElegantSaleGreen"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/elegant_sale_green.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_ElegantSaleOrange">
+            <field name="name">Elegant Sale Orange</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ElegantSaleOrange</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_ElegantSaleOrange"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/elegant_sale_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_ElegantSaleRed">
+            <field name="name">Elegant Sale Red</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ElegantSaleRed</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_ElegantSaleRed"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/elegant_sale_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_ElegantSaleBlue">
+            <field name="name">Elegant Sale Blue</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ElegantSaleBlue</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_ElegantSaleBlue"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/elegant_sale_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_CleanSaleGray">
+            <field name="name">Clean Sale Gray (pdf)</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">CleanSaleGray</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_CleanSaleGray"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/clean_sale_gray.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_CleanSaleGreen">
+            <field name="name">Clean Sale Green</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">CleanSaleGreen</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_CleanSaleGreen"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/clean_sale_green.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_CleanSaleOrange">
+            <field name="name">Clean Sale Orange</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">CleanSaleOrange</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_CleanSaleOrange"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/clean_sale_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_CleanSaleBlue">
+            <field name="name">Clean Sale Blue</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">CleanSaleBlue</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_CleanSaleBlue"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/clean_sale_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_CleanSaleRed">
+            <field name="name">Clean Sale Red</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">CleanSaleRed</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_CleanSaleRed"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/clean_sale_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_modern_sale_red">
+            <field name="name">Modern Sale Red (pdf)</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ModernSaleRed</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_modern_sale_red"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/modern_sale_red.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_modern_sale_orange">
+            <field name="name">Modern Sale Orange</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ModernSaleOrange</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_modern_sale_orange"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/modern_sale_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_modern_sale_green">
+            <field name="name">Modern Sale Green</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ModernSaleGreen</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_modern_sale_green"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/modern_sale_green.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_modern_sale_order">
+            <field name="name">Modern Sale Blue</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ModernSaleBlue</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_modern_sale_order"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/modern_sale_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_modern_stylish_green">
+            <field name="name">Modern Stylish Green (pdf)</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ModernStylishGreen</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_modern_stylish_green"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/modern_stylish_green.png</field>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_modern_stylish_red">
+            <field name="name">Modern Stylish Red</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ModernStylishRed</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_modern_stylish_red"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/modern_stylish_red.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_modern_stylish_orange">
+            <field name="name">Modern Stylish Orange</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ModernStylishOrange</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_modern_stylish_orange"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/modern_stylish_orange.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_so_tmpl_modern_stylish_blue">
+            <field name="name">Modern Stylish Blue</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">ModernStylishBlue</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.so_tmpl_modern_stylish_blue"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/modern_stylish_blue.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_sale_order_tmpl_transparency">
+            <field name="name">Quotation / Order Template Transparency</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">SaleOrderTmplTransparency</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.sale_order_tmpl_transparency"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/transparency.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_sale_order_tmpl_watermark">
+            <field name="name">Quotation / Order Template Watermark</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">SaleOrderTmplWatermark</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.sale_order_tmpl_watermark"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/watermark.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_sale_order_tmpl_magenta">
+            <field name="name">Quotation / Order Template Magenta</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">SaleOrderTmplMagenta</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.sale_order_tmpl_magenta"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/magenta.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_sale_order_tmpl_term">
+            <field name="name">Quotation / Order Template Terms &amp; Conditions</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">SaleOrderTmplTerm</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.sale_order_tmpl_term"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/terms_and_conditions.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_sale_order_tmpl_static">
+            <field name="name">Quotation / Order Template Static</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">SaleOrderTmplStatic</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.sale_order_tmpl_static"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/static.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_sale_order_tmpl_simple">
+            <field name="name">Quotation / Order Template Simple</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">SaleOrderTmplSimple</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.sale_order_tmpl_simple"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/simple.png</field>
+        </record>
+
+        <record model="ir.actions.report" id="action_report_offer_sale_order">
+            <field name="name">My Offer</field>
+            <field name="model">sale.order</field>
+            <field name="report_libreoffice">True</field>
+            <field name="report_name">Offer</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="template_id" ref="report_extend_bf_sale_order.sale_order_offer"/>
+            <field name="url_theme_screenshot">report_extend_bf_sale_order/static/src/img/offer.png</field>
+        </record>
+
+    </data>
+</odoo>

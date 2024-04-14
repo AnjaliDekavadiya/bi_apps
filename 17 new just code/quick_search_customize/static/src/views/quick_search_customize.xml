@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-inherit="web.ListRenderer" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o_list_renderer')]" position="before">
+            <QuickSearchCustomize list="props.list" context="props.context" rootRef="rootRef"/>
+        </xpath>
+    </t>
+    
+    <t t-inherit="account.ListRenderer" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o_list_renderer')]" position="before">
+            <QuickSearchCustomize list="props.list" context="props.context" rootRef="rootRef"/>
+        </xpath>
+    </t>
+
+    <t t-name="quick_search_customize.ListQs">
+        <t t-if="qsCols">
+            <div class="quick_search ui-toolbar" t-att-data-model="model">
+                <form class="quick_search_form" t-on-keydown.synthetic="(ev) => this.qsKeyDown(ev)">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <t t-set="count" t-value="0"/>
+                            <t t-foreach="qsCols" t-as="field" t-key="field.id">
+                                <t t-set="count" t-value="count + 1"/>
+
+                                <div t-attf-class="quick_search_field #{(field.field_type == 'date' or field.field_type == 'datetime' and field.operator_value == 'between') and 'col-6 col-sm-4 col-md-3 col-lg-3' or 'col-6 col-sm-4 col-md-3 col-xl-auto'}" t-att-data-field-name="field.field_name" t-att-data-field-type="field.field_type" t-att-data-operator="field.operator_value" t-att-data-operator-name="field.operator_id[1]">
+                                    <h5 t-esc="field.name"/>
+                                    <t t-if="field.field_type == 'boolean'">
+                                        <select class="form-control quick_search_boolean">
+                                            <option value="">-</option>
+                                            <option value="=">True</option>
+                                            <option value="!=">False</option>
+                                        </select>
+                                    </t>
+                                    <t t-if="field.field_type == 'selection'">
+                                        <select class="form-control quick_search_selection">
+                                            <option value=""><t t-esc="field.operator_id[1]"/>...</option>
+                                            <t t-foreach="field.selection" t-as="option" t-key="option[0]">
+                                                <option t-att-value="option[0]"><t t-esc="option[1]"/></option>
+                                            </t>
+                                        </select>
+                                    </t>
+                                    <t t-if="field.field_type == 'date' or field.field_type == 'datetime'">
+                                        <t t-if="field.operator_value == 'between'">
+                                            <div class="row quick_search_between">
+                                                <div class="col-6">
+                                                    <div class="input-group date quick_search_date" t-att-id="'quick_search_datepicker_from' + count" data-target-input="nearest">
+                                                        <DateTimeInput
+                                                            type="field.field_type"
+                                                            onChange.bind="date => this.onDateTimeChanged(filters, field.field_name, 0, date)"
+                                                            value="date"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="input-group date quick_search_date" t-att-id="'quick_search_datepicker_to' + count" data-target-input="nearest">
+                                                        <DateTimeInput
+                                                            type="field.field_type"
+                                                            onChange.bind="date => this.onDateTimeChanged(filters, field.field_name, 1, date)"
+                                                            value="date"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="input-group date quick_search_date" t-att-id="'quick_search_datepicker' + count" data-target-input="nearest">
+                                                <DateTimeInput
+                                                    type="field.field_type"
+                                                    onChange.bind="date => this.onDateTimeChanged(filters, field.field_name, 0, date)"
+                                                    value="date"
+                                                />
+                                            </div>
+                                        </t>
+                                    </t>
+                                    <t t-if="field.field_type != 'boolean' and field.field_type != 'selection' and field.field_type != 'date' and field.field_type != 'datetime'">
+                                        <input type="text" t-attf-class="form-control #{'quick_search_' + field.field_type}" t-att-placeholder="field.operator_id[1] + '...'"/>
+                                    </t>
+                                </div>
+                                <t t-if="count == qsCols.length or count % 5 == 0">
+                                    <div class="w-100 d-none d-xl-block"/>
+                                </t>
+                                <t t-if="count == qsCols.length">
+                                    <div class="w-100"/>
+                                    <div class="col-12 pb-3">
+                                        <button type="button" class="btn btn-primary quick_search_submit" t-on-click="onSubmit">Search</button>
+                                        <button type="button" class="btn btn-secondary quick_search_reset ms-1" t-on-click="onReset">Reset</button>
+                                    </div>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </t>
+</templates>

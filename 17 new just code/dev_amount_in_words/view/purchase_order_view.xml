@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+	<record id="purchase_amount_in_words_view" model="ir.ui.view">
+	     <field name="name">purhcase.amount.in.words.view</field>
+	     <field name="model">purchase.order</field>
+	     <field name="inherit_id" ref="purchase.purchase_order_form"/>
+	     <field name="arch" type="xml">
+	        <xpath expr="//field[@name='notes']" position="after">
+	            <group style="width:75%">
+	                <field name="amount_display_flag" />
+	                <field name="amount_in_words" invisible="amount_display_flag =='False'"/>
+	            </group>
+	     	</xpath>
+	     </field>
+	</record>
+</odoo>

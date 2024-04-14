@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_sale_template" inherit_id="pos_sale.template" xml:space="preserve">
+
+
+    <t t-name="PartnerDetailsEdit" t-inherit="point_of_sale.PartnerDetailsEdit" t-inherit-mode="extension" owl="1">
+       <xpath expr="//section[hasclass('partner-details')]" position="inside">
+            <t t-if='pos.company.enable_google_map'>
+                <input id="search_location" class="controls mt-3" style="width: 50%;" type="text" placeholder="Search Google Maps"/>
+                <div id="map" style="width: 90%;border: solid black;margin: 10px 30px;height: 350px;position: relative;overflow: hidden;"></div>
+            </t>
+       </xpath>
+    </t>
+
+</templates>
+    
+    

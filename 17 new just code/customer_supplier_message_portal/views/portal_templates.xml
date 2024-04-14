@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_message_layout" name="Portal layout: project menu entry" inherit_id="portal.portal_breadcrumbs"
+        priority="40">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'mail_messages' or message" t-attf-class="breadcrumb-item #{'active
+                ' if not project else ''}">
+                <a t-if="message" t-attf-href="/my/mail_messages?{{ keep_query() }}">Mails</a>
+                <t t-else="">Mails</t>
+            </li>
+            <li t-if="message" class="breadcrumb-item active">
+                <t t-esc="message.subject"/>
+            </li>
+        </xpath>
+    </template>
+    
+    <template id="portal_message_my_home" name="Portal My Home: project entries" inherit_id="portal.portal_my_home"
+        priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <!-- <t t-if="mail_message_count" t-call="portal.portal_docs_entry"> -->
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Mails</t>
+                <t t-set="url" t-value="'/my/mail_messages'"/>
+                <!-- <t t-set="count" t-value="mail_message_count"/> -->
+                <t t-set="placeholder_count" t-value="'mail_message_count'"/>
+            </t>
+        </xpath>
+    </template>
+    
+    <template id="portal_mail_messages" name="My Mail Message">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Mails</t>
+            </t>
+            <t t-if="not mail_messages">
+                <div class="alert alert-warning mt8" role="alert">There are no mails.</div>
+            </t>
+            
+            <t t-set="mail_object_list" t-value="{'sale.order': 'Sale Order','account.invoice': 'Invoice Bill','project.project': 'Project','project.task': 'Project Taks','purchase.order': 'Purchase'}"/>
+            
+            <t t-if="mail_messages">
+                <t t-call="portal.portal_table">
+                    <t t-foreach="grouped_messages" t-as="messages">
+                        <thead>
+                            <tr t-attf-class="{{'thead-light' if not groupby == 'none' else ''}}">
+                                <th t-if="groupby == 'none'">Subject</th>
+                                <th t-if="groupby == 'model'" t-else="">
+                                    <em class="font-weight-normal text-muted">Message for Model:</em>
+                                    <t t-if="messages[0].sudo().model">
+                                        <t t-if="messages[0].sudo().model in mail_object_list">
+                                            <t t-set="message_model" t-value="mail_object_list[messages[0].sudo().model]"/>
+                                            <span t-esc="message_model"/>
+                                        </t>
+                                        <t t-if="messages[0].sudo().model not in mail_object_list">
+                                            <span t-field="messages[0].sudo().model"/>
+                                        </t>
+                                    </t>
+                                    <t t-if="not messages[0].sudo().model">
+                                        <strong>Undefined</strong>
+                                    </t>
+                                </th>
+                                <th>
+                                    <strong>Date</strong>
+                                </th>
+                                <th>
+                                    <strong>Author</strong>
+                                </th>
+<!--                                <th t-if="groupby == 'author'" t-else="">-->
+<!--                                    <em class="font-weight-normal text-muted">Message for object:</em>-->
+<!--                                    <span t-field="messages[0].sudo().author_id"/>-->
+<!--                                </th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="messages" t-as="message">
+                                <tr>
+                                    <td>
+                                        <a t-attf-href="/my/mail_message/#{message.sudo().id}?{{ keep_query() }}">
+                                            <t t-if="message.sudo().subject">
+                                                <span t-field="message.sudo().subject"/>
+                                            </t>
+                                            <t t-if="not message.sudo().subject and message.sudo().body">
+                                                <span t-field="message.sudo().body"/>
+                                            </t>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span t-field="message.date"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="message.author_id"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </t>
+                </t>
+            </t>
+            <!-- <t t-if="mail_messages" t-call="portal.portal_table"> <tbody> <tr t-foreach="mail_messages"
+                t-as="message"> <td> <a t-attf-href="/my/mail_message/#{message.id}?{{
+                keep_query() }}"><span t-field="message.subject"/></a> </td> <td class="text-right">
+                <a t-attf-href="/my/mail_message/#{message.id}?{{ keep_query() }}"><span
+                t-field="message.model"/></a> </td> </tr> </tbody> </t> -->
+        </t>
+    </template>
+    
+    <template id="portal_my_message" name="My Message">
+        <t t-call="portal.portal_layout">
+            <t t-call="portal.portal_record_layout">
+                <t t-set="card_header">
+                    <h5 class="mb-0">
+                        <small class="text-muted">Message Subject -</small>
+                        <span t-esc="message.subject"/>
+                        <span t-if="message.attachment_ids" class="float-right" style='float:right;'>
+                            <div class="dropdown">
+                                <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> -->
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                    <i class="fa fa-download fa-1x">
+                                    </i>
+                                    <b>Attachments</b>
+                                    <span class="caret">
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <table class="table table-condensed">
+                                        <tbody>
+                                            <t t-foreach="message.attachment_ids" t-as="attachment">
+                                                <tr>
+                                                    <td>
+                                                        <li>
+                                                            <!-- <a t-att-href="'/web/content/'+str(attachment.id)+'?download=true'"> <span t-esc="attachment.name"/>
+                                                                </a> -->
+                                                            <!-- <a t-attf-href="/web/content/#{attachment.id}?download=true" target="_blank"> -->
+                                                            <a t-attf-href="/web/content/#{attachment.id}?download=true&amp;access_token=#{attachment.access_token}" target="_blank">
+                                                                <div class='oe_attachment_embedded o_image' t-att-title="attachment.name" t-att-data-mimetype="attachment.mimetype"
+                                                                    t-attf-data-src="/web/image/#{attachment.id}/100x80"/>
+                                                                <div class='oe_attachment_name'>
+                                                                    <t t-raw='attachment.name' />
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </ul>
+                            </div>
+                        </span>
+                    </h5>
+                </t>
+                <t t-set="card_body">
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-2 mb-md-0">
+                            <strong>From: </strong>
+                            <span t-field="message.email_from"/>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <strong>To: </strong>
+                            <span t-field="message.partner_ids"/>
+                        </div>
+                        <div class="col-12 col-md-6 mb-2 mb-md-0 mt-2">
+                            <strong>Author: </strong>
+                            <span t-field="message.author_id"/>
+                        </div>
+                        <div class="col-12 col-md-6 mt-2">
+                            <strong>Date: </strong>
+                            <span t-field="message.date"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 ml-3 mr-3 mt-5">
+                            <div class="row">
+                                <span t-field="message.body" widget="html"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

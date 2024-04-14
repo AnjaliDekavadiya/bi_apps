@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports for Point of Sale Order -->
+        <!-- <report
+            id="portal_pos_order_id"
+            model="pos.order"
+            report_type="qweb-pdf"
+            string="Print Point of Sale Order"
+            name="website_portal_pos_orders.portal_pos_order_template" 
+            file="website_portal_pos_orders.portal_pos_order_template"
+         /> -->
+
+        <record id="portal_pos_order_id" model="ir.actions.report">
+            <field name="name">Print Point of Sale Order</field>
+            <field name="model">pos.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">website_portal_pos_orders.portal_pos_order_template</field>
+            <field name="report_file">website_portal_pos_orders.portal_pos_order_template</field>
+        </record>
+        
+    </data>
+</odoo>

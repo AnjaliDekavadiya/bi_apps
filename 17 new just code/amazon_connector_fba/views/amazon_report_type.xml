@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_amazon_report_type"
+        name="Amazon Reports Types"
+        action="amazon_connector_base.amazon_report_type_action"
+        parent="amazon_connector_base.amazon_connector_menu_report"
+        sequence="50" />
+    <menuitem id="menu_amazon_report_type_category"
+        name="Amazon Reports Type Categories"
+        action="amazon_connector_base.amazon_report_type_categ_action"
+        parent="amazon_connector_base.amazon_connector_menu_report"
+        sequence="50" />
+
+</odoo>

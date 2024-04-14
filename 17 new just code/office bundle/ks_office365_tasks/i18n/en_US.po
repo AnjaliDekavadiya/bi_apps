@@ -1,0 +1,304 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ks_office365_tasks
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-19 13:06+0000\n"
+"PO-Revision-Date: 2021-03-19 13:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ks_office365_tasks
+#: model_terms:ir.ui.view,arch_db:ks_office365_tasks.ks_office365_tasks_view_users_form
+msgid ""
+"<span style=\"font-size: 14px; font-weight: bold;\">Sync tasks from last (in"
+" days)</span>"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model_terms:ir.ui.view,arch_db:ks_office365_tasks.ks_office365_tasks_view_users_form
+msgid ""
+"<span style=\"font-size: 14px; font-weight: bold;\">Sync using field</span>"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model,name:ks_office365_tasks.model_mail_activity
+msgid "Activity"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model,name:ks_office365_tasks.model_ir_attachment
+msgid "Attachment"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model_terms:ir.ui.view,arch_db:ks_office365_tasks.office_mail_activity_view_form
+msgid "Attachment a file"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__ks_attachment_ids
+msgid "Attachments"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#, python-format
+msgid "Completed task can't be modified"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__ks_task_sync_using_create_date
+msgid "Create Date"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#, python-format
+msgid ""
+"Days can only be in numbers less then 999 and greater than or equal to 0."
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_ir_attachment__display_name
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__display_name
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_message__display_name
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__date_deadline
+msgid "Due Date"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__ks_task_export
+msgid "Export Tasks"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#, python-format
+msgid "Generate Authentication Token"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_ir_attachment__id
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__id
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_message__id
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__id
+msgid "ID"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__ks_task_import
+msgid "Import Tasks"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__ks_is_manager_tasks
+msgid "Is Manager"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_mail__ks_is_completed_task
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_message__ks_is_completed_task
+msgid "Ks Is Completed Task"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__ks_is_exported
+msgid "Ks Is Exported"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__ks_is_recurrent
+msgid "Ks Is Recurrent"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__ks_office_task_id
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_mail__ks_office_task_id
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_message__ks_office_task_id
+msgid "Ks Office Task"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_ir_attachment__ks_office_task_attachment_id
+msgid "Ks Office Task Attachment"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_mail__ks_summary
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_message__ks_summary
+msgid "Ks Summary"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__ks_task_sync_using_days
+msgid "Ks Task Sync Using Days"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__ks_user_id
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_mail__ks_user_id
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_message__ks_user_id
+msgid "Ks User"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_ir_attachment____last_update
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity____last_update
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_message____last_update
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model,name:ks_office365_tasks.model_mail_message
+msgid "Message"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model_terms:ir.ui.view,arch_db:ks_office365_tasks.ks_office365_tasks_view_users_form
+msgid "Office 365 Tasks"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__ks_office_created_date
+msgid "Office Created Date"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#, python-format
+msgid "Process Is Already Running."
+msgstr ""
+
+#. module: ks_office365_tasks
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#, python-format
+msgid "Record updated!"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.actions.server,name:ks_office365_tasks.ir_cron_sync_export_task_ir_actions_server
+#: model:ir.cron,cron_name:ks_office365_tasks.ir_cron_sync_export_task
+#: model:ir.cron,name:ks_office365_tasks.ir_cron_sync_export_task
+msgid "Run Office 365 Task Export Cron"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.actions.server,name:ks_office365_tasks.ir_cron_sync_import_task_ir_actions_server
+#: model:ir.cron,cron_name:ks_office365_tasks.ir_cron_sync_import_task
+#: model:ir.cron,name:ks_office365_tasks.ir_cron_sync_import_task
+msgid "Run Office 365 Task Import Cron"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#, python-format
+msgid ""
+"Some error occurred! \n"
+"Please check logs for more information."
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__state
+msgid "State"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__ks_task_sync_using_subject
+msgid "Subject"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_mail_activity__summary
+msgid "Summary"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__ks_task_sync_days_before
+msgid "Sync Mails from last (in days)"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model_terms:ir.ui.view,arch_db:ks_office365_tasks.ks_office365_tasks_view_users_form
+msgid "Sync Odoo Tasks to Office 365"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model_terms:ir.ui.view,arch_db:ks_office365_tasks.ks_office365_tasks_view_users_form
+msgid "Sync Office 365 Tasks to Odoo"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__ks_sync_deleted_task
+msgid "Sync deleted tasks"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model_terms:ir.ui.view,arch_db:ks_office365_tasks.ks_office365_task_filter
+msgid "Task"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,field_description:ks_office365_tasks.field_res_users__ks_task_filter_domain
+msgid "Task Filter Domain"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#, python-format
+msgid "Task deleted from outlook Tasks"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: code:addons/ks_office365_tasks/models/ks_tasks.py:0
+#, python-format
+msgid ""
+"Task not deleted from outlook Tasks \n"
+"Reason: %s"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model_terms:ir.ui.view,arch_db:ks_office365_tasks.office365_settings_task_scope
+msgid "Tasks"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,help:ks_office365_tasks.field_res_users__ks_task_filter_domain
+msgid ""
+"This filter domain is only applicable while syncing from Odoo to office 365."
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields,help:ks_office365_tasks.field_res_users__ks_task_sync_days_before
+msgid ""
+"This will allow you to sync only those tasks/events that are created or "
+"updated in the given days. Here 0 days means Today."
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model.fields.selection,name:ks_office365_tasks.selection__mail_activity__state__unplanned
+msgid "Unplanned"
+msgstr ""
+
+#. module: ks_office365_tasks
+#: model:ir.model,name:ks_office365_tasks.model_res_users
+msgid "Users"
+msgstr ""

@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+
+from odoo import models, fields, api
+
+class SaleReport(models.Model):
+    _inherit = "sale.report"
+    
+    sale_user_group_id = fields.Many2one(
+        'sale.user.group',
+        string='Sales Group',
+    )
+
+    def _select(self):
+        select_str = super(SaleReport, self)._select()
+        select_str += ", s.sale_user_group_id as sale_user_group_id"
+        return select_str
+
+    def _group_by(self):
+        group_by_str = super(SaleReport, self)._group_by()
+        group_by_str += ", s.sale_user_group_id"
+        return group_by_str
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

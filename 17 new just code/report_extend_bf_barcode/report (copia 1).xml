@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="action_report_sale_tmpl_barcode"
+            model="sale.order"
+            string="Sale Barcode"
+            report_type="controller"
+            name="SaleBarcode"
+            menu="False"/>
+        <record id="action_report_sale_tmpl_barcode" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.sale_tmpl_barcode"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <report 
+            id="action_report_barcode_product_code_128"
+            model="product.product"
+            string="Barcode product code 128"
+            report_type="controller"
+            name="BarcodeProductCode128"
+            menu="False"/>
+        <record id="action_report_barcode_product_code_128" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_code_128"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <report 
+            id="action_report_barcode_product_EAN13"
+            model="product.product"
+            string="Barcode product EAN13"
+            report_type="controller"
+            name="BarcodeProductEAN13"
+            menu="False"/>
+        <record id="action_report_barcode_product_EAN13" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_EAN13"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <report 
+            id="action_report_barcode_product_qr"
+            model="product.product"
+            string="Barcode product QR"
+            report_type="controller"
+            name="BarcodeProductQR"/>
+        <record id="action_report_barcode_product_qr" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_qr"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <report 
+            id="action_report_barcode_product_code_128_2"
+            model="product.product"
+            string="Barcode product code 128 - 02"
+            report_type="controller"
+            name="BarcodeProductCode12802"
+            menu="False"/>
+        <record id="action_report_barcode_product_code_128_2" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_code_128_2"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <report 
+            id="action_report_barcode_product_code_128_3"
+            model="product.product"
+            string="Barcode product code 128 - 03"
+            report_type="controller"
+            name="BarcodeProductCode12803"
+            menu="False"/>
+        <record id="action_report_barcode_product_code_128_3" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_code_128_3"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <report 
+            id="action_report_barcode_product_EAN13_2"
+            model="product.product"
+            string="Barcode product EAN13 - 02"
+            report_type="controller"
+            name="BarcodeProductEAN1302"
+            menu="False"/>
+        <record id="action_report_barcode_product_EAN13_2" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_EAN13_2"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <report 
+            id="action_report_barcode_product_qr_2"
+            model="product.product"
+            string="Barcode product QR - 02"
+            report_type="controller"
+            name="BarcodeProductQR02"/>
+        <record id="action_report_barcode_product_qr_2" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_qr_2"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <report 
+            id="action_report_barcode_product_EAN13_col_2"
+            model="product.product"
+            string="Barcode product EAN13 - 02 Columns"
+            report_type="controller"
+            name="BarcodeProductEAN13Col02"
+            menu="False"/>
+        <record id="action_report_barcode_product_EAN13_col_2" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_EAN13_col_2"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <report 
+            id="action_report_barcode_product_EAN13_col_3"
+            model="product.product"
+            string="Barcode product EAN13 - 03 Columns"
+            report_type="controller"
+            name="BarcodeProductEAN13Col03"
+            menu="False"/>
+        <record id="action_report_barcode_product_EAN13_col_3" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.barcode_product_EAN13_col_3"/>
+            <field name="output_file">pdf</field>
+        </record>
+
+        <report 
+            id="action_report_stock_picking_shipping_label_template"
+            model="stock.picking"
+            string="Barcode stock picking code 128"
+            report_type="controller"
+            name="BarcodeStockPickingCode128"
+            menu="False"/>
+        <record id="action_report_stock_picking_shipping_label_template" model="ir.actions.report">
+            <field name="template_id" ref="report_extend_bf_barcode.stock_picking_shipping_label_template"/>
+            <field name="output_file">pdf</field>
+        </record>
+    </data>
+</odoo>

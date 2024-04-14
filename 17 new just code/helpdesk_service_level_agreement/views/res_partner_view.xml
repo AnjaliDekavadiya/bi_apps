@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_partner_form_level_config">
+            <field name="name">res.partner.form.level.config</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//field[@name='lang']" position="after"> odoo13-->
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="level_config_id"/>
+                </xpath>
+            </field>
+        </record>
+        
+        
+    </data>
+</odoo>

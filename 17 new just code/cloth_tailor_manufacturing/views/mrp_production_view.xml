@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_mrp_production_inherit_tailor" model="ir.ui.view">
+            <field name="name">mrp.production.form.inherit.tailor</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook//page[@name='miscellaneous']//field[@name='origin']" position="after">
+                    <field name="custom_tailor_request_id"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

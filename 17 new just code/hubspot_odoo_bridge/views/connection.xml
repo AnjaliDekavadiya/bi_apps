@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+<odoo>
+	<data>
+		<record id="form_hubspot_connection" model="ir.ui.view">
+			<field name="name">channel.connection.form</field>
+			<field name="model">channel.connection</field>
+			<field name="inherit_id" ref="odoo_multi_channel_crm.form_channel_connection"/>
+			<field name="arch" type="xml">
+				<xpath expr="//page[@name='credentials']" position="inside">
+					<group invisible = "channel != 'hubspot'">
+					<field name = 'hs_auth_type' required = "channel == 'hubspot'" readonly = "connected == True"/>
+						<label for="hubspot_api_key" string="API Key/Access Token" invisible = "hs_auth_type == False"/>
+						<div class="text-muted">
+							<field
+								name="hubspot_api_key"
+								readonly = "connected == True"
+								required = "channel == 'hubspot'"
+								options="{'horizontal': true}"
+								placeholder="API Key/Access Token"
+								password="True"
+							/>
+						</div>
+					</group>
+				</xpath>
+				<xpath expr="//page[@name='realtime_config']" position="after">
+					<page name="hubspot_properties" string="Hubspot Custom Field">
+						<group>
+							<field name="product_properties" />
+							<field name="conatct_properties" />
+							<field name="company_properties" />
+							<field name="lead_properties" />
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="form_hubspot_properties" model="ir.ui.view">
+			<field name="name">channel.custom.field</field>
+			<field name="model">hubspot.custom.field</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="hubspot_name" />
+					<field name="odoo_name" />
+					<field name="object_type" />
+					<field name="connection_id" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="form_hubspot">
+			<field name="name">Hubspot Properties</field>
+			<field name="res_model">hubspot.custom.field</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="form_hubspot_properties" />
+		  </record>
+	  
+	  
+	</data>
+</odoo>

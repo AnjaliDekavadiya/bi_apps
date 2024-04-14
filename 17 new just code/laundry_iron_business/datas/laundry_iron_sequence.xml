@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    
+        <!-- Sequence-->
+        <record id="seq_laundry_business_custom" model="ir.sequence">
+            <field name="name">Laundry Business Service Custom</field>
+            <field name="code">laundry.business.service.custom</field>
+            <field name="prefix">LR-</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
+    </data>
+</odoo>

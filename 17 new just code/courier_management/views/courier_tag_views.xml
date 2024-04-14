@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>    <!--        Courier tags tree view-->
+    <record id="courier_tag_view_tree" model="ir.ui.view">
+        <field name="name">courier.tag.view.tree</field>
+        <field name="model">courier.tag</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="courier_tags"/>
+                <field name="color" string="Color" widget="color_picker"/>
+            </tree>
+        </field>
+    </record>
+    <!--        Courier tags search view-->
+    <record id="courier_tag_view_search" model="ir.ui.view">
+        <field name="name">courier.tag.view.search</field>
+        <field name="model">courier.tag</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="courier_tags"/>
+                <field name="color" widget="color_picker"/>
+            </search>
+        </field>
+    </record>
+    <!--    Courier Tag menu action-->
+    <record id="courier_tag_action" model="ir.actions.act_window">
+        <field name="name">Configuration</field>
+        <field name="res_model">courier.tag</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="helpdesk_support_inherit_form_view_new_merge" model="ir.ui.view">
+            <field name="name">Helpdesk Support Inherit form</field>
+            <field name="model">helpdesk.support</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_support_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[last()]" position="after">
+                    <page name="merge_tickets" string="Secondary Tickets" 
+                        invisible="not is_secondry">
+                        <!-- attrs="{'invisible' : [('is_secondry','!=',True)]}"> -->
+                        <field name="merge_ticket_ids" domain="[('active','=', False)]"/>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='is_close']" position="after">
+                        <field name="is_secondry" invisible="True"/>
+                </xpath>
+                <xpath expr="//field[@name='journal_id']" position="after">
+                        <field name="primary_ticket_id" 
+                            invisible="not is_secondry"/>
+                            <!-- attrs="{'invisible' : [('is_secondry','!=',True)]}"/> -->
+                        <field name="merge_reason" 
+                            invisible="not is_secondry"/>
+                            <!-- attrs="{'invisible' : [('is_secondry','!=',True)]}"/> -->
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="show_secondry_ticket" type="object" string="Secondry Tickets" icon="fa-pencil-square-o" class="oe_stat_button" 
+                        invisible="not is_secondry"/>
+                        <!-- attrs="{'invisible' : [('is_secondry','!=',True)]}"/> -->
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

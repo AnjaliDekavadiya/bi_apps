@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="display_ticket_inherit_capture_photo" name="Helpdesk Image Capture" inherit_id="website_helpdesk_support_ticket.display_ticket">
+            <xpath expr="//div[@id='description']" position="after">
+                    <t t-call="base_capture_photo.snap_image_tmpl">
+                        <t t-set="object" t-value="ticket"/>
+                    </t>
+                    <t t-call="base_capture_photo.capture_attachments_template">
+<!--                        <t t-set="attchment_ids" t-value="ticket.capture_attachment_ids"/>-->
+                        <t t-set="attchment_ids" t-value="ticket.capture_attachment_ids.sudo()"/>
+                    </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

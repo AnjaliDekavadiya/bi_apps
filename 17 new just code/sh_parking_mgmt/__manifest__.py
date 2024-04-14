@@ -1,0 +1,51 @@
+# -*- coding: utf-8 -*-
+# Part of Softhealer Technologies.
+{
+    "name": "Parking Management System",
+    "author": "Softhealer Technologies",
+    "license": "OPL-1",
+    "website": "https://www.softhealer.com",
+    "support": "support@softhealer.com",
+    "version": "0.0.1",
+    "category": "Human Resources",
+    "summary": "Parking Manage With Slots Parking Membership Booking Management Scan And Pay Parking Multiple Membership Card Smart Parking System Parking Based On Vehicle Management Street Parking Best Parking Free Parking By Scanner Odoo",
+    "description": """This module provides a whole parking management system. slot content slot name, charges, time, late charges & subslot quantity when save subslot is automatically created also make membership of customer and member contents card that scan and park their vehicle effortlessly. If the customer is a public or one-time customer it pays and parks if the customer is late then pay extra charges based on the slot and print receipts. Send email notifications to member customers.""",
+    "depends": ['base_setup', 'web', 'uom', 'account', 'contacts', 'bus'],
+    "application": True,
+    "data": [
+        'security/sh_parking_security.xml',
+        'security/ir.model.access.csv',
+        'data/ir_sequence_data.xml',
+        'views/sh_parking_location.xml',
+        'views/sh_parking_vehicle.xml',
+        'views/sh_parking_slot.xml',
+        'data/res_partner_demo.xml',
+        'views/res_partner_views.xml',
+        'report/sh_parking_member_badge.xml',
+        'views/sh_parking_membership.xml',
+        'views/account_move_views.xml',
+        'views/sh_parking_history.xml',
+        'views/res_config_settings.xml',
+        'wizard/sh_parking_booking_wizard_views.xml',
+        'wizard/sh_parking_check_out_wizard_views.xml',
+        'wizard/sh_parking_no_check_in_wizard_views.xml',
+        'views/sh_parking_subslot_dashboard.xml',
+        'report/sh_parking_report_template.xml',
+        'data/email_templates.xml',
+        'views/sh_parking_menus.xml',
+    ],
+    "assets": {
+        "web.assets_backend": [
+            'sh_parking_mgmt/static/src/views/ParkingKanbanView.js',
+            'sh_parking_mgmt/static/src/views/ParkingDashBoardKanbanRenderer.js',
+            'sh_parking_mgmt/static/src/views/ParkingKanbanView.xml',
+            'sh_parking_mgmt/static/src/views/ParkingDashBoardKanbanRenderer.xml',
+            
+        ],
+    },
+    "auto_install": False,
+    "installable": True,
+    "images": ["static/description/background.png", ],
+    "price": "150",
+    "currency": "EUR"
+}

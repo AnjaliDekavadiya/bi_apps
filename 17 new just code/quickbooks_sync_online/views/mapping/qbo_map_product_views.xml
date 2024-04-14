@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="view_qbo_map_product_tree" model="ir.ui.view">
+        <field name="model">qbo.map.product</field>
+        <field name="name">Default tree view for qbo.map.product</field>
+        <field name="inherit_id" ref="quickbooks_sync_online.view_qbo_map_model_tree"/>
+        <field name="mode">primary</field>
+        <field type="xml" name="arch">
+            <xpath expr="//field[@name='qbo_name']" position="attributes">
+                <attribute name="groups">base.group_no_one</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='qbo_name']" position="after">
+                <field name="stock_keeping_unit" groups="base.group_no_one"/>
+                <field name="variant_options" groups="base.group_no_one"/>
+                <field name="display_name"/>
+                <field name="product_id"/>
+                <field name="category_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_qbo_map_product_form" model="ir.ui.view">
+        <field name="model">qbo.map.product</field>
+        <field name="name">Default form view for qbo.map.product</field>
+        <field name="inherit_id" ref="quickbooks_sync_online.view_qbo_map_model_form"/>
+        <field name="mode">primary</field>
+        <field type="xml" name="arch">
+            <xpath expr="//field[@name='qbo_name']" position="replace"/>
+
+            <xpath expr="//field[@name='qbo_id']" position="after">
+                <field name="qbo_name"/>
+                <field name="stock_keeping_unit" readonly="1"/>
+                <field name="variant_options" readonly="1"/>
+                <field name="product_id" force_save="1"
+                       readonly="category_id"
+                       options="{'no_create': True, 'no_quick_create': True, 'no_create_edit': True}"/>
+                <field name="category_id" force_save="1"
+                       readonly="product_id"
+                       options="{'no_create': True, 'no_quick_create': True, 'no_create_edit': True}"/>
+                <field name="product_type"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_qbo_map_product_search" model="ir.ui.view">
+        <field name="model">qbo.map.product</field>
+        <field name="name">Search into qbo product tree</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="qbo_name"/>
+                <field name="qbo_id"/>
+                <field name="stock_keeping_unit"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

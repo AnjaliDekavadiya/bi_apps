@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="tender_bidding_view_form" model="ir.ui.view">
+            <field name="name">tender.bidding.view.form</field>
+            <field name="model">tender.bidding</field>
+            <field name="arch" type="xml">
+                <form>
+                    <div class="alert alert-warning text-center" role="alert" invisible="allow_edit != 'edit_request'">
+                        The vendor has requested to edit the bid details.
+                    </div>
+                    <div class="alert alert-info text-center" role="alert" invisible="allow_edit != 'request_approve'">
+                        The request for the vendor to edit the bid has been approved.
+                    </div>
+                    <div class="alert alert-success text-center" role="alert" invisible="allow_edit != 'draft'">
+                        Bid submitted by Vendor.
+                    </div>
+                    <header>
+                        <field name="allow_edit" invisible="1"/>
+                        <field name="allow_resubmit" invisible="1"/>
+                        <field name="stage" widget="statusbar"/>
+                        <button name="action_qualified_bid" type="object" string="Qualified" class="btn btn-info" invisible="stage != 'pre_qualification'"/>
+                        <button name="%(bid_disqualify_action)d" type="action" string="Not Qualified" class="btn btn-danger" invisible="stage != 'pre_qualification'"/>
+                        <button name="action_export_tender_lines" type="object" string="Export Template" class="btn btn-primary" icon="fa-download" invisible="not tender_id or stage not in ['bid']"/>
+                        <button name="%(import_tender_line_action)d" type="action" string="Import Product Price" class="btn btn-primary" icon="fa-upload" context="{'default_from_bidding':True}" invisible="not tender_id or stage not in ['bid']"/>
+                        <button name="action_request_approve" type="object" string="Allow Edit" invisible="allow_edit != 'edit_request'"/>
+                        <button name="action_pre_qualification" type="object" string="Resubmit Document" invisible="stage != 'lost' or not allow_resubmit"/>
+                    </header>
+                    <sheet>
+                        <div class="row">
+                            <div class="col-9">
+                                <h1>
+                                    <field name="name" readonly="1" force_save="1"/>
+                                </h1>
+                                <span style="border-radius: 10px; border: 1px solid #ACF3AE; padding: 4px; background: #ACF3AE;" invisible="qualify_status != 'qualified'">
+                                    <field name="qualify_status" readonly="1" force_save="1"/>
+                                </span>
+                                <span style="border-radius: 10px; border: 2px solid #FA6B84; padding: 4px; background: #FA6B84; color: white;" invisible="qualify_status != 'disqualified'">
+                                    <field name="qualify_status" readonly="1" force_save="1"/>
+                                </span>
+                            </div>
+                            <div class="col-3" style="text-align: right; font-family: emoji;" invisible="type != 'single_vendor'">
+                                <span style="border-radius: 18px; border: 1px solid black; padding: 2px; background: #F6F1F1; color: black; font-size: 30px;" invisible="rank == 0">
+                                    <field name="rank" readonly="1" force_save="1"/>
+                                </span>
+                                <br/>
+                                <span style="margin-right: 8px;" invisible="rank == 0">
+                                    Rank
+                                </span>
+                            </div>
+                        </div>
+                        <br/>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                <field name="is_legit_bid" force_save="1" invisible="1"/>
+                                <field name="responsible_id" invisible="not responsible_id" readonly="1" force_save="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Vendor">
+                                <field name="vendor_id" required="1"/>
+                            </group>
+                            <group string="Tender">
+                                <field name="vendor_tender_category_ids" invisible="1"/>
+                                <field name="tender_id" required="1"/>
+                                <field name="type" invisible="1"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="company_id" invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Documents" name="bid_document">
+                                <field name="bid_document_ids">
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="date" required="1"/>
+                                                <field name="file_name" invisible="True"/>
+                                                <field name="document" filename="file_name" widget="binary"/>
+                                            </group>
+                                            <group>
+                                                <field name="document_type_id" required="1"/>
+                                                <field name="note"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                    <tree editable="bottom">
+                                        <field name="date" required="1"/>
+                                        <field name="document_type_id" required="1"/>
+                                        <field name="file_name" column_invisible="1"/>
+                                        <field name="document" filename="file_name" widget="binary"/>
+                                        <field name="note"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Bidding" name="tender_bidding" autofocus="autofocus" invisible="qualify_status == 'disqualified' or stage in ['pre_qualification']">
+                                <field name="bidding_line_ids" widget="section_and_note_one2many" force_save="1" readonly="stage not in ['bid','pre_qualification']">
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" readonly="1" force_save="1"/>
+                                                <field name="name" readonly="1" force_save="1"/>
+                                                <field name="uom_id" force_save="1"/>
+                                            </group>
+                                            <group>
+                                                <field name="code" force_save="1"/>
+                                                <field name="qty" readonly="1" force_save="1"/>
+                                                <field name="price" readonly="1" force_save="1"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                    <tree editable="bottom" decoration-success="selected_bid == True">
+                                        <control>
+                                            <create name="add_product_control" string="Add tender item"/>
+                                            <create name="add_section_control" string="Add tender type" context="{'default_display_type': 'line_section'}"/>
+                                            <create name="add_note_control" string="Add tender note" context="{'default_display_type': 'line_note'}"/>
+                                        </control>
+                                        <field name="selected_bid" column_invisible="1"/>
+                                        <field name="product_from_tender" column_invisible="1"/>
+                                        <field name="sequence" widget="handle" force_save="1" readonly="product_from_tender"/>
+                                        <field name="display_type" column_invisible="1" force_save="1" readonly="product_from_tender"/>
+                                        <field name="product_id" force_save="1" readonly="product_from_tender"/>
+                                        <field name="name" widget="section_and_note_text" required="1" force_save="1" readonly="product_from_tender"/>
+                                        <field name="code" force_save="1" readonly="product_from_tender"/>
+                                        <field name="qty" force_save="1" readonly="product_from_tender"/>
+                                        <field name="uom_id"/>
+                                        <field name="company_id" column_invisible="1"/>
+                                        <field name="currency_id" column_invisible="1"/>
+                                        <field name="price"/>
+                                        <field name="total"/>
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right" style="text-align: right">
+                                    <field name="total_amount"/>
+                                </group>
+                            </page>
+                            <page string="Disqualify Reason" name="disqualify_reason" invisible="qualify_status != 'disqualified'">
+                                <field name="dis_qualified_reason" required="qualify_status == 'disqualified'"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="tender_bidding_view_tree" model="ir.ui.view">
+            <field name="name">tender.bidding.view.tree</field>
+            <field name="model">tender.bidding</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="tender_id"/>
+                    <field name="vendor_id"/>
+                    <field name="rank" widget="badge"/>
+                    <field name="total_amount"/>
+                    <field name="qualify_status" widget="badge" decoration-success="qualify_status=='qualified'" decoration-danger="qualify_status=='disqualified'"/>
+                    <field name="stage" widget="badge" decoration-success="stage == 'won'" decoration-primary="stage == 'pre_qualification'" decoration-warning="stage == 'bid'" decoration-info="stage == 'bid_close'" decoration-danger="stage == 'lost'"/>
+                </tree>
+            </field>
+        </record>
+        <record id="tender_bidding_search_view" model="ir.ui.view">
+            <field name="name">tender.bidding.search.view</field>
+            <field name="model">tender.bidding</field>
+            <field name="arch" type="xml">
+                <search>
+                    <searchpanel>
+                        <field name="qualify_status" string="Qualify Status" enable_counters="1" icon="fa-filter"/>
+                    </searchpanel>
+                    <group expand="1" string="Group By">
+                        <filter string="Tender" name="group_by_tender" context="{'group_by': 'tender_id'}"/>
+                        <filter string="Qualified" name="group_by_qualified" domain="[('qualify_status', '=', 'qualified')]"/>
+                        <filter string="Vendor" name="group_by_vendor" context="{'group_by': 'vendor_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="tender_bidding_action" model="ir.actions.act_window">
+            <field name="name">Tender Bidding</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tender.bidding</field>
+            <field name="view_mode">tree,form,search,activity</field>
+            <field name="search_view_id" ref="tk_tender_management.tender_bidding_search_view"/>
+            <field name="context">
+                {'search_default_group_by_tender': 1}
+            </field>
+        </record>
+
+        <record id="tender_bidding_line_view_form" model="ir.ui.view">
+            <field name="name">tender.bidding.line.view.form</field>
+            <field name="model">tender.bidding.line</field>
+            <field name="arch" type="xml">
+                <form create="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tender_bidding_id" readonly="1" force_save="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="product_id" readonly="1" force_save="1"/>
+                                <field name="name" readonly="1" force_save="1"/>
+                                <field name="uom_id" force_save="1"/>
+                            </group>
+                            <group>
+                                <field name="code" force_save="1"/>
+                                <field name="qty" readonly="1" force_save="1"/>
+                                <field name="price" readonly="1" force_save="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tender_bidding_line_view_tree" model="ir.ui.view">
+            <field name="name">tender.bidding.line.view.tree</field>
+            <field name="model">tender.bidding.line</field>
+            <field name="arch" type="xml">
+                <tree create="false" decoration-success="selected_bid == True" decoration-danger="selected_bid == False">
+                    <field name="tender_bidding_id"/>
+                    <field name="selected_bid" column_invisible="1"/>
+                    <field name="vendor_id"/>
+                    <field name="product_id"/>
+                    <field name="name"/>
+                    <field name="uom_id"/>
+                    <field name="code"/>
+                    <field name="qty"/>
+                    <field name="price"/>
+                    <button name="action_select_bid" type="object" string="Select Bid" invisible="selected_bid" class="btn btn-success"/>
+                    <button name="action_deselect_bid" type="object" string="Reject Bid" invisible="not selected_bid" class="btn btn-danger"/>
+                </tree>
+            </field>
+        </record>
+        <record id="tender_bidding_line_view_search" model="ir.ui.view">
+            <field name="name">tender.bidding.line.view.search</field>
+            <field name="model">tender.bidding.line</field>
+            <field name="arch" type="xml">
+                <search>
+                    <group expand="1" string="Group By">
+                        <filter string="Bid" name="group_by_tender_bid" context="{'group_by': 'tender_bidding_id'}"/>
+                        <filter string="Qualified" name="group_by_qualified" domain="[('qualify_status', '=', 'qualified')]"/>
+                    </group>
+                    <searchpanel>
+                        <field name="product_id" enable_counters="1" icon="fa-filter"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

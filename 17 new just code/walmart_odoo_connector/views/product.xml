@@ -1,0 +1,43 @@
+<odoo>
+	<data>
+		<!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+      	<!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+		<record id="walmart_odoo_connector.product_template_form_view" model="ir.ui.view">
+            <field name="name">walmart.product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="odoo_multi_channel_sale.product_template_form_view"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']" position="inside">
+                    <div>
+						<field name="wk_walmart_ok"/>
+						<label for="wk_walmart_ok"/>
+					</div>
+                </xpath>
+				<xpath expr="//group[@name='group_general']" position="inside">
+					<field name="wk_brand_name" invisible="wk_walmart_ok == False"/>
+                </xpath>
+				<xpath expr="//notebook/page[1]" position="inside">
+					<div invisible="wk_walmart_ok == False">
+						<p>
+						<span class="font-italic font-weight-bold">UPC:</span>
+							GTIN-12, the 12-digit number including check-digit.
+							If less than 12-digits, such as UPC-E which is 8-digits, add leading zeros up to 12-digits.;
+						</p>
+						<p>
+						<span class="font-italic font-weight-bold">GTIN-13/EAN:</span>
+							GTIN-13, the 13-digit number including check-digit. If less than 14-digits add leading zeros up to 14-digits.
+						</p>
+						<p>
+						<span class="font-italic font-weight-bold">ISBN:</span>
+							International Standard Book Number, the 10 or 13-digit number including check-digit.;
+						</p>
+						<!-- <p>
+						<span class="font-italic font-weight-bold">EAN:</span>
+							GTIN-13, the 13-digit number including check-digit. If less than 13-digits add leading zeros up to 13-digits.
+						</p> -->
+					</div>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

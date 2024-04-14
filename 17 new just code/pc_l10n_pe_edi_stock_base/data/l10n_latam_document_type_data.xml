@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model='l10n_latam.document.type' id='document_type09'>
+        <field name='sequence'>61</field>
+        <field name='code'>09</field>
+        <field name='report_name'>Guía Remitente</field>
+        <field name='name'>Guía de remisión - Remitente</field>
+        <field name='country_id' ref='base.pe'/>
+        <field name='doc_code_prefix'>GR</field>
+        <field name='internal_type'></field>
+    </record>
+
+    <record model='l10n_latam.document.type' id='document_type31'>
+        <field name='sequence'>62</field>
+        <field name='code'>31</field>
+        <field name='report_name'>Guía Transportista</field>
+        <field name='name'>Guía de Remisión - Transportista</field>
+        <field name='country_id' ref='base.pe'/>
+        <field name='doc_code_prefix'>GT</field>
+        <field name='internal_type'></field>
+    </record>
+
+</odoo>

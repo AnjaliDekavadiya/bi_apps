@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+           
+        <template id="account_image" inherit_id='portal.portal_layout'>
+            <xpath expr="//div[@class='o_portal_my_details']/h4" position="before">
+                      <t t-if="user_id.partner_id.image_1920">
+                        <div class="col-mb-9">
+                          <img alt="Photo" t-attf-src="data:image/gif;base64, #{user_id.partner_id.image_1920}" class="img-fluid img-thumbnail"/>
+                        </div>
+                      </t>
+            </xpath>
+        </template>
+        
+    </data>
+</odoo>

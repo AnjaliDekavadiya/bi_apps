@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="0">
+        <record id="property_theme_config_rec" model="property.theme.config">
+            <field name="name">Property Website Home Configuration</field>
+            <field name="mailling_list_id"  ref="mass_mailing.mailing_list_data" />
+        </record>
+        <record id="properties_list_menu" model="website.menu">
+            <field name="name">Listings</field>
+            <field name="url">/properties-list</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">11</field>
+        </record>
+        <record id="properties_list_map_menu" model="website.menu">
+            <field name="name">Listings on Map</field>
+            <field name="url">/map-view</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">12</field>
+        </record>
+    </data>
+</odoo>

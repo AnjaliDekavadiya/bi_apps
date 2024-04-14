@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_task_form2_inherit_work_instruction" model="ir.ui.view">
+       <field name="name">project.task.inherit..work.instruction</field>
+       <field name="model">project.task</field>
+       <field name="inherit_id" ref="project.view_task_form2"/>
+       <field name="arch" type="xml">
+            <xpath expr="//page[@name='description_page']" position="after">
+                <page name="pdf_viewer" string="Work Instruction">
+                    <field name="custom_work_instruction" widget="pdf_viewer"/>
+                </page>
+            </xpath>
+       </field>
+   </record>
+   <record id="view_task_form2_inherit_project_planning" model="ir.ui.view">
+       <field name="name">project.project.inherit.project.planning</field>
+       <field name="model">project.project</field>
+       <field name="inherit_id" ref="project.edit_project"/>
+       <field name="arch" type="xml">
+            <xpath expr="//page[@name='settings']" position="after">
+                <page name="pdf_viewer_project" string="Project Planning">
+                    <field name="custom_project_planning" widget="pdf_viewer"/>
+                </page>
+            </xpath>
+       </field>
+   </record>
+</odoo>

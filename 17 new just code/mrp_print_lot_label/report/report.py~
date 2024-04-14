@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
+from odoo import api, models
+from odoo.tools import float_round
+
+
+class report_product_lot(models.AbstractModel):
+    _name = 'report.stock.report_lot_barcode'
+
+    @api.model
+    def get_report_values(self, docids, data=None):
+        print ('doc idssssssssssssssssssssssssssssssssssssssssssssssssssss',docids)
+        print ('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv',data)
+        #report = self.env['ir.actions.report']._get_report_from_name('stock.report_lot_barcode')
+        print ('int rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+        #print ('data                        rrrrrrrr',data)
+        print ('idsssssssssssssssssssssssssss         rrrrrrrr',docids)
+        return {
+        #'doc_ids': data['ids'],
+        'doc_ids': 5,
+        #'doc_model': data['model'],
+        'doc_model': 'stock.production.lot',
+        'data': data,
+        'docs': self.env[data['model']].browse(data['ids']),
+        }
+        #return self.env['report'].render('print_timesheet_regular_overtime.regular_id', docargs)

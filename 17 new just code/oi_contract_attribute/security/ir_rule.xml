@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+	<record id="rule_attribute_value_contract_manager" model="ir.rule">
+		<field name="name">Attribute Value Contract Manager</field>
+		<field name="model_id" ref="model_hr_attribute_value" />
+		<field name="groups" eval="[(4, ref('hr_contract.group_hr_contract_manager'))]" />
+		<field name="domain_force">[('contract_id.state','=', 'draft')]</field>
+		<field name="perm_read" eval="False" />
+		<field name="perm_write" eval="True" />
+		<field name="perm_create" eval="True" />
+		<field name="perm_unlink" eval="True" />
+	</record>
+	
+	<record id="rule_attribute_value_manager" model="ir.rule">
+		<field name="name">Attribute Value Manager</field>
+		<field name="model_id" ref="model_hr_attribute_value" />
+		<field name="groups" eval="[(4, ref('group_employee_attribute'))]" />
+		<field name="domain_force">[(1,'=', 1)]</field>
+		<field name="perm_read" eval="False" />
+		<field name="perm_write" eval="True" />
+		<field name="perm_create" eval="True" />
+		<field name="perm_unlink" eval="True" />
+	</record>
+
+	
+</odoo>

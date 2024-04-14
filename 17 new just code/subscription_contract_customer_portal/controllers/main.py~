@@ -1,0 +1,59 @@
+# -*- coding: utf-8 -*-
+
+from odoo import http, _
+from odoo.http import request
+from odoo import models,registry, SUPERUSER_ID
+from odoo.addons.website_portal.controllers.main import website_account
+
+class website_account(website_account):
+
+    @http.route()
+    def account(self, **kw):
+        """ Add contract documents to main account page """
+        response = super(website_account, self).account(**kw)
+        partner = request.env.user.partner_id
+        contract = request.env['account.analytic.account']
+        contract_count = contract.sudo().search_count([
+        ('partner_id', 'child_of', [partner.commercial_partner_id.id])
+          ])
+        response.qcontext.update({
+        'contract_count': contract_count,
+        })
+        return response
+        
+    @http.route(['/my/contracts', '/my/contracts/page/<int:page>'], type='http', auth="user", website=True)
+    def portal_my_contract(self, page=1, **kw):
+        response = super(website_account, self)
+        partner = request.env.user.partner_id
+        values = self._prepare_portal_layout_values()
+        partner = request.env.user.partner_id
+        contract_obj = http.request.env['account.analytic.account']
+        domain = [
+            ('partner_id', 'child_of', [partner.commercial_partner_id.id])
+        ]
+        # count for pager
+        contract_count = contract_obj.sudo().search_count(domain)
+        # pager
+        pager = request.website.pager(
+            url="/my/contracts",
+            total=contract_count,
+            page=page,
+            step=self._items_per_page
+        )
+        # content according to pager and archive selected
+        contracts = contract_obj.sudo().search(domain, limit=self._items_per_page, offset=pager['offset'])
+        values.update({
+            'contracts': contracts,
+            'page_name': 'contract',
+            'pager': pager,
+            'default_url': '/my/contracts',
+        })
+        return request.render("subscription_contract_customer_portal.display_contracts", values)
+        
+    @http.route(['/my/print/<int:contract>'], type='http', auth="user", website=True)
+    def contract_print(self, contract=None, **kw):
+        pdf = request.env['report'].sudo().get_pdf([contract], 'contract_recurring_invoice_analytic.contract_report_view', data=None)
+        pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf))]
+        return request.make_response(pdf, headers=pdfhttpheaders)
+        
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

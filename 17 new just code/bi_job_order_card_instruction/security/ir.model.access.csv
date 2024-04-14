@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_quality_checklist,user_quality_checklist,model_quality_checklist,base.group_user,1,1,1,1
+access_job_instruction_details,user_job_instruction_details,model_job_instruction_details,base.group_user,1,1,1,1
+access_job_instruction,user_job_instruction,model_job_instruction,base.group_user,1,1,1,1
+
+
+
+

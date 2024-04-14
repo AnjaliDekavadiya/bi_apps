@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+
+    <record id="pos_common_changes_tree_view" model="ir.ui.view">
+        <field name="name">Pos Common Changes</field>
+        <field name="model">pos.common.changes</field>
+        <field name="arch" type="xml">
+            <tree string="Pos Common Changes" create="0" default_order="id desc">
+                <field name="model_name"/>
+                <field name="record_id"/>
+                <field name="operation"/>
+                <field name="state"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pos_common_changes_form_view" model="ir.ui.view">
+        <field name="name">Pos Common Changes</field>
+        <field name="model">pos.common.changes</field>
+        <field name="arch" type="xml">
+            <form string="Pos Common Changes" create="0" default_order="id desc">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="model_name"/>
+                            <field name="record_id"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="operation"/>
+                            <field name="state"/>
+                        </group>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="pos_common_changes_action" model="ir.actions.act_window">
+        <field name="name">Pos Common Changes</field>
+        <field name="res_model">pos.common.changes</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="pos_common_changes_tree_view"></field>
+    </record>
+
+
+
+    <menuitem id="pos_longpolling_menu" name="Pos Real Time Update" parent="point_of_sale.menu_point_config_product" sequence="12" />
+
+    <menuitem parent="pos_longpolling_menu" id="pos_common_changes_menu" action="pos_common_changes_action" name="Pos Common Changes" sequence="15" groups="point_of_sale.group_pos_manager" />
+
+
+
+</odoo>

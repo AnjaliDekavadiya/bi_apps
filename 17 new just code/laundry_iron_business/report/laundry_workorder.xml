@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <record id="print_laundry_work_order" model="ir.actions.report">
+            <field name="name">Laundry Workorder</field>
+            <field name="model">project.task</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">laundry_iron_business.laundry_task_custom</field>
+            <field name="report_file">laundry_iron_business.laundry_task_custom</field>
+            <field name="binding_model_id" ref="project.model_project_task"/>
+            <field name="binding_type">report</field>
+        </record>
+         
+        <template id="laundry_task_custom">
+             <t t-foreach="docs" t-as="doc">
+              <t t-call="web.html_container">
+               <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="text-center">
+                        <h3>
+                            <strong>Laundry Workorder</strong>
+                         </h3>
+                         <h3>
+                            <strong><span t-field="doc.name"/>  [<span t-field="doc.stage_id.name"/>]</strong>
+                         </h3>
+                    </div>
+                    <h4 style="margin-top:20px;"><b>Client Information</b></h4>
+                    <table class="table" style="border:1px solid #e1e1e1;">
+                       <tr style="border-bottom:hidden;">
+                           <td><strong>Customer</strong></td><td><span t-field="doc.partner_id"/></td>
+                           <td><strong>Project</strong></td><td><span t-field="doc.project_id"/></td>
+                       </tr>
+                       <tr style="border-bottom:hidden;">
+                           <td><strong>Laundry</strong></td><td><span t-field="doc.laundry_ticket_id"/></td>
+                           <td><strong>Assigned to</strong></td>
+                           <td><!-- <span t-field="doc.activity_user_id"/> -->
+                             <span t-field="doc.user_ids"/>
+                           </td>
+                       </tr>
+                       <tr>
+                           <td><strong>Type</strong></td><td><span t-field="doc.laundry_task_type"/></td>
+                           <td><strong>Deadline</strong></td><td><span t-field="doc.date_deadline"/></td>
+                       </tr>
+                       <tr>
+                           <td><strong>Services</strong></td><td><span t-field="doc.nature_of_service_ids"/></td>
+                           <td></td><td></td>
+                       </tr>
+                    </table>
+                    <!-- <div  style="page-break-after:always"> -->
+                        <p><h4>Description</h4><span t-field="doc.description"/></p>
+                    <!-- </div> -->
+                    <p><h4>Product Consume Parts</h4></p>
+                    <table class="table"  style="border:1px solid #e1e1e1;">
+                    <tbody>
+                        <t t-if="doc.cosume_part_ids">
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th> 
+                                <th>UOM</th>
+                            </tr>
+                        </t>
+                        <tr t-foreach ="doc.cosume_part_ids" t-as="li">
+                            <td><span t-field="li.product_id"/></td>
+                            <td><span t-field="li.qty"/></td>
+                            <td><span t-field="li.product_uom"/></td>
+                          </tr>
+                       </tbody>
+                    </table>
+                </div>
+              </t>
+            </t>
+            </t>
+        </template>
+        
+    </data>
+</odoo>

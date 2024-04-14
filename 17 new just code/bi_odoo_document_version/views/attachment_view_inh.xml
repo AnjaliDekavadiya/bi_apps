@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record model="ir.ui.view" id="inherit_view_ir_attachment">
+            <field name="name">inherit.view.ir.attachment</field>
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="base.view_attachment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='description_group']" position="before">
+                    <group name="version" string="Version" groups="base.group_no_one">
+                        <field name="doc_version" readonly="1"/>
+                        <field name="docs_last_name_id" readonly="1"/>
+                        <field name="docs_next_name_id" readonly="1"/>
+                    </group>
+                </xpath>
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button type="object" name="previous_view" string="Previous Version" class="btn btn-sm btn-primary"/>
+                        <button type="object" name="next_view" string="Next Version" class="btn btn-sm btn-primary"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="attachment_dashboard_kanban_view_inherit" model="ir.ui.view">
+            <field name="name">ir.attachment.kanban.inherit</field>
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="mail.view_document_file_kanban"/>
+            <field name="arch" type="xml">
+                <field name="mimetype" position='after'>
+                    <field name="doc_version" />
+                </field>
+                <xpath expr="//div[hasclass('o_kanban_record_title')]" position="inside">
+                    <br/>
+                    <span>Version: </span>
+                    <field name="doc_version" class="o_text_overflow"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inherit_view_ir_attachment_tree">
+            <field name="name">inherit.view.ir.attachment.tree</field>
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="base.view_attachment_tree"/>
+            <field name="arch" type="xml">
+                <field name="res_id" position="after">
+                    <field name="doc_version"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record id="restriction_attachment_form" model="ir.ui.view">
+            <field name="name">Restrict Attachments</field>
+            <field name="model">restriction.attachment</field>
+            <field name="arch" type="xml">
+                <form string="Restrict Attachments">
+                    <sheet>
+                        <p class="oe_grey">
+                        </p>
+                        <group> 
+                            <group>
+                                <field name="name" />
+                            </group>
+                            <group>
+                                <field name="company_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Restricted Models/Form">
+                                <field name="restriction_line" nolabel="1" >
+                                    <tree editable="bottom">
+                                        <field name="res_model_id"/>
+                                        <field name="name"/>
+                                        <field name="state"/>
+                                        <field name="transient"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="restriction_attachment_tree" model="ir.ui.view">
+            <field name="name">Restrict Attachments</field>
+            <field name="model">restriction.attachment</field>
+            <field name="arch" type="xml">
+                <tree name="Restrict Attachments">
+                    <field name="name" />
+                    <field name="company_id" />
+                </tree>
+            </field>
+        </record>
+        <record id="action_restrict_attachment_version" model="ir.actions.act_window">
+            <field name="name">Restrict Attachments</field>
+            <field name="res_model">restriction.attachment</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Attachment Restriction.
+                </p>
+            </field>
+        </record>
+                    
+        <menuitem action="action_restrict_attachment_version" id="menu_action_restrict_attachment" parent="base.next_id_9" sequence="100"/>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <template id="fleet_repair_request_successful_send" name="Success Fleet" >
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure"/>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                                    <h1>Your Message/Attachments have been sent successfully.<br/><br/>
+                                        Thank you,<br/><br/>
+                                    </h1>
+                                </div>
+                                <p class="container">
+                                    <a class="btn btn-primary pull-left mb32" onclick="history.go(-1);" ><span class="hidden-xs">Go Back</span><span class="fa fa-long-arrow-left"/></a>
+                                </p>  
+                            </div>
+                            <div class="col-md-3">
+                                <img width="200" height="200" src="/fleet_repair_request_management/static/description/success.png" alt="show repair" class="img-square" />
+                            </div>
+                    </div>
+                </div>
+            <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+    
+</odoo>

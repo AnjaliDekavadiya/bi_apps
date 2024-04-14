@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="construction_daily_log_form_view_custom">
+             <field name="name">Construction Daily Log</field>
+             <field name="model">construction.daily.log</field>
+             <field name="arch" type="xml">
+                 <form string="Construction Daily Log Form">
+                        <header>
+                            <button name="action_daily_log_send" string="Send Report to Manager" type="object" class="btn-primary"/>
+                        </header>
+                        <sheet>
+                            <div class="oe_title pr-0">
+                                <h1 class="d-flex flex-row justify-content-between">
+                                    <field name="name" class="o_task_name text-truncate"/>
+                                </h1>
+                            </div>
+                             <group>
+                                 <group>
+                                     <field name="custom_user_id"/>
+                                    <field name="custom_project_id"/>
+                                    <field name="custom_timesheet_line_id"/>
+                                    <field name="custom_date"/>
+                                </group>
+                                <group>
+                                    <field name="custom_employee_id"/>
+                                    <field name="custom_department_id"/>
+                                    <field name="custom_manager_id"/>
+                                    <field name="custom_company_id" groups="base.group_multi_company"/>
+                                 </group>
+                            </group>
+                            <!-- <group string="Job Orders"> -->
+                            <separator string="Job Orders" colspan="4"/>
+                                <field name="custom_task_id" nolabel='1' domain="[('project_id','=',custom_project_id)]"/>
+                            <!-- </group> -->
+                            <!-- <group string="Construction Daily Log"> -->
+                            <separator string="Construction Daily Log" colspan="4"/>
+                                <field name="construction_daily_log_custom" nolabel='1'/>
+                            <!-- </group> -->
+                            <!-- <group string="Subcontractors"> -->
+                            <separator string="Subcontractors" colspan="4"/>
+                                <field name="sub_contractors" nolabel='1'/>
+                            <!-- </group> -->
+                            <!-- <group string="Activities"> -->
+                            <separator string="Activities" colspan="4"/>
+                                <field name="custom_activities" nolabel='1'/>
+                            <!-- </group> -->
+                            <!-- <group string="Phone Calls/Meetings"> -->
+                            <separator string="Phone Calls/Meetings" colspan="4"/>
+                                <field name="custom_trades" nolabel='1'/>
+                            <!-- </group> -->
+                            <!-- <group string="Tests/Inspections"> -->
+                            <separator string="Tests/Inspections" colspan="4"/>
+                                <field name="custom_tests_inspections" nolabel='1'/>
+                            <!-- </group> -->
+                            <!-- <group string="Equipment"> -->
+                            <separator string="Equipment" colspan="4"/>
+                                <field name="custom_equipment_rentals" nolabel='1'/>
+                            <!-- </group> -->
+                            <!-- <group string="Material Deliveries"> -->
+                            <separator string="Material Deliveries" colspan="4"/>
+                                <field name="custom_material_deliveries" nolabel='1'/>
+                            <!-- </group> -->
+                            <!-- <group string="Visitors"> -->
+                            <separator string="Visitors" colspan="4"/>
+                                <field name="custom_visitors" nolabel='1'/>
+                            <!-- </group> -->
+                            <!-- <group string="Notes"> -->
+                            <separator string="Notes" colspan="4"/>
+                                <field name="custom_notes" nolabel='1'/>
+                            <!-- </group> -->
+                         </sheet>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                     </form>
+             </field>
+        </record>
+        <record model="ir.ui.view" id="construction_daily_log_tree_view_custom">
+            <field name="name">Construction Daily Log</field>
+            <field name="model">construction.daily.log</field>
+            <field name="arch" type="xml">
+                <tree string="Construction Daily Log List">
+                    <field name="custom_user_id"/>
+                     <field name="custom_project_id"/>
+                     <field name="custom_timesheet_line_id"/>
+                    <field name="custom_employee_id"/>
+                    <field name="custom_department_id"/>
+                    <field name="custom_manager_id"/>
+                    <field name="custom_company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+        <record id="construction_daily_log_search_custom" model="ir.ui.view">
+            <field name="name">Construction Daily Log</field>
+            <field name="model">construction.daily.log</field>
+            <field name="arch" type="xml">
+                <search string="Construction Daily Log">
+                    <field name="custom_user_id"/>
+                    <field name="custom_project_id"/>
+                    <field name="custom_timesheet_line_id"/>
+                    <field name="custom_employee_id"/>
+                    <field name="custom_department_id"/>
+                    <field name="custom_manager_id"/>
+                    <field name="custom_company_id"/>
+                    <filter name="mine" string="My Construction Log" domain="[('custom_user_id', '=', uid)]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="User" name="groupby_custom_user_id" domain="[]" context="{'group_by': 'custom_user_id'}"/>
+                        <filter string="Project" name="groupby_custom_project_id" domain="[]" context="{'group_by': 'custom_project_id'}"/>
+                        <filter string="Analytic Account" name="groupby_custom_timesheet_line_id" domain="[]" context="{'group_by': 'custom_timesheet_line_id'}"/>
+                        <filter string="Employee" name="groupby_custom_employee_id" domain="[]" context="{'group_by': 'custom_employee_id'}"/>
+                        <filter string="Department" name="groupby_custom_department_id" domain="[]" context="{'group_by': 'custom_department_id'}"/>
+                        <filter string="Manager" name="groupby_custom_manager_id" domain="[]" context="{'group_by': 'custom_manager_id'}"/>
+                        <filter name="groupby_custom_company_id" string="Company" context="{'group_by':'custom_company_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="construction_daily_log_action">
+            <field name="name">Construction Daily Logs</field>
+            <field name="res_model">construction.daily.log</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('custom_user_id','=',uid)]</field>
+        </record>
+        <record model="ir.actions.act_window" id="all_construction_daily_log_action">
+            <field name="name">Construction All Daily Logs</field>
+            <field name="res_model">construction.daily.log</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    <menuitem id="menu_construction_daily_log_sub_menu" parent="odoo_job_costing_management.menu_job_managmt" name="Daily Logs" sequence="5"/>
+    <menuitem id="menu_construction_daily_log" name="My Daily Logs" parent="menu_construction_daily_log_sub_menu" sequence="3" action="construction_daily_log_action"/>
+    <menuitem id="menu_construction_all_daily_log" name="All Daily Logs" parent="menu_construction_daily_log_sub_menu" sequence="4" action="all_construction_daily_log_action"/>
+    </data>
+</odoo>

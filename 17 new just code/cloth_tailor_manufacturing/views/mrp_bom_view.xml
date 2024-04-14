@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_mrp_bom_inherit_tailor" model="ir.ui.view">
+            <field name="name">mrp.bom.form.inherit.tailor</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="custom_action_view_cloth_requests" type="object" class="oe_stat_button" icon="fa-pencil-square-o" string="Cloth Requests"></button>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

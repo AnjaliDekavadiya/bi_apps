@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+    
+    <record id="res_config_settings_view_open_ai_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="40"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="OpenAi" name="openai_settings" string="AiChatbot" logo="/odoo_openai_chatbot/static/description/icon.png">
+                    <h2>OpenAi Settings</h2>
+
+                    <div class="row mt16 o_settings_container" name="openai_settings_div">
+                        <div class="col-12  o_setting_box" id="openai_settings_div">
+                            <div class="o_setting_right_pane">
+                                <div class="row mt16 mb16">
+                                    <label class="col-lg-2 o_form_label fw-bold" string="API Key" for="openai_api_key"/>
+                                    <field name="openai_api_key" class="ps-1 fw-bold"/>
+                                </div>
+                                <div class="row mt16">
+                                    <div class="col-12">
+                                        <h4 class="" ><b>How to get API Key :</b></h4>
+                                        <ul>
+                                            <li><p style="display:inline;">You can get your API Keys in your </p><span><a href="https://beta.openai.com/account/api-keys" target="_blank">Open AI Account</a></span></li>
+                                            <li><p style="display:inline;">You can check your OpenAI usage in your account. Please login and see your </p><span><a href="https://beta.openai.com/account/usage" target="_blank">Usage at OpenAI </a></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="openai_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_open_ai_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'openai_settings', 'bin_size': False}</field>
+    </record>
+</odoo>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="helpdesk_support_service_pivot_view" model="ir.ui.view">
+    <field name="name">helpdesk_support_service.pivot.view</field>
+    <field name="model">report.account.analytic.account</field>
+    <field name="arch" type="xml">
+<!--        <pivot string="pivot View">-->
+        <pivot string="pivot View"
+        disable_linking="True">
+            <field name="analytic_account_id" type="row"/>
+            <field name="total_spend_hours" type="measure"/>
+            <field name="timesheet_cost_amount" type="measure"/>
+        </pivot>
+    </field>
+    </record>
+    
+    <record id="view_helpdesk_support_service_graph_view" model="ir.ui.view">
+    <field name="name">report.helpdesk.support.service.graph</field>
+    <field name="model">report.account.analytic.account</field>
+        <field name="arch" type="xml">
+            <graph string="Helpdesk" type="bar">
+               <field name="analytic_account_id" type="row"/>
+               <field name="sale_cost_amount" type="col"/>                      
+            </graph>
+         </field>
+    </record>
+    
+    <record model="ir.ui.view" id="helpdesk_support_service_search_view">
+            <field name="name">Helpdesk Support Service</field>
+            <field name="model">report.account.analytic.account</field>
+            <field name="arch" type="xml">
+                <search>
+                         <field name="sale_cost_amount"/>
+                         <field name="emplyee_cost_amount"/>
+                         <field name="timesheet_cost_amount"/>
+                         <field name="balance_cost_amount"/>
+                         <field name="analytic_account_id"/>
+                         <field name="type_ticket_id"/>
+                         <field name="subject_type_id"/>
+                         <field name="user_id"/>
+                         <field name="helpdesk_support_id"/>
+                         <field name="company_id"/>
+                         <field name="department_id"/>
+                         <field name="team_id"/>
+                         <field name="team_leader_id"/>
+                         <field name="service_support_type_id"/>
+                         <field name="custom_currency_id"/>
+<!--                         <field name="start_date"/> odoo13-->
+<!--                         <field name="end_date"/> odoo13-->
+                         <field name="total_purchase_hours"/>
+                         <field name="total_consumed_hours"/>
+                         <field name="remaining_hours"/>
+                         <field name="total_spend_hours"/>
+                         <field name="stage_id"/>
+                         <group expand="0" string="Group By">
+                            <filter name="sale_cost_amount" string="Sale Cost Amount" context="{'group_by':'sale_cost_amount'}"/>
+                            <filter name="emplyee_cost_amount" string="Employee Cost Amount" context="{'group_by':'emplyee_cost_amount'}"/>
+                            <filter name="timesheet_cost_amount" string="Timesheet Cost Amount" context="{'group_by':'timesheet_cost_amount'}"/>
+                            <filter name="balance_cost_amount" string="Balance Cost Amount" context="{'group_by':'balance_cost_amount'}"/>
+                            <filter name="analytic_account_id" string="Analytic Account" context="{'group_by':'analytic_account_id'}"/>
+                            <filter name="type_ticket_id" string="Type of Ticket" context="{'group_by':'type_ticket_id'}"/>
+                            <filter name="subject_type_id" string="Type of Subject" context="{'group_by':'subject_type_id'}"/>
+                            <filter name="user_id" string="Assign To" context="{'group_by':'user_id'}"/>
+                            <filter name="helpdesk_support_id" string="Helpdesk Support Ticket" context="{'group_by':'helpdesk_support_id'}"/>
+                            <filter name="stage_id" string="Stages" context="{'group_by':'stage_id'}"/>
+                        </group>
+                </search>
+            </field>
+        </record>
+        
+    <record id="helpdesk_support_service_action_view" model="ir.actions.act_window">
+        <field name="name">Helpdesk Support Service</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">report.account.analytic.account</field>
+<!--        <field name="view_type">form</field> odoo13-->
+        <field name="view_mode">pivot,graph</field>
+        <field name="search_view_id" ref="helpdesk_support_service_search_view"/>
+    </record>
+    
+    <menuitem name="Analytic Cost Report" 
+    id="menu_item_helpdesk_support_service_report" 
+    parent="website_helpdesk_support_ticket.main_helpdesk_support"  
+    groups="website_helpdesk_support_ticket.group_helpdesk_manager" sequence="2"/>
+    <menuitem name="Analytic Helpdesk" 
+    id="menu_item_helpdesk_support_service_report_submenu" 
+    parent="menu_item_helpdesk_support_service_report"  
+    groups="website_helpdesk_support_ticket.group_helpdesk_manager"
+    action="helpdesk_analytic_cost_revenue.helpdesk_support_service_action_view"/>
+    
+</odoo>

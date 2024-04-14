@@ -1,0 +1,6 @@
+<odoo>
+    <data>
+        <menuitem id="account_import" name="Imports" parent="account.menu_finance" groups="account.group_account_user"/>
+        <menuitem id="account_import_xls" name="Import Chart of Accounts" parent="account_import" action="odoo_chart_account_import.import_chart_of_account"/>
+    </data>
+</odoo>

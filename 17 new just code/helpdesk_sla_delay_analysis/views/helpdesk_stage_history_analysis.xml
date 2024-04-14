@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_helpdesk_stage_history_graph" model="ir.ui.view">
+            <field name="name">Helpdesk Stage History Graph</field>
+            <field name="model">helpdesk.stage.history</field>
+            <field name="arch" type="xml">
+                <graph>
+                    <field name="user_id"/>
+                    <field name="helpdesk_ticket_id"/>
+                </graph>
+            </field>
+        </record>
+        
+        <record id="view_helpdesk_stage_history_pivot" model="ir.ui.view">
+            <field name="name">Helpdesk Stage History Pivot</field>
+            <field name="model">helpdesk.stage.history</field>
+            <field name="arch" type="xml">
+                <pivot disable_linking="True">
+                    <field name="user_id"/>
+                </pivot>
+            </field>
+        </record>
+        
+        <record id="action_helpdesk_stage_history" model="ir.actions.act_window">
+            <field name="name">SLA Consumption / Delay</field>
+            <field name="res_model">helpdesk.stage.history</field>
+            <field name="view_mode">pivot,graph</field>
+        </record>
+        
+        <menuitem 
+            id="menu_helpdesk_stage_history"
+            name="SLA Consumption / Delay"
+            action="action_helpdesk_stage_history"
+            parent="website_helpdesk_support_ticket.menu_helpdesk_report"
+            groups="website_helpdesk_support_ticket.group_helpdesk_manager"
+            />
+
+</odoo>

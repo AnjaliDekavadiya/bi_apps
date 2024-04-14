@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+	<data noupdate="1">
+
+        <function model="ir.default" name="set"
+        eval="('res.config.settings', 'wk_coupon_max_amount', 10000)"/>
+
+        <!-- <record model="pos.config" id="point_of_sale.pos_config_main">
+            <field name="start_category">True</field>
+            <field name="iface_start_categ_id" ref="wk_pos_gift_card.wk_pos_gift_card_categ"></field>
+        </record> -->
+        <record model="res.groups" id="base.group_user">
+            <field name="implied_ids" eval="[(4, ref('product.group_product_variant'))]"/>
+        </record>
+
+    <!--#######################    Birthday gift Voucher  ############################-->
+
+        <record id="birthday_e_gift_card_template_id" model="product.template">
+            <field name="name">Birthday Gift card</field>
+            <field name="standard_price">0</field>
+            <field name="list_price">500</field>
+            <field name="type">service</field>
+            <field name="available_in_pos">True</field>
+            <field name="wk_is_gift_card">True</field>
+            <field name="pos_categ_ids" eval="[(6, 0, [ref('wk_pos_gift_card_categ')])]"/>
+            <field name="image_1920" type="base64" file="wk_pos_gift_card/static/description/Birthday.png"></field>
+        </record>
+
+
+    <!-- ######################### Christmas gift Voucher   ###############################  -->
+
+        <record id="christmas_e_gift_card_template_id" model="product.template">
+            <field name="name">Merry Christmas Gift Card</field>
+            <field name="standard_price">0</field>
+            <field name="list_price">1000</field>
+            <field name="type">service</field>
+            <field name="available_in_pos">True</field>
+            <field name="wk_is_gift_card">True</field>
+            <field name="pos_categ_ids"  eval="[(6, 0, [ref('wk_pos_gift_card_categ')])]"/>
+            <field name="image_1920" type="base64" file="wk_pos_gift_card/static/description/Christmas.png"></field>
+        </record>
+
+    <!--  ##############    Happy New year Gift Voucher #############################-->
+
+        <record id="new_year_e_gift_card_template_id" model="product.template">
+            <field name="name">New Year Gift Card</field>
+            <field name="pos_categ_ids"  eval="[(6, 0, [ref('wk_pos_gift_card_categ')])]"/>
+            <field name="standard_price">0</field>
+            <field name="list_price">250</field>
+            <field name="type">service</field>
+            <field name="available_in_pos">True</field>
+            <field name="wk_is_gift_card">True</field>
+            <field name="image_1920" type="base64" file="wk_pos_gift_card/static/description/New-Year.png"></field>
+        </record>
+    </data>
+</odoo>

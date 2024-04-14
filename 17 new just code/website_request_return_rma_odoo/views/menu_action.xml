@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_return_product_machine" model="ir.actions.act_window">
+        <field name="name">Repairs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+<!--        <field name="view_type">form</field> odoo13-->
+        <field name="domain">[('is_machine', '=', True)]</field>
+        <field name="view_id" ref="product.product_product_tree_view"/>
+        <field name="search_view_id" ref="product.product_search_form_view"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to define a new product.
+          </p><p>
+            You must define a product for everything you sell, whether it's
+            a physical product, a consumable or a service you offer to
+            customers.
+          </p><p>
+            The product form contains information to simplify the sale
+            process: price, notes in the quotation, accounting data,
+            procurement methods, etc.
+          </p>
+        </field>
+    </record>
+    
+    <record id="action_return_product_machine_parts" model="ir.actions.act_window">
+        <field name="name">Repair Parts</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+<!--        <field name="view_type">form</field> odoo13-->
+        <field name="domain">[('is_machine', '=', False)]</field>
+        <field name="view_id" ref="product.product_product_tree_view"/>
+        <field name="search_view_id" ref="product.product_search_form_view"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to define a new product.
+          </p><p>
+            You must define a product for everything you sell, whether it's
+            a physical product, a consumable or a service you offer to
+            customers.
+          </p><p>
+            The product form contains information to simplify the sale
+            process: price, notes in the quotation, accounting data,
+            procurement methods, etc.
+          </p>
+        </field>
+    </record>
+    
+    <record id="action_return_view_task_diagnosis" model="ir.actions.act_window">
+        <field name="name">Repair Diagnosys</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">kanban,tree,form,calendar,pivot,graph</field>
+        <field name="context">{'default_task_type': 'diagnosys'}</field>
+        <field name="domain">[('task_type', '=', 'diagnosys')]</field>
+        <field name="search_view_id" ref="project.view_task_search_form"/>
+    </record>
+    <record id="open_view_diagnosis_list_kanban" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">kanban</field>
+        <field name="act_window_id" ref="action_return_view_task_diagnosis"/>
+    </record>
+    <record id="open_view_diagnosis_list_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="act_window_id" ref="action_return_view_task_diagnosis"/>
+    </record>
+    
+    <record id="action_return_view_task_workorder" model="ir.actions.act_window">
+        <field name="name">Work Orders</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">kanban,tree,form,calendar,pivot,graph</field>
+        <field name="context">{'default_task_type': 'work_order'}</field>
+        <field name="domain">[('task_type', '=', 'work_order')]</field>
+        <field name="search_view_id" ref="project.view_task_search_form"/>
+    </record>
+    <record id="open_view_diagnosis_list_kanban" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">kanban</field>
+        <field name="act_window_id" ref="action_return_view_task_workorder"/>
+    </record>
+    <record id="open_view_diagnosis_list_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="act_window_id" ref="action_return_view_task_workorder"/>
+    </record>
+    
+    <record id="action_return_nature_of_service" model="ir.actions.act_window">
+        <field name="name">Nature Of Service</field>
+        <field name="res_model">service.nature</field>
+<!--        <field name="view_type">form</field> odoo13-->
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_return_machine_repair_support" model="ir.actions.act_window">
+        <field name="name">Repair</field>
+        <field name="res_model">machine.repair.support</field>
+<!--        <field name="view_type">form</field> odoo13-->
+        <field name="view_mode">kanban,tree,calendar,form,pivot,graph</field>
+        <field name="help">Repair Support Tree.</field>
+    </record>
+    <record id="action_return_repair_type" model="ir.actions.act_window">
+        <field name="name">Service Type</field>
+        <field name="res_model">repair.type</field>
+<!--        <field name="view_type">form</field> odoo13-->
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_return_machine_support_team" model="ir.actions.act_window">
+        <field name="name">Repair Team</field>
+        <field name="res_model">machine.support.team</field>
+<!--        <field name="view_type">form</field> odoo13-->
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_return_repair_rma">
+        <field name="name">Return Orders</field>
+        <field name="res_model">return.order</field>
+        <field name="view_mode">tree,form</field>
+<!--        <field name="view_type">form</field> odoo13-->
+    </record>
+</odoo>

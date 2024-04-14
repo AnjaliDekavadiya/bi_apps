@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="export_tender_line_form_view" model="ir.ui.view">
+            <field name="name">export.tender.line.form.view</field>
+            <field name="model">export.tender.line</field>
+            <field name="arch" type="xml">
+                <form>
+                    <label for="product_ids"/>
+                    <div>
+                        <field name="product_ids" required="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="default_code"/>
+                                <field name="uom_id"/>
+                            </tree>
+                        </field>
+                        <div class="font-italic text-muted" invisible="not product_ids">
+                            Internal references are mandatory for export products.
+                        </div>
+                    </div>
+                    <footer>
+                        <button string="Export Template" type="object" class="btn btn-outline-success"
+                                name="action_export_tender_line"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="export_tender_line_action" model="ir.actions.act_window">
+            <field name="name">Export Template</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">export.tender.line</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

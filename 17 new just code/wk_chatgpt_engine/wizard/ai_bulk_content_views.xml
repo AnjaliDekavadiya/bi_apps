@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+    <!-- See LICENSE file for full copyright and licensing details. -->
+    <data>
+        <record model="ir.ui.view" id="generate_bulk_content_form">
+            <field name="name">ai.content.wizard.all.products.form</field>
+            <field name="model">ai.bulk.content.wizard</field>
+            <field name="arch" type="xml">
+                <form string="AI content Products Preview">
+                    <sheet>
+                        <div class="row">
+                            <div class="col-6 form-outline w-50 mb-4">
+                                <h5 class="mb-3 text-primary">Choose Field for Update AI Content</h5>
+                                <field name="model_id" invisible="1"/>
+                                <field name="model_field_id"/>
+
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h4  class="text-primary">Choose Tone</h4>
+                                        <field name="tone_id" widget="radio"/>
+                                    </div>
+                                    <div class="col-3">
+                                        <h5 class="mb-3 text-primary">Length</h5>
+                                        <field name="max_token" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </sheet>
+                    <footer>
+                        <button string="Update AI Content" type="object" class="btn btn-primary me-3" name="process_bulk_ai_content" />                                                                                                                                                                                             
+                        <button string="Discard" class="btn-secondary float-end" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

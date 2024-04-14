@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <template id="product_product_attachment" inherit_id="website_sale.product_quantity" customize_show="True" name="Show Attachments">
+            <xpath expr="//div/p[@t-field='product.description_sale']" position="after">
+                <t t-if="len(product.product_variant_ids)">
+                    <t t-if="product.product_variant_ids[0].website_product_attachment">
+                        <h3>Product Documents</h3>
+<!--                        <t t-foreach="product.product_variant_ids[0].website_product_attachment.sudo()" t-as="attachment">-->
+                        <t t-foreach="product.website_product_attachment.sudo()" t-as="attachment">
+                            <div>
+<!--                                <a t-att-href="'/web/content/'+str(attachment.id)+'?download=true'">-->
+<!--                                    <i class="fa fa-download" aria-hidden="true"></i>-->
+<!--                                    <t t-esc="attachment.name"/>-->
+<!--                                </a>-->
+                                <a t-attf-href="/web/product_attach/#{attachment.id}?download=true&amp;product_tmp_id=#{product.id}" target="_blank">
+                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                    <t t-esc="attachment.name"/>
+                                </a>
+                            </div>
+                        <newline/>
+                        </t>
+                    </t>
+                </t>
+            </xpath>
+        </template>
+    
+    </data>
+</openerp>

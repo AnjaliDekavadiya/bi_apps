@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    <!-- Form View -->
+        <record id="sh_member_res_partner_form_view" model="ir.ui.view">
+            <field name="name">Member</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_type']" position="after">
+                    <field name="sh_is_memeber"/>
+                    <label for="sh_is_memeber" string="Is Member"/>
+                </xpath>
+            </field>
+        </record>
+
+    
+
+        <!-- Action -->
+    
+        <record id="sh_member_res_partner_action" model="ir.actions.act_window">
+            <field name="name">Member</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('sh_is_memeber', '=', 'True')]</field>
+            <field name="context">{'default_sh_is_memeber':True}</field>
+        </record>
+    
+    </data>
+</odoo>

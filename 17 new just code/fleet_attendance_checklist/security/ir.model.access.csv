@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fleet_passengers_fleet_user,access.fleet.passengers.fleet.user,model_fleet_passengers,fleet.fleet_group_user,1,1,1,1
+access_fleet_attendance_fleet_user,access.fleet.attendance.fleet.user,model_fleet_attendance,fleet.fleet_group_user,1,1,1,1
+access_fleet_attendance_line_fleet_user,access.fleet.attendance.line.fleet.user,model_fleet_attendance_line,fleet.fleet_group_user,1,1,1,1
+access_fleet_attendance_portal_user,access.fleet.attendance.portal.user,model_fleet_attendance,base.group_portal,1,1,1,1

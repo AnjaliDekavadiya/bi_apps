@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="bi_project_category_form_view" model="ir.ui.view">
+            <field name="name">bi.project_category_form_view</field>
+            <field name="model">project.category</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Project Category" class="o_form_project_issue">
+                    <sheet string="Project Category">
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Project">
+                                <field name="project_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="vi_project_category_tree_view" model="ir.ui.view">
+            <field name="name">project.category.tree.view</field>
+            <field name="model">project.category</field>
+            <field name="arch" type="xml">
+                <tree string="Project Category">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_project_category" model="ir.actions.act_window">
+            <field name="name">Project Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="bi_project_project_form_view" model="ir.ui.view">
+            <field name="name">bi.project.project.form.view</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_title')]" position="before">
+                    <field name="image" widget="image" class="oe_avatar"/>
+                </xpath>
+                <xpath expr="//page[@name='settings']//group[@name='extra_settings']" position="inside">
+                    <field name="category_id"/>
+                </xpath>
+
+                <xpath expr="//notebook" position="inside">
+                    <page string="Brochures">
+                        <field name="brochure_ids" widget="one2many_list"/>
+                    </page>
+                    <page string="More Project Images">
+                        <field name="project_image_ids" mode="kanban">
+                            <kanban>
+                                <field name="id"/>
+                                <field name="mimetype"/>
+                                <field name="type"/>
+                                <field name="store_fname"/>
+                                <field name="name"/>
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div class="oe_kanban_global_click">
+                                            <div class="oe_module_vignette">
+                                                <div class="oe_attachment">
+                                                    <div class="oe_name">
+                                                        <field name="name"/>
+                                                    </div>
+                                                    <div t-if="record.type.raw_value == 'binary'">
+                                                        <a t-attf-href="/web/content/#{record.id.raw_value}?download=1">
+                                                            <t t-set="webimage"
+                                                               t-value="new RegExp('image.*(gif|jpeg|jpg|png)').test(record.mimetype.value)"/>
+                                                            <div t-if="!webimage" class="o_image"
+                                                                 t-att-data-mimetype="record.mimetype.value"/>
+                                                            <div t-if="webimage" class="o_attachment_image">
+                                                                <img t-attf-src="/web/image/#{record.id.raw_value}?download=1"
+                                                                     class="oe_avatar oe_kanban_avatar_smallbox"/>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </page>
+
+                    <page string="Gallery Images">
+                        <field name="gallery_images_ids" mode="kanban">
+                            <kanban>
+                                <field name="id"/>
+                                <field name="mimetype"/>
+                                <field name="type"/>
+                                <field name="store_fname"/>
+                                <field name="name"/>
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div class="oe_kanban_global_click">
+                                            <div class="oe_module_vignette">
+                                                <div class="oe_attachment">
+                                                    <div class="oe_name">
+                                                        <field name="name"/>
+                                                    </div>
+                                                    <div t-if="record.type.raw_value == 'binary'">
+                                                        <a t-attf-href="/web/content/#{record.id.raw_value}?download=1">
+                                                            <t t-set="webimage"
+                                                               t-value="new RegExp('image.*(gif|jpeg|jpg|png)').test(record.mimetype.value)"/>
+                                                            <div t-if="!webimage" class="o_image"
+                                                                 t-att-data-mimetype="record.mimetype.value"/>
+                                                            <div t-if="webimage" class="o_attachment_image">
+                                                                <img t-attf-src="/web/image/#{record.id.raw_value}?download=1"
+                                                                     class="oe_avatar oe_kanban_avatar_smallbox"/>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </page>
+                    <page string="Project Feature and Amenties">
+                        <field name="project_features"/>
+                    </page>
+                    <page string="Specification">
+                        <field name="specification"/>
+                    </page>
+                    <page string="Contact Us">
+                        <field name="contact_us"/>
+                    </page>
+                    <page string="Project Floor Plan">
+                        <field name="project_floor_plan_ids" widget="one2many_list"/>
+                    </page>
+
+                    <page string="Project Location Plan">
+                        <field name="project_location_plan_ids" widget="one2many_list"/>
+                    </page>
+
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem id="menu_project_category" parent="project.menu_project_config" name="Project Categories"
+                  action="action_project_category" sequence="100"/>
+
+    </data>
+</odoo>
+ 

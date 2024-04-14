@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <function model="ir.config_parameter" name="set_param" eval="('wk_chatgpt_engine.api_key', 'Dummy')"/>
+        <function model="ir.config_parameter" name="set_param" eval="('wk_chatgpt_engine.max_bulk_records', 5)"/>
+
+        <record id="prompt_instruct_1" model="openai.prompt.instruction">
+            <field name="name">Template Instruction</field>
+            <field name="model_id" model="ir.model" eval="obj().search([('model','=','product.template')], limit=1).id"/>
+            <field name="model_field_ids" model="ir.model.fields" eval="obj().search([('model', '=', 'product.template'), ('name', 'in', ['name', 'categ_id', 'list_price', 'attribute_line_ids'])])"/>
+        </record>
+
+        <record id="suggest_seo_1" model="openai.suggest.seo">
+            <field name="name">Product Seo</field>
+            <field name="model_id" model="ir.model" eval="obj().search([('model','=','product.template')], limit=1).id"/>
+            <field name="model_field_ids" model="ir.model.fields" eval="obj().search([('model', '=', 'product.template'), ('name', 'in', ['name'])])"/>
+        </record>
+
+        <record id="suggest_seo_2" model="openai.suggest.seo">
+            <field name="name">Category Seo</field>
+            <field name="model_id" model="ir.model" eval="obj().search([('model','=','product.public.category')], limit=1).id"/>
+            <field name="model_field_ids" model="ir.model.fields" eval="obj().search([('model', '=', 'product.public.category'), ('name', 'in', ['name'])])"/>
+        </record>
+
+        <record id="prompt_tone_1" model="openai.prompt.tone">
+            <field name="name">Professional</field>
+            <field name="sequence">1</field>
+            <field name="content_style">Write a Product Description in a Professional manner</field>
+            <field name="visibility">global</field>
+        </record>
+
+        <record id="prompt_tone_2" model="openai.prompt.tone">
+            <field name="name">Casual</field>
+            <field name="sequence">2</field>
+            <field name="content_style">Write a Product Description in a Casual manner</field>
+            <field name="visibility">global</field>
+        </record>
+
+        <record id="prompt_tone_3" model="openai.prompt.tone">
+            <field name="name">Professional</field>
+            <field name="sequence">3</field>
+            <field name="content_style">Write a Product Description in a Professional manner</field>
+            <field name="visibility">specific</field>
+            <field name="model_id" model="ir.model" eval="obj().search([('model','=','product.template')], limit=1).id"/>
+            <field name="instuction_id" ref="wk_chatgpt_engine.prompt_instruct_1"/>
+        </record>
+
+        <record id="prompt_tone_4" model="openai.prompt.tone">
+            <field name="name">Casual</field>
+            <field name="sequence">4</field>
+            <field name="content_style">Write a Product Description in a Casual manner</field>
+            <field name="visibility">specific</field>
+            <field name="model_id" model="ir.model" eval="obj().search([('model','=','product.template')], limit=1).id"/>
+            <field name="instuction_id" ref="wk_chatgpt_engine.prompt_instruct_1"/>
+        </record>
+
+        <record id="prompt_tone_5" model="openai.prompt.tone">
+            <field name="name">Professional</field>
+            <field name="sequence">5</field>
+            <field name="content_style">Suggest me to create a Meta Title, Meta Description and Meta Keywords in a Professional manner</field>
+            <field name="visibility">specific</field>
+            <field name="tone_model_id" model="ir.model" eval="obj().search([('model','=','product.template')], limit=1).id"/>
+            <field name="tone_id" ref="wk_chatgpt_engine.suggest_seo_1"/>
+        </record>
+
+        <record id="prompt_tone_6" model="openai.prompt.tone">
+            <field name="name">Casual</field>
+            <field name="sequence">6</field>
+            <field name="content_style">Suggest me to create a Meta Title, Meta Description and Meta Keywords in a Casual manner</field>
+            <field name="visibility">specific</field>
+            <field name="tone_model_id" model="ir.model" eval="obj().search([('model','=','product.template')], limit=1).id"/>
+            <field name="tone_id" ref="wk_chatgpt_engine.suggest_seo_1"/>
+        </record>
+
+        <record id="prompt_tone_7" model="openai.prompt.tone">
+            <field name="name">Professional</field>
+            <field name="sequence">7</field>
+            <field name="content_style">Suggest me to create a Meta Title, Meta Description and Meta Keywords in a Professional manner</field>
+            <field name="visibility">specific</field>
+            <field name="tone_model_id" model="ir.model" eval="obj().search([('model','=','product.public.category')], limit=1).id"/>
+            <field name="tone_id" ref="wk_chatgpt_engine.suggest_seo_2"/>
+        </record>
+
+    </data>
+</odoo>

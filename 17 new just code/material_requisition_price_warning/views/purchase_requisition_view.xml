@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="requisition_form_view_inherit_cost_price" model="ir.ui.view">
+            <field name="name">material.purchase.requisition.form.view</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="inherit_id" ref="material_purchase_requisitions.material_purchase_requisition_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='analytic_account_id']" position="after">
+                    <field name="custom_currency_id"/>
+                </xpath>
+                <xpath expr="//page/field/tree//field[@name='partner_id']" position="after">
+                    <field name="custom_currency_id" column_invisible="1"/>
+                    <field name="cost_price" widget="monetary" options="{'currency_field': 'custom_currency_id'}" sum="Cost Price"/>
+                    <field name="total_cost_price" widget="monetary" options="{'currency_field': 'custom_currency_id'}" sum="Subtotal"/>
+                </xpath>
+                <xpath expr="//page" position="inside">
+                    <group class="oe_subtotal_footer oe_right">
+                        <field name="amount_total" widget="monetary" options="{'currency_field': 'custom_currency_id'}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="requisition_tree_view_inherit_amount_total" model="ir.ui.view">
+            <field name="name">material.purchase.requisition.tree.view</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="inherit_id" ref="material_purchase_requisitions.material_purchase_requisition_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree//field[@name='date_end']" position="after">
+                    <field name="custom_currency_id" column_invisible="1"/>
+                    <field name="amount_total" widget='monetary' options="{'currency_field': 'custom_currency_id'}" sum="Total Cost Price"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_royal_mail_pro_service_users,delivery.royal_mail_pro.service,model_delivery_royal_mail_pro_service,,1,0,0,0
+access_royal_mail_pro_service_admin,delivery.royal_mail_pro.service,model_delivery_royal_mail_pro_service,stock.group_stock_manager,1,1,1,1
+access_royal_mail_pro_product_users,delivery.royal_mail_pro.product,model_delivery_royal_mail_pro_product,,1,0,0,0
+access_royal_mail_pro_product_admin,delivery.royal_mail_pro.product,model_delivery_royal_mail_pro_product,stock.group_stock_manager,1,1,1,1
+access_royal_mail_pro_manifest_users,delivery.royal_mail_pro.manifest,model_delivery_royal_mail_pro_manifest,,1,0,0,0
+access_royal_mail_pro_manifest_admin,delivery.royal_mail_pro.manifest,model_delivery_royal_mail_pro_manifest,stock.group_stock_manager,1,1,1,1

@@ -1,0 +1,75 @@
+- FIELD self.tax_totals return dict tax values
+
+{
+    'amount_untaxed': 1699.9,
+    'amount_total': 1978.7,
+    'formatted_amount_total': 'S/\xa01,978.70',
+    'formatted_amount_untaxed': 'S/\xa01,699.90',
+    'groups_by_subtotal': defaultdict(<class 'list'>,
+    {'Importe neto': 
+        [
+            {'group_key': 2, 'tax_group_id': 2, 'tax_group_name': 'IGV', 'tax_group_amount': 278.8, 'tax_group_base_amount': 1508.9, 'formatted_tax_group_amount': 'S/\xa0278.80', 'formatted_tax_group_base_amount': 'S/\xa01,508.90'},
+            {'group_key': 7, 'tax_group_id': 7, 'tax_group_name': 'EXO', 'tax_group_amount': 0.0, 'tax_group_base_amount': 173.0, 'formatted_tax_group_amount': 'S/\xa00.00', 'formatted_tax_group_base_amount': 'S/\xa0173.00'}
+        ]
+    }),
+
+    'subtotals': [{'name': 'Importe neto', 'amount': 1699.9, 'formatted_amount': 'S/\xa01,699.90'}], 'subtotals_order': ['Importe neto'], 'display_tax_base': True
+}
+
+
+- Example test in python code:
+    # Function temporarily for tests
+    def get_tax_subtotals(self):
+        for key in self.tax_totals['groups_by_subtotal'].keys():
+            for tax in self.tax_totals['groups_by_subtotal'][key]:
+                print(tax)
+                print(type(tax))
+
+        return []
+
+
+
+- Ref. file: account/models/account_tax.py function _prepare_tax_totals
+
+""" Compute the tax totals details for the business documents.
+        :param base_lines:  A list of python dictionaries created using the '_convert_to_tax_base_line_dict' method.
+        :param currency:    The currency set on the business document.
+        :param tax_lines:   Optional list of python dictionaries created using the '_convert_to_tax_line_dict' method.
+                            If specified, the taxes will be recomputed using them instead of recomputing the taxes on
+                            the provided base lines.
+        :return: A dictionary in the following form:
+            {
+                'amount_total':                 The total amount to be displayed on the document, including every total
+                                                types.
+                'amount_untaxed':               The untaxed amount to be displayed on the document.
+                'formatted_amount_total':       Same as amount_total, but as a string formatted accordingly with
+                                                partner's locale.
+                'formatted_amount_untaxed':     Same as amount_untaxed, but as a string formatted accordingly with
+                                                partner's locale.
+                'groups_by_subtotals':          A dictionary formed liked {'subtotal': groups_data}
+                                                Where total_type is a subtotal name defined on a tax group, or the
+                                                default one: 'Untaxed Amount'.
+                                                And groups_data is a list of dict in the following form:
+                    {
+                        'tax_group_name':                   The name of the tax groups this total is made for.
+                        'tax_group_amount':                 The total tax amount in this tax group.
+                        'tax_group_base_amount':            The base amount for this tax group.
+                        'formatted_tax_group_amount':       Same as tax_group_amount, but as a string formatted accordingly
+                                                            with partner's locale.
+                        'formatted_tax_group_base_amount':  Same as tax_group_base_amount, but as a string formatted
+                                                            accordingly with partner's locale.
+                        'tax_group_id':                     The id of the tax group corresponding to this dict.
+                    }
+                'subtotals':                    A list of dictionaries in the following form, one for each subtotal in
+                                                'groups_by_subtotals' keys.
+                    {
+                        'name':                             The name of the subtotal
+                        'amount':                           The total amount for this subtotal, summing all the tax groups
+                                                            belonging to preceding subtotals and the base amount
+                        'formatted_amount':                 Same as amount, but as a string formatted accordingly with
+                                                            partner's locale.
+                    }
+                'subtotals_order':              A list of keys of `groups_by_subtotals` defining the order in which it needs
+                                                to be displayed
+            }
+        """

@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record id="action_product_public_category_inherit" model="ir.actions.act_window">
+            <field name="name">Product Public Category</field>
+            <field name="res_model">product.public.category</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face"> Create New category Here... </p>
+            </field>
+            </record>
+    </data>
+</odoo>

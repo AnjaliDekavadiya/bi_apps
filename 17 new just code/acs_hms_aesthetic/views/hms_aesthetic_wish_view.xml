@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Aesthetic Patient Wish Views -->
+    <record id="view_acs_aesthetic_patient_wish_list" model="ir.ui.view">
+        <field name="name">acs.aesthetic.patient.wish.list</field>
+        <field name="model">acs.aesthetic.patient.wish</field>
+        <field name="arch" type="xml">
+            <tree string="Aesthetic Patient Wish" decoration-info="state=='draft'" decoration-muted="state=='cancel'" decoration-danger="state=='done'">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="physician_id"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_acs_aesthetic_patient_wish_form" model="ir.ui.view">
+        <field name="name">acs.aesthetic.patient.wish.form</field>
+        <field name="model">acs.aesthetic.patient.wish</field>
+        <field name="arch" type="xml">
+             <form string="Aesthetic Patient Wish">
+                <header>
+                    <button name="action_draft" string="Draft" type="object" invisible="state!='cancel'"/>
+                    <button name="action_confirm" string="Confirm" type="object" invisible="state!='draft'" class="oe_highlight"/>
+                    <button name="action_create_treatement" string="Create Treatment" type="object" class="oe_highlight" invisible="state!='confirm' or not treatment_id"/>
+                    <button name="action_done" string="Done" type="object" invisible="state!='confirm'" class="oe_highlight" groups="acs_hms.group_hms_jr_doctor"/>
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state!='draft'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_inline oe_stat_button" type="object"
+                            name="acs_action_attachments_preview" title="Preview Documents" icon="fa-files-o" string="Preview Documents" widget="statinfo">
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" string="Name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_id" readonly="state in ['cancel','done']"/>
+                            <field name="date" readonly="state in ['cancel','done']"/>
+                            <field name="treatment_id" readonly="state in ['cancel','done']"/>
+                        </group>
+                        <group>
+                            <field name="physician_id" readonly="state in ['cancel','done']"/>
+                            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" readonly="state in ['cancel','done']"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="body" string="Body">
+                            <group string="I want to Improve">
+                                <group>
+                                    <field name="cellulitis" readonly="state in ['cancel','done']"/>
+                                    <field name="stretch_marks" readonly="state in ['cancel','done']"/>
+                                    <field name="body_circumference_reduction" readonly="state in ['cancel','done']"/>
+                                    <field name="adiposity" readonly="state in ['cancel','done']"/>
+                                    <field name="hair_removal" readonly="state in ['cancel','done']"/>
+                                    <field name="definitive_hair_removal" readonly="state in ['cancel','done']"/>
+                                    <field name="dehydrated_skin" readonly="state in ['cancel','done']"/>
+                                    <field name="overweight" readonly="state in ['cancel','done']"/>
+                                    <field name="skin_faccidity" readonly="state in ['cancel','done']"/>
+                                    <field name="prepost_operative" readonly="state in ['cancel','done']"/>
+                                    <field name="postpartum_treatments" readonly="state in ['cancel','done']"/>
+                                    <field name="body_description" string="Others" readonly="state in ['cancel','done']"/>
+                                </group>
+                                <group>
+                                </group>
+                            </group>
+                            <separator string="Treatment Options"/>
+                            <group col="3">
+                                <group>
+                                    <label for="body_treatment_product_ids" colspan="2"/>
+                                    <field name="body_treatment_product_ids" nolabel="1" colspan="2" widget="many2many_checkboxes" domain="[('is_body_treatment','=',True)]" readonly="state in ['cancel','done']"/>
+                                </group>
+                                <group>
+                                    <label for="body_nutrition_product_ids" colspan="2"/>
+                                    <field name="body_nutrition_product_ids" nolabel="1" colspan="2" widget="many2many_checkboxes" domain="[('is_body_nutrition','=',True)]" readonly="state in ['cancel','done']"/>
+                                </group>
+                                <group>
+                                    <label for="body_upkeep_product_ids" colspan="2"/>
+                                    <field name="body_upkeep_product_ids" nolabel="1" colspan="2" widget="many2many_checkboxes" domain="[('is_body_upkeep','=',True)]" readonly="state in ['cancel','done']"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="facial" string="Facial">
+                            <group string="I want to Improve">
+                                <group>
+                                    <field name="scars" readonly="state in ['cancel','done']"/>
+                                    <field name="pigmentation" readonly="state in ['cancel','done']"/>
+                                    <field name="expression_lines" readonly="state in ['cancel','done']"/>
+                                    <field name="wrinkles" readonly="state in ['cancel','done']"/>
+                                    <field name="spots" readonly="state in ['cancel','done']"/>
+                                    <field name="flaccidity" readonly="state in ['cancel','done']"/>
+                                    <field name="facial_description" string="Others" readonly="state in ['cancel','done']"/>
+                                </group>
+                                <group>
+                                </group>
+                            </group>
+                            <separator string="Treatment Options"/>
+                            <group col="3">
+                                <group>
+                                    <label for="facial_treatment_product_ids" colspan="2"/>
+                                    <field name="facial_treatment_product_ids" nolabel="1" colspan="2" widget="many2many_checkboxes" domain="[('is_facial_treatment','=',True)]" readonly="state in ['cancel','done']"/>
+                                </group>
+                                <group>
+                                    <label for="facial_nutrition_product_ids" colspan="2"/>
+                                    <field name="facial_nutrition_product_ids" nolabel="1" colspan="2" widget="many2many_checkboxes" domain="[('is_facial_nutrition','=',True)]" readonly="state in ['cancel','done']"/>
+                                </group>
+                                <group>
+                                    <label for="facial_upkeep_product_ids" colspan="2"/>
+                                    <field name="facial_upkeep_product_ids" nolabel="1" colspan="2" widget="many2many_checkboxes" domain="[('is_facial_upkeep','=',True)]" readonly="state in ['cancel','done']"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                    <field name="note" placehoder="Notes"/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_acs_aesthetic_patient_wish_search" model="ir.ui.view">
+        <field name="name">acs.aesthetic.patient.wish.search</field>
+        <field name="model">acs.aesthetic.patient.wish</field>
+        <field name="arch" type="xml">
+            <search string="ACS Aesthetic Patient Wish">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="physician_id"/>
+                <separator/>
+                <filter name="my_procedures" string="My Aesthetic Patient Wish" domain="[('physician_id.user_id', '=',uid)]"/>
+                <separator/>
+                <filter name="not_done" string="Not Done" domain="[('state','!=','done')]"/>
+                <filter name="confirmed" string="Confirmed" domain="[('state','=','confirm')]"/>
+                <group expand="0" string="Group By...">
+                    <filter name="group_by_physician_id" string="Physician" domain="[]" context="{'group_by':'physician_id'}"/>
+                    <filter name="group_by_patient" string="Patient" domain="[]" context="{'group_by':'patient_id'}"/>
+                    <filter name="group_by_date" string="Date" domain="[]" context="{'group_by':'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_acs_aesthetic_patient_wish_calendar" model="ir.ui.view">
+        <field name="name">acs.aesthetic.patient.wish.calendar</field>
+        <field name="model">acs.aesthetic.patient.wish</field>
+        <field name="type">calendar</field>
+        <field name="arch" type="xml">
+            <calendar string="Aesthetic Patient Wishs" color="patient_id" date_start="date">
+                <field name="physician_id"/>
+                <field name="patient_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_acs_aesthetic_patient_wish_pivot" model="ir.ui.view">
+        <field name="name">acs.aesthetic.patient.wish.pivot</field>
+        <field name="model">acs.aesthetic.patient.wish</field>
+        <field name="arch" type="xml">
+            <pivot string="Aesthetic Patient Wish">
+                <field name="date" type="row"/>
+                <field name="physician_id" type="row"/>
+                <field name="patient_id" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_acs_aesthetic_patient_wish" model="ir.actions.act_window">
+        <field name="name">Aesthetic Patient Wish</field>
+        <field name="res_model">acs.aesthetic.patient.wish</field>
+        <field name="view_mode">tree,form,calendar,pivot</field>
+        <field name="context">{'search_default_not_done': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Click to add an Aesthetic Patient Wish.
+            </p>
+        </field>
+    </record>
+
+</odoo>

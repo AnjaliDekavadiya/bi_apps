@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dx_saas_dbfilter_servers_user,dx.saas.dbfilter.servers.user,model_dx_saas_dbfilter_servers,dx_saas_dbfilter.group_dx_saas_dbfilter_user,1,1,1,1
+access_dx_saas_dbfilter_subscriptions_user,dx.saas.dbfilter.subscriptions.user,model_dx_saas_dbfilter_subscriptions,dx_saas_dbfilter.group_dx_saas_dbfilter_user,1,1,1,1
+access_dx_saas_dbfilter_download_backup_wizard_user,dx.saas.dbfilter.download.wizard.user,model_dx_saas_dbfilter_download_wizard,dx_saas_dbfilter.group_dx_saas_dbfilter_user,1,1,1,1
+access_dx_saas_dbfilter_odoo_versions,dx.saas.dbfilter.odoo.version.user,model_dx_saas_dbfilter_odoo_versions,dx_saas_dbfilter.group_dx_saas_dbfilter_user,1,1,1,1
+access_ir_config_parameter_dx_saas_dbfilter_grace_period,config.dx.saas.dbfilter.grace.period,base.model_ir_config_parameter,dx_saas_dbfilter.group_dx_saas_dbfilter_manager,1,1,1,1
+access_dx_saas_dbfilter_packages,dx.saas.dbfilter.packages.user,model_dx_saas_packages,dx_saas_dbfilter.group_dx_saas_dbfilter_manager,1,1,1,1
+access_dx_saas_dbfilter_modules,config.dx.saas.dbfilter.modules.user,model_dx_saas_modules,dx_saas_dbfilter.group_dx_saas_dbfilter_manager,1,1,1,1

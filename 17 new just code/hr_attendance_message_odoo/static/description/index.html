@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+  </head>
+  <!-- odoo description page css -->
+  <style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      line-height: 1.1;
+      color: #21272b;
+    }
+
+    ul {
+      color: #222020;
+    }
+
+    * {
+      font-family: "Montserrat", sans-serif;
+    }
+
+    .sb-faq-container .panel .panel-heading a:before {
+      content: "\f056";
+      font-family: "FontAwesome";
+      position: absolute;
+      top: 7px;
+      left: 5px;
+      bottom: auto;
+      right: auto;
+      color: #3b3b98;
+    }
+
+    .sb-faq-container .panel .panel-heading a.collapsed:before {
+      content: "\f055";
+      font-family: "FontAwesome";
+      position: absolute;
+      top: 7px;
+      left: 5px;
+      bottom: auto;
+      right: auto;
+      color: #3b3b98;
+    }
+    .btn {
+      border: 2px solid black;
+      background-color: white;
+      color: black;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Green */
+    .success {
+      border-color: #04aa6d;
+      color: green;
+    }
+
+    .success:hover {
+      background-color: #04aa6d;
+      color: white;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <div
+        style="
+          margin: 0px;
+          width: 100%;
+          align-items: center;
+          align-self: center;
+        "
+      >
+        <img
+          style="align-self: center; height: 250px"
+          src="./icon.png"
+          alt="ServerDetails"
+          class="inline"
+          loading="lazy"
+        />
+      </div>
+      <nav
+        class="navbar navbar-dark bg-dark"
+        style="margin-bottom: 50px; margin-top: 50px"
+      >
+        <a class="navbar-brand" href="javascript:void(0)">
+          Document of Attendance Message.
+        </a>
+      </nav>
+
+      <div
+        class="init-intro-container"
+        style="
+          padding: 50px;
+          margin-bottom: 50px;
+          background-color: #f5f5ff;
+          border-radius: 25px;
+        "
+      >
+        <div class="col-12 col-sm-12 col-md-12 text-left">
+          <h2>Which odoo version support?</h2>
+          <li>odoo v17 (Community & Enterprise)</li>
+          <!-- <li>odoo v15 (Community & Enterprise)</li>
+          <li>odoo v14 (Community & Enterprise)</li>
+          <li>odoo v13 (Community & Enterprise)</li> -->
+        </div>
+      </div>
+
+      <div
+        style="
+          padding: 50px;
+          margin-bottom: 50px;
+          background-color: #f5f5ff;
+          border-radius: 25px;
+        "
+      >
+        <h2>How it works</h2>
+        <br />
+        <h3>Tree View</h3>
+        <h5>User can view Check In and Check Out Message.</h5>
+        <div class="row align-items-center">
+          <div>
+            <img
+              style="max-width: auto; height: 500px; margin: 0"
+              src="./1.png"
+              alt="ServerDetails"
+              class="inline"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <br />
+        <h3>Form View</h3>
+        <h5>User can add/update Check In and Check Out message.</h5>
+        <div class="row align-items-center">
+          <div>
+            <img
+              style="max-width: auto; height: 500px; margin: 0"
+              src="./2.png"
+              alt="ServerDetails"
+              class="inline"
+              loading="lazy"
+            />
+
+            <hr class="rounded" style="margin: 40px" />
+
+            <img
+              style="max-width: auto; height: 500px; margin: 0"
+              src="./3.png"
+              alt="ServerDetails"
+              class="inline"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          padding: 50px;
+          margin-bottom: 50px;
+          background-color: #f5f5ff;
+          border-radius: 25px;
+        "
+      >
+        <h2>Live Preview</h2>
+        <div class="row align-items-center">
+          <div style="margin-top: 50px">
+            <div style="border-radius: 20px; overflow: hidden">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/X4YAnn1ZYuE"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Apps -->
+      <div
+        style="
+          padding: 50px;
+          margin-bottom: 50px;
+          background: #f5f5ff;
+          border-radius: 25px;
+        "
+      >
+        <h2>Other Apps</h2>
+
+        <div class="row" style="width: 100%">
+          <!-- HR Attendance Mobile App -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="./OtherApps/attendance_mobile_app.png"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/16.0/v3c_hr_attendance"
+                  >Hr Attendance (Android Mobile App & Odoo App)</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- Contact Management -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="./OtherApps/contact_manager_android_app.png"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/16.0/v3c_contact_management/"
+                  >Contact Management (Android Mobile App)</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- CRM Dashboard -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="./OtherApps/crm_dashboard_tv_app.png"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/16.0/v3c_crm_dashboard/"
+                  >CRM Dashboard (Android TV App)</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- Employee Letters -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="./OtherApps/employee_letter_app.png"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/15.0/v3c_employee_letters/"
+                  >Employee Letters</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- Sticky Header -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="./OtherApps/stickey_headers_app.gif"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/16.0/v3c_sticky_header/"
+                  >Sticky Header</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- Mulyiline Header -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="./OtherApps/multiline_header.gif"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/15.0/v3c_table_header_multiline/"
+                  >Multiline Header</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- Odoo App Manager -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="https://apps.odoocdn.com/apps/module_image?image_id=14500448&unique=6cc218fabbb571f8e4b95802233fb68259ae9148"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/16.0/app_manager_module/"
+                  >Odoo App Manager</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- Event QR Code Start -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="https://apps.odoocdn.com/apps/module_image?image_id=14733385&unique=c0a4f726c460b07fd99e41b2c3d990b730809ff4"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/16.0/odoo_event_qrcode/"
+                  >Event QR Code</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- Planning Mobile Application -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="https://apps.odoocdn.com/apps/module_image?image_id=15814023&unique=57a10a5f120395c052d33e0941708ae98a5291d7"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/16.0/planning_mobile_app_odoo_store/"
+                  >Planning Mobile Application</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- Order Line Product Image -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="https://apps.odoocdn.com/apps/module_image?image_id=14886880&unique=a21ee0a1b736e880743d4ce545f4a62c2414af8d"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Prder Line Product Image -->
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/15.0/sale_order_line_item_image/"
+                  >Order Line Product Image</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- Price List Header Report Start-->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="https://apps.odoocdn.com/apps/module_image?image_id=15457588&unique=5a7f74042b1538607f837135a9653cb7b6087797"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/17.0/pricelist_header/"
+                  >Price List Header Report</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- Product Image Share -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="https://apps.odoocdn.com/apps/module_image?image_id=15133217&unique=5de63baf7dc399e7d4f196d2d12565472383f6c4"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Prder Line Product Image -->
+            <div>
+              <h6 style="text-align: center">
+                <a
+                  href="https://apps.odoo.com/apps/modules/16.0/odoo_product_photo_share_zip/"
+                  >Export product image</a
+                >
+              </h6>
+            </div>
+          </div>
+
+          <!-- CRM Mobile App  -->
+          <div class="col-lg-4 pt16 pb16">
+            <div>
+              <img
+                style="align-self: center; width: 100%; height: auto"
+                src="./OtherApps/odoo_crm_app.png"
+                alt="ServerDetails"
+                class="inline"
+                loading="lazy"
+              />
+            </div>
+
+            <div
+              class="row"
+              style="
+                padding: 10px;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+              "
+            >
+              <!-- <i
+                class="fa fa-check-square fa-2x"
+                style="color: green; padding-right: 10px"
+                aria-hidden="true"
+              ></i> -->
+              <h6 style="text-align: center">OdooCRM (Mobile Application)</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Management Mobile App -->
+        <hr class="rounded" />
+        <div class="row">
+          <i
+            class="fa fa-check-square fa-2x"
+            style="color: green; padding-right: 10px"
+            aria-hidden="true"
+          ></i>
+          <h4>Project Management (Mobile Application)</h4>
+        </div>
+        <br />
+        <br />
+        <div
+          style="text-align: center; align-items: center; align-content: center"
+        >
+          <!-- <h4>All Apps</h4> -->
+          <button
+            class="btn success"
+            onclick="parent.open('https://apps.odoo.com/apps/modules/browse?author=V3CodeStudio')"
+          >
+            See all apps
+          </button>
+        </div>
+      </div>
+
+      <!-- Other Apps End-->
+
+      <div
+        style="
+          padding: 50px;
+          margin-bottom: 50px;
+          background-color: #f5f5ff;
+          border-radius: 25px;
+        "
+      >
+        <h2>Support</h2>
+        <div style="align-items: center; text-align: center">
+          <img
+            style="align-self: center; height: 250px"
+            src="./vcs_icon.png"
+            alt="ServerDetails"
+            class="inline"
+            loading="lazy"
+          />
+        </div>
+
+        <div style="margin-top: 25px; align-self: center">
+          <div style="margin-top: 25px; margin-bottom: 25px">
+            <h3>• Request for Odoo Customization</h3>
+            <h3>• Request for Mobile Application</h3>
+            <h3>• Request for Odoo Mobile Application</h3>
+            <h3>• Request for Older Version Support</h3>
+          </div>
+
+          <h5>
+            Please feel free to contact us at
+            <a href="mailto:v3codestudio@gmail.com?subject=Me&body=Hello!"
+              ><code>v3codestudio@gmail.com</code></a
+            >
+            if you have any questions or concerns. We are always happy to assist
+            you!
+          </h5>
+
+          <div class="row">
+            <div style="width: 40%">
+              <a
+                style="
+                  align-self: center;
+                  text-align: center;
+                  border-radius: 10px;
+                  background-color: purple;
+                  color: white;
+                  margin-top: 25px;
+                "
+                class="d-flex align-items-center px-2 py-3"
+                href="mailto:v3codestudio@gmail?subject=Me&body=Hello!"
+              >
+                <i
+                  class="fa fa-envelope fa-2x"
+                  style="margin-right: 10px; margin-left: 10px"
+                  aria-hidden="true"
+                ></i>
+                v3codestudio@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Counter -->
+      <div
+        style="
+          padding: 50px;
+          margin-bottom: 50px;
+          background-color: #f5f5ff;
+          border-radius: 25px;
+        "
+      >
+        <h2>Page Counter</h2>
+        <img
+          src="https://hitwebcounter.com/counter/counter.php?page=11196801&style=0006&nbdigits=9&type=page&initCount=000001"
+          title="Counter Widget"
+          alt="Visit counter For Websites"
+        />
+      </div>
+      <!-- Counter End-->
+    </div>
+  </body>
+</html>

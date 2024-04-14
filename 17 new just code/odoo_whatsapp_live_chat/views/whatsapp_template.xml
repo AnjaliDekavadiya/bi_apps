@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+
+<odoo>
+    <data>
+      <!-- <template id="assest_frontend" name="whatsapp_assest_frontend" inherit_id="website.assets_frontend">
+        <xpath expr="link[last()]" position="after">
+          <link rel="stylesheet" type="text/css" href="/odoo_whatsapp_live_chat/static/src/css/chatbot.css"/>
+        </xpath>
+        <xpath expr="script[last()]" position="after">
+          <script type="text/javascript"  src='/odoo_whatsapp_live_chat/static/src/js/chatbot.js'></script>
+        </xpath>
+      </template> -->
+
+      <template  id="whatsapp_live_chat_popup_template" inherit_id="website.layout" name="Show whatsapp Popup" customize_show="True">
+        <xpath expr="//footer" position="before">
+          <t t-set="settings_obj" t-value="website.sudo().get_whatsapp_settings()"/>
+            <t t-if="settings_obj">
+            <div class="container">
+              <div class="row">
+                <div id="wk_whatsapp_chat">
+                  <div t-attf-class="Layout Layout-open Layout-expand #{settings_obj.chatbot_position}" style="background-color: #7C7BAD;color: rgb(255, 255, 255);opacity: 5;border-radius: 10px;">
+                    <div class="Messenger_messenger">
+
+                      <div class="Messenger_header" t-attf-style="background-color: #{settings_obj.heading_color}; color: rgb(255, 255, 255);">
+                        <h4 class="Messenger_prompt" t-attf-style="color: #{settings_obj.heading_title_color};"><t t-if="settings_obj.heading_title" t-out="settings_obj.heading_title"/></h4> <span class="chat_close_icon"><i class="fa fa-close"></i></span>
+                      </div>
+
+                      <div class="Messenger_content" t-attf-style="background-color: #{settings_obj.popup_background_color};">
+                        <t t-set="wk_partner" t-value="website.get_active_whatsapp_members()"/>
+                        <div class="Messages" t-attf-style="background-color: #{settings_obj.popup_background_color};">
+                          <div class="col-md-12 col-xl-0 chat">
+                            <div class="card mb-sm-3 mb-md-0 contacts_card">
+                              <center class="pt-2" t-attf-style="background-color: #{settings_obj.popup_background_color} !important;">
+                                <span t-attf-style="color:#{settings_obj.description_color};text-decoration: none;" >
+                                  <t t-if="settings_obj.description" t-out="settings_obj.description"/>
+                                </span>
+                              </center>
+                              <div class="card-body contacts_body" t-attf-style="background-color: #{settings_obj.popup_background_color} !important;">
+                                <ui class="contacts">
+                                  <hr/>
+                                  <t t-foreach="wk_partner" t-as="partner" >
+                                        <li class="d-none d-md-block">
+                                          <div class="d-flex bd-highlight" style="margin: auto 10%;">
+                                              <div class="img_cont">
+                                                <a class="" t-attf-href="https://web.whatsapp.com/send?phone={{partner._get_partner_mobile()}}&amp;text={{ partner.whatsapp_message }}" target="blank">
+                                                    <img t-if="partner.image_1920" t-att-src="image_data_uri(partner.image_1920)" class="rounded-circle user_img"/>
+                                                </a>
+                                              </div>
+                                            <div class="user_info">
+                                              <a class="" t-attf-href="https://web.whatsapp.com/send?phone={{partner._get_partner_mobile()}}&amp;text={{partner.whatsapp_message}}" target="blank">
+                                                <span t-if="partner.name" t-attf-style="color: #{settings_obj.text_color}"><t t-out="partner.name"/></span>
+                                              </a>
+                                              <p class="mb-1" t-if="settings_obj.member_type and partner.member_type" t-attf-style="color: #{settings_obj.text_color}">
+                                                <t t-out="partner.member_type.name"/>
+                                              </p>
+                                              <p t-if="settings_obj.time and partner.time_from and partner.time_to" t-attf-style="color: #{settings_obj.text_color}">
+                                                <t t-out="'%02d:%02d' % (int(partner.time_from), partner.time_from % 1 * 60)"/> - <t t-out="'%02d:%02d' % (int(partner.time_to), partner.time_to % 1 * 60)"/>
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </li>
+                                        <li class="d-block d-md-none d-lg-none">
+                                          <div class="d-flex bd-highlight" style="margin: auto 10%;">
+                                              <div class="img_cont">
+                                                <a class="" t-attf-href="https://api.whatsapp.com/send?phone={{partner._get_partner_mobile()}}&amp;text={{partner.whatsapp_message}}" target="blank">
+                                                  <img t-if="partner.image_1920" t-att-src="image_data_uri(partner.image_1920)" class="rounded-circle user_img"/>
+                                                </a>
+                                              </div>
+                                            <div class="user_info">
+                                              <a class="" t-attf-href="https://api.whatsapp.com/send?phone={{partner._get_partner_mobile()}}&amp;text={{partner.whatsapp_message}}" target="blank">
+                                                <span t-if="partner.name" t-attf-style="color: #{settings_obj.text_color}"><t t-out="partner.name"/></span>
+                                              </a>
+                                              <p class="mb-1" t-if="settings_obj.member_type and partner.member_type" t-attf-style="color: #{settings_obj.text_color}">
+                                                <t t-out="partner.member_type.name"/>
+                                              </p>
+                                              <p t-if="settings_obj.time and partner.time_from and partner.time_to" t-attf-style="color: #{settings_obj.text_color}">
+                                                <t t-out="'%02d:%02d' % (int(partner.time_from), partner.time_from % 1 * 60)"/> - <t t-out="'%02d:%02d' % (int(partner.time_to), partner.time_to % 1 * 60)"/>
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </li>
+                                      <hr/>
+                                  </t>
+                                </ui>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--===============CHAT ON BUTTON STRART===============-->
+                  <div t-attf-class="chat_on #{settings_obj.chatbot_position}" t-attf-style="background-color: #{settings_obj.button_color}; display: block;"> <span class="chat_on_icon"><i class="fa fa-whatsapp"></i></span> </div>
+                  <!--===============CHAT ON BUTTON END===============-->
+                </div>
+              </div>
+            </div>
+          </t>
+        </xpath>
+      </template>
+    </data>
+</odoo>

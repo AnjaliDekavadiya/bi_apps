@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+        <record id="helpdesk_assets_equipment_sequence_view" model="ir.sequence">
+            <field name="name">Helpdesk Assets Equipment Sequence</field>
+            <field name="code">helpdesk.assets.equipment</field>
+            <field name="prefix">EQUIPMENT/REQUEST/</field>
+            <field name="padding">4</field>
+            <field name="number_next">01</field>
+            <field name="number_increment">01</field>
+        </record>
+    </data>
+    
+</odoo>

@@ -1,0 +1,44 @@
+https://ask.libreoffice.org/en/question/4683/full-a4-background-image-in-writer/
+
+
+Versión Odoo 11.0
+
+Versión de LibreOffice para la creación de las plantillas
+    LibreOffice 5.1.6.2
+
+Versión unoconv
+    unoconv 0.7
+    Written by Dag Wieers <dag@wieers.com>
+    Homepage at http://dag.wieers.com/home-made/unoconv/
+
+    platform posix/linux
+    python 3.5.2 (default, Nov 23 2017, 16:37:01) 
+    [GCC 5.4.0 20160609]
+    LibreOffice 5.1.6.2
+
+Versión de python:
+    Python 3.5.2
+
+Versión de py3o.template:
+    Name: py3o.template
+    Version: 0.9.11
+    Summary: An easy solution to design reports using LibreOffice
+    Home-page: http://bitbucket.org/faide/py3o.template
+    Author: Florent Aide
+    Author-email: florent.aide@gmail.com
+    License: MIT License
+    Location: /opt/odev11/python3/lib/python3.5/site-packages
+    Requires: genshi, lxml, pyjon.utils, six, setuptools
+    Required-by:
+
+Versión de genshi:
+    Name: Genshi
+    Version: 0.8.dev0
+    Summary: A toolkit for generation of output for the web
+    Home-page: http://genshi.edgewall.org/
+    Author: Edgewall Software
+    Author-email: info@edgewall.org
+    License: BSD
+    Location: /opt/odev11/python3/lib/python3.5/site-packages/Genshi-0.8.dev0-py3.5.egg
+    Requires: 
+    Required-by: py3o.template

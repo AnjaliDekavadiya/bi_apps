@@ -1,0 +1,95 @@
+<odoo>
+	<data>
+		<record id="project_teams_view_form" model="ir.ui.view">
+			<field name="name">view.project.teams.form</field>
+			<field name="model">project.teams</field>
+			<field name="arch" type="xml">
+				<form string="Project Teams">
+					<sheet>
+						<group col="4" colspan="2">
+							<field name="name" />
+							<field name="code"/>
+							<field name="proj_manager_id"/>
+							<field name="site_engineer_id"/>
+						</group>
+						<notebook colspan="6">
+							<page string="Team Members" name="team_members_page">    
+								<field name="team_members_ids">
+									<tree string="Store Officer" editable="bottom">
+										<field name="user_id"/>
+										<field name="login"/>
+										<field name="language"/>
+										<field name="latest_connection"/>
+									</tree>
+								</field>
+							</page>
+							<page string="Store Officer" name="store_officer_page">    
+								<field name="store_officer_ids">
+									<tree string="Store Officer" editable="bottom">
+										<field name="user_id"/>
+										<field name="login"/>
+										<field name="language"/>
+										<field name="latest_connection"/>
+									</tree>
+								</field>
+							</page>
+							<page string="Security Guards" name="security_guards_page">
+								<field name="security_guards_ids">
+									<tree string="Security Guards" editable="bottom">
+										<field name="user_id"/>
+										<field name="login"/>
+										<field name="language"/>
+										<field name="latest_connection"/>
+									</tree>
+								</field>
+							</page>
+							<page string="Internal Notes" name="internal">
+								<field name="internal_notes"/>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="project_teams_view_tree" model="ir.ui.view">
+			<field name="name">view.project.teams.tree</field>
+			<field name="model">project.teams</field>
+			<field name="arch" type="xml">
+				<tree string="Project Teams">
+					<field name="name"/>
+					<field name="code"/>
+					<field name="proj_manager_id"/>
+					<field name="site_engineer_id"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="project_teams_view_action" model="ir.actions.act_window">
+			<field name="name">Project Teams</field>
+			<field name="res_model">project.teams</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+			  	<p class="oe_view_nocontent_create">
+				Click to add a new employee.
+			  	</p>
+			</field>
+		</record>
+
+		<record id="view_project_team_search" model="ir.ui.view">
+			<field name="name">view.project.teams.search</field>
+			<field name="model">project.teams</field>
+			<field name="arch" type="xml">
+				<search string="Search Project Teams">
+				 	<group expand="0" name="group_by" string="Group By">
+					   <filter string="Project Manager" name="Team Manager" context="{'group_by' : 'proj_manager_id'}"/>  
+					   <filter string="Site Engineer/Supervisor" name="Site Engineer/Supervisor" context="{'group_by' : 'site_engineer_id'}"/>  
+				   </group>
+			   </search>
+			</field>
+		</record>
+
+		<menuitem id="project_teams" parent= "bi_odoo_job_costing_management.sub_menu_configuration"  name="Project Teams" sequence = '1' action="bi_project_team.project_teams_view_action"/>
+	</data>
+</odoo>

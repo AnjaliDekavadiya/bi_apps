@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model ="ir.ui.view" id="hr_applicant_import_wizard_view">
+            <field name="name">Hr Applicant Import Wizard View</field>
+            <field name="model">hr.applicant.import</field>
+            <field name="arch" type="xml">
+                <form string="Project Task Import Wizard">
+                    <separator string="This wizard will import listed Applications from selected excel file. Make sure you have selected .xls/xlsx file..."/>
+                    <group>
+                        <group>
+                            <field name="company_id" widget="selection"/>
+                        </group>
+                    </group>                
+                    <group>
+                        <!-- <div>
+                           <label for="datas_fname"/> -->
+                           <field  name="files" class="oe_inline" filename="datas_fname" required="True"/>
+                           <field name="datas_fname" class="oe_inline" invisible="1" readonly="1"/>
+                        <!-- </div> -->
+                    </group>
+                    <footer>
+                        <button string="Import" name="import_hr_applicant_task_with_excel" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_highlight" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model = "ir.actions.act_window" 
+            id = "hr_applicant_import_wizard_action">
+            <field name="name">Import Applications </field>
+            <field name="res_model">hr.applicant.import</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Import Applications" 
+            id="import_hr_applicant_task_excel" 
+            parent="hr_recruitment.menu_crm_case_categ0_act_job" 
+            action="hr_applicants_import.hr_applicant_import_wizard_action" 
+            sequence="150"
+            groups="hr_recruitment.group_hr_recruitment_manager"
+        />
+
+    </data>
+</odoo>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="bi_project_exp_inherit">
+            <field name="name">bi.project.inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button type="object"
+                            name="button_view_inspection"
+                            class="oe_stat_button"
+                            icon="fa-search"
+                            invisible="count_of_inspection == 0">
+                        <field name="count_of_inspection" widget="statinfo" string="Inspection"/>
+                    </button>
+                </div>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="bi_task_exp_inherit">
+            <field name="name">bi.task.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button type="object"
+                            name="button_view_inspection"
+                            class="oe_stat_button"
+                            icon="fa-search"
+                            invisible="count_of_inspection == 0">
+                        <field name="count_of_inspection" widget="statinfo" string="Inspection"/>
+                    </button>
+                </div>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="bi_cost_sheet_inherit_form">
+            <field name="name">job.cost.sheet.inherit</field>
+            <field name="model">job.cost.sheet</field>
+            <field name="inherit_id" ref="bi_odoo_job_costing_management.job_cost_sheet_form_view"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button type="object"
+                            name="button_view_inspection"
+                            class="oe_stat_button"
+                            icon="fa-search"
+                            invisible="count_of_inspection == 0">
+                        <field name="count_of_inspection" widget="statinfo" string="Inspection"/>
+                    </button>
+                </div>
+            </field>
+        </record>
+
+        <record id="view_job_inspection_value_tree" model="ir.ui.view">
+            <field name="name">bi.tree.view.job.inspection.tree</field>
+            <field name="model">inspection.value</field>
+            <field name="arch" type="xml">
+                <tree string="Inspection">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_job_inspection_value_form" model="ir.ui.view">
+            <field name="name">bi.tree.view.job.inspection.form</field>
+            <field name="model">inspection.value</field>
+            <field name="arch" type="xml">
+                <form string="Inspection">
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inspection_value_view">
+            <field name="name">Inspection Value</field>
+            <field name="res_model">inspection.value</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Inspection Value" parent="bi_odoo_job_costing_management.sub_menu_configuration"
+                  action="action_inspection_value_view" id="menu_inspection_value" sequence="4"/>
+
+        <record id="view_job_inspection_result_tree" model="ir.ui.view">
+            <field name="name">bi.tree.view.job.inspection.result.tree</field>
+            <field name="model">inspection.result</field>
+            <field name="arch" type="xml">
+                <tree string="Inspection Result">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_job_inspection_result_form" model="ir.ui.view">
+            <field name="name">bi.tree.view.job.inspection.result.form</field>
+            <field name="model">inspection.result</field>
+            <field name="arch" type="xml">
+                <form string="Inspection Result">
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inspection_result_view">
+            <field name="name">Inspection Result</field>
+            <field name="res_model">inspection.result</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Inspection Result" parent="bi_odoo_job_costing_management.sub_menu_configuration"
+                  action="action_inspection_result_view" id="menu_inspection_result" sequence="5"/>
+
+        <record id="view_job_inspection_type_tree" model="ir.ui.view">
+            <field name="name">bi.tree.view.job.inspection.type.tree</field>
+            <field name="model">inspection.type</field>
+            <field name="arch" type="xml">
+                <tree string="Inspection Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_job_inspection_type_form" model="ir.ui.view">
+            <field name="name">bi.tree.view.job.inspection.type.form</field>
+            <field name="model">inspection.type</field>
+            <field name="arch" type="xml">
+                <form string="Inspection Type">
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inspection_type_view">
+            <field name="name">Inspection Type</field>
+            <field name="res_model">inspection.type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Inspection Type" parent="bi_odoo_job_costing_management.sub_menu_configuration"
+                  action="action_inspection_type_view" id="menu_inspection_type" sequence="5"/>
+
+            <record id="view_job_inspection_details_form_view" model="ir.ui.view">
+                <field name="name">bi.form.view.job.inspection.details</field>
+                <field name="model">job.inspection</field>
+                <field name="arch" type="xml">
+                    <form string="Job Inspection">
+                        <header>
+                            <button name="to_confirm" string="Confirm" type="object" invisible="state not in ['draft']" class="btn-primary"/>
+                            <button name="to_process" string="Process" type="object"  invisible="state not in ['confirm']" class="btn-primary"
+                                    groups="bi_job_inspection.group_inspection_manager"/>
+                            <button name="to_complete" string="Complete" type="object"  invisible="state not in ['process']" class="btn-primary"
+                                    groups="bi_job_inspection.group_inspection_manager"/>
+                            <button name="to_cancel" string="Cancel" type="object"  invisible="state not in ['confirm','process']"
+                                    class="btn-primary" groups="bi_job_inspection.group_inspection_manager"/>
+                            <button name="to_set_to_draft" string="Set to Draft" type="object" invisible="state not in ['cancel']"
+                                    class="btn-primary" groups="bi_job_inspection.group_inspection_manager"/>
+                            <field name="state" widget="statusbar"/>
+                        </header>
+                        <sheet string="Job Instruction">
+                            <h1>
+                                <field name="sequance" readonly="1"/>
+                            </h1>
+                            <group col="4">
+                                <field name="name" readonly="state not in ['draft']"/>
+                                <field name="project_id" readonly="state not in ['draft']"/>
+                                <field name="analytic_account_id" readonly="state not in ['draft']"/>
+                                <field name="job_cost_sheet_id" readonly="state not in ['draft']"/>
+                                <field name="inspection_type_id" readonly="state not in ['draft']"/>
+                                <field name="job_order_id" readonly="state not in ['draft']"/>
+                                <field name="inspection_start_date" readonly="state not in ['draft']"/>
+                                <field name="resposible_user" readonly="state not in ['draft']"/>
+                                <field name="create_date" readonly="state not in ['draft']"/>
+                                <field name="inspection_location" readonly="state not in ['draft']"/>
+                                <field name="inspection_resposible" readonly="state not in ['draft']"/>
+                                <field name="subcontractor_id" readonly="state not in ['draft']"/>
+                                <field name="reference_specification" readonly="state not in ['draft']"/>
+                                <field name="inspection_result_id" readonly="state not in ['draft']"/>
+                                <field name="inspection_end_date" readonly="state not in ['draft']"/>
+                                <field name="company_id" readonly="state not in ['draft']"/>
+                            </group>
+                            <notebook>
+                                <page string="Job Inspection Line ">
+                                    <field name="job_inspection_line_ids"
+                                           readonly="state not in ['draft']">
+                                        <tree editable="top">
+                                            <field name="inspection_value_id"/>
+                                            <field name="inspection_result_id"/>
+                                            <field name="description"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                                <page string="Other Info">
+                                    <group col="4">
+                                        <field name="confirmed_by_id"/>
+                                        <field name="processed_by_id"/>
+                                        <field name="complete_by_id"/>
+                                        <field name="cancel_by_id"/>
+                                        <field name="confirm_date"/>
+                                        <field name="process_date"/>
+                                        <field name="complete_date"/>
+                                        <field name="cancel_date"/>
+                                    </group>
+                                </page>
+                                <page string="Notes">
+                                    <field name="notes"/>
+                                </page>
+                                <page string="Result Description">
+                                    <field name="result_description"/>
+                                </page>
+                                <page string="Inspection Photos">
+                                    <field name="attachment_ids" mode="kanban">
+                                        <kanban>
+                                            <field name="id"/>
+                                            <field name="mimetype"/>
+                                            <field name="type"/>
+                                            <field name="name"/>
+                                            <templates>
+                                                <t t-name="kanban-box">
+                                                    <div class="oe_kanban_global_click">
+                                                        <div class="oe_kanban_vignette">
+                                                            <div class="oe_attachment">
+                                                                <div class="oe_name">
+                                                                    <field name="name"/>
+                                                                </div>
+                                                                <div t-if="record.type.raw_value == 'binary'">
+                                                                    <t t-if="record.id.raw_value">
+                                                                        <a t-attf-href="/web/content/#{record.id.raw_value}?download=1">
+                                                                            <t t-set="webimage"
+                                                                               t-value="new RegExp('image.*(gif|jpeg|jpg|png)').test(record.mimetype.value)" alt="ima"/>
+                                                                            <div t-if="!webimage" class="o_image"
+                                                                                 t-att-data-mimetype="record.mimetype.value" alt="iges"/>
+                                                                            <div t-if="webimage" class="o_attachment_image">
+                                                                                <img t-attf-src="/web/image/#{record.id.raw_value}?download=1" alt="images"/>
+                                                                            </div>
+                                                                        </a>
+                                                                    </t>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </templates>
+                                        </kanban>
+
+                                        <form string="Images Data">
+                                            <sheet>
+                                                <sheet>
+                                                    <label for="name" class="oe_edit_only"/>
+                                                    <h1>
+                                                        <field name="name"/>
+                                                    </h1>
+                                                    <group>
+                                                        <group>
+                                                            <field name="type"/>
+                                                            <field name="datas"
+                                                                   invisible="type == 'url'" required="type == 'binary'"/>
+                                                            <field name="url" widget="url"
+                                                                   invisible="type == 'binary'" required="type == 'url'"/>
+                                                            <field name="mimetype"/>
+                                                        </group>
+                                                        <group string="Attached To" groups="base.group_no_one">
+                                                            <field name="res_model"/>
+                                                            <field name="res_field"/>
+                                                            <field name="res_id"/>
+                                                            <field name="res_name"/>
+                                                            <field name="company_id" groups="base.group_multi_company"
+                                                                   options="{'no_create': True}"/>
+                                                            <field name="public"/>
+                                                        </group>
+                                                        <group string="History" groups="base.group_no_one">
+                                                            <label for="create_uid" string="Creation"/>
+                                                            <div name="creation_div">
+                                                                <field name="create_uid" readonly="1" class="oe_inline"/>
+                                                                on
+                                                                <field name="create_date" readonly="1" class="oe_inline"/>
+                                                            </div>
+                                                        </group>
+                                                        <group name="description_group" string="Description"
+                                                               groups="base.group_no_one" colspan="4">
+                                                            <field name="description" nolabel="1"/>
+                                                        </group>
+                                                        <group groups="base.group_no_one" string="Indexed Content"
+                                                               colspan="4">
+                                                            <field name="index_content" nolabel="1"/>
+                                                        </group>
+                                                    </group>
+                                                </sheet>
+                                            </sheet>
+                                        </form>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+        <record id="view_job_inspection_tree" model="ir.ui.view">
+            <field name="name">bi.tree.view.job.inspection.tree</field>
+            <field name="model">job.inspection</field>
+            <field name="arch" type="xml">
+                <tree string="Inspection">
+                    <field name="sequance"/>
+                    <field name="name"/>
+                    <field name="project_id"/>
+                    <field name="state"/>
+                    <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_job_inspection_view">
+            <field name="name">Job Inspection</field>
+            <field name="res_model">job.inspection</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Job Inspection" parent="bi_odoo_job_costing_management.main_menu_job_estimates"
+                  id="main_menu_inspection" sequence="4"/>
+
+        <menuitem name="Job Inspection" parent="main_menu_inspection" action="action_job_inspection_view"
+                  id="maintanance_request"/>
+
+    </data>
+</odoo>

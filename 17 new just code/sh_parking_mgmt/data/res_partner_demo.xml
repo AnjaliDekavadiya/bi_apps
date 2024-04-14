@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<odoo><data>
+
+    <!-- LOCATIONS -->
+   
+    <record id="res_partner_event_10" model="res.partner">
+        <field name="name">Walking Customer</field>
+        <field name="is_company" eval="True"/>
+        <field name="sh_is_memeber"  eval="False"/>
+    </record>
+
+</data></odoo>

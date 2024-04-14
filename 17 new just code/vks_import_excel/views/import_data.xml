@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	    
+	    <!-- Import Data Status View -->
+	    
+        <record id="view_vks_import_data_status_form" model="ir.ui.view">
+			<field name="name">view.vks.import.data.status.form</field>
+			<field name="model">import.data.status</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_no_chat_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//form" position="attributes">
+					<attribute name="create">0</attribute>
+					<attribute name="delete">0</attribute>
+					<attribute name="edit">0</attribute>
+				</xpath>
+				<group name="group_one" position="inside">
+					<field name="row_number"/>
+					<field name="status"/>
+					<field name="message"/>
+				</group>
+				<field name="create_uid" position="before">
+					<field name="type"/>
+				</field>
+			</field>
+		</record>
+		
+		<record id="view_vks_import_data_status_kanban" model="ir.ui.view">
+			<field name="name">view.vks.import.data.status.kanban</field>
+			<field name="model">import.data.status</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_kanban"/>
+			<field name="arch" type="xml">
+				<xpath expr="//kanban" position="attributes">
+					<attribute name="create">0</attribute>
+					<attribute name="delete">0</attribute>
+					<attribute name="edit">0</attribute>
+				</xpath>
+				<field name="id" position="after">
+					<field name="row_number"/>
+				</field>
+				<xpath expr="//div[@name='vks_rec_id_div']" position="replace">
+            		<div name="vks_name_div">
+            			<strong><span class="o_kanban_record_title"><t t-esc="record.row_number.string"/>: <t t-esc="record.row_number.value"/></span></strong>
+                    </div>
+                    <div name="vks_message_div">
+            			 <span class="text-dark o_kanban_record_subtitle"><field name="message"/></span>
+                    </div>
+                    <div class="o_kanban_record_bottom">
+                         <div class="oe_kanban_bottom_left text-muted">
+                             <span><field name="type"/></span>
+                         </div>
+                         <div class="oe_kanban_bottom_right">
+                         	<field name="status" widget="label_selection" 
+                         		options="{'classes': {'close':'default', 'draft':'info', 'fail':'danger', 'open':'warning', 'success':'success'}}"/>
+                         </div>
+                     </div>
+            	</xpath>
+			</field>
+		</record>
+	    
+	    <record id="view_import_data_status_tree" model="ir.ui.view">
+	    	<field name="name">import.data.status.tree</field>
+	    	<field name="model">import.data.status</field>
+	    	<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.view_responsibility_of_user_tree"/>
+	    	<field name="arch" type="xml">
+	    		<xpath expr="//tree" position="attributes">
+	    			<attribute name="create">0</attribute>
+					<attribute name="delete">0</attribute>
+					<attribute name="edit">0</attribute>
+					<attribute name="decoration-success">status=='success'</attribute>
+					<attribute name="decoration-danger">status=='fail'</attribute>
+				</xpath>
+	    		<field name="create_uid" position="before">
+	    			<field name="row_number"/>
+	    			<field name="message"/>
+	    			<field name="status"/>
+	    		</field>
+	    	</field>	    	
+	    </record>
+	    
+	    <record id="view_import_data_status_search" model="ir.ui.view">
+	    	<field name="name">import.data.status.search</field>
+	    	<field name="model">import.data.status</field>
+	    	<field name="arch" type="xml">
+	    		<search>
+	    			<field name="row_number"/>
+	    			<field name="message"/>
+	    			<separator/>
+	    			<filter name="status_success" string="Success" domain="[('status','=','success')]"/>
+	    			<filter name="status_fail" string="Fail" domain="[('status','=','fail')]"/>
+	    			<separator/>
+    				<filter name="type_create" string="Create" domain="[('type','=','create')]"/>
+    				<filter name="type_write" string="Write" domain="[('type','=','write')]"/>
+    				<filter name="type_delete" string="Delete" domain="[('type','=','delete')]"/>
+	    			<group expand="0" name="group_by" string="Group by">
+	    				<filter name="groupby_type" string="Type" domain="[]" context="{'group_by':'type'}"/>
+	    				<filter name="groupby_status" string="Status" domain="[]" context="{'group_by':'status'}"/>
+	    			</group>
+	    		</search>
+	    	</field>	    	
+	    </record>
+	    
+        <record id="action_import_data_status" model="ir.actions.act_window">
+            <field name="name">Data import result</field>
+            <field name="res_model">import.data.status</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="domain">[('import_id','=',active_id)]</field>
+       	</record>
+		
+		<!-- Import Data View -->
+		
+		<record id="view_import_data_form" model="ir.ui.view">
+			<field name="name">import.data.form</field>
+			<field name="model">import.data</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.vks_process_by_thread_basic_form"/>
+			<field name="arch" type="xml">
+				<button name="process_data_main_method" position="replace">
+					<button name="act_call_read_excel_thread" type="object" class="btn-primary" string="Import data" 
+							invisible="process_state != 'to_do' or (create_uid == False)"/>
+				</button>
+				<div name="button_box" position="inside">
+					<button name="%(action_import_data_status)d" class="oe_stat_button" icon="fa-pencil-square-o" type="action">
+                        <field name="read_count" widget="statinfo" string="Import Result"/>
+                    </button> 
+				</div>
+				<field name="id" position="before">
+					<field name="model_id" options="{'no_create':True}" readonly="process_state != 'to_do'"/>
+					<field name="file_name" invisible="1"/>
+					<field name="file_import" placeholder="/home/excel.xls" filename="file_name" readonly="process_state != 'to_do'"/>
+					<field name="current_row"/>
+				</field>
+				<field name="create_uid" position="before">
+					<field name="total_row"/>
+					<field name="success_row"/>
+				</field>
+				<group name="group_main" position="after">
+					<notebook>
+						<page name="pg_status_ids" string="Import status">
+							<field name="status_ids"/>
+						</page>
+					</notebook>
+				</group>
+			</field>
+		</record>
+		
+		<record id="view_import_data_kanban" model="ir.ui.view">
+			<field name="name">view.import.data.kanban</field>
+			<field name="model">import.data</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.vks_process_by_thread_basic_kanban"/>
+			<field name="arch" type="xml">
+				<xpath expr="//div[@name='vks_name_div']" position="replace">
+					<div name="vks_name_div">
+						<span class="badge rounded-pill float-end mt4 mr0"><field name="success_row"/>/<field name="total_row"/></span>
+						<strong><span class="o_kanban_record_title"><field name="name"/></span></strong>
+					</div>
+					<div name="vks_model_id_div">
+            			 <span class="o_kanban_record_subtitle"><field name="model_id"/></span>
+                    </div>
+            	</xpath>
+			</field>
+		</record>
+		
+		<record id="view_import_data_tree" model="ir.ui.view">
+			<field name="name">view.import.data.tree</field>
+			<field name="model">import.data</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.vks_process_by_thread_basic_tree"/>
+			<field name="arch" type="xml">
+				<field name="create_uid" position="before">
+					<field name="file_name"/>
+					<field name="total_row"/>
+					<field name="current_row"/>
+					<field name="success_row"/>
+				</field>
+			</field>
+		</record>
+		
+		<record id="view_import_data_filter" model="ir.ui.view">
+			<field name="name">import.data.filter</field>
+			<field name="model">import.data</field>
+			<field name="mode">primary</field>
+			<field name="inherit_id" ref="vks_import_excel.vks_process_by_thread_basic_filter"/>
+			<field name="arch" type="xml">
+				<field name="create_uid" position="before">
+					<field name="model_id"/>
+					<field name="file_name"/>
+				</field>
+			</field>
+		</record>
+
+		<record id="action_import_data" model="ir.actions.act_window">
+            <field name="name">Import Data</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">import.data</field>
+            <field name="view_mode">tree,kanban,form</field>
+       	</record>
+
+		<menuitem id="menu_action_vks_import_excel" action="action_import_data" parent="menu_import_data_child" sequence="2"/>
+		
+		<!-- Nhap xuat du lieu cua ban than -->
+         
+         <menuitem name="Import and export data" id="menu_my_ei_data" parent="mail.menu_root_discuss" sequence="98"/>
+         
+         <record id="action_vks_import_data_owner" model="ir.actions.act_window">
+            <field name="res_model">import.data</field>
+            <field name="name">My import data history</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="domain">[('create_uid','=',uid)]</field>
+        </record>
+        
+        <menuitem action="action_vks_import_data_owner" id="menu_vks_import_data_owner" parent="menu_my_ei_data" sequence="1"/>
+        
+         <record id="action_vks_export_data_owner" model="ir.actions.act_window">
+            <field name="res_model">ir.exports</field>
+            <field name="name">My data export template</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('create_uid','=',uid)]</field>
+        </record>
+        
+        <menuitem action="action_vks_export_data_owner" id="menu_vks_export_data_owner" parent="menu_my_ei_data" sequence="2"/>
+    	
+	</data>
+</odoo>

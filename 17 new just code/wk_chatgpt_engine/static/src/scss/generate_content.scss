@@ -1,0 +1,106 @@
+.generate_content_div{
+    .content_label{
+        font-weight: 500;
+    }
+
+
+    .form-control:focus {
+        border: 3px solid #D3D3D3;
+    }
+    #promptInput{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+    }
+}
+
+
+
+.generate_correction_main{
+    .modal-header {
+        background: #71639e;
+        width: 100% !important;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+
+        .modal-title{
+            color: #fff !important;
+        }
+        .btn-close{
+            color: #fff !important;
+
+        }
+    }
+
+    .generate_correction_div{
+        .content_label{
+            font-weight: 500;
+        }
+        #grammarContent{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+        }
+    }
+}
+
+.generate_content_main{
+    border-radius: 0px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    .modal-header {
+        // background: linear-gradient(to right, #43cea2, #185a9d) !important;
+        background: #71639e;
+        width: 100% !important;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+
+        .modal-title{
+            color: #fff !important;
+        }
+        .btn-close{
+            color: #fff !important;
+
+        }
+    }
+
+    .btn-circle,
+    #to-top {
+    border-radius: 50% !important;
+    background: #111e6c !important;
+    padding: 6px !important;
+    font-size: 14px !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+    color: #fff !important;
+    text-align: center !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    }
+
+
+    .btn-default {
+    color: #fff !important;
+    background-color: #111e6c !important;
+    border-color: #111e6c !important;
+    transition: all 1s ease !important;
+    }
+
+    .btn-group-lg > .btn,
+    .btn-lg {
+    padding: 9px 28px !important;
+    font-size: 17px !important;
+    line-height: 1.3333333 !important;
+    border-radius: 50px !important;
+    }
+
+    .btn-group .btn-or {
+    top: 50%;
+    left: 43%;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%) !important;
+    -ms-transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 99 !important;
+    box-shadow: 0 !important;
+    border: 2px solid #fff !important;
+    }
+
+    #promptInput{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+    }
+}

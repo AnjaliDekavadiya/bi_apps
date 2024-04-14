@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Sequences for quotation.comparison -->
+        <record id="seq_quotation_comparison" model="ir.sequence">
+            <field name="name">quotation.comparison.sequence</field>
+            <field name="code">quotation.comparison</field>
+            <field name="prefix">QC</field>
+            <field name="padding">1</field>
+            <field name="suffix">/%(day)s-%(month)s-%(year)s</field>
+        </record>
+
+        <record id="seq_vendor_quotation" model="ir.sequence">
+            <field name="name">vendor.quotation.sequence</field>
+            <field name="code">vendor.quotation</field>
+            <field name="prefix">VQ</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="seq_grn" model="ir.sequence">
+            <field name="name">grn.sequence</field>
+            <field name="code">grn.grn</field>
+            <field name="prefix">GRN</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="seq_delivery_challan_no" model="ir.sequence">
+            <field name="name">challan.no.sequence</field>
+            <field name="code">stock.picking</field>
+            <field name="prefix">DCN</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="seq_requisition" model="ir.sequence">
+            <field name="name">requisition.sequence</field>
+            <field name="code">purchase.requisition.wizard.line</field>
+            <field name="prefix">REQ</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="seq_purchase_requisition" model="ir.sequence">
+            <field name="name">purchase.requisition.sequence</field>
+            <field name="code">purchase.requisition</field>
+            <field name="prefix">REQ</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="material_issue_sequenve" model="ir.sequence">
+            <field name="name">material.issue.sequence</field>
+            <field name="code">material.issue</field>
+            <field name="prefix">Challan No:</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="material_issue_line_sequence" model="ir.sequence">
+            <field name="name">material.issue.line.sequence</field>
+            <field name="code">material.issue.line</field>
+            <field name="prefix"></field>
+            <field name="padding">5</field>
+        </record>
+
+        <!-- Sequences for purchase transaction -->
+        <record id="purchase_transaction_advance" model="ir.sequence">
+            <field name="name">advance</field>
+            <field name="code">transaction.advance.purchase</field>
+            <field name="prefix">ADV</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="purchase_transaction_debit" model="ir.sequence">
+            <field name="name">DebitNote</field>
+            <field name="code">transaction.debit.purchase</field>
+            <field name="prefix">DEBIT</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="transaction_credit" model="ir.sequence">
+            <field name="name">credit.note</field>
+            <field name="code">transaction.credit.note</field>
+            <field name="prefix">CREDIT</field>
+            <field name="padding">4</field>
+        </record>
+
+        <!-- Sequences for purchase transaction -->
+        <record id="purchase_transaction_advance" model="ir.sequence">
+            <field name="name">advance</field>
+            <field name="code">transaction.advance.purchase</field>
+            <field name="prefix">ADV</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="purchase_transaction_debit" model="ir.sequence">
+            <field name="name">DebitNote</field>
+            <field name="code">transaction.debit.purchase</field>
+            <field name="prefix">DEBIT</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="purchase_recovey_independent_bill" model="ir.sequence">
+            <field name="name">PurchaseIndependentBill</field>
+            <field name="code">purchase.recovery.independent.of.bill</field>
+            <field name="prefix">PURREC</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_retention_release" model="ir.sequence">
+            <field name="name">retention.release</field>
+            <field name="code">retention.release</field>
+            <field name="prefix">RELEASE</field>
+            <field name="padding">4</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,46 @@
+//==================================================================================
+//Copyright (C) 2023-TODAY TechKhedut (<https://www.techkhedut.com>)
+//Part of TechKhedut. See LICENSE file for full copyright and licensing details.
+//==================================================================================
+$tkprimarybg: #2e3f6e !default;
+$tksecondarybg: #3d528b !default;
+$tktextcolor:  #7d93b2 !default;
+$tklinkcolor: #4DB7FE !default;
+
+$o-base-color-palette: map-merge($o-base-color-palette, (
+    'preheader': 5,
+    'preheader-custom': null,
+));
+
+$o-color-palettes: map-merge($o-color-palettes,
+    (
+        'tk-1': (
+            'o-color-1': $tkprimarybg,
+            'o-color-2': $tklinkcolor,
+            'o-color-3': #f9fafe,
+            'o-color-4': #f9fafe,
+            'o-color-5': $tksecondarybg,
+            'o-color-6': $tktextcolor,
+
+
+            'o-cc5-text': 'o-color-6',
+            'o-cc5-link': 'o-color-2',
+            'o-cc5-primary': 'o-color-1',
+            'o-cc5-secondary': 'o-color-2',
+            'o-cc5-secondary-bg': 'o-color-5',
+            'o-cc5-headings': 'o-color-4',
+            'o-cc5-btn-primary': 'o-color-5',
+            'o-cc5-btn-secondary': 'o-color-2',
+            'o-cc5-btn-secondary-text': 'o-color-3',
+            'preheader': 5,
+        ),
+    )
+);
+
+$o-selected-color-palettes-names: append($o-selected-color-palettes-names, 'tk-1');
+$o-website-values-palettes: (
+    (
+        'color-palettes-name': 'tk-1',
+    ),
+);
+

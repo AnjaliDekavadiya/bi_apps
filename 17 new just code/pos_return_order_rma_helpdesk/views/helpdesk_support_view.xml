@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="view_helpdesk_ticket_inherit_button_pos" model="ir.ui.view">
+            <field name="name">view.helpdesk.ticket.inherit.button</field>
+            <field name="model">helpdesk.support</field>
+            <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_support_form_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//header" position="inside">
+                    <button name="%(probc_create_order_action_rma_pos)d" type="action" string="Create RMA" class="oe_highlight"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,24 @@
+<odoo>
+	<data>
+		<template id="bi_report_job_cost_sheet_inherit" inherit_id="bi_odoo_job_costing_management.job_cost_sheet_template_view">
+			<xpath expr="//table[hasclass('table')]/tr" position="after">
+				<tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+					<td>
+						<strong>Project Team: </strong>
+					</td>
+					<td>
+						<span t-field="o.project_team_id" />
+					</td>
+					<td>
+						<strong>Tags: </strong>
+					</td>
+					<td>
+						<t t-foreach="o.cost_sheet_tags_ids" t-as="tags">
+							<span t-field="tags.name" /><span>,</span>
+						</t>
+					</td>
+				</tr>
+			</xpath>
+		</template>
+	</data>
+</odoo>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_project_quality_check_form" model="ir.ui.view">
+            <field name="name">Project Quality Check View</field>
+            <field name="model">project.quality.check</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                         <field name="state" widget="statusbar"/>
+                         <button name="action_pass" type="object" string="Pass" class="btn-primary" 
+                         invisible="state not in ('fail','to_do')" 
+                         groups='project.group_project_manager,project_task_quality_management.group_quality_manager,
+                         project_task_quality_management.group_quality_user'/>
+                         <button name="action_fail" type="object" string="Fail" class="btn-primary"
+                         invisible="state not in ('pass','to_do')" 
+                         groups='project.group_project_manager,project_task_quality_management.group_quality_manager,
+                         project_task_quality_management.group_quality_user'/>
+                         <button string="Create Alert" name="%(action_create_quality_alert_wiz)d"  
+                         type="action" class="oe_highlight" invisible="state not in ('pass','fail')"
+                         groups='project.group_project_manager,project_task_quality_management.group_quality_manager,
+                         project_task_quality_management.group_quality_user'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" 
+                                type="object" 
+                                name="action_button_quality_alert"
+                                icon="fa-bell" 
+                                string="Alerts">
+                            </button>
+                            <button class="oe_stat_button" 
+                                type="object" 
+                                name="action_button_quality_point"
+                                icon="fa-cogs"
+                                string="Control Point">
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name='project_id'/>
+                                <field name='task_id'/>
+                                <field name='company_id' groups="base.group_multi_company"/>
+                            </group>
+                            <group>
+                                <field name='control_point_id'/>
+                                 <field name='team_id'/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes" placeholder="Internal Notes..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+                       
+        <record id="view_project_quality_check_tree" model="ir.ui.view">
+                <field name="name">Project Quality Check Tree View</field>
+                <field name="model">project.quality.check</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name='project_id'/>
+                        <field name='task_id'/>
+                        <field name='check_date'/>
+                        <field name='check_user_id'/>
+                        <field name='state'/>
+                    </tree>
+                </field>
+        </record>
+
+        <record id="view_project_quality_check_search" model="ir.ui.view">
+                <field name="name">Project Quality Check Search View</field>
+                <field name="model">project.quality.check</field>
+                <field name="arch" type="xml">
+                    <search>
+                        <filter name="In Progress"  domain="[('state','=','to_do')]"/>
+                        <filter name="Passed" domain="[('state','=','pass')]"/>
+                        <filter name="Failed" domain="[('state','=','fail')]"/>
+                        <field name='project_id'/>
+                        <field name='task_id'/>
+                        <field name='team_id'/>
+                        <field name='company_id' groups="base.group_multi_company"/>
+                        <field name='control_point_id'/>
+                        <field name='state'/>
+                        <group expand="0" string="Group By">
+                            <filter name="Project" context="{'group_by':'project_id'}"/>
+                            <filter name="Task" context="{'group_by':'task_id'}"/>
+                            <filter name="Team" context="{'group_by':'team_id'}"/>
+                            <filter name="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                            <filter name="Control Point" context="{'group_by':'control_point_id'}"/>
+                            <filter name="State"  context="{'group_by':'state'}"/>
+                        </group>
+                    </search>
+                </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_project_quality_check_kanban">
+            <field name="name">project.quality.check.kanban</field>
+            <field name="model">project.quality.check</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state" 
+                class="o_kanban_small_column o_kanban_project_tasks" 
+                on_create="quick_create">>
+                    <field name="alert_check_no"/>
+                    <field name="check_user_id"/>
+                    <field name="project_id"/>
+                    <field name="task_id"/>
+                    <field name="state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <strong><span><t t-esc="record.alert_check_no.value"/></span></strong>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong><span class='float-right text-right badge badge-success'><t t-esc="record.state.value"/></span></strong>
+                                    </div>
+                                </div>
+                                <div class="row text-muted">
+                                    <div class="col-8">
+                                        <span><t t-esc="record.project_id.value"/></span>
+                                        <span><t t-esc="record.task_id.value"/></span>
+                                    </div>
+                                </div>
+                                   
+                                <div class="o_kanban_footer">
+                                    <div class="oe_kanban_bottom_right">
+                                    </div>
+                                    <div>
+                                        <img t-att-src="kanban_image('res.users', 'image_small', record.check_user_id.raw_value)" t-att-title="record.check_user_id.value" t-att-alt="record.check_user_id.value" width="24" height="24" class="oe_kanban_avatar float-right"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        
+        <record id="view_project_quality_check_pivot" model="ir.ui.view">
+            <field name="name">Project Quality Check Pivot</field>
+            <field name="model">project.quality.check</field>
+            <field name="arch" type="xml">
+                <pivot string="Project Quality Check">
+                    <field name="check_date" type="col" interval="day"/>
+                    <field name="task_id" type="row"/>
+                </pivot>
+            </field>
+        </record>
+        
+        <record id="view_project_quality_check_graph" model="ir.ui.view">
+            <field name="name">Project Quality Check Graph</field>
+            <field name="model">project.quality.check</field>
+            <field name="arch" type="xml">
+                <graph string="Project Quality Check">
+                    <field name="check_date" type="col" interval="day"/>
+                    <field name="state" type="row"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_project_quality_check">
+            <field name="name">Quality Checks</field>
+            <field name="res_model">project.quality.check</field>
+            <field name="view_mode">tree,form,kanban,pivot,graph</field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_project_quality_check_reporting">
+            <field name="name">Quality Checks</field>
+            <field name="res_model">project.quality.check</field>
+            <field name="view_mode">graph,pivot,kanban,tree</field>
+            <field name='context'>{'search_default_State' : 1}</field>
+        </record>
+        
+    </data>
+</odoo>

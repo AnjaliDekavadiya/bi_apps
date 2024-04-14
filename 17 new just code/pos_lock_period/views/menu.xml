@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Referrals Menu -->
+        <menuitem id="custom_pos_lock_period_main_menu"
+            name="Lock Point of Sale"
+            parent="point_of_sale.menu_point_config_product"
+            action="pos_lock_period.action_custom_pos_lock_period_custom"
+            sequence="1"/>
+
+</odoo>

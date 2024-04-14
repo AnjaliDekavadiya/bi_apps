@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<odoo>
+   <data>
+        <record model="ir.ui.view" id="create_meeting_custom_form_view">
+           <field name="name">create.meeting.custom.form</field>
+           <field name="model">create.meeting.laundry.custom</field>
+           <field name="arch" type="xml">
+               <form string="Create Appointment">
+                <p>This wizard will create appointment with your customer.</p>
+                    <group>
+                        <group>
+                            <field name="meeting_custom_type" widget="radio"/>
+                            <field name="meeting_subject"/>
+                            <field name="user_id"/>
+                        </group>
+                        <group>
+                            <field name="start_date_time"/>
+                            <field name="stop_date"/>
+                            <field name="attendees_ids" widget="many2many_tags"/>
+                        </group>
+                   </group>
+                   <footer>
+                       <button string="Create Appointment" name="create_meeting_custom" type="object" class="btn-primary"/> or 
+                       <button string="Cancel" class="btn-secondary" special="cancel"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+       
+       <record id="create_meeting_custom_action" model="ir.actions.act_window">
+            <field name="name">Create Collection and Delivery Appointment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">create.meeting.laundry.custom</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+       
+   </data>
+</odoo>

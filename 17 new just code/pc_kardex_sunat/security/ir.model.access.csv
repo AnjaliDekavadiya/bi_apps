@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_kardex_sunat_wizard,kardex_sunat_wizard,model_kardex_sunat_wizard,base.group_user,1,1,1,1
+access_existence_type_sunat,existence_type_sunat,model_existence_type_sunat,base.group_user,1,1,1,1

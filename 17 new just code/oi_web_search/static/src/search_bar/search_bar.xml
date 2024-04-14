@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+	<t t-inherit="web.SearchBar" t-inherit-mode="extension">
+		<SearchBarMenu position="after">
+			<SearchMenu t-if="!env.isSmall">
+				<t t-slot="search-bar-additional-menu"/>
+			</SearchMenu>
+		</SearchBarMenu>
+	</t>
+	
+
+</templates>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="wk_pos_longpolling.SyncPosLongPolling">
+        <div class="oe_status pos_longpolling_status" title="Pos LongPolling" style="float:right" t-on-click="sync_pos_longpolling">
+            <div class="oe_icon oe_black">
+                <i class="fa fa fa-refresh fa-spin" style="color: rgb(243,9,9);"></i>
+            </div>
+        </div>
+    </t>
+
+</templates>

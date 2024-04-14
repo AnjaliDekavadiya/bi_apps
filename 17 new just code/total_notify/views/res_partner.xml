@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_partner_view_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="%(total_notify.total_notify_action)d"
+                        type="action"
+                        icon="fa-bell-o"
+                        class="oe_stat_button"
+                        context="{'search_default_partner_id': id, 'default_partner_id': id}"
+                        groups="total_notify.group_total_notify_user"
+                >
+                    <div class="o_stat_info">
+                        Reminders
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+
+</odoo>

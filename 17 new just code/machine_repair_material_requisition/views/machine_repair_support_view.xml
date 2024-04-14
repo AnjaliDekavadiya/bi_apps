@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="machine_repair_support_form_view_inherit_material_requisition_ids" model="ir.ui.view">
+            <field name="name">machine.repair.support.form.inherit</field>
+            <field name="model">machine.repair.support</field>
+            <field name="inherit_id" ref="machine_repair_management.machine_repair_support_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/header" position="inside">
+                        <!-- <button name="action_create_material_requisition" string="Create Material Requisition" type="object"
+                                group="machine_repair_management.group_machine_repair_user"
+                                class="oe_highlight" confirm="Are you sure you want to create material requisition?"/> -->
+                        <button name="action_create_material_requisition" string="Create Material Requisition" type="object"
+                                groups="machine_repair_management.group_machine_repair_user"
+                                class="oe_highlight" confirm="Are you sure you want to create material requisition?"/>
+                </xpath>
+                <xpath expr="//notebook/page[last()]" position="after">
+                    <page string="Material Requisitions">
+                        <field name="material_requisition_ids" />
+                    </page>
+                </xpath>
+                <!-- <xpath expr="//div[@class='oe_button_box']" position="inside"> -->
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside"> <!-- odoo13 -->
+                    <button class="oe_stat_button" type="object" name="show_material_requisition_ids" icon="fa-bars">
+                        <field  string="Requisition" name="material_requisition_count" widget="statinfo" />
+                    </button>
+                </xpath>
+            </field>
+          </record>
+          
+    </data>
+ </odoo>
+ 

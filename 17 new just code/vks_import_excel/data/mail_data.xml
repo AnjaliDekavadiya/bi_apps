@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		
+    	 <record id="vks_email_template_export_excel_file" model="mail.template">
+            <field name="name">Email template for export Excel file</field>
+            <field name="subject">Report as excel file</field>
+            <field name="model_id" ref="base.model_ir_exports"/>
+            <field name="body_html"><![CDATA[
+			 	<p>Hello,</p>            
+             	<p>Below is the excel report file as you requested.</p>      		  
+           	]]></field>
+        </record> 
+	
+		<record id="email_template_import_data" model="mail.template">
+	        <field name="name">Notify the results of importing data from the file</field>
+	        <field name="email_from"><![CDATA[{{(object.create_uid.email_formatted or user.email_formatted)}}]]></field>
+	        <field name="subject"><![CDATA[Notification about {{object.name}} data import completed]]></field>
+	        <field name="partner_to"><![CDATA[{{object.create_uid.partner_id.id}}]]></field>
+	        <field name="model_id" ref="vks_import_excel.model_import_data"/>
+	        <field name="lang"><![CDATA[{{object.create_uid.partner_id.lang}}]]></field>
+	        <field name="body_html"><![CDATA[
+               <html>
+                    <head>
+                        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+                    </head>
+                    <body>
+						<div>
+							<p>Dear <t t-out="object.create_uid.partner_id.name"/>, </p>
+				            <p>The import <t t-out="object.name"/> data entry for <t t-out="object.model_id.name"/> is completed.</p>
+				            <p>Please click on <a target="_blank" t-att-href="ctx.get('base_url','')">here</a> to see the import result!</p>
+				            <p>Best regards,</p>
+				            <p><t t-out="ctx.get('system_user_name',user.name)">.</p>
+						</div>
+                    </body>
+                </html>
+            ]]></field>
+    	</record>
+	
+	</data>
+</odoo>

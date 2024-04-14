@@ -1,0 +1,45 @@
+.o_lunch_kiosk_mode_adv, .o_lunch_clock {
+    @include media-breakpoint-down(md) {
+        width: 100%;
+    }
+}
+
+.o_lunch_clock {
+    position: relative;
+    display: block;
+
+    @include media-breakpoint-up(md) {
+        @include o-position-absolute(0, 0); // Fine-tuned by margin classes
+    }
+}
+.o_lunch_kiosk_mode_adv {
+    @include media-breakpoint-up(md) {
+        min-width: map-get($grid-breakpoints, 'md') * .6;
+
+        .o_lunch_user_badge {
+            @include o-position-absolute(auto, $border-width * -1, 100%, $border-width * -1); // Compensate card's border
+        }
+    }
+
+    .o_lunch_back_button_md {
+        aspect-ratio: 1;
+        transform: translate(-50%, -50%); // Once migrate to BS5, can be replaced by 'translate-middle' class.
+    }
+
+    .o_lunch_front_button_md {
+        aspect-ratio: 1;
+        transform: translate(50%, -50%); // Once migrate to BS5, can be replaced by 'translate-middle' class.
+    }
+
+    .o_lunch_PINbox_button {
+        aspect-ratio: 1.8;
+    }
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+.o_lunch_face_recognition{
+    cursor: pointer;
+}

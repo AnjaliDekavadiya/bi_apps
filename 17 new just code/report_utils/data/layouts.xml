@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Header -->
+        <record id="data_options_combo_box_header_layout_auto_auto_auto" model="report.template.options.combo.box.item">
+            <field name="name">Column1: Auto, Column2: Auto, Column3: Auto</field>
+            <field name="name_technical">{col1:auto,col2:auto,col3:auto}</field>
+            <field name="key">report_utils__header_layout</field>
+        </record>
+
+        <record id="data_options_combo_box_header_layout_40_20_40" model="report.template.options.combo.box.item">
+            <field name="name">Column1: 40%, Column2: 20%, Column3: 40%</field>
+            <field name="name_technical">{col1:40%,col2:20%,col3:40%}</field>
+            <field name="key">report_utils__header_layout</field>
+        </record>
+
+        <record id="data_options_combo_box_header_layout_30_40_30" model="report.template.options.combo.box.item">
+            <field name="name">Column1: 30%, Column2: 40%, Column3: 30%</field>
+            <field name="name_technical">{col1:30%,col2:40%,col3:30%}</field>
+            <field name="key">report_utils__header_layout</field>
+        </record>
+
+        <record id="data_options_combo_box_header_layout_35_30_35" model="report.template.options.combo.box.item">
+            <field name="name">Column1: 35%, Column2: 30%, Column3: 35%</field>
+            <field name="name_technical">{col1:35%,col2:30%,col3:35%}</field>
+            <field name="key">report_utils__header_layout</field>
+        </record>
+
+        <!-- Footer-->
+        <record id="data_options_combo_box_footer_layout_auto_auto_auto" model="report.template.options.combo.box.item">
+            <field name="name">Column1: Auto, col_2:Auto, Column3: Auto</field>
+            <field name="name_technical">{col1:auto,col2:auto,col3:auto}</field>
+            <field name="key">report_utils__footer_layout</field>
+        </record>
+
+        <record id="data_options_combo_box_footer_layout_30_40_30" model="report.template.options.combo.box.item">
+            <field name="name">Column1: 30%, Column2: 40%, Column3: 30%</field>
+            <field name="name_technical">{col1:30%,col2:40%,col3:30%}</field>
+            <field name="key">report_utils__footer_layout</field>
+        </record>
+
+        <record id="data_options_combo_box_footer_layout_35_30_35" model="report.template.options.combo.box.item">
+            <field name="name">Column1: 35%, Column2: 30%, Column3: 35%</field>
+            <field name="name_technical">{col1:35%,col2:30%,col3:35%}</field>
+            <field name="key">report_utils__footer_layout</field>
+        </record>
+
+    </data>
+</odoo>

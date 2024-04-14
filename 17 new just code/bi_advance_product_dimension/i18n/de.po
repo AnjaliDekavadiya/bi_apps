@@ -1,0 +1,526 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bi_advance_product_dimension
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-24 14:10+0000\n"
+"PO-Revision-Date: 2023-02-24 14:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "(Mt.)2"
+msgstr "(Mt.)2"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+msgid ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Amount</span>\n"
+"\t\t\t\t\t<span groups=\"account.group_show_line_subtotals_tax_included\">Total Price</span>"
+msgstr ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Menge</span>\n"
+"\t\t\t\t\t<span groups=\"account.group_show_line_subtotals_tax_included\">Gesamtpreis</span>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.view_product_product_extended
+msgid "<span>Active</span>"
+msgstr "<span>Aktiv</span>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+msgid "<span>Description</span>"
+msgstr "<span>Beschreibung</span>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "<span>Disc.(%)</span>"
+msgstr "<span>Disc.(%)</span>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.view_product_product_extended
+msgid "<span>Maximum</span>"
+msgstr "<span>Maximum</span>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.view_product_product_extended
+msgid "<span>Minimum</span>"
+msgstr "<span>Minimum</span>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+msgid "<span>Quantity</span>"
+msgstr "<span>Menge</span>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+msgid "<span>Source Document</span>"
+msgstr "<span>Quelldokument</span>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+msgid "<span>Taxes</span>"
+msgstr "<span>Steuern</span>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+msgid "<span>Unit Price</span>"
+msgstr "<span>Stückpreis</span>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_mrporder
+msgid "<strong>(Mt.)2:</strong><br/>"
+msgstr "<strong>(Mt.)2:</strong><br/>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+msgid "<strong>Amount</strong>"
+msgstr "<strong>Betrag</strong>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+msgid "<strong>Date Req.</strong>"
+msgstr "<strong>Datumsanf.</strong>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+msgid "<strong>Description</strong>"
+msgstr "<strong>Beschreibung</strong>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_mrporder
+msgid "<strong>Dim qty:</strong><br/>"
+msgstr "<strong>Dim. Menge:</strong><br/>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+msgid "<strong>Expected Date</strong>"
+msgstr "<strong>Erwartetes Datum</strong>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_mrporder
+msgid "<strong>Height (Mt.):</strong><br/>"
+msgstr "<strong>Höhe (Mt.):</strong><br/>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_mrporder
+msgid "<strong>Height:</strong><br/>"
+msgstr "<strong>Höhe:</strong><br/>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_mrporder
+msgid "<strong>Length :</strong><br/>"
+msgstr "<strong>Länge :</strong><br/>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+msgid "<strong>Qty</strong>"
+msgstr "<strong>Menge</strong>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+msgid "<strong>Taxes</strong>"
+msgstr "<strong>Steuern</strong>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+msgid "<strong>Unit Price</strong>"
+msgstr "<strong>Stückpreis</strong>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_mrporder
+msgid "<strong>Weight Ea. :</strong><br/>"
+msgstr "<strong>Gewicht St. :</strong><br/>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_mrporder
+msgid "<strong>width (Mt.):</strong><br/>"
+msgstr "<strong>Breite (Mt.):</strong><br/>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_mrporder
+msgid "<strong>width:</strong><br/>"
+msgstr "<strong>Breite:</strong><br/>"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Amount"
+msgstr "Menge"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_mrp_bom_line
+msgid "Bill of Material Line"
+msgstr "Stücklistenzeile"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_res_company__price_calculation
+msgid "Calculate Unit Price based on Height/Width"
+msgstr "Berechnen Sie den Stückpreis basierend auf Höhe/Breite"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_res_company
+msgid "Companies"
+msgstr "Firmen"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__new_date_planned
+msgid "Delivery Date"
+msgstr "Liefertermin"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Description"
+msgstr "Beschreibung"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__tot_qty
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_bom_line__tot_qty
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_production__tot_qty
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__tot_qty
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order_line__tot_qty
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_move__tot_qty
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_rule__tot_qty
+msgid "Dim Qty"
+msgstr "Dim Menge"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Dim qty"
+msgstr "Dim Menge"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_bank_statement_line__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_payment__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_production__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order_line__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_move__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_picking__dimension_method
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_rule__dimension_method
+msgid "Dimention Method"
+msgstr "Dimensionsmethode"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__pro_height
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_bom_line__pro_height
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_production__pro_height
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__active_3
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__active_3
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__pro_height
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order_line__pro_height
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_move__pro_height
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_rule__pro_height
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Height"
+msgstr "Höhe"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__height
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Height (Mt.)"
+msgstr "Höhe (Mt.)"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__height_max_3
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__height_max_3
+msgid "Height Maximum"
+msgstr "Maximale Höhe"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__height_min_3
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__height_min_3
+msgid "Height Minimum"
+msgstr "Mindesthöhe"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_account_move
+msgid "Journal Entry"
+msgstr "Tagebucheintrag"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_account_move_line
+msgid "Journal Item"
+msgstr "Journaleintrag"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__label
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_bom_line__label
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_production__label
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__label
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__label
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__label
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order_line__label
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_move__label
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_rule__label
+msgid "Label"
+msgstr "Etikett"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__account_move__dimension_method__l_w_h
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__mrp_production__dimension_method__l_w_h
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__purchase_order__dimension_method__l_w_h
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__sale_order__dimension_method__l_w_h
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__stock_rule__dimension_method__l_w_h
+msgid "LenghtxWidthxHeight"
+msgstr "Länge x Breite x Höhe"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__pro_length
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_bom_line__pro_length
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_production__pro_length
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__active_1
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__active_1
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__pro_length
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order_line__pro_length
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_move__pro_length
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_rule__pro_length
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Length"
+msgstr "Länge"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__length_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__width_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_bom_line__length_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_bom_line__width_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_production__length_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_production__width_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__length_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__width_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order_line__length_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order_line__width_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_move__length_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_move__width_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_rule__length_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_rule__width_chk
+msgid "Length Checkbox"
+msgstr "Kontrollkästchen Länge"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__len_max_1
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__len_max_1
+msgid "Length Maximum"
+msgstr "Maximale Länge"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__len_min_1
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__len_min_1
+msgid "Length Minimum"
+msgstr "Mindestlänge"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Net Price"
+msgstr "Nettopreis"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__res_company__price_calculation__dimension
+msgid "Price Calculation based on Dimension(m2/m3)"
+msgstr "Preisberechnung basierend auf Dimension (m2/m3)"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__res_company__price_calculation__qty
+msgid "Price Calculation based on Qty"
+msgstr "Preisberechnung nach Menge"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_product_template
+msgid "Product"
+msgstr "Produkt"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_product_product
+msgid "Product Variant"
+msgstr "Produktvarianten"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_mrp_production
+msgid "Production Order"
+msgstr "Produktionsauftrag"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_purchase_order
+msgid "Purchase Order"
+msgstr "Bestellung"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Bestellposition"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Quantity"
+msgstr "Menge"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.view_product_product_extended
+msgid "Relevant Dimensions"
+msgstr "Relevante Abmessungen"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Anzahlungsrechnung"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_sale_order
+msgid "Sales Order"
+msgstr "Verkaufsauftrag"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Kundenauftragszeile"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_stock_move
+msgid "Stock Move"
+msgstr "Lagerbuchung"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_stock_rule
+msgid "Stock Rule"
+msgstr "Lagerregel"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Taxes"
+msgstr "Steuern"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Total Price"
+msgstr "Gesamtpreis"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model,name:bi_advance_product_dimension.model_stock_picking
+msgid "Transfer"
+msgstr "Überweisen"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__custom_uom_id
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__custom_uom_id
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.view_product_product_extended
+msgid "UOM Prompt"
+msgstr "UOM-Eingabeaufforderung"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Unit Price"
+msgstr "Einzelpreis"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__dimension
+msgid "Uses Dimensional Values"
+msgstr "Verwendet Dimensionswerte"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__custom_weight
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_bom_line__custom_weight
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_production__custom_weight
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__custom_weight
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order_line__custom_weight
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_move__custom_weight
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_rule__custom_weight
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Weight Ea."
+msgstr "Gewicht Ea."
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__pro_width
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_bom_line__pro_width
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_production__pro_width
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__active_2
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__active_2
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__pro_width
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order_line__pro_width
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_move__pro_width
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_rule__pro_width
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "Width"
+msgstr "Breite"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__width
+msgid "Width (Mt.)"
+msgstr "Breite (Mt.)"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__width_max_2
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__width_max_2
+msgid "Width Maximum"
+msgstr "Maximale Breite"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_product__width_min_2
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_product_template__width_min_2
+msgid "Width Minimum"
+msgstr "Mindestbreite"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__account_move__dimension_method__w_h
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__mrp_production__dimension_method__w_h
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__purchase_order__dimension_method__w_h
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__sale_order__dimension_method__w_h
+#: model:ir.model.fields.selection,name:bi_advance_product_dimension.selection__stock_rule__dimension_method__w_h
+msgid "WidthxHeight"
+msgstr "Breite x Höhe"
+
+#. module: bi_advance_product_dimension
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_account_move_line__height_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_bom_line__height_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_mrp_production__height_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_purchase_order_line__height_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_sale_order_line__height_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_move__height_chk
+#: model:ir.model.fields,field_description:bi_advance_product_dimension.field_stock_rule__height_chk
+msgid "height Checkbox"
+msgstr "Höhe Kontrollkästchen"
+
+#. module: bi_advance_product_dimension
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.inherit_report_purchaseorder
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_invoice_report_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_purchase_inherit
+#: model_terms:ir.ui.view,arch_db:bi_advance_product_dimension.report_saleorder_document_inherit_bi
+msgid "width (Mt.)"
+msgstr "Breite (Mt.)"

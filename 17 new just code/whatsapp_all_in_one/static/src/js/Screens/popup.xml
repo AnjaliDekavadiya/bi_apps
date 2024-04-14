@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="QRCodePopup" owl="1">
+        <div class="popup scan-qr-code-popup">
+            <div class="modal-header">
+                <h4 class="modal-title">Scan QR Code</h4>
+            </div>
+            <div class="modal-body">
+                <img t-att-src='props.qr_img' alt="no image" class="qr_img" style="height:200px; width:200px;"/>
+                <img src="/whatsapp_all_in_one/static/img/wp.png" alt="img" class="qr_icon"
+                    style="position: absolute; top: 85px; left: 45%; height: 50px; width: 50px;"/>
+            </div>
+            <div class="footer footer-flex modal-footer">
+                <div class="button cancel btn btn-lg btn-secondary" t-on-click="cancel">
+                    Close
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

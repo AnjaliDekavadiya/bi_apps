@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="rma_return_reason_form_view" model="ir.ui.view">
+            <field name="name">route.location.form.view</field>
+            <field name="model">return.reason</field>
+            <field name="arch" type="xml">
+                <form>
+                     <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                     </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="rma_return_reason_tree_view" model="ir.ui.view">
+            <field name="name">route.location.tree</field>
+            <field name="model">return.reason</field>
+            <field name="arch" type="xml">
+                 <tree>
+                    <field name="name"/>
+                 </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_rma_return_reason">
+            <field name="name">Return Reasons</field>
+            <field name="res_model">return.reason</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="view_type">form</field> odoo13-->
+        </record>
+
+        <menuitem id="menu_return_reason" name="Return Reasons" parent="website_request_return_rma_odoo.menu_return_machine_repair_configuration" action="action_rma_return_reason"/>
+
+           </data>
+        </odoo>

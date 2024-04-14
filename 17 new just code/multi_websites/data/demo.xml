@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="website.default_website" model="website">
+        <field name="name">Electronics Site</field>
+        <!-- <field name="domain">electronics.odoodemo.webkul.com</field> -->
+        <field name="logo" type="base64" file="multi_websites/static/description/logo_electronics.png"></field>
+        <field name="favicon" type="base64" file="multi_websites/static/description/electronics_icon.png"></field>
+        <field name="acquirer_ids" eval="[(6,0,[ref('payment.payment_provider_transfer')])]"></field>
+        <field name="carrier_ids" eval="[(6,0,[ref('delivery.free_delivery_carrier')])]"></field>
+        <field name="product_pricelist_ids" eval="[(6,0,[ref('website_sale.list_benelux')])]"></field>
+    </record>
+
+    <record id="website.website2" model="website">
+        <field name="name">Clothing Site</field>
+        <!-- <field name="domain">clothing.odoodemo.webkul.com</field> -->
+        <field name="logo" type="base64" file="multi_websites/static/description/logo_clothing.png"></field>
+        <field name="favicon" type="base64" file="multi_websites/static/description/clothing_icon.png"></field>
+        <field name="acquirer_ids" eval="[(6,0,[ref('payment.payment_provider_transfer')])]"></field>
+        <field name="carrier_ids" eval="[(6,0,[ref('delivery.free_delivery_carrier')])]"></field>
+        <field name="product_pricelist_ids" eval="[(6,0,[ref('website_sale.list_benelux')])]"></field>
+    </record>
+
+    <!-- <function model="website" name="set_domain"/> -->
+    
+</odoo>

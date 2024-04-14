@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="sh_rr_paperformat_inv" model="report.paperformat">
+        <field name="name">Receipt Report Invoice</field>
+        <field name="default" eval="True" />
+        <field name="format">custom</field>
+        <field name="page_height">150</field>
+        <field name="page_width">80</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">3</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">3</field>
+        <field name="margin_right">3</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">3</field>
+        <field name="dpi">130</field>
+    </record>
+
+    <record id="action_sh_rr_invoice_report" model="ir.actions.report">
+        <field name="name">Invoices without Payment Receipt</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sh_invoice_receipt_reports.sh_rr_invoice_receipt</field>
+        <field name="report_file">sh_invoice_receipt_reports.sh_rr_invoice_receipt</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="print_report_name">(object.name)</field>
+        <field name="binding_type">report</field>
+        <field name="groups_id" eval="[(4, ref('sh_invoice_receipt_reports.group_sh_invoice_receipt_reports'))]" />
+        <field name="paperformat_id" ref="sh_invoice_receipt_reports.sh_rr_paperformat_inv" />
+        <field name="print_report_name">(object.sh_rr_get_printed_report_name())</field>
+    </record>
+
+    <!-- Invoices Receipt -->
+
+    <record id="action_sh_rr_invoice_without_payment_report" model="ir.actions.report">
+        <field name="name">Invoices Receipt</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sh_invoice_receipt_reports.sh_rr_invoice_with_payment_receipt</field>
+        <field name="report_file">sh_invoice_receipt_reports.sh_rr_invoice_with_payment_receipt</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="print_report_name">(object.name)</field>
+        <field name="binding_type">report</field>
+        <field name="groups_id" eval="[(4, ref('sh_invoice_receipt_reports.group_sh_invoice_receipt_reports'))]" />
+        <field name="paperformat_id" ref="sh_invoice_receipt_reports.sh_rr_paperformat_inv" />
+        <field name="print_report_name">(object.sh_rr_get_printed_report_name())</field>
+    </record>
+
+    <!-- Invoices Receipt Slip -->
+
+    <record id="action_sh_rr_report_payment_receipt" model="ir.actions.report">
+        <field name="name">Payment Receipt Slip</field>
+        <field name="model">account.payment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sh_invoice_receipt_reports.report_payment_receipt</field>
+        <field name="report_file">sh_invoice_receipt_reports.report_payment_receipt</field>
+        <field name="binding_model_id" ref="account.model_account_payment" />
+        <field name="binding_type">report</field>
+        <field name="groups_id" eval="[(4, ref('sh_invoice_receipt_reports.group_sh_invoice_receipt_reports'))]" />
+        <field name="paperformat_id" ref="sh_invoice_receipt_reports.sh_rr_paperformat_inv" />
+    </record>
+
+</odoo>

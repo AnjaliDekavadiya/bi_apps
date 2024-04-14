@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="public_shop_visibility_form_view" model="ir.ui.view">
+            <field name="name">public.shop.visibility.form.view</field>
+            <field name="model">public.shop.visibility</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="all_category"/>
+                        </group>
+                        <group>
+                            <field name="all_product"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <!-- <page name="select Categories" string="Categories to Show" attrs="{'invisible': [('all_category', '!=', False)]}"> -->
+                        <page name="select Categories" string="Categories to Show" invisible="all_category">
+                            <field name="category_ids"/>
+                        </page>
+                        <!-- <page name="select product" string="Products to Show" attrs="{'invisible': [('all_product', '!=', False)]}"> -->
+                        <page name="select product" string="Products to Show" invisible="all_product">
+                            <field name="template_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="public_shop_visibility_tree_view" model="ir.ui.view">
+            <field name="name">public.shop.visibility.tree</field>
+            <field name="model">public.shop.visibility</field>
+            <field name="arch" type="xml">
+                 <tree>
+                    <field name="name"/>
+                    <field name="all_category"/>
+                    <field name="all_product"/>
+                 </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_public_shop_visibility">
+            <field name="name">Public Guest Visibility</field>
+            <field name="res_model">public.shop.visibility</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_type">form</field> --> <!-- odoo13 -->
+        </record>
+
+        <menuitem id="menu_public_shop_visibility" name="Public Guest Visibility" parent="website.menu_website_global_configuration" action="action_public_shop_visibility"/>
+
+    </data>
+</odoo>

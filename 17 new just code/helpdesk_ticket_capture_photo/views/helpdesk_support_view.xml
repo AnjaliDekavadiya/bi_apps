@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="helpdesk_support_form_view_inherit_capture_photo" model="ir.ui.view">
+        <field name="name">Helpdesk Support inherit capture photo</field>
+        <field name="model">helpdesk.support</field>
+        <field name="inherit_id" ref="website_helpdesk_support_ticket.helpdesk_support_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page string="Capture Photos">
+                    <field name="capture_attachment_ids" nolabel="1"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+ </odoo>

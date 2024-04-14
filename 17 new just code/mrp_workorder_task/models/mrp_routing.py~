@@ -1,0 +1,10 @@
+from odoo import models, fields, api, _
+class MrpRouting(models.Model):
+    """ Specifies routings of work centers """
+    _inherit = 'mrp.routing'
+    _description = 'Routings'
+
+   
+    operation_ids = fields.One2many(
+        'mrp.routing.workcenter', 'routing_id', 'Operations',
+        copy=True, oldname='workcenter_lines')

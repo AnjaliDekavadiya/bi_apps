@@ -1,0 +1,27 @@
+/* Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) */
+/* See LICENSE file for full copyright and licensing details. */
+/* License URL : <https://store.webkul.com/license.html/> */
+.orders-screen-content{
+    margin: 0px auto;
+    max-width: 98%;
+    text-align: left;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.wk-searchbox{
+    flex-grow: 1;
+    position: relative;
+}
+
+.wk-order-search-input{
+    width: 150px;
+    border: 1px solid #cecbcb;
+    padding: 10px 20px;
+    margin: 15px 6px;
+    background-color: white;
+    border-radius: 20px;
+    font-family: 'Lato','Lucida Grande', Helvetica, Verdana, Arial;
+    font-size: 13px;
+}

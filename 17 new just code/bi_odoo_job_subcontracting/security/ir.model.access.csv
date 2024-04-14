@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bi_job_subcontract_user,bi_job_subcontract_user_name,bi_odoo_job_subcontracting.model_job_subcontract,base.group_user,1,1,1,1
+bi_sub_purchase_line_user,bi_sub_purchase_line_user_name,bi_odoo_job_subcontracting.model_sub_purchase_line,base.group_user,1,1,1,1
+access_subcontract_job_order,subcontract_job_order,model_subcontract_job_order,base.group_user,1,1,1,1
+access_subcontract_purchase_order,subcontract.purchase.order,model_subcontract_purchase_order,base.group_user,1,1,1,1

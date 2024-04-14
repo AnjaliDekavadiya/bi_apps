@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <!--LOAD JS-->
+        <!-- <template id="car_repair_maintenance_service_js" name="website_car_repair_maintenance_service_assets" inherit_id="website.assets_frontend">
+               <xpath expr="." position="inside">
+                 <script type="text/javascript" src="/web_car_repair_multi_service/static/src/js/car_repair_maintenance_service_js.js"></script>
+               </xpath>
+        </template> -->
+
+        <!--Add Multiple services selection on car repair maintenance services request form-->
+        <template id="website_car_repair_multiple_services" inherit_id="car_repair_maintenance_service.website_car_repair_support_ticket">
+            <xpath expr="//h4[hasclass('car_service_details_probc')]" position="after">
+                <div class="col-12 form-group">
+                    <div class="col-6 offset-6">
+                        <input type='checkbox' class="request_to_multiple_services_probc" id='multiple_services' name="multiple_services"> 
+                            <b>Request For Multiple Services</b> 
+                        </input>
+                    </div>
+                </div>
+            </xpath>
+
+            <xpath expr="//select[@name='service_id']" position="after">
+                <div class="row multiple_service_div_probc o_hidden">
+                <t class="aa" t-foreach="service_ids" t-as="service_id">
+                    <div class="multiple_service_section col-6">
+                        <input type='checkbox' class="request_service_check_porbc" id='request_service_check' name="request_service_check" t-att-value="service_id.id">
+                            <span t-field="service_id.name"/>
+                        </input>
+                    </div>
+                </t>
+                </div>
+            </xpath>
+            
+        </template>
+
+        <!--Add Multiple services on car repair maintenance services portal form-->
+        <template id="car_repair_request_from_multiple_services" inherit_id="car_repair_maintenance_service.display_car_repair_request_from">
+            <xpath expr="//span[@t-field='repair_request.nature_of_service_id']/.." position="after">
+                <div class="mb8" t-if="repair_request.nature_of_service_ids">
+                    <strong>Nature of Services:</strong>
+                    <!--Add sudo to allow portal users to access Natue of services-->
+                    <t t-foreach="repair_request.nature_of_service_ids.sudo()" t-as="nature_of_service_id">
+                        <span t-esc="nature_of_service_id.name" class="badge rounded-pill text-bg-info"/>
+                    </t>
+                </div>
+            </xpath>
+            <xpath expr="//span[@t-field='repair_request.nature_of_service_id']/.." position="attributes">
+                <attribute name="t-if">repair_request.nature_of_service_id</attribute>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

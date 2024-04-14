@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_helpdesk_dashboard_kanban">
+        <field name="name">support.team.dashboard.kanban</field>
+        <field name="model">support.team</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_supportteam_kanban" create="false">
+                <field name="name"/>
+                <templates>
+                    <t t-name="kanban-menu">
+                        <div class="container">
+                            <div role="menuitem" groups="sales_team.group_sale_manager" t-if="widget.editable">
+                                <a type="edit">Settings</a>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-name="kanban-box">
+                        <div style="width: 100%;" t-attf-class="#{kanban_color(record.color)} o_has_icon">
+                            <div  class="o_helpdesk_kanban_main">
+                                <div t-attf-class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary">
+
+                                            <h3 color="#A04000;">
+                                                <field name="is_team" widget="boolean_favorite" nolabel="1" force_save="1"/>
+                                                <t t-esc="record.name.value"/>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div>
+                                <a class="o_kanban_manage_toggle_button o_left fa fa-ellipsis-v" href="#"> -->
+                                    <!-- <i class="fa fa-ellipsis-v"/> -->
+                                <!-- </a>
+                                <span class="o_right">
+                                    <field name="is_team" widget="boolean_favorite" nolabel="1" />
+                                </span>
+                            </div> -->
+                            
+                            <div class="o_helpdesk_kanban_boxes">
+                                <div class="container o_kanban_card_content">
+                                    <div class="row" style="color: #4B0082;">
+                                        <!-- Tital in Hader -->
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center><b><span>Open Tickets</span></b></center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center><b><span>Unassigned Tickets</span></b></center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center><b><span>Closed Tickets</span></b></center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center><b><span>Tickets On Deadline</span></b></center>
+                                        </div>
+                                        
+                                        <!-- Today -->
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-info btn-xs btn-block" name="new_tickt_this_day" type="object">
+                                                    <h5>Today</h5><h1>
+                                                    <field name="this_day_new_ticket_count"/></h1>
+                                                 </button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-success btn-xs btn-block " name="assigned_to_this_day"
+                                            type="object"><h5>Today</h5><h1><field  name="this_day_to_assign_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-warning btn-xs btn-block " name="close_this_day"
+                                            type="object"><h5>Today</h5><h1><field name="this_day_close_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-danger btn-xs btn-block " name="this_day_deadline_ticket"
+                                            type="object"><h5>Today</h5><h1><field name="this_day_deadline_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        
+                                        
+                                        <!-- This Week -->
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-info btn-xs btn-block btn-block " name="new_tickt_this_week"
+                                            type="object"><h5>This Week</h5><h1><field name="this_week_new_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-success btn-xs btn-block btn-block " name="assigned_to_this_week"
+                                            type="object"><h5>This Week</h5><h1><field name="this_week_to_assign_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-warning btn-xs btn-block btn-block " name="close_this_week"
+                                            type="object"><h5>This Week</h5><h1><field name="this_week_close_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-danger btn-xs btn-block btn-block " name="deadline_this_week"
+                                            type="object"><h5>This Week</h5><h1><field name="this_week_deadline_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        
+                                        <!-- This Month -->
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-info btn-xs btn-block " name="new_tickt_this_month"
+                                            type="object"><h5>This Month</h5><h1><field name="this_month_new_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-success btn-xs btn-block " name="assigned_to_this_month"
+                                            type="object"><h5>This Month</h5><h1><field name="this_month_to_assign_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-warning btn-xs btn-block " name="close_ticket_this_month"
+                                            type="object"><h5>This Month</h5><h1><field name="this_month_close_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                         <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-danger btn-xs btn-block " name="deadline_ticket_this_month"
+                                            type="object"><h5>This Month</h5><h1><field name="this_month_deadline_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        
+                                        <!-- Last month -->
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-info btn-xs btn-block " name="new_tickt_this_last_month"
+                                            type="object"><h5>Last Month</h5><h1><field name="last_month_new_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-success btn-xs btn-block " name="assigned_to_last_month"
+                                            type="object"><h5>Last Month</h5><h1><field name="last_month_to_assign_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-warning btn-xs btn-block " name="close_ticket_last_month"
+                                            type="object"><h5>Last Month</h5><h1><field name="last_month_close_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-3 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="col-12 btn btn-danger btn-xs btn-block " name="deadline_ticket_last_month"
+                                            type="object"><h5>Last Month</h5><h1><field name="last_month_deadline_ticket_count"/></h1></button>
+                                            </center>
+                                        </div>
+                                        
+                                        
+                                        <div class="col-6 o_kanban_primary_left mb8 ">
+                                            <center>
+                                                <button class="btn btn-light btn-lg btn-block " name="action_create_ticket" type="object">
+                                                    <h1><p title="create new ticket"><i class="fa fa-plus"></i></p></h1><strong>Create New Ticket</strong>
+                                                 </button>
+                                            </center>
+                                        </div>
+                                        <div class="col-6 o_kanban_primary_left mb8">
+                                            <center>
+                                                <button class="btn btn-light btn-lg btn-block " name="action_jump_to_ticket" type="object">
+                                                    <h1><p title="Jump To Tickets"><i class="fa fa-arrow-circle-right"></i></p></h1><strong>Jump To Tickets</strong>
+                                                 </button>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
+                                    <div t-if="widget.editable" class="col-4 o_kanban_card_manage_section" groups="sales_team.group_sale_manager">
+                                        <div class="text-right">
+                                            <a role="menuitem" type="edit">Settings</a>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <!--div class="container o_kanban_card_manage_pane">
+                                <div t-if="widget.editable" class="o_kanban_card_manage_settings row" groups="sales_team.group_sale_manager">
+                                    <div class="col-4 text-right">
+                                        <a type="edit">Settings</a>
+                                    </div>
+                                </div>
+                            </div-->
+                            
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+    
+    <record id="helpdesk_support_dashboard_action" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">support.team</field>
+        <!-- <field name="view_type">form</field> --> <!-- odoo13 -->
+        <field name="domain">[]</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="view_helpdesk_dashboard_kanban"/>
+        <field name="target">main</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new helpdesk team.
+                <br/>
+            </p>
+        </field>
+    </record>
+    
+    <menuitem 
+        action="helpdesk_support_dashboard_action" 
+        id="helpdesk_support_dashboard_menu"
+        parent="website_helpdesk_support_ticket.main_helpdesk_support" 
+        sequence="0"
+        name="Dashboard"
+        />
+        
+</odoo>

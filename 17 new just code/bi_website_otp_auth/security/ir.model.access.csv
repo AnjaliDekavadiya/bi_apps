@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+website_otp,website_otp,model_website_otp,,1,1,0,0
+otp_otp,otp_otp,model_otp_otp,,1,1,1,1

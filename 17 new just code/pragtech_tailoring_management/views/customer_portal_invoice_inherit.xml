@@ -1,0 +1,40 @@
+<odoo>
+    <template id="customer_portal_invoice_inherit" name="Customer Portal Invoice"
+        inherit_id="account.portal_my_invoices">
+         <xpath expr="//tr[hasclass('active')]" position="replace">
+            <th>
+            <span class='d-none d-md-inline'>Tailoring Invoices #</span>
+            <span class='d-block d-md-none'>Ref.</span>
+            </th>
+            <th class="text-end">Invoice Date</th>
+            <th class="text-end">Due Date</th>
+            <th class="text-end">Amount Total</th>
+            <th class="text-end">status</th>
+         </xpath>
+        <xpath expr="//t[@t-foreach='invoices']/tr" position="replace">
+            <tr>
+                <td>
+                    <a t-att-href="invoice.get_portal_url()">
+                        <t t-out="invoice.name" />
+                    </a>
+                </td>
+                <td class="text-end">
+                    <span t-field="invoice.invoice_date" t-options="{'widget': 'date'}" />&amp;nbsp; <span
+                        class='d-none d-md-inline'
+                        t-options="{'time_only': True}" />
+                </td>
+                <td class="text-end">
+                    <span t-field="invoice.invoice_date_due" t-options="{'widget': 'date'}" />&amp;nbsp; <span
+                        class='d-none d-md-inline'
+                        t-options="{'time_only': True}" />
+                </td>
+                <td class="text-end">
+                    <span t-field="invoice.amount_total" />
+                </td>
+                <td class="text-end">
+                    <span t-field="invoice.payment_state" class="badge rounded-pill text-bg-success" />
+                </td>
+            </tr>
+        </xpath>
+    </template>
+</odoo>

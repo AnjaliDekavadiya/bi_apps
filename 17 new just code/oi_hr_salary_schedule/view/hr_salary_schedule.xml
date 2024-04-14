@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="view_hr_salary_schedule_form" model="ir.ui.view">
+		<field name="name">hr.salary.schedule.form</field>
+		<field name="model">hr.salary.schedule</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="generate_amounts" string="Generate Amounts" type="object" invisible="type != 'grades_and_steps'"/>
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
+							<field name="active" widget="boolean_button" options='{"terminology": "active"}' />
+						</button>
+						<button name="action_amount" type="object" class="oe_stat_button" icon="fa-money" invisible="type != 'grades_and_steps'">
+							<field name="amount_count" widget="statinfo" string="Amounts" />
+						</button>
+						<button name="action_grade" type="object" class="oe_stat_button" icon="fa-sort-amount-asc">
+							<field name="grade_count" widget="statinfo" string="Grades" />
+						</button>						
+					</div>
+					<group>
+						<field name="code" />
+						<field name="name" />
+						<field name="description" />
+						<field name="type" />
+					</group>
+					<group string="Grades">
+						<field name="grade_ids" nolabel="1" colspan="2">
+							<tree editable="bottom">
+								<field name="sequence" widget="handle" />
+								<field name="name" />
+								<field name="code" optional="show" />
+								<field name="start_salary" optional="show" />
+								<field name="end_salary" optional="show" column_invisible="parent.type == 'grades_and_steps'"/>
+								<field name="median_salary" optional="show" column_invisible="parent.type == 'grades_and_steps'"/>
+								<field name="increment" optional="show" column_invisible="parent.type != 'grades_and_steps'" />
+								<field name="start_step_id" options="{'no_create_edit' : True}" domain="[('schedule_id','=', parent.id)]" optional="show" column_invisible="parent.type != 'grades_and_steps'" />
+								<field name="end_step_id" options="{'no_create_edit' : True}" domain="[('schedule_id','=',  parent.id)]" optional="show" column_invisible="parent.type != 'grades_and_steps'" />
+							</tree>
+						</field>
+					</group>
+					<group string="Steps" invisible="type != 'grades_and_steps'">
+						<field name="step_ids" nolabel="1" colspan="2">
+							<tree editable="bottom">
+								<field name="sequence" widget="handle" />
+								<field name="name" />
+							</tree>
+						</field>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="view_hr_salary_schedule_tree" model="ir.ui.view">
+		<field name="name">hr.salary.schedule.tree</field>
+		<field name="model">hr.salary.schedule</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="code" />
+				<field name="name" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_hr_salary_schedule_search" model="ir.ui.view">
+		<field name="name">hr.salary.schedule.search</field>
+		<field name="model">hr.salary.schedule</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name" filter_domain="['|', ('name','=', self), ('code','=', self)]" />
+				<filter name="inactive" string="Inactive" domain="[('active','=', False)]" />
+				<filter name="active" string="Active" domain="[('active','=', True)]" />
+			</search>
+		</field>
+	</record>
+
+
+</odoo>

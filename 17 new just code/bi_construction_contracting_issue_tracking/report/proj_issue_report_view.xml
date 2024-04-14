@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="project_issue_template_view">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <br/>
+                <t t-foreach="docs" t-as="o">
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <h2>
+                            <span t-field="o.sequence"/>
+                            <span>-</span>
+                            <span t-field="o.name"/>
+                        </h2>
+                        <br/>
+                    </div>
+                    <h2 style="text-align : center;">Client Information</h2>
+                    <br/>
+
+                    <table style="border-collapse: collapse;width: 100%;border:5px;" class="table table-condensed">
+                        <tr style="padding: 8px;text-align: left;height:50%;">
+                            <td>
+                                <strong>Assigned to :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.user_id.name"/>
+                            </td>
+
+                            <td>
+                                <strong>Customer:</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.partner_id.name"/>
+                            </td>
+                        </tr>
+
+                        <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                            <td>
+                                <strong>Email :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.email_from"/>
+                            </td>
+
+                            <td>
+                                <strong>Phone :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.phone"/>
+                            </td>
+
+                        </tr>
+
+                        <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                            <td>
+                                <strong>Company :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.user_id.company_id.name"/>
+                            </td>
+
+                            <td>
+                                <strong>priority</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.priority"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <h2 style="text-align : center;">Issue Information</h2>
+                    <br/>
+                    <table style="border-collapse: collapse;width: 100%;border:5px;" class="table table-condensed">
+                        <tr style="padding: 8px;text-align: left;height:50%;">
+                            <td>
+                                <strong>Issue Team :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.construction_team_id"/>
+                            </td>
+
+                            <td>
+                                <strong>Team Leader :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.team_leader_id"/>
+                            </td>
+                        </tr>
+
+                        <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                            <td>
+                                <strong>Department :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.department_id"/>
+                            </td>
+
+                            <td>
+                                <strong>Analytic Account :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.analytic_id"/>
+                            </td>
+                        </tr>
+
+                        <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                            <td>
+                                <strong>Project :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.project_id"/>
+                            </td>
+
+                            <td>
+                                <strong>Job order :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.job_order_id"/>
+                            </td>
+                        </tr>
+
+                        <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                            <td>
+                                <strong>Job Cost Sheet :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.job_cost_sheet_id"/>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <h2 style="text-align : center;">Other Information</h2>
+                    <br/>
+                    <table style="border-collapse: collapse;width: 100%;border:5px;" class="table table-condensed">
+                        <tr style="padding: 8px;text-align: left;height:50%;">
+                            <td>
+                                <strong>Created Date :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.date_create"/>
+                            </td>
+
+                            <td>
+                                <strong>Closed Date :</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.date_closed"/>
+                            </td>
+                        </tr>
+
+                        <tr style="padding: 8px;text-align: left;border-top: 1px solid #ddd;">
+                            <td t-if="o.is_closed == False">
+                                <strong>Is Closed :</strong>
+                            </td>
+                            <td t-if="o.is_closed == False">
+                                <span>No</span>
+                            </td>
+
+                            <td t-if="o.is_closed == True">
+                                <strong>Is Closed :</strong>
+                            </td>
+                            <td t-if="o.is_closed == True">
+                                <span>Yes</span>
+                            </td>
+
+                            <td>
+                                <strong>Total Hours Spend:</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.working_hours_open"/>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                    <h2 style="text-align : center;">Description</h2>
+                    <br/>
+                    <span t-field="o.description"/>
+                    <br/>
+                    <p style="page-break-before:always;"></p>
+                    <br/>
+                    <br/>
+                    <h2 style="text-align : center;">Timesheets</h2>
+                    <br/>
+                    <table style="border-collapse: collapse;width: 100%;border:5px;" class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Analytic Account</th>
+                                <th>Description</th>
+                                <th colspan="2">Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody class="consumed_tbody">
+                            <t t-foreach="o.timesheet_ids" t-as="timesheet">
+                                <tr>
+                                    <td>
+                                        <span t-field="timesheet.date"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="timesheet.employee_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="timesheet.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="timesheet.project_id"/>
+                                    </td>
+
+                                    <td>
+                                        <span t-field="timesheet.unit_amount"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <template id="project_issue_temp_id">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="bi_construction_contracting_issue_tracking.project_issue_template_view"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

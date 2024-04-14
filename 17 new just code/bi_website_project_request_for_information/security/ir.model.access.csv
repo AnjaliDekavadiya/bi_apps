@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bi_request_information_user,bi_request_information_user_name,bi_website_project_request_for_information.model_request_information,base.group_user,1,1,1,1
+bi_rfi_subject_user,bi_rfi_subject_user_name,bi_website_project_request_for_information.model_rfi_subject,base.group_user,1,1,1,1
+bi_rfi_type_user,bi_rfi_type_user_name,bi_website_project_request_for_information.model_rfi_type,base.group_user,1,1,1,1
+bi_rfi_team_user,bi_rfi_team_user_name,bi_website_project_request_for_information.model_rfi_team,base.group_user,1,1,1,1
+bi_rfi_stage_user,bi_rfi_stage_user_name,bi_website_project_request_for_information.model_rfi_stage,base.group_user,1,1,1,1
+bi_rfi_category_user,bi_rfi_category_user_name,bi_website_project_request_for_information.model_rfi_category,base.group_user,1,1,1,1
