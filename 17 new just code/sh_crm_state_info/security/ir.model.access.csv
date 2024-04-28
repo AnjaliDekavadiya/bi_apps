@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-sh_crm_task_state_info.access_sh_crm_task_info,access_sh_crm_task_info,model_sh_crm_task_info,,1,1,1,1

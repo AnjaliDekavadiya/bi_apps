@@ -1,7 +1,0 @@
-# -*- coding: utf-8 -*-
-
-from . import return_product_line
-from . import return_order
-from . import return_reason
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

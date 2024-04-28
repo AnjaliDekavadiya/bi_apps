@@ -1,2 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_material_purchase_requisition_line_analysis_report,mat_purchase_requisition_line_employee,model_report_material_requisition_analysis_trend,material_purchase_requisitions.group_purchase_requisition_manager,1,1,1,1

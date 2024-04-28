@@ -1,4 +1,0 @@
-# -*- coding: utf-8 -*-
-
-import top_sale_item_report_render
-import top_sale_customer_report_render

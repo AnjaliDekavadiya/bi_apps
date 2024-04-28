@@ -1,1 +1,0 @@
-from . import change_invoicing_term

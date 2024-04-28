@@ -1,3 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_helpdesk_ticket_user,helpdesk_ticket_user,model_report_helpdesk_ticket_trend,website_helpdesk_support_ticket.group_helpdesk_user,1,1,1,1
-access_helpdesk_ticket_manager,helpdesk_ticket_manager,model_report_helpdesk_ticket_trend,website_helpdesk_support_ticket.group_helpdesk_manager,1,1,1,1

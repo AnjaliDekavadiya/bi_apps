@@ -1,2 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_machine_repair_request_import,access_machine_repair_request_import,model_import_machine_repair_request_wizard,machine_repair_management.group_machine_repair_user,1,1,1,0

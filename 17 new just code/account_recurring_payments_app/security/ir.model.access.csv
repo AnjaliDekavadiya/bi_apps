@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_recurring_templates,access_recurring_templates,model_recurring_templates,base.group_user,1,1,1,1
-access_reccuring_payments,access_reccuring_payments,model_reccuring_payments,base.group_user,1,1,1,1
-access_remain_entries_lines,access_remain_entries_lines,model_remain_entries_lines,base.group_user,1,1,1,1

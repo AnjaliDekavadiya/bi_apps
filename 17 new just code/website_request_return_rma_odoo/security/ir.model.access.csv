@@ -1,5 +1,0 @@
-"id","name","model_id/id","group_id/id","perm_read","perm_write","perm_create","perm_unlink"
-"access_reason_portal","reason_portal","model_return_reason","base.group_portal",1,0,0,0
-"access_return_order_sale_user","return_order_sale_user","model_return_order","machine_repair_management.group_machine_repair_user",1,1,1,0
-"access_return_product_line","return_product_line_sale_user","model_return_product_line","machine_repair_management.group_machine_repair_user",1,1,1,0
-"access_reason_portals","reason_portals","model_return_reason","base.group_user",1,1,1,0

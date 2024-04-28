@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_laundry_jobcost_line,access_laundry_jobcost_line,model_laundry_jobcost_line,laundry_iron_business.group_laundry_service_manager,1,1,1,1
-access_laundry_request_jobcostsheet_wizard,access_laundry_request_jobcostsheet_wizard,model_laundry_request_jobcostsheet_wizard,laundry_iron_business.group_laundry_service_manager,1,1,1,0

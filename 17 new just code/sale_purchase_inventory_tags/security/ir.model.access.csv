@@ -1,6 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_inventory_tags_sales,inventory_tags_sales,model_inventory_tags,sales_team.group_sale_manager,1,1,1,1
-access_inventory_tags_purchase,inventory_tags_purchase,model_inventory_tags,purchase.group_purchase_manager,1,1,1,1
-access_inventory_tags_inventory,inventory_tags_inventory,model_inventory_tags,stock.group_stock_manager,1,1,1,1
-access_inventory_tags_inventory,inventory_tags_inventory,model_inventory_tags,stock.group_stock_user,1,1,1,0
-access_inventory_tags_employee,inventory_tags_employee,model_inventory_tags,base.group_user,1,0,0,0

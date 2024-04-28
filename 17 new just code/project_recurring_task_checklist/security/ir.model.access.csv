@@ -1,5 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-project_recurring_task_user,project_recurring_task_config_user,model_recurring_task,project.group_project_user,1,0,0,0
-project_recurring_task,project_recurring_task_config,model_recurring_task,project.group_project_manager,1,1,1,1
-project_recurring_task_employee,project.recurring.task.employee,model_recurring_task,base.group_user,1,0,0,0
-

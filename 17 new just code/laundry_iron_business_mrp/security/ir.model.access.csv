@@ -1,4 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_laundry_mrp_line_employee,laundry_mrp_line_employee,model_laundry_mrp_line,base.group_user,1,0,0,0
-access_laundry_mrpline_user,laundry_mrp_line_user,model_laundry_mrp_line,laundry_iron_business.group_laundry_service_user,1,1,1,1
-access_laundry_mrpline_manager,laundry_mrpline_manager,model_laundry_mrp_line,laundry_iron_business.group_laundry_service_manager,1,1,1,1

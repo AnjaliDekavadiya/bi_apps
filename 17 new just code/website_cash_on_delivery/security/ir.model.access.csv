@@ -1,8 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_cash_on_delivery_sale_user,cash_on_delivery_sale_user,model_cashondelivery_collection,sales_team.group_sale_salesman,1,1,1,1
-access_cash_on_delivery_account_user,cash_on_delivery_account_user,model_cashondelivery_collection,account.group_account_invoice,1,1,1,1
-access_cash_on_delivery_inventory_user,access_cash_on_delivery_inventory_user,model_cashondelivery_collection,stock.group_stock_user,1,1,1,1
-access_res_zip_group_all,res_zip group_user_all,model_cod_zip_code,,1,0,0,0
-access_res_zip_group_all_write,res_zip group_user_all_write,model_cod_zip_code,sales_team.group_sale_salesman,1,1,1,1
-access_res_zip_group_all_write_a,res_zip account  group_user_all_write,model_cod_zip_code,account.group_account_invoice,1,1,1,1
-

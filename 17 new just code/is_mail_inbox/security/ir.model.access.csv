@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-is_mail_inbox.access_mail_inbox,access_mail_inbox,is_mail_inbox.model_mail_inbox,is_mail_inbox.group_mail_box_user,1,1,1,1
-is_mail_inbox.access_email_compose_wizard,access_email_compose_wizard,is_mail_inbox.model_email_compose_wizard,is_mail_inbox.group_mail_box_user,1,1,1,1
-access_fetchmail_server_mail_box,access_fetchmail_server,mail.model_fetchmail_server,is_mail_inbox.group_mail_box_config_user,1,1,1,1
-access_ir_mail_server_mail_box,access_ir_mail_server,base.model_ir_mail_server,is_mail_inbox.group_mail_box_config_user,1,1,1,1

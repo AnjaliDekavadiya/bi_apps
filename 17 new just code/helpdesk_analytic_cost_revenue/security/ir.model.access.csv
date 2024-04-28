@@ -1,6 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_service_support_type,access.service.support.type,model_service_support_type,base.group_user,1,0,0,0
-access_service_support_type_group,access.service.support.type.group,model_service_support_type,website_helpdesk_support_ticket.group_helpdesk_manager,1,1,1,1
-access_helpdesk_support_service_report,access.helpdesk.support.service.report,model_report_account_analytic_account,website_helpdesk_support_ticket.group_helpdesk_user,1,1,1,1
-access_purchase_order_support,access.purchase.order.support,purchase.model_purchase_order,website_helpdesk_support_ticket.group_helpdesk_user,1,0,0,0
-access_purchase_order_line_support,access.purchase.order.line.support,purchase.model_purchase_order_line,website_helpdesk_support_ticket.group_helpdesk_user,1,0,0,0

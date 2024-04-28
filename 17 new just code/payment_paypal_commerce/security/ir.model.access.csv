@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-paypal_commerce_mp_receiver_pub_access,paypal_commerce_mp_receiver_pub_access,model_paypal_commerce_mp_receiver,,1,1,1,0

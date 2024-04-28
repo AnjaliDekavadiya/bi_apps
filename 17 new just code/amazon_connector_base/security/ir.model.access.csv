@@ -1,6 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_model_amazon_operation_wizard,access.model.amazon.operation.wizard,model_amazon_operation_wizard,,1,1,1,1
-access_model_generate_amazon_product_wizard,access.model.generate.amazon.product.wizard,model_generate_amazon_product_wizard,,1,1,1,1
-access_model_amazon_synchronization_log,access.model.amazon.synchronization.log,model_amazon_synchronization_log,,1,1,1,1
-access_model_feed_submission_log,access.model.feed.submission.log,model_feed_submission_log,,1,1,1,1
-access_amazon_marketplace_sale_manager,access.amazon.marketplace.sale.manager,model_amazon_marketplace,sales_team.group_sale_manager,1,1,1,0

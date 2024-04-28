@@ -1,2 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_helpdesk_team_without_group,helpdesk_team_without_group,website_helpdesk_support_ticket.model_support_team,,1,0,0,0

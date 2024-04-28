@@ -1,9 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-cashmove_user_kiosk,cashmove_user_kiosk,lunch.model_lunch_cashmove,lunch_kiosk_mode_adv.group_lunch_kiosk,1,0,0,0
-order_user_kiosk,order_user_kiosk,lunch.model_lunch_order,lunch_kiosk_mode_adv.group_lunch_kiosk,1,1,1,1
-product_user_kiosk,product_user_kiosk,lunch.model_lunch_product,lunch_kiosk_mode_adv.group_lunch_kiosk,1,0,0,0
-product_category_user_kiosk,product_category_user_kiosk,lunch.model_lunch_product_category,lunch_kiosk_mode_adv.group_lunch_kiosk,1,0,0,0
-lunch_location_user_kiosk,lunch_location_user_kiosk,lunch.model_lunch_location,lunch_kiosk_mode_adv.group_lunch_kiosk,1,1,0,0
-lunch_topping_user_kiosk,lunch_topping_user_kiosk,lunch.model_lunch_topping,lunch_kiosk_mode_adv.group_lunch_kiosk,1,0,0,0
-lunch_supplier_user_kiosk,lunch_supplier_user_kiosk,lunch.model_lunch_supplier,lunch_kiosk_mode_adv.group_lunch_kiosk,1,0,0,0
-access_res_users_faces_user,access.res.users.faces.user,model_res_users_faces,base.group_user,1,1,1,1

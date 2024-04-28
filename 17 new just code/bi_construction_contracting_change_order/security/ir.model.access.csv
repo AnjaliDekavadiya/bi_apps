@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-change_order_user,change_order_name,bi_construction_contracting_change_order.model_change_order,base.group_user,1,1,1,1
-change_order_line_user,material_estimate_name,bi_construction_contracting_change_order.model_change_order_line,base.group_user,1,1,1,1
-access_job_cost_sheet_wizard,access_job_cost_sheet_wizard,bi_construction_contracting_change_order.model_job_cost_sheet_wizard,base.group_user,1,1,1,1

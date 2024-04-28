@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_project_profit_loss_wizard_add,access.project.profit.loss.wizard.add,model_project_profit_loss_wizard,account.group_account_manager,1,1,1,0

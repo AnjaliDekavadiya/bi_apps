@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data noupdate="1">
-        <function model="im_livechat.channel" name="action_set_boot_options" eval="[ref('im_livechat.im_livechat_channel_data')]" />
-    </data>
-</odoo>

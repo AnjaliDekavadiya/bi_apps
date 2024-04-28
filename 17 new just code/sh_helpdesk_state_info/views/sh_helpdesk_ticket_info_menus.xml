@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <!-- stage change analysis -->
-    <menuitem id="menu_helpdesk_stage_change_analysis" action="sh_helpdesk_stage_change_analysis_action" parent="helpdesk.menu_helpdesk_root" sequence="10" groups="sh_helpdesk_state_info.sh_helpdesk_stage_change_history_group"/>
-</odoo>

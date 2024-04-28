@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<odoo>
-
-	<menuitem id="menu_hr_salary_schedule" action="act_hr_salary_schedule" parent="hr.menu_human_resources_configuration" sequence="10" />
-	
-</odoo>

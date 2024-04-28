@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_configuration_wizard_woocommerce,access_configuration_wizard_woocommerce,model_configuration_wizard_woocommerce,,1,1,1,1
-access_configuration_wizard_woocommerce_tax_group,configuration.wizard.woocommerce.tax.group,model_configuration_wizard_woocommerce_tax_group,,1,1,1,1
-access_import_customers_wizard_woocommerce,access_import_customers_wizard_woocommerce,model_import_customers_wizard_woocommerce,,1,1,1,1

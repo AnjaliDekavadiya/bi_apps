@@ -1,3 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_project_employee_stage,employee_project_security,model_project_stage_security,base.group_user,1,1,1,0
-access_project_manager_stage,manager_project_security,model_project_stage_security,project.group_project_manager,1,1,1,1

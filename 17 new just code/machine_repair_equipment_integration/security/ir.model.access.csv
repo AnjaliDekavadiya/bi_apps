@@ -1,3 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_maintenance_equipment,maintenance_equipment,model_maintenance_equipment,machine_repair_management.group_machine_repair_manager,1,1,1,1
-access_maintenance_equipment_wizard,access_maintenance_equipment_wizard,model_maintenance_equipment_wizard,machine_repair_management.group_machine_repair_user,1,1,1,0

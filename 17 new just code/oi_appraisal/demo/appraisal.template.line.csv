@@ -1,5 +1,0 @@
-id,sequence,template_id:id,name,evaluation_template_id:id,evaluator_field_id:id,weight
-template_line_1,1,template_1,Employee,evaluation_template_1,oi_appraisal.field_hr_employee__himself_id,0
-template_line_2,2,template_1,Manager,evaluation_template_1,hr.field_hr_employee__parent_id,50
-template_line_3,3,template_1,Peers,evaluation_template_1,oi_appraisal.field_hr_employee__department_peers_ids,25
-template_line_4,4,template_1,Direct subordinates,evaluation_template_1,hr.field_hr_employee__child_ids,25

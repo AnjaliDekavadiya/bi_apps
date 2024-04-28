@@ -1,9 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hr_salary_schedule,access_hr_salary_schedule,model_hr_salary_schedule,hr.group_hr_user,1,0,0,0
-access_hr_salary_step,access_hr_salary_step,model_hr_salary_step,hr.group_hr_user,1,0,0,0
-access_hr_salary_grade,access_hr_salary_grade,model_hr_salary_grade,hr.group_hr_user,1,0,0,0
-access_hr_salary_amount,access_hr_salary_amount,model_hr_salary_amount,hr.group_hr_user,1,0,0,0
-access_hr_salary_schedule_hr,access_hr_salary_schedule_hr,model_hr_salary_schedule,group_salary_schedule,1,1,1,1
-access_hr_salary_step_hr,access_hr_salary_step_hr,model_hr_salary_step,group_salary_schedule,1,1,1,1
-access_hr_salary_grade_hr,access_hr_salary_grade_hr,model_hr_salary_grade,group_salary_schedule,1,1,1,1
-access_hr_salary_amount_hr,access_hr_salary_amount_hr,model_hr_salary_amount,group_salary_schedule,1,1,1,1

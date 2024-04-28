@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-job_order_type,job_order_user,bi_odoo_job_costing_management.model_job_order,,1,1,1,1
-machine_repair,machine_repair_user,bi_machine_repair_management.model_machine_repair,,1,1,1,1
-acc_create_repair_request,acc_create_repair_request,model_create_repair_request,base.group_user,1,1,1,1
-acc_createrepair_requestwizard,acc_createrepair_requestwizard,model_createrepair_requestwizard,base.group_user,1,1,1,1

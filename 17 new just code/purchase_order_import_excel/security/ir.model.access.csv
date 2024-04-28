@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-custom_import_purchase_line_wizard_wizard_manager,import_purchase_line_wizard_manager,purchase_order_import_excel.model_import_purchase_line_wizard,purchase.group_purchase_manager,1,1,1,0

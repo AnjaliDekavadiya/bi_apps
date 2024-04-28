@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_export_bom_sheet_wizard,access.export.bom.sheet.wizard,model_export_bom_sheet_wizard,mrp.group_mrp_user,1,1,1,0
-access_import_bom_line_wizard,access.import.bom.line.wizard,model_import_bom_line_wizard,mrp.group_mrp_user,1,1,1,0
-access_bom_report_output_excel,access.bom.report.output.excel,model_bom_report_output_excel,mrp.group_mrp_user,1,1,1,0

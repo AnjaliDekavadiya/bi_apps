@@ -1,3 +1,0 @@
-# wk_loyalty_management_extension
-
-Loyalty Management extension

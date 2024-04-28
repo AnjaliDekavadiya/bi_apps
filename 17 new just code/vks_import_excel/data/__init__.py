@@ -1,1 +1,0 @@
-from . import vks_import_excel_initdata
